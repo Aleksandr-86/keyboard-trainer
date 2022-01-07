@@ -1,0 +1,88 @@
+body {
+  background: #d438b2;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #263ae1, #11bee5);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #171916, #f2da56);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.container {
+  margin: 100px 0 0 200px;
+}
+
+.keyboard {
+  /*color: black;*/
+  /*font-weight: 500;*/
+  width: 55px;
+  height: 55px;
+  /*border: none;*/
+  background: rgb(214, 214, 214);
+  box-shadow: 0 0 10px rgb(149, 33, 243), 0 0 40px rgb(198, 0, 238), 0 0 80px rgb(247, 4, 247);
+
+  /*font-size: 15px;*/
+  margin: 2px;
+  outline: none;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 16%;
+  text-align: center;
+
+}
+
+.row1 {
+  /*grid-row: 5 / 6;*/
+  display: flex;
+  /*align-items: baseline;*/
+  /*padding: 0 0.3rem;*/
+  /*margin-top: 1rem;*/
+}
+
+button:active {
+  box-shadow: 1px 1px 2px #a00b1a, 1px 1px 2px #ff00dd;
+}
+
+.print {
+  width: 85px;
+  border-radius: 10px;
+}
+
+.back {
+  width: 148px;
+  border-radius: 10px;
+}
+
+.tab {
+  width: 115px;
+  border-radius: 10px;
+}
+
+.slace {
+  width: 90px;
+  border: 10px;
+}
+
+.cap {
+  width: 96px;
+  border-radius: 10px;
+}
+
+.enter-btn {
+  width: 109px;
+  border-radius: 10px;
+}
+
+.shift {
+  width: 135px;
+  border-radius: 10px;
+
+}
+
+.last {
+  width: 56px;
+  border-radius: 10px;
+}
+
+.space {
+  width: 398px;
+  border-radius: 10px;
+}
