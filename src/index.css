@@ -1,35 +1,62 @@
 body {
-  background: #d438b2;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #263ae1, #11bee5);
+  /*background: #d438b2;*/
+  /* fallback for old browsers)*/
+  /*background: -webkit-linear-gradient(to right, #A55999FF);*/
+  /*background: -webkit-linear-gradient(to right, #80B363FF, #11bee5);*/
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #171916, #f2da56);
+  /*background: rgb(200, 150, 150);*/
+    background: rgb(255, 180, 180);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .container {
-  margin: 100px 0 0 200px;
+  width: 900px;
+  margin: 200px 0 0 200px;
 }
 
-.keyboard {
-  /*color: black;*/
+.button,
+.button2 {
   /*font-weight: 500;*/
-  width: 55px;
-  height: 55px;
-  /*border: none;*/
-  background: rgb(214, 214, 214);
-  box-shadow: 0 0 10px rgb(149, 33, 243), 0 0 40px rgb(198, 0, 238), 0 0 80px rgb(247, 4, 247);
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  vertical-align: top;
+  margin: 1px;
+  padding: 2px;
 
   /*font-size: 15px;*/
-  margin: 2px;
-  outline: none;
-  font-family: Arial, Helvetica, sans-serif;
-  border-radius: 16%;
+  /*border-radius: 12%;*/
+  /*padding-top: 10px;*/
+  /*outline: none;*/
+  font-family: Verdana, sans-serif;
   text-align: center;
 
+  color: black;
+  background: rgb(250, 220, 240);
+  border: none;
+  border-radius: 10px;
 }
 
-.row1 {
+.button:after,
+.button2:after {
+  content: '';
+  height: 42px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.button2 {
+  box-shadow: 0 0 20px 10px rgb(0, 255, 0, 0.5), inset 0 0 20px rgb(0, 255, 0, 0.5);
+}
+
+.button2:after {
+  height: 45px;
+}
+
+.row1,
+.row2,
+.row3 {
+  /*justify-content: center;*/
   /*grid-row: 5 / 6;*/
   display: flex;
   /*align-items: baseline;*/
@@ -37,52 +64,40 @@ body {
   /*margin-top: 1rem;*/
 }
 
-button:active {
-  box-shadow: 1px 1px 2px #a00b1a, 1px 1px 2px #ff00dd;
+#backquote {
+  width: 50px;
 }
 
-.print {
-  width: 85px;
-  border-radius: 10px;
+#backspace {
+  width: 100px;
 }
 
-.back {
-  width: 148px;
-  border-radius: 10px;
+#tab {
+  width: 80px;
 }
 
-.tab {
-  width: 115px;
-  border-radius: 10px;
+#backslash {
+  width: 50px;
 }
 
-.slace {
-  width: 90px;
-  border: 10px;
+#capslock {
+  width: 100px;
 }
 
-.cap {
-  width: 96px;
-  border-radius: 10px;
+#enter {
+  width: 100px;
 }
 
-.enter-btn {
-  width: 109px;
-  border-radius: 10px;
-}
 
-.shift {
-  width: 135px;
-  border-radius: 10px;
-
-}
-
-.last {
-  width: 56px;
-  border-radius: 10px;
-}
-
-.space {
-  width: 398px;
-  border-radius: 10px;
-}
+/*.a_demo_one {*/
+/*  background-color: #ba2323;*/
+/*  padding: 10px;*/
+/*  position: relative;*/
+/*  font-family: 'Open Sans', sans-serif;*/
+/*  font-size: 12px;*/
+/*  text-decoration: none;*/
+/*  color: #fff;*/
+/*  border: solid 1px #831212;*/
+/*  background-image: linear-gradient(bottom, rgb(171, 27, 27) 0%, rgb(212, 51, 51) 100%);*/
+/*  border-radius: 5px;*/
+/*}*/
