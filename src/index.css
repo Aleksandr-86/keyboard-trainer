@@ -1,10 +1,12 @@
 @font-face {
-  font-family: 'GolosTextWebRegular';
-  src: url('/src/fonts/Golos-Text_Regular.woff2') format('woff2'),
-  url('/src/fonts/Golos-Text_Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'PTMonoWebRegular';
+  src: url('/src/fonts/JetBrainsMono-Regular.woff2') format('woff2')
+  /*font-weight: normal;*/
+  /*font-style: normal;*/
 }
+
+
+
 
 body {
   /*background: #d438b2;*/
@@ -18,33 +20,48 @@ body {
 }
 
 .field {
+  /*display: block;*/
+  /*display: grid;*/
+  /*grid-gap: 20px;*/
+  /*grid-template-columns: repeat(auto-fit, 100px);*/
+  /*flex-grow: unset;*/
   width: 800px;
-  height: 400px;
+  height: 300px;
   margin: 100px 0 0 100px;
   background: azure;
-  font-size: 50px;
-  font-family: "GolosTextWebRegular", monospace;
-}
-
-.keyboard {
-  width: 800px;
-  margin: 20px 0 0 100px;
-  background: lightgrey;
+  font-size: 30px;
+  /*font-family: "PTMonoWebRegular", monospace;*/
+  font-family: "JetBrains Mono", monospace;
 }
 
 .line1,
 .line2,
 .line3,
 .line4 {
+  /*  -ms-grid-row-span: inherit;*/
   display: flex;
+  /*width: 22px;*/
+  height: 48px;
+  margin: 0 0 5px 0;
+  /*white-space: normal;*/
 }
 
 .letter-target,
 .letter-wrong,
 .letter-correct {
+  /*width: 28px;*/
+  /*display: flex;*/
+  /*display: block;*/
   font-size: 40px;
   margin-left: 1px;
   background: darkgray;
+  white-space: pre-wrap;
+}
+
+.keyboard {
+  width: 800px;
+  margin: 20px 0 0 100px;
+  background: lightgrey;
 }
 
 .button-up,
@@ -61,6 +78,7 @@ body {
   /*border-radius: 12%;*/
   /*padding-top: 10px;*/
   /*outline: none;*/
+  font-family: "JetBrains Mono", monospace;
   /*font-family: Verdana, sans-serif;*/
   text-align: center;
 
