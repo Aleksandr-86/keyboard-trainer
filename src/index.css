@@ -22,26 +22,31 @@ body {
   /*grid-gap: 20px;*/
   /*grid-template-columns: repeat(auto-fit, 100px);*/
   /*flex-grow: unset;*/
-  width: 804px;
-  height: 300px;
+  width: 805px;
+  height: 147px;
   margin: 100px 0 0 100px;
   background: azure;
   font-size: 30px;
   font-family: "JetBrains Mono", monospace;
+  /*font-family: "Courier New", monospace;*/
+}
+
+#box {
+  width: 800px;
 }
 
 .line1,
 .line2,
-.line3,
-.line4 {
+.line3 {
   /*  -ms-grid-row-span: inherit;*/
   display: flex;
   width: inherit;
   height: 48px;
-  margin: 0 0 5px 0;
+  margin-bottom: 1px;
   /*white-space: normal;*/
 }
 
+.letter-caret,
 .letter-target,
 .letter-wrong,
 .letter-correct {
@@ -50,15 +55,31 @@ body {
   /*display: block;*/
   font-size: 40px;
   margin-right: 1px;
-  background: darkgray;
+  /*opacity: 40;*/
+  background: rgba(155, 155, 155, 55%);
+  border-radius: 3px;
   white-space: pre-wrap;
+}
+
+.letter-correct {
+  background: rgba(144, 238, 144, 0.8);
+}
+
+.letter-wrong {
+  background: red;
+}
+
+.letter-caret {
+  /*display: inline-block;*/
+  /*border-top: 5px solid rgba(0, 255, 0, 80%);*/
+  border-bottom: 5px solid rgba(144, 238, 144, 0.8);
 }
 
 .keyboard {
   width: 626px;
   height: 208px;
   margin: 20px 0 0 100px;
-  background: lightgrey;
+  /*background: lightgrey;*/
 }
 
 .button-up,
