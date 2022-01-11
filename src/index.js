@@ -1,6 +1,5 @@
 // selecting the first element of <span line1>
 let caret = document.querySelector('#line1-beginning');
-
 // const arrOfLetters = [['ё', '`'], ['й', 'q'], ['ц', 'w'], ['у', 'e'], ['к', 'r'], ['е', 't'],
 //   ['н', 'y'], ['г', 'u'], ['ш', 'i'], ['щ', 'o'], ['з', 'p'], ['х', '['], ['ъ', ']'], ['ф', 'a'],
 //   ['ы', 's'], ['в', 'd'], ['a', 'ф'], ['п', 'g'], ['р', 'h'], ['о', 'j'], ['л', 'k'], ['д', 'l'],
@@ -23,6 +22,9 @@ document.body.addEventListener('keydown', function(event) {
     let eKey = event.key;
     let targetLetter = caret.textContent;
 
+    const capsLockState = event.getModifierState && event.getModifierState('CapsLock');
+    console.log(capsLockState);
+
     // console.log(eKey, mapOfLetters.get(eKey));
     // console.log(targetLetter);
 
@@ -38,19 +40,24 @@ document.body.addEventListener('keydown', function(event) {
       } else {
         caret.className = 'letter-wrong';
       }
-
-      // console.log(caret.textContent);
+      console.log(caret.id);
       // move caret to the next letter of current row
-      if (caret.id === 'line1-end') {
-        caret = document.querySelector('#line2-beginning');
-      } else if (caret.id === 'line2-end') {
-        caret = document.querySelector('#line3-beginning');
-      } else if (caret.id === 'line3-end') {
-        caret = document.querySelector('#line1-beginning');
-      } else {
-        caret = caret.nextElementSibling;
+      switch (caret.id) {
+        case 'line1-end':
+          caret = document.querySelector('#line2-beginning');
+          break;
+        case 'line2-end':
+          caret = document.querySelector('#line3-beginning');
+          break;
+        case 'line3-end':
+          caret = document.querySelector('#line1-beginning');
+          break;
+        default:
+          caret = caret.nextElementSibling;
       }
       caret.className = 'letter-caret';
+
+
     }
     // отпускание кнопки
     document.body.addEventListener('keyup', function(event) {
