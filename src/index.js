@@ -7,19 +7,19 @@ document.body.addEventListener('keydown', function(event) {
 
   try {
     const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
-    btnDn.className = 'button-dn';
     let eKey = event.key;
     let targetLetter = caret.textContent;
-
     // checking if CapsLock key is active
+
     const capsLockState = event.getModifierState && event.getModifierState('CapsLock');
     console.log(capsLockState);
-
     // skipping special keys
+
     if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock' || eKey === 'Enter' || eKey === 'Shift'
       || eKey === 'Control' || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
-      // ...
+      btnDn.className = 'button-dn1';
     } else {
+      btnDn.className = 'button-dn2';
       // setting case-insensitive matching
       eKey = eKey.toLowerCase();
       targetLetter = targetLetter.toLowerCase();
