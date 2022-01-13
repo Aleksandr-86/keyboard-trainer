@@ -1,6 +1,7 @@
 // selecting the first element of <span line1>
 let caret = document.querySelector('#line-beginning');
 
+
 // keydown
 document.body.addEventListener('keydown', function(event) {
   event.preventDefault();
