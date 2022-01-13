@@ -1,65 +1,48 @@
 // selecting the first element of <span line1>
-let caret = document.querySelector('#line1-beginning');
-// const arrOfLetters = [['ё', '`'], ['й', 'q'], ['ц', 'w'], ['у', 'e'], ['к', 'r'], ['е', 't'],
-//   ['н', 'y'], ['г', 'u'], ['ш', 'i'], ['щ', 'o'], ['з', 'p'], ['х', '['], ['ъ', ']'], ['ф', 'a'],
-//   ['ы', 's'], ['в', 'd'], ['a', 'ф'], ['п', 'g'], ['р', 'h'], ['о', 'j'], ['л', 'k'], ['д', 'l'],
-//   ['ж', ';'], ['э', "'"], ['я', 'z'], ['ч', 'x'], ['с', 'c'], ['м', 'v'], ['и', 'b'], ['т', 'n'],
-//   ['ь', 'm'], ['б', ','], ['ю', '.'], ['.', '/'],
-//   ['`', 'ё'], ['q', 'й'], ['w', 'ц'], ['e', 'у'], ['r', 'к'], ['t', 'е'], ['y', 'н'], ['u', 'г'],
-//   ['i', 'ш'], ['o', 'щ'], ['p', 'з'], ['[', 'х'], [']', 'ъ'], ['a', 'ф'], ['s', 'ы'], ['d', 'в'],
-//   ['f', 'а'], ['g', 'п'], ['h', 'р'], ['j', 'о'], ['k', 'л'], ['l', 'д'], [';', 'ж'], ["'", 'э'],
-//   ['z', 'я'], ['x', 'ч'], ['c', 'с'], ['v', 'м'], ['b', 'и'], ['n', 'т'],
-//   ['m', 'ь'], [',', 'б'], ['.', 'ю'], ['/', '.']];
+let caret = document.querySelector('#line-beginning');
 
-// const mapOfLetters = new Map(arrOfLetters);
-// console.log(map.get('ё'));
-
+// keydown
 document.body.addEventListener('keydown', function(event) {
   event.preventDefault();
+
   try {
     const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
     btnDn.className = 'button-dn';
     let eKey = event.key;
     let targetLetter = caret.textContent;
 
+    // checking if CapsLock key is active
     const capsLockState = event.getModifierState && event.getModifierState('CapsLock');
     console.log(capsLockState);
 
-    // console.log(eKey, mapOfLetters.get(eKey));
-    // console.log(targetLetter);
-
+    // skipping special keys
     if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock' || eKey === 'Enter' || eKey === 'Shift'
       || eKey === 'Control' || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
-      // console.log(eKey);
+      // ...
     } else {
+      // setting case-insensitive matching
       eKey = eKey.toLowerCase();
       targetLetter = targetLetter.toLowerCase();
 
+      // marking the letter depending on the pressed key
       if (eKey === targetLetter) {
         caret.className = 'letter-correct';
       } else {
         caret.className = 'letter-wrong';
       }
-      console.log(caret.id);
-      // move caret to the next letter of current row
-      switch (caret.id) {
-        case 'line1-end':
-          caret = document.querySelector('#line2-beginning');
-          break;
-        case 'line2-end':
-          caret = document.querySelector('#line3-beginning');
-          break;
-        case 'line3-end':
-          caret = document.querySelector('#line1-beginning');
-          break;
-        default:
-          caret = caret.nextElementSibling;
+
+      // checking if it's the last letter
+      if (caret.id === 'line-end') {
+        document.querySelectorAll('.letter-wrong').className = 'letter-target';
+        caret = document.querySelector('#line-beginning');
+      } else {
+        caret = caret.nextElementSibling;
       }
+      // moving the caret to the next letter
       caret.className = 'letter-caret';
 
-
     }
-    // отпускание кнопки
+    // releasing the key
     document.body.addEventListener('keyup', function(event) {
       const btnUp = document.querySelector(`#${event.code.toLowerCase()}`);
       if (btnDn === btnUp) setTimeout(function() {
