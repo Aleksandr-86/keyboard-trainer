@@ -33,12 +33,15 @@ document.body.addEventListener('keydown', function(event) {
 
       // checking if it's the last letter
       if (caret.id === 'line-end') {
-        document.querySelectorAll('.letter-wrong').className = 'letter-target';
+        // choosing all the letter elements
+        const divLetters = document.querySelectorAll('.letter-correct, .letter-wrong');
+        divLetters.forEach(div => div.className = 'letter-target');
+
         caret = document.querySelector('#line-beginning');
       } else {
+        // moving the caret to the next letter
         caret = caret.nextElementSibling;
       }
-      // moving the caret to the next letter
       caret.className = 'letter-caret';
 
     }
