@@ -5,6 +5,7 @@ let caret = document.querySelector('#line-beginning');
 document.body.addEventListener('keydown', function(event) {
   event.preventDefault();
 
+
   try {
     const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
     btnDn.className = 'button-dn';
