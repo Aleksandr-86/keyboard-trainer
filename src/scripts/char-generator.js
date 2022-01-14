@@ -3,15 +3,21 @@
 const charGenBtn = document.querySelector('#btn');
 const field = document.querySelector('#field');
 
-const str = 'Всё дело в доме. В Самом Начале он уселся в очень удачном доме, крупноблочном и просто сказочно расположенном. Главное же, чем дом отличался от рядом стоящих, – скважина. По нынешним временам это весьма даже круто, последняя скважина была пробурена уже давненько, а следующей, похоже, ныне живущим не дождаться. Тут дело не в одном удобстве, скважина делает хозяина неуязвимым в том гипотетическом случае, если каким-нибудь идиотам захочется поиграть в осаду углового Ахметкиного: из дома просто никто не выйдет за водой, стало быть, не будет повязан – а это единственная вменяемая тактика осады, иначе дом не взять. Разве что как раньше: привести рыл пятнадцать и патронов не жалеть; да только такими толпами больше никто не собирается, невыгодно. В общем, можно даже не сильно бояться, разве что гарнизон хозяйский – да только на хрена гарнизону сдался какой-то дом аж в самом сердце мертвого города…';
+const str = 'Всё дело 5в доме. В Самом Начале он уселся в очень удачном доме, крупноблочном и просто сказочно расположенном. Главное же, чем дом отличался от рядом';
+// const str ='в'
+// create content for html
 const html = str.split('').reduce((acc, cur) => acc + `<div class="char-target">${cur}</div>`, '');
 
+// on press button #btn
 charGenBtn.addEventListener('click', function() {
   field.innerHTML = html;
+
   const firstDiv = document.querySelector('.char-target:first-child');
   firstDiv.className = 'char-caret';
   firstDiv.id = 'char-first';
 
   const lastDiv = document.querySelector('.char-target:last-child');
   lastDiv.id = 'char-last';
+
+  const lastLineDive = document.querySelector('.')
 });
