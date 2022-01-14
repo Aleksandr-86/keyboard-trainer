@@ -1,20 +1,22 @@
-// selecting the first element of <span line1>
-let caret = document.querySelector('#line-beginning');
+"use strict";
 
 // keydown
-document.body.addEventListener('keydown', function(event) {
+
+document.addEventListener('keydown', function(event) {
+// selecting the first element of <span line1>
   event.preventDefault();
+  let caret = document.querySelector('.char-caret');
 
   try {
     const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
     let eKey = event.key;
-    let targetLetter = caret.textContent;
+    let targetChar = caret.textContent;
+
     // checking if CapsLock key is active
+    // const capsLockState = event.getModifierState && event.getModifierState('CapsLock');
+    // console.log(capsLockState);
 
-    const capsLockState = event.getModifierState && event.getModifierState('CapsLock');
-    console.log(capsLockState);
     // skipping special keys
-
     if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock' || eKey === 'Enter' || eKey === 'Shift'
       || eKey === 'Control' || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
       btnDn.className = 'button-dn1';
@@ -22,27 +24,27 @@ document.body.addEventListener('keydown', function(event) {
       btnDn.className = 'button-dn2';
       // setting case-insensitive matching
       eKey = eKey.toLowerCase();
-      targetLetter = targetLetter.toLowerCase();
+      targetChar = targetChar.toLowerCase();
 
-      // marking the letter depending on the pressed key
-      if (eKey === targetLetter) {
-        caret.className = 'letter-correct';
+      // marking the char depending on the pressed key
+      if (eKey === targetChar) {
+        caret.className = 'char-correct';
       } else {
-        caret.className = 'letter-wrong';
+        caret.className = 'char-wrong';
       }
 
-      // checking if it's the last letter
-      if (caret.id === 'line-end') {
-        // choosing all the letter elements
-        const divLetters = document.querySelectorAll('.letter-correct, .letter-wrong');
-        divLetters.forEach(div => div.className = 'letter-target');
+      // checking if it's the last char
+      if (caret.id === 'char-last') {
+        // choosing all the char elements
+        const divChars = document.querySelectorAll('.char-correct, .char-wrong');
+        divChars.forEach(div => div.className = 'char-target');
 
-        caret = document.querySelector('#line-beginning');
+        caret = document.querySelector('#char-first');
       } else {
-        // moving the caret to the next letter
+        // moving the caret to the next char
         caret = caret.nextElementSibling;
       }
-      caret.className = 'letter-caret';
+      caret.className = 'char-caret';
 
     }
     // releasing the key

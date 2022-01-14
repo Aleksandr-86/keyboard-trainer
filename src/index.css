@@ -20,10 +20,10 @@ body {
   background: #b990cf;
 }
 
-.letter-caret,
-.letter-target,
-.letter-wrong,
-.letter-correct {
+.char-caret,
+.char-target,
+.char-wrong,
+.char-correct {
   float: left;
   line-height: 90px;
   width: 48px;
@@ -40,15 +40,15 @@ body {
   margin-right: 0;
 }
 
-.letter-correct {
+.char-correct {
   background: rgba(144, 238, 144, 0.8);
 }
 
-.letter-wrong {
+.char-wrong {
   background: red;
 }
 
-.letter-caret {
+.char-caret {
   /*border-bottom: 5px solid rgba(144, 238, 144, 0.8);*/
   border-bottom: 5px solid rgba(144, 238, 144, 0.8);
   /*border: 1px solid red;*/
