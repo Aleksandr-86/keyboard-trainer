@@ -1,7 +1,6 @@
 "use strict";
 
 // keydown
-
 document.addEventListener('keydown', function(event) {
 // selecting the first element of <span line1>
   event.preventDefault();
