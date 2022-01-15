@@ -5,7 +5,7 @@ document.addEventListener('keydown', function(event) {
 // selecting the first element of <span line1>
   event.preventDefault();
   let caret = document.querySelector('.char-caret');
-  console.log(currentLine);
+
   try {
     const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
     let eKey = event.key;
@@ -21,29 +21,45 @@ document.addEventListener('keydown', function(event) {
       btnDn.className = 'button-dn1';
     } else {
       btnDn.className = 'button-dn2';
+
       // setting case-insensitive matching
       eKey = eKey.toLowerCase();
       targetChar = targetChar.toLowerCase();
 
       // marking the char depending on the pressed key
       if (eKey === targetChar) {
-        caret.className = 'char-correct';
+        caret.classList.toggle('char-correct');
       } else {
-        caret.className = 'char-wrong';
+        caret.classList.toggle('char-wrong');
       }
 
       // checking if it's the last char
-      if (caret.id === 'char-last') {
+      if (caret.classList.contains('line-end')) {
+        caret.classList.toggle('char-caret');
+        // const index = [...caret.parentElement.childNodes].indexOf(caret);
+        // console.log(caret.nextElementSibling !== null);
+        if (caret.nextElementSibling !== null) {
+          const curLine = caret.parentElement;
+          curLine.querySelectorAll('.char').forEach(char => char.classList.add('char-correct'));
+            // caret.classList.toggle('char-correct');
+            // caret = caret.nextElementSibling;
+            // caret.parentElement.lastElementChild.classList.toggle('char-correct');
+
+        }
+        caret = caret.parentElement.nextElementSibling.firstChild; // switching lines
+      } else if (caret.id === 'char-last') {
+
         // choosing all the char elements
         const divChars = document.querySelectorAll('.char-correct, .char-wrong');
         divChars.forEach(div => div.className = 'char-target');
 
-        // caret = document.querySelector('#char-first');
+        caret = document.querySelector('#char-first');
       } else {
+        caret.classList.toggle('char-caret');
         // moving the caret to the next char
         caret = caret.nextElementSibling;
       }
-      caret.className = 'char-caret';
+      caret.classList.toggle('char-caret');
 
     }
     // releasing the key
