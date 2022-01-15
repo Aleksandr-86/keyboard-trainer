@@ -5,7 +5,7 @@ document.addEventListener('keydown', function(event) {
 // selecting the first element of <span line1>
   event.preventDefault();
   let caret = document.querySelector('.char-caret');
-
+  console.log(currentLine);
   try {
     const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
     let eKey = event.key;
@@ -38,7 +38,7 @@ document.addEventListener('keydown', function(event) {
         const divChars = document.querySelectorAll('.char-correct, .char-wrong');
         divChars.forEach(div => div.className = 'char-target');
 
-        caret = document.querySelector('#char-first');
+        // caret = document.querySelector('#char-first');
       } else {
         // moving the caret to the next char
         caret = caret.nextElementSibling;
