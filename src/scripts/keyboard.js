@@ -40,19 +40,13 @@ document.addEventListener('keydown', function(event) {
         // console.log(caret.nextElementSibling !== null);
         if (caret.nextElementSibling !== null) {
           const curLine = caret.parentElement;
-          curLine.querySelectorAll('.char').forEach(char => char.classList.add('char-correct'));
-            // caret.classList.toggle('char-correct');
-            // caret = caret.nextElementSibling;
-            // caret.parentElement.lastElementChild.classList.toggle('char-correct');
-
+          curLine.querySelectorAll('div[class="char"]').forEach(char => char.classList.add('char-correct'));
         }
         caret = caret.parentElement.nextElementSibling.firstChild; // switching lines
       } else if (caret.id === 'char-last') {
 
         // choosing all the char elements
-        const divChars = document.querySelectorAll('.char-correct, .char-wrong');
-        divChars.forEach(div => div.className = 'char-target');
-
+        document.querySelectorAll('.char-correct, .char-wrong').forEach(div => div.className = 'char-target');
         caret = document.querySelector('#char-first');
       } else {
         caret.classList.toggle('char-caret');

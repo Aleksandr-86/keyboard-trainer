@@ -1,7 +1,8 @@
 @font-face {
   font-family: 'PTMonoWebRegular';
   src: url('/src/fonts/PT-Mono_Regular.woff2') format('woff2'),
-  url('/src/fonts/PT-Mono_Regular.woff') format('woff');
+  url('/src/fonts/PT-Mono_Regular.woff') format('woff'),
+  local("Consolas");
   font-weight: normal;
   font-style: normal;
 }
@@ -27,7 +28,7 @@ body {
   /*display: flex;*/
   height: 73px;
   width: inherit;
-  margin: 1px;
+  margin-bottom: 2px;
   /*overflow: hidden;*/
   /*border-bottom: 5px;*/
   /*width: inherit;*/
@@ -39,7 +40,8 @@ body {
   height: 73px;
   width: 39px;
   /*margin: 0 1px 1px 0;*/
-  font-family: "PTMonoWebRegular", monospace;
+  /*font-family: "PTMonoWebRegular", monospace;*/
+  font-family: "Consolas", monospace;
   font-size: 65px;
   background: rgba(55, 55, 55, 0.5);
   /*border-radius: 5px;*/
@@ -66,9 +68,9 @@ body {
 }
 
 .char-caret {
-  height: 70px;
+  height: 68px;
   width: 39px;
-  border-bottom: 3px solid rgba(20, 120, 100, 0.8);
+  border-bottom: 5px solid rgba(20, 120, 100, 0.8);
 }
 
 /*.line-end {*/
