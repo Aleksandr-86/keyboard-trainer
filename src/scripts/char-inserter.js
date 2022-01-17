@@ -1,20 +1,13 @@
 "use strict";
 
-const btnGenFromSite = document.querySelector('#btn1');
-const btnGenFromBuffer = document.querySelector('#btn2');
-
-const charField = document.querySelector('#field');
-let currentLine = document.querySelector('.line');
-
-const arrOfStrings = [];
-let indOfStr = 0;
-
 // filling the field block with char
-const charGenerator = (str, index) => {
+export const charInserter = (str, index) => {
+  let currentLine = document.querySelector('#line1');
 
   str = str.trim();
   str = str.replace(/\r\n/g, ' \n ');
   str = str.replace(/ +/g, ' '); // removing excess spaces
+
   let html = '';
   const arrStr = str.split(' ');
   let counter = 0;
@@ -80,18 +73,4 @@ const charGenerator = (str, index) => {
   }
   const firstDiv = document.querySelector('#line1 > .char:first-child');
   firstDiv.classList.toggle('char-caret');
-  console.log(this);
 };
-
-// charGenerator(str);
-
-// btnGenFromSite.addEventListener('click', function() {
-//   charGenerator(str);
-// });
-//
-btnGenFromBuffer.addEventListener('click', async function() {
-
-  const str = await navigator.clipboard.readText();
-  // let str = navigator.clipboard.readText();
-  charGenerator(str, indOfStr);
-});
