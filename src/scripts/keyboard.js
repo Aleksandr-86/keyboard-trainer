@@ -1,7 +1,7 @@
 "use strict";
 
 // keydown
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', event => {
 // selecting the first element of <span line1>
   event.preventDefault();
   let caret = document.querySelector('.char-caret');
@@ -57,9 +57,9 @@ document.addEventListener('keydown', function(event) {
 
     }
     // releasing the key
-    document.body.addEventListener('keyup', function(event) {
+    document.body.addEventListener('keyup', event => {
       const btnUp = document.querySelector(`#${event.code.toLowerCase()}`);
-      if (btnDn === btnUp) setTimeout(function() {
+      if (btnDn === btnUp) setTimeout(() => {
         btnUp.className = 'button-up';
       }, 100);
     });
