@@ -1,4 +1,5 @@
 import { charInserter } from "/src/scripts/char-inserter.js";
+import { keyboard } from "/src/scripts/keyboard.js";
 
 // const btnGenFromSite = document.querySelector('#btn1');
 const btnGenFromBuffer = document.querySelector('#btn2');
@@ -14,3 +15,5 @@ btnGenFromBuffer.addEventListener('click', async function() {
   const str = await navigator.clipboard.readText();
   charInserter(str, indOfStr);
 });
+
+document.addEventListener('keydown', event => keyboard(event));

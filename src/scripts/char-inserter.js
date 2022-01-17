@@ -12,7 +12,7 @@ export const charInserter = (str, index) => {
   const arrStr = str.split(' ');
   let counter = 0;
 
-  console.log(arrStr);
+  // console.log(arrStr);
 
   for (let i = index; i < arrStr.length; i++) {
     const arrWord = arrStr[i].split('');

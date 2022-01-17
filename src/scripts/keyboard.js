@@ -1,9 +1,10 @@
 "use strict";
 
 // keydown
-document.addEventListener('keydown', event => {
-// selecting the first element of <span line1>
+export const keyboard = function(event) {
   event.preventDefault();
+
+// selecting the first element of <span line1>
   let caret = document.querySelector('.char-caret');
 
   try {
@@ -69,4 +70,4 @@ document.addEventListener('keydown', event => {
   } catch (error) {
     // console.error(`${error.name}: ${error.message}`);
   }
-});
+};
