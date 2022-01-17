@@ -34,7 +34,10 @@ document.addEventListener('keydown', event => {
       }
 
       // checking if it's the last char
-      if (caret.classList.contains('line-end')) {
+      if (caret.classList.contains('line-end') && caret.nextElementSibling === null) {
+        document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
+
+      } else if (caret.classList.contains('line-end')) {
         caret.classList.toggle('char-caret');
         // const index = [...caret.parentElement.childNodes].indexOf(caret);
         // console.log(caret.nextElementSibling !== null);

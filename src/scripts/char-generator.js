@@ -7,25 +7,26 @@ const charField = document.querySelector('#field');
 let currentLine = document.querySelector('.line');
 
 const arrOfStrings = [];
-let ind = 0;
+let indOfStr = 0;
 
 // filling the field block with char
-const charGenerator = (str, ind) => {
+const charGenerator = (str, index) => {
 
   str = str.trim();
-  str = str.replace(/ +/g, ' ');
+  str = str.replace(/\r\n/g, ' \n ');
+  str = str.replace(/ +/g, ' '); // removing excess spaces
   let html = '';
   const arrStr = str.split(' ');
   let counter = 0;
 
   console.log(arrStr);
 
-  for (let i = ind; i < arrStr.length; i++) {
+  for (let i = index; i < arrStr.length; i++) {
     const arrWord = arrStr[i].split('');
     const wordLen = arrStr[i].length;
 
     if (currentLine === null) { // the end of the field has been reached
-
+      console.log('the end');
     } else if (arrStr[i] === '\n' && counter > 0) { // the line break character
       currentLine.innerHTML = html;
       html = '';
@@ -79,6 +80,7 @@ const charGenerator = (str, ind) => {
   }
   const firstDiv = document.querySelector('#line1 > .char:first-child');
   firstDiv.classList.toggle('char-caret');
+  console.log(this);
 };
 
 // charGenerator(str);
@@ -91,5 +93,5 @@ btnGenFromBuffer.addEventListener('click', async function() {
 
   const str = await navigator.clipboard.readText();
   // let str = navigator.clipboard.readText();
-  charGenerator(str, ind);
+  charGenerator(str, indOfStr);
 });
