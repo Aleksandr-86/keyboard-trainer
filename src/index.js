@@ -12,8 +12,13 @@ let indOfStr = 0;
 // });
 //
 btnGenFromBuffer.addEventListener('click', async function() {
-  const str = await navigator.clipboard.readText();
-  charInserter(str, indOfStr);
+  let str = await navigator.clipboard.readText();
+  str = str.trim();
+  str = str.replace(/\r\n/g, ' \n ');
+  str = str.replace(/ +/g, ' '); // removing excess spaces
+  const arr = str.split(' ');
+  console.log(arr);
+  charInserter(arr, indOfStr);
 });
 
 document.addEventListener('keydown', event => keyboard(event));
