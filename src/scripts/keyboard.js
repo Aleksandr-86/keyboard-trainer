@@ -1,5 +1,8 @@
+// import { arrOfStrings } from "/src/scripts/char-inserter.js";
+
 "use strict";
 
+console.log(window.arrOfStrings);
 // keydown
 export const keyboard = function(event) {
   event.preventDefault();
