@@ -46,7 +46,8 @@ body {
   background: rgba(55, 55, 55, 0.5);
   /*border-radius: 5px;*/
   white-space: pre-wrap;
-  color: #3a565e;
+  /*color: rgb(58, 86, 94);*/
+  color: rgb(100, 100, 100);
 }
 
 /*.field :last-child {*/
@@ -65,6 +66,12 @@ body {
   background: rgb(220, 100, 70, 0.8);
   /*color: #8a0000; standart*/
   color: rgb(70, 35, 35);
+}
+
+.char-neutral {
+  background: rgb(100, 100, 150, 0.8);
+  /*color: #8a0000; standart*/
+  color: black;
 }
 
 .char-caret {

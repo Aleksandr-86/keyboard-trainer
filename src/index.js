@@ -15,9 +15,6 @@ btnGenFromBuffer.addEventListener('click', async () => {
   // defining browser
   const br = getBrowser().browser;
   if (br === 'chrome' || br === 'yabrowser') {
-
-    // let str2 = '“';
-
     let str = await navigator.clipboard.readText();
     charInserter(strPreparer(str), 0)
   } else if (br === 'firefox') {
