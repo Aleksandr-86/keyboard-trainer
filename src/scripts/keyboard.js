@@ -9,30 +9,41 @@ import { arrOfStrings, charInserter, indOfString } from "/src/scripts/char-inser
 
 const wrongKeyHandler = function(caret) {
   let test = /[0-9 A-ZА-ЯЁ.,<>\/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(caret.textContent);
-  // if (!test) {
-    caret.classList.toggle('char-caret');
-    while (!test) {
-      caret.classList.toggle('char-neutral');
-      if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
-        document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
-        charInserter(arrOfStrings, indOfString);
-        caret = document.querySelector('.char-caret');
-        caret.classList.toggle('char-caret');
-      } else if (caret.classList.contains('line-end')) { // line-end condition
-        // caret.classList.toggle('char-caret');
-        if (caret.nextElementSibling !== null) {
-          const curLine = caret.parentElement;
-          curLine.querySelectorAll('div[class="char"]').forEach(char => char.classList.add('char-correct'));
-        }
-        caret = caret.parentElement.nextElementSibling.firstChild; // switching lines
-      } else {
-        caret = caret.nextElementSibling; // moving the caret to the next char
+  caret.classList.toggle('char-caret');
+  while (!test) {
+    caret.classList.toggle('char-neutral');
+    if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
+      document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
+      charInserter(arrOfStrings, indOfString);
+      caret = document.querySelector('.char-caret');
+      caret.classList.toggle('char-caret');
+    } else if (caret.classList.contains('line-end')) { // line-end condition
+      // caret.classList.toggle('char-caret');
+      if (caret.nextElementSibling !== null) {
+        const curLine = caret.parentElement;
+        curLine.querySelectorAll('div[class="char"]').forEach(char => char.classList.add('char-correct'));
       }
-
-      test = /[0-9 A-ZА-ЯЁ.,<>\/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(caret.textContent);
+      caret = caret.parentElement.nextElementSibling.firstChild; // switching lines
+    } else {
+      caret = caret.nextElementSibling; // moving the caret to the next char
     }
-    caret.classList.toggle('char-caret');
-  // }
+
+    if (caret.textContent === ' ') {
+      caret.classList.toggle('char-neutral');
+      caret = caret.nextSibling;
+    }
+    test = /[0-9 A-ZА-ЯЁ.,<>\/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(caret.textContent);
+  }
+  // console.log(caret.previousNode());
+
+
+  // if (caret.textContent === ' ' && caret.previousSibling) console.log('sdfsdf');
+  // caret.classList.toggle('char-neutral');
+  // caret = caret.nextElementSibling; // moving the caret to the next char
+
+  // if (caret.previousSibling)
+
+  caret.classList.toggle('char-caret');
 };
 
 
