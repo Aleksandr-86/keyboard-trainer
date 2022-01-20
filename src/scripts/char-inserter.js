@@ -3,9 +3,13 @@
 export let arrOfStrings;
 export let indOfString;
 
-
-
-
+// string => prepare => array
+export const strPreparer = function(str) {
+  str = str.trim();
+  str = str.replace(/\r\n/g, ' \n ');
+  str = str.replace(/ +/g, ' '); // removing excess spaces
+  return str.split(' ');
+};
 
 // filling the field block with char
 export const charInserter = (arr, index) => {

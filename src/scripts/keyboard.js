@@ -31,39 +31,43 @@ export const keyboard = function(event) {
       eKey = eKey.toLowerCase();
       targetChar = targetChar.toLowerCase();
 
-      // marking the char depending on the pressed key
-      if (eKey === targetChar) {
-        caret.classList.toggle('char-correct');
-      } else {
-        caret.classList.toggle('char-wrong');
-      }
-
-      // checking if it's the last char
-      if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
-        document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
-        charInserter(arrOfStrings, indOfString)
-
-      } else if (caret.classList.contains('line-end')) {
-        caret.classList.toggle('char-caret');
-        // const index = [...caret.parentElement.childNodes].indexOf(caret);
-        // console.log(caret.nextElementSibling !== null);
-        if (caret.nextElementSibling !== null) {
-          const curLine = caret.parentElement;
-          curLine.querySelectorAll('div[class="char"]').forEach(char => char.classList.add('char-correct'));
+      if (/[A-Z А-ЯЁ.,<>\/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(targetChar)) { // if target char is appropriate
+        // marking the char depending on the pressed key
+        if (eKey === targetChar) {
+          caret.classList.toggle('char-correct');
+        } else {
+          caret.classList.toggle('char-wrong');
         }
-        caret = caret.parentElement.nextElementSibling.firstChild; // switching lines
-      } else if (caret.id === 'char-last') {
 
-        // choosing all the char elements
-        document.querySelectorAll('.char-correct, .char-wrong').forEach(div => div.className = 'char-target');
-        caret = document.querySelector('#char-first');
-      } else {
+        // checking if it's the last char
+        if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
+          document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
+          charInserter(arrOfStrings, indOfString);
+
+        } else if (caret.classList.contains('line-end')) {
+          caret.classList.toggle('char-caret');
+          // const index = [...caret.parentElement.childNodes].indexOf(caret);
+          // console.log(caret.nextElementSibling !== null);
+          if (caret.nextElementSibling !== null) {
+            const curLine = caret.parentElement;
+            curLine.querySelectorAll('div[class="char"]').forEach(char => char.classList.add('char-correct'));
+          }
+          caret = caret.parentElement.nextElementSibling.firstChild; // switching lines
+        } else if (caret.id === 'char-last') {
+
+          // choosing all the char elements
+          document.querySelectorAll('.char-correct, .char-wrong').forEach(div => div.className = 'char-target');
+          caret = document.querySelector('#char-first');
+        } else {
+          caret.classList.toggle('char-caret');
+          caret = caret.nextElementSibling; // moving the caret to the next char
+        }
         caret.classList.toggle('char-caret');
-        // moving the caret to the next char
-        caret = caret.nextElementSibling;
+      } else { // if target char isn't appropriate
+        // caret.classList.toggle('char-correct');
+        // caret = caret.nextElementSibling; // moving the caret to the next char
+        // caret.classList.toggle('char-caret');
       }
-      caret.classList.toggle('char-caret');
-
     }
     // releasing the key
     document.body.addEventListener('keyup', event => {
