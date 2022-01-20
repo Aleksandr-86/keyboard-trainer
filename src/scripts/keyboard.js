@@ -1,8 +1,9 @@
-// import { arrOfStrings } from "/src/scripts/char-inserter.js";
+import { arrOfStrings, charInserter, indOfString } from "/src/scripts/char-inserter.js";
 
 "use strict";
 
-console.log(window.arrOfStrings);
+// console.log(arrOfStrings);
+
 // keydown
 export const keyboard = function(event) {
   event.preventDefault();
@@ -38,8 +39,9 @@ export const keyboard = function(event) {
       }
 
       // checking if it's the last char
-      if (caret.classList.contains('line-end') && caret.nextElementSibling === null) {
+      if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
         document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
+        charInserter(arrOfStrings, indOfString)
 
       } else if (caret.classList.contains('line-end')) {
         caret.classList.toggle('char-caret');

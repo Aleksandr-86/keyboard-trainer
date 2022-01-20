@@ -1,35 +1,32 @@
-// import {arrOfStrings} from "../index.js";
-
 "use strict";
 
-// export let arrOfStrings;
+export let arrOfStrings;
+export let indOfString;
+
+
+
+
 
 // filling the field block with char
-export const charInserter = (str, index) => {
+export const charInserter = (arr, index) => {
   let currentLine = document.querySelector('#line1');
 
+  arrOfStrings = [...arr];
   let html = '';
   let counter = 0;
-
-  str = str.trim();
-  str = str.replace(/\r\n/g, ' \n ');
-  str = str.replace(/ +/g, ' '); // removing excess spaces
-
-  window.arrOfStrings = str.split(' ');
-  console.log(arrOfStrings);
 
   for (let i = index; i < arrOfStrings.length; i++) {
     const arrWord = arrOfStrings[i].split('');
     const wordLen = arrOfStrings[i].length;
 
     if (currentLine === null) { // the end of the field has been reached
-      console.warn('1first');
-      // indOfStr = i;
-      console.log(i);
+      // console.warn('1first');
+      indOfString = i;
+      // console.log(i);
       break;
 
     } else if (arrOfStrings[i] === '\n' && counter > 0) { // the line break character
-      console.warn('2second');
+      // console.warn('2second');
       currentLine.innerHTML = html;
       html = '';
       currentLine.lastElementChild.remove();
@@ -48,10 +45,10 @@ export const charInserter = (str, index) => {
 
     } else if (arrOfStrings[i] === '\n' && counter === 0) { // the line break character && beginning of the line
       // ...
-      console.warn('3third');
+      // console.warn('3third');
 
     } else if (wordLen + counter < 35) { // the word being added fits in the line
-      console.warn('4fourth');
+      // console.warn('4fourth');
       for (let k = 0; k < wordLen; k++) {
         html += `<div class="char">${arrWord[k]}</div>`;
       }
@@ -60,7 +57,7 @@ export const charInserter = (str, index) => {
 
 
     } else if (wordLen + counter > 35) { // the word being added doesn't fit into the line
-      console.warn('5fith');
+      // console.warn('5fith');
       i--;
       currentLine.innerHTML = html;
       html = '';
@@ -79,7 +76,7 @@ export const charInserter = (str, index) => {
 
 
     } else if (wordLen + counter === 35) { // end of row sharp
-      console.warn('6sixth');
+      // console.warn('6sixth');
       for (let j = 0; j < wordLen - 1; j++) {
         html += `<div class="char">${arrWord[j]}</div>`;
       }
@@ -92,7 +89,7 @@ export const charInserter = (str, index) => {
 
 
     } else if (wordLen > 35 && counter === 0) {
-      console.warn('7seventh');
+      // console.warn('7seventh');
       let tempStr = arrOfStrings[i];
       console.log(tempStr.slice(0, 35));
       console.log(tempStr.slice(35));
