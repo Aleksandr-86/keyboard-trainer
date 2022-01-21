@@ -24,8 +24,6 @@ export const charInserter = (arr, index) => {
     const arrWord = arrOfStrings[i].split('');
     const wordLen = arrOfStrings[i].length;
 
-    // console.log(currentLine);
-
     if (currentLine === null) { // the end of the field has been reached
       console.warn('1 first');
       indOfString = i;
@@ -38,16 +36,11 @@ export const charInserter = (arr, index) => {
       currentLine.lastElementChild.remove();
       currentLine.lastElementChild.classList.toggle('line-end');
 
-      // adding spaces till the end of the line
-      for (let j = 0; j < (36 - counter); j++) {
-        html += `<div class="char"> </div>`;
+      for (let j = 0; j < (36 - counter); j++) { // adding spaces till the end of the line
+        currentLine.innerHTML += `<div class="char"> </div>`;
       }
-      currentLine.innerHTML += html;
-      html = '';
-
       currentLine = currentLine.nextElementSibling; // switching focus to the next line
       counter = 0;
-
 
     } else if (arrOfStrings[i] === '\n' && counter === 0) { // the line break character && beginning of the line
       // ...
@@ -78,18 +71,14 @@ export const charInserter = (arr, index) => {
         const tempStrPart2 = tempStr.slice(35);
 
         for (let k = 0; k < tempStrPart1.length; k++) {
-          html += `<div class="char">${tempStrPart1[k]}</div>`;
+          currentLine.innerHTML += `<div class="char">${tempStrPart1[k]}</div>`;
         }
-        currentLine.innerHTML = html;
-        html = '';
         currentLine.parentElement.nextElementSibling;
 
         for (let k = 0; k < tempStrPart2.length; k++) {
-          html += `<div class="char">${tempStrPart2[k]}</div>`;
+          currentLine.innerHTML += `<div class="char">${tempStrPart2[k]}</div>`;
         }
-        html += `<div class="char"> </div>`;
-        currentLine.innerHTML = html;
-        html = '';
+        currentLine.innerHTML += `<div class="char"> </div>`;
 
       } else {
 
