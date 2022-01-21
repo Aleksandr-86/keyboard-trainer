@@ -18,10 +18,13 @@ export const charInserter = (arr, index) => {
   arrOfStrings = [...arr];
   let html = '';
   let counter = 0;
+  const arrLen = arrOfStrings.length;
 
-  for (let i = index; i < arrOfStrings.length; i++) {
+  for (let i = index; i < arrLen; i++) {
     const arrWord = arrOfStrings[i].split('');
     const wordLen = arrOfStrings[i].length;
+
+    // console.log(currentLine);
 
     if (currentLine === null) { // the end of the field has been reached
       console.warn('1 first');
@@ -50,7 +53,7 @@ export const charInserter = (arr, index) => {
       // ...
       console.warn('3 third');
 
-    } else if (wordLen + counter < 34) { // the word being added fits in the line
+    } else if (wordLen + counter < 35) { // the word being added fits in the line
       console.warn('4 fourth');
       for (let k = 0; k < wordLen; k++) {
         html += `<div class="char">${arrWord[k]}</div>`;
@@ -58,8 +61,48 @@ export const charInserter = (arr, index) => {
       html += `<div class="char"> </div>`;
       counter = counter + wordLen + 1;
 
+      if (i === arrLen - 1) {
+        currentLine.innerHTML = html;
+        html = '';
+        currentLine.lastElementChild.remove();
+      }
 
-    } else if (wordLen + counter > 34) { // the word being added doesn't fit into the line
+
+    } else if (wordLen >= 35 && counter === 0) {
+      console.warn('7 seventh');
+
+      let tempStr = arrOfStrings[i];
+      let tempStrLen = arrOfStrings[i].length;
+      if (tempStrLen > 35) {
+        const tempStrPart1 = tempStr.slice(0, 35);
+        const tempStrPart2 = tempStr.slice(35);
+
+        for (let k = 0; k < tempStrPart1.length; k++) {
+          html += `<div class="char">${tempStrPart1[k]}</div>`;
+        }
+        currentLine.innerHTML = html;
+        html = '';
+        currentLine.parentElement.nextElementSibling;
+
+        for (let k = 0; k < tempStrPart2.length; k++) {
+          html += `<div class="char">${tempStrPart2[k]}</div>`;
+        }
+        html += `<div class="char"> </div>`;
+        currentLine.innerHTML = html;
+        html = '';
+
+      } else {
+
+        // for (let k = 0; k < wordLen; k++) {
+        //   html += `<div class="char">${arrWord[k]}</div>`;
+        // }
+      }
+
+
+      console.log(tempStr.slice(0, 35));
+      console.log(tempStr.slice(35));
+
+    } else if (wordLen + counter >= 35) { // the word being added doesn't fit into the line
       console.warn('5 fifth');
       i--;
       html += `<div class="char"> </div>`;
@@ -69,7 +112,7 @@ export const charInserter = (arr, index) => {
       currentLine.lastElementChild.classList.toggle('line-end');
 
       // adding spaces till the end of the line
-      for (let j = 0; j < (36 - counter); j++) {
+      for (let j = 0; j < (35 - counter); j++) {
         html += `<div class="char"> </div>`;
       }
       currentLine.innerHTML += html;
@@ -79,24 +122,19 @@ export const charInserter = (arr, index) => {
       counter = 0;
 
 
-    } else if (wordLen + counter === 35) { // end of row sharp
-      console.warn('6 sixth');
-      for (let j = 0; j < wordLen - 1; j++) {
-        html += `<div class="char">${arrWord[j]}</div>`;
-      }
-      html += `<div class="char line-end">${arrWord[wordLen - 1]}</div>`;
+      // } else if (wordLen + counter === 35) { // end of row sharp
+      //   console.warn('6 sixth');
+      //   for (let j = 0; j < wordLen - 1; j++) {
+      //     html += `<div class="char">${arrWord[j]}</div>`;
+      //   }
+      //   html += `<div class="char line-end">${arrWord[wordLen - 1]}</div>`;
+      //
+      //   currentLine.innerHTML = html;
+      //   currentLine = currentLine.nextElementSibling; // switching focus to the next line
+      //   html = '';
+      //   counter = 0;
 
-      currentLine.innerHTML = html;
-      currentLine = currentLine.nextElementSibling; // switching focus to the next line
-      html = '';
-      counter = 0;
 
-
-    } else if (wordLen > 35 && counter === 0) {
-      console.warn('7 seventh');
-      let tempStr = arrOfStrings[i];
-      console.log(tempStr.slice(0, 35));
-      console.log(tempStr.slice(35));
     }
   }
 
