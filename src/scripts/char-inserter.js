@@ -11,6 +11,14 @@ export const strPreparer = function(str) {
   return str.split(' ');
 };
 
+// create and return div element with char in it
+const divChar = function(char) {
+  const container = document.createElement('div');
+  container.innerHTML = `<div class="char">${char}</div>`;
+  return container;
+};
+
+
 // filling the field block with char
 export const charInserter = (arr, index) => {
   let currentLine = document.querySelector('#line1');
@@ -48,6 +56,7 @@ export const charInserter = (arr, index) => {
 
     } else if (wordLen + counter < 35) { // the word being added fits in the line
       console.warn('4 fourth');
+
       for (let k = 0; k < wordLen; k++) {
         html += `<div class="char">${arrWord[k]}</div>`;
       }
@@ -66,19 +75,22 @@ export const charInserter = (arr, index) => {
 
       let tempStr = arrOfStrings[i];
       let tempStrLen = arrOfStrings[i].length;
+
       if (tempStrLen > 35) {
         const tempStrPart1 = tempStr.slice(0, 35);
         const tempStrPart2 = tempStr.slice(35);
+        console.log(tempStrPart1);
+        console.log(tempStrPart2);
 
         for (let k = 0; k < tempStrPart1.length; k++) {
           currentLine.innerHTML += `<div class="char">${tempStrPart1[k]}</div>`;
         }
-        currentLine.parentElement.nextElementSibling;
+        currentLine = currentLine.nextElementSibling; // switching focus to the next line
 
         for (let k = 0; k < tempStrPart2.length; k++) {
-          currentLine.innerHTML += `<div class="char">${tempStrPart2[k]}</div>`;
+          html += `<div class="char">${tempStrPart2[k]}</div>`;
         }
-        currentLine.innerHTML += `<div class="char"> </div>`;
+        html += `<div class="char"> </div>`;
 
       } else {
 
@@ -87,9 +99,6 @@ export const charInserter = (arr, index) => {
         // }
       }
 
-
-      console.log(tempStr.slice(0, 35));
-      console.log(tempStr.slice(35));
 
     } else if (wordLen + counter >= 35) { // the word being added doesn't fit into the line
       console.warn('5 fifth');
