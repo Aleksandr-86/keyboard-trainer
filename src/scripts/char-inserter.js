@@ -26,7 +26,6 @@ export const charInserter = (arr, index) => {
     if (currentLine === null) { // the end of the field has been reached
       // console.warn('1first');
       indOfString = i;
-      // console.log(i);
       break;
 
     } else if (arrOfStrings[i] === '\n' && counter > 0) { // the line break character
