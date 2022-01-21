@@ -28,7 +28,6 @@ const wrongKeyHandler = function(caret) {
       caret.classList.toggle('char-caret');
     } else if (caret.classList.contains('line-end')) { // condition: the end of the line
 
-      console.log('line end');
 
       caret = caret.parentElement.nextElementSibling.firstChild; // switching lines
     } else {
