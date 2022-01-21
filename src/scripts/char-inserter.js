@@ -12,12 +12,12 @@ export const strPreparer = function(str) {
 };
 
 // create and return div element with char in it
-const divChar = function(char) {
+const createDiv = function(char) {
   const container = document.createElement('div');
-  container.innerHTML = `<div class="char">${char}</div>`;
+  container.className = 'char';
+  container.textContent = char;
   return container;
 };
-
 
 // filling the field block with char
 export const charInserter = (arr, index) => {
@@ -58,14 +58,13 @@ export const charInserter = (arr, index) => {
       console.warn('4 fourth');
 
       for (let k = 0; k < wordLen; k++) {
-        html += `<div class="char">${arrWord[k]}</div>`;
+        currentLine.appendChild(createDiv(arrWord[k]));
       }
-      html += `<div class="char"> </div>`;
+      currentLine.appendChild(createDiv(' '));
       counter = counter + wordLen + 1;
 
       if (i === arrLen - 1) {
-        currentLine.innerHTML = html;
-        html = '';
+
         currentLine.lastElementChild.remove();
       }
 
@@ -103,39 +102,18 @@ export const charInserter = (arr, index) => {
     } else if (wordLen + counter >= 35) { // the word being added doesn't fit into the line
       console.warn('5 fifth');
       i--;
-      html += `<div class="char"> </div>`;
-      currentLine.innerHTML = html;
-      html = '';
+      currentLine.appendChild(createDiv(' '));
       currentLine.lastElementChild.remove();
       currentLine.lastElementChild.classList.toggle('line-end');
 
       // adding spaces till the end of the line
       for (let j = 0; j < (35 - counter); j++) {
-        html += `<div class="char"> </div>`;
+        currentLine.appendChild(createDiv(' '));
       }
-      currentLine.innerHTML += html;
-      html = '';
-
       currentLine = currentLine.nextElementSibling; // switching focus to the next line
       counter = 0;
-
-
-      // } else if (wordLen + counter === 35) { // end of row sharp
-      //   console.warn('6 sixth');
-      //   for (let j = 0; j < wordLen - 1; j++) {
-      //     html += `<div class="char">${arrWord[j]}</div>`;
-      //   }
-      //   html += `<div class="char line-end">${arrWord[wordLen - 1]}</div>`;
-      //
-      //   currentLine.innerHTML = html;
-      //   currentLine = currentLine.nextElementSibling; // switching focus to the next line
-      //   html = '';
-      //   counter = 0;
-
-
     }
   }
 
-  const firstDiv = document.querySelector('#line1 > .char:first-child');
-  firstDiv.classList.toggle('char-caret');
+  document.querySelector('#line1 > .char:first-child').classList.add('char-caret');
 };
