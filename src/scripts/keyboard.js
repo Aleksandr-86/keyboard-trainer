@@ -7,41 +7,38 @@ import { arrOfStrings, charInserter, indOfString } from "/src/scripts/char-inser
 // console.log(capsLockState);
 // skipping special keys
 
+// testing a char for compliance
+const charTest = function(char) {
+  return /[0-9 A-ZА-ЯЁ.,<>\/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
+};
+
+// skipping inappropriate chars and a space after them (due a certain condition)
 const wrongKeyHandler = function(caret) {
-  let test = /[0-9 A-ZА-ЯЁ.,<>\/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(caret.textContent);
-  caret.classList.toggle('char-caret');
+  let test = charTest(caret.textContent);
+  caret.classList.add('char-caret');
+
   while (!test) {
-    caret.classList.toggle('char-neutral');
+    caret.classList.add('char-neutral');
+
+    // condition: end of the line, and it's a last line
     if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
-      document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
-      charInserter(arrOfStrings, indOfString);
+      document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing the line
+      charInserter(arrOfStrings, indOfString); // filling all the lines
       caret = document.querySelector('.char-caret');
       caret.classList.toggle('char-caret');
-    } else if (caret.classList.contains('line-end')) { // line-end condition
-      // caret.classList.toggle('char-caret');
-      if (caret.nextElementSibling !== null) {
-        const curLine = caret.parentElement;
-        curLine.querySelectorAll('div[class="char"]').forEach(char => char.classList.add('char-correct'));
-      }
+    } else if (caret.classList.contains('line-end')) { // condition: the end of the line
       caret = caret.parentElement.nextElementSibling.firstChild; // switching lines
     } else {
       caret = caret.nextElementSibling; // moving the caret to the next char
     }
 
     if (caret.textContent === ' ') {
-      caret.classList.toggle('char-neutral');
+      caret.classList.add('char-neutral');
       caret = caret.nextSibling;
     }
-    test = /[0-9 A-ZА-ЯЁ.,<>\/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(caret.textContent);
+
+    test = charTest(caret.textContent);
   }
-  // console.log(caret.previousNode());
-
-
-  // if (caret.textContent === ' ' && caret.previousSibling) console.log('sdfsdf');
-  // caret.classList.toggle('char-neutral');
-  // caret = caret.nextElementSibling; // moving the caret to the next char
-
-  // if (caret.previousSibling)
 
   caret.classList.toggle('char-caret');
 };
@@ -71,17 +68,18 @@ export const keyboard = function(event) {
 
       // marking the char depending on the pressed key
       if (eKey === targetChar) {
-        caret.classList.toggle('char-correct');
+        caret.classList.add('char-correct');
       } else {
         caret.classList.toggle('char-wrong');
       }
 
-      // end of the lines and line-end condition
+      // condition: end of the lines and line-end
       if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
         document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
         charInserter(arrOfStrings, indOfString);
-
-      } else if (caret.classList.contains('line-end')) { // line-end condition
+        caret = document.querySelector('.char-caret');
+        wrongKeyHandler(caret);
+      } else if (caret.classList.contains('line-end')) { // condition: line-end
         caret.classList.toggle('char-caret');
         // const index = [...caret.parentElement.childNodes].indexOf(caret);
         if (caret.nextElementSibling !== null) {
@@ -90,13 +88,7 @@ export const keyboard = function(event) {
         }
         caret = caret.parentElement.nextElementSibling.firstChild; // switching lines
         wrongKeyHandler(caret);
-      } else if (caret.id === 'char-last') {
-
-        // choosing all the char elements
-        document.querySelectorAll('.char-correct, .char-wrong').forEach(div => div.className = 'char-target');
-        caret = document.querySelector('#char-first');
       } else { // regular condition
-        // console.log(`condition ${caret.textContent}`);
         caret.classList.toggle('char-caret');
         caret = caret.nextElementSibling; // moving the caret to the next char
         wrongKeyHandler(caret);

@@ -24,12 +24,12 @@ export const charInserter = (arr, index) => {
     const wordLen = arrOfStrings[i].length;
 
     if (currentLine === null) { // the end of the field has been reached
-      // console.warn('1first');
+      console.warn('1 first');
       indOfString = i;
       break;
 
     } else if (arrOfStrings[i] === '\n' && counter > 0) { // the line break character
-      // console.warn('2second');
+      console.warn('2 second');
       currentLine.innerHTML = html;
       html = '';
       currentLine.lastElementChild.remove();
@@ -48,10 +48,10 @@ export const charInserter = (arr, index) => {
 
     } else if (arrOfStrings[i] === '\n' && counter === 0) { // the line break character && beginning of the line
       // ...
-      // console.warn('3third');
+      console.warn('3 third');
 
-    } else if (wordLen + counter < 35) { // the word being added fits in the line
-      // console.warn('4fourth');
+    } else if (wordLen + counter < 34) { // the word being added fits in the line
+      console.warn('4 fourth');
       for (let k = 0; k < wordLen; k++) {
         html += `<div class="char">${arrWord[k]}</div>`;
       }
@@ -59,9 +59,10 @@ export const charInserter = (arr, index) => {
       counter = counter + wordLen + 1;
 
 
-    } else if (wordLen + counter > 35) { // the word being added doesn't fit into the line
-      // console.warn('5fith');
+    } else if (wordLen + counter > 34) { // the word being added doesn't fit into the line
+      console.warn('5 fifth');
       i--;
+      html += `<div class="char"> </div>`;
       currentLine.innerHTML = html;
       html = '';
       currentLine.lastElementChild.remove();
@@ -79,7 +80,7 @@ export const charInserter = (arr, index) => {
 
 
     } else if (wordLen + counter === 35) { // end of row sharp
-      // console.warn('6sixth');
+      console.warn('6 sixth');
       for (let j = 0; j < wordLen - 1; j++) {
         html += `<div class="char">${arrWord[j]}</div>`;
       }
@@ -92,7 +93,7 @@ export const charInserter = (arr, index) => {
 
 
     } else if (wordLen > 35 && counter === 0) {
-      // console.warn('7seventh');
+      console.warn('7 seventh');
       let tempStr = arrOfStrings[i];
       console.log(tempStr.slice(0, 35));
       console.log(tempStr.slice(35));
