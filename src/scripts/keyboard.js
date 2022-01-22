@@ -21,7 +21,7 @@ const wrongKeyHandler = function(caret) {
 
     // condition: end of the line, and it's a last line
     if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
-      document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing the line
+      document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
       charInserter(arrOfStrings, indOfString); // filling all the lines
       caret = document.querySelector('.char-caret');
       caret.classList.toggle('char-caret');
@@ -85,6 +85,7 @@ export const keyboard = function(event) {
           const curLine = caret.parentElement;
           curLine.querySelectorAll('div[class="char"]').forEach(char => char.classList.add('char-correct'));
         }
+
         caret = caret.parentElement.nextElementSibling.firstChild; // switching lines
         wrongKeyHandler(caret);
       } else { // regular condition
