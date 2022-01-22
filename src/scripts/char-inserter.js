@@ -3,7 +3,7 @@
 export let arrOfStrings;
 export let indOfString;
 
-// string => trim => replace Win sign 'next row' => replace excess spaces => array
+// trim, remove \r and excess spaces => array
 export const strPreparer = str => str.trim().replace(/\r\n/g, ' \n ').replace(/ +/g, ' ').split(' ');
 
 // create and return div element with char in it
@@ -20,68 +20,48 @@ export const charInserter = function(arr, index) {
   let currentLine = document.querySelector('#line1');
   arrOfStrings = [...arr];
   const arrLen = arrOfStrings.length;
-  let html = '';
   let counter = 0;
 
   for (let i = index; i < arrLen; i++) {
     const word = arrOfStrings[i];
     const wordLen = word.length;
-    // const arrWord = arrOfStrings[i].split('');
     const arrWord = [...arrOfStrings[i]];
 
-    if (currentLine === null) { // the end of the field has been reached
-      console.warn('1 first');
-
+    if (currentLine === null) {
       indOfString = i;
       break;
-
-    } else if (word === '\n' && counter > 0) { // the line break character
-      console.warn('2 second');
-
+    } else if (word === '\n' && counter > 0) {
       currentLine.lastElementChild.classList.add('line-end');
 
       for (let j = 0; j < (35 - counter); j++)  // adding spaces till the end of the line
         currentLine.appendChild(createDiv(' '));
-      currentLine = currentLine.nextElementSibling; // switching focus to the next line
+      currentLine = currentLine.nextElementSibling;
       counter = 0;
-
-    } else if (word === '\n' && counter === 0) { // the line break character && beginning of the line
-      console.warn('3 third');
-      currentLine = currentLine.nextElementSibling; // switching focus to the next line
-
-    } else if (wordLen + counter < 35) { // the word being added fits in the line
-      console.warn('4 fourth');
-
+    } else if (word === '\n' && counter === 0) {
+      currentLine = currentLine.nextElementSibling;
+    } else if (wordLen + counter < 35) {
       arrWord.forEach(char => currentLine.appendChild(createDiv(char)));
       currentLine.appendChild(createDiv(' '));
       counter = counter + wordLen + 1;
-
-      if (i === arrLen - 1) {
-        currentLine.lastElementChild.remove();
-      }
-
-
-    } else if (wordLen >= 35 && counter === 0) { // condition: the word's length is more or equal 35
-      console.warn('5 fifth');
-
+      if (i === arrLen - 1) currentLine.lastElementChild.remove();
+    } else if (wordLen >= 35 && counter === 0) {
       let wordPart1 = arrOfStrings[i].slice(0, 35);
       let wordPart2 = arrOfStrings[i].slice(35);
 
       let arrWordPart1 = wordPart1.split('');
       arrWordPart1.forEach(char => currentLine.appendChild(createDiv(char)));
       currentLine.lastElementChild.classList.add('line-end');
-      currentLine = currentLine.nextElementSibling; // switching focus to the next line
+      currentLine = currentLine.nextElementSibling;
 
       while (wordPart2.length > 35) {
         const tempStr = wordPart2;
-
         wordPart1 = tempStr.slice(0, 35);
         wordPart2 = tempStr.slice(35);
         arrWordPart1 = wordPart1.split('');
 
         arrWordPart1.forEach(char => currentLine.appendChild(createDiv(char)));
         currentLine.lastElementChild.classList.add('line-end');
-        currentLine = currentLine.nextElementSibling; // switching focus to the next line
+        currentLine = currentLine.nextElementSibling;
         if (!currentLine) break;
       }
 
@@ -94,9 +74,7 @@ export const charInserter = function(arr, index) {
         if (i !== arrLen - 1 && wordPart2.length !== 35) currentLine.appendChild(createDiv(' '));
         counter = counter + arrWordPart2.length + 1;
       }
-    } else if (wordLen + counter >= 35) { // the word being added doesn't fit into the line
-      console.warn('6 sixth');
-
+    } else if (wordLen + counter >= 35) {
       i--;
       currentLine.appendChild(createDiv(' '));
       currentLine.lastElementChild.remove();
@@ -104,7 +82,7 @@ export const charInserter = function(arr, index) {
 
       for (let j = 0; j < (35 - counter); j++) // adding spaces till the end of the line
         currentLine.appendChild(createDiv(' '));
-      currentLine = currentLine.nextElementSibling; // switching focus to the next line
+      currentLine = currentLine.nextElementSibling;
       counter = 0;
     }
   }
