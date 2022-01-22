@@ -12,7 +12,7 @@ const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/
 
 
 // skipping inappropriate chars and a space after them (due a certain condition)
-const wrongKeyHandler = caret => {
+const wrongKeyHandler = function(caret) {
   let test = charTest(caret.textContent);
   caret.classList.add('char-caret');
 
@@ -44,7 +44,7 @@ const wrongKeyHandler = caret => {
 
 
 // keydown
-export const keyboard = event => {
+export const keyboard = function(event) {
   event.preventDefault();
 
 // selecting the first element of <span line1>
@@ -96,7 +96,7 @@ export const keyboard = event => {
     }
 
     // releasing the key
-    document.body.addEventListener('keyup', event => {
+    document.body.addEventListener('keyup', function(event) {
       const btnUp = document.querySelector(`#${event.code.toLowerCase()}`);
       if (btnDn === btnUp) setTimeout(() => {
         btnUp.className = 'button-up';

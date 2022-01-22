@@ -4,7 +4,7 @@ export let arrOfStrings;
 export let indOfString;
 
 // string => prepare => array
-export const strPreparer = str => {
+export const strPreparer = function(str) {
   str = str.trim();
   str = str.replace(/\r\n/g, ' \n ');
   str = str.replace(/ +/g, ' '); // removing excess spaces
@@ -12,7 +12,7 @@ export const strPreparer = str => {
 };
 
 // create and return div element with char in it
-const createDiv = char => {
+const createDiv = function(char) {
   const container = document.createElement('div');
   container.className = 'char';
   container.textContent = char;
@@ -20,7 +20,7 @@ const createDiv = char => {
 };
 
 // filling the field block with char
-export const charInserter = (arr, index) => {
+export const charInserter = function(arr, index) {
   let currentLine = document.querySelector('#line1');
 
   arrOfStrings = [...arr];

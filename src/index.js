@@ -10,7 +10,7 @@ const btnGenFromBuffer = document.querySelector('#btn2');
 // });
 //
 
-btnGenFromBuffer.addEventListener('click', async () => {
+btnGenFromBuffer.addEventListener('click', async function() {
   // defining browser
   const br = getBrowser().browser;
   if (br === 'chrome' || br === 'yabrowser') {
