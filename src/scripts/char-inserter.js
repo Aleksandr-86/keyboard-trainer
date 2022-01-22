@@ -28,9 +28,11 @@ export const charInserter = function(arr, index) {
     const arrWord = [...arrOfStrings[i]];
 
     if (currentLine === null) {
+      console.log(1);
       indOfString = i;
       break;
     } else if (word === '\n' && counter > 0) {
+      console.log(2);
       currentLine.lastElementChild.classList.add('line-end');
 
       for (let j = 0; j < (35 - counter); j++)  // adding spaces till the end of the line
@@ -38,18 +40,23 @@ export const charInserter = function(arr, index) {
       currentLine = currentLine.nextElementSibling;
       counter = 0;
     } else if (word === '\n' && counter === 0) {
+      console.log(3);
       currentLine = currentLine.nextElementSibling;
     } else if (wordLen + counter < 35) {
-      arrWord.forEach(char => currentLine.appendChild(createDiv(char)));
+      console.log(4);
+      arrWord.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
       currentLine.appendChild(createDiv(' '));
       counter = counter + wordLen + 1;
       if (i === arrLen - 1) currentLine.lastElementChild.remove();
     } else if (wordLen >= 35 && counter === 0) {
+      console.log(5);
+      const diff = wordLen - counter;
+
       let wordPart1 = arrOfStrings[i].slice(0, 35);
       let wordPart2 = arrOfStrings[i].slice(35);
 
       let arrWordPart1 = wordPart1.split('');
-      arrWordPart1.forEach(char => currentLine.appendChild(createDiv(char)));
+      arrWordPart1.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
       currentLine.lastElementChild.classList.add('line-end');
       currentLine = currentLine.nextElementSibling;
 
@@ -59,7 +66,7 @@ export const charInserter = function(arr, index) {
         wordPart2 = tempStr.slice(35);
         arrWordPart1 = wordPart1.split('');
 
-        arrWordPart1.forEach(char => currentLine.appendChild(createDiv(char)));
+        arrWordPart1.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
         currentLine.lastElementChild.classList.add('line-end');
         currentLine = currentLine.nextElementSibling;
         if (!currentLine) break;
@@ -70,14 +77,17 @@ export const charInserter = function(arr, index) {
         i--;
       } else {
         const arrWordPart2 = wordPart2.split('');
-        arrWordPart2.forEach(char => currentLine.appendChild(createDiv(char)));
+        arrWordPart2.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
         if (i !== arrLen - 1 && wordPart2.length !== 35) currentLine.appendChild(createDiv(' '));
         counter = counter + arrWordPart2.length + 1;
       }
+    // } else if (wordLen === 35) {
+    //   console.log(6);
+    //   arrWord.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
+    //   currentLine = currentLine.nextElementSibling;
     } else if (wordLen + counter >= 35) {
+      console.log(7);
       i--;
-      currentLine.appendChild(createDiv(' '));
-      currentLine.lastElementChild.remove();
       currentLine.lastElementChild.classList.toggle('line-end');
 
       for (let j = 0; j < (35 - counter); j++) // adding spaces till the end of the line
