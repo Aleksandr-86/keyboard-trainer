@@ -8,12 +8,11 @@ import { arrOfStrings, charInserter, indOfString } from "/src/scripts/char-inser
 // skipping special keys
 
 // testing a char for compliance
-const charTest = function(char) {
-  return /[0-9 A-ZА-ЯЁ.,<>\/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
-};
+const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
+
 
 // skipping inappropriate chars and a space after them (due a certain condition)
-const wrongKeyHandler = function(caret) {
+const wrongKeyHandler = caret => {
   let test = charTest(caret.textContent);
   caret.classList.add('char-caret');
 
@@ -27,8 +26,6 @@ const wrongKeyHandler = function(caret) {
       caret = document.querySelector('.char-caret');
       caret.classList.toggle('char-caret');
     } else if (caret.classList.contains('line-end')) { // condition: the end of the line
-
-
       caret = caret.parentElement.nextElementSibling.firstChild; // switching lines
     } else {
       caret = caret.nextElementSibling; // moving the caret to the next char
@@ -47,7 +44,7 @@ const wrongKeyHandler = function(caret) {
 
 
 // keydown
-export const keyboard = function(event) {
+export const keyboard = event => {
   event.preventDefault();
 
 // selecting the first element of <span line1>
