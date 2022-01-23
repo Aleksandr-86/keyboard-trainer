@@ -16,11 +16,16 @@ const createDiv = function(char) {
 
 // filling the field block with char
 export const charInserter = function(arr, index) {
-  document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
-  let currentLine = document.querySelector('#line1');
   arrOfStrings = [...arr];
   const arrLen = arrOfStrings.length;
+  // the maximum length of a word that will not be carried over to the next line
+  let wordLenMax = 9;
+  const lineLen = 35;
+  if (wordLenMax > lineLen) wordLenMax = lineLen;
   let counter = 0;
+
+  document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
+  let currentLine = document.querySelector('#line1');
 
   for (let i = index; i < arrLen; i++) {
     const word = arrOfStrings[i];
@@ -50,15 +55,16 @@ export const charInserter = function(arr, index) {
       currentLine.appendChild(createDiv(' '));
       counter = counter + wordLen + 1;
 
-      if (i === arrLen - 1) currentLine.lastElementChild.remove();
-      if (counter === 35) {
+      if (i === arrLen - 1) {
+        currentLine.lastElementChild.remove();
+      } else if (counter === 35) {
         currentLine.lastElementChild.classList.add('line-end');
         currentLine = currentLine.nextElementSibling;
         counter = 0;
       }
       console.log(`4 counter ${counter}`);
 
-    } else if (wordLen >= 35) {
+    } else if (wordLen > wordLenMax) {
       // console.log(5);
       let wordPart1 = arrOfStrings[i].slice(0, 35 - counter);
       let wordPart2 = arrOfStrings[i].slice(35 - counter);
@@ -91,17 +97,9 @@ export const charInserter = function(arr, index) {
       } else {
         const arrWordPart2 = wordPart2.split('');
         arrWordPart2.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
-        // for (let j = 0; j < (35 - counter); j++) // adding spaces till the end of the line
-        //   currentLine.appendChild(createDiv(' '));
+        currentLine.appendChild(createDiv(' '));
+        counter = wordPart2.length + 1;
 
-        // if (i !== arrLen - 1 && wordPart2.length !== 35) {
-        //   // currentLine.appendChild(createDiv(' '));
-        //   // counter = counter + 1;
-        // }
-
-        // counter = counter + arrWordPart2.length;
-        // counter = (wordLen + arrWordPart2.length) % 35;
-        counter = wordPart2.length;
         console.log(`5.2 counter ${counter}`);
       }
 
