@@ -34,11 +34,11 @@ export const charInserter = function(arr, index) {
 
     if (currentLine === null) {
       indOfString = i;
-      console.log(`1 counter ${counter}, before break ${word}`);
+      // console.log(`1 counter ${counter}, before break ${word}`);
       break;
 
     } else if (word === '\n' && counter > 0) {
-      console.log(2);
+      // console.log(2);
       currentLine.lastElementChild.classList.add('line-end');
 
       for (let j = 0; j < (35 - counter); j++)  // adding spaces till the end of the line
@@ -47,7 +47,7 @@ export const charInserter = function(arr, index) {
       counter = 0;
 
     } else if (word === '\n' && counter === 0) {
-      console.log(3);
+      // console.log(3);
       currentLine = currentLine.nextElementSibling;
 
     } else if (wordLen + counter < 35) {
@@ -62,7 +62,7 @@ export const charInserter = function(arr, index) {
         currentLine = currentLine.nextElementSibling;
         counter = 0;
       }
-      console.log(`4 counter ${counter}`);
+      // console.log(`4 counter ${counter}`);
 
     } else if (wordLen > wordLenMax) {
       // console.log(5);
@@ -93,18 +93,18 @@ export const charInserter = function(arr, index) {
           i--;
         }
         counter = 0;
-        console.log(`5.1 counter ${counter}`);
+        // console.log(`5.1 counter ${counter}`);
       } else {
         const arrWordPart2 = wordPart2.split('');
         arrWordPart2.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
         currentLine.appendChild(createDiv(' '));
         counter = wordPart2.length + 1;
 
-        console.log(`5.2 counter ${counter}`);
+        // console.log(`5.2 counter ${counter}`);
       }
 
     } else if (wordLen + counter > 34 && wordLen < 35) {
-      console.log(`6 ${counter}, word ${word}`);
+      // console.log(`6 ${counter}, word ${word}`);
       i--;
       currentLine.lastElementChild.classList.toggle('line-end');
 
@@ -113,7 +113,7 @@ export const charInserter = function(arr, index) {
       currentLine = currentLine.nextElementSibling;
       counter = 0;
     } else {
-      console.log('else', word, wordLen);
+      // console.log('else', word, wordLen);
     }
   }
 

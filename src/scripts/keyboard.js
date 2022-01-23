@@ -16,7 +16,7 @@ const charTest = char => /[ A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.t
 // skipping inappropriate chars and a space after them (due a certain condition)
 const wrongKeyHandler = function(caret) {
   let test = charTest(caret.textContent);
-  caret.classList.add('char-caret');
+  // caret.classList.add('char-caret');
 
   while (!test) {
     caret.classList.add('char-neutral');
@@ -27,13 +27,25 @@ const wrongKeyHandler = function(caret) {
       caret = document.querySelector('.char-caret');
       caret.classList.toggle('char-caret');
     } else if (caret.classList.contains('line-end')) {
-      caret = caret.parentElement.nextElementSibling.firstChild;
+      caret = caret.parentElement.nextElementSibling.firstElementChild;
 
     } else {
+      if (caret !== caret.parentElement.firstElementChild &&
+        caret.previousElementSibling.textContent === ' ' &&
+        caret.nextElementSibling.textContent === ' ') {
+        caret = caret.nextElementSibling;
+        if (caret.classList.contains('line-end')) {
+          caret.parentElement
+            .querySelectorAll('div[class="char"], div[class="char line-end"]')
+            .forEach(div => div.classList.add('char-correct'));
+          caret = caret.parentElement.nextElementSibling.firstElementChild;
+        }
+        caret.classList.add('char-neutral');
+      }
       caret = caret.nextElementSibling;
     }
 
-    // if (caret.textContent === ' ' && charTest(caret.nextElementSibling)) {
+    // if (caret.textContent === ' ' && !charTest(caret.nextElementSibling.textContent)) {
     //   caret.classList.add('char-neutral');
     //
     //   // if (caret.classList.contains('line-end')) {
@@ -44,11 +56,11 @@ const wrongKeyHandler = function(caret) {
     //     caret = caret.nextSibling;
     //   // }
     // }
-
     test = charTest(caret.textContent);
   }
 
-  caret.classList.toggle('char-caret');
+  // caret.classList.toggle('char-caret');
+  caret.classList.add('char-caret');
 };
 
 
@@ -97,11 +109,11 @@ export const keyboard = function(event) {
         caret = caret.parentElement.nextElementSibling.firstChild;
         wrongKeyHandler(caret);
       } else {
-        caret.classList.toggle('char-caret');
+        caret.classList.remove('char-caret');
         caret = caret.nextElementSibling;
         wrongKeyHandler(caret);
       }
-      caret.classList.toggle('char-caret');
+      // caret.classList.add('char-caret');
     }
 
     // releasing the key
@@ -112,6 +124,6 @@ export const keyboard = function(event) {
       }, 100);
     });
   } catch (error) {
-    // console.error(`${error.name}: ${error.message}`);
+    console.error(`${error.name}: ${error.message}`);
   }
 };
