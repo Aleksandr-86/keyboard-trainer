@@ -14,37 +14,42 @@ const charTest = char => /[ A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.t
 
 // skipping inappropriate chars and a space after them (due a certain condition)
 const wrongKeyHandler = function(caret) {
-  let test = charTest(caret.textContent);
-  caret.classList.remove('char-caret');
-
-  while (!test) {
+  if (caret.classList.contains('finish')) {
     caret.classList.add('char-neutral');
+    console.log('конец');
+  } else {
+    let test = charTest(caret.textContent);
+    caret.classList.remove('char-caret');
 
-    if (caret.classList.contains('line-end') && !caret.parentElement.nextElementSibling) {
-      charInserter(arrOfStrings, indOfString); // filling all the lines
-    } else if (caret.classList.contains('line-end')) {
-      caret = caret.parentElement.nextElementSibling.firstElementChild;
-    } else {
-      if (caret !== caret.parentElement.firstElementChild &&
-        caret.previousElementSibling.textContent === ' ' &&
-        caret.nextElementSibling.textContent === ' ') {
-        caret = caret.nextElementSibling;
-        if (caret.classList.contains('line-end')) {
-          caret.parentElement
-            .querySelectorAll('div[class="char"], div[class="char line-end"]')
-            .forEach(div => div.classList.add('char-correct'));
-          caret = caret.parentElement.nextElementSibling.firstElementChild;
+    while (!test) {
+      caret.classList.add('char-neutral');
+
+      if (caret.classList.contains('line-end') && !caret.parentElement.nextElementSibling) {
+        charInserter(arrOfStrings, indOfString); // filling all the lines
+      } else if (caret.classList.contains('line-end')) {
+        caret = caret.parentElement.nextElementSibling.firstElementChild;
+      } else {
+        if (caret !== caret.parentElement.firstElementChild &&
+          caret.previousElementSibling.textContent === ' ' &&
+          caret.nextElementSibling.textContent === ' ') {
+          caret = caret.nextElementSibling;
+          if (caret.classList.contains('line-end')) {
+            caret.parentElement
+              .querySelectorAll('div[class="char"], div[class="char line-end"]')
+              .forEach(div => div.classList.add('char-correct'));
+            caret = caret.parentElement.nextElementSibling.firstElementChild;
+          }
+          caret.classList.add('char-neutral');
         }
-        caret.classList.add('char-neutral');
+        caret = caret.nextElementSibling;
       }
-      caret = caret.nextElementSibling;
+
+      test = charTest(caret.textContent);
     }
 
-    test = charTest(caret.textContent);
+    // caret.classList.toggle('char-caret');
+    caret.classList.add('char-caret');
   }
-
-  // caret.classList.toggle('char-caret');
-  caret.classList.add('char-caret');
 };
 
 
