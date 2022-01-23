@@ -8,22 +8,23 @@ import { arrOfStrings, charInserter, indOfString } from "/src/scripts/char-inser
 // skipping special keys
 
 // returns false if a char is inappropriate
-// const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
-const charTest = char => /[ A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
+const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 
 
 // skipping inappropriate chars and a space after them (due a certain condition)
-const wrongKeyHandler = function(caret) {
-  if (caret.classList.contains('finish')) {
+export const wrongKeyHandler = function(caret) {
+
+  let test = charTest(caret.textContent);
+  caret.classList.remove('char-caret');
+
+  while (!test) {
     caret.classList.add('char-neutral');
-    console.log('конец');
-  } else {
-    let test = charTest(caret.textContent);
-    caret.classList.remove('char-caret');
 
-    while (!test) {
-      caret.classList.add('char-neutral');
-
+    if (caret.classList.contains('finish')) { // the end of typing
+      caret.classList.add('char-neutral char-caret');
+      console.log('1 конец');
+      break;
+    } else {
       if (caret.classList.contains('line-end') && !caret.parentElement.nextElementSibling) {
         charInserter(arrOfStrings, indOfString); // filling all the lines
       } else if (caret.classList.contains('line-end')) {
@@ -43,13 +44,12 @@ const wrongKeyHandler = function(caret) {
         }
         caret = caret.nextElementSibling;
       }
-
-      test = charTest(caret.textContent);
     }
 
-    // caret.classList.toggle('char-caret');
-    caret.classList.add('char-caret');
+    test = charTest(caret.textContent);
   }
+
+  caret.classList.toggle('char-caret');
 };
 
 
@@ -82,9 +82,9 @@ export const keyboard = function(event) {
         caret.classList.toggle('char-wrong');
       }
 
-      if (caret.classList.contains('finish')) { // the end
+      if (caret.classList.contains('finish')) { // the end of typing
         caret.classList.remove('char-caret');
-        console.log('конец');
+        console.log('2 конец');
       } else if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
         charInserter(arrOfStrings, indOfString);
         caret = document.querySelector('.char-caret');
@@ -104,7 +104,6 @@ export const keyboard = function(event) {
         caret = caret.nextElementSibling;
         wrongKeyHandler(caret);
       }
-      // caret.classList.add('char-caret');
     }
 
     // releasing the key
@@ -115,7 +114,6 @@ export const keyboard = function(event) {
       }, 100);
     });
   } catch (error) {
-    // console.error(`${error.name}: ${error.message}`);
-    console.error(error);
+    // console.error(error);
   }
 };

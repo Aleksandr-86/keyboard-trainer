@@ -1,3 +1,5 @@
+import { wrongKeyHandler } from "/src/scripts/keyboard.js";
+
 "use strict";
 
 export let arrOfStrings;
@@ -19,7 +21,7 @@ export const charInserter = function(arr, index) {
   arrOfStrings = [...arr];
   const arrLen = arrOfStrings.length;
   // the maximum length of a word that will not be carried over to the next line
-  let wordLenMax = 9;
+  let wordLenMax = 10;
   const lineLen = 35;
   if (wordLenMax > lineLen) wordLenMax = lineLen;
   let counter = 0;
@@ -35,39 +37,29 @@ export const charInserter = function(arr, index) {
     if (currentLine === null) {
       indOfString = i;
       document.querySelector('#line5 > :last-child').classList.add('field-end');
-      // console.log(`1 counter ${counter}, before break ${word}`);
       break;
-
     } else if (word === '\n' && counter > 0) {
-      // console.log(2);
       currentLine.lastElementChild.classList.add('line-end');
 
-      for (let j = 0; j < (35 - counter); j++)  // adding spaces till the end of the line
+      for (let j = 0; j < (lineLen - counter); j++)  // adding spaces till the end of the line
         currentLine.appendChild(createDiv(' '));
       currentLine = currentLine.nextElementSibling;
       counter = 0;
-
     } else if (word === '\n' && counter === 0) {
-      // console.log(3);
       currentLine = currentLine.nextElementSibling;
-
-    } else if (wordLen + counter < 35) {
+    } else if (wordLen + counter < lineLen) {
       arrWord.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
       currentLine.appendChild(createDiv(' '));
       counter = counter + wordLen + 1;
 
-
-      if (counter === 35) {
+      if (counter === lineLen) {
         currentLine.lastElementChild.classList.add('line-end');
         currentLine = currentLine.nextElementSibling;
         counter = 0;
       }
-      // console.log(`4 counter ${counter}`);
-
     } else if (wordLen > wordLenMax) {
-      // console.log(5);
-      let wordPart1 = arrOfStrings[i].slice(0, 35 - counter);
-      let wordPart2 = arrOfStrings[i].slice(35 - counter);
+      let wordPart1 = arrOfStrings[i].slice(0, lineLen - counter);
+      let wordPart2 = arrOfStrings[i].slice(lineLen - counter);
       // counter = wordLen % 35;
 
       let arrWordPart1 = wordPart1.split('');
@@ -75,10 +67,10 @@ export const charInserter = function(arr, index) {
       currentLine.lastElementChild.classList.add('line-end');
       currentLine = currentLine.nextElementSibling;
 
-      while (wordPart2.length > 35) {
+      while (wordPart2.length > lineLen) {
         const tempStr = wordPart2;
-        wordPart1 = tempStr.slice(0, 35);
-        wordPart2 = tempStr.slice(35);
+        wordPart1 = tempStr.slice(0, lineLen);
+        wordPart2 = tempStr.slice(lineLen);
         arrWordPart1 = wordPart1.split('');
 
         arrWordPart1.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
@@ -93,33 +85,29 @@ export const charInserter = function(arr, index) {
           i--;
         }
         counter = 0;
-        // console.log(`5.1 counter ${counter}`);
       } else {
         const arrWordPart2 = wordPart2.split('');
         arrWordPart2.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
         currentLine.appendChild(createDiv(' '));
         counter = wordPart2.length + 1;
-
-        // console.log(`5.2 counter ${counter}`);
       }
-
-    } else if (wordLen + counter > 34 && wordLen < 35) {
-      // console.log(`6 ${counter}, word ${word}`);
+    } else if (wordLen + counter > lineLen - 1 && wordLen < lineLen) {
       i--;
       currentLine.lastElementChild.classList.toggle('line-end');
 
-      for (let j = 0; j < (35 - counter); j++) // adding spaces till the end of the line
+      for (let j = 0; j < (lineLen - counter); j++) // adding spaces till the end of the line
         currentLine.appendChild(createDiv(' '));
       currentLine = currentLine.nextElementSibling;
       counter = 0;
     }
 
-    if (i === arrLen - 1) { // the end
+    if (i === arrLen - 1) { // marking the end of typing
       currentLine.lastElementChild.remove();
       currentLine.lastElementChild.classList.add('finish');
     }
   }
 
-
-  document.querySelector('#line1 > :first-child').classList.add('char-caret');
+  const firstElem = document.querySelector('#line1 > :first-child');
+  firstElem.classList.add('char-caret');
+  wrongKeyHandler(firstElem);
 };
