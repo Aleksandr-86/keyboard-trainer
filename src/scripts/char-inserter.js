@@ -34,6 +34,7 @@ export const charInserter = function(arr, index) {
 
     if (currentLine === null) {
       indOfString = i;
+      document.querySelector('#line5 > :last-child').classList.add('field-end');
       // console.log(`1 counter ${counter}, before break ${word}`);
       break;
 
@@ -55,9 +56,8 @@ export const charInserter = function(arr, index) {
       currentLine.appendChild(createDiv(' '));
       counter = counter + wordLen + 1;
 
-      if (i === arrLen - 1) {
-        currentLine.lastElementChild.remove();
-      } else if (counter === 35) {
+
+      if (counter === 35) {
         currentLine.lastElementChild.classList.add('line-end');
         currentLine = currentLine.nextElementSibling;
         counter = 0;
@@ -112,10 +112,14 @@ export const charInserter = function(arr, index) {
         currentLine.appendChild(createDiv(' '));
       currentLine = currentLine.nextElementSibling;
       counter = 0;
-    } else {
-      // console.log('else', word, wordLen);
+    }
+
+    if (i === arrLen - 1) { // the end
+      currentLine.lastElementChild.remove();
+      currentLine.lastElementChild.classList.add('finish');
     }
   }
+
 
   document.querySelector('#line1 > :first-child').classList.add('char-caret');
 };

@@ -7,8 +7,7 @@ import { arrOfStrings, charInserter, indOfString } from "/src/scripts/char-inser
 // console.log(capsLockState);
 // skipping special keys
 
-// testing a char for compliance
-// returns false if the char is inappropriate
+// returns false if a char is inappropriate
 // const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 const charTest = char => /[ A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 
@@ -16,19 +15,15 @@ const charTest = char => /[ A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.t
 // skipping inappropriate chars and a space after them (due a certain condition)
 const wrongKeyHandler = function(caret) {
   let test = charTest(caret.textContent);
-  // caret.classList.add('char-caret');
+  caret.classList.remove('char-caret');
 
   while (!test) {
     caret.classList.add('char-neutral');
 
-    if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
-      document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
+    if (caret.classList.contains('line-end') && !caret.parentElement.nextElementSibling) {
       charInserter(arrOfStrings, indOfString); // filling all the lines
-      caret = document.querySelector('.char-caret');
-      caret.classList.toggle('char-caret');
     } else if (caret.classList.contains('line-end')) {
       caret = caret.parentElement.nextElementSibling.firstElementChild;
-
     } else {
       if (caret !== caret.parentElement.firstElementChild &&
         caret.previousElementSibling.textContent === ' ' &&
@@ -45,17 +40,6 @@ const wrongKeyHandler = function(caret) {
       caret = caret.nextElementSibling;
     }
 
-    // if (caret.textContent === ' ' && !charTest(caret.nextElementSibling.textContent)) {
-    //   caret.classList.add('char-neutral');
-    //
-    //   // if (caret.classList.contains('line-end')) {
-    //   //   caret.classList.toggle('char-caret')
-    //   //   caret.parentElement.querySelectorAll('div[class="char"]').forEach(char => char.classList.add('char-correct'));
-    //   //   caret = caret.parentElement.nextElementSibling.firstElementChild;
-    //   // } else {
-    //     caret = caret.nextSibling;
-    //   // }
-    // }
     test = charTest(caret.textContent);
   }
 
@@ -93,8 +77,10 @@ export const keyboard = function(event) {
         caret.classList.toggle('char-wrong');
       }
 
-      if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
-        document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
+      if (caret.classList.contains('finish')) { // the end
+        caret.classList.remove('char-caret');
+        console.log('конец');
+      } else if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
         charInserter(arrOfStrings, indOfString);
         caret = document.querySelector('.char-caret');
         wrongKeyHandler(caret);
@@ -124,6 +110,7 @@ export const keyboard = function(event) {
       }, 100);
     });
   } catch (error) {
-    console.error(`${error.name}: ${error.message}`);
+    // console.error(`${error.name}: ${error.message}`);
+    console.error(error);
   }
 };
