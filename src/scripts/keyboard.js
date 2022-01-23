@@ -8,7 +8,9 @@ import { arrOfStrings, charInserter, indOfString } from "/src/scripts/char-inser
 // skipping special keys
 
 // testing a char for compliance
-const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
+// returns false if the char is inappropriate
+// const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
+const charTest = char => /[ A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 
 
 // skipping inappropriate chars and a space after them (due a certain condition)
@@ -26,14 +28,22 @@ const wrongKeyHandler = function(caret) {
       caret.classList.toggle('char-caret');
     } else if (caret.classList.contains('line-end')) {
       caret = caret.parentElement.nextElementSibling.firstChild;
+
     } else {
       caret = caret.nextElementSibling;
     }
 
-    if (caret.textContent === ' ') {
-      // caret.classList.add('char-neutral');
-      // caret = caret.nextSibling;
-    }
+    // if (caret.textContent === ' ' && charTest(caret.nextElementSibling)) {
+    //   caret.classList.add('char-neutral');
+    //
+    //   // if (caret.classList.contains('line-end')) {
+    //   //   caret.classList.toggle('char-caret')
+    //   //   caret.parentElement.querySelectorAll('div[class="char"]').forEach(char => char.classList.add('char-correct'));
+    //   //   caret = caret.parentElement.nextElementSibling.firstElementChild;
+    //   // } else {
+    //     caret = caret.nextSibling;
+    //   // }
+    // }
 
     test = charTest(caret.textContent);
   }
