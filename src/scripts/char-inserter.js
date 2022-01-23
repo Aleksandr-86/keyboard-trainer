@@ -28,9 +28,10 @@ export const charInserter = function(arr, index) {
     const arrWord = [...arrOfStrings[i]];
 
     if (currentLine === null) {
-      console.log(1);
       indOfString = i;
+      console.log(`1 counter ${counter}, before break ${word}`);
       break;
+
     } else if (word === '\n' && counter > 0) {
       console.log(2);
       currentLine.lastElementChild.classList.add('line-end');
@@ -39,20 +40,24 @@ export const charInserter = function(arr, index) {
         currentLine.appendChild(createDiv(' '));
       currentLine = currentLine.nextElementSibling;
       counter = 0;
+
     } else if (word === '\n' && counter === 0) {
       console.log(3);
       currentLine = currentLine.nextElementSibling;
+
     } else if (wordLen + counter < 35) {
-      console.log(4);
       arrWord.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
       currentLine.appendChild(createDiv(' '));
       counter = counter + wordLen + 1;
+
       if (i === arrLen - 1) currentLine.lastElementChild.remove();
       if (counter === 35) {
         currentLine.lastElementChild.classList.add('line-end');
         currentLine = currentLine.nextElementSibling;
         counter = 0;
       }
+      console.log(`4 counter ${counter}`);
+
     } else if (wordLen >= 35) {
       // console.log(5);
       let wordPart1 = arrOfStrings[i].slice(0, 35 - counter);
@@ -77,13 +82,17 @@ export const charInserter = function(arr, index) {
       }
 
       if (!currentLine) {
-        console.log('5.1');
-        arrOfStrings[i] = wordPart2;
-        i--;
+        if (wordPart2.length !== 0) {
+          arrOfStrings[i] = wordPart2;
+          i--;
+        }
+        counter = 0;
+        console.log(`5.1 counter ${counter}`);
       } else {
-        console.log('5.2');
         const arrWordPart2 = wordPart2.split('');
         arrWordPart2.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
+        // for (let j = 0; j < (35 - counter); j++) // adding spaces till the end of the line
+        //   currentLine.appendChild(createDiv(' '));
 
         // if (i !== arrLen - 1 && wordPart2.length !== 35) {
         //   // currentLine.appendChild(createDiv(' '));
@@ -91,11 +100,13 @@ export const charInserter = function(arr, index) {
         // }
 
         // counter = counter + arrWordPart2.length;
-        counter = (wordLen + arrWordPart2.length) % 35;
-        console.log(`counter ${counter}`);
+        // counter = (wordLen + arrWordPart2.length) % 35;
+        counter = wordPart2.length;
+        console.log(`5.2 counter ${counter}`);
       }
+
     } else if (wordLen + counter > 34 && wordLen < 35) {
-      console.log(`6 ${counter}`);
+      console.log(`6 ${counter}, word ${word}`);
       i--;
       currentLine.lastElementChild.classList.toggle('line-end');
 
