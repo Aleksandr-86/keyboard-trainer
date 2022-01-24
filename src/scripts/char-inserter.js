@@ -21,7 +21,7 @@ export const charInserter = function(arr, index) {
   arrOfStrings = [...arr];
   const arrLen = arrOfStrings.length;
   // the maximum length of a word that will not be carried over to the next line
-  let wordLenMax = 9;
+  let wordLenMax = 10;
   const lineLen = 35;
   if (wordLenMax > lineLen) wordLenMax = lineLen;
   let counter = 0;
@@ -37,7 +37,6 @@ export const charInserter = function(arr, index) {
     if (currentLine === null) {
       console.log('0');
       indOfString = i;
-      document.querySelector('#line5 > :last-child').classList.add('field-end');
       break;
     } else if (word === '\n' && counter > 0) {
       console.log(`1 counter ${counter}`);
@@ -49,28 +48,32 @@ export const charInserter = function(arr, index) {
       currentLine = currentLine.nextElementSibling;
       counter = 0;
     } else if (word === '\n' && counter === 0) {
-      console.log('2');
-      currentLine = currentLine.nextElementSibling;
+      // ...
     } else if (wordLen + counter < lineLen) {
       console.log('3');
+
       arrWord.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
       currentLine.appendChild(createDiv(' '));
       counter = counter + wordLen + 1;
 
       if (counter === lineLen) {
         currentLine.lastElementChild.classList.add('line-end');
-        currentLine = currentLine.nextElementSibling;
+        if (i !== arrLen - 1) currentLine = currentLine.nextElementSibling;
         counter = 0;
       }
     } else if (wordLen > wordLenMax) {
       console.log('4');
+
       let wordPart1 = arrOfStrings[i].slice(0, lineLen - counter);
       let wordPart2 = arrOfStrings[i].slice(lineLen - counter);
 
       let arrWordPart1 = wordPart1.split('');
       arrWordPart1.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
       currentLine.lastElementChild.classList.add('line-end');
-      currentLine = currentLine.nextElementSibling;
+      // if (i === arrLen - 1 && wordPart2.length !== 0) currentLine = currentLine.nextElementSibling;
+      if (i !== arrLen - 1) currentLine = currentLine.nextElementSibling;
+      // if (wordPart2.length !== 0) currentLine = currentLine.nextElementSibling;
+      // currentLine = currentLine.nextElementSibling;
 
       while (wordPart2.length > lineLen) {
         const tempStr = wordPart2;
@@ -91,18 +94,27 @@ export const charInserter = function(arr, index) {
         }
         counter = 0;
       } else {
-        // if (wordPart2.length > 0) {
-        const arrWordPart2 = wordPart2.split('');
-        arrWordPart2.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
-        currentLine.appendChild(createDiv(' '));
-        counter = wordPart2.length + 1;
-        console.log(`counter ${counter}`);
-        // } else {
-        //   counter = 0;
-        // }
+
+        if (wordPart2.length === lineLen) {
+          const arrWordPart2 = wordPart2.split('');
+          arrWordPart2.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
+          currentLine.lastElementChild.classList.add('line-end');
+          if (i !== arrLen - 1) currentLine = currentLine.nextElementSibling;
+          counter = 0;
+          console.log('sdfsdfdsfsdf', currentLine);
+        } else if (wordPart2.length > 0) {
+          const arrWordPart2 = wordPart2.split('');
+          arrWordPart2.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
+          currentLine.appendChild(createDiv(' '));
+          counter = wordPart2.length + 1;
+        } else {
+          counter = 0;
+        }
       }
+      console.log('44444444444444', currentLine);
     } else if ((wordLen + counter) > (lineLen - 1) && wordLen < lineLen) {
       console.log('5');
+
       i--;
       currentLine.lastElementChild.classList.toggle('line-end');
 
@@ -113,7 +125,8 @@ export const charInserter = function(arr, index) {
     }
 
     if (i === arrLen - 1) { // marking the end of typing
-      currentLine.lastElementChild.remove();
+      const lastElem = currentLine.lastElementChild;
+      if (lastElem.textContent === ' ') lastElem.remove();
       currentLine.lastElementChild.classList.add('finish');
     }
   }
