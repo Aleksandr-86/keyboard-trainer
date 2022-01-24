@@ -48,71 +48,83 @@ export const charInserter = function(arr, index) {
       currentLine = currentLine.nextElementSibling;
       counter = 0;
     } else if (word === '\n' && counter === 0) {
+      console.log(`2 counter ${counter}`);
       // ...
     } else if (wordLen + counter < lineLen) {
-      console.log('3');
-
-      arrWord.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
-      currentLine.appendChild(createDiv(' '));
-      counter = counter + wordLen + 1;
-
-      if (counter === lineLen) {
-        currentLine.lastElementChild.classList.add('line-end');
-        if (i !== arrLen - 1) currentLine = currentLine.nextElementSibling;
-        counter = 0;
+      arrWord.forEach(char => currentLine.appendChild(createDiv(char)));
+      if (i !== arrLen - 1) {
+        currentLine.appendChild(createDiv(' '));
+        counter++;
       }
+      counter = counter + wordLen;
+
+      console.log(`3`);
+
+      // if (counter === lineLen) {
+      //   currentLine.lastElementChild.classList.add('line-end');
+      //   if (i !== arrLen - 1) currentLine = currentLine.nextElementSibling;
+      //   counter = 0;
+      // }
     } else if (wordLen > wordLenMax) {
-      console.log('4');
+      // console.log('4');
 
       let wordPart1 = arrOfStrings[i].slice(0, lineLen - counter);
       let wordPart2 = arrOfStrings[i].slice(lineLen - counter);
 
-      let arrWordPart1 = wordPart1.split('');
-      arrWordPart1.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
+      wordPart1.split('').forEach(char => currentLine.appendChild(createDiv(char)));
       currentLine.lastElementChild.classList.add('line-end');
-      // if (i === arrLen - 1 && wordPart2.length !== 0) currentLine = currentLine.nextElementSibling;
-      if (i !== arrLen - 1) currentLine = currentLine.nextElementSibling;
-      // if (wordPart2.length !== 0) currentLine = currentLine.nextElementSibling;
-      // currentLine = currentLine.nextElementSibling;
+      counter = 0;
 
-      while (wordPart2.length > lineLen) {
-        const tempStr = wordPart2;
-        wordPart1 = tempStr.slice(0, lineLen);
-        wordPart2 = tempStr.slice(lineLen);
-        arrWordPart1 = wordPart1.split('');
+      if (wordPart2.length > lineLen) {
+        console.log(`4.1 word ${arrOfStrings[i]}, counter ${counter}`);
 
-        arrWordPart1.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
-        currentLine.lastElementChild.classList.add('line-end');
+        arrOfStrings[i] = wordPart2;
+        i--;
+        counter = 0;
         currentLine = currentLine.nextElementSibling;
-        if (!currentLine) break;
-      }
 
-      if (!currentLine) {
-        if (wordPart2.length !== 0) {
+      } else if (wordPart2.length === lineLen) {
+        console.log(`4.2 wordPart2 ${wordPart2}, counter ${counter}`);
+
+        currentLine = currentLine.nextElementSibling;
+
+        wordPart2.split('').forEach(char => currentLine.appendChild(createDiv(char)));
+        currentLine.lastElementChild.classList.add('line-end');
+
+        if (i !== arrLen - 1) currentLine = currentLine.nextElementSibling;
+        counter = 0;
+      } else if (wordPart2.length === 0) {
+        console.log(`4.3 wordPart2 ${wordPart2}, counter ${counter}`);
+
+        if (i !== arrLen - 1) {
+          currentLine = currentLine.nextElementSibling;
+          counter = 0;
+        }
+      } else {
+        console.log(`4.4 wordPart2 ${wordPart2}, counter ${counter}`);
+
+        console.warn(`wordPart2 ${wordPart2}`, currentLine);
+
+        currentLine = currentLine.nextElementSibling;
+        console.log(!currentLine);
+        if (!currentLine) {
           arrOfStrings[i] = wordPart2;
           i--;
-        }
-        counter = 0;
-      } else {
-
-        if (wordPart2.length === lineLen) {
-          const arrWordPart2 = wordPart2.split('');
-          arrWordPart2.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
-          currentLine.lastElementChild.classList.add('line-end');
-          if (i !== arrLen - 1) currentLine = currentLine.nextElementSibling;
           counter = 0;
-          console.log('sdfsdfdsfsdf', currentLine);
-        } else if (wordPart2.length > 0) {
-          const arrWordPart2 = wordPart2.split('');
-          arrWordPart2.forEach(char => currentLine.appendChild(createDiv(char))); // filling the line with chars
-          currentLine.appendChild(createDiv(' '));
-          counter = wordPart2.length + 1;
         } else {
-          counter = 0;
+          wordPart2.split('').forEach(char => currentLine.appendChild(createDiv(char)));
+          if (i !== arrLen - 1) {
+            currentLine.appendChild(createDiv(' '));
+            counter++;
+          }
+          // currentLine.lastElementChild.classList.add('line-end');
+          counter = counter + wordPart2.length;
         }
       }
-      console.log('44444444444444', currentLine);
-    } else if ((wordLen + counter) > (lineLen - 1) && wordLen < lineLen) {
+
+      // console.log('44444444444444', currentLine);
+      // } else if ((wordLen + counter) > (lineLen - 1) && wordLen < lineLen) {
+    } else if (wordLen < lineLen) {
       console.log('5');
 
       i--;
@@ -122,11 +134,13 @@ export const charInserter = function(arr, index) {
         currentLine.appendChild(createDiv(' '));
       currentLine = currentLine.nextElementSibling;
       counter = 0;
+    } else {
+      console.error('else');
     }
 
     if (i === arrLen - 1) { // marking the end of typing
-      const lastElem = currentLine.lastElementChild;
-      if (lastElem.textContent === ' ') lastElem.remove();
+      // const lastElem = currentLine.lastElementChild;
+      // if (lastElem.textContent === ' ') lastElem.remove();
       currentLine.lastElementChild.classList.add('finish');
     }
   }
