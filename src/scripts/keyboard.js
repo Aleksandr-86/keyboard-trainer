@@ -21,8 +21,6 @@ export const wrongKeyHandler = function(caret) {
     caret.classList.add('char-neutral');
 
     if (caret.classList.contains('finish')) { // the end of typing
-      caret.classList.add('char-neutral char-caret');
-      console.warn('1 конец');
       break;
     } else {
       if (caret.classList.contains('line-end') && !caret.parentElement.nextElementSibling) {
@@ -84,7 +82,7 @@ export const keyboard = function(event) {
 
       if (caret.classList.contains('finish')) { // the end of typing
         caret.classList.remove('char-caret');
-        console.warn('2 конец');
+        console.warn('конец');
       } else if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
         charInserter(arrOfStrings, indOfString);
         caret = document.querySelector('.char-caret');
