@@ -88,6 +88,8 @@ body {
   width: 939px;
   height: 312px;
   margin: 0 auto;
+  cursor: none;
+  user-select: none;
   /*background: #c88b8b;*/
 }
 
