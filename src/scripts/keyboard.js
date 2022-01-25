@@ -12,7 +12,7 @@ const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/
 
 
 // skipping inappropriate chars and a space after them (due a certain condition)
-export const wrongKeyHandler = function(caret) {
+export const charHandler = function(caret) {
 
   let test = charTest(caret.textContent);
   caret.classList.remove('char-caret');
@@ -86,7 +86,7 @@ export const keyboard = function(event) {
       } else if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
         charInserter(arrOfStrings, indOfString);
         caret = document.querySelector('.char-caret');
-        wrongKeyHandler(caret);
+        charHandler(caret);
       } else if (caret.classList.contains('line-end')) {
         caret.classList.toggle('char-caret');
 
@@ -96,11 +96,11 @@ export const keyboard = function(event) {
         }
 
         caret = caret.parentElement.nextElementSibling.firstChild;
-        wrongKeyHandler(caret);
+        charHandler(caret);
       } else {
         caret.classList.remove('char-caret');
         caret = caret.nextElementSibling;
-        wrongKeyHandler(caret);
+        charHandler(caret);
       }
     }
 
@@ -112,6 +112,6 @@ export const keyboard = function(event) {
       }, 100);
     });
   } catch (error) {
-    // console.error(error);
+    console.error(error);
   }
 };

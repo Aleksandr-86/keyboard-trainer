@@ -1,4 +1,4 @@
-import { wrongKeyHandler } from "/src/scripts/keyboard.js";
+import { charHandler } from "/src/scripts/keyboard.js";
 
 "use strict";
 
@@ -91,7 +91,8 @@ export const charInserter = function(arr, index) {
           counter = counter + wordPart2.length;
         }
       }
-    } else if (wordLen < lineLen) {
+      // } else if (wordLen < lineLen) {
+    } else {
       i--;
       currentLine.lastElementChild.classList.toggle('line-end');
 
@@ -108,5 +109,5 @@ export const charInserter = function(arr, index) {
 
   const firstElem = document.querySelector('#line1 > :first-child');
   firstElem.classList.add('char-caret');
-  wrongKeyHandler(firstElem);
+  charHandler(firstElem);
 };

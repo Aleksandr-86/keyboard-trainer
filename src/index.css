@@ -20,6 +20,8 @@ body {
   width: 1365px;
   height: 470px;
   margin: 0 auto 50px auto;
+  cursor: none;
+  user-select: none;
   /*background: #b990cf;*/
   /*overflow: hidden;*/
 }
