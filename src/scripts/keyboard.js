@@ -1,4 +1,4 @@
-import { arrOfStrings, charInserter, indOfString } from "/src/scripts/char-inserter.js";
+import {arrOfStrings, charInserter, indOfString} from "/src/scripts/char-inserter.js";
 
 "use strict";
 

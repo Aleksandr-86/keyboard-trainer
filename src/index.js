@@ -1,6 +1,6 @@
-import { charInserter, strPreparer } from "/src/scripts/char-inserter.js";
-import { keyboard } from "/src/scripts/keyboard.js";
-import { getBrowser } from "/src/scripts/browser-detector.js";
+import {charInserter, strPreparer} from "/src/scripts/char-inserter.js";
+import {keyboard} from "/src/scripts/keyboard.js";
+import {getBrowser} from "/src/scripts/browser-detector.js";
 
 // const btnGenFromSite = document.querySelector('#btn1');
 const btnGenFromBuffer = document.querySelector('#btn2');

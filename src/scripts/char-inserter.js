@@ -1,4 +1,4 @@
-import { charHandler } from "/src/scripts/keyboard.js";
+import {charHandler} from "/src/scripts/keyboard.js";
 
 "use strict";
 
