@@ -10,6 +10,9 @@ import { arrOfStrings, charInserter, indOfString } from "/src/scripts/char-inser
 // returns false if a char is inappropriate
 const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 
+const langTest = function(char) {
+  return /[0-9 А-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
+};
 
 // skipping inappropriate chars and a space after them (due a certain condition)
 export const charHandler = function(caret) {
@@ -55,7 +58,7 @@ export const charHandler = function(caret) {
 export const keyboard = function(event) {
   event.preventDefault();
 
-// selecting the first element of the first line
+  // selecting the first element of the first line
   let caret = document.querySelector('.char-caret');
 
   try {
@@ -68,6 +71,7 @@ export const keyboard = function(event) {
       btnDn.className = 'button-dn1';
     } else {
       btnDn.className = 'button-dn2';
+
 
       // setting case-insensitive matching
       eKey = eKey.toLowerCase();
@@ -102,10 +106,19 @@ export const keyboard = function(event) {
         caret = caret.nextElementSibling;
         charHandler(caret);
       }
+
+      // identifying the language of the keyboard layout
+      console.log(langTest(caret.textContent));
+      if (langTest(caret.textContent)) {
+        caret.style.borderBottomColor = 'rgba(20, 120, 100, 0.8)';
+      } else {
+        caret.style.borderBottomColor = 'rgb(220, 100, 70, 0.8)';
+      }
     }
 
     // releasing the key
     document.body.addEventListener('keyup', function(event) {
+
       const btnUp = document.querySelector(`#${event.code.toLowerCase()}`);
       if (btnDn === btnUp) setTimeout(() => {
         btnUp.className = 'button-up';

@@ -1,0 +1,31 @@
+@import "field.css";
+@import "keyboard.css";
+
+@font-face {
+  font-family: 'PTMonoWebRegular';
+  src: url('/src/fonts/PT-Mono_Regular.woff2') format('woff2'),
+  url('/src/fonts/PT-Mono_Regular.woff') format('woff'),
+  local("Consolas");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body {
+  /*width: 1366px;*/
+  /*height: 768px;*/
+  /*background: rgb(105, 146, 167);*/
+  background: black;
+}
+
+#btn-panel {
+  display: table;
+  width: 100%;
+}
+
+.panel {
+  display: table-row;
+  height: 100px;
+  text-align: center;
+  vertical-align: middle;
+}

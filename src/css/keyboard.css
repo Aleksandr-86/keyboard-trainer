@@ -1,0 +1,110 @@
+.keyboard {
+  width: 939px;
+  height: 312px;
+  margin: 0 auto;
+  user-select: none;
+  /*background: #c88b8b;*/
+}
+
+.button-up,
+.button-dn1,
+.button-dn2 {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  margin-right: 3px;
+  font-size: 21px;
+  font-family: "PTMonoWebRegular", monospace;
+  text-align: center;
+
+  color: black;
+  background: rgba(250, 220, 240, 0.3);
+  border: none;
+  border-radius: 15px;
+}
+
+.button-up:after,
+.button-dn1:after,
+.button-dn2:after {
+  content: '';
+  height: 63px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.button-dn1 {
+  box-shadow: 0 0 30px 15px rgb(110, 30, 110, 0.5), inset 0 0 30px rgb(110, 30, 110, 0.5);
+}
+
+.button-dn2 {
+  box-shadow: 0 0 30px 15px rgb(0, 255, 255, 0.5), inset 0 0 30px rgb(0, 255, 255, 0.5);
+}
+
+.button-dn1:after,
+.button-dn2:after {
+  height: 68px;
+}
+
+.row1,
+.row2,
+.row3,
+.row4 {
+  display: flex;
+  width: inherit;
+  margin-bottom: 3px;
+}
+
+.row5 {
+  display: flex;
+  width: inherit;
+}
+
+#backspace {
+  width: 120px;
+  margin-right: 0;
+}
+
+#tab {
+  width: 90px;
+}
+
+#backslash {
+  width: 90px;
+  margin-right: 0;
+}
+
+#capslock {
+  width: 106px;
+}
+
+#enter {
+  width: 136px;
+  margin-right: 0;
+}
+
+#shiftleft {
+  width: 138px;
+}
+
+#shiftright {
+  width: 168px;
+  margin-right: 0;
+}
+
+#controlleft,
+#osleft,
+#altleft,
+#altright,
+#osright,
+#contextmenu {
+  width: 75px;
+}
+
+#space {
+  width: 393px;
+}
+
+#controlright {
+  width: 75px;
+  margin-right: 0;
+}

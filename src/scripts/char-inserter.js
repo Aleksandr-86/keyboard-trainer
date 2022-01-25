@@ -23,7 +23,7 @@ export const charInserter = function(arr, index) {
   // the maximum length of a word that will not be carried over to the next line
   let wordLenMax = 10;
   const lineLen = 35;
-  if (wordLenMax > lineLen) wordLenMax = lineLen;
+  if (wordLenMax >= lineLen) wordLenMax = lineLen - 1;
   let counter = 0;
 
   document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
