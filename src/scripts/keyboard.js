@@ -8,11 +8,8 @@ import {arrOfStrings, charInserter, indOfString} from "/src/scripts/char-inserte
 // skipping special keys
 
 // returns false if a char is inappropriate
-const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
-
-const langTest = function(char) {
-  return /[0-9 А-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
-};
+export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
+const langTest = char => /[0-9 А-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 
 // skipping inappropriate chars and a space after them (due a certain condition)
 export const charHandler = function(caret) {
@@ -21,7 +18,8 @@ export const charHandler = function(caret) {
   caret.classList.remove('char-caret');
 
   while (!test) {
-    caret.classList.add('char-neutral');
+    caret.classList.remove('char-neutral-inactive')
+    caret.classList.add('char-neutral-active');
 
     if (caret.classList.contains('finish')) { // the end of typing
       break;
@@ -41,7 +39,8 @@ export const charHandler = function(caret) {
               .forEach(div => div.classList.add('char-correct'));
             caret = caret.parentElement.nextElementSibling.firstElementChild;
           }
-          caret.classList.add('char-neutral');
+          caret.classList.remove('char-neutral-inactive')
+          caret.classList.add('char-neutral-active');
         }
         caret = caret.nextElementSibling;
       }
@@ -108,12 +107,12 @@ export const keyboard = function(event) {
       }
 
       // identifying the language of the keyboard layout
-      console.log(langTest(caret.textContent));
-      if (langTest(caret.textContent)) {
-        caret.style.borderBottomColor = 'rgba(20, 120, 100, 0.8)';
-      } else {
-        caret.style.borderBottomColor = 'rgb(220, 100, 70, 0.8)';
-      }
+      // console.log(langTest(caret.textContent));
+      // if (langTest(caret.textContent)) {
+      //   caret.style.borderBottomColor = 'rgba(20, 120, 100, 0.8)';
+      // } else {
+      //   caret.style.borderBottomColor = 'rgb(220, 100, 70, 0.8)';
+      // }
     }
 
     // releasing the key

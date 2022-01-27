@@ -3,7 +3,8 @@
   height: 312px;
   margin: 0 auto;
   user-select: none;
-  /*background: #c88b8b;*/
+  background: rgb(170, 170, 170);
+  border-radius: 15px;
 }
 
 .button-up,
@@ -18,7 +19,7 @@
   text-align: center;
 
   color: black;
-  background: rgba(250, 220, 240, 0.3);
+  background: rgb(200, 200, 200);
   border: none;
   border-radius: 15px;
 }

@@ -1,4 +1,4 @@
-import {charHandler} from "/src/scripts/keyboard.js";
+import {charHandler, charTest} from "/src/scripts/keyboard.js";
 
 "use strict";
 
@@ -13,6 +13,7 @@ const createDiv = function(char) {
   const container = document.createElement('div');
   container.className = 'char';
   container.textContent = char;
+  if (!charTest(container.textContent)) container.classList.add('char-neutral-inactive');
   return container;
 };
 
@@ -91,7 +92,6 @@ export const charInserter = function(arr, index) {
           counter = counter + wordPart2.length;
         }
       }
-      // } else if (wordLen < lineLen) {
     } else {
       i--;
       currentLine.lastElementChild.classList.toggle('line-end');
