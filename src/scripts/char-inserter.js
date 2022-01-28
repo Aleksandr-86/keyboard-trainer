@@ -36,21 +36,17 @@ export const charInserter = function(arr, index) {
     const arrWord = [...arrOfStrings[i]];
 
     if (currentLine === null) {
-      console.log(1)
       indOfString = i;
       break;
     } else if (word === '\n' && counter > 0) {
-      console.log(2)
       currentLine.lastElementChild.classList.add('line-end');
       for (let j = 0; j < (lineLen - counter); j++)  // adding spaces till the end of the line
         currentLine.appendChild(createDiv(' '));
       currentLine = currentLine.nextElementSibling;
       counter = 0;
     } else if (word === '\n' && counter === 0) {
-      console.log(3)
       // ...
     } else if (wordLen + counter < lineLen) {
-      console.log(4)
       arrWord.forEach(char => currentLine.appendChild(createDiv(char)));
       if (i !== arrLen - 1) {
         currentLine.appendChild(createDiv(' '));
@@ -58,7 +54,6 @@ export const charInserter = function(arr, index) {
       }
       counter = counter + wordLen;
     } else if (wordLen > wordLenMax && (wordLen + counter > lineLen || (counter === 0 && wordLen === lineLen))) {
-      console.log(5)
       let wordPart1 = arrOfStrings[i].slice(0, lineLen - counter);
       let wordPart2 = arrOfStrings[i].slice(lineLen - counter);
 
@@ -67,26 +62,22 @@ export const charInserter = function(arr, index) {
       counter = 0;
 
       if (wordPart2.length > lineLen) {
-        console.log(5.1)
         arrOfStrings[i] = wordPart2;
         i--;
         counter = 0;
         currentLine = currentLine.nextElementSibling;
       } else if (wordPart2.length === lineLen) {
-        console.log(5.2)
         currentLine = currentLine.nextElementSibling;
         wordPart2.split('').forEach(char => currentLine.appendChild(createDiv(char)));
         currentLine.lastElementChild.classList.add('line-end');
         if (i !== arrLen - 1) currentLine = currentLine.nextElementSibling;
         counter = 0;
       } else if (wordPart2.length === 0) {
-        console.log(5.3)
         if (i !== arrLen - 1) {
           currentLine = currentLine.nextElementSibling;
           counter = 0;
         }
       } else {
-        console.log(5.4)
         currentLine = currentLine.nextElementSibling;
         if (!currentLine) {
           arrOfStrings[i] = wordPart2;
@@ -102,7 +93,6 @@ export const charInserter = function(arr, index) {
         }
       }
     } else {
-      console.log(6)
       i--;
       currentLine.lastElementChild.classList.toggle('line-end');
 
