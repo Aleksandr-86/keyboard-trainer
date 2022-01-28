@@ -3,15 +3,12 @@ import {keyboard} from "/src/scripts/keyboard.js";
 import {getBrowser} from "/src/scripts/browser-detector.js";
 
 
-const btnGenFromSite = document.querySelector('#btn1');
+// const btnGenFromSite = document.querySelector('#btn1');
 const btnGenFromBuffer = document.querySelector('#btn2');
 
-btnGenFromSite.addEventListener('click', function() {
-  dataCall();
-});
-
-
-const HTML = 'https://www.litmir.me/br/?b=252058&p=1'
+// btnGenFromSite.addEventListener('click', function() {
+  // dataCall();
+// });
 
 
 btnGenFromBuffer.addEventListener('click', async function() {

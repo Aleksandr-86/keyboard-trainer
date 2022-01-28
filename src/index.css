@@ -40,6 +40,6 @@ header {
 .btn {
   margin-right: 5px;
   /*padding: 15px;*/
-  background: inherit;
+  /*background: inherit;*/
   font-size: 25px;
 }

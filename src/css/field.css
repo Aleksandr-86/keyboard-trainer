@@ -11,16 +11,17 @@
 
 .line {
   width: inherit;
+  height: 86px;
 }
 
 .char {
   float: left;
   width: 39px;
-  height: 86px;
+  height: inherit;
   font-family: "JetBrainsMono-Regular", monospace;
   font-size: 65px;
   background: rgba(55, 55, 55, 0.9);
-  /*background: rgba(245, 222, 179, 0.9);*/
+  /*background: rgba(245, 2 22, 179, 0.9);*/
   /*border-radius: 5px;*/
   white-space: pre-wrap;
   color: rgba(165, 165, 165, 0.9);
