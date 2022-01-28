@@ -1,7 +1,6 @@
 import {charInserter, strPreparer} from "/src/scripts/char-inserter.js";
 import {keyboard} from "/src/scripts/keyboard.js";
 import {getBrowser} from "/src/scripts/browser-detector.js";
-import {dataCall} from "/src/scripts/request.js";
 
 
 const btnGenFromSite = document.querySelector('#btn1');

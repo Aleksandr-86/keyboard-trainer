@@ -34,11 +34,12 @@ header {
   background: rgba(20, 20, 20, 0.8);
   height: 40px;
   width: 100%;
-  /*padding: 5px;*/
+  padding: 5px;
 }
 
 .btn {
   margin-right: 5px;
   /*padding: 15px;*/
+  background: inherit;
   font-size: 25px;
 }
