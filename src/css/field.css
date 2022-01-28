@@ -26,7 +26,8 @@
   white-space: pre-wrap;
   color: rgba(165, 165, 165, 0.9);
   /*color: rgba(55, 55, 55, 0.9)*/
-  margin-bottom: 2px;
+  /*margin-bottom: 2px;*/
+
 }
 
 /*.field :last-child {*/
@@ -57,4 +58,8 @@
   width: 39px;
   height: 81px;
   border-bottom: 5px solid rgba(20, 120, 100, 0.9);
+}
+
+.char-transparent {
+  mix-blend-mode: multiply;
 }

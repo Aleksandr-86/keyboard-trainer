@@ -21,8 +21,10 @@ box-sizing: border-box;
 body {
   /*background: black url("/src/images/backgrounds/aurora.jpg") no-repeat border-box;*/
   /*background: black url("/src/images/backgrounds/nightroad2.jpg") no-repeat border-box;*/
-  background: black url("/src/images/backgrounds/mountain2.jpg") no-repeat fixed center center;
- /*background: black;*/
+  /*background: black url("/src/images/backgrounds/mountain2.jpg") no-repeat fixed center center;*/
+  background: black url("/src/images/backgrounds/caribbean.jpg") no-repeat fixed center center;
+  /*background: black url("/src/images/backgrounds/snow-mountain.jpg") no-repeat fixed center center;*/
+ /*background: white;*/
   background-size: cover;
 }
 

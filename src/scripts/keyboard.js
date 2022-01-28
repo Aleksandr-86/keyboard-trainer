@@ -27,6 +27,15 @@ export const charHandler = function(caret) {
       if (caret.classList.contains('line-end') && !caret.parentElement.nextElementSibling) {
         charInserter(arrOfStrings, indOfString); // filling all the lines
       } else if (caret.classList.contains('line-end')) {
+        caret.parentElement.querySelectorAll('.char').forEach(char => {
+          char.style.mixBlendMode = 'multiply';
+          if (char.classList.contains('char-neutral-active')
+            || char.classList.contains('char')) {
+            char.classList.remove('char-neutral-active');
+            char.classList.add('char-correct');
+          }
+          char.textContent = '';
+        });
         caret = caret.parentElement.nextElementSibling.firstElementChild;
       } else {
         if (caret !== caret.parentElement.firstElementChild &&
@@ -34,6 +43,15 @@ export const charHandler = function(caret) {
           caret.nextElementSibling.textContent === ' ') {
           caret = caret.nextElementSibling;
           if (caret.classList.contains('line-end')) {
+            caret.parentElement.querySelectorAll('.char').forEach(char => {
+              char.style.mixBlendMode = 'multiply';
+              if (char.classList.contains('char-neutral-active')
+                || char.classList.contains('char')) {
+                char.classList.remove('char-neutral-active');
+                char.classList.add('char-correct');
+              }
+              char.textContent = '';
+            });
             caret.parentElement
               .querySelectorAll('div[class="char"], div[class="char line-end"]')
               .forEach(div => div.classList.add('char-correct'));
@@ -84,6 +102,15 @@ export const keyboard = function(event) {
       }
 
       if (caret.classList.contains('finish')) { // the end of typing
+        caret.parentElement.querySelectorAll('.char').forEach(char => {
+          char.style.mixBlendMode = 'multiply';
+          if (char.classList.contains('char-neutral-active')
+            || char.classList.contains('char')) {
+            char.classList.remove('char-neutral-active');
+            char.classList.add('char-correct');
+          }
+          char.textContent = '';
+        });
         caret.classList.remove('char-caret');
         console.warn('конец');
       } else if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
@@ -91,6 +118,17 @@ export const keyboard = function(event) {
         caret = document.querySelector('.char-caret');
         charHandler(caret);
       } else if (caret.classList.contains('line-end')) {
+        caret.parentElement.querySelectorAll('.char').forEach(char => {
+          char.classList.add('char-transparent');
+
+          if (char.classList.contains('char-neutral-active')
+            || char.classList.contains('char')) {
+            char.classList.remove('char-neutral-active');
+            char.classList.add('char-correct');
+          }
+
+          char.textContent = '';
+        });
         caret.classList.toggle('char-caret');
 
         if (caret.nextElementSibling !== null) {
