@@ -11,35 +11,23 @@ import {arrOfStrings, charInserter, indOfString} from "/src/scripts/char-inserte
 export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 const langTest = char => /[0-9 А-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 
-// changing char's style and content
-const charStyle = function(char) {
-  char.style.mixBlendMode = 'multiply';
-  if (char.classList.contains('char-neutral-active') || char.classList.contains('char')) {
-    char.classList.remove('char-neutral-active');
-    char.classList.add('char-correct');
-  }
-  char.textContent = '';
-};
-
 // skipping inappropriate chars and a space after them (due a certain condition)
 export const charHandler = function(caret) {
   let test = charTest(caret.textContent);
   caret.classList.remove('char-caret');
 
   while (!test) {
-    caret.classList.remove('char-neutral-inactive')
-    caret.classList.add('char-neutral-active');
+    // caret.className = 'char char-neutral char-volume'
+    caret.classList.add('char-neutral', 'char-volume');
 
     if (caret.classList.contains('finish')) { // the end of typing
       caret.classList.add('char-caret');
-      caret.parentElement.querySelectorAll('.char').forEach(char => charStyle(char));
       console.warn('1 конец')
       break;
     } else {
       if (caret.classList.contains('line-end') && !caret.parentElement.nextElementSibling) {
         charInserter(arrOfStrings, indOfString); // filling all the lines
       } else if (caret.classList.contains('line-end')) {
-        caret.parentElement.querySelectorAll('.char').forEach(char => charStyle(char));
         caret = caret.parentElement.nextElementSibling.firstElementChild;
       } else {
         if (caret !== caret.parentElement.firstElementChild &&
@@ -47,14 +35,13 @@ export const charHandler = function(caret) {
           caret.nextElementSibling.textContent === ' ') {
           caret = caret.nextElementSibling;
           if (caret.classList.contains('line-end')) {
-            caret.parentElement.querySelectorAll('.char').forEach(char => charStyle(char));
             caret.parentElement
               .querySelectorAll('div[class="char"], div[class="char line-end"]')
               .forEach(div => div.classList.add('char-correct'));
             caret = caret.parentElement.nextElementSibling.firstElementChild;
           }
-          caret.classList.remove('char-neutral-inactive')
-          caret.classList.add('char-neutral-active');
+
+          if (caret.textContent !== ' ') caret.classList.add('char-neutral', 'char-volume')
         }
         caret = caret.nextElementSibling;
       }
@@ -83,6 +70,7 @@ export const keyboard = function(event) {
       || eKey === 'Control' || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
       btnDn.className = 'button-dn1';
     } else {
+      console.warn(eKey)
       btnDn.className = 'button-dn2';
 
 
@@ -93,13 +81,17 @@ export const keyboard = function(event) {
       // coloring the char's background depending on the pressed key
       if (eKey === targetChar) {
         caret.classList.add('char-correct');
+        if (targetChar !== ' ') caret.classList.add('char-volume');
       } else {
-        caret.classList.toggle('char-wrong');
+        caret.classList.add('char-wrong', 'char-volume');
       }
+
+      // add a volume to the chars
+      if (targetChar !== ' ') caret.classList.add('char-volume');
+
 
       if (caret.classList.contains('finish')) { // the end of typing
         caret.classList.remove('char-caret');
-        caret.parentElement.querySelectorAll('.char').forEach(char => charStyle(char));
         console.warn('2 конец');
       } else if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
         charInserter(arrOfStrings, indOfString);
@@ -107,11 +99,11 @@ export const keyboard = function(event) {
         charHandler(caret);
       } else if (caret.classList.contains('line-end')) {
         caret.classList.toggle('char-caret');
-        caret.parentElement.querySelectorAll('.char').forEach(char => charStyle(char));
 
         if (caret.nextElementSibling !== null) {
           const curLine = caret.parentElement;
-          curLine.querySelectorAll('div[class="char"]').forEach(char => char.classList.add('char-correct'));
+          curLine.querySelectorAll('div[class="char"]').forEach(char => char.className = 'char char-correct char-empty');
+
         }
 
         caret = caret.parentElement.nextElementSibling.firstChild;

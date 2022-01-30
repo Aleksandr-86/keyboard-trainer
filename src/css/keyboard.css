@@ -5,6 +5,7 @@
   user-select: none;
   background: rgb(170, 170, 170);
   border-radius: 15px;
+  /*visibility: hidden;*/
 }
 
 .button-up,

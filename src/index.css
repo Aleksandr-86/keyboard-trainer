@@ -15,15 +15,15 @@
 }
 
 html {
-  box-sizing: border-box;
+  /*box-sizing: border-box;*/
+  overflow: hidden;
 }
 
 body {
-  /*background: black url("/src/images/backgrounds/aurora.jpg") no-repeat border-box;*/
   /*background: black url("/src/images/backgrounds/nightroad2.jpg") no-repeat border-box;*/
   /*background: black url("/src/images/backgrounds/mountain2.jpg") no-repeat fixed center center;*/
-  background: black url("/src/images/backgrounds/caribbean.jpg") no-repeat fixed center center;
-  /*background: black url("/src/images/backgrounds/snow-mountain.jpg") no-repeat fixed center center;*/
+  /*background: black url("/src/images/backgrounds/caribbean.jpg") no-repeat fixed center center;*/
+  background: black url("/src/images/backgrounds/snow-mountain.jpg") no-repeat fixed center center;
   /*background: white;*/
   background-size: cover;
 }
@@ -41,6 +41,13 @@ header {
   /*padding: 5px;*/
 }
 
+.main:before {
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  content: '';
+}
+
 .btn {
   margin-right: 1vw;
   /*font-size: 25px;*/
@@ -48,6 +55,7 @@ header {
   /*height: 5vh;*/
   height: 5vh;
   width: 8vw;
+  overflow: hidden;
 }
 
 /*#input {*/

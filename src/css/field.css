@@ -3,10 +3,9 @@
   /*width: 1598px;*/
   width: 1365px;
   height: 450px;
-  /*margin: 80px auto 0 auto;*/
-  margin: 10vh auto;
+  margin: 7vh auto 3vh;
   user-select: none;
-  /*background: rgba(55, 55, 55, 0.8);*/
+  backdrop-filter: blur(50px);
 }
 
 .line {
@@ -20,14 +19,8 @@
   height: inherit;
   font-family: "JetBrainsMono-Regular", monospace;
   font-size: 65px;
-  background: rgba(55, 55, 55, 0.9);
-  /*background: rgba(245, 2 22, 179, 0.9);*/
-  /*border-radius: 5px;*/
-  white-space: pre-wrap;
-  color: rgba(165, 165, 165, 0.9);
-  /*color: rgba(55, 55, 55, 0.9)*/
-  /*margin-bottom: 2px;*/
-
+  background: rgba(70, 70, 70, 0.75);
+  color: rgb(175, 175, 175);
 }
 
 /*.field :last-child {*/
@@ -35,30 +28,28 @@
 /*}*/
 
 .char-correct {
-  background: rgba(20, 120, 100, 0.9);
+  /*background: rgb(20, 120, 100);*/
   color: rgb(40, 190, 100);
 }
 
+
 .char-wrong {
-  background: rgba(220, 100, 70, 0.9);
-  color: rgb(70, 35, 35);
+  /*background: rgb(220, 100, 70);*/
+  /*color: rgb(70, 35, 35);*/
+  color: rgb(255, 50, 50);
 }
 
-.char-neutral-inactive {
-  background: rgba(55, 55, 55, 0.9);
-  color: rgba(100, 100, 180, 0.9)
-}
-
-.char-neutral-active {
-  background: rgba(100, 100, 180, 0.9);
-  color: black;
+.char-neutral {
+  color: rgb(100, 100, 180);
+  /*color: rgb(205, 115, 255);*/
 }
 
 .char-caret {
-  height: 81px;
-  border-bottom: 5px solid rgba(20, 120, 100, 0.9);
+  /*filter: drop-shadow(0 0 5px rgb(0, 255, 255));*/
+  /*filter: drop-shadow(0 0 5px rgb(205, 115, 250));*/
+  filter: drop-shadow(0 0 5px lawngreen);
 }
 
-.char-transparent {
-  mix-blend-mode: multiply;
+.char-volume {
+  filter: drop-shadow(3px 2px 2px);
 }

@@ -6,14 +6,14 @@ export let arrOfStrings;
 export let indOfString;
 
 // trim, remove \r and excess spaces => array
-export const strPreparer = str => str.trim().replace(/\r\n/g, ' \n ').replace(/ +/g, ' ').split(' ');
+export const strPreparer = str => str.trim().replace(/(\n)|(\r\n)/g, ' \n ').replace(/ +/g, ' ').split(' ');
 
 // create and return div element with char in it
 const createDiv = function(char) {
   const container = document.createElement('div');
   container.className = 'char';
   container.textContent = char;
-  if (!charTest(container.textContent)) container.classList.add('char-neutral-inactive');
+  if (!charTest(container.textContent)) container.classList.add('char-neutral');
   return container;
 };
 
