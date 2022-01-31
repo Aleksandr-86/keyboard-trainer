@@ -5,7 +5,7 @@
   height: 450px;
   margin: 7vh auto 3vh;
   user-select: none;
-  backdrop-filter: blur(200px) ;
+  backdrop-filter: blur(120px);
 }
 
 .line {
@@ -19,8 +19,9 @@
   height: inherit;
   font-family: "JetBrainsMono-Regular", monospace;
   font-size: 65px;
-  background: rgba(70, 70, 70, 0.75);
-  color: rgb(170, 170, 170);
+  /*background: rgba(70, 70, 70, 0.75);*/
+  background: rgba(50, 50, 50, 0.75);
+  color: rgb(165, 165, 165);
 }
 
 /*.field :last-child {*/
