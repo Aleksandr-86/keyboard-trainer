@@ -5,7 +5,7 @@
   height: 450px;
   margin: 7vh auto 3vh;
   user-select: none;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(200px) ;
 }
 
 .line {
@@ -20,7 +20,7 @@
   font-family: "JetBrainsMono-Regular", monospace;
   font-size: 65px;
   background: rgba(70, 70, 70, 0.75);
-  color: rgb(175, 175, 175);
+  color: rgb(170, 170, 170);
 }
 
 /*.field :last-child {*/
@@ -28,28 +28,22 @@
 /*}*/
 
 .char-correct {
-  /*background: rgb(20, 120, 100);*/
   color: rgb(40, 190, 100);
 }
 
 
 .char-wrong {
-  /*background: rgb(220, 100, 70);*/
-  /*color: rgb(70, 35, 35);*/
   color: rgb(255, 50, 50);
 }
 
 .char-neutral {
   color: rgb(100, 100, 180);
-  /*color: rgb(205, 115, 255);*/
 }
 
 .char-caret {
-  /*filter: drop-shadow(0 0 5px rgb(0, 255, 255));*/
-  /*filter: drop-shadow(0 0 5px rgb(205, 115, 250));*/
-  filter: drop-shadow(0 0 5px lawngreen);
+  filter: drop-shadow(0 0 2px rgb(124, 252, 0, 90%));
 }
 
 .char-volume {
-  filter: drop-shadow(3px 2px 2px);
+  filter: drop-shadow(3px 2px 2px) brightness(95%);
 }

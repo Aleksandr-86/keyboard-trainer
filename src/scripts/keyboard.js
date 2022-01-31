@@ -70,7 +70,6 @@ export const keyboard = function(event) {
       || eKey === 'Control' || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
       btnDn.className = 'button-dn1';
     } else {
-      console.warn(eKey)
       btnDn.className = 'button-dn2';
 
 

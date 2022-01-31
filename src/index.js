@@ -10,16 +10,8 @@ const btnGenFromBuffer = document.querySelector('#btn2');
   // dataCall();
 // });
 
-  const str = "Are\n the boxes representing    running    programs? Or chunks of source code? ? Or merely\n" +
-  "logical groupings of functionality? Are the arrows representing compilation dependencies? Or control\n" +
-  "flows? Or data flows? Usually it is a bit of everything. Does an architecture need a single architectural\n" +
-  "style? Sometimes the architecture of the software suffers scars from a system design that went too far into\n" +
-  "prematurely partitioning the software, or from an over-emphasis on one aspect of software development:\n" +
-  "data engineering, or run-time efficiency, or development strategy and team organization. Often also the\n" +
-  "architecture does not address the concerns of all its “customers” (or “stakeholders” as they are called at\n" +
-  "USC). This problem has been noted by several authors: Garlan & Shaw1, Abowd & Allen at CMU,\n" +
-  "Clements at the SEI. As a remedy, we propose to organize the description of a software architecture using\n" +
-  "several concurrent views, each one addressing one specific set of concerns"
+  const str = 'There’s our black and white effect. Let’s start from the beginning of our code because it’s a little bit complex. Using the function we store in a variable img our image and we’ll be able to access every single pixel by storing the data array in the pix variable. Then we use a for statement to loop through each pixel, and through each value of a single pixel. As described before, every pixel has four values: red, green, blue and alpha'
+
 charInserter(strPreparer(str), 0);
 btnGenFromBuffer.addEventListener('click', async function() {
   // defining browser

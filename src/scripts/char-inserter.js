@@ -104,6 +104,20 @@ export const charInserter = function(arr, index) {
 
     if (i === arrLen - 1) { // marking the end of typing
       currentLine.lastElementChild.classList.add('finish');
+      console.warn(counter)
+
+      if (counter !== 0) for (let j = 0; j < (lineLen - counter); j++)  // adding spaces till the end of the line
+        currentLine.appendChild(createDiv(' '));
+
+      if (currentLine) currentLine = currentLine.nextElementSibling;
+
+      while (currentLine) {
+        for (let j = 0; j < lineLen; j++)  // adding spaces till the end of the line
+          currentLine.appendChild(createDiv(' '));
+        currentLine = currentLine.nextElementSibling;
+
+      }
+
     }
   }
 
