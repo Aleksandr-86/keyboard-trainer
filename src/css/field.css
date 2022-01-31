@@ -22,6 +22,16 @@
   /*background: rgba(70, 70, 70, 0.75);*/
   background: rgba(50, 50, 50, 0.75);
   color: rgb(165, 165, 165);
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+
+.char:after {
+  content: '';
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /*.field :last-child {*/
@@ -42,9 +52,31 @@
 }
 
 .char-caret {
-  filter: drop-shadow(0 0 2px rgb(124, 252, 0, 90%));
+  /*overflow: hidden;*/
+  /*position: relative;*/
+  /*width: 35px;*/
+  /*height: 82px;*/
+  /*border: 2px solid greenyellow;*/
+  /*box-shadow: 3px 2px 2px rgb(40,190,100), inset 1px 0 15px rgb(40, 190, 100)*/
+
+  box-shadow: inset 0 0 8px rgb(40, 190, 100)
+
+  /*filter: drop-shadow(0 0 2px rgb(124, 252, 0, 0.9));*/
+  /*filter: drop-shadow(0 0 2px );*/
+  /*filter: drop-shadow(0 0 2px rgb(165, 255, 165));*/
+  /*filter: drop-shadow(0 0 3px rgba(165, 255, 165, 0.5));*/
+
 }
 
 .char-volume {
-  filter: drop-shadow(3px 2px 2px) brightness(95%);
+  /*font-size: 0;*/
+  content: 'd';
+ filter: grayscale(100%);
+ transition: filter 2s 2s , content 2s 2s ;
 }
+
+
+/*.char-volume:hover {*/
+
+/*filter: drop-shadow(13px 2px 22px green) brightness(95%);*/
+/*}*/
