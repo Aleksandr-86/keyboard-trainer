@@ -17,12 +17,11 @@ export const charHandler = function(caret) {
   caret.classList.remove('char-caret');
 
   while (!test) {
-    // caret.className = 'char char-neutral char-volume'
-    caret.classList.add('char-neutral', 'char-volume');
+    caret.className = 'char char-neutral-active';
 
     if (caret.classList.contains('finish')) { // the end of typing
       caret.classList.add('char-caret');
-      console.warn('1 конец')
+      console.warn('1 конец');
       break;
     } else {
       if (caret.classList.contains('line-end') && !caret.parentElement.nextElementSibling) {
@@ -41,7 +40,7 @@ export const charHandler = function(caret) {
             caret = caret.parentElement.nextElementSibling.firstElementChild;
           }
 
-          if (caret.textContent !== ' ') caret.classList.add('char-neutral', 'char-volume')
+          if (caret.textContent !== ' ') caret.className = 'char char-neutral-active';
         }
         caret = caret.nextElementSibling;
       }
@@ -66,8 +65,9 @@ export const keyboard = function(event) {
     let eKey = event.key;
     let targetChar = caret.textContent;
 
-    if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock' || eKey === 'Enter' || eKey === 'Shift'
-      || eKey === 'Control' || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
+    if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock'
+      || eKey === 'Enter' || eKey === 'Shift' || eKey === 'Control'
+      || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
       btnDn.className = 'button-dn1';
     } else {
       btnDn.className = 'button-dn2';
@@ -79,31 +79,27 @@ export const keyboard = function(event) {
 
       // coloring the char's background depending on the pressed key
       if (eKey === targetChar) {
-        caret.classList.add('char-correct');
-        if (targetChar !== ' ') caret.classList.add('char-volume');
+        if (targetChar !== ' ') caret.classList.add('char-correct');
       } else {
-        caret.classList.add('char-wrong', 'char-volume');
+        caret.classList.add('char-wrong');
       }
-
-      // add a volume to the chars
-      if (targetChar !== ' ') caret.classList.add('char-volume');
-
 
       if (caret.classList.contains('finish')) { // the end of typing
         caret.classList.remove('char-caret');
         console.warn('2 конец');
-      } else if (caret.classList.contains('line-end') && caret.parentElement.nextElementSibling === null) {
+      } else if (caret.classList.contains('line-end')
+        && caret.parentElement.nextElementSibling === null) {
         charInserter(arrOfStrings, indOfString);
         caret = document.querySelector('.char-caret');
         charHandler(caret);
       } else if (caret.classList.contains('line-end')) {
         caret.classList.toggle('char-caret');
 
-        if (caret.nextElementSibling !== null) {
-          const curLine = caret.parentElement;
-          curLine.querySelectorAll('div[class="char"]').forEach(char => char.className = 'char char-correct char-empty');
-
-        }
+        // if (caret.nextElementSibling !== null) {
+        //   caret.parentElement
+        //     .querySelectorAll('div[class="char"]')
+        //     .forEach(char => char.className = 'char char-correct');
+        // }
 
         caret = caret.parentElement.nextElementSibling.firstChild;
         charHandler(caret);
@@ -126,7 +122,7 @@ export const keyboard = function(event) {
     document.body.addEventListener('keyup', function(event) {
 
       const btnUp = document.querySelector(`#${event.code.toLowerCase()}`);
-      if (btnDn === btnUp) setTimeout(() => {
+      if (btnDn === btnUp) setTimeout(function() {
         btnUp.className = 'button-up';
       }, 100);
     });

@@ -5,7 +5,7 @@
   height: 450px;
   margin: 7vh auto 3vh;
   user-select: none;
-  backdrop-filter: blur(120px);
+  backdrop-filter: blur(200px);
 }
 
 .line {
@@ -38,45 +38,56 @@
 /*  margin-right: 0;*/
 /*}*/
 
-.char-correct {
-  color: rgb(40, 190, 100);
+
+@keyframes fade-correct {
+  0%, 75% {
+    color: rgb(40, 190, 100);
+    filter: drop-shadow(3px 2px 2px) brightness(95%);
+  }
+  100% {
+    color: rgb(170, 170, 170);
+    filter: none;
+  }
 }
 
+.char-correct {
+  animation: fade-correct 5s;
+}
+
+@keyframes fade-wrong {
+  0%, 75% {
+    color: rgb(255, 50, 50);
+    filter: drop-shadow(3px 2px 2px) brightness(95%);
+  }
+  100% {
+    color: rgb(170, 170, 170);
+    filter: none;
+  }
+}
 
 .char-wrong {
-  color: rgb(255, 50, 50);
+  animation: fade-wrong 5s;
 }
 
-.char-neutral {
+@keyframes fade-neutral {
+  0%, 75% {
+    color: rgb(100, 100, 180);
+    filter: drop-shadow(3px 2px 2px) brightness(95%);
+  }
+  100% {
+    color: rgb(170, 170, 170);
+    filter: none;
+  }
+}
+
+.char-neutral-inactive {
   color: rgb(100, 100, 180);
 }
 
+.char-neutral-active {
+  animation: fade-neutral 5s;
+}
+
 .char-caret {
-  /*overflow: hidden;*/
-  /*position: relative;*/
-  /*width: 35px;*/
-  /*height: 82px;*/
-  /*border: 2px solid greenyellow;*/
-  /*box-shadow: 3px 2px 2px rgb(40,190,100), inset 1px 0 15px rgb(40, 190, 100)*/
-
   box-shadow: inset 0 0 8px rgb(40, 190, 100)
-
-  /*filter: drop-shadow(0 0 2px rgb(124, 252, 0, 0.9));*/
-  /*filter: drop-shadow(0 0 2px );*/
-  /*filter: drop-shadow(0 0 2px rgb(165, 255, 165));*/
-  /*filter: drop-shadow(0 0 3px rgba(165, 255, 165, 0.5));*/
-
 }
-
-.char-volume {
-  /*font-size: 0;*/
-  content: 'd';
- filter: grayscale(100%);
- transition: filter 2s 2s , content 2s 2s ;
-}
-
-
-/*.char-volume:hover {*/
-
-/*filter: drop-shadow(13px 2px 22px green) brightness(95%);*/
-/*}*/

@@ -13,7 +13,7 @@ const createDiv = function(char) {
   const container = document.createElement('div');
   container.className = 'char';
   container.textContent = char;
-  if (!charTest(container.textContent)) container.classList.add('char-neutral');
+  if (!charTest(container.textContent)) container.classList.add('char-neutral-inactive');
   return container;
 };
 
