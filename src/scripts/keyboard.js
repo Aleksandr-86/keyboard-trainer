@@ -100,12 +100,12 @@ export const keyboard = function(event) {
         charInserter(arrOfStrings, indOfString);
         caret = document.querySelector('.char-caret');
         // vertical caret indentation*
-        document.documentElement.style.setProperty('--margin-caret', '81px');
+        // document.documentElement.style.setProperty('--margin-caret', '81px');
         charHandler(caret);
       } else if (caret.classList.contains('line-end')) {
         caret.classList.toggle('char-caret');
+        // caret.firstElementChild.remove();
 
-        caret.firstElementChild.remove();
         // if (caret.nextElementSibling !== null) {
         //   caret.parentElement
         //     .querySelectorAll('div[class="char"]')
@@ -116,15 +116,15 @@ export const keyboard = function(event) {
         caret.appendChild(createCaret());
 
 
-        const lineNum = caret.parentElement.id.slice(-1);
+        // const lineNum = caret.parentElement.id.slice(-1);
         // vertical caret indentation*
-        document.documentElement.style.setProperty('--margin-caret', `${(lineNum * 86) - 5}px`);
+        // document.documentElement.style.setProperty('--margin-caret', `${(lineNum * 86) - 5}px`);
         charHandler(caret);
       } else {
         caret.classList.remove('char-caret');
-        caret.firstElementChild.remove();
+        // caret.firstElementChild.remove();
         caret = caret.nextElementSibling;
-        caret.appendChild(createCaret());
+        // caret.appendChild(createCaret());
         charHandler(caret);
       }
 

@@ -121,6 +121,6 @@ export const charInserter = function(arr, index) {
 
   const firstElem = document.querySelector('#line1 > :first-child');
   firstElem.classList.add('char-caret');
-  firstElem.appendChild(createCaret());
+  // firstElem.appendChild(createCaret());
   charHandler(firstElem);
 };
