@@ -1,4 +1,4 @@
-import {charHandler, charTest, createCaret} from "/src/scripts/keyboard.js";
+import {charHandler, charTest} from "/src/scripts/keyboard.js";
 
 "use strict";
 
@@ -121,6 +121,5 @@ export const charInserter = function(arr, index) {
 
   const firstElem = document.querySelector('#line1 > :first-child');
   firstElem.classList.add('char-caret');
-  // firstElem.appendChild(createCaret());
   charHandler(firstElem);
 };
