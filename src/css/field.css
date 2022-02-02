@@ -1,12 +1,27 @@
+@keyframes hideCursor {
+  0%, 99% {
+    cursor: default;
+  }
+  100% {
+    cursor: none;
+  }
+}
+
 .field {
   /*width: 850px;*/
   /*width: 1598px;*/
   width: 1365px;
   height: 450px;
   margin: 7vh auto 3vh;
-  user-select: none;
   backdrop-filter: blur(200px);
+  user-select: none;
+  cursor: none;
 }
+
+.field:hover {
+  animation: hideCursor 3s;
+}
+
 
 .line {
   width: inherit;

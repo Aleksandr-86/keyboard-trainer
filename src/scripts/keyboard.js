@@ -18,8 +18,8 @@ export const charHandler = function(caret) {
   caret.classList.remove('char-caret');
 
   while (!test) {
-    // caret.className = 'char char-neutral-active';
-    caret.classList.add('char-neutral-active')
+    caret.classList.remove('char-neutral-inactive');
+    caret.classList.add('char-neutral-active');
 
     if (caret.classList.contains('finish')) { // the end of typing
       caret.classList.add('char-caret');
@@ -36,9 +36,6 @@ export const charHandler = function(caret) {
           caret.nextElementSibling.textContent === ' ') {
           caret = caret.nextElementSibling;
           if (caret.classList.contains('line-end')) {
-            caret.parentElement
-              .querySelectorAll('div[class="char"], div[class="char line-end"]')
-              .forEach(div => div.classList.add('char-correct'));
             caret = caret.parentElement.nextElementSibling.firstElementChild;
           }
 
