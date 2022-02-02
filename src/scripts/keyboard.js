@@ -11,6 +11,13 @@ import {arrOfStrings, charInserter, indOfString} from "/src/scripts/char-inserte
 export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 const langTest = char => /[0-9 А-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 
+// creating caret element
+export const createCaret = function() {
+  const container = document.createElement('div');
+  container.className = 'char-exp';
+  return container;
+};
+
 // skipping inappropriate chars and a space after them (due a certain condition)
 export const charHandler = function(caret) {
   let test = charTest(caret.textContent);
@@ -60,6 +67,7 @@ export const keyboard = function(event) {
   // selecting the first element of the first line
   let caret = document.querySelector('.char-caret');
 
+
   try {
     const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
     let eKey = event.key;
@@ -91,10 +99,13 @@ export const keyboard = function(event) {
         && caret.parentElement.nextElementSibling === null) {
         charInserter(arrOfStrings, indOfString);
         caret = document.querySelector('.char-caret');
+        // vertical caret indentation*
+        document.documentElement.style.setProperty('--margin-caret', '81px');
         charHandler(caret);
       } else if (caret.classList.contains('line-end')) {
         caret.classList.toggle('char-caret');
 
+        caret.firstElementChild.remove();
         // if (caret.nextElementSibling !== null) {
         //   caret.parentElement
         //     .querySelectorAll('div[class="char"]')
@@ -102,10 +113,18 @@ export const keyboard = function(event) {
         // }
 
         caret = caret.parentElement.nextElementSibling.firstChild;
+        caret.appendChild(createCaret());
+
+
+        const lineNum = caret.parentElement.id.slice(-1);
+        // vertical caret indentation*
+        document.documentElement.style.setProperty('--margin-caret', `${(lineNum * 86) - 5}px`);
         charHandler(caret);
       } else {
         caret.classList.remove('char-caret');
+        caret.firstElementChild.remove();
         caret = caret.nextElementSibling;
+        caret.appendChild(createCaret());
         charHandler(caret);
       }
 
