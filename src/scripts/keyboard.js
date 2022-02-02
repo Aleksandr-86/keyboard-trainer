@@ -93,7 +93,6 @@ export const keyboard = function(event) {
         charHandler(caret);
       } else if (caret.classList.contains('line-end')) {
         caret.classList.toggle('char-caret');
-        // caret.firstElementChild.remove();
 
         // if (caret.nextElementSibling !== null) {
         //   caret.parentElement
