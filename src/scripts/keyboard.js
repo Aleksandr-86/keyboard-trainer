@@ -18,7 +18,8 @@ export const charHandler = function(caret) {
   caret.classList.remove('char-caret');
 
   while (!test) {
-    caret.className = 'char char-neutral-active';
+    // caret.className = 'char char-neutral-active';
+    caret.classList.add('char-neutral-active')
 
     if (caret.classList.contains('finish')) { // the end of typing
       caret.classList.add('char-caret');
@@ -43,6 +44,7 @@ export const charHandler = function(caret) {
 
           if (caret.textContent !== ' ') caret.className = 'char char-neutral-active';
         }
+
         caret = caret.nextElementSibling;
       }
     }

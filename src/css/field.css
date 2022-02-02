@@ -1,7 +1,3 @@
-:root {
-  --margin-caret: 81px;
-}
-
 .field {
   /*width: 850px;*/
   /*width: 1598px;*/
@@ -27,73 +23,31 @@
   color: rgb(165, 165, 165);
 }
 
-/*.char-caret {*/
-/*  position: relative;*/
-/*  z-index: -1;*/
-/*}*/
+.char-caret {
+  position: relative;
+  z-index: -1;
+}
 
-/*.char-caret:after {*/
-/*  content: "";*/
-/*  position: absolute;*/
-/*  bottom: 0;*/
-/*  right: 0;*/
-/*  left: 0;*/
-/*  width: 39px;*/
-/*  height: 5px;*/
-/*  background: rgba(30, 30, 30, 0.7);*/
-/*  filter: drop-shadow(3px 2px 2px yellowgreen) brightness(250%)*/
-/*}*/
-
-/*.field :last-child {*/
-/*  margin-right: 0;*/
-/*}*/
-
-
-@keyframes fade-correct {
-  0%, 75% {
-    color: rgb(40, 190, 100);
-    filter: drop-shadow(3px 2px 2px) brightness(95%);
-  }
-  100% {
-    color: rgb(170, 170, 170);
-    filter: none;
-  }
+.char-caret:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 39px;
+  height: 5px;
+  background: rgba(30, 30, 30, 0.7);
+  filter: drop-shadow(3px 2px 2px yellowgreen) brightness(250%)
 }
 
 .char-correct {
   color: rgb(40, 190, 100);
   filter: drop-shadow(3px 2px 2px) brightness(95%);
-  /*animation: fade-correct 5s;*/
-}
-
-
-@keyframes fade-wrong {
-  0%, 75% {
-    color: rgb(255, 50, 50);
-    filter: drop-shadow(3px 2px 2px) brightness(95%);
-  }
-  100% {
-    color: rgb(170, 170, 170);
-    filter: none;
-  }
 }
 
 .char-wrong {
   color: rgb(255, 50, 50);
   filter: drop-shadow(3px 2px 2px) brightness(95%);
-  /*animation: fade-wrong 5s;*/
-
-}
-
-@keyframes fade-neutral {
-  0%, 75% {
-    color: rgb(100, 100, 180);
-    filter: drop-shadow(3px 2px 2px) brightness(95%);
-  }
-  100% {
-    color: rgb(170, 170, 170);
-    filter: none;
-  }
 }
 
 .char-neutral-inactive {
@@ -103,5 +57,4 @@
 .char-neutral-active {
   color: rgb(100, 100, 180);
   filter: drop-shadow(3px 2px 2px) brightness(95%);
-  /*animation: fade-neutral 5s;*/
 }
