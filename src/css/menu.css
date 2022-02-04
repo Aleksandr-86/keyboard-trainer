@@ -1,5 +1,5 @@
 .main-menu > li > ul > li > a {
-  font-size: 30px;
+  font-size: 25px;
   /*color: red;*/
 }
 
@@ -78,7 +78,7 @@
   content: "\2039";
   /*color: #337AB7;*/
   color: #b79833;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
   right: -12px;
   top: 12px;

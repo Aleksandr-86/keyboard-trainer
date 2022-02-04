@@ -18,14 +18,9 @@
   cursor: none;
 }
 
-.hidden {
-  display: none;
-}
-
 .field:hover {
   animation: hideCursor 3s;
 }
-
 
 .line {
   width: inherit;
