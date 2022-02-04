@@ -8,7 +8,6 @@
 }
 
 .field {
-  /*visibility: hidden;*/
   /*width: 850px;*/
   /*width: 1598px;*/
   width: 1365px;
@@ -17,6 +16,10 @@
   backdrop-filter: blur(200px);
   user-select: none;
   cursor: none;
+}
+
+.hidden {
+  display: none;
 }
 
 .field:hover {
