@@ -1,6 +1,7 @@
 @import "css/menu.css";
 @import "css/field.css";
 @import "css/keyboard.css";
+@import "css/statistics.css";
 
 @font-face {
   font-family: 'JetBrainsMono-Regular';
@@ -35,5 +36,17 @@ body {
 .visible {
   visibility: visible;
   opacity: 1;
-  transition: visibility 300ms, opacity 300ms;
+  transition: visibility 500ms, opacity 500ms;
 }
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  /*transition: visibility 3s, opacity 3s;*/
+  /*display: none;*/
+  /*opacity: 0;*/
+  /*transition: display 3s, opacity 3s;*/
+}
+
+
+

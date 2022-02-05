@@ -21,11 +21,9 @@ fromBuffer.addEventListener('click', async function() {
   if (br === 'chrome' || br === 'yabrowser') {
     let str = await navigator.clipboard.readText();
     charInserter(strPreparer(str), 0);
-    // document.querySelector('.field').classList.remove('invisible');
-    document.querySelector('.field').classList.add('visible');
-
-    // document.querySelector('.keyboard').classList.remove(('invisible'));
-    document.querySelector('.keyboard').classList.add(('visible'));
+    document.querySelector('.field').classList.remove('hidden');
+    document.querySelector('.keyboard').classList.remove('hidden');
+    // document.querySelector('.stat').classList.add('visible');
 
   } else if (br === 'firefox') {
     let str = document.querySelector('#input').value;

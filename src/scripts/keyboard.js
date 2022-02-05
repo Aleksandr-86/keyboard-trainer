@@ -9,7 +9,8 @@ import {arrOfStrings, charInserter, indOfString} from "/src/scripts/char-inserte
 
 const field = document.querySelector('.field');
 const keyboard = document.querySelector('.keyboard');
-
+const statistics = document.querySelector('.statistics');
+const overlay = document.querySelector('.overlay');
 
 // returns false if a char is inappropriate
 export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
@@ -90,10 +91,10 @@ export const keyDown = function(event) {
       if (caret.classList.contains('finish')) { // the end of typing
         caret.classList.remove('char-caret');
         console.warn('2 конец');
-        field.classList.remove('visible')
-        // field.classList.add('invisible');
-        keyboard.classList.remove('visible');
-        // keyboard.classList.add('invisible');
+        field.classList.add('hidden');
+        keyboard.classList.add('hidden');
+        statistics.classList.remove('hidden');
+        overlay.classList.remove('hidden');
 
       } else if (caret.classList.contains('line-end')
         && caret.parentElement.nextElementSibling === null) {
