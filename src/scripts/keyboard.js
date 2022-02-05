@@ -7,6 +7,10 @@ import {arrOfStrings, charInserter, indOfString} from "/src/scripts/char-inserte
 // console.log(capsLockState);
 // skipping special keys
 
+const field = document.querySelector('.field');
+const keyboard = document.querySelector('.keyboard');
+
+
 // returns false if a char is inappropriate
 export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 const langTest = char => /[0-9 А-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
@@ -54,7 +58,7 @@ export const charHandler = function(caret) {
 
 
 // keydown
-export const keyboard = function(event) {
+export const keyDown = function(event) {
   event.preventDefault();
 
   // selecting the first element of the first line
@@ -86,6 +90,11 @@ export const keyboard = function(event) {
       if (caret.classList.contains('finish')) { // the end of typing
         caret.classList.remove('char-caret');
         console.warn('2 конец');
+        field.classList.remove('visible')
+        // field.classList.add('invisible');
+        keyboard.classList.remove('visible');
+        // keyboard.classList.add('invisible');
+
       } else if (caret.classList.contains('line-end')
         && caret.parentElement.nextElementSibling === null) {
         charInserter(arrOfStrings, indOfString);
