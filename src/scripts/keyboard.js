@@ -60,15 +60,23 @@ export const charHandler = function(caret) {
 
 
 // keydown
-export const keyDown = function(event) {
+export const keyDownHandler = function(event) {
   event.preventDefault();
 
   // selecting the first element of the first line
   let caret = document.querySelector('.char-caret');
+  let eKey = event.key;
+  const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
 
   try {
-    const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
-    let eKey = event.key;
+    if (caret === null && (eKey === 'Escape' || eKey === 'Enter')) {
+      // shutting down the statistics menu
+      statistics.classList.add('hidden');
+      overlay.classList.add('hidden');
+      return;
+    } else if (caret === null) {
+      return;
+    }
     let targetChar = caret.textContent;
 
     if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock'
@@ -114,9 +122,11 @@ export const keyDown = function(event) {
         caret = caret.parentElement.nextElementSibling.firstChild;
         charHandler(caret);
       } else {
-        caret.classList.remove('char-caret');
-        caret = caret.nextElementSibling;
-        charHandler(caret);
+        if (caret.nextElementSibling !== null) {
+          caret.classList.remove('char-caret');
+          caret = caret.nextElementSibling;
+          charHandler(caret);
+        }
       }
 
       // identifying the language of the keyboard layout
@@ -140,5 +150,3 @@ export const keyDown = function(event) {
     console.error(error);
   }
 };
-
-document.addEventListener('keydown', event => keyDown(event));

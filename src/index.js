@@ -1,5 +1,5 @@
 import {charInserter, strPreparer} from "/src/scripts/char-inserter.js";
-import {keyDown} from "/src/scripts/keyboard.js";
+import {keyDownHandler} from "/src/scripts/keyboard.js";
 import {getBrowser} from "/src/scripts/browser-detector.js";
 
 // const btnGenFromSite = document.querySelector('#btn1');
@@ -31,11 +31,10 @@ fromBuffer.addEventListener('click', async function() {
   }
 });
 
-
-// document.addEventListener('keydown', event => keyDown(event));
+document.addEventListener('keydown', event => keyDownHandler(event));
 
 overlay.addEventListener('click', function() {
+  // shutting down the statistics menu
   statistics.classList.add('hidden');
   overlay.classList.add('hidden');
 });
-
