@@ -2,9 +2,10 @@ import {charInserter, strPreparer} from "/src/scripts/char-inserter.js";
 import {keyDown} from "/src/scripts/keyboard.js";
 import {getBrowser} from "/src/scripts/browser-detector.js";
 
-
 // const btnGenFromSite = document.querySelector('#btn1');
 const fromBuffer = document.querySelector('#buffer');
+const statistics = document.querySelector('.statistics');
+const overlay = document.querySelector('.overlay');
 
 // btnGenFromSite.addEventListener('click', function() {
 // dataCall();
@@ -23,7 +24,6 @@ fromBuffer.addEventListener('click', async function() {
     charInserter(strPreparer(str), 0);
     document.querySelector('.field').classList.remove('hidden');
     document.querySelector('.keyboard').classList.remove('hidden');
-    // document.querySelector('.stat').classList.add('visible');
 
   } else if (br === 'firefox') {
     let str = document.querySelector('#input').value;
@@ -31,4 +31,11 @@ fromBuffer.addEventListener('click', async function() {
   }
 });
 
-document.addEventListener('keydown', event => keyDown(event));
+
+// document.addEventListener('keydown', event => keyDown(event));
+
+overlay.addEventListener('click', function() {
+  statistics.classList.add('hidden');
+  overlay.classList.add('hidden');
+});
+

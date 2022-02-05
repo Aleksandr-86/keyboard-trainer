@@ -12,6 +12,7 @@ const keyboard = document.querySelector('.keyboard');
 const statistics = document.querySelector('.statistics');
 const overlay = document.querySelector('.overlay');
 
+
 // returns false if a char is inappropriate
 export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 const langTest = char => /[0-9 А-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
@@ -139,3 +140,5 @@ export const keyDown = function(event) {
     console.error(error);
   }
 };
+
+document.addEventListener('keydown', event => keyDown(event));

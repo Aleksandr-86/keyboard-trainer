@@ -3,7 +3,7 @@
   height: 100px;
   background: black;
 
-  margin: 0 auto 20px ;
+  margin: 0 auto 20px;
 }
 
 
@@ -20,7 +20,7 @@
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
 
-  transition: visibility 1s 500ms, opacity 1s 500ms;
+  transition: visibility 500ms, opacity 500ms;
 }
 
 .statistics-close {
@@ -44,5 +44,5 @@
   backdrop-filter: blur(3px);
   z-index: 5;
 
-  transition: visibility 1s 500ms, opacity 1s 500ms;
+  transition: visibility 500ms, opacity 500ms;
 }
