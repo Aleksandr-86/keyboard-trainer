@@ -1,4 +1,5 @@
 import {arrOfStrings, charInserter, indOfString} from "/src/scripts/char-inserter.js";
+// import {inStrNum} from "/src/index.js";
 
 "use strict";
 
@@ -10,8 +11,13 @@ import {arrOfStrings, charInserter, indOfString} from "/src/scripts/char-inserte
 const field = document.querySelector('.field');
 const keyboard = document.querySelector('.keyboard');
 const statistics = document.querySelector('.statistics');
+const statParagraph = document.querySelector('#statParagraph');
 const overlay = document.querySelector('.overlay');
 
+let totalNum = 0;
+let skipNum = 0;
+let correctNum = 0;
+let errorNum = 0;
 
 // returns false if a char is inappropriate
 export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
@@ -24,6 +30,7 @@ export const charHandler = function(caret) {
   caret.classList.remove('char-caret');
 
   while (!test) {
+    skipNum++;
     caret.classList.remove('char-neutral-inactive');
     caret.classList.add('char-neutral-active');
 
@@ -93,17 +100,16 @@ export const keyDownHandler = function(event) {
       // coloring the char's background depending on the pressed key
       if (eKey === targetChar) {
         if (targetChar !== ' ') caret.classList.add('char-correct');
+        correctNum++;
       } else {
         caret.classList.add('char-wrong');
+        errorNum++;
       }
 
       if (caret.classList.contains('finish')) { // the end of typing
         caret.classList.remove('char-caret');
         console.warn('2 конец');
-        field.classList.add('hidden');
-        keyboard.classList.add('hidden');
-        statistics.classList.remove('hidden');
-        overlay.classList.remove('hidden');
+        showStat();
 
       } else if (caret.classList.contains('line-end')
         && caret.parentElement.nextElementSibling === null) {
@@ -150,3 +156,30 @@ export const keyDownHandler = function(event) {
     console.error(error);
   }
 };
+
+// clearing statistics variables
+const clearStat = function() {
+  totalNum = 0;
+  skipNum = 0;
+  correctNum = 0;
+  errorNum = 0;
+};
+
+// showing statistics
+const showStat = function() {
+  field.classList.add('hidden');
+  keyboard.classList.add('hidden');
+  statistics.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+
+  statParagraph.innerHTML = `
+    Предварительная длина: ${0}<br>
+    Всего символов: ${totalNum}<br> 
+    из них:<br> 
+    пропущенных: ${skipNum}<br>
+    правильно-введённых: ${correctNum}<br>
+    ошибочно-введёных: ${errorNum}<br>
+  `;
+  clearStat();
+};
+

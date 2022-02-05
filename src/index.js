@@ -7,11 +7,17 @@ const fromBuffer = document.querySelector('#buffer');
 const statistics = document.querySelector('.statistics');
 const overlay = document.querySelector('.overlay');
 
+
+// DEL
+// export let inStrNum = 12;
+
 // btnGenFromSite.addEventListener('click', function() {
 // dataCall();
 // });
 
+// adding text from a buffer
 fromBuffer.addEventListener('click', async function() {
+
   // defining browser
   const br = getBrowser().browser;
   if (br === 'chrome' || br === 'yabrowser') {
@@ -22,6 +28,7 @@ fromBuffer.addEventListener('click', async function() {
 
   } else if (br === 'firefox') {
     let str = document.querySelector('#input').value;
+    // inStrNum = str.length;
     charInserter(strPreparer(str), 0);
   }
 });
