@@ -1,18 +1,10 @@
-.stat {
-  width: 1365px;
-  height: 100px;
-  background: black;
-
-  margin: 0 auto 20px;
-}
-
-
 .statistics {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
+  width: 20%;
+  font-size: 25px;
 
   background-color: white;
   padding: 6rem;

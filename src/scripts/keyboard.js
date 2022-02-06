@@ -30,6 +30,7 @@ export const charHandler = function(caret) {
   caret.classList.remove('char-caret');
 
   while (!test) {
+    totalNum++;
     skipNum++;
     caret.classList.remove('char-neutral-inactive');
     caret.classList.add('char-neutral-active');
@@ -91,6 +92,7 @@ export const keyDownHandler = function(event) {
       || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
       btnDn.className = 'button-dn1';
     } else {
+      totalNum++;
       btnDn.className = 'button-dn2';
 
       // setting case-insensitive matching
@@ -165,6 +167,11 @@ const clearStat = function() {
   errorNum = 0;
 };
 
+// rounding integer
+const rnd = function(int) {
+  return (int * 100) / 100;
+};
+
 // showing statistics
 const showStat = function() {
   field.classList.add('hidden');
@@ -174,12 +181,12 @@ const showStat = function() {
 
   statParagraph.innerHTML = `
     Предварительная длина: ${0}<br>
-    Всего символов: ${totalNum}<br> 
-    из них:<br> 
-    пропущенных: ${skipNum}<br>
-    правильно-введённых: ${correctNum}<br>
-    ошибочно-введёных: ${errorNum}<br>
+    Всего символов - ${totalNum}, из них:<br> 
+    пропущенных - ${skipNum} (${((skipNum * 100) / totalNum).toFixed(2)}%)<br>
+    правильно введённых - ${correctNum} (${((correctNum * 100) / (totalNum - skipNum)).toFixed(2)}%)<br>
+    введённых по ошибке - ${errorNum} (${((errorNum * 100) / (totalNum - skipNum)).toFixed(2)}%)<br>
   `;
+  // console.warn((correctNum * 100) / (totalNum - skipNum))
+  console.warn(1000 / 8)
   clearStat();
 };
-
