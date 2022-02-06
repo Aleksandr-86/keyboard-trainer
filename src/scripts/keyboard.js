@@ -14,10 +14,15 @@ const statistics = document.querySelector('.statistics');
 const statParagraph = document.querySelector('#statParagraph');
 const overlay = document.querySelector('.overlay');
 
-let totalNum = 0;
-let skipNum = 0;
-let correctNum = 0;
-let errorNum = 0;
+let timerStart = 0;
+let timerStop = 0;
+let bTimer = false;
+
+let numTotal = 0;
+let numNeutral = 0;
+let numCorrect = 0;
+let numWrong = 0;
+let charPerMinute = 0;
 
 // returns false if a char is inappropriate
 export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
@@ -30,8 +35,8 @@ export const charHandler = function(caret) {
   caret.classList.remove('char-caret');
 
   while (!test) {
-    totalNum++;
-    skipNum++;
+    numTotal++;
+    numNeutral++;
     caret.classList.remove('char-neutral-inactive');
     caret.classList.add('char-neutral-active');
 
@@ -85,6 +90,7 @@ export const keyDownHandler = function(event) {
     } else if (caret === null) {
       return;
     }
+
     let targetChar = caret.textContent;
 
     if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock'
@@ -92,7 +98,13 @@ export const keyDownHandler = function(event) {
       || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
       btnDn.className = 'button-dn1';
     } else {
-      totalNum++;
+
+      if (!bTimer) {
+        bTimer = true;
+        timerStart = performance.now();
+      }
+
+      numTotal++;
       btnDn.className = 'button-dn2';
 
       // setting case-insensitive matching
@@ -102,10 +114,10 @@ export const keyDownHandler = function(event) {
       // coloring the char's background depending on the pressed key
       if (eKey === targetChar) {
         if (targetChar !== ' ') caret.classList.add('char-correct');
-        correctNum++;
+        numCorrect++;
       } else {
         caret.classList.add('char-wrong');
-        errorNum++;
+        numWrong++;
       }
 
       if (caret.classList.contains('finish')) { // the end of typing
@@ -161,19 +173,29 @@ export const keyDownHandler = function(event) {
 
 // clearing statistics variables
 const clearStat = function() {
-  totalNum = 0;
-  skipNum = 0;
-  correctNum = 0;
-  errorNum = 0;
+  numTotal = 0;
+  numNeutral = 0;
+  numCorrect = 0;
+  numWrong = 0;
+  bTimer = false;
 };
 
-// rounding integer
-const rnd = function(int) {
-  return (int * 100) / 100;
+// rounding
+const rnd = function(num) {
+  return Number(Math.round(Number(num + 'e2')) + 'e-2')
+}
+
+// converting ms into minutes:seconds
+const msToMinutes = function(ms) {
+  ms /= 1000;
+  const minutes = Math.floor(ms / 60).toString().padStart(2, '0');
+  const seconds = Math.floor(ms - minutes * 60).toString().padStart(2, '0');
+  return `${minutes}:${seconds}`
 };
 
 // showing statistics
 const showStat = function() {
+  timerStop = performance.now();
   field.classList.add('hidden');
   keyboard.classList.add('hidden');
   statistics.classList.remove('hidden');
@@ -181,12 +203,17 @@ const showStat = function() {
 
   statParagraph.innerHTML = `
     Предварительная длина: ${0}<br>
-    Всего символов - ${totalNum}, из них:<br> 
-    пропущенных - ${skipNum} (${((skipNum * 100) / totalNum).toFixed(2)}%)<br>
-    правильно введённых - ${correctNum} (${((correctNum * 100) / (totalNum - skipNum)).toFixed(2)}%)<br>
-    введённых по ошибке - ${errorNum} (${((errorNum * 100) / (totalNum - skipNum)).toFixed(2)}%)<br>
+    Время набора - <b>${msToMinutes(timerStop - timerStart)}</b><br>
+    Cкорость набора символов в минуту - <b>${Math.floor((numTotal * 60) / ((timerStop - timerStart) / 1000))}</b><br>
+    Всего символов - <div class="num-total">${numTotal}</div>, из них:<br>
+    <ul>
+      <li>пропущенных - <b>${numNeutral}</b>
+       <div class="num-neutral">(${rnd((numNeutral * 100) / numTotal)}%)</div></li>
+      <li>правильно введённых - <b>${numCorrect}</b>
+       <div class="num-correct">(${rnd((numCorrect * 100) / (numTotal - numNeutral))}%)</div></li>
+      <li>введённых по ошибке - <b>${numWrong}</b>
+       <div class="num-wrong">(${rnd((numWrong * 100) / (numTotal - numNeutral))}%)</div></li>
+    </ul>
   `;
-  // console.warn((correctNum * 100) / (totalNum - skipNum))
-  console.warn(1000 / 8)
   clearStat();
 };
