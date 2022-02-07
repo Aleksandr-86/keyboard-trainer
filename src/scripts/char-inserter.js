@@ -6,7 +6,9 @@ export let arrOfStrings;
 export let indOfString;
 
 // trim, remove \r and excess spaces => array
-export const strPreparer = str => str.trim().replace(/(\n)|(\r\n)/g, ' \n ').replace(/ +/g, ' ').split(' ');
+export const strPreparer = str => str.trim()
+  .replace(/(\n)|(\r\n)/g, ' \n ')
+  .replace(/ +/g, ' ').split(' ');
 
 // create and return div element with char in it
 const createDiv = function(char) {
@@ -40,7 +42,7 @@ export const charInserter = function(arr, index) {
       break;
     } else if (word === '\n' && counter > 0) {
       currentLine.lastElementChild.classList.add('line-end');
-      for (let j = 0; j < (lineLen - counter); j++)  // adding spaces till the end of the line
+      for (let j = 0; j < (lineLen - counter); j++) // adding spaces till the end of the line
         currentLine.appendChild(createDiv(' '));
       currentLine = currentLine.nextElementSibling;
       counter = 0;
@@ -95,17 +97,17 @@ export const charInserter = function(arr, index) {
     } else {
       i--;
       currentLine.lastElementChild.classList.toggle('line-end');
-
-      for (let j = 0; j < (lineLen - counter); j++) // adding spaces till the end of the line
+      // adding spaces till the end of the line
+      for (let j = 0; j < (lineLen - counter); j++)
         currentLine.appendChild(createDiv(' '));
       currentLine = currentLine.nextElementSibling;
       counter = 0;
     }
 
-    if (i === arrLen - 1) { // marking the end of typing
-      currentLine.lastElementChild.classList.add('finish');
-
-      if (counter !== 0) for (let j = 0; j < (lineLen - counter); j++)  // adding spaces till the end of the line
+    if (i === arrLen - 1) {
+      currentLine.lastElementChild.classList.add('finish'); // marking the end of typing
+      // adding spaces till the end of the line
+      if (counter !== 0) for (let j = 0; j < (lineLen - counter); j++)
         currentLine.appendChild(createDiv(' '));
 
       if (currentLine) currentLine = currentLine.nextElementSibling;

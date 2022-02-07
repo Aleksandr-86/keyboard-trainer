@@ -5,19 +5,12 @@ import {getBrowser} from "/src/scripts/browser-detector.js";
 // const btnGenFromSite = document.querySelector('#btn1');
 const fromBuffer = document.querySelector('#buffer');
 const statistics = document.querySelector('.statistics');
+const statisticsClose = document.querySelector('.statistics-close');
 const overlay = document.querySelector('.overlay');
 
 
-// DEL
-// export let inStrNum = 12;
-
-// btnGenFromSite.addEventListener('click', function() {
-// dataCall();
-// });
-
 // adding text from a buffer
 fromBuffer.addEventListener('click', async function() {
-
   // defining browser
   const br = getBrowser().browser;
   if (br === 'chrome' || br === 'yabrowser') {
@@ -35,8 +28,12 @@ fromBuffer.addEventListener('click', async function() {
 
 document.addEventListener('keydown', event => keyDownHandler(event));
 
+// shutting down the statistics menu
+statisticsClose.addEventListener('click', function() {
+  statistics.classList.add('hidden');
+  overlay.classList.add('hidden');
+});
 overlay.addEventListener('click', function() {
-  // shutting down the statistics menu
   statistics.classList.add('hidden');
   overlay.classList.add('hidden');
 });

@@ -1,5 +1,4 @@
 import {arrOfStrings, charInserter, indOfString} from "/src/scripts/char-inserter.js";
-// import {inStrNum} from "/src/index.js";
 
 "use strict";
 
@@ -22,7 +21,6 @@ let numTotal = 0;
 let numNeutral = 0;
 let numCorrect = 0;
 let numWrong = 0;
-let charPerMinute = 0;
 
 // returns false if a char is inappropriate
 export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
@@ -53,6 +51,7 @@ export const charHandler = function(caret) {
         if (caret !== caret.parentElement.firstElementChild &&
           caret.previousElementSibling.textContent === ' ' &&
           caret.nextElementSibling.textContent === ' ') {
+
           caret = caret.nextElementSibling;
           if (caret.classList.contains('line-end')) {
             caret = caret.parentElement.nextElementSibling.firstElementChild;
@@ -124,7 +123,6 @@ export const keyDownHandler = function(event) {
         caret.classList.remove('char-caret');
         console.warn('2 конец');
         showStat();
-
       } else if (caret.classList.contains('line-end')
         && caret.parentElement.nextElementSibling === null) {
         charInserter(arrOfStrings, indOfString);
@@ -132,13 +130,6 @@ export const keyDownHandler = function(event) {
         charHandler(caret);
       } else if (caret.classList.contains('line-end')) {
         caret.classList.toggle('char-caret');
-
-        // if (caret.nextElementSibling !== null) {
-        //   caret.parentElement
-        //     .querySelectorAll('div[class="char"]')
-        //     .forEach(char => char.className = 'char char-correct');
-        // }
-
         caret = caret.parentElement.nextElementSibling.firstChild;
         charHandler(caret);
       } else {
@@ -204,7 +195,8 @@ const showStat = function() {
   statParagraph.innerHTML = `
     Предварительная длина: ${0}<br>
     Время набора - <b>${msToMinutes(timerStop - timerStart)}</b><br>
-    Cкорость набора символов в минуту - <b>${Math.floor((numTotal * 60) / ((timerStop - timerStart) / 1000))}</b><br>
+    Cкорость набора символов в минуту - 
+    <b>${Math.floor((numTotal * 60) / ((timerStop - timerStart) / 1000))}</b><br>
     Всего символов - <div class="num-total">${numTotal}</div>, из них:<br>
     <ul>
       <li>пропущенных - <b>${numNeutral}</b>
