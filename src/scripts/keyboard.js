@@ -10,7 +10,7 @@ import {arrOfStrings, charInserter, indOfString} from "/src/scripts/char-inserte
 const field = document.querySelector('.field');
 const keyboard = document.querySelector('.keyboard');
 const statistics = document.querySelector('.statistics');
-const statParagraph = document.querySelector('#statParagraph');
+const statContainer = document.querySelector('#statContainer');
 const overlay = document.querySelector('.overlay');
 
 let timerStart = 0;
@@ -21,6 +21,8 @@ let numTotal = 0;
 let numNeutral = 0;
 let numCorrect = 0;
 let numWrong = 0;
+let numRow = 0;
+let numRowCounter = 0;
 
 // returns false if a char is inappropriate
 export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
@@ -61,7 +63,6 @@ export const charHandler = function(caret) {
     }
     test = charTest(caret.textContent);
   }
-
   caret.classList.toggle('char-caret');
 };
 
@@ -109,9 +110,12 @@ export const keyDownHandler = function(event) {
       if (eKey === targetChar) {
         if (targetChar !== ' ') caret.classList.add('char-correct');
         numCorrect++;
+        numRowCounter++;
+        if (numRowCounter > numRow) numRow = numRowCounter;
       } else {
         caret.classList.add('char-wrong');
         numWrong++;
+        numRowCounter = 0;
       }
 
       if (caret.classList.contains('finish')) { // the end of typing
@@ -146,7 +150,6 @@ export const keyDownHandler = function(event) {
 
     // releasing the key
     document.body.addEventListener('keyup', function(event) {
-
       const btnUp = document.querySelector(`#${event.code.toLowerCase()}`);
       if (btnDn === btnUp) setTimeout(function() {
         btnUp.className = 'button-up';
@@ -163,6 +166,8 @@ const clearStat = function() {
   numNeutral = 0;
   numCorrect = 0;
   numWrong = 0;
+  numRow = 0;
+  numRowCounter = 0;
   bTimer = false;
 };
 
@@ -187,20 +192,47 @@ const showStat = function() {
   statistics.classList.remove('hidden');
   overlay.classList.remove('hidden');
 
-  statParagraph.innerHTML = `
-    Предварительная длина: ${0}<br>
-    Время набора - <b>${msToMinutes(timerStop - timerStart)}</b><br>
-    Cкорость набора символов в минуту - 
-    <b>${Math.floor((numTotal * 60) / ((timerStop - timerStart) / 1000))}</b><br>
-    Всего символов - <div class="num-total">${numTotal}</div>, из них:<br>
-    <ul>
-      <li>пропущенных - <b>${numNeutral}</b>
-       <div class="num-neutral">(${rnd((numNeutral * 100) / numTotal)}%)</div></li>
-      <li>правильно введённых - <b>${numCorrect}</b>
-       <div class="num-correct">(${rnd((numCorrect * 100) / (numTotal - numNeutral))}%)</div></li>
-      <li>введённых по ошибке - <b>${numWrong}</b>
-       <div class="num-wrong">(${rnd((numWrong * 100) / (numTotal - numNeutral))}%)</div></li>
-    </ul>
-  `;
+  statContainer.innerHTML = `
+    <div>Предварительная длина: ${0}</div>
+    <div >
+      <div class="stat-first-row">Время набора</div>
+      <div class="stat-second-row">${msToMinutes(timerStop - timerStart)}</div>
+    </div>
+    <div >
+      <div class="stat-first-row">Cкорость набора, зн/мин</div>
+      <div class="stat-second-row">${Math.floor((numTotal * 60) / ((timerStop - timerStart) / 1000))}</div>
+    </div>
+    <div >
+      <div class="stat-first-row">Всего знаков <b>${numTotal}</b>, из них:</div>
+      <div class="stat-second-row"></div>
+    </div>
+    <div >
+      <div class="stat-first-row stat-pos">- правильных</div>
+      <div class="stat-second-row">${numCorrect}
+        <span class="num-correct">(${rnd((numCorrect * 100) / (numTotal - numNeutral))}%)</span>
+      </div>
+    </div>
+    <div >
+      <div class="stat-first-row stat-pos">- ошибочных</div>
+      <div class="stat-second-row">${numWrong}
+        <span class="num-wrong">(${rnd((numWrong * 100) / (numTotal - numNeutral))}%)</span>
+      </div>
+
+    </div>
+    <div >
+      <div class="stat-first-row stat-pos">- подряд без ошибки</div>
+      <div class="stat-second-row">${numRow}</div>
+    </div>
+    <div >
+      <div class="stat-first-row stat-pos">- пропущенных</div>
+      <div class="stat-second-row">${rnd((numNeutral * 100) / numTotal)}</div>
+    </div>
+
+
+
+
+`
+
+
   clearStat();
 };

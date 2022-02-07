@@ -8,7 +8,6 @@ const statistics = document.querySelector('.statistics');
 const statisticsClose = document.querySelector('.statistics-close');
 const overlay = document.querySelector('.overlay');
 
-
 // adding text from a buffer
 fromBuffer.addEventListener('click', async function() {
   // defining browser
