@@ -26,7 +26,6 @@ let numWrong = 0;
 export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 const langTest = char => /[0-9 А-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 
-
 // skipping inappropriate chars and a space after them (due a certain condition)
 export const charHandler = function(caret) {
   let test = charTest(caret.textContent);
@@ -51,19 +50,15 @@ export const charHandler = function(caret) {
         if (caret !== caret.parentElement.firstElementChild &&
           caret.previousElementSibling.textContent === ' ' &&
           caret.nextElementSibling.textContent === ' ') {
-
           caret = caret.nextElementSibling;
           if (caret.classList.contains('line-end')) {
             caret = caret.parentElement.nextElementSibling.firstElementChild;
           }
-
           if (caret.textContent !== ' ') caret.className = 'char char-neutral-active';
         }
-
         caret = caret.nextElementSibling;
       }
     }
-
     test = charTest(caret.textContent);
   }
 
