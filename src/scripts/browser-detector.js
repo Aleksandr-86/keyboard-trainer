@@ -1,5 +1,5 @@
 "use strict";
-
+console.warn('browser-detector')
 // defining the browser and returning object with information about it
 export function getBrowser() {
   const ua = navigator.userAgent;

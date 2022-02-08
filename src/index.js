@@ -1,5 +1,5 @@
-import {charInserter, strPreparer} from "/src/scripts/char-inserter.js";
 import {keyDownHandler} from "/src/scripts/keyboard.js";
+import {charInserter, strPreparer} from "/src/scripts/char-inserter.js";
 import {getBrowser} from "/src/scripts/browser-detector.js";
 
 // const btnGenFromSite = document.querySelector('#btn1');
@@ -7,6 +7,7 @@ const fromBuffer = document.querySelector('#buffer');
 const statistics = document.querySelector('.statistics');
 const statisticsClose = document.querySelector('.statistics-close');
 const overlay = document.querySelector('.overlay');
+console.warn('index.js')
 
 // adding text from a buffer
 fromBuffer.addEventListener('click', async function() {
@@ -17,10 +18,8 @@ fromBuffer.addEventListener('click', async function() {
     charInserter(strPreparer(str), 0);
     document.querySelector('.field').classList.remove('hidden');
     document.querySelector('.keyboard').classList.remove('hidden');
-
   } else if (br === 'firefox') {
     let str = document.querySelector('#input').value;
-    // inStrNum = str.length;
     charInserter(strPreparer(str), 0);
   }
 });

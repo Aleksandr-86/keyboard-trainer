@@ -1,5 +1,5 @@
-import {arrOfStrings, charInserter, indOfString} from "/src/scripts/char-inserter.js";
-
+// import {arrOfStrings, indOfString, charInserter} from "/src/scripts/char-inserter.js";
+console.warn('keyboard')
 "use strict";
 
 // checking if CapsLock key is active
@@ -42,6 +42,7 @@ export const charHandler = function(caret) {
     if (caret.classList.contains('finish')) { // the end of typing
       caret.classList.add('char-caret');
       console.warn('1 конец');
+      showStat();
       break;
     } else {
       if (caret.classList.contains('line-end') && !caret.parentElement.nextElementSibling) {
@@ -74,6 +75,7 @@ export const keyDownHandler = function(event) {
   // selecting the first element of the first line
   let caret = document.querySelector('.char-caret');
   let eKey = event.key;
+  console.warn(eKey)
   const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
 
   try {
@@ -193,46 +195,34 @@ const showStat = function() {
   overlay.classList.remove('hidden');
 
   statContainer.innerHTML = `
-    <div>Предварительная длина: ${0}</div>
     <div >
-      <div class="stat-first-row">Время набора</div>
+      <div class="stat-first-row">Время набора:</div>
       <div class="stat-second-row">${msToMinutes(timerStop - timerStart)}</div>
     </div>
     <div >
-      <div class="stat-first-row">Cкорость набора, зн/мин</div>
+      <div class="stat-first-row">Cкорость набора, зн/мин:</div>
       <div class="stat-second-row">${Math.floor((numTotal * 60) / ((timerStop - timerStart) / 1000))}</div>
     </div>
     <div >
-      <div class="stat-first-row">Всего знаков <b>${numTotal}</b>, из них:</div>
+      <div class="stat-first-row">Всего набрано знаков <b>${numTotal-numNeutral}</b>, из них:</div>
       <div class="stat-second-row"></div>
     </div>
     <div >
       <div class="stat-first-row stat-pos">- правильных</div>
       <div class="stat-second-row">${numCorrect}
-        <span class="num-correct">(${rnd((numCorrect * 100) / (numTotal - numNeutral))}%)</span>
+        <div class="num-correct">(${rnd((numCorrect * 100) / (numTotal - numNeutral))}%)</div>
       </div>
     </div>
     <div >
       <div class="stat-first-row stat-pos">- ошибочных</div>
       <div class="stat-second-row">${numWrong}
-        <span class="num-wrong">(${rnd((numWrong * 100) / (numTotal - numNeutral))}%)</span>
+        <div class="num-wrong">(${rnd((numWrong * 100) / (numTotal - numNeutral))}%)</div>
       </div>
-
     </div>
     <div >
-      <div class="stat-first-row stat-pos">- подряд без ошибки</div>
+      <div class="stat-first-row">Знаков подряд без ошибки:</div>
       <div class="stat-second-row">${numRow}</div>
     </div>
-    <div >
-      <div class="stat-first-row stat-pos">- пропущенных</div>
-      <div class="stat-second-row">${rnd((numNeutral * 100) / numTotal)}</div>
-    </div>
-
-
-
-
-`
-
-
+  `
   clearStat();
 };

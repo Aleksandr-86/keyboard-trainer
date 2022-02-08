@@ -1,5 +1,6 @@
 import {charHandler, charTest} from "/src/scripts/keyboard.js";
 
+console.warn('char-inserter')
 "use strict";
 
 export let arrOfStrings;
