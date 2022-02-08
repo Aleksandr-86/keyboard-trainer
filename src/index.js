@@ -1,6 +1,6 @@
+import {charInserter} from "/src/scripts/char-inserter.js";
+import {getBrowser, strPreparer} from "/src/scripts/functions.js";
 import {keyDownHandler} from "/src/scripts/keyboard.js";
-import {charInserter, strPreparer} from "/src/scripts/char-inserter.js";
-import {getBrowser} from "/src/scripts/browser-detector.js";
 
 // const btnGenFromSite = document.querySelector('#btn1');
 const fromBuffer = document.querySelector('#buffer');
@@ -24,6 +24,7 @@ fromBuffer.addEventListener('click', async function() {
   }
 });
 
+// handling keyboard events
 document.addEventListener('keydown', event => keyDownHandler(event));
 
 // shutting down the statistics menu

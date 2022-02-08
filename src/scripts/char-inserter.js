@@ -1,4 +1,5 @@
-import {charHandler, charTest} from "/src/scripts/keyboard.js";
+import {charHandler} from "/src/scripts/keyboard.js";
+import {charTest} from "/src/scripts/functions.js";
 
 console.warn('char-inserter')
 "use strict";
@@ -6,22 +7,17 @@ console.warn('char-inserter')
 export let arrOfStrings;
 export let indOfString;
 
-// trim, remove \r and excess spaces => array
-export const strPreparer = str => str.trim()
-  .replace(/(\n)|(\r\n)/g, ' \n ')
-  .replace(/ +/g, ' ').split(' ');
-
 // create and return div element with char in it
-const createDiv = function(char) {
+function createDiv(char) {
   const container = document.createElement('div');
   container.className = 'char';
   container.textContent = char;
   if (!charTest(container.textContent)) container.classList.add('char-neutral-inactive');
   return container;
-};
+}
 
 // filling the field block with char
-export const charInserter = function(arr, index) {
+export function charInserter(arr, index) {
   arrOfStrings = [...arr];
   const arrLen = arrOfStrings.length;
   // the maximum length of a word that will not be carried over to the next line
@@ -125,4 +121,4 @@ export const charInserter = function(arr, index) {
   const firstElem = document.querySelector('#line1 > :first-child');
   firstElem.classList.add('char-caret');
   charHandler(firstElem);
-};
+}

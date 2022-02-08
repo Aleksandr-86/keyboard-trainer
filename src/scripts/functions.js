@@ -1,5 +1,6 @@
 "use strict";
-console.warn('browser-detector')
+console.warn('functions');
+
 // defining the browser and returning object with information about it
 export function getBrowser() {
   const ua = navigator.userAgent;
@@ -69,6 +70,12 @@ export function getBrowser() {
       versionShort: 'unknown'
     };
   }
-
   return browsrObj;
 }
+
+// trim, remove \r and excess spaces => array
+export const strPreparer = str => str.trim().replace(/(\n)|(\r\n)/g, ' \n ').replace(/ +/g, ' ').split(' ');
+
+// returns false if a char is inappropriate
+export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
+export const langTest = char => /[0-9 А-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);

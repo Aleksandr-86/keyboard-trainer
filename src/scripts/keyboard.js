@@ -1,4 +1,6 @@
-// import {arrOfStrings, indOfString, charInserter} from "/src/scripts/char-inserter.js";
+import {charTest} from "/src/scripts/functions.js";
+import {arrOfStrings, indOfString, charInserter} from "/src/scripts/char-inserter.js";
+
 console.warn('keyboard')
 "use strict";
 
@@ -24,12 +26,9 @@ let numWrong = 0;
 let numRow = 0;
 let numRowCounter = 0;
 
-// returns false if a char is inappropriate
-export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
-const langTest = char => /[0-9 А-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 
 // skipping inappropriate chars and a space after them (due a certain condition)
-export const charHandler = function(caret) {
+export function charHandler(caret) {
   let test = charTest(caret.textContent);
   caret.classList.remove('char-caret');
 
@@ -65,11 +64,11 @@ export const charHandler = function(caret) {
     test = charTest(caret.textContent);
   }
   caret.classList.toggle('char-caret');
-};
+}
 
 
 // keydown
-export const keyDownHandler = function(event) {
+export function keyDownHandler(event) {
   event.preventDefault();
 
   // selecting the first element of the first line
@@ -160,10 +159,10 @@ export const keyDownHandler = function(event) {
   } catch (error) {
     console.error(error);
   }
-};
+}
 
 // clearing statistics variables
-const clearStat = function() {
+function clearStat() {
   numTotal = 0;
   numNeutral = 0;
   numCorrect = 0;
@@ -171,23 +170,21 @@ const clearStat = function() {
   numRow = 0;
   numRowCounter = 0;
   bTimer = false;
-};
-
-// rounding
-const rnd = function(num) {
-  return Number(Math.round(Number(num + 'e2')) + 'e-2')
 }
 
+// rounding
+const rnd = num => Number(Math.round(Number(num + 'e2')) + 'e-2');
+
 // converting ms into minutes:seconds
-const msToMinutes = function(ms) {
+function msToMinutes(ms) {
   ms /= 1000;
   const minutes = Math.floor(ms / 60).toString().padStart(2, '0');
   const seconds = Math.floor(ms - minutes * 60).toString().padStart(2, '0');
   return `${minutes}:${seconds}`
-};
+}
 
 // showing statistics
-const showStat = function() {
+function showStat() {
   timerStop = performance.now();
   field.classList.add('hidden');
   keyboard.classList.add('hidden');
@@ -204,7 +201,7 @@ const showStat = function() {
       <div class="stat-second-row">${Math.floor((numTotal * 60) / ((timerStop - timerStart) / 1000))}</div>
     </div>
     <div >
-      <div class="stat-first-row">Всего набрано знаков <b>${numTotal-numNeutral}</b>, из них:</div>
+      <div class="stat-first-row">Всего набрано знаков <b>${numTotal - numNeutral}</b>, из них:</div>
       <div class="stat-second-row"></div>
     </div>
     <div >
@@ -225,4 +222,4 @@ const showStat = function() {
     </div>
   `
   clearStat();
-};
+}
