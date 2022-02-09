@@ -1,59 +1,38 @@
-// selecting the first element of <span line1>
-let caret = document.querySelector('#line-beginning');
+import {charInserter} from "/src/scripts/char-inserter.js";
+import {getBrowser, strPreparer} from "/src/scripts/functions.js";
+import {keyDownHandler} from "/src/scripts/keyboard.js";
 
+// const btnGenFromSite = document.querySelector('#btn1');
+const fromBuffer = document.querySelector('#buffer');
+const statistics = document.querySelector('.statistics');
+const statisticsClose = document.querySelector('.statistics-close');
+const overlay = document.querySelector('.overlay');
+console.warn('index.js')
 
-// keydown
-document.body.addEventListener('keydown', function(event) {
-  event.preventDefault();
-
-  try {
-    const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
-    btnDn.className = 'button-dn';
-    let eKey = event.key;
-    let targetLetter = caret.textContent;
-
-    // checking if CapsLock key is active
-    const capsLockState = event.getModifierState && event.getModifierState('CapsLock');
-    console.log(capsLockState);
-
-    // skipping special keys
-    if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock' || eKey === 'Enter' || eKey === 'Shift'
-      || eKey === 'Control' || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
-      // ...
-    } else {
-      // setting case-insensitive matching
-      eKey = eKey.toLowerCase();
-      targetLetter = targetLetter.toLowerCase();
-
-      // marking the letter depending on the pressed key
-      if (eKey === targetLetter) {
-        caret.className = 'letter-correct';
-      } else {
-        caret.className = 'letter-wrong';
-      }
-
-      // checking if it's the last letter
-      if (caret.id === 'line-end') {
-        // choosing all the letter elements
-        const divLetters = document.querySelectorAll('.letter-correct, .letter-wrong');
-        divLetters.forEach(div => div.className = 'letter-target');
-
-        caret = document.querySelector('#line-beginning');
-      } else {
-        // moving the caret to the next letter
-        caret = caret.nextElementSibling;
-      }
-      caret.className = 'letter-caret';
-
-    }
-    // releasing the key
-    document.body.addEventListener('keyup', function(event) {
-      const btnUp = document.querySelector(`#${event.code.toLowerCase()}`);
-      if (btnDn === btnUp) setTimeout(function() {
-        btnUp.className = 'button-up';
-      }, 100);
-    });
-  } catch (error) {
-    // console.error(`${error.name}: ${error.message}`);
+// adding text from a buffer
+fromBuffer.addEventListener('click', async function() {
+  // defining browser
+  const br = getBrowser().browser;
+  if (br === 'chrome' || br === 'yabrowser') {
+    let str = await navigator.clipboard.readText();
+    charInserter(strPreparer(str), 0);
+    document.querySelector('.field').classList.remove('hidden');
+    document.querySelector('.keyboard').classList.remove('hidden');
+  } else if (br === 'firefox') {
+    let str = document.querySelector('#input').value;
+    charInserter(strPreparer(str), 0);
   }
+});
+
+// handling keyboard events
+document.addEventListener('keydown', event => keyDownHandler(event));
+
+// shutting down the statistics menu
+statisticsClose.addEventListener('click', function() {
+  statistics.classList.add('hidden');
+  overlay.classList.add('hidden');
+});
+overlay.addEventListener('click', function() {
+  statistics.classList.add('hidden');
+  overlay.classList.add('hidden');
 });

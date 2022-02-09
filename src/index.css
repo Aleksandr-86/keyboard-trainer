@@ -1,160 +1,38 @@
+@import "css/menu.css";
+@import "css/field.css";
+@import "css/keyboard.css";
+@import "css/statistics.css";
+
 @font-face {
-  font-family: 'PTMonoWebRegular';
-  src: url('/src/fonts/PT-Mono_Regular.woff2') format('woff2'),
-  url('/src/fonts/PT-Mono_Regular.woff') format('woff');
+  font-family: 'JetBrainsMono-Regular';
+  src: url('/src/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
+  local("Consolas");
   font-weight: normal;
   font-style: normal;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /*box-sizing: border-box;*/
+  overflow: hidden;
+}
+
 body {
-  /*width: 1366px;*/
-  /*height: 768px;*/
-  background: rgb(105, 146, 167);
+  /*background: black url("/src/images/backgrounds/nightroad2.jpg") no-repeat border-box;*/
+  /*background: black url("/src/images/backgrounds/mountain2.jpg") no-repeat fixed center center;*/
+  /*background: black url("/src/images/backgrounds/okhotskoye.jpg") no-repeat fixed center center;*/
+  /*background: black url("/src/images/backgrounds/water-fall.jpg") no-repeat fixed center center;*/
+  /*background: black url("/src/images/backgrounds/water.jpg") no-repeat fixed center center;*/
+  /*background: black url("/src/images/backgrounds/snow-mountain.jpg") no-repeat fixed center center;*/
+  background: black url("/src/images/backgrounds/sea-creatures.jpg") no-repeat fixed center center;
+  background-size: cover;
 }
 
-.field {
-  /*width: 850px;*/
-  width: 1200px;
-  height: 400px;
-  margin: 0 auto 50px auto;
-  background: #b990cf;
-}
-
-.letter-caret,
-.letter-target,
-.letter-wrong,
-.letter-correct {
-  float: left;
-  line-height: 90px;
-  width: 48px;
-  margin: 0 2px 2px 0;
-  font-family: "PTMonoWebRegular", monospace;
-  font-size: 80px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 5px;
-  border: 5px solid transparent;
-  white-space: pre-wrap;
-}
-
-.field :last-child {
-  margin-right: 0;
-}
-
-.letter-correct {
-  background: rgba(144, 238, 144, 0.8);
-}
-
-.letter-wrong {
-  background: red;
-}
-
-.letter-caret {
-  /*border-bottom: 5px solid rgba(144, 238, 144, 0.8);*/
-  border-bottom: 5px solid rgba(144, 238, 144, 0.8);
-  /*border: 1px solid red;*/
-  /*background: #a464fd1;*/
-}
-
-.keyboard {
-  width: 939px;
-  height: 312px;
-  margin: 0 auto;
-  /*background: #c88b8b;*/
-}
-
-.button-up,
-.button-dn {
-  display: inline-block;
-  width: 60px;
-  height: 60px;
-  margin: 0 3px 0 0;
-  /*padding: 2pne;*/
-  font-size: 21px;
-  font-family: "PTMonoWebRegular", monospace;
-  text-align: center;
-
-  color: black;
-  background: rgba(250, 220, 240, 0.3);
-  border: none;
-  border-radius: 15px;
-}
-
-.button-up:after,
-.button-dn:after {
-  content: '';
-  height: 63px;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.button-dn {
-  box-shadow: 0 0 30px 15px rgb(0, 255, 0, 0.5), inset 0 0 30px rgb(0, 255, 0, 0.5);
-}
-
-.button-dn:after {
-  height: 68px;
-}
-
-.row1,
-.row2,
-.row3,
-.row4 {
-  display: flex;
-  width: inherit;
-  margin-bottom: 3px;
-}
-
-.row5 {
-  display: flex;
-  width: inherit;
-}
-
-#backspace {
-  width: 120px;
-  margin-right: 0;
-}
-
-#tab {
-  width: 90px;
-}
-
-#backslash {
-  width: 90px;
-  margin-right: 0;
-}
-
-#capslock {
-  width: 106px;
-}
-
-#enter {
-  width: 136px;
-  margin-right: 0;
-}
-
-#shiftleft {
-  width: 138px;
-}
-
-#shiftright {
-  width: 168px;
-  margin-right: 0;
-}
-
-#controlleft,
-#osleft,
-#altleft,
-#altright,
-#osright,
-#contextmenu {
-  width: 75px;
-}
-
-#space {
-  width: 393px;
-}
-
-#controlright {
-  width: 75px;
-  margin-right: 0;
+.hidden {
+  visibility: hidden;
+  opacity: 0;
 }

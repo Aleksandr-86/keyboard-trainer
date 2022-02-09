@@ -1,0 +1,75 @@
+@keyframes hideCursor {
+  0%, 99% {
+    cursor: default;
+  }
+  100% {
+    cursor: none;
+  }
+}
+
+.field {
+  /*width: 850px;*/
+  /*width: 1598px;*/
+  width: 1365px;
+  height: 450px;
+  margin: 10px auto 50px;
+  backdrop-filter: blur(200px);
+  user-select: none;
+  cursor: none;
+
+  transition: visibility 500ms, opacity 500ms;
+}
+
+.field:hover {
+  animation: hideCursor 3s;
+}
+
+.line {
+  width: inherit;
+  height: 86px;
+}
+
+.char {
+  float: left;
+  width: 39px;
+  height: inherit;
+  font-family: "JetBrainsMono-Regular", monospace;
+  font-size: 65px;
+  background: rgba(50, 50, 50, 0.75);
+  color: rgb(165, 165, 165);
+}
+
+.char-caret {
+  position: relative;
+  z-index: -1;
+}
+
+.char-caret:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 39px;
+  height: 5px;
+  background: rgba(30, 30, 30, 0.7);
+  filter: drop-shadow(3px 2px 2px yellowgreen) brightness(250%)
+}
+
+.char-correct {
+  color: rgb(40, 190, 100);
+  filter: drop-shadow(3px 2px 2px) brightness(95%);
+}
+
+.char-wrong {
+  color: rgb(255, 50, 50);
+  filter: drop-shadow(3px 2px 2px) brightness(95%);
+}
+
+.char-neutral-inactive {
+  color: rgb(100, 100, 180);
+}
+
+.char-neutral-active {
+  color: rgb(100, 100, 180);
+  filter: drop-shadow(3px 2px 2px) brightness(95%);
+}
