@@ -21,7 +21,6 @@ let numWrong = 0;
 let numRow = 0;
 let numRowCounter = 0;
 
-
 // showing statistics
 function showStat() {
 // rounding
