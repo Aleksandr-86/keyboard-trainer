@@ -46,8 +46,8 @@ h3 {
   position: absolute;
   top: 0;
   right: 0;
-  width: 5.5vh;
-  height: 5.5vh;
+  width: 6vh;
+  height: 6vh;
   font-size: 5vh;
   background: none;
   color: black;
@@ -72,11 +72,11 @@ h3 {
 .num-correct {
   /*color: rgb(40, 190, 100);*/
   /*color: rgb(20, 190, 80);*/
-  color: rgb(20, 170, 80);
+  color: rgb(0, 160, 40);
 }
 
 .num-wrong {
-  color: rgb(230, 50, 50);
+  color: rgb(205, 50, 50);
 }
 
 .stat-first-row {
