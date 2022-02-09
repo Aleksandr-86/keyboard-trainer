@@ -1,5 +1,5 @@
 "use strict";
-console.warn('functions');
+// console.warn('functions');
 
 // defining the browser and returning object with information about it
 export function getBrowser() {

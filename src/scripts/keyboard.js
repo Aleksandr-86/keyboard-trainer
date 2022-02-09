@@ -1,7 +1,7 @@
 import {charTest} from "/src/scripts/functions.js";
 import {arrOfStrings, indOfString, charInserter} from "/src/scripts/char-inserter.js";
 
-console.warn('keyboard')
+// console.warn('keyboard')
 "use strict";
 
 const field = document.querySelector('.field');
@@ -120,102 +120,102 @@ export function charHandler(caret) {
   caret.classList.toggle('char-caret');
 }
 
-let bKey = false;
 
 // keydown
 export function keyDownHandler(event) {
-  event.preventDefault();
-
 
   let eKey = event.key;
 
 
-
-  // selecting the first element of the first line
-  let caret = document.querySelector('.char-caret');
-
   const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
 
-  try {
-
+  if (!statistics.classList.contains('hidden') && (eKey === 'Escape' || eKey === 'Enter')) {
+    console.warn(1)
+    statistics.classList.add('hidden');
+    overlay.classList.add('hidden');
+    return;
+  } else if (!field.classList.contains('hidden') && eKey === 'Enter' && numTotal > 0) {
+    console.warn(2)
+    showStat();
+    return;
+  } else if (!field.classList.contains('hidden') && eKey === 'Enter' && numTotal === 0) {
+    console.warn(3)
+    return;
+    } else if (field.classList.contains('hidden')) {
+      console.warn(4)
+      return;
+  } else if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock'
+    || eKey === 'Shift' || eKey === 'Control'
+    || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
+    console.warn(5)
+    btnDn.className = 'button-dn1';
+  } else {
+    console.warn(6)
+    // selecting the first element of the first line
+    let caret = document.querySelector('.char-caret');
     let targetChar = caret.textContent;
 
-    if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock'
-      || eKey === 'Shift' || eKey === 'Control'
-      || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
-      btnDn.className = 'button-dn1';
-    } else if (eKey === 'Enter') {
-      console.log('enter')
-      showStat();
-      return;
-    } else {
-      // console.warn(eKey);
-      console.log(field.classList.contains('hidden'))
-      // if (field.classList.contains('hidden')) return;
-      if (!bTimer) {
-        bTimer = true;
-        timerStart = performance.now();
-      }
 
-      numTotal++;
-      btnDn.className = 'button-dn2';
-
-      // setting case-insensitive matching
-      eKey = eKey.toLowerCase();
-      targetChar = targetChar.toLowerCase();
-
-      // coloring the char's background depending on the pressed key
-      if (eKey === targetChar) {
-        if (targetChar !== ' ') caret.classList.add('char-correct');
-        numCorrect++;
-        numRowCounter++;
-        if (numRowCounter > numRow) numRow = numRowCounter;
-      } else {
-        caret.classList.add('char-wrong');
-        numWrong++;
-        numRowCounter = 0;
-      }
-
-      if (caret.classList.contains('finish')) { // the end of typing
-        caret.classList.remove('char-caret');
-        console.warn('2 конец');
-        showStat();
-        return;
-      } else if (caret.classList.contains('line-end')
-        && caret.parentElement.nextElementSibling === null) {
-        charInserter(arrOfStrings, indOfString);
-        caret = document.querySelector('.char-caret');
-        charHandler(caret);
-      } else if (caret.classList.contains('line-end')) {
-        caret.classList.toggle('char-caret');
-        caret = caret.parentElement.nextElementSibling.firstChild;
-        charHandler(caret);
-      } else {
-        if (caret.nextElementSibling !== null) {
-          caret.classList.remove('char-caret');
-          caret = caret.nextElementSibling;
-          charHandler(caret);
-        }
-      }
-
-      // identifying the language of the keyboard layout
-      // console.log(langTest(caret.textContent));
-      // if (langTest(caret.textContent)) {
-      //   caret.style.borderBottomColor = 'rgba(20, 120, 100, 0.8)';
-      // } else {
-      //   caret.style.borderBottomColor = 'rgb(220, 100, 70, 0.8)';
-      // }
+    if (!bTimer) {
+      bTimer = true;
+      timerStart = performance.now();
     }
 
-    // releasing the key
-    document.body.addEventListener('keyup', function(event) {
-      const btnUp = document.querySelector(`#${event.code.toLowerCase()}`);
-      if (btnDn === btnUp) setTimeout(function() {
-        btnUp.className = 'button-up';
-      }, 100);
-    });
-  } catch
-    (error) {
-    console.error(error);
+    numTotal++;
+    btnDn.className = 'button-dn2';
+
+    // setting case-insensitive matching
+    eKey = eKey.toLowerCase();
+    targetChar = targetChar.toLowerCase();
+
+    // coloring the char's background depending on the pressed key
+    if (eKey === targetChar) {
+      if (targetChar !== ' ') caret.classList.add('char-correct');
+      numCorrect++;
+      numRowCounter++;
+      if (numRowCounter > numRow) numRow = numRowCounter;
+    } else {
+      caret.classList.add('char-wrong');
+      numWrong++;
+      numRowCounter = 0;
+    }
+
+    if (caret.classList.contains('finish')) { // the end of typing
+      caret.classList.remove('char-caret');
+      console.warn('2 конец');
+      showStat();
+      return;
+    } else if (caret.classList.contains('line-end')
+      && caret.parentElement.nextElementSibling === null) {
+      charInserter(arrOfStrings, indOfString);
+      caret = document.querySelector('.char-caret');
+      charHandler(caret);
+    } else if (caret.classList.contains('line-end')) {
+      caret.classList.toggle('char-caret');
+      caret = caret.parentElement.nextElementSibling.firstChild;
+      charHandler(caret);
+    } else {
+      if (caret.nextElementSibling !== null) {
+        caret.classList.remove('char-caret');
+        caret = caret.nextElementSibling;
+        charHandler(caret);
+      }
+    }
+
+    // identifying the language of the keyboard layout
+    // console.log(langTest(caret.textContent));
+    // if (langTest(caret.textContent)) {
+    //   caret.style.borderBottomColor = 'rgba(20, 120, 100, 0.8)';
+    // } else {
+    //   caret.style.borderBottomColor = 'rgb(220, 100, 70, 0.8)';
+    // }
   }
+
+  // releasing the key
+  document.body.addEventListener('keyup', function(event) {
+    const btnUp = document.querySelector(`#${event.code.toLowerCase()}`);
+    if (btnDn === btnUp) setTimeout(function() {
+      btnUp.className = 'button-up';
+    }, 100);
+  });
 }

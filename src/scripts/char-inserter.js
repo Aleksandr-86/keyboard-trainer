@@ -1,7 +1,7 @@
 import {charHandler} from "/src/scripts/keyboard.js";
 import {charTest} from "/src/scripts/functions.js";
 
-console.warn('char-inserter')
+// console.warn('char-inserter')
 "use strict";
 
 export let arrOfStrings;
@@ -17,7 +17,7 @@ function createDiv(char) {
 }
 
 // filling the field block with char
-export function charInserter(arr, index) {
+export function charInserter(arr, ind) {
   arrOfStrings = [...arr];
   const arrLen = arrOfStrings.length;
   // the maximum length of a word that will not be carried over to the next line
@@ -30,7 +30,7 @@ export function charInserter(arr, index) {
   document.querySelectorAll('.line').forEach(line => line.innerHTML = ''); // clearing lines
   let currentLine = document.querySelector('#line1');
 
-  for (let i = index; i < arrLen; i++) {
+  for (let i = ind; i < arrLen; i++) {
     const word = arrOfStrings[i];
     const wordLen = word.length;
     const arrWord = [...arrOfStrings[i]];
