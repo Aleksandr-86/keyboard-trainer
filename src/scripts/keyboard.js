@@ -4,10 +4,6 @@ import {arrOfStrings, indOfString, charInserter} from "/src/scripts/char-inserte
 console.warn('keyboard')
 "use strict";
 
-// checking if CapsLock key is active
-// const capsLockState = event.getModifierState && event.getModifierState('CapsLock');
-// console.log(capsLockState);
-// skipping special keys
 
 const field = document.querySelector('.field');
 const keyboard = document.querySelector('.keyboard');
@@ -70,11 +66,9 @@ export function charHandler(caret) {
 // keydown
 export function keyDownHandler(event) {
   event.preventDefault();
-
   // selecting the first element of the first line
   let caret = document.querySelector('.char-caret');
   let eKey = event.key;
-  console.warn(eKey)
   const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
 
   try {
@@ -87,14 +81,19 @@ export function keyDownHandler(event) {
       return;
     }
 
+    console.log(1)
     let targetChar = caret.textContent;
 
     if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock'
-      || eKey === 'Enter' || eKey === 'Shift' || eKey === 'Control'
+      || eKey === 'Shift' || eKey === 'Control'
       || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
       btnDn.className = 'button-dn1';
+    } else if (eKey === 'Enter') {
+      showStat();
     } else {
-
+      console.warn(eKey);
+      console.log(field.classList.contains('hidden'))
+      // if (field.classList.contains('hidden')) return;
       if (!bTimer) {
         bTimer = true;
         timerStart = performance.now();
@@ -156,7 +155,8 @@ export function keyDownHandler(event) {
         btnUp.className = 'button-up';
       }, 100);
     });
-  } catch (error) {
+  } catch
+    (error) {
     console.error(error);
   }
 }

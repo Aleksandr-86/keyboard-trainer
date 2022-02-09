@@ -79,3 +79,8 @@ export const strPreparer = str => str.trim().replace(/(\n)|(\r\n)/g, ' \n ').rep
 // returns false if a char is inappropriate
 export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 export const langTest = char => /[0-9 А-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
+
+// checking if CapsLock key is active
+// const capsLockState = event.getModifierState && event.getModifierState('CapsLock');
+// console.log(capsLockState);
+// skipping special keys
