@@ -4,7 +4,6 @@ import {arrOfStrings, indOfString, charInserter} from "/src/scripts/char-inserte
 console.warn('keyboard')
 "use strict";
 
-
 const field = document.querySelector('.field');
 const keyboard = document.querySelector('.keyboard');
 const statistics = document.querySelector('.statistics');
@@ -21,6 +20,66 @@ let numCorrect = 0;
 let numWrong = 0;
 let numRow = 0;
 let numRowCounter = 0;
+
+
+// showing statistics
+function showStat() {
+// rounding
+  const rnd = num => Number(Math.round(Number(num + 'e2')) + 'e-2');
+
+// converting ms into minutes:seconds
+  function msToMinutes(ms) {
+    ms /= 1000;
+    const minutes = Math.floor(ms / 60).toString().padStart(2, '0');
+    const seconds = Math.floor(ms - minutes * 60).toString().padStart(2, '0');
+    return `${minutes}:${seconds}`
+  }
+
+  timerStop = performance.now();
+  field.classList.add('hidden');
+  keyboard.classList.add('hidden');
+  statistics.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+
+  statContainer.innerHTML = `
+    <div >
+      <div class="stat-first-row">Время набора:</div>
+      <div class="stat-second-row">${msToMinutes(timerStop - timerStart)}</div>
+    </div>
+    <div >
+      <div class="stat-first-row">Cкорость набора, зн/мин:</div>
+      <div class="stat-second-row">${Math.floor((numTotal * 60) / ((timerStop - timerStart) / 1000))}</div>
+    </div>
+    <div >
+      <div class="stat-first-row">Всего набрано знаков <b>${numTotal - numNeutral}</b>, из них:</div>
+      <div class="stat-second-row"></div>
+    </div>
+    <div >
+      <div class="stat-first-row stat-pos">- правильных</div>
+      <div class="stat-second-row">${numCorrect}
+        <div class="num-correct">(${rnd((numCorrect * 100) / (numTotal - numNeutral))}%)</div>
+      </div>
+    </div>
+    <div >
+      <div class="stat-first-row stat-pos">- ошибочных</div>
+      <div class="stat-second-row">${numWrong}
+        <div class="num-wrong">(${rnd((numWrong * 100) / (numTotal - numNeutral))}%)</div>
+      </div>
+    </div>
+    <div >
+      <div class="stat-first-row">Знаков подряд без ошибки:</div>
+      <div class="stat-second-row">${numRow}</div>
+    </div>
+  `
+
+  numTotal = 0;
+  numNeutral = 0;
+  numCorrect = 0;
+  numWrong = 0;
+  numRow = 0;
+  numRowCounter = 0;
+  bTimer = false;
+}
 
 
 // skipping inappropriate chars and a space after them (due a certain condition)
@@ -62,26 +121,24 @@ export function charHandler(caret) {
   caret.classList.toggle('char-caret');
 }
 
+let bKey = false;
 
 // keydown
 export function keyDownHandler(event) {
   event.preventDefault();
+
+
+  let eKey = event.key;
+
+
+
   // selecting the first element of the first line
   let caret = document.querySelector('.char-caret');
-  let eKey = event.key;
+
   const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
 
   try {
-    if (caret === null && (eKey === 'Escape' || eKey === 'Enter')) {
-      // shutting down the statistics menu
-      statistics.classList.add('hidden');
-      overlay.classList.add('hidden');
-      return;
-    } else if (caret === null) {
-      return;
-    }
 
-    console.log(1)
     let targetChar = caret.textContent;
 
     if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock'
@@ -89,9 +146,11 @@ export function keyDownHandler(event) {
       || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
       btnDn.className = 'button-dn1';
     } else if (eKey === 'Enter') {
+      console.log('enter')
       showStat();
+      return;
     } else {
-      console.warn(eKey);
+      // console.warn(eKey);
       console.log(field.classList.contains('hidden'))
       // if (field.classList.contains('hidden')) return;
       if (!bTimer) {
@@ -122,6 +181,7 @@ export function keyDownHandler(event) {
         caret.classList.remove('char-caret');
         console.warn('2 конец');
         showStat();
+        return;
       } else if (caret.classList.contains('line-end')
         && caret.parentElement.nextElementSibling === null) {
         charInserter(arrOfStrings, indOfString);
@@ -159,67 +219,4 @@ export function keyDownHandler(event) {
     (error) {
     console.error(error);
   }
-}
-
-// clearing statistics variables
-function clearStat() {
-  numTotal = 0;
-  numNeutral = 0;
-  numCorrect = 0;
-  numWrong = 0;
-  numRow = 0;
-  numRowCounter = 0;
-  bTimer = false;
-}
-
-// rounding
-const rnd = num => Number(Math.round(Number(num + 'e2')) + 'e-2');
-
-// converting ms into minutes:seconds
-function msToMinutes(ms) {
-  ms /= 1000;
-  const minutes = Math.floor(ms / 60).toString().padStart(2, '0');
-  const seconds = Math.floor(ms - minutes * 60).toString().padStart(2, '0');
-  return `${minutes}:${seconds}`
-}
-
-// showing statistics
-function showStat() {
-  timerStop = performance.now();
-  field.classList.add('hidden');
-  keyboard.classList.add('hidden');
-  statistics.classList.remove('hidden');
-  overlay.classList.remove('hidden');
-
-  statContainer.innerHTML = `
-    <div >
-      <div class="stat-first-row">Время набора:</div>
-      <div class="stat-second-row">${msToMinutes(timerStop - timerStart)}</div>
-    </div>
-    <div >
-      <div class="stat-first-row">Cкорость набора, зн/мин:</div>
-      <div class="stat-second-row">${Math.floor((numTotal * 60) / ((timerStop - timerStart) / 1000))}</div>
-    </div>
-    <div >
-      <div class="stat-first-row">Всего набрано знаков <b>${numTotal - numNeutral}</b>, из них:</div>
-      <div class="stat-second-row"></div>
-    </div>
-    <div >
-      <div class="stat-first-row stat-pos">- правильных</div>
-      <div class="stat-second-row">${numCorrect}
-        <div class="num-correct">(${rnd((numCorrect * 100) / (numTotal - numNeutral))}%)</div>
-      </div>
-    </div>
-    <div >
-      <div class="stat-first-row stat-pos">- ошибочных</div>
-      <div class="stat-second-row">${numWrong}
-        <div class="num-wrong">(${rnd((numWrong * 100) / (numTotal - numNeutral))}%)</div>
-      </div>
-    </div>
-    <div >
-      <div class="stat-first-row">Знаков подряд без ошибки:</div>
-      <div class="stat-second-row">${numRow}</div>
-    </div>
-  `
-  clearStat();
 }
