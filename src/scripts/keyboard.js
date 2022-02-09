@@ -1,7 +1,6 @@
 import {charTest} from "/src/scripts/functions.js";
 import {arrOfStrings, indOfString, charInserter} from "/src/scripts/char-inserter.js";
 
-// console.warn('keyboard')
 "use strict";
 
 const field = document.querySelector('.field');
