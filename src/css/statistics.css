@@ -71,11 +71,12 @@ h3 {
 
 .num-correct {
   /*color: rgb(40, 190, 100);*/
-  color: rgb(20, 190, 80);
+  /*color: rgb(20, 190, 80);*/
+  color: rgb(20, 170, 80);
 }
 
 .num-wrong {
-  color: rgb(255, 50, 50);
+  color: rgb(230, 50, 50);
 }
 
 .stat-first-row {
