@@ -7,8 +7,6 @@ const buffer = document.querySelector('#buffer');
 const statistics = document.querySelector('.statistics');
 const statisticsClose = document.querySelector('.statistics-close');
 const overlay = document.querySelector('.overlay');
-// console.warn('index.js')
-
 
 // adding text from a buffer
 buffer.addEventListener('click', async function() {
