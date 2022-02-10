@@ -122,10 +122,7 @@ export function charHandler(caret) {
 
 // keydown
 export function keyDownHandler(event) {
-
   let eKey = event.key;
-
-
   const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
 
   if (!statistics.classList.contains('hidden') && (eKey === 'Escape' || eKey === 'Enter')) {
