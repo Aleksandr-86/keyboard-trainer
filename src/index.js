@@ -3,6 +3,8 @@ import {getBrowser, strPreparer} from "/src/scripts/functions.js";
 import {keyDownHandler} from "/src/scripts/keyboard.js";
 
 // const btnGenFromSite = document.querySelector('#btn1');
+const field = document.querySelector('.field');
+const keyboard = document.querySelector('.keyboard');
 const buffer = document.querySelector('#buffer');
 const statistics = document.querySelector('.statistics');
 const statisticsClose = document.querySelector('.statistics-close');
@@ -16,8 +18,8 @@ buffer.addEventListener('click', async function() {
     let str = await navigator.clipboard.readText();
     buffer.blur();
     charInserter(strPreparer(str), 0);
-    document.querySelector('.field').classList.remove('hidden');
-    document.querySelector('.keyboard').classList.remove('hidden');
+    field.classList.remove('hidden');
+    keyboard.classList.remove('hidden');
   } else if (br === 'firefox') {
     let str = document.querySelector('#input').value;
     charInserter(strPreparer(str), 0);

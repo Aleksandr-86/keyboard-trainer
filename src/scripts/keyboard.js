@@ -93,7 +93,7 @@ export function charHandler(caret) {
 
     if (caret.classList.contains('finish')) { // the end of typing
       caret.classList.add('char-caret');
-      console.warn('1 конец');
+      console.warn('конец 1');
       showStat();
       break;
     } else {
@@ -126,31 +126,24 @@ export function keyDownHandler(event) {
   const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
 
   if (!statistics.classList.contains('hidden') && (eKey === 'Escape' || eKey === 'Enter')) {
-    console.warn(1)
     statistics.classList.add('hidden');
     overlay.classList.add('hidden');
     return;
   } else if (!field.classList.contains('hidden') && eKey === 'Enter' && numTotal > 0) {
-    console.warn(2)
     showStat();
     return;
   } else if (!field.classList.contains('hidden') && eKey === 'Enter' && numTotal === 0) {
-    console.warn(3)
     return;
-    } else if (field.classList.contains('hidden')) {
-      console.warn(4)
-      return;
+  } else if (field.classList.contains('hidden')) {
+    return;
   } else if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock'
     || eKey === 'Shift' || eKey === 'Control'
     || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
-    console.warn(5)
     btnDn.className = 'button-dn1';
   } else {
-    console.warn(6)
     // selecting the first element of the first line
     let caret = document.querySelector('.char-caret');
     let targetChar = caret.textContent;
-
 
     if (!bTimer) {
       bTimer = true;
