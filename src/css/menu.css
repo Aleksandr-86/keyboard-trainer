@@ -1,9 +1,4 @@
-.main-menu > li > ul > li > a {
-  font-size: 25px;
-  /*color: red;*/
-}
-
-.main-menu {
+.nav {
   background: rgba(20, 20, 20, 0.8);
   display: flex;
   justify-content: center;
@@ -17,16 +12,15 @@
   /*justify-content: center;*/
 }
 
-.main-menu > li {
+.nav > li {
   display: inline-flex;
-  /*margin-left: 20px;*/
 }
 
-.main-menu > li + li {
+.nav > li + li {
   margin-left: 20px;
 }
 
-.main-menu > li > a {
+.nav > li > a {
   padding: 20px 0 20px 0;
   position: relative;
   text-transform: uppercase;
@@ -35,15 +29,16 @@
   letter-spacing: 0;
   font-size: 25px;
   text-decoration: none;
+  /*background: aqua;*/
 }
 
-.main-menu > li > a:hover {
+.nav > li > a:hover {
   text-decoration: none;
   /*color: #337AB7;*/
   color: #49b733;
 }
 
-.main-menu > li > a:after {
+.nav > li > a:after {
   width: 0;
   height: 3px;
   /*background-color: #337AB7;*/
@@ -55,25 +50,25 @@
   transition: all .3s;
 }
 
-.main-menu > li > a:hover::after {
+.nav > li > a:hover::after {
   width: 100%;
 }
 
-.main-menu > li.active a:after {
+.nav > li.active a:after {
   width: 100%;
 }
 
-.main-menu li {
+.nav li {
   margin: 0;
   white-space: nowrap;
 }
 
-.main-menu li.menu-children {
+.nav li.nav-children {
   position: relative;
   margin-right: 12px;
 }
 
-.main-menu li.menu-children:after {
+.nav li.nav-children:after {
   position: absolute;
   content: "\2039";
   /*color: #337AB7;*/
@@ -85,7 +80,7 @@
   transform: rotate(-90deg);
 }
 
-.main-menu li li.menu-children:after {
+.nav li li.nav-children:after {
   position: absolute;
   content: "\2039";
   /*color: #FFF;*/
@@ -97,13 +92,13 @@
   transform: rotate(180deg);
 }
 
-.main-menu li.menu-children:hover > ul {
+.nav li.nav-children:hover > ul {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-.main-menu ul {
+.nav ul {
   padding: 10px 0;
   margin: 0;
   list-style: none;
@@ -119,17 +114,17 @@
   transition: all 200ms cubic-bezier(0.43, 0.59, 0.16, 1.25);
 }
 
-.main-menu ul li {
+.nav ul li {
   display: block;
   padding: 0 10px;
   line-height: 1.1;
 }
 
-.main-menu ul li:last-child {
+.nav ul li:last-child {
   margin-bottom: 0;
 }
 
-.main-menu ul li a {
+.nav ul li a {
   display: block;
   color: #fff;
   padding: 10px;
@@ -137,13 +132,17 @@
   text-decoration: none;
 }
 
-.main-menu ul li a:hover {
+.nav ul li a:hover {
   color: #337AB7;
   background: #FFF;
   text-decoration: none;
 }
 
-.main-menu ul ul {
+.nav ul ul {
   top: 0;
   left: 100%;
+}
+
+.nav > li > ul > li > a {
+  font-size: 25px;
 }

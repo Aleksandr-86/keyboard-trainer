@@ -18,6 +18,8 @@ function createDiv(char) {
 
 // filling the field block with char
 export function charInserter(arr, ind) {
+  if (arr.length === 1 && arr[0] === '') return; // buffer is empty
+
   arrOfStrings = [...arr];
   const arrLen = arrOfStrings.length;
   // the maximum length of a word that will not be carried over to the next line
