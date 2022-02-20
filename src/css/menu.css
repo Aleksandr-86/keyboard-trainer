@@ -34,8 +34,8 @@
 
 .nav > li > a:hover {
   text-decoration: none;
-  /*color: #337AB7;*/
-  color: #49b733;
+  color: #337AB7;
+  /*color: #49b733;*/
 }
 
 .nav > li > a:after {
