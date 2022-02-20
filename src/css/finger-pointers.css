@@ -42,7 +42,7 @@
 
 .left-hand:nth-child(2),
 .right-hand:nth-child(6) {
-  background: rgba(0, 128, 0, 0.75);
+  background: rgba(0, 175, 0, 0.75);
 }
 
 .left-hand:nth-child(3),
@@ -56,8 +56,8 @@
     background: rgba(255, 0, 0, 0.75);
 }
 
-.finger-pointers .pointers-disabled {
-  /*background: rgba(50, 50, 50, 0.75);*/
+.finger-pointers .pointer-disabled {
+  background: rgba(50, 50, 50, 0.75);
 }
 
 /*#left-pinky {*/

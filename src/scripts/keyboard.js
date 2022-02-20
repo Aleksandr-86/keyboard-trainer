@@ -21,6 +21,11 @@ let numWrong = 0;
 let numRow = 0;
 let numRowCounter = 0;
 
+
+const charArrRus = ['ё1йфя', '2цыч', '3увс', '4кам5епи6', '7нртгоь', '8шлб', '9щдю', '0зж.-хэ=ъ\\'];
+export let fPointer;
+
+
 // showing statistics
 function showStat() {
   function rnd(num) { // rounding
@@ -82,10 +87,35 @@ function showStat() {
 }
 
 
-// finger pointing
-// function fingerPointing {
-//   return false;
-// }
+// return finger pointing div
+export function fingerPointing(targetChar) {
+  let ind;
+  for (let i = 0; i < charArrRus.length; i++) {
+    if (charArrRus[i].indexOf(targetChar) >= 0) {
+      ind = i;
+      break;
+    }
+  }
+
+  if (ind === 0) {
+    return document.querySelector('#left-pinky');
+  } else if (ind === 1) {
+    return document.querySelector('#left-ring');
+  } else if (ind === 2) {
+    return document.querySelector('#left-middle');
+  } else if (ind === 3) {
+    return document.querySelector('#left-index');
+  } else if (ind === 4) {
+    return document.querySelector('#right-index');
+  } else if (ind === 5) {
+    return document.querySelector('#right-middle');
+  } else if (ind === 6) {
+    return document.querySelector('#right-ring');
+  } else if (ind === 7) {
+    return document.querySelector('#right-pinky');
+  }
+}
+
 
 // skipping inappropriate chars and a space after them (due a certain condition)
 export function charHandler(caret) {
@@ -163,6 +193,8 @@ export function keyDownHandler(event) {
     eKey = eKey.toLowerCase();
     targetChar = targetChar.toLowerCase();
 
+    if (targetChar !== ' ') fingerPointing(targetChar).classList.add('pointer-disabled');
+
     // coloring the char's background depending on the pressed key
     if (eKey === targetChar) {
       if (targetChar !== ' ') caret.classList.add('char-correct');
@@ -197,6 +229,8 @@ export function keyDownHandler(event) {
       }
     }
 
+
+    fingerPointing(caret.textContent).classList.remove('pointer-disabled');
     // identifying the language of the keyboard layout
     // console.log(langTest(caret.textContent));
     // if (langTest(caret.textContent)) {
