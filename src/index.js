@@ -3,6 +3,7 @@ import {getBrowser, strPreparer} from "/src/scripts/functions.js";
 import {keyDownHandler} from "/src/scripts/keyboard.js";
 
 // const btnGenFromSite = document.querySelector('#btn1');
+const fingerPointers = document.querySelector('.finger-pointers');
 const field = document.querySelector('.field');
 const keyboard = document.querySelector('.keyboard');
 const buffer = document.querySelector('#buffer');
@@ -16,8 +17,10 @@ buffer.addEventListener('click', async function() {
   const br = getBrowser().browser;
   if (br === 'chrome' || br === 'yabrowser') {
     let str = await navigator.clipboard.readText();
-    buffer.blur();
+    if (str.length === 1 && str === ' ') return; // buffer is empty
+    buffer.blur(); // removing focus from an element
     charInserter(strPreparer(str), 0);
+    fingerPointers.classList.remove('hidden');
     field.classList.remove('hidden');
     keyboard.classList.remove('hidden');
   } else if (br === 'firefox') {

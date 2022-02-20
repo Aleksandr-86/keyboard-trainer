@@ -3,6 +3,7 @@ import {arrOfStrings, indOfString, charInserter} from "/src/scripts/char-inserte
 
 "use strict";
 
+const fingerPointers = document.querySelector('.finger-pointers');
 const field = document.querySelector('.field');
 const keyboard = document.querySelector('.keyboard');
 const statistics = document.querySelector('.statistics');
@@ -22,11 +23,11 @@ let numRowCounter = 0;
 
 // showing statistics
 function showStat() {
-// rounding
-  const rnd = num => Number(Math.round(Number(num + 'e2')) + 'e-2');
+  function rnd(num) { // rounding
+    return Number(Math.round(Number(num + 'e2')) + 'e-2');
+  }
 
-// converting ms into minutes:seconds
-  function msToMinutes(ms) {
+  function msToMinutes(ms) { // converting ms into minutes:seconds
     ms /= 1000;
     const minutes = Math.floor(ms / 60).toString().padStart(2, '0');
     const seconds = Math.floor(ms - minutes * 60).toString().padStart(2, '0');
@@ -34,6 +35,7 @@ function showStat() {
   }
 
   timerStop = performance.now();
+  fingerPointers.classList.add('hidden');
   field.classList.add('hidden');
   keyboard.classList.add('hidden');
   statistics.classList.remove('hidden');
@@ -80,6 +82,11 @@ function showStat() {
 }
 
 
+// finger pointing
+// function fingerPointing {
+//   return false;
+// }
+
 // skipping inappropriate chars and a space after them (due a certain condition)
 export function charHandler(caret) {
   let test = charTest(caret.textContent);
@@ -118,7 +125,6 @@ export function charHandler(caret) {
   }
   caret.classList.toggle('char-caret');
 }
-
 
 // keydown
 export function keyDownHandler(event) {
