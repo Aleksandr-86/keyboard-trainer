@@ -1,4 +1,4 @@
-import {charTest} from "/src/scripts/functions.js";
+import {charTest, langTest} from "/src/scripts/functions.js";
 import {arrOfStrings, indOfString, charInserter} from "/src/scripts/char-inserter.js";
 
 "use strict";
@@ -21,10 +21,9 @@ let numWrong = 0;
 let numRow = 0;
 let numRowCounter = 0;
 
-
 const charArrRus = ['ё1йфя', '2цыч', '3увс', '4кам5епи6', '7нртгоь', '8шлб', '9щдю', '0зж.-хэ=ъ\\'];
-export let fPointer;
-
+const charArrEng = ['`1qaz', '2wsx', '3edc', '4rfv5tgb6', '7yhnujm', '8ik,', '9ol.', "0p;/-['=]\\"];
+export let langLayout = 'rus';
 
 // showing statistics
 function showStat() {
@@ -89,9 +88,15 @@ function showStat() {
 
 // return finger pointing div
 export function fingerPointing(targetChar) {
-  let ind;
-  for (let i = 0; i < charArrRus.length; i++) {
-    if (charArrRus[i].indexOf(targetChar) >= 0) {
+  let ind = -1;
+  let arr;
+  langTest(targetChar, langLayout) === 'rus' ? langLayout = 'rus' : langLayout = 'eng';
+  langLayout === 'rus' ? arr = charArrRus : arr = charArrEng;
+
+  console.warn(`targetChar ${targetChar}, langLayout ${langLayout}`);
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].indexOf(targetChar) >= 0) {
       ind = i;
       break;
     }
@@ -113,6 +118,8 @@ export function fingerPointing(targetChar) {
     return document.querySelector('#right-ring');
   } else if (ind === 7) {
     return document.querySelector('#right-pinky');
+  } else {
+    return false;
   }
 }
 
@@ -193,7 +200,7 @@ export function keyDownHandler(event) {
     eKey = eKey.toLowerCase();
     targetChar = targetChar.toLowerCase();
 
-    if (targetChar !== ' ') fingerPointing(targetChar).classList.add('pointer-disabled');
+    if (fingerPointing(targetChar)) fingerPointing(targetChar).classList.add('pointer-disabled');
 
     // coloring the char's background depending on the pressed key
     if (eKey === targetChar) {
@@ -229,8 +236,8 @@ export function keyDownHandler(event) {
       }
     }
 
-
-    fingerPointing(caret.textContent).classList.remove('pointer-disabled');
+    targetChar = caret.textContent;
+    if (fingerPointing(targetChar)) fingerPointing(targetChar).classList.remove('pointer-disabled');
     // identifying the language of the keyboard layout
     // console.log(langTest(caret.textContent));
     // if (langTest(caret.textContent)) {

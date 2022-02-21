@@ -2,6 +2,7 @@ import {charInserter} from "/src/scripts/char-inserter.js";
 import {getBrowser, strPreparer} from "/src/scripts/functions.js";
 import {keyDownHandler} from "/src/scripts/keyboard.js";
 
+
 // const btnGenFromSite = document.querySelector('#btn1');
 const fingerPointers = document.querySelector('.finger-pointers');
 const field = document.querySelector('.field');
