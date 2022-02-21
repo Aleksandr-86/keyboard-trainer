@@ -20,6 +20,8 @@ buffer.addEventListener('click', async function() {
     let str = await navigator.clipboard.readText();
     if (str.length === 1 && str === ' ') return; // buffer is empty
     buffer.blur(); // removing focus from an element
+    // clearing finger pointers
+    fingerPointers.querySelectorAll('*').forEach(elem => elem.classList.add('pointer-disabled'));
     charInserter(strPreparer(str), 0);
     fingerPointers.classList.remove('hidden');
     field.classList.remove('hidden');
