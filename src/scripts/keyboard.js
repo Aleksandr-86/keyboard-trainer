@@ -25,6 +25,18 @@ const charArrRus = ['ё1йфя', '2цыч', '3увс', '4кам5епи6', '7нр
 const charArrEng = ['`1qaz', '2wsx', '3edc', '4rfv5tgb6', '7yhnujm', '8ik,', '9ol.', "0p;/-['=]\\"];
 export let langLayout = 'rus';
 
+
+// clearing counters
+export function clearCounters() {
+  numTotal = 0;
+  numNeutral = 0;
+  numCorrect = 0;
+  numWrong = 0;
+  numRow = 0;
+  numRowCounter = 0;
+  bTimer = false;
+}
+
 // showing statistics
 function showStat() {
   function rnd(num) { // rounding
@@ -76,13 +88,7 @@ function showStat() {
     </div>
   `
 
-  numTotal = 0;
-  numNeutral = 0;
-  numCorrect = 0;
-  numWrong = 0;
-  numRow = 0;
-  numRowCounter = 0;
-  bTimer = false;
+  clearCounters();
 }
 
 
@@ -92,8 +98,15 @@ export function fingerPointing(targetChar) {
   let arr;
   langTest(targetChar, langLayout) === 'rus' ? langLayout = 'rus' : langLayout = 'eng';
   langLayout === 'rus' ? arr = charArrRus : arr = charArrEng;
+  const langMarker = document.querySelector('#lang-marker');
 
-  console.warn(`targetChar ${targetChar}, langLayout ${langLayout}`);
+  if (langLayout === 'rus') {
+    arr = charArrRus;
+    langMarker.textContent = 'Русский';
+  } else {
+    arr = charArrEng;
+    langMarker.textContent = 'Английский';
+  }
 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].indexOf(targetChar) >= 0) {
@@ -200,6 +213,8 @@ export function keyDownHandler(event) {
     eKey = eKey.toLowerCase();
     targetChar = targetChar.toLowerCase();
 
+    // skipping inappropriate chars in terms of language layout
+    // if (langLayout !== langTest(eKey, langLayout)) return;
     if (fingerPointing(targetChar)) fingerPointing(targetChar).classList.add('pointer-disabled');
 
     // coloring the char's background depending on the pressed key

@@ -1,6 +1,6 @@
 import {charInserter} from "/src/scripts/char-inserter.js";
 import {getBrowser, strPreparer} from "/src/scripts/functions.js";
-import {keyDownHandler} from "/src/scripts/keyboard.js";
+import {keyDownHandler, clearCounters} from "/src/scripts/keyboard.js";
 
 
 // const btnGenFromSite = document.querySelector('#btn1');
@@ -22,6 +22,7 @@ buffer.addEventListener('click', async function() {
     buffer.blur(); // removing focus from an element
     // clearing finger pointers
     fingerPointers.querySelectorAll('*').forEach(elem => elem.classList.add('pointer-disabled'));
+    clearCounters();
     charInserter(strPreparer(str), 0);
     fingerPointers.classList.remove('hidden');
     field.classList.remove('hidden');
