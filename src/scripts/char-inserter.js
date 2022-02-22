@@ -105,6 +105,7 @@ export function charInserter(arr, ind) {
     }
 
     if (i === arrLen - 1) {
+      console.warn(arrOfStrings)
       currentLine.lastElementChild.classList.add('finish'); // marking the end of typing
       // adding spaces till the end of the line
       if (counter !== 0) for (let j = 0; j < (lineLen - counter); j++)
@@ -124,5 +125,5 @@ export function charInserter(arr, ind) {
   firstElem.classList.add('char-caret');
   charHandler(firstElem);
   const targetChar = firstElem.textContent.toLowerCase();
-  if (fingerPointing(targetChar)) fingerPointing(targetChar).classList.remove('pointer-disabled');
+  if (fingerPointing(targetChar)) fingerPointing(targetChar);
 }

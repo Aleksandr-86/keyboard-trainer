@@ -21,7 +21,7 @@ let numWrong = 0;
 let numRow = 0;
 let numRowCounter = 0;
 
-const charArrRus = ['ё1йфя', '2цыч', '3увс', '4кам5епи6', '7нртгоь', '8шлб', '9щдю', '0зж.-хэ=ъ\\'];
+const charArrRus = ['ё1йфя', '2цыч', '3увс', '4кам5епи6', '7нртгоь', '8шлб', '9щдю', '0зж.-хэ=ъ\\', ',/'];
 const charArrEng = ['`1qaz', '2wsx', '3edc', '4rfv5tgb6', '7yhnujm', '8ik,', '9ol.', "0p;/-['=]\\"];
 export let langLayout = 'rus';
 
@@ -116,24 +116,29 @@ export function fingerPointing(targetChar) {
   }
 
   if (ind === 0) {
-    return document.querySelector('#left-pinky');
+    document.querySelector('#left-pinky').classList.toggle('pointer-disabled');
   } else if (ind === 1) {
-    return document.querySelector('#left-ring');
+    document.querySelector('#left-ring').classList.toggle('pointer-disabled');
   } else if (ind === 2) {
-    return document.querySelector('#left-middle');
+    document.querySelector('#left-middle').classList.toggle('pointer-disabled');
   } else if (ind === 3) {
-    return document.querySelector('#left-index');
+    document.querySelector('#left-index').classList.toggle('pointer-disabled');
   } else if (ind === 4) {
-    return document.querySelector('#right-index');
+    document.querySelector('#right-index').classList.toggle('pointer-disabled');
   } else if (ind === 5) {
-    return document.querySelector('#right-middle');
+    document.querySelector('#right-middle').classList.toggle('pointer-disabled');
   } else if (ind === 6) {
-    return document.querySelector('#right-ring');
+    document.querySelector('#right-ring').classList.toggle('pointer-disabled');
   } else if (ind === 7) {
-    return document.querySelector('#right-pinky');
+    document.querySelector('#right-pinky').classList.toggle('pointer-disabled');
+  } else if (ind === 8) {
+    if (langLayout === 'rus') {
+      console.warn('8')
+    }
   } else {
     return false;
   }
+  return true;
 }
 
 
@@ -215,7 +220,7 @@ export function keyDownHandler(event) {
 
     // skipping inappropriate chars in terms of language layout
     // if (langLayout !== langTest(eKey, langLayout)) return;
-    if (fingerPointing(targetChar)) fingerPointing(targetChar).classList.add('pointer-disabled');
+    if (fingerPointing(targetChar)) fingerPointing(targetChar);
 
     // coloring the char's background depending on the pressed key
     if (eKey === targetChar) {
@@ -252,7 +257,7 @@ export function keyDownHandler(event) {
     }
 
     targetChar = caret.textContent;
-    if (fingerPointing(targetChar)) fingerPointing(targetChar).classList.remove('pointer-disabled');
+    if (fingerPointing(targetChar)) fingerPointing(targetChar);
     // identifying the language of the keyboard layout
     // console.log(langTest(caret.textContent));
     // if (langTest(caret.textContent)) {

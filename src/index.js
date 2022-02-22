@@ -18,7 +18,7 @@ buffer.addEventListener('click', async function() {
   const br = getBrowser().browser;
   if (br === 'chrome' || br === 'yabrowser') {
     let str = await navigator.clipboard.readText();
-    if (str.length === 1 && str === ' ') return; // buffer is empty
+    if ((str.length === 0 || str.length === 1) && (str === ' ' || str === '')) return; // buffer is empty
     buffer.blur(); // removing focus from an element
     // clearing finger pointers
     fingerPointers.querySelectorAll('*').forEach(elem => elem.classList.add('pointer-disabled'));
