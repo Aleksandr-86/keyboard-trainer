@@ -1,8 +1,6 @@
 import {charTest, langTest} from "/src/scripts/functions.js";
 import {arrOfStrings, indOfString, charInserter} from "/src/scripts/char-inserter.js";
 
-"use strict";
-
 const fingerPointers = document.querySelector('.finger-pointers');
 const field = document.querySelector('.field');
 const keyboard = document.querySelector('.keyboard');
@@ -24,6 +22,7 @@ let numRowCounter = 0;
 const charArrRus = ['ё1йфя', '2цыч', '3увс', '4кам5епи6', '7нртгоь', '8шлб', '9щдю', '0зж.-хэ=ъ\\', ',/'];
 const charArrEng = ['`1qaz', '2wsx', '3edc', '4rfv5tgb6', '7yhnujm', '8ik,', '9ol.', "0p;/-['=]\\"];
 export let langLayout = 'rus';
+export let remChart;
 
 
 // clearing counters
@@ -94,10 +93,11 @@ function showStat() {
 
 // return finger pointing div
 export function fingerPointing(targetChar) {
+  console.warn('finger pointing')
   let ind = -1;
   let arr;
   langTest(targetChar, langLayout) === 'rus' ? langLayout = 'rus' : langLayout = 'eng';
-  langLayout === 'rus' ? arr = charArrRus : arr = charArrEng;
+  // langLayout === 'rus' ? arr = charArrRus : arr = charArrEng;
   const langMarker = document.querySelector('#lang-marker');
 
   if (langLayout === 'rus') {
@@ -108,37 +108,44 @@ export function fingerPointing(targetChar) {
     langMarker.textContent = 'Английский';
   }
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].indexOf(targetChar) >= 0) {
-      ind = i;
-      break;
+  const char = targetChar;
+
+  function pointer(char) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].indexOf(char) >= 0) {
+        ind = i;
+        break;
+      g}
+    }
+
+    if (ind === 0) {
+      document.querySelector('#left-pinky').classList.toggle('pointer-disabled');
+    } else if (ind === 1) {
+      document.querySelector('#left-ring').classList.toggle('pointer-disabled');
+    } else if (ind === 2) {
+      document.querySelector('#left-middle').classList.toggle('pointer-disabled');
+    } else if (ind === 3) {
+      document.querySelector('#left-index').classList.toggle('pointer-disabled');
+    } else if (ind === 4) {
+      document.querySelector('#right-index').classList.toggle('pointer-disabled');
+    } else if (ind === 5) {
+      document.querySelector('#right-middle').classList.toggle('pointer-disabled');
+    } else if (ind === 6) {
+      document.querySelector('#right-ring').classList.toggle('pointer-disabled');
+    } else if (ind === 7) {
+      document.querySelector('#right-pinky').classList.toggle('pointer-disabled');
+    } else if (ind === 8) {
+      if (langLayout === 'rus') {
+        console.warn('8')
+      }
+    } else {
+      console.warn('else')
     }
   }
 
-  if (ind === 0) {
-    document.querySelector('#left-pinky').classList.toggle('pointer-disabled');
-  } else if (ind === 1) {
-    document.querySelector('#left-ring').classList.toggle('pointer-disabled');
-  } else if (ind === 2) {
-    document.querySelector('#left-middle').classList.toggle('pointer-disabled');
-  } else if (ind === 3) {
-    document.querySelector('#left-index').classList.toggle('pointer-disabled');
-  } else if (ind === 4) {
-    document.querySelector('#right-index').classList.toggle('pointer-disabled');
-  } else if (ind === 5) {
-    document.querySelector('#right-middle').classList.toggle('pointer-disabled');
-  } else if (ind === 6) {
-    document.querySelector('#right-ring').classList.toggle('pointer-disabled');
-  } else if (ind === 7) {
-    document.querySelector('#right-pinky').classList.toggle('pointer-disabled');
-  } else if (ind === 8) {
-    if (langLayout === 'rus') {
-      console.warn('8')
-    }
-  } else {
-    return false;
-  }
-  return true;
+  pointer(remChart);
+  pointer(targetChar);
+  remChart = targetChar;
 }
 
 
@@ -220,7 +227,7 @@ export function keyDownHandler(event) {
 
     // skipping inappropriate chars in terms of language layout
     // if (langLayout !== langTest(eKey, langLayout)) return;
-    if (fingerPointing(targetChar)) fingerPointing(targetChar);
+    fingerPointing(targetChar);
 
     // coloring the char's background depending on the pressed key
     if (eKey === targetChar) {
@@ -256,8 +263,12 @@ export function keyDownHandler(event) {
       }
     }
 
-    targetChar = caret.textContent;
-    if (fingerPointing(targetChar)) fingerPointing(targetChar);
+    // targetChar = caret.textContent;
+
+
+    fingerPointing(targetChar);
+
+
     // identifying the language of the keyboard layout
     // console.log(langTest(caret.textContent));
     // if (langTest(caret.textContent)) {

@@ -1,4 +1,4 @@
-import {charHandler, fingerPointing, langLayout} from "/src/scripts/keyboard.js";
+import {charHandler, fingerPointing} from "/src/scripts/keyboard.js";
 import {charTest} from "/src/scripts/functions.js";
 
 // console.warn('char-inserter')
@@ -125,5 +125,5 @@ export function charInserter(arr, ind) {
   firstElem.classList.add('char-caret');
   charHandler(firstElem);
   const targetChar = firstElem.textContent.toLowerCase();
-  if (fingerPointing(targetChar)) fingerPointing(targetChar);
+  fingerPointing(targetChar);
 }
