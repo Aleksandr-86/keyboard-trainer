@@ -7,7 +7,6 @@ const keyboard = document.querySelector('.keyboard');
 const statistics = document.querySelector('.statistics');
 const statContainer = document.querySelector('#statContainer');
 const overlay = document.querySelector('.overlay');
-
 let timerStart = 0;
 let timerStop = 0;
 let bTimer = false;
@@ -22,7 +21,7 @@ let numRowCounter = 0;
 const charArrRus = ['ё1йфя', '2цыч', '3увс', '4кам5епи6', '7нртгоь', '8шлб', '9щдю', '0зж.-хэ=ъ\\', ',/'];
 const charArrEng = ['`1qaz', '2wsx', '3edc', '4rfv5tgb6', '7yhnujm', '8ik,', '9ol.', "0p;/-['=]\\"];
 export let langLayout = 'rus';
-export let remChart;
+let remChart;
 
 
 // clearing counters
@@ -34,6 +33,7 @@ export function clearCounters() {
   numRow = 0;
   numRowCounter = 0;
   bTimer = false;
+  remChart = ' ';
 }
 
 // showing statistics
@@ -93,7 +93,6 @@ function showStat() {
 
 // return finger pointing div
 export function fingerPointing(targetChar) {
-  console.warn('finger pointing')
   let ind = -1;
   let arr;
   langTest(targetChar, langLayout) === 'rus' ? langLayout = 'rus' : langLayout = 'eng';
@@ -108,14 +107,13 @@ export function fingerPointing(targetChar) {
     langMarker.textContent = 'Английский';
   }
 
-  const char = targetChar;
 
   function pointer(char) {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].indexOf(char) >= 0) {
         ind = i;
         break;
-      g}
+      }
     }
 
     if (ind === 0) {
@@ -145,6 +143,15 @@ export function fingerPointing(targetChar) {
 
   pointer(remChart);
   pointer(targetChar);
+  if (targetChar === ' ') pointer(remChart);
+  console.warn(`remChart ${remChart}, char ${targetChar}`)
+  // if (remChart === targetChar) {
+  //   console.warn(`remChart ${remChart}, targetChar ${targetChar}`)
+  //   pointer(targetChar);
+  // } else {
+  //   pointer(remChart);
+  //   pointer(targetChar);
+  // }
   remChart = targetChar;
 }
 
@@ -227,7 +234,7 @@ export function keyDownHandler(event) {
 
     // skipping inappropriate chars in terms of language layout
     // if (langLayout !== langTest(eKey, langLayout)) return;
-    fingerPointing(targetChar);
+    // fingerPointing(targetChar);
 
     // coloring the char's background depending on the pressed key
     if (eKey === targetChar) {
@@ -264,9 +271,7 @@ export function keyDownHandler(event) {
     }
 
     // targetChar = caret.textContent;
-
-
-    fingerPointing(targetChar);
+    fingerPointing(caret.textContent);
 
 
     // identifying the language of the keyboard layout
