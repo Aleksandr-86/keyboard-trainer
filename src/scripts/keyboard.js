@@ -173,6 +173,7 @@ export function charHandler(caret) {
       showStat();
       break;
     } else {
+
       if (caret.classList.contains('line-end') && !caret.parentElement.nextElementSibling) {
         charInserter(arrOfStrings, indOfString); // filling all the lines
       } else if (caret.classList.contains('line-end')) {
@@ -192,6 +193,8 @@ export function charHandler(caret) {
     }
     test = charTest(caret.textContent);
   }
+
+  fingerPointing(caret.textContent);
   caret.classList.toggle('char-caret');
 }
 
@@ -271,7 +274,7 @@ export function keyDownHandler(event) {
     }
 
     // targetChar = caret.textContent;
-    fingerPointing(caret.textContent);
+    // fingerPointing(caret.textContent);
 
 
     // identifying the language of the keyboard layout

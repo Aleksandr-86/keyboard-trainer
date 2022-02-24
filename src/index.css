@@ -27,9 +27,9 @@ body {
   /*background: black url("/src/images/backgrounds/mountain2.jpg") no-repeat fixed center center;*/
   /*background: black url("/src/images/backgrounds/okhotskoye.jpg") no-repeat fixed center center;*/
   /*background: black url("/src/images/backgrounds/water-fall.jpg") no-repeat fixed center center;*/
-  /*background: black url("/src/images/backgrounds/water.jpg") no-repeat fixed center center;*/
+  background: black url("/src/images/backgrounds/water.jpg") no-repeat fixed center center;
   /*background: black url("/src/images/backgrounds/snow-mountain.jpg") no-repeat fixed center center;*/
-  background: black url("/src/images/backgrounds/sea-creatures.jpg") no-repeat fixed center center;
+  /*background: black url("/src/images/backgrounds/sea-creatures.jpg") no-repeat fixed center center;*/
   background-size: cover;
 }
 
