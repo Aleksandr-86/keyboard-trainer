@@ -107,7 +107,6 @@ export function fingerPointing(targetChar) {
     langMarker.textContent = 'Английский';
   }
 
-
   function pointer(char) {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].indexOf(char) >= 0) {
@@ -134,17 +133,17 @@ export function fingerPointing(targetChar) {
       document.querySelector('#right-pinky').classList.toggle('pointer-disabled');
     } else if (ind === 8) {
       if (langLayout === 'rus') {
-        console.warn('8')
+        // console.warn('8')
       }
     } else {
-      console.warn('else')
+      // console.warn('else')
     }
   }
 
   pointer(remChart);
   pointer(targetChar);
   if (targetChar === ' ') pointer(remChart);
-  console.warn(`remChart ${remChart}, char ${targetChar}`)
+  // console.warn(`remChart _${remChart}_, char _${targetChar}_`)
   // if (remChart === targetChar) {
   //   console.warn(`remChart ${remChart}, targetChar ${targetChar}`)
   //   pointer(targetChar);
@@ -152,7 +151,7 @@ export function fingerPointing(targetChar) {
   //   pointer(remChart);
   //   pointer(targetChar);
   // }
-  remChart = targetChar;
+  if (charTest(targetChar)) remChart = targetChar;
 }
 
 
@@ -191,9 +190,9 @@ export function charHandler(caret) {
         caret = caret.nextElementSibling;
       }
     }
+
     test = charTest(caret.textContent);
   }
-
   fingerPointing(caret.textContent);
   caret.classList.toggle('char-caret');
 }
