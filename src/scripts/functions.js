@@ -83,7 +83,7 @@ export const charTest = char => /[0-9 А-ЯЁA-Z.,<>/\\'"\[\]{}|!@№#;$%:^?&*()
 export function langTest(char, langLayout) {
   if (/[А-ЯЁ]/i.test(char)) {
     return 'rus';
-  } else if (/[A-Z]/i.test(char)) {
+  } else if (/[A-Z@#$^&<>|\[\]{}']/i.test(char)) {
     return 'eng';
   } else {
     return langLayout;
@@ -91,7 +91,8 @@ export function langTest(char, langLayout) {
 }
 
 // checking letter case
-export const charCase = (char) => /[А-ЯЁA-Z]/i.test(char) && char === char.toUpperCase();
+// export const charCase = (char) => /[А-ЯЁA-Z.-=\\]/i.test(char) && char === char.toUpperCase();
+export const charCase = (char) => /[А-ЯЁA-Z!"]/i.test(char) && char === char.toUpperCase();
 
 
 // checking if CapsLock key is active

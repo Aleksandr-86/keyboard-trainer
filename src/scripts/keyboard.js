@@ -1,4 +1,4 @@
-import {charTest, langTest, charCase} from "/src/scripts/functions.js";
+import {charTest, langTest} from "/src/scripts/functions.js";
 import {arrOfStrings, indOfString, charInserter} from "/src/scripts/char-inserter.js";
 
 const fingerPointers = document.querySelector('.finger-pointers');
@@ -18,8 +18,9 @@ let numWrong = 0;
 let numRow = 0;
 let numRowCounter = 0;
 
-const charArrRus = ['ё1йфя', '2цыч', '3увс', '4кам5епи6', '7нртгоь', '8шлб', '9щдю', '0зж.-хэ=ъ\\', ',/'];
-const charArrEng = ['`1qaz', '2wsx', '3edc', '4rfv5tgb6', '7yhnujm', '8ik,', '9ol.', "0p;/-['=]\\"];
+// const charArrRus = ['ё1йфя', '2цыч', '3увс', '4кам5епи6', '7нртгоь', '8шлб', '9щдю', '0зж.-хэ=ъ\\', ',/'];
+const charArrRus = ['ё1!йфя', '2"цыч', '3№увс', '4;кам5%епи6:', '7?нртгоь', '8*шлб', '9(щдю', '0)зж.,-_хэ=+ъ\\/)'];
+const charArrEng = ['`~1!qaz', '2@wsx', '3#edc', '4$rfv5%tgb6^', '7&yhnujm', '8*ik,<', '9(ol.>', "0)p;:/?-_[{'=+]}\\|"];
 export let langLayout = 'rus';
 let remChart;
 
@@ -95,7 +96,7 @@ function showStat() {
 export function fingerPointing(targetChar) {
   let ind = -1;
   let arr;
-  const chCase = charCase(targetChar);
+  let chCase;
 
   langTest(targetChar, langLayout) === 'rus' ? langLayout = 'rus' : langLayout = 'eng';
   // langLayout === 'rus' ? arr = charArrRus : arr = charArrEng;
@@ -104,57 +105,47 @@ export function fingerPointing(targetChar) {
   if (langLayout === 'rus') {
     arr = charArrRus;
     langMarker.textContent = 'Русский';
+    chCase = /[А-ЯЁ!"№;%:?*()_+,/]/i.test(targetChar) && targetChar === targetChar.toUpperCase();
   } else {
     arr = charArrEng;
     langMarker.textContent = 'Английский';
+    chCase = /[A-Z!@#$%^&*():<>?_{"+}|]/i.test(targetChar) && targetChar === targetChar.toUpperCase();
   }
 
-  function pointer(char) {
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].indexOf(char.toLowerCase()) >= 0) {
-        ind = i;
-        break;
-      }
-    }
-
-    if (ind === 0) {
-      document.querySelector('#left-pinky').classList.remove('pointer-disabled');
-    } else if (ind === 1) {
-      document.querySelector('#left-ring').classList.remove('pointer-disabled');
-    } else if (ind === 2) {
-      document.querySelector('#left-middle').classList.remove('pointer-disabled');
-    } else if (ind === 3) {
-      document.querySelector('#left-index').classList.remove('pointer-disabled');
-    } else if (ind === 4) {
-      document.querySelector('#right-index').classList.remove('pointer-disabled');
-    } else if (ind === 5) {
-      document.querySelector('#right-middle').classList.remove('pointer-disabled');
-    } else if (ind === 6) {
-      document.querySelector('#right-ring').classList.remove('pointer-disabled');
-    } else if (ind === 7) {
-      document.querySelector('#right-pinky').classList.remove('pointer-disabled');
-    } else if (ind === 8) {
-      if (langLayout === 'rus') {
-        // console.warn('8')
-      }
-    } else {
-      // console.warn('else')
-    }
-  }
-
-  // pointer(remChart);
-  console.warn(ind)
   document.querySelectorAll('.finger-pointers > div').forEach(elem => elem.classList.add('pointer-disabled'));
-  pointer(targetChar);
-  if (chCase) {
-    if (ind >= 0 && ind <= 3) {
-      document.querySelector('#right-pinky').classList.remove('pointer-disabled');
-    } else {
-      document.querySelector('#left-pinky').classList.remove('pointer-disabled');
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].indexOf(targetChar.toLowerCase()) >= 0) {
+      ind = i;
+      break;
     }
   }
-  // if (targetChar === ' ') pointer(remChart);
-  // if (charTest(targetChar)) remChart = targetChar;
+
+  if (ind === 0) {
+    document.querySelector('#left-pinky').classList.remove('pointer-disabled');
+  } else if (ind === 1) {
+    document.querySelector('#left-ring').classList.remove('pointer-disabled');
+  } else if (ind === 2) {
+    document.querySelector('#left-middle').classList.remove('pointer-disabled');
+  } else if (ind === 3) {
+    document.querySelector('#left-index').classList.remove('pointer-disabled');
+  } else if (ind === 4) {
+    document.querySelector('#right-index').classList.remove('pointer-disabled');
+  } else if (ind === 5) {
+    document.querySelector('#right-middle').classList.remove('pointer-disabled');
+  } else if (ind === 6) {
+    document.querySelector('#right-ring').classList.remove('pointer-disabled');
+  } else if (ind === 7 || ind === 8) {
+    document.querySelector('#right-pinky').classList.remove('pointer-disabled');
+  }
+
+  if (chCase && ind >= 0 && ind <= 3) {
+    document.querySelector('#right-pinky').classList.remove('pointer-disabled');
+  } else if (ind === 8) {
+    document.querySelector('#left-pinky').classList.remove('pointer-disabled');
+  } else if (chCase) {
+    document.querySelector('#left-pinky').classList.remove('pointer-disabled');
+  }
 }
 
 
