@@ -1,4 +1,4 @@
-import {charTest, langTest} from "/src/scripts/functions.js";
+import {charTest, langTest, charCase} from "/src/scripts/functions.js";
 import {arrOfStrings, indOfString, charInserter} from "/src/scripts/char-inserter.js";
 
 const fingerPointers = document.querySelector('.finger-pointers');
@@ -95,6 +95,8 @@ function showStat() {
 export function fingerPointing(targetChar) {
   let ind = -1;
   let arr;
+  const chCase = charCase(targetChar);
+
   langTest(targetChar, langLayout) === 'rus' ? langLayout = 'rus' : langLayout = 'eng';
   // langLayout === 'rus' ? arr = charArrRus : arr = charArrEng;
   const langMarker = document.querySelector('#lang-marker');
@@ -109,28 +111,28 @@ export function fingerPointing(targetChar) {
 
   function pointer(char) {
     for (let i = 0; i < arr.length; i++) {
-      if (arr[i].indexOf(char) >= 0) {
+      if (arr[i].indexOf(char.toLowerCase()) >= 0) {
         ind = i;
         break;
       }
     }
 
     if (ind === 0) {
-      document.querySelector('#left-pinky').classList.toggle('pointer-disabled');
+      document.querySelector('#left-pinky').classList.remove('pointer-disabled');
     } else if (ind === 1) {
-      document.querySelector('#left-ring').classList.toggle('pointer-disabled');
+      document.querySelector('#left-ring').classList.remove('pointer-disabled');
     } else if (ind === 2) {
-      document.querySelector('#left-middle').classList.toggle('pointer-disabled');
+      document.querySelector('#left-middle').classList.remove('pointer-disabled');
     } else if (ind === 3) {
-      document.querySelector('#left-index').classList.toggle('pointer-disabled');
+      document.querySelector('#left-index').classList.remove('pointer-disabled');
     } else if (ind === 4) {
-      document.querySelector('#right-index').classList.toggle('pointer-disabled');
+      document.querySelector('#right-index').classList.remove('pointer-disabled');
     } else if (ind === 5) {
-      document.querySelector('#right-middle').classList.toggle('pointer-disabled');
+      document.querySelector('#right-middle').classList.remove('pointer-disabled');
     } else if (ind === 6) {
-      document.querySelector('#right-ring').classList.toggle('pointer-disabled');
+      document.querySelector('#right-ring').classList.remove('pointer-disabled');
     } else if (ind === 7) {
-      document.querySelector('#right-pinky').classList.toggle('pointer-disabled');
+      document.querySelector('#right-pinky').classList.remove('pointer-disabled');
     } else if (ind === 8) {
       if (langLayout === 'rus') {
         // console.warn('8')
@@ -140,18 +142,19 @@ export function fingerPointing(targetChar) {
     }
   }
 
-  pointer(remChart);
+  // pointer(remChart);
+  console.warn(ind)
+  document.querySelectorAll('.finger-pointers > div').forEach(elem => elem.classList.add('pointer-disabled'));
   pointer(targetChar);
-  if (targetChar === ' ') pointer(remChart);
-  // console.warn(`remChart _${remChart}_, char _${targetChar}_`)
-  // if (remChart === targetChar) {
-  //   console.warn(`remChart ${remChart}, targetChar ${targetChar}`)
-  //   pointer(targetChar);
-  // } else {
-  //   pointer(remChart);
-  //   pointer(targetChar);
-  // }
-  if (charTest(targetChar)) remChart = targetChar;
+  if (chCase) {
+    if (ind >= 0 && ind <= 3) {
+      document.querySelector('#right-pinky').classList.remove('pointer-disabled');
+    } else {
+      document.querySelector('#left-pinky').classList.remove('pointer-disabled');
+    }
+  }
+  // if (targetChar === ' ') pointer(remChart);
+  // if (charTest(targetChar)) remChart = targetChar;
 }
 
 

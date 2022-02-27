@@ -124,6 +124,5 @@ export function charInserter(arr, ind) {
   const firstElem = document.querySelector('#line1 > :first-child');
   firstElem.classList.add('char-caret');
   charHandler(firstElem);
-  const targetChar = firstElem.textContent.toLowerCase();
-  fingerPointing(targetChar);
+  fingerPointing(firstElem.textContent.toLowerCase());
 }

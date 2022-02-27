@@ -77,7 +77,8 @@ export function getBrowser() {
 export const strPreparer = str => str.trim().replace(/(\n)|(\r\n)/g, ' \n ').replace(/ +/g, ' ').split(' ');
 
 // returns false if a char is inappropriate
-export const charTest = char => /[0-9 A-ZА-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
+export const charTest = char => /[0-9 А-ЯЁA-Z.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
+
 // export const langTest = char => /[0-9 А-ЯЁ.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char);
 export function langTest(char, langLayout) {
   if (/[А-ЯЁ]/i.test(char)) {
@@ -88,6 +89,9 @@ export function langTest(char, langLayout) {
     return langLayout;
   }
 }
+
+// checking letter case
+export const charCase = (char) => /[А-ЯЁA-Z]/i.test(char) && char === char.toUpperCase();
 
 
 // checking if CapsLock key is active
