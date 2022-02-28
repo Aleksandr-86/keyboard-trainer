@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'JetBrainsMono-Regular';
+  src: url('/src/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
+  local("Consolas");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /*box-sizing: border-box;*/
+  overflow: hidden;
+}
+
+body {
+  /*background: black url("/src/images/backgrounds/nightroad2.jpg") no-repeat border-box;*/
+  /*background: black url("/src/images/backgrounds/mountain2.jpg") no-repeat fixed center center;*/
+  /*background: black url("/src/images/backgrounds/okhotskoye.jpg") no-repeat fixed center center;*/
+  /*background: black url("/src/images/backgrounds/water-fall.jpg") no-repeat fixed center center;*/
+  background: black url("/src/images/backgrounds/water.jpg") no-repeat fixed center center;
+  /*background: black url("/src/images/backgrounds/snow-mountain.jpg") no-repeat fixed center center;*/
+  /*background: black url("/src/images/backgrounds/sea-creatures.jpg") no-repeat fixed center center;*/
+  background-size: cover;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}

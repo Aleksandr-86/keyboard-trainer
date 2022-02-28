@@ -1,6 +1,6 @@
 .keyboard {
-  width: 939px;
-  height: 312px;
+  width: 945px;
+  height: 318px;
   margin: 0 auto;
   user-select: none;
   background: rgb(170, 170, 170);
@@ -15,6 +15,7 @@
   display: inline-block;
   width: 60px;
   height: 60px;
+  margin-top: 3px;
   margin-right: 3px;
   font-size: 21px;
   font-family: "PTMonoWebRegular", monospace;
@@ -51,20 +52,22 @@
 .row1,
 .row2,
 .row3,
-.row4 {
-  display: flex;
-  width: inherit;
-  margin-bottom: 3px;
-}
-
+.row4,
 .row5 {
   display: flex;
   width: inherit;
 }
 
+.row1 div:first-child,
+.row2 div:first-child,
+.row3 div:first-child,
+.row4 div:first-child,
+.row5 div:first-child {
+  margin-left: 3px;
+}
+
 #backspace {
   width: 120px;
-  margin-right: 0;
 }
 
 #tab {
@@ -73,16 +76,14 @@
 
 #backslash {
   width: 90px;
-  margin-right: 0;
 }
 
 #capslock {
-  width: 106px;
+  width: 107px;
 }
 
 #enter {
   width: 136px;
-  margin-right: 0;
 }
 
 #shiftleft {
@@ -91,7 +92,6 @@
 
 #shiftright {
   width: 168px;
-  margin-right: 0;
 }
 
 #controlleft,
@@ -109,5 +109,4 @@
 
 #controlright {
   width: 75px;
-  margin-right: 0;
 }
