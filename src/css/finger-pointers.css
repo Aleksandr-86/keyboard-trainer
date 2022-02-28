@@ -3,7 +3,7 @@
   width: 1365px;
   height: 20px;
   margin: 40px auto 10px;
-  transition: visibility 500ms, opacity 500ms;
+  transition: visibility 300ms, opacity 300ms;
 }
 
 .left-hand,

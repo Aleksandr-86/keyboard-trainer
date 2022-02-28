@@ -6,7 +6,7 @@
   background: rgb(170, 170, 170);
   border-radius: 15px;
 
-  transition: visibility 500ms, opacity 500ms;
+  transition: visibility 300ms, opacity 300ms;
 }
 
 .button-up,
