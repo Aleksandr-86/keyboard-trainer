@@ -43,17 +43,53 @@ h3 {
 }
 
 .statistics-close {
-  display: inline-grid;
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 6vh;
-  height: 6vh;
-  font-size: 5vh;
+  top: 4px;
+  right: 4px;
   background: none;
   color: black;
-  cursor: pointer;
   border: none;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.statistics-close:before {
+  content: '+';
+  color: black;
+  position: absolute;
+  z-index: 2;
+  transform: rotate(45deg);
+  font-size: 50px;
+  line-height: 1;
+  top: -4px;
+  left: 5px;
+  transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+}
+
+.statistics-close:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background: #7d31b8;
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+  transform: scale(0.01);
+}
+
+.statistics-close:hover:after {
+  transform: scale(1);
+}
+
+.statistics-close:hover:before {
+  transform: rotate(45deg);
+  color: RGB(215, 215, 215);
 }
 
 .num-total,
@@ -62,12 +98,6 @@ h3 {
 .num-max {
   display: inline-grid;
   margin-left: 1vh;
-/*  position: absolute;*/
-/*  text-align: center;*/
-/*  !*background: blue;*!*/
-/*  width: 10vh;*/
-/*  right: 0;*/
-/*  font-weight: bold;*/
 }
 
 .num-correct {
@@ -89,14 +119,9 @@ h3 {
 .stat-second-row {
   display: inline-flex;
   justify-content: center;
-  /*background: wheat;*/
   position: absolute;
   text-align: center;
   width: 15vh;
   right: 3vh;
   font-weight: bold;
 }
-
-/*.stat-third-row {*/
-/*  right: 5vh;*/
-/*}*/
