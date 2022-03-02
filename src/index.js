@@ -12,27 +12,56 @@ const buffer = document.querySelector('#buffer');
 const settings = document.querySelector('.nav > li:last-child > a');
 const settingsMenu = document.querySelector('.settings-menu');
 const settingsBtnClose = document.querySelector('.settings-btn-close');
+
 // const box1 = document.querySelector('#checkbox');
+const box1 = document.querySelector('#box1');
 const box2 = document.querySelector('#box2');
 const box3 = document.querySelector('#box3');
-const help = document.querySelector('#help');
+const box4 = document.querySelector('#box4');
 
 const statistics = document.querySelector('.statistics');
 const statisticsClose = document.querySelector('.statistics-close');
 const overlay = document.querySelector('.overlay');
 
-const checkbox1 = document.querySelector("input[name=checkbox]");
-if (localStorage.letterCase) {
-  localStorage.letterCase === 'true' ? checkbox1.checked = true : checkbox1.checked = false;
-}
+// loading state of settings checkbox
+if (localStorage.letterCase) box1.checked = localStorage.letterCase === 'true';
+if (localStorage.fingerPointers) box2.checked = localStorage.fingerPointers === 'true';
+if (localStorage.hideKeyboard) box3.checked = localStorage.hideKeyboard === 'true';
+if (localStorage.ignoreCharInput) box4.checked = localStorage.ignoreCharInput === 'true';
 
-checkbox1.addEventListener('change', function() {
-  this.checked ? localStorage.setItem('letterCase', 'true') : localStorage.setItem('letterCase', 'false');
+
+// setting state of settings checkbox
+box1.addEventListener('change', function() {
+  if (this.checked) {
+    localStorage.setItem('letterCase', 'true');
+  } else {
+    localStorage.setItem('letterCase', 'false');
+  }
 });
 
-// check1.addEventListener('click', function() {
-//   box1.checked ? localStorage.setItem('letterCase', 'true') : localStorage.setItem('letterCase', 'false');
-// });
+box2.addEventListener('change', function() {
+  if (this.checked) {
+    localStorage.setItem('fingerPointers', 'true');
+  } else {
+    localStorage.setItem('fingerPointers', 'false');
+  }
+});
+
+box3.addEventListener('change', function() {
+  if (this.checked) {
+    localStorage.setItem('hideKeyboard', 'true');
+  } else {
+    localStorage.setItem('hideKeyboard', 'false');
+  }
+});
+
+box4.addEventListener('change', function() {
+  if (this.checked) {
+    localStorage.setItem('ignoreCharInput', 'true');
+  } else {
+    localStorage.setItem('ignoreCharInput', 'false');
+  }
+});
 
 
 // adding text from a buffer
@@ -84,9 +113,4 @@ settings.addEventListener('click', function() {
 // close settings menu
 settingsBtnClose.addEventListener('click', function() {
   settingsMenu.classList.remove('settings-menu-open');
-});
-
-// help
-help.addEventListener('click', function() {
-  box2.checked = !box2.checked;
 });
