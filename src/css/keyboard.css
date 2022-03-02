@@ -30,7 +30,7 @@
 .button-up:after,
 .button-dn1:after,
 .button-dn2:after {
-  content: '';
+  content: "";
   height: 63px;
   display: inline-block;
   vertical-align: middle;
