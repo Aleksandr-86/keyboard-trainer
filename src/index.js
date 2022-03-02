@@ -2,7 +2,6 @@ import {charInserter} from "/src/scripts/char-inserter.js";
 import {getBrowser, strPreparer} from "/src/scripts/functions.js";
 import {keyDownHandler, clearCounters} from "/src/scripts/keyboard.js";
 
-
 // const btnGenFromSite = document.querySelector('#btn1');
 const fingerPointers = document.querySelector('.finger-pointers');
 const field = document.querySelector('.field');
@@ -13,12 +12,28 @@ const buffer = document.querySelector('#buffer');
 const settings = document.querySelector('.nav > li:last-child > a');
 const settingsMenu = document.querySelector('.settings-menu');
 const settingsBtnClose = document.querySelector('.settings-btn-close');
+// const box1 = document.querySelector('#checkbox');
 const box2 = document.querySelector('#box2');
 const box3 = document.querySelector('#box3');
+const help = document.querySelector('#help');
 
 const statistics = document.querySelector('.statistics');
 const statisticsClose = document.querySelector('.statistics-close');
 const overlay = document.querySelector('.overlay');
+
+const checkbox1 = document.querySelector("input[name=checkbox]");
+if (localStorage.letterCase) {
+  localStorage.letterCase === 'true' ? checkbox1.checked = true : checkbox1.checked = false;
+}
+
+checkbox1.addEventListener('change', function() {
+  this.checked ? localStorage.setItem('letterCase', 'true') : localStorage.setItem('letterCase', 'false');
+});
+
+// check1.addEventListener('click', function() {
+//   box1.checked ? localStorage.setItem('letterCase', 'true') : localStorage.setItem('letterCase', 'false');
+// });
+
 
 // adding text from a buffer
 buffer.addEventListener('click', async function() {
@@ -69,4 +84,9 @@ settings.addEventListener('click', function() {
 // close settings menu
 settingsBtnClose.addEventListener('click', function() {
   settingsMenu.classList.remove('settings-menu-open');
+});
+
+// help
+help.addEventListener('click', function() {
+  box2.checked = !box2.checked;
 });

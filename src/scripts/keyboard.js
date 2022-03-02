@@ -9,6 +9,7 @@ const statContainer = document.querySelector('#statContainer');
 const overlay = document.querySelector('.overlay');
 
 const box1 = document.querySelector('#box1');
+const box4 = document.querySelector('#box4');
 
 let timerStart = 0;
 let timerStop = 0;
@@ -229,11 +230,10 @@ export function keyDownHandler(event) {
 
     // setting case-insensitive matching
     if (box1.checked) targetChar = targetChar.toLowerCase();
-
-
     // skipping inappropriate chars in terms of language layout
-    // if (langLayout !== langTest(eKey, langLayout)) return;
-    // fingerPointing(targetChar);
+    if (box4.checked) {
+      if (langLayout !== langTest(eKey, langLayout)) return;
+    }
 
     // coloring the char's background depending on the pressed key
     if (eKey === targetChar) {
