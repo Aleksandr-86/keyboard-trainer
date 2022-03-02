@@ -13,6 +13,8 @@ const buffer = document.querySelector('#buffer');
 const settings = document.querySelector('.nav > li:last-child > a');
 const settingsMenu = document.querySelector('.settings-menu');
 const settingsBtnClose = document.querySelector('.settings-btn-close');
+const box2 = document.querySelector('#box2');
+const box3 = document.querySelector('#box3');
 
 const statistics = document.querySelector('.statistics');
 const statisticsClose = document.querySelector('.statistics-close');
@@ -32,9 +34,9 @@ buffer.addEventListener('click', async function() {
     fingerPointers.querySelectorAll('*').forEach(elem => elem.classList.add('pointer-disabled'));
     clearCounters();
     charInserter(strPreparer(str), 0);
-    fingerPointers.classList.remove('hidden');
+    if (!box2.checked) fingerPointers.classList.remove('hidden');
     field.classList.remove('hidden');
-    keyboard.classList.remove('hidden');
+    if (!box3.checked) keyboard.classList.remove('hidden');
   } else if (br === 'firefox') {
     let str = document.querySelector('#input').value;
     charInserter(strPreparer(str), 0);

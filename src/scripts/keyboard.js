@@ -7,6 +7,9 @@ const keyboard = document.querySelector('.keyboard');
 const statistics = document.querySelector('.statistics');
 const statContainer = document.querySelector('#statContainer');
 const overlay = document.querySelector('.overlay');
+
+const box1 = document.querySelector('#box1');
+
 let timerStart = 0;
 let timerStop = 0;
 let bTimer = false;
@@ -225,8 +228,8 @@ export function keyDownHandler(event) {
     btnDn.className = 'button-dn2';
 
     // setting case-insensitive matching
-    // eKey = eKey.toLowerCase();
-    // targetChar = targetChar.toLowerCase();
+    if (box1.checked) targetChar = targetChar.toLowerCase();
+
 
     // skipping inappropriate chars in terms of language layout
     // if (langLayout !== langTest(eKey, langLayout)) return;
