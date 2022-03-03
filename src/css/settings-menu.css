@@ -10,7 +10,7 @@
   box-shadow: none;
   color: rgb(200, 200, 200);
   padding: 40px 20px;
-  transition: left 500ms;
+  transition: left 300ms;
   font-size: 25px;
   font-family: "Montserrat", sans-serif;
 }

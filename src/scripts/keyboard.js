@@ -229,7 +229,12 @@ export function keyDownHandler(event) {
     btnDn.className = 'button-dn2';
 
     // setting case-insensitive matching
-    if (box1.checked) targetChar = targetChar.toLowerCase();
+
+    if (box1.checked) {
+      targetChar = targetChar.toLowerCase();
+      eKey = eKey.toLowerCase();
+    }
+
     // skipping inappropriate chars in terms of language layout
     if (box4.checked) {
       if (langLayout !== langTest(eKey, langLayout)) return;
