@@ -5,47 +5,47 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Клавиатурный тренажёр</title>
-  <meta name="description" content="Простой клавиатурный тренажёр по набору текста со статистикой."/>
+  <title>РљР»Р°РІРёР°С‚СѓСЂРЅС‹Р№ С‚СЂРµРЅР°Р¶С‘СЂ</title>
+  <meta name="description" content="РџСЂРѕСЃС‚РѕР№ РєР»Р°РІРёР°С‚СѓСЂРЅС‹Р№ С‚СЂРµРЅР°Р¶С‘СЂ РїРѕ РЅР°Р±РѕСЂСѓ С‚РµРєСЃС‚Р° СЃРѕ СЃС‚Р°С‚РёСЃС‚РёРєРѕР№."/>
   <link rel="shortcut icon" type="image/png" href="images/icons/favicon.ico"/>
   <link rel="stylesheet" href="index.css"/>
 </head>
 
 <body>
 <ul class="nav">
-  <li><a id="buffer" href="#">Буфер обмена</a></li>
+  <li><a id="buffer" href="#">Р‘СѓС„РµСЂ РѕР±РјРµРЅР°</a></li>
   <li class="nav-children">
-    <a href="#url">Отрывок</a>
+    <a href="#url">РћС‚СЂС‹РІРѕРє</a>
     <ul>
-      <li><a href="#url">На русском языке</a></li>
-      <li><a href="#url">На английском языке</a></li>
+      <li><a href="#url">РќР° СЂСѓСЃСЃРєРѕРј СЏР·С‹РєРµ</a></li>
+      <li><a href="#url">РќР° Р°РЅРіР»РёР№СЃРєРѕРј СЏР·С‹РєРµ</a></li>
     </ul>
   </li>
-  <li><a href="#url" id="help">Справка</a></li>
-  <li><a href="#url">Настройки</a></li>
+  <li><a href="#url" id="help">РЎРїСЂР°РІРєР°</a></li>
+  <li><a href="#url">РќР°СЃС‚СЂРѕР№РєРё</a></li>
 </ul>
 
 <div class="settings-menu">
   <label class="settings-btn-close">+</label>
-  <div class="settings-title">Настройки:</div>
+  <div class="settings-title">РќР°СЃС‚СЂРѕР№РєРё:</div>
   <label class="custom-checkbox">
-    Игнорировать регистр букв
+    РРіРЅРѕСЂРёСЂРѕРІР°С‚СЊ СЂРµРіРёСЃС‚СЂ Р±СѓРєРІ
     <input type="checkbox" id="box1">
     <span class="checkmark"></span>
   </label>
   <label class="custom-checkbox">
-    Скрывать указатели пальцев
+    РЎРєСЂС‹РІР°С‚СЊ СѓРєР°Р·Р°С‚РµР»Рё РїР°Р»СЊС†РµРІ
     <input type="checkbox" id="box2">
     <span class="checkmark"></span>
   </label>
   <label class="custom-checkbox">
-    Скрывать клавиатуру
+    РЎРєСЂС‹РІР°С‚СЊ РєР»Р°РІРёР°С‚СѓСЂСѓ
     <input type="checkbox" id="box3">
     <span class="checkmark"></span>
   </label>
-  Игнорировать ввод символов <br>
+  РРіРЅРѕСЂРёСЂРѕРІР°С‚СЊ РІРІРѕРґ СЃРёРјРІРѕР»РѕРІ <br>
   <label class="custom-checkbox">
-    несоответствущего языка
+    РЅРµСЃРѕРѕС‚РІРµС‚СЃС‚РІСѓС‰РµРіРѕ СЏР·С‹РєР°
     <input type="checkbox" id="box4">
     <span class="checkmark"></span>
   </label>
@@ -53,7 +53,7 @@
 
 <main>
   <div class="statistics hidden">
-    <h3>Результат</h3>
+    <h3>Р РµР·СѓР»СЊС‚Р°С‚</h3>
     <button class="statistics-close">+</button>
     <div id="statContainer"></div>
   </div>
@@ -66,7 +66,7 @@
     <div class="left-hand pointer-disabled" id="left-middle"></div>
     <div class="left-hand pointer-disabled" id="left-index"></div>
 
-    <div id="lang-marker">Русский</div>
+    <div id="lang-marker">Р СѓСЃСЃРєРёР№</div>
 
     <div class="right-hand pointer-disabled" id="right-pinky"></div>
     <div class="right-hand pointer-disabled" id="right-ring"></div>
@@ -84,7 +84,7 @@
 
   <div class="keyboard hidden">
     <div class="row1">
-      <div class="button-up" id="backquote">РЃ</div>
+      <div class="button-up" id="backquote">Р Рѓ</div>
       <div class="button-up" id="digit1">1</div>
       <div class="button-up" id="digit2">2</div>
       <div class="button-up" id="digit3">3</div>
@@ -102,48 +102,48 @@
 
     <div class="row2">
       <div class="button-up" id="tab">Tab</div>
-      <div class="button-up" id="keyq">Р™</div>
-      <div class="button-up" id="keyw">Р¦</div>
-      <div class="button-up" id="keye">РЈ</div>
-      <div class="button-up" id="keyr">Рљ</div>
-      <div class="button-up" id="keyt">Р•</div>
-      <div class="button-up" id="keyy">Рќ</div>
-      <div class="button-up" id="keyu">Р“</div>
-      <div class="button-up" id="keyi">РЁ</div>
-      <div class="button-up" id="keyo">Р©</div>
-      <div class="button-up" id="keyp">Р—</div>
-      <div class="button-up" id="bracketleft">РҐ</div>
-      <div class="button-up" id="bracketright">РЄ</div>
+      <div class="button-up" id="keyq">Р в„ў</div>
+      <div class="button-up" id="keyw">Р В¦</div>
+      <div class="button-up" id="keye">Р Р€</div>
+      <div class="button-up" id="keyr">Р С™</div>
+      <div class="button-up" id="keyt">Р вЂў</div>
+      <div class="button-up" id="keyy">Р Сњ</div>
+      <div class="button-up" id="keyu">Р вЂњ</div>
+      <div class="button-up" id="keyi">Р РЃ</div>
+      <div class="button-up" id="keyo">Р В©</div>
+      <div class="button-up" id="keyp">Р вЂ”</div>
+      <div class="button-up" id="bracketleft">Р Тђ</div>
+      <div class="button-up" id="bracketright">Р Р„</div>
       <div class="button-up" id="backslash">\</div>
     </div>
 
     <div class="row3">
       <div class="button-up" id="capslock">Caps</div>
-      <div class="button-up" id="keya">Р¤</div>
-      <div class="button-up" id="keys">Р«</div>
-      <div class="button-up" id="keyd">Р’</div>
-      <div class="button-up" id="keyf">Рђ</div>
-      <div class="button-up" id="keyg">Рџ</div>
-      <div class="button-up" id="keyh">Р </div>
-      <div class="button-up" id="keyj">Рћ</div>
-      <div class="button-up" id="keyk">Р›</div>
-      <div class="button-up" id="keyl">Р”</div>
-      <div class="button-up" id="semicolon">Р–</div>
-      <div class="button-up" id="quote">Р­</div>
+      <div class="button-up" id="keya">Р В¤</div>
+      <div class="button-up" id="keys">Р В«</div>
+      <div class="button-up" id="keyd">Р вЂ™</div>
+      <div class="button-up" id="keyf">Р С’</div>
+      <div class="button-up" id="keyg">Р Сџ</div>
+      <div class="button-up" id="keyh">Р В </div>
+      <div class="button-up" id="keyj">Р С›</div>
+      <div class="button-up" id="keyk">Р вЂє</div>
+      <div class="button-up" id="keyl">Р вЂќ</div>
+      <div class="button-up" id="semicolon">Р вЂ“</div>
+      <div class="button-up" id="quote">Р В­</div>
       <div class="button-up" id="enter">Enter</div>
     </div>
 
     <div class="row4">
       <div class="button-up" id="shiftleft">Shift</div>
-      <div class="button-up" id="keyz">РЇ</div>
-      <div class="button-up" id="keyx">Р§</div>
-      <div class="button-up" id="keyc">РЎ</div>
-      <div class="button-up" id="keyv">Рњ</div>
-      <div class="button-up" id="keyb">Р</div>
-      <div class="button-up" id="keyn">Рў</div>
-      <div class="button-up" id="keym">Р¬</div>
-      <div class="button-up" id="comma">Р‘</div>
-      <div class="button-up" id="period">Р®</div>
+      <div class="button-up" id="keyz">Р Р‡</div>
+      <div class="button-up" id="keyx">Р В§</div>
+      <div class="button-up" id="keyc">Р РЋ</div>
+      <div class="button-up" id="keyv">Р Сљ</div>
+      <div class="button-up" id="keyb">Р пїЅ</div>
+      <div class="button-up" id="keyn">Р Сћ</div>
+      <div class="button-up" id="keym">Р В¬</div>
+      <div class="button-up" id="comma">Р вЂ</div>
+      <div class="button-up" id="period">Р В®</div>
       <div class="button-up" id="slash">.</div>
       <div class="button-up" id="shiftright">Shift</div>
     </div>
@@ -161,7 +161,7 @@
   </div>
 </main>
 
-<!--<footer class="main-footer">РїРѕРґРІР°Р»</footer>-->
+<!--<footer class="main-footer">Р С—Р С•Р Т‘Р Р†Р В°Р В»</footer>-->
 <script type="module" src="index.js"></script>
 </body>
 </html>
