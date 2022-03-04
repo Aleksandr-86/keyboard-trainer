@@ -5,47 +5,47 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>РљР»Р°РІРёР°С‚СѓСЂРЅС‹Р№ С‚СЂРµРЅР°Р¶С‘СЂ</title>
-  <meta name="description" content="РџСЂРѕСЃС‚РѕР№ РєР»Р°РІРёР°С‚СѓСЂРЅС‹Р№ С‚СЂРµРЅР°Р¶С‘СЂ РїРѕ РЅР°Р±РѕСЂСѓ С‚РµРєСЃС‚Р° СЃРѕ СЃС‚Р°С‚РёСЃС‚РёРєРѕР№."/>
+  <title>Клавиатурный тренажёр</title>
+  <meta name="description" content="Простой клавиатурный тренажёр по набору текста со статистикой."/>
   <link rel="shortcut icon" type="image/png" href="images/icons/favicon.ico"/>
   <link rel="stylesheet" href="index.css"/>
 </head>
 
 <body>
 <ul class="nav">
-  <li><a id="buffer" href="#">Р‘СѓС„РµСЂ РѕР±РјРµРЅР°</a></li>
+  <li><a id="buffer" href="#">Буфер обмена</a></li>
   <li class="nav-children">
-    <a href="#url">РћС‚СЂС‹РІРѕРє</a>
+    <a href="#url">Отрывок</a>
     <ul>
-      <li><a href="#url">РќР° СЂСѓСЃСЃРєРѕРј СЏР·С‹РєРµ</a></li>
-      <li><a href="#url">РќР° Р°РЅРіР»РёР№СЃРєРѕРј СЏР·С‹РєРµ</a></li>
+      <li><a href="#url">На русском языке</a></li>
+      <li><a href="#url">На английском языке</a></li>
     </ul>
   </li>
-  <li><a href="#url" id="help">РЎРїСЂР°РІРєР°</a></li>
-  <li><a href="#url">РќР°СЃС‚СЂРѕР№РєРё</a></li>
+  <li><a href="#url" id="help">Справка</a></li>
+  <li><a href="#url">Настройки</a></li>
 </ul>
 
 <div class="settings-menu">
   <label class="settings-btn-close">+</label>
-  <div class="settings-title">РќР°СЃС‚СЂРѕР№РєРё:</div>
+  <div class="settings-title">Настройки:</div>
   <label class="custom-checkbox">
-    РРіРЅРѕСЂРёСЂРѕРІР°С‚СЊ СЂРµРіРёСЃС‚СЂ Р±СѓРєРІ
+    Игнорировать регистр букв
     <input type="checkbox" id="box1">
     <span class="checkmark"></span>
   </label>
   <label class="custom-checkbox">
-    РЎРєСЂС‹РІР°С‚СЊ СѓРєР°Р·Р°С‚РµР»Рё РїР°Р»СЊС†РµРІ
+    Скрывать указатели пальцев
     <input type="checkbox" id="box2">
     <span class="checkmark"></span>
   </label>
   <label class="custom-checkbox">
-    РЎРєСЂС‹РІР°С‚СЊ РєР»Р°РІРёР°С‚СѓСЂСѓ
+    Скрывать клавиатуру
     <input type="checkbox" id="box3">
     <span class="checkmark"></span>
   </label>
-  РРіРЅРѕСЂРёСЂРѕРІР°С‚СЊ РІРІРѕРґ СЃРёРјРІРѕР»РѕРІ <br>
+  Игнорировать ввод символов <br>
   <label class="custom-checkbox">
-    РЅРµСЃРѕРѕС‚РІРµС‚СЃС‚РІСѓС‰РµРіРѕ СЏР·С‹РєР°
+    несоответствущего языка
     <input type="checkbox" id="box4">
     <span class="checkmark"></span>
   </label>
@@ -53,7 +53,7 @@
 
 <main>
   <div class="statistics hidden">
-    <h3>Р РµР·СѓР»СЊС‚Р°С‚</h3>
+    <h3>Результат</h3>
     <button class="statistics-close">+</button>
     <div id="statContainer"></div>
   </div>
@@ -66,7 +66,7 @@
     <div class="left-hand pointer-disabled" id="left-middle"></div>
     <div class="left-hand pointer-disabled" id="left-index"></div>
 
-    <div id="lang-marker">Р СѓСЃСЃРєРёР№</div>
+    <div id="lang-marker">Русский</div>
 
     <div class="right-hand pointer-disabled" id="right-pinky"></div>
     <div class="right-hand pointer-disabled" id="right-ring"></div>
