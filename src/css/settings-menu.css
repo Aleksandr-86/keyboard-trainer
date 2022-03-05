@@ -30,8 +30,8 @@
 .settings-btn-close {
   display: inline-block;
   font-size: 50px;
-  border: none;
   background: none;
+  user-select: none;
   position: absolute;
   z-index: 1;
   top: -5.5px;

@@ -42,6 +42,7 @@ h3 {
   font-size: 5vh;
   border: none;
   background: none;
+  user-select: none;
   position: absolute;
   z-index: 1;
   top: -1vh;

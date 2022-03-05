@@ -9,11 +9,10 @@ const keyboard = document.querySelector('.keyboard');
 
 const buffer = document.querySelector('#buffer');
 
-const settings = document.querySelector('.nav > li:last-child > a');
+const settingsOpen= document.querySelector('.nav > li:last-child > a');
 const settingsMenu = document.querySelector('.settings-menu');
 const settingsBtnClose = document.querySelector('.settings-btn-close');
 
-// const box1 = document.querySelector('#checkbox');
 const box1 = document.querySelector('#box1');
 const box2 = document.querySelector('#box2');
 const box3 = document.querySelector('#box3');
@@ -101,7 +100,7 @@ overlay.addEventListener('click', function() {
 });
 
 // open settings menu
-settings.addEventListener('click', function() {
+settingsOpen.addEventListener('click', function() {
   settingsMenu.classList.add('settings-menu-open');
   fingerPointers.classList.add('hidden');
   field.classList.add('hidden');
