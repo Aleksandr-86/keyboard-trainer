@@ -54,14 +54,3 @@
 .finger-pointers .pointer-disabled {
   background: rgba(50, 50, 50, 0.75);
 }
-
-#lang-marker {
-  width: auto;
-  background: none;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  left: 50%;
-  text-align: center;
-  font-size: 40px;
-  font-weight: bold;
-}

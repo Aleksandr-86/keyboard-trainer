@@ -103,16 +103,12 @@ export function fingerPointing(targetChar) {
   let chCase;
 
   langTest(targetChar, langLayout) === 'rus' ? langLayout = 'rus' : langLayout = 'eng';
-  // langLayout === 'rus' ? arr = charArrRus : arr = charArrEng;
-  const langMarker = document.querySelector('#lang-marker');
 
   if (langLayout === 'rus') {
     arr = charArrRus;
-    langMarker.textContent = 'Русский';
     chCase = /[А-ЯЁ!"№;%:?*()_+,/]/i.test(targetChar) && targetChar === targetChar.toUpperCase();
   } else {
     arr = charArrEng;
-    langMarker.textContent = 'Английский';
     chCase = /[A-Z!@#$%^&*():<>?_{"+}|]/i.test(targetChar) && targetChar === targetChar.toUpperCase();
   }
 
