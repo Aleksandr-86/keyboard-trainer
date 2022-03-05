@@ -92,49 +92,46 @@ function showStat() {
   let tempStr = '';
   let numChars = numTotal - numNeutral;
   if (numChars >= 11 && numChars <= 14) {
-    tempStr = 'знаков';
-} else if (numChars % 10 === 1) {
-    tempStr = 'знак';
-} else if (numChars % 10 >= 2 && numChars % 10 <= 4) {
-    tempStr = 'знака';
-  } else if (numChars % 10 === 0 || (numChars % 10 >= 5 && numChars % 10 <= 9)) {
-    tempStr = 'знаков';
+    tempStr = `набрано <b>${numChars}</b> знаков`;
+  } else if (numChars % 10 === 1) {
+    tempStr = `набран <b>${numChars}</b> знак`;
+  } else if (numChars % 10 >= 2 && numChars % 10 <= 4) {
+    tempStr = `набрано <b>${numChars}</b> знака`;
+  } else if (
+    numChars % 10 === 0 ||
+    (numChars % 10 >= 5 && numChars % 10 <= 9)
+  ) {
+    tempStr = `набрано <b>${numChars}</b> знаков`;
   }
 
   statContainer.innerHTML = `
-    <div >
+    <div>
       <div class="stat-first-row">Время набора:</div>
       <div class="stat-second-row">${msToMinutes(timerStop - timerStart)}</div>
     </div>
-    <div >
+    <div>
       <div class="stat-first-row">Cкорость набора, зн/мин:</div>
       <div class="stat-second-row">${Math.floor(
         (numTotal * 60) / ((timerStop - timerStart) / 1000)
       )}</div>
     </div>
-    <div >
-      <div class="stat-first-row">Всего набрано <b>${
-       numChars 
-      }</b> ${tempStr}, из них:</div>
+    <div>
+      <div class="stat-first-row">Всего ${tempStr}, из них:</div>
       <div class="stat-second-row"></div>
     </div>
-    <div >
+    <div>
       <div class="stat-first-row stat-pos">- правильных</div>
       <div class="stat-second-row">${numCorrect}
-        <div class="num-correct">(${rnd(
-          (numCorrect * 100) / (numChars)
-        )}%)</div>
+        <div class="num-correct">(${rnd((numCorrect * 100) / numChars)}%)</div>
       </div>
     </div>
-    <div >
+    <div>
       <div class="stat-first-row stat-pos">- ошибочных</div>
       <div class="stat-second-row">${numWrong}
-        <div class="num-wrong">(${rnd(
-          (numWrong * 100) / (numChars)
-        )}%)</div>
+        <div class="num-wrong">(${rnd((numWrong * 100) / numChars)}%)</div>
       </div>
     </div>
-    <div >
+    <div>
       <div class="stat-first-row">Знаков подряд без ошибки:</div>
       <div class="stat-second-row">${numRow}</div>
     </div>

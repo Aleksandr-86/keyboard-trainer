@@ -1,5 +1,6 @@
 @keyframes hideCursor {
-  0%, 99% {
+  0%,
+  99% {
     cursor: default;
   }
   100% {
@@ -8,15 +9,12 @@
 }
 
 .field {
-  /*width: 850px;*/
-  /*width: 1598px;*/
   width: 1365px;
   height: 430px;
-  margin:  10px auto 50px;
+  margin: 10px auto 50px;
   backdrop-filter: blur(200px);
   user-select: none;
   cursor: none;
-
   transition: visibility 300ms, opacity 300ms;
 }
 
@@ -33,7 +31,7 @@
   float: left;
   width: 39px;
   height: inherit;
-  font-family: "JetBrainsMono-Regular", monospace;
+  font-family: 'JetBrainsMono-Regular', monospace;
   font-size: 65px;
   background: rgba(50, 50, 50, 0.75);
   color: rgb(165, 165, 165);
@@ -45,14 +43,14 @@
 }
 
 .char-caret:after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   right: 0;
   width: 39px;
   height: 5px;
   background: rgba(30, 30, 30, 0.7);
-  filter: drop-shadow(3px 2px 2px yellowgreen) brightness(250%)
+  filter: drop-shadow(3px 2px 2px yellowgreen) brightness(250%);
 }
 
 .char-correct {
