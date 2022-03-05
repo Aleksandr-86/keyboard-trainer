@@ -1,5 +1,9 @@
-import {charTest, langTest} from "/src/scripts/functions.js";
-import {arrOfStrings, indOfString, charInserter} from "/src/scripts/char-inserter.js";
+import { charTest, langTest } from '/src/scripts/functions.js';
+import {
+  arrOfStrings,
+  indOfString,
+  charInserter,
+} from '/src/scripts/char-inserter.js';
 
 const fingerPointers = document.querySelector('.finger-pointers');
 const field = document.querySelector('.field');
@@ -23,11 +27,28 @@ let numRow = 0;
 let numRowCounter = 0;
 
 // const charArrRus = ['ё1йфя', '2цыч', '3увс', '4кам5епи6', '7нртгоь', '8шлб', '9щдю', '0зж.-хэ=ъ\\', ',/'];
-const charArrRus = ['ё1!йфя', '2"цыч', '3№увс', '4;кам5%епи6:', '7?нртгоь', '8*шлб', '9(щдю', '0)зж.,-_хэ=+ъ\\/)'];
-const charArrEng = ['`~1!qaz', '2@wsx', '3#edc', '4$rfv5%tgb6^', '7&yhnujm', '8*ik,<', '9(ol.>', "0)p;:/?-_[{'=+]}\\|"];
+const charArrRus = [
+  'ё1!йфя',
+  '2"цыч',
+  '3№увс',
+  '4;кам5%епи6:',
+  '7?нртгоь',
+  '8*шлб',
+  '9(щдю',
+  '0)зж.,-_хэ=+ъ\\/)',
+];
+const charArrEng = [
+  '`~1!qaz',
+  '2@wsx',
+  '3#edc',
+  '4$rfv5%tgb6^',
+  '7&yhnujm',
+  '8*ik,<',
+  '9(ol.>',
+  "0)p;:/?-_[{'=+]}\\|",
+];
 export let langLayout = 'rus';
 let remChart;
-
 
 // clearing counters
 export function clearCounters() {
@@ -43,15 +64,21 @@ export function clearCounters() {
 
 // showing statistics
 function showStat() {
-  function rnd(num) { // rounding
+  function rnd(num) {
+    // rounding
     return Number(Math.round(Number(num + 'e2')) + 'e-2');
   }
 
-  function msToMinutes(ms) { // converting ms into minutes:seconds
+  function msToMinutes(ms) {
+    // converting ms into minutes:seconds
     ms /= 1000;
-    const minutes = Math.floor(ms / 60).toString().padStart(2, '0');
-    const seconds = Math.floor(ms - minutes * 60).toString().padStart(2, '0');
-    return `${minutes}:${seconds}`
+    const minutes = Math.floor(ms / 60)
+      .toString()
+      .padStart(2, '0');
+    const seconds = Math.floor(ms - minutes * 60)
+      .toString()
+      .padStart(2, '0');
+    return `${minutes}:${seconds}`;
   }
 
   timerStop = performance.now();
@@ -61,6 +88,19 @@ function showStat() {
   statistics.classList.remove('hidden');
   overlay.classList.remove('hidden');
 
+  // forming the end of a word
+  let tempStr = '';
+  let numChars = numTotal - numNeutral;
+  if (numChars >= 11 && numChars <= 14) {
+    tempStr = 'знаков';
+} else if (numChars % 10 === 1) {
+    tempStr = 'знак';
+} else if (numChars % 10 >= 2 && numChars % 10 <= 4) {
+    tempStr = 'знака';
+  } else if (numChars % 10 === 0 || (numChars % 10 >= 5 && numChars % 10 <= 9)) {
+    tempStr = 'знаков';
+  }
+
   statContainer.innerHTML = `
     <div >
       <div class="stat-first-row">Время набора:</div>
@@ -68,33 +108,40 @@ function showStat() {
     </div>
     <div >
       <div class="stat-first-row">Cкорость набора, зн/мин:</div>
-      <div class="stat-second-row">${Math.floor((numTotal * 60) / ((timerStop - timerStart) / 1000))}</div>
+      <div class="stat-second-row">${Math.floor(
+        (numTotal * 60) / ((timerStop - timerStart) / 1000)
+      )}</div>
     </div>
     <div >
-      <div class="stat-first-row">Всего набрано знаков <b>${numTotal - numNeutral}</b>, из них:</div>
+      <div class="stat-first-row">Всего набрано <b>${
+       numChars 
+      }</b> ${tempStr}, из них:</div>
       <div class="stat-second-row"></div>
     </div>
     <div >
       <div class="stat-first-row stat-pos">- правильных</div>
       <div class="stat-second-row">${numCorrect}
-        <div class="num-correct">(${rnd((numCorrect * 100) / (numTotal - numNeutral))}%)</div>
+        <div class="num-correct">(${rnd(
+          (numCorrect * 100) / (numChars)
+        )}%)</div>
       </div>
     </div>
     <div >
       <div class="stat-first-row stat-pos">- ошибочных</div>
       <div class="stat-second-row">${numWrong}
-        <div class="num-wrong">(${rnd((numWrong * 100) / (numTotal - numNeutral))}%)</div>
+        <div class="num-wrong">(${rnd(
+          (numWrong * 100) / (numChars)
+        )}%)</div>
       </div>
     </div>
     <div >
       <div class="stat-first-row">Знаков подряд без ошибки:</div>
       <div class="stat-second-row">${numRow}</div>
     </div>
-  `
+  `;
 
   clearCounters();
 }
-
 
 // return finger pointing div
 export function fingerPointing(targetChar) {
@@ -102,17 +149,25 @@ export function fingerPointing(targetChar) {
   let arr;
   let chCase;
 
-  langTest(targetChar, langLayout) === 'rus' ? langLayout = 'rus' : langLayout = 'eng';
+  langTest(targetChar, langLayout) === 'rus'
+    ? (langLayout = 'rus')
+    : (langLayout = 'eng');
 
   if (langLayout === 'rus') {
     arr = charArrRus;
-    chCase = /[А-ЯЁ!"№;%:?*()_+,/]/i.test(targetChar) && targetChar === targetChar.toUpperCase();
+    chCase =
+      /[А-ЯЁ!"№;%:?*()_+,/]/i.test(targetChar) &&
+      targetChar === targetChar.toUpperCase();
   } else {
     arr = charArrEng;
-    chCase = /[A-Z!@#$%^&*():<>?_{"+}|]/i.test(targetChar) && targetChar === targetChar.toUpperCase();
+    chCase =
+      /[A-Z!@#$%^&*():<>?_{"+}|]/i.test(targetChar) &&
+      targetChar === targetChar.toUpperCase();
   }
 
-  document.querySelectorAll('.finger-pointers > div').forEach(elem => elem.classList.add('pointer-disabled'));
+  document
+    .querySelectorAll('.finger-pointers > div')
+    .forEach((elem) => elem.classList.add('pointer-disabled'));
 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].indexOf(targetChar.toLowerCase()) >= 0) {
@@ -132,7 +187,9 @@ export function fingerPointing(targetChar) {
   } else if (ind === 4) {
     document.querySelector('#right-index').classList.remove('pointer-disabled');
   } else if (ind === 5) {
-    document.querySelector('#right-middle').classList.remove('pointer-disabled');
+    document
+      .querySelector('#right-middle')
+      .classList.remove('pointer-disabled');
   } else if (ind === 6) {
     document.querySelector('#right-ring').classList.remove('pointer-disabled');
   } else if (ind === 7 || ind === 8) {
@@ -148,7 +205,6 @@ export function fingerPointing(targetChar) {
   }
 }
 
-
 // skipping inappropriate chars and a space after them (due a certain condition)
 export function charHandler(caret) {
   let test = charTest(caret.textContent);
@@ -160,26 +216,32 @@ export function charHandler(caret) {
     caret.classList.remove('char-neutral-inactive');
     caret.classList.add('char-neutral-active');
 
-    if (caret.classList.contains('finish')) { // the end of typing
+    if (caret.classList.contains('finish')) {
+      // the end of typing
       caret.classList.add('char-caret');
       console.warn('конец 1');
       showStat();
       break;
     } else {
-
-      if (caret.classList.contains('line-end') && !caret.parentElement.nextElementSibling) {
+      if (
+        caret.classList.contains('line-end') &&
+        !caret.parentElement.nextElementSibling
+      ) {
         charInserter(arrOfStrings, indOfString); // filling all the lines
       } else if (caret.classList.contains('line-end')) {
         caret = caret.parentElement.nextElementSibling.firstElementChild;
       } else {
-        if (caret !== caret.parentElement.firstElementChild &&
+        if (
+          caret !== caret.parentElement.firstElementChild &&
           caret.previousElementSibling.textContent === ' ' &&
-          caret.nextElementSibling.textContent === ' ') {
+          caret.nextElementSibling.textContent === ' '
+        ) {
           caret = caret.nextElementSibling;
           if (caret.classList.contains('line-end')) {
             caret = caret.parentElement.nextElementSibling.firstElementChild;
           }
-          if (caret.textContent !== ' ') caret.className = 'char char-neutral-active';
+          if (caret.textContent !== ' ')
+            caret.className = 'char char-neutral-active';
         }
         caret = caret.nextElementSibling;
       }
@@ -196,20 +258,38 @@ export function keyDownHandler(event) {
   let eKey = event.key;
   const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
 
-  if (!statistics.classList.contains('hidden') && (eKey === 'Escape' || eKey === 'Enter')) {
+  if (
+    !statistics.classList.contains('hidden') &&
+    (eKey === 'Escape' || eKey === 'Enter')
+  ) {
     statistics.classList.add('hidden');
     overlay.classList.add('hidden');
     return;
-  } else if (!field.classList.contains('hidden') && eKey === 'Enter' && numTotal > 0) {
+  } else if (
+    !field.classList.contains('hidden') &&
+    eKey === 'Enter' &&
+    numTotal > 0
+  ) {
     showStat();
     return;
-  } else if (!field.classList.contains('hidden') && eKey === 'Enter' && numTotal === 0) {
+  } else if (
+    !field.classList.contains('hidden') &&
+    eKey === 'Enter' &&
+    numTotal === 0
+  ) {
     return;
   } else if (field.classList.contains('hidden')) {
     return;
-  } else if (eKey === 'Backspace' || eKey === 'Tab' || eKey === 'CapsLock'
-    || eKey === 'Shift' || eKey === 'Control'
-    || eKey === 'Os' || eKey === 'Alt' || eKey === 'ContexMenu') {
+  } else if (
+    eKey === 'Backspace' ||
+    eKey === 'Tab' ||
+    eKey === 'CapsLock' ||
+    eKey === 'Shift' ||
+    eKey === 'Control' ||
+    eKey === 'Os' ||
+    eKey === 'Alt' ||
+    eKey === 'ContexMenu'
+  ) {
     btnDn.className = 'button-dn1';
   } else {
     // selecting the first element of the first line
@@ -248,13 +328,16 @@ export function keyDownHandler(event) {
       numRowCounter = 0;
     }
 
-    if (caret.classList.contains('finish')) { // the end of typing
+    if (caret.classList.contains('finish')) {
+      // the end of typing
       caret.classList.remove('char-caret');
       console.warn('2 конец');
       showStat();
       return;
-    } else if (caret.classList.contains('line-end')
-      && caret.parentElement.nextElementSibling === null) {
+    } else if (
+      caret.classList.contains('line-end') &&
+      caret.parentElement.nextElementSibling === null
+    ) {
       charInserter(arrOfStrings, indOfString);
       caret = document.querySelector('.char-caret');
       charHandler(caret);
@@ -273,7 +356,6 @@ export function keyDownHandler(event) {
     // targetChar = caret.textContent;
     // fingerPointing(caret.textContent);
 
-
     // identifying the language of the keyboard layout
     // console.log(langTest(caret.textContent));
     // if (langTest(caret.textContent)) {
@@ -284,10 +366,11 @@ export function keyDownHandler(event) {
   }
 
   // releasing the key
-  document.body.addEventListener('keyup', function(event) {
+  document.body.addEventListener('keyup', function (event) {
     const btnUp = document.querySelector(`#${event.code.toLowerCase()}`);
-    if (btnDn === btnUp) setTimeout(function() {
-      btnUp.className = 'button-up';
-    }, 100);
+    if (btnDn === btnUp)
+      setTimeout(function () {
+        btnUp.className = 'button-up';
+      }, 100);
   });
 }

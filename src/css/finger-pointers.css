@@ -31,23 +31,23 @@
   margin-left: 15px;
 }
 
-.right-hand:nth-child(6) {
+.right-hand:nth-child(5) {
   background: rgba(0, 0, 255, 0.75);
   margin-right: 15px;
 }
 
 .left-hand:nth-child(2),
-.right-hand:nth-child(7) {
+.right-hand:nth-child(6) {
   background: rgba(0, 175, 0, 0.75);
 }
 
 .left-hand:nth-child(3),
-.right-hand:nth-child(8) {
+.right-hand:nth-child(7) {
   background: rgba(255, 255, 0, 0.75);
 }
 
 .left-hand:nth-child(4),
-.right-hand:nth-child(9) {
+.right-hand:nth-child(8) {
   background: rgba(255, 0, 0, 0.75);
 }
 

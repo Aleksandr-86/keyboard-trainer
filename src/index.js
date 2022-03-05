@@ -1,6 +1,6 @@
-import {charInserter} from "/src/scripts/char-inserter.js";
-import {getBrowser, strPreparer} from "/src/scripts/functions.js";
-import {keyDownHandler, clearCounters} from "/src/scripts/keyboard.js";
+import { charInserter } from '/src/scripts/char-inserter.js';
+import { getBrowser, strPreparer } from '/src/scripts/functions.js';
+import { keyDownHandler, clearCounters } from '/src/scripts/keyboard.js';
 
 // const btnGenFromSite = document.querySelector('#btn1');
 const fingerPointers = document.querySelector('.finger-pointers');
@@ -9,7 +9,7 @@ const keyboard = document.querySelector('.keyboard');
 
 const buffer = document.querySelector('#buffer');
 
-const settingsOpen= document.querySelector('.nav > li:last-child > a');
+const settingsOpen = document.querySelector('.nav > li:last-child > a');
 const settingsMenu = document.querySelector('.settings-menu');
 const settingsBtnClose = document.querySelector('.settings-btn-close');
 
@@ -24,13 +24,15 @@ const overlay = document.querySelector('.overlay');
 
 // loading state of settings checkbox
 if (localStorage.letterCase) box1.checked = localStorage.letterCase === 'true';
-if (localStorage.fingerPointers) box2.checked = localStorage.fingerPointers === 'true';
-if (localStorage.hideKeyboard) box3.checked = localStorage.hideKeyboard === 'true';
-if (localStorage.ignoreCharInput) box4.checked = localStorage.ignoreCharInput === 'true';
-
+if (localStorage.fingerPointers)
+  box2.checked = localStorage.fingerPointers === 'true';
+if (localStorage.hideKeyboard)
+  box3.checked = localStorage.hideKeyboard === 'true';
+if (localStorage.ignoreCharInput)
+  box4.checked = localStorage.ignoreCharInput === 'true';
 
 // setting state of settings checkbox
-box1.addEventListener('change', function() {
+box1.addEventListener('change', function () {
   if (this.checked) {
     localStorage.setItem('letterCase', 'true');
   } else {
@@ -38,7 +40,7 @@ box1.addEventListener('change', function() {
   }
 });
 
-box2.addEventListener('change', function() {
+box2.addEventListener('change', function () {
   if (this.checked) {
     localStorage.setItem('fingerPointers', 'true');
   } else {
@@ -46,7 +48,7 @@ box2.addEventListener('change', function() {
   }
 });
 
-box3.addEventListener('change', function() {
+box3.addEventListener('change', function () {
   if (this.checked) {
     localStorage.setItem('hideKeyboard', 'true');
   } else {
@@ -54,7 +56,7 @@ box3.addEventListener('change', function() {
   }
 });
 
-box4.addEventListener('change', function() {
+box4.addEventListener('change', function () {
   if (this.checked) {
     localStorage.setItem('ignoreCharInput', 'true');
   } else {
@@ -62,19 +64,21 @@ box4.addEventListener('change', function() {
   }
 });
 
-
 // adding text from a buffer
-buffer.addEventListener('click', async function() {
+buffer.addEventListener('click', async function () {
   // defining browser
   const br = getBrowser().browser;
   if (br === 'chrome' || br === 'yabrowser') {
     let str = await navigator.clipboard.readText();
-    if ((str.length === 0 || str.length === 1) && (str === ' ' || str === '')) return; // buffer is empty
+    if ((str.length === 0 || str.length === 1) && (str === ' ' || str === ''))
+      return; // buffer is empty
 
     buffer.blur(); // removing focus from an element
     settingsMenu.classList.remove('settings-menu-open'); // close settings menu
     // clearing finger pointers
-    fingerPointers.querySelectorAll('*').forEach(elem => elem.classList.add('pointer-disabled'));
+    fingerPointers
+      .querySelectorAll('*')
+      .forEach((elem) => elem.classList.add('pointer-disabled'));
     clearCounters();
     charInserter(strPreparer(str), 0);
     if (!box2.checked) fingerPointers.classList.remove('hidden');
@@ -87,21 +91,21 @@ buffer.addEventListener('click', async function() {
 });
 
 // handling keyboard events
-document.addEventListener('keydown', event => keyDownHandler(event));
+document.addEventListener('keydown', (event) => keyDownHandler(event));
 
 // shutting down the statistics menu
-statisticsClose.addEventListener('click', function() {
+statisticsClose.addEventListener('click', function () {
   statistics.classList.add('hidden');
   overlay.classList.add('hidden');
 });
-overlay.addEventListener('click', function() {
+overlay.addEventListener('click', function () {
   statistics.classList.add('hidden');
   overlay.classList.add('hidden');
 });
 
 // open settings menu
-settingsOpen.addEventListener('click', function() {
-  settingsMenu.classList.add('settings-menu-open');
+settingsOpen.addEventListener('click', function () {
+  settingsMenu.classList.toggle('settings-menu-open');
   fingerPointers.classList.add('hidden');
   field.classList.add('hidden');
   keyboard.classList.add('hidden');
@@ -110,6 +114,6 @@ settingsOpen.addEventListener('click', function() {
 });
 
 // close settings menu
-settingsBtnClose.addEventListener('click', function() {
+settingsBtnClose.addEventListener('click', function () {
   settingsMenu.classList.remove('settings-menu-open');
 });
