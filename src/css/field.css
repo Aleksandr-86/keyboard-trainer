@@ -9,8 +9,8 @@
 }
 
 .field {
-  width: 1365px;
-  height: 430px;
+  width: 1440px;
+  height: 385px;
   margin: 10px auto 50px;
   backdrop-filter: blur(200px);
   user-select: none;
@@ -24,14 +24,14 @@
 
 .line {
   width: inherit;
-  height: 86px;
+  height: 77px;
 }
 
 .char {
   float: left;
-  width: 39px;
+  width: 36px;
   height: inherit;
-  font-family: 'JetBrainsMono-Regular', monospace;
+  font-family: 'Consolas', monospace;
   font-size: 65px;
   background: rgba(50, 50, 50, 0.75);
   color: rgb(165, 165, 165);

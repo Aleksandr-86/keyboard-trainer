@@ -24,8 +24,8 @@ export function charInserter(arr, ind) {
   const arrLen = arrOfStrings.length;
   // the maximum length of a word that will not be carried over to the next line
   let wordLenMax = 10;
-  // the length of the lines
-  const lineLen = 35;
+  // number of characters per line
+  const lineLen = 40;
   if (wordLenMax >= lineLen) wordLenMax = lineLen - 1;
   let counter = 0;
 

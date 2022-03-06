@@ -88,7 +88,7 @@ function showStat() {
   statistics.classList.remove('hidden');
   overlay.classList.remove('hidden');
 
-  // forming the end of a word
+  // forming the string
   let tempStr = '';
   let numChars = numTotal - numNeutral;
   if (numChars >= 11 && numChars <= 14) {
@@ -158,7 +158,7 @@ export function fingerPointing(targetChar) {
   } else {
     arr = charArrEng;
     chCase =
-      /[A-Z!@#$%^&*():<>?_{"+}|]/i.test(targetChar) &&
+      /[A-Z!@#$%^&*():<>?_{"+|}]/i.test(targetChar) &&
       targetChar === targetChar.toUpperCase();
   }
 
