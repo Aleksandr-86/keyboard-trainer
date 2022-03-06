@@ -105,22 +105,30 @@
   transform: rotate(45deg);
 }
 
-/* .settings-picture {
+.settings-picture {
   display: flex;
-} */
-
-.settings-picture div {
-  height: 50px;
-  line-height: 50px;
-  background: red;
-  display: inline-block;
-
-  /* text-align: center; */
+  margin-top: 20px;
+  float: left;
+  height: 200px;
+  line-height: 200px;
 }
 
-/* .settings-picture > div:first-child {
-  width: 20px;
-  content: '';
-  display: inline-block;
-  vertical-align: middle;
-} */
+#settings-btn-previous,
+#settings-btn-next {
+  width: 30px;
+  background: rgb(100, 100, 100);
+}
+
+#settings-btn-previous {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#settings-btn-next {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.settings-picture div {
+  width: 320px;
+}

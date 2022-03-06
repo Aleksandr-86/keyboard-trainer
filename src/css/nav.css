@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   list-style: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   flex-wrap: wrap;
 }
 
@@ -43,7 +43,7 @@
 
 .nav li.nav-children:after {
   position: absolute;
-  content: "\2039";
+  content: '\2039';
   color: rgb(183, 152, 51);
   font-size: 25px;
   font-weight: bold;

@@ -24,9 +24,12 @@ const overlay = document.querySelector('.overlay');
 
 // loading state of settings checkbox
 if (localStorage.letterCase) box1.checked = localStorage.letterCase === 'true';
-if (localStorage.fingerPointers) box2.checked = localStorage.fingerPointers === 'true';
-if (localStorage.hideKeyboard) box3.checked = localStorage.hideKeyboard === 'true';
-if (localStorage.ignoreCharInput) box4.checked = localStorage.ignoreCharInput === 'true';
+if (localStorage.fingerPointers)
+  box2.checked = localStorage.fingerPointers === 'true';
+if (localStorage.hideKeyboard)
+  box3.checked = localStorage.hideKeyboard === 'true';
+if (localStorage.ignoreCharInput)
+  box4.checked = localStorage.ignoreCharInput === 'true';
 
 // setting state of settings checkbox
 box1.addEventListener('change', function () {
@@ -68,18 +71,21 @@ buffer.addEventListener('click', async function () {
   if (br === 'chrome' || br === 'yabrowser') {
     let str = await navigator.clipboard.readText();
     // buffer is empty
-    if ((str.length === 0 || str.length === 1) && (str === ' ' || str === '')) return;
+    if ((str.length === 0 || str.length === 1) && (str === ' ' || str === ''))
+      return;
 
     buffer.blur(); // removing focus from an element
     settingsMenu.classList.remove('settings-menu-open'); // close settings menu
     // clearing finger pointers
-    fingerPointers.querySelectorAll('*').forEach((elem) => elem.classList.add('pointer-disabled'));
+    fingerPointers
+      .querySelectorAll('*')
+      .forEach((elem) => elem.classList.add('pointer-disabled'));
     clearCounters();
     charInserter(strPreparer(str), 0);
     if (!box2.checked) fingerPointers.classList.remove('hidden');
     field.classList.remove('hidden');
     if (!box3.checked) keyboard.classList.remove('hidden');
-  } else if (br === 'firefox') {
+  } else if (br === 'firefoxx') {
     let str = document.querySelector('#input').value;
     charInserter(strPreparer(str), 0);
   }
