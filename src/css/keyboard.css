@@ -18,7 +18,7 @@
   margin-top: 3px;
   margin-right: 3px;
   font-size: 21px;
-  font-family: "PTMonoWebRegular", monospace;
+  font-family: 'Consolas', monospace;
   text-align: center;
 
   color: black;
@@ -30,18 +30,20 @@
 .button-up:after,
 .button-dn1:after,
 .button-dn2:after {
-  content: "";
+  content: '';
   height: 63px;
   display: inline-block;
   vertical-align: middle;
 }
 
 .button-dn1 {
-  box-shadow: 0 0 30px 15px rgb(110, 30, 110, 0.5), inset 0 0 30px rgb(110, 30, 110, 0.5);
+  box-shadow: 0 0 30px 15px rgb(110, 30, 110, 0.5),
+    inset 0 0 30px rgb(110, 30, 110, 0.5);
 }
 
 .button-dn2 {
-  box-shadow: 0 0 30px 15px rgb(0, 255, 255, 0.5), inset 0 0 30px rgb(0, 255, 255, 0.5);
+  box-shadow: 0 0 30px 15px rgb(0, 255, 255, 0.5),
+    inset 0 0 30px rgb(0, 255, 255, 0.5);
 }
 
 .button-dn1:after,
