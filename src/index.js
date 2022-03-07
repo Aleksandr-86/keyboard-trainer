@@ -2,6 +2,51 @@ import { charInserter } from '/src/scripts/char-inserter.js';
 import { getBrowser, strPreparer } from '/src/scripts/functions.js';
 import { keyDownHandler, clearCounters } from '/src/scripts/keyboard.js';
 
+const arrBackgrounds = [
+  {
+    num: 1,
+    name: 'okhotskoye',
+    author: 'Игорь Дудковский',
+    description: 'охотское море',
+    link: 'https://www.pexels.com/@igor65',
+  },
+  {
+    num: 2,
+    name: 'okhotskoye',
+    author: 'Игорь Дудковский',
+    description: 'охотское море',
+    link: 'https://www.pexels.com/@igor65',
+  },
+  {
+    num: 3,
+    name: 'okhotskoye',
+    author: 'Игорь Дудковский',
+    description: 'охотское море',
+    link: 'https://www.pexels.com/@igor65',
+  },
+  {
+    num: 4,
+    name: 'okhotskoye',
+    author: 'Игорь Дудковский',
+    description: 'охотское море',
+    link: 'https://www.pexels.com/@igor65',
+  },
+  {
+    num: 5,
+    name: 'okhotskoye',
+    author: 'Игорь Дудковский',
+    description: 'охотское море',
+    link: 'https://www.pexels.com/@igor65',
+  },
+  {
+    num: 6,
+    name: 'okhotskoye',
+    author: 'Игорь Дудковский',
+    description: 'охотское море',
+    link: 'https://www.pexels.com/@igor65',
+  },
+];
+
 // const btnGenFromSite = document.querySelector('#btn1');
 const fingerPointers = document.querySelector('.finger-pointers');
 const field = document.querySelector('.field');
@@ -23,6 +68,8 @@ const statisticsClose = document.querySelector('.statistics-close');
 const overlay = document.querySelector('.overlay');
 
 // loading state of settings checkbox
+// if (!localStorage.backgroundPicture)
+  // localStorage.setItem('backgroundPicture', '0');
 if (localStorage.letterCase) box1.checked = localStorage.letterCase === 'true';
 if (localStorage.fingerPointers)
   box2.checked = localStorage.fingerPointers === 'true';
