@@ -1,9 +1,5 @@
 import { charTest, langTest } from '/src/scripts/functions.js';
-import {
-  arrOfStrings,
-  indOfString,
-  charInserter,
-} from '/src/scripts/char-inserter.js';
+import { arrOfStrings, indOfString, charInserter } from '/src/scripts/char-inserter.js';
 
 const fingerPointers = document.querySelector('.finger-pointers');
 const field = document.querySelector('.field');
@@ -97,10 +93,7 @@ function showStat() {
     tempStr = `набран <b>${numChars}</b> знак`;
   } else if (numChars % 10 >= 2 && numChars % 10 <= 4) {
     tempStr = `набрано <b>${numChars}</b> знака`;
-  } else if (
-    numChars % 10 === 0 ||
-    (numChars % 10 >= 5 && numChars % 10 <= 9)
-  ) {
+  } else if (numChars % 10 === 0 || (numChars % 10 >= 5 && numChars % 10 <= 9)) {
     tempStr = `набрано <b>${numChars}</b> знаков`;
   }
 
@@ -146,20 +139,16 @@ export function fingerPointing(targetChar) {
   let arr;
   let chCase;
 
-  langTest(targetChar, langLayout) === 'rus'
-    ? (langLayout = 'rus')
-    : (langLayout = 'eng');
+  langTest(targetChar, langLayout) === 'rus' ? (langLayout = 'rus') : (langLayout = 'eng');
 
   if (langLayout === 'rus') {
     arr = charArrRus;
     chCase =
-      /[А-ЯЁ!"№;%:?*()_+,/]/i.test(targetChar) &&
-      targetChar === targetChar.toUpperCase();
+      /[А-ЯЁ!"№;%:?*()_+,/]/i.test(targetChar) && targetChar === targetChar.toUpperCase();
   } else {
     arr = charArrEng;
     chCase =
-      /[A-Z!@#$%^&*():<>?_{"+|}]/i.test(targetChar) &&
-      targetChar === targetChar.toUpperCase();
+      /[A-Z!@#$%^&*():<>?_{"+|}]/i.test(targetChar) && targetChar === targetChar.toUpperCase();
   }
 
   document
@@ -184,9 +173,7 @@ export function fingerPointing(targetChar) {
   } else if (ind === 4) {
     document.querySelector('#right-index').classList.remove('pointer-disabled');
   } else if (ind === 5) {
-    document
-      .querySelector('#right-middle')
-      .classList.remove('pointer-disabled');
+    document.querySelector('#right-middle').classList.remove('pointer-disabled');
   } else if (ind === 6) {
     document.querySelector('#right-ring').classList.remove('pointer-disabled');
   } else if (ind === 7 || ind === 8) {
@@ -220,10 +207,7 @@ export function charHandler(caret) {
       showStat();
       break;
     } else {
-      if (
-        caret.classList.contains('line-end') &&
-        !caret.parentElement.nextElementSibling
-      ) {
+      if (caret.classList.contains('line-end') && !caret.parentElement.nextElementSibling) {
         charInserter(arrOfStrings, indOfString); // filling all the lines
       } else if (caret.classList.contains('line-end')) {
         caret = caret.parentElement.nextElementSibling.firstElementChild;
@@ -237,8 +221,7 @@ export function charHandler(caret) {
           if (caret.classList.contains('line-end')) {
             caret = caret.parentElement.nextElementSibling.firstElementChild;
           }
-          if (caret.textContent !== ' ')
-            caret.className = 'char char-neutral-active';
+          if (caret.textContent !== ' ') caret.className = 'char char-neutral-active';
         }
         caret = caret.nextElementSibling;
       }
@@ -255,25 +238,14 @@ export function keyDownHandler(event) {
   let eKey = event.key;
   const btnDn = document.querySelector(`#${event.code.toLowerCase()}`);
 
-  if (
-    !statistics.classList.contains('hidden') &&
-    (eKey === 'Escape' || eKey === 'Enter')
-  ) {
+  if (!statistics.classList.contains('hidden') && (eKey === 'Escape' || eKey === 'Enter')) {
     statistics.classList.add('hidden');
     overlay.classList.add('hidden');
     return;
-  } else if (
-    !field.classList.contains('hidden') &&
-    eKey === 'Enter' &&
-    numTotal > 0
-  ) {
+  } else if (!field.classList.contains('hidden') && eKey === 'Enter' && numTotal > 0) {
     showStat();
     return;
-  } else if (
-    !field.classList.contains('hidden') &&
-    eKey === 'Enter' &&
-    numTotal === 0
-  ) {
+  } else if (!field.classList.contains('hidden') && eKey === 'Enter' && numTotal === 0) {
     return;
   } else if (field.classList.contains('hidden')) {
     return;

@@ -1,8 +1,7 @@
-import { box2, box3 } from '/src/scripts/set.js';
+import { box2, box3, loadBackground } from '/src/scripts/set.js';
 import { charInserter } from '/src/scripts/char-inserter.js';
 import { getBrowser, strPreparer } from '/src/scripts/functions.js';
 import { keyDownHandler, clearCounters } from '/src/scripts/keyboard.js';
-
 
 // const btnGenFromSite = document.querySelector('#btn1');
 const fingerPointers = document.querySelector('.finger-pointers');
@@ -26,8 +25,7 @@ buffer.addEventListener('click', async function () {
   if (br === 'chrome' || br === 'yabrowser') {
     let str = await navigator.clipboard.readText();
     // buffer is empty
-    if ((str.length === 0 || str.length === 1) && (str === ' ' || str === ''))
-      return;
+    if ((str.length === 0 || str.length === 1) && (str === ' ' || str === '')) return;
 
     buffer.blur(); // removing focus from an element
     settingsMenu.classList.remove('settings-menu-open'); // close settings menu
@@ -62,6 +60,8 @@ overlay.addEventListener('click', function () {
 // open settings menu
 settingsOpen.addEventListener('click', function () {
   settingsMenu.classList.toggle('settings-menu-open');
+  loadBackground(localStorage.backgroundPicture);
+  
   fingerPointers.classList.add('hidden');
   field.classList.add('hidden');
   keyboard.classList.add('hidden');
@@ -72,4 +72,5 @@ settingsOpen.addEventListener('click', function () {
 // close settings menu
 settingsBtnClose.addEventListener('click', function () {
   settingsMenu.classList.remove('settings-menu-open');
+  loadBackground(localStorage.backgroundPicture);
 });

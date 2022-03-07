@@ -4,8 +4,11 @@ export const box3 = document.querySelector('#box3');
 const box4 = document.querySelector('#box4');
 
 const btnPrevious = document.querySelector('#settings-btn-previous');
+const imgPreview = document.querySelector('#settings-imgPreview');
 const btnNext = document.querySelector('#settings-btn-next');
-//   lsdkfjlsjfd
+const author = document.querySelector('.settings-author');
+const description = document.querySelector('.settings-description');
+const link = document.querySelector('.settings-link');
 
 const arrBackgrounds = [
   {
@@ -52,16 +55,30 @@ const arrBackgrounds = [
   },
 ];
 
-// loading state of settings checkbox
+function loadImgPreview(index) {
+  const obj = arrBackgrounds[index];
+  imgPreview.setAttribute('src', `/src/images/backgrounds/small/${obj.name}.jpg`);
+  description.innerHTML = `место: ${obj.description}`;
+  author.innerHTML = `автор: ${obj.author}`;
+  link.setAttribute('href', `${obj.link}`);
+}
+
+export function loadBackground(index) {
+  const pictureObj = arrBackgrounds[index];
+  document.body.style.background = `black url("/src/images/backgrounds/normal/${pictureObj.name}.jpg") no-repeat fixed center center`;
+  document.body.style.backgroundSize = 'cover';
+}
+
+loadBackground(localStorage.backgroundPicture);
+
+// loading state of settings
 if (localStorage.backgroundPicture === undefined)
   localStorage.setItem('backgroundPicture', '0');
 if (localStorage.letterCase) box1.checked = localStorage.letterCase === 'true';
-if (localStorage.fingerPointers)
-  box2.checked = localStorage.fingerPointers === 'true';
-if (localStorage.hideKeyboard)
-  box3.checked = localStorage.hideKeyboard === 'true';
-if (localStorage.ignoreCharInput)
-  box4.checked = localStorage.ignoreCharInput === 'true';
+if (localStorage.fingerPointers) box2.checked = localStorage.fingerPointers === 'true';
+if (localStorage.hideKeyboard) box3.checked = localStorage.hideKeyboard === 'true';
+if (localStorage.ignoreCharInput) box4.checked = localStorage.ignoreCharInput === 'true';
+loadImgPreview(localStorage.backgroundPicture);
 
 // setting state of settings checkbox
 box1.addEventListener('change', function () {
@@ -96,4 +113,26 @@ box4.addEventListener('change', function () {
   }
 });
 
-// btnPrevious.addEventListener
+// circling the background image content
+function circlingImg(index, back = false) {
+  if (index === 0) {
+    back ? (index = 5) : index++;
+  } else if (index >= 1 && index <= 4) {
+    back ? index-- : index++;
+  } else if (index === 5) {
+    back ? index-- : (index = 0);
+  } else {
+    index = 0;
+  }
+
+  localStorage.backgroundPicture = String(index);
+  loadImgPreview(index);
+}
+
+btnPrevious.addEventListener('click', function () {
+  circlingImg(Number(localStorage.backgroundPicture), true);
+});
+
+btnNext.addEventListener('click', function () {
+  circlingImg(Number(localStorage.backgroundPicture));
+});
