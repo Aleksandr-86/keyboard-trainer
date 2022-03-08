@@ -28,6 +28,7 @@ buffer.addEventListener('click', async function () {
     if ((str.length === 0 || str.length === 1) && (str === ' ' || str === '')) return;
 
     buffer.blur(); // removing focus from an element
+    loadBackground(localStorage.backgroundPicture);
     settingsMenu.classList.remove('settings-menu-open'); // close settings menu
     // clearing finger pointers
     fingerPointers
@@ -61,7 +62,7 @@ overlay.addEventListener('click', function () {
 settingsOpen.addEventListener('click', function () {
   settingsMenu.classList.toggle('settings-menu-open');
   loadBackground(localStorage.backgroundPicture);
-  
+
   fingerPointers.classList.add('hidden');
   field.classList.add('hidden');
   keyboard.classList.add('hidden');

@@ -8,6 +8,12 @@ html {
   overflow: hidden;
 }
 
+/* body {
+  background: black no-repeat fixed center center;
+  background-size: cover;
+  transition: background 500ms linear;
+} */
+
 .hidden {
   visibility: hidden;
   opacity: 0;
