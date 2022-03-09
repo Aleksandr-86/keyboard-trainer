@@ -9,6 +9,7 @@
 }
 
 .field {
+  --field-bar-width: 0;
   width: 1440px;
   height: 385px;
   margin: 10px auto 50px;
@@ -16,6 +17,14 @@
   user-select: none;
   cursor: none;
   transition: visibility 300ms, opacity 300ms;
+}
+
+.field::after {
+  position: absolute;
+  content: '';
+  width: var(--field-bar-width);
+  height: 10px;
+  background: green;
 }
 
 .field:hover {

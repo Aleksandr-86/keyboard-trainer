@@ -1,5 +1,6 @@
 import { charTest, langTest } from '/src/scripts/functions.js';
 import { arrOfStrings, indOfString, charInserter } from '/src/scripts/char-inserter.js';
+import { snippetLength } from '/src/scripts/text-snippet.js';
 
 const fingerPointers = document.querySelector('.finger-pointers');
 const field = document.querySelector('.field');
@@ -274,7 +275,6 @@ export function keyDownHandler(event) {
     btnDn.className = 'button-dn2';
 
     // setting case-insensitive matching
-
     if (box1.checked) {
       targetChar = targetChar.toLowerCase();
       eKey = eKey.toLowerCase();
@@ -284,6 +284,11 @@ export function keyDownHandler(event) {
     if (box4.checked) {
       if (langLayout !== langTest(eKey, langLayout)) return;
     }
+
+    field.style.setProperty(
+      '--field-bar-width',
+      `${Math.floor((numTotal * 1440) / snippetLength)}px`
+    );
 
     // coloring the char's background depending on the pressed key
     if (eKey === targetChar) {

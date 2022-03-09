@@ -1,3 +1,5 @@
+'use strict';
+
 const box1 = document.querySelector('#box1');
 export const box2 = document.querySelector('#box2');
 export const box3 = document.querySelector('#box3');
@@ -63,6 +65,7 @@ function loadImgPreview(index) {
   link.setAttribute('href', `${obj.link}`);
 }
 
+// setting
 const pictureObj = arrBackgrounds[localStorage.backgroundPicture];
 document.body.style.background = `black url("/src/images/backgrounds/normal/${pictureObj.name}.jpg") no-repeat fixed center center`;
 document.body.style.backgroundSize = 'cover';

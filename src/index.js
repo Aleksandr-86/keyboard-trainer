@@ -2,6 +2,7 @@ import { box2, box3, loadBackground } from '/src/scripts/set.js';
 import { charInserter } from '/src/scripts/char-inserter.js';
 import { getBrowser, strPreparer } from '/src/scripts/functions.js';
 import { keyDownHandler, clearCounters } from '/src/scripts/keyboard.js';
+import { loadSnippet } from '/src/scripts/text-snippet.js';
 
 // const btnGenFromSite = document.querySelector('#btn1');
 const fingerPointers = document.querySelector('.finger-pointers');
@@ -9,6 +10,8 @@ const field = document.querySelector('.field');
 const keyboard = document.querySelector('.keyboard');
 
 const buffer = document.querySelector('#buffer');
+const rusSnippet = document.querySelector('#russian-snippet');
+const engSnippet = document.querySelector('#english-snippet');
 
 const settingsOpen = document.querySelector('.nav > li:last-child > a');
 const settingsMenu = document.querySelector('.settings-menu');
@@ -17,6 +20,9 @@ const settingsBtnClose = document.querySelector('.settings-btn-close');
 const statistics = document.querySelector('.statistics');
 const statisticsClose = document.querySelector('.statistics-close');
 const overlay = document.querySelector('.overlay');
+
+// handling keyboard events
+document.addEventListener('keydown', (event) => keyDownHandler(event));
 
 // adding text from a buffer
 buffer.addEventListener('click', async function () {
@@ -27,7 +33,7 @@ buffer.addEventListener('click', async function () {
     // buffer is empty
     if ((str.length === 0 || str.length === 1) && (str === ' ' || str === '')) return;
 
-    buffer.blur(); // removing focus from an element
+    this.blur(); // removing focus from an element
     loadBackground(localStorage.backgroundPicture);
     settingsMenu.classList.remove('settings-menu-open'); // close settings menu
     // clearing finger pointers
@@ -45,8 +51,20 @@ buffer.addEventListener('click', async function () {
   }
 });
 
-// handling keyboard events
-document.addEventListener('keydown', (event) => keyDownHandler(event));
+rusSnippet.addEventListener('click', function () {
+  this.blur(); // removing focus from an element
+  loadBackground(localStorage.backgroundPicture);
+  settingsMenu.classList.remove('settings-menu-open'); // close settings menu
+  // clearing finger pointers
+  fingerPointers
+    .querySelectorAll('*')
+    .forEach((elem) => elem.classList.add('pointer-disabled'));
+  clearCounters();
+  charInserter(loadSnippet('russian', 300), 0);
+  if (!box2.checked) fingerPointers.classList.remove('hidden');
+  field.classList.remove('hidden');
+  if (!box3.checked) keyboard.classList.remove('hidden');
+});
 
 // shutting down the statistics menu
 statisticsClose.addEventListener('click', function () {

@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Клавиатурный тренажёр!</title>
+    <title>Клавиатурный тренажёр</title>
     <meta
       name="description"
       content="Простой клавиатурный тренажёр по набору текста со статистикой." />
@@ -21,8 +21,8 @@
       <li class="nav-children">
         <a href="#url">Отрывок</a>
         <ul>
-          <li><a href="#url">На русском языке</a></li>
-          <li><a href="#url">На английском языке</a></li>
+          <li><a href="#url" id="russian-snippet">На русском языке</a></li>
+          <li><a href="#url" id="english-snippet">На английском языке</a></li>
         </ul>
       </li>
       <li><a href="#url" id="help">Справка</a></li>
@@ -176,5 +176,6 @@
 
     <!--<footer class="main-footer">подвал</footer>-->
     <script type="module" src="index.js"></script>
+    <script type="module" src="/src/scripts/text-snippet.js"></script>
   </body>
 </html>

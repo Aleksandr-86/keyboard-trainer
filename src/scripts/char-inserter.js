@@ -1,9 +1,6 @@
 import { charHandler, fingerPointing } from '/src/scripts/keyboard.js';
 import { charTest } from '/src/scripts/functions.js';
 
-// console.warn('char-inserter')
-('use strict');
-
 export let arrOfStrings;
 export let indOfString;
 
@@ -12,8 +9,7 @@ function createDiv(char) {
   const container = document.createElement('div');
   container.className = 'char';
   container.textContent = char;
-  if (!charTest(container.textContent))
-    container.classList.add('char-neutral-inactive');
+  if (!charTest(container.textContent)) container.classList.add('char-neutral-inactive');
   return container;
 }
 
@@ -21,7 +17,8 @@ function createDiv(char) {
 export function charInserter(arr, ind) {
   // if (arr.length === 1 && arr[0] === '') return; // buffer is empty
 
-  arrOfStrings = [...arr];
+  // arrOfStrings = [...arr];
+  arrOfStrings = arr;
   const arrLen = arrOfStrings.length;
   // the maximum length of a word that will not be carried over to the next line
   let wordLenMax = 10;
@@ -67,9 +64,7 @@ export function charInserter(arr, ind) {
       let wordPart1 = arrOfStrings[i].slice(0, lineLen - counter);
       let wordPart2 = arrOfStrings[i].slice(lineLen - counter);
 
-      wordPart1
-        .split('')
-        .forEach((char) => currentLine.appendChild(createDiv(char)));
+      wordPart1.split('').forEach((char) => currentLine.appendChild(createDiv(char)));
       currentLine.lastElementChild.classList.add('line-end');
       counter = 0;
 
@@ -80,9 +75,7 @@ export function charInserter(arr, ind) {
         currentLine = currentLine.nextElementSibling;
       } else if (wordPart2.length === lineLen) {
         currentLine = currentLine.nextElementSibling;
-        wordPart2
-          .split('')
-          .forEach((char) => currentLine.appendChild(createDiv(char)));
+        wordPart2.split('').forEach((char) => currentLine.appendChild(createDiv(char)));
         currentLine.lastElementChild.classList.add('line-end');
         if (i !== arrLen - 1) currentLine = currentLine.nextElementSibling;
         counter = 0;
@@ -98,9 +91,7 @@ export function charInserter(arr, ind) {
           i--;
           counter = 0;
         } else {
-          wordPart2
-            .split('')
-            .forEach((char) => currentLine.appendChild(createDiv(char)));
+          wordPart2.split('').forEach((char) => currentLine.appendChild(createDiv(char)));
           if (i !== arrLen - 1) {
             currentLine.appendChild(createDiv(' '));
             counter++;
@@ -112,8 +103,7 @@ export function charInserter(arr, ind) {
       i--;
       currentLine.lastElementChild.classList.toggle('line-end');
       // adding spaces till the end of the line
-      for (let j = 0; j < lineLen - counter; j++)
-        currentLine.appendChild(createDiv(' '));
+      for (let j = 0; j < lineLen - counter; j++) currentLine.appendChild(createDiv(' '));
       currentLine = currentLine.nextElementSibling;
       counter = 0;
     }
@@ -123,8 +113,7 @@ export function charInserter(arr, ind) {
       currentLine.lastElementChild.classList.add('finish'); // marking the end of typing
       // adding spaces till the end of the line
       if (counter !== 0)
-        for (let j = 0; j < lineLen - counter; j++)
-          currentLine.appendChild(createDiv(' '));
+        for (let j = 0; j < lineLen - counter; j++) currentLine.appendChild(createDiv(' '));
 
       if (currentLine) currentLine = currentLine.nextElementSibling;
 
