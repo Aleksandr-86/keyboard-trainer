@@ -1,6 +1,6 @@
 import { box2, box3, loadBackground } from '/src/scripts/set.js';
 import { charInserter } from '/src/scripts/char-inserter.js';
-import { getBrowser, strPreparer } from '/src/scripts/functions.js';
+import { getBrowser, strPreparer, remEmoji } from '/src/scripts/functions.js';
 import { keyDownHandler, clearCounters } from '/src/scripts/keyboard.js';
 import { loadSnippet } from '/src/scripts/text-snippet.js';
 
@@ -30,8 +30,9 @@ buffer.addEventListener('click', async function () {
   const br = getBrowser().browser;
   if (br === 'chrome' || br === 'yabrowser') {
     let str = await navigator.clipboard.readText();
+    str = remEmoji(str); // removing emoji
     // buffer is empty
-    if ((str.length === 0 || str.length === 1) && (str === ' ' || str === '')) return;
+    if (str === ' ' || str === '') return;
 
     this.blur(); // removing focus from an element
     loadBackground(localStorage.backgroundPicture);

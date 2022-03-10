@@ -57,6 +57,9 @@ export function clearCounters() {
   numRowCounter = 0;
   bTimer = false;
   remChart = ' ';
+
+  field.style.setProperty('--field-bar-width', '0px');
+  field.style.setProperty('--field-bar-hue', '0');
 }
 
 // showing statistics
@@ -287,7 +290,11 @@ export function keyDownHandler(event) {
 
     field.style.setProperty(
       '--field-bar-width',
-      `${Math.floor((numTotal * 1440) / snippetLength)}px`
+      `${Math.floor((numTotal * 385) / snippetLength)}px`
+    );
+    field.style.setProperty(
+      '--field-bar-hue',
+      `${Math.floor((numTotal * 120) / snippetLength)}`
     );
 
     // coloring the char's background depending on the pressed key
