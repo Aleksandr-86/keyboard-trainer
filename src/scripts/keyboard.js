@@ -288,6 +288,7 @@ export function keyDownHandler(event) {
       if (langLayout !== langTest(eKey, langLayout)) return;
     }
 
+    // setting the progress bar
     field.style.setProperty(
       '--field-bar-width',
       `${Math.floor((numTotal * 385) / snippetLength)}px`

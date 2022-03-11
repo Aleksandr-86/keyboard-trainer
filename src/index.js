@@ -11,7 +11,7 @@ const keyboard = document.querySelector('.keyboard');
 
 const buffer = document.querySelector('#buffer');
 const rusSnippet = document.querySelector('#russian-snippet');
-const engSnippet = document.querySelector('#english-snippet');
+// const engSnippet = document.querySelector('#english-snippet');
 
 const settingsOpen = document.querySelector('.nav > li:last-child > a');
 const settingsMenu = document.querySelector('.settings-menu');
