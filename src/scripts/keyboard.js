@@ -274,7 +274,7 @@ export function keyDownHandler(event) {
       timerStart = performance.now();
     }
 
-    
+
     numTotal++;
     btnDn.className = 'button-dn2';
 
