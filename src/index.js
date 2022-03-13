@@ -94,3 +94,4 @@ settingsBtnClose.addEventListener('click', function () {
   settingsMenu.classList.remove('settings-menu-open');
   loadBackground(localStorage.backgroundPicture);
 });
+

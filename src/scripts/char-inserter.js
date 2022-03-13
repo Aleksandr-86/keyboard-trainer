@@ -4,7 +4,7 @@ import { charTest } from '/src/scripts/functions.js';
 export let arrOfStrings;
 export let indOfString;
 
-// create and return div element with char in it
+// создаём и возвращаем div элемент с символом
 function createDiv(char) {
   const container = document.createElement('div');
   container.className = 'char';
