@@ -13,7 +13,7 @@ function createDiv(char) {
   return container;
 }
 
-// filling the field block with char
+// заполнение поля символами 
 export function charInserter(arr, ind) {
   // if (arr.length === 1 && arr[0] === '') return; // buffer is empty
 
