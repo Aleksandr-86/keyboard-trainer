@@ -65,10 +65,7 @@ function loadImgPreview(index) {
   link.setAttribute('href', `${obj.link}`);
 }
 
-// setting
-const pictureObj = arrBackgrounds[localStorage.backgroundPicture];
-document.body.style.background = `black url("/src/images/backgrounds/normal/${pictureObj.name}.jpg") no-repeat fixed center center`;
-document.body.style.backgroundSize = 'cover';
+
 
 export function loadBackground(index) {
   const obj = arrBackgrounds[index];
@@ -86,6 +83,12 @@ if (localStorage.letterCase) box1.checked = localStorage.letterCase === 'true';
 if (localStorage.fingerPointers) box2.checked = localStorage.fingerPointers === 'true';
 if (localStorage.hideKeyboard) box3.checked = localStorage.hideKeyboard === 'true';
 if (localStorage.ignoreCharInput) box4.checked = localStorage.ignoreCharInput === 'true';
+
+// setting
+  const pictureObj = arrBackgrounds[localStorage.backgroundPicture];
+  document.body.style.background = `black url("/src/images/backgrounds/normal/${pictureObj.name}.jpg") no-repeat fixed center center`;
+  document.body.style.backgroundSize = 'cover';
+
 loadImgPreview(localStorage.backgroundPicture);
 
 // setting state of settings checkbox
