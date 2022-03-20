@@ -4,6 +4,7 @@ import { charTest } from '/src/scripts/functions.js';
 export let arrOfStrings;
 export let indOfString;
 
+
 // creating and returning a div element with the char in it 
 function createDiv(char) {
   const container = document.createElement('div');
