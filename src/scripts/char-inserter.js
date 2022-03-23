@@ -4,8 +4,7 @@ import { charTest } from '/src/scripts/functions.js';
 export let arrOfStrings;
 export let indOfString;
 
-
-// creating and returning a div element with the char in it 
+// creating and returning a div element with the char in it
 function createDiv(char) {
   const container = document.createElement('div');
   container.className = 'char';
@@ -14,7 +13,7 @@ function createDiv(char) {
   return container;
 }
 
-// filling field block with chars 
+// filling field block with chars
 export function charInserter(arr, ind) {
   // if (arr.length === 1 && arr[0] === '') return; // buffer is empty
 
