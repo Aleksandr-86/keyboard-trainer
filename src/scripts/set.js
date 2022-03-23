@@ -65,8 +65,6 @@ function loadImgPreview(index) {
   link.setAttribute('href', `${obj.link}`);
 }
 
-
-
 export function loadBackground(index) {
   const obj = arrBackgrounds[index];
   document.body.style.background = `black url("/src/images/backgrounds/normal/${obj.name}.jpg") no-repeat fixed center center`;
@@ -85,9 +83,9 @@ if (localStorage.hideKeyboard) box3.checked = localStorage.hideKeyboard === 'tru
 if (localStorage.ignoreCharInput) box4.checked = localStorage.ignoreCharInput === 'true';
 
 // setting
-  const pictureObj = arrBackgrounds[localStorage.backgroundPicture];
-  document.body.style.background = `black url("/src/images/backgrounds/normal/${pictureObj.name}.jpg") no-repeat fixed center center`;
-  document.body.style.backgroundSize = 'cover';
+const pictureObj = arrBackgrounds[localStorage.backgroundPicture];
+document.body.style.background = `black url("/src/images/backgrounds/normal/${pictureObj.name}.jpg") no-repeat fixed center center`;
+document.body.style.backgroundSize = 'cover';
 
 loadImgPreview(localStorage.backgroundPicture);
 
