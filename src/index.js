@@ -89,7 +89,7 @@ settingsOpen.addEventListener('click', function () {
   overlay.classList.add('hidden');
 });
 
-// close settings menu /
+// close settings menu
 settingsBtnClose.addEventListener('click', function () {
   settingsMenu.classList.remove('settings-menu-open');
   loadBackground(localStorage.backgroundPicture);
