@@ -29,7 +29,7 @@ input {
 }
 
 .btn {
-  margin: 100px 0 0 0;
+  margin: 80px 0 0 0;
   width: 100px;
   height: 100px;
   font-size: 50px;
