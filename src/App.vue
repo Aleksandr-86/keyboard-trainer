@@ -17,7 +17,7 @@ import HelloWorld from './components/HelloWorld.vue'
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: hsl(300, 100%, 20%);
+  /* color: hsl(300, 100%, 20%); */
   /* margin-top: 60px; */
 }
 </style>
