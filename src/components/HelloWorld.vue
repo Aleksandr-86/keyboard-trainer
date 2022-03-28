@@ -10,8 +10,10 @@ function increment() {
 </script>
 
 <template>
-  <input v-model="newItem" placeholder="введите число" />
-  <p class="counter">{{ `${newItem.length}/200` }}</p>
+  <label>
+    <input v-model="newItem" placeholder="введите число" />
+  </label>
+  <!-- <p class="counter">{{ `${newItem.length}/200` }}</p> -->
   <button class="btn" @click="increment">{{ count }}</button>
 </template>
 
