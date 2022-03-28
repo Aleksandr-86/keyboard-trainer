@@ -1,19 +1,29 @@
 <script setup>
-// import { ref } from 'vue'
+import { ref } from 'vue'
 import { useStrPreparer } from '/src/services/str-preparer.js'
 
-const someString = 'Ихтиандр решил испугать их еще больше: он оскалил зубы'
+const someString =
+  'Ихтиандр решил испугать их еще больше: он оскалил зубы щаыва ыва ды ыда ыдалоыа ыдаы д ыдваы адыав  ыдвалыд адыва ыд адывад ва ыдва ыдаыв ыла дыа и прочие интересные слова которые необходио указать 12'
+const arrOfChars = someString.split('')
+console.log(arrOfChars)
 
-console.log(useStrPreparer(someString))
+// const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
+const items = ref(arrOfChars)
+
+// console.log(useStrPreparer(someString))
 </script>
 
 <template>
   <div class="field" id="field">
-    <div class="line" id="line1"></div>
+    <div v-for="item in items" class="char">
+      {{ item }}
+    </div>
+
+    <!-- <div class="line" id="line1"></div>
     <div class="line" id="line2"></div>
     <div class="line" id="line3"></div>
     <div class="line" id="line4"></div>
-    <div class="line" id="line5"></div>
+    <div class="line" id="line5"></div> -->
   </div>
 </template>
 
@@ -29,8 +39,12 @@ console.log(useStrPreparer(someString))
 }
 
 .field {
-  --field-bar-width: 0;
-  --field-bar-hue: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+
+  /* --field-bar-width: 0;
+  --field-bar-hue: 0; */
   width: 1440px;
   height: 385px;
   margin: 10px auto 50px;
@@ -41,7 +55,7 @@ console.log(useStrPreparer(someString))
   background-color: pink;
 }
 
-.field::before {
+/* .field::before {
   position: absolute;
   content: '';
   width: var(--field-bar-width);
@@ -51,7 +65,7 @@ console.log(useStrPreparer(someString))
   background: hsl(var(--field-bar-hue), 80%, 50%);
   transform-origin: 0 50%;
   transform: rotate(270deg);
-}
+} */
 
 .field:hover {
   animation: hideCursor 3s;
@@ -65,7 +79,7 @@ console.log(useStrPreparer(someString))
 .char {
   float: left;
   width: 36px;
-  height: inherit;
+  height: 77px;
   font-family: 'Consolas', monospace;
   font-size: 65px;
   background: rgba(50, 50, 50, 0.75);
