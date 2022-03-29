@@ -1,6 +1,7 @@
 <script setup>
 import NavigationMenu from './components/NavigationMenu.vue'
 import Field from './components/Field.vue'
+import Keyboard from './components/Keyboard.vue'
 
 const inputText = 'Просто какой-то текст который я передаю в'
 </script>
@@ -8,6 +9,7 @@ const inputText = 'Просто какой-то текст который я п�
 <template>
   <NavigationMenu />
   <Field :txt="inputText" />
+  <Keyboard />
 </template>
 
 <style>
