@@ -13,6 +13,16 @@ const inputText = 'Просто какой-то текст который я п�
 </template>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /*box-sizing: border-box;*/
+  overflow: hidden;
+}
+
 #app {
   width: 100vw;
   height: 100vh;

@@ -1,8 +1,12 @@
-<script setup></script>
+<script setup>
+function showMessage() {
+  console.log('Привет')
+}
+</script>
 
 <template>
   <ul class="nav">
-    <li><a id="buffer" href="#">Буфер обмена</a></li>
+    <li><a @click="showMessage" id="buffer" href="#">Буфер обмена</a></li>
     <li class="nav-children">
       <a href="#url">Отрывок</a>
       <ul>
