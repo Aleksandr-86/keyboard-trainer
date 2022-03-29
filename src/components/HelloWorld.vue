@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 
 const count = ref(0)
-const newItem = ref('')
 
 function increment() {
   count.value++
@@ -10,10 +9,6 @@ function increment() {
 </script>
 
 <template>
-  <label>
-    <input v-model="newItem" placeholder="введите число" />
-  </label>
-  <!-- <p class="counter">{{ `${newItem.length}/200` }}</p> -->
   <button class="btn" @click="increment">{{ count }}</button>
 </template>
 
