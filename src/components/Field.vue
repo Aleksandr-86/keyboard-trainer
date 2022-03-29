@@ -2,23 +2,21 @@
 import { ref } from 'vue'
 import { useStrPreparer } from '/src/services/functions.js'
 
-const someString =
-  'Ихтиандр решил испугать их еще больше: он оскалил зубы щаыва ыва ды ыда ыдалоыа ыдаы д ыдваы адыав  ыдвалыд адыва ыд адывад ва ыдва ыдаыв ыла дыа и прочие интересные слова которые необходио указать 12'
-const arrOfChars = someString.split('')
-console.log(arrOfChars)
+const props = defineProps(['txt'])
 
 // const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
 
-// console.log(useStrPreparer(someString))
+const arrOfChars = props.txt.split('')
 </script>
 
 <template>
   <div class="field" id="field">
-    <div class="line" id="line1"></div>
+    <div v-for="item in arrOfChars" class="char">{{ item }}</div>
+    <!-- <div class="line" id="line1"></div>
     <div class="line" id="line2"></div>
     <div class="line" id="line3"></div>
     <div class="line" id="line4"></div>
-    <div class="line" id="line5"></div>
+    <div class="line" id="line5"></div> -->
   </div>
 </template>
 

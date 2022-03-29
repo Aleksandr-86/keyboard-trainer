@@ -1,12 +1,14 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import Field from './components/Field.vue'
+
+const inputText = 'Просто какой-то текст который я передаю'
 </script>
 
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
   <HelloWorld />
-  <Field />
+  <Field :txt="inputText" />
 </template>
 
 <style>
