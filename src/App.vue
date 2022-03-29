@@ -1,13 +1,12 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import NavigationMenu from './components/NavigationMenu.vue'
 import Field from './components/Field.vue'
 
-const inputText = 'Просто какой-то текст который я передаю'
+const inputText = 'Просто какой-то текст который я передаю в'
 </script>
 
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-  <HelloWorld />
+  <NavigationMenu />
   <Field :txt="inputText" />
 </template>
 
