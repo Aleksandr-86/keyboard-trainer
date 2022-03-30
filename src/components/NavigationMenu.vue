@@ -1,12 +1,42 @@
 <script setup>
-function showMessage() {
-  console.log('Привет')
+import { useGetBrowser } from '/src/services/functions.js'
+
+async function fillFieldFromBuffer() {
+  const br = useGetBrowser().browser
+  if (br === 'chrome' || br === 'yabrowser') {
+    let str = await navigator.clipboard.readText()
+    // document.querySelector('.field').style.backgroundColor = 'red'
+    console.log(str)
+    // str = remEmoji(str) // removing emoji
+    App.workState = true
+    if (str === ' ' || str === '') return // buffer is empty
+
+    // this.blur() // removing focus from an element
+    // loadBackground(localStorage.backgroundPicture)
+    // settingsMenu.classList.remove('settings-menu-open') // close settings menu
+    // clearing finger pointers
+    // fingerPointers
+    // .querySelectorAll('*')
+    // .forEach((elem) => elem.classList.add('pointer-disabled'))
+    // clearCounters()
+    // charInserter(strPreparer(str), 0)
+    // if (!box2.checked) fingerPointers.classList.remove('hidden')
+    // field.classList.remove('hidden')
+    // if (!box3.checked) keyboard.classList.remove('hidden')
+  } else if (br === 'firefox') {
+    // let str = document.querySelector('#input').value
+    // charInserter(strPreparer(str), 0)
+  }
 }
 </script>
 
 <template>
   <ul class="nav">
-    <li><a @click="showMessage" id="buffer" href="#">Буфер обмена</a></li>
+    <li>
+      <a @click.prevent="fillFieldFromBuffer" id="buffer" href="#"
+        >Буфер обмена</a
+      >
+    </li>
     <li class="nav-children">
       <a href="#url">Отрывок</a>
       <ul>

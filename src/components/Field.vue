@@ -1,12 +1,15 @@
 <script setup>
-import { ref } from 'vue'
-import { useStrPreparer } from '/src/services/functions.js'
+import store from '/src/services/state-store.js'
 
 const props = defineProps(['txt'])
-
-// const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
-
 const arrOfChars = props.txt.split('')
+
+const storeState = store.state
+
+const changeState = function () {
+  storeState.work = !storeState.work
+  console.log(storeState.work)
+}
 </script>
 
 <template>
@@ -18,6 +21,7 @@ const arrOfChars = props.txt.split('')
     <div class="line" id="line4"></div>
     <div class="line" id="line5"></div> -->
   </div>
+  <button @click="changeState" class="btn"></button>
 </template>
 
 <style>
@@ -29,6 +33,10 @@ const arrOfChars = props.txt.split('')
   100% {
     cursor: none;
   }
+}
+.btn {
+  width: 80px;
+  height: 80px;
 }
 
 .field {

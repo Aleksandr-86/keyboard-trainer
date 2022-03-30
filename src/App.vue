@@ -1,9 +1,13 @@
 <script setup>
+import { ref } from 'vue'
 import NavigationMenu from './components/NavigationMenu.vue'
 import Field from './components/Field.vue'
 import Keyboard from './components/Keyboard.vue'
 
-const inputText = 'Просто какой-то текст который я передаю в'
+const inputText = 'Просто какой-то текст'
+
+// const workState = ref(true)
+// const settingsState = ref(false)
 </script>
 
 <template>
