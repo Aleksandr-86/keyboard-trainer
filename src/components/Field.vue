@@ -3,13 +3,6 @@ import store from '/src/services/state-store.js'
 
 const props = defineProps(['txt'])
 const arrOfChars = props.txt.split('')
-
-const storeState = store.state
-
-const changeState = function () {
-  storeState.work = !storeState.work
-  console.log(storeState.work)
-}
 </script>
 
 <template>
@@ -21,7 +14,6 @@ const changeState = function () {
     <div class="line" id="line4"></div>
     <div class="line" id="line5"></div> -->
   </div>
-  <button @click="changeState" class="btn"></button>
 </template>
 
 <style>
@@ -33,10 +25,6 @@ const changeState = function () {
   100% {
     cursor: none;
   }
-}
-.btn {
-  width: 80px;
-  height: 80px;
 }
 
 .field {

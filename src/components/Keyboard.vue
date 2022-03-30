@@ -1,6 +1,14 @@
-<script setup></script>
+<script setup>
+import store from '/src/services/state-store.js'
+const changeState = function () {
+  store.state.settings = !store.state.settings
+  console.log(`settings ${store.state.settings}`)
+}
+</script>
 
 <template>
+  <button @click="changeState" class="btn1">keyboard</button>
+
   <div class="keyboard">
     <div class="row1">
       <div class="button-up" id="backquote">Ё</div>
@@ -81,6 +89,12 @@
 </template>
 
 <style>
+.btn1 {
+  background-color: greenyellow;
+  width: 80px;
+  height: 80px;
+}
+
 .keyboard {
   width: 945px;
   height: 318px;

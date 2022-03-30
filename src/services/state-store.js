@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 
 const state = reactive({
-  work: true,
+  work: false,
   settings: false
 })
 

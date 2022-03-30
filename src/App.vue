@@ -1,18 +1,22 @@
 <script setup>
-import { ref } from 'vue'
 import NavigationMenu from './components/NavigationMenu.vue'
 import Field from './components/Field.vue'
 import Keyboard from './components/Keyboard.vue'
 
+import store from '/src/services/state-store.js'
+
 const inputText = 'Просто какой-то текст'
 
-// const workState = ref(true)
-// const settingsState = ref(false)
+const changeState = function () {
+  store.state.work = !store.state.work
+  console.log(`settings ${store.state.work}`)
+}
 </script>
 
 <template>
   <NavigationMenu />
-  <Field :txt="inputText" />
+  <Field :txt="inputText" v-if="store.state.work || store.state.settings" />
+  <button @click="changeState" class="btn">app</button>
   <Keyboard />
 </template>
 
@@ -27,6 +31,10 @@ html {
   overflow: hidden;
 }
 
+.btn {
+  width: 80px;
+  height: 80px;
+}
 #app {
   width: 100vw;
   height: 100vh;
