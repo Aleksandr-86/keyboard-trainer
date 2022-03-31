@@ -1,8 +1,8 @@
 <script setup>
 import NavigationMenu from './components/NavigationMenu.vue'
+import SettingsMenuVue from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
 import Keyboard from './components/Keyboard.vue'
-
 import store from '/src/services/store.js'
 
 const inputText = 'Просто какой-то текст'
@@ -15,7 +15,8 @@ const changeState = function () {
 
 <template>
   <NavigationMenu />
-  <Field :txt="inputText" v-if="store.state.work || store.state.settings" />
+  <SettingsMenuVue v-if="store.state.settings" />
+  <Field :txt="inputText" v-if="store.state.work" />
   <button @click="changeState" class="btn">app</button>
   <Keyboard />
 </template>

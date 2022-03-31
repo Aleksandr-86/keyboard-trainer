@@ -1,14 +1,16 @@
 <script setup>
 import { useGetBrowser } from '/src/services/functions.js'
+import store from '/src/services/store.js'
+
+function changeState(name) {
+  store.state[name] = !store.state[name]
+}
 
 async function fillFieldFromBuffer() {
   const br = useGetBrowser().browser
   if (br === 'chrome' || br === 'yabrowser') {
     let str = await navigator.clipboard.readText()
-    // document.querySelector('.field').style.backgroundColor = 'red'
-    console.log(str)
     // str = remEmoji(str) // removing emoji
-    App.workState = true
     if (str === ' ' || str === '') return // buffer is empty
 
     // this.blur() // removing focus from an element
@@ -33,19 +35,19 @@ async function fillFieldFromBuffer() {
 <template>
   <ul class="nav">
     <li>
-      <a @click.prevent="fillFieldFromBuffer" id="buffer" href="#"
-        >Буфер обмена</a
-      >
+      <a @click.prevent="fillFieldFromBuffer" href="#!">Буфер обмена</a>
     </li>
     <li class="nav-children">
-      <a href="#url">Отрывок</a>
+      <a href="#!">Отрывок</a>
       <ul>
-        <li><a href="#url" id="russian-snippet">На русском языке</a></li>
-        <li><a href="#url" id="english-snippet">На английском языке</a></li>
+        <li><a href="#!">На русском языке</a></li>
+        <li><a href="#!">На английском языке</a></li>
       </ul>
     </li>
-    <li><a href="#url" id="help">Справка</a></li>
-    <li><a href="#url">Настройки</a></li>
+    <li><a href="#!">Справка</a></li>
+    <li>
+      <a @click="changeState('settings')" href="#!">Настройки</a>
+    </li>
   </ul>
 </template>
 
