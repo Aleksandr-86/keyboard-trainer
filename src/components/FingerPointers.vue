@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+</script>
 
 <template>
-  <div class="finger-pointers">
+  <div @keydown.native="greet" class="finger-pointers">
     <div class="left-hand pointer-disabled" id="left-pinky"></div>
     <div class="left-hand pointer-disabled" id="left-ring"></div>
     <div class="left-hand pointer-disabled" id="left-middle"></div>
