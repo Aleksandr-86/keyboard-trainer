@@ -8,10 +8,9 @@ import FingerPointers from './components/FingerPointers.vue'
 import { ref } from 'vue'
 
 // const keyDown = ref({})
-document.body.addEventListener('keydown', function (e) {
-  // keyDown.value = event
-  store.setEvent('keyDown', e)
-})
+// document.body.addEventListener('keydown', function (e) {
+//   store.setEvent('keyDown', e)
+// })
 
 const inputText = 'asdfasdf'
 </script>
