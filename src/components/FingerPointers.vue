@@ -1,10 +1,17 @@
 <script setup>
-import { ref } from 'vue'
+import store from '/src/services/store.js'
+const st = true
 </script>
-
+<!-- 'ё1!йфя' /[ё1!йфя]/i.test(store.event.keyDown.key) -->
 <template>
-  <div @keydown.native="greet" class="finger-pointers">
-    <div class="left-hand pointer-disabled" id="left-pinky"></div>
+  <div class="finger-pointers">
+    <div
+      class="left-hand"
+      :class="{
+        'pointer-disabled': /^(?![ё1!йфя])/i.test(store.event.keyDown.key)
+      }"
+      id="left-pinky"
+    ></div>
     <div class="left-hand pointer-disabled" id="left-ring"></div>
     <div class="left-hand pointer-disabled" id="left-middle"></div>
     <div class="left-hand pointer-disabled" id="left-index"></div>
