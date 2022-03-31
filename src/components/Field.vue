@@ -3,12 +3,10 @@ import store from '/src/services/store.js'
 
 document.body.addEventListener('keydown', function (e) {
   store.setEvent('keyDown', e)
-  console.log('keyDown', store.event.keyDown.key)
 })
 
 document.body.addEventListener('keyup', function (e) {
   store.setEvent('keyUp', e)
-  console.log('keyUp', store.event.keyDown.key)
 })
 </script>
 

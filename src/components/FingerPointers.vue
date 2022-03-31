@@ -1,15 +1,7 @@
-<script setup>
-import { ref } from 'vue'
-
-const name = ref('Vue.js')
-
-function greet() {
-  console.log('asdf')
-}
-</script>
+<script setup></script>
 
 <template>
-  <div @keydown.native="greet" class="finger-pointers">
+  <div class="finger-pointers">
     <div class="left-hand pointer-disabled" id="left-pinky"></div>
     <div class="left-hand pointer-disabled" id="left-ring"></div>
     <div class="left-hand pointer-disabled" id="left-middle"></div>
