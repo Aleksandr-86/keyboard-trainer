@@ -1,15 +1,13 @@
 <script setup>
 import store from '/src/services/store.js'
-const changeState = function () {
-  store.state.settings = !store.state.settings
-  console.log(`settings ${store.state.settings}`)
-}
+// const changeState = function () {
+//   store.state.settings = !store.state.settings
+//   console.log(`settings ${store.state.settings}`)
+// }
 </script>
 
 <template>
-  <button @click="changeState" class="btn1">keyboard</button>
-
-  <div class="keyboard">
+  <div v-if="store.state.work" class="keyboard">
     <div class="row1">
       <div class="button-up" id="backquote">Ё</div>
       <div class="button-up" id="digit1">1</div>
@@ -103,7 +101,7 @@ const changeState = function () {
   background: rgb(170, 170, 170);
   border-radius: 15px;
 
-  transition: visibility 300ms, opacity 300ms;
+  /* transition: all visibility 300ms, opacity 300ms; */
 }
 
 .button-up,

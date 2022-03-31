@@ -2,10 +2,6 @@
 import { useGetBrowser } from '/src/services/functions.js'
 import store from '/src/services/store.js'
 
-function changeState(name) {
-  store.state[name] = !store.state[name]
-}
-
 async function fillFieldFromBuffer() {
   const br = useGetBrowser().browser
   if (br === 'chrome' || br === 'yabrowser') {
@@ -25,6 +21,7 @@ async function fillFieldFromBuffer() {
     // if (!box2.checked) fingerPointers.classList.remove('hidden')
     // field.classList.remove('hidden')
     // if (!box3.checked) keyboard.classList.remove('hidden')
+    store.setTrue('work')
   } else if (br === 'firefox') {
     // let str = document.querySelector('#input').value
     // charInserter(strPreparer(str), 0)
@@ -35,7 +32,7 @@ async function fillFieldFromBuffer() {
 <template>
   <ul class="nav">
     <li>
-      <a @click.prevent="fillFieldFromBuffer" href="#!">Буфер обмена</a>
+      <a @click="fillFieldFromBuffer" href="#!">Буфер обмена</a>
     </li>
     <li class="nav-children">
       <a href="#!">Отрывок</a>
@@ -46,7 +43,7 @@ async function fillFieldFromBuffer() {
     </li>
     <li><a href="#!">Справка</a></li>
     <li>
-      <a @click="changeState('settings')" href="#!">Настройки</a>
+      <a @click="store.changeState('settings')" href="#!">Настройки</a>
     </li>
   </ul>
 </template>

@@ -1,18 +1,25 @@
 <script setup>
 import store from '/src/services/store.js'
 
-const props = defineProps(['txt'])
-const arrOfChars = props.txt.split('')
+document.body.addEventListener('keydown', function (e) {
+  store.setEvent('keyDown', e)
+  console.log('keyDown', store.event.keyDown.key)
+})
+
+document.body.addEventListener('keyup', function (e) {
+  store.setEvent('keyUp', e)
+  console.log('keyUp', store.event.keyDown.key)
+})
 </script>
 
 <template>
+  <div>{{ `${store.event.keyDown.key}` }}</div>
   <div class="field" id="field">
-    <div v-for="item in arrOfChars" class="char">{{ item }}</div>
-    <!-- <div class="line" id="line1"></div>
+    <div class="line" id="line1"></div>
     <div class="line" id="line2"></div>
     <div class="line" id="line3"></div>
     <div class="line" id="line4"></div>
-    <div class="line" id="line5"></div> -->
+    <div class="line" id="line5"></div>
   </div>
 </template>
 
@@ -25,6 +32,12 @@ const arrOfChars = props.txt.split('')
   100% {
     cursor: none;
   }
+}
+
+.btn {
+  background-color: rgb(40, 190, 100);
+  width: 80px;
+  height: 80px;
 }
 
 .field {
@@ -40,10 +53,12 @@ const arrOfChars = props.txt.split('')
   backdrop-filter: blur(200px);
   user-select: none;
   cursor: none;
-  transition: visibility 300ms, opacity 300ms;
+  /* transition: visibility 3000ms, opacity 3000ms; */
   background-color: pink;
 }
-
+.hidden {
+  background-color: red;
+}
 .field::before {
   position: absolute;
   content: '';

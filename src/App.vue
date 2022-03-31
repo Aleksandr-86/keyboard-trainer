@@ -1,24 +1,27 @@
 <script setup>
 import NavigationMenu from './components/NavigationMenu.vue'
-import SettingsMenuVue from './components/SettingsMenu.vue'
+import SettingsMenu from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
 import Keyboard from './components/Keyboard.vue'
 import store from '/src/services/store.js'
+import FingerPointers from './components/FingerPointers.vue'
+import { ref } from 'vue'
 
-const inputText = 'Просто какой-то текст'
+// const keyDown = ref({})
+document.body.addEventListener('keydown', function (e) {
+  // keyDown.value = event
+  store.setEvent('keyDown', e)
+})
 
-const changeState = function () {
-  store.state.work = !store.state.work
-  console.log(`settings ${store.state.work}`)
-}
+const inputText = 'asdfasdf'
 </script>
 
 <template>
   <NavigationMenu />
-  <SettingsMenuVue v-if="store.state.settings" />
-  <Field :txt="inputText" v-if="store.state.work" />
-  <button @click="changeState" class="btn">app</button>
-  <Keyboard />
+  <SettingsMenu v-if="store.state.settings" />
+  <FingerPointers v-if="store.state.pointers && store.state.work" />
+  <Field v-if="store.state.work" />
+  <Keyboard v-if="store.state.keyboard && store.state.work" />
 </template>
 
 <style>
@@ -32,10 +35,6 @@ html {
   overflow: hidden;
 }
 
-.btn {
-  width: 80px;
-  height: 80px;
-}
 #app {
   width: 100vw;
   height: 100vh;
