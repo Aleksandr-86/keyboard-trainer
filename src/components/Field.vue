@@ -1,5 +1,5 @@
 <script setup>
-import store from '/src/services/state-store.js'
+import store from '/src/services/store.js'
 
 const props = defineProps(['txt'])
 const arrOfChars = props.txt.split('')

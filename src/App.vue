@@ -3,7 +3,7 @@ import NavigationMenu from './components/NavigationMenu.vue'
 import Field from './components/Field.vue'
 import Keyboard from './components/Keyboard.vue'
 
-import store from '/src/services/state-store.js'
+import store from '/src/services/store.js'
 
 const inputText = 'Просто какой-то текст'
 

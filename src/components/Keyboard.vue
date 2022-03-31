@@ -1,5 +1,5 @@
 <script setup>
-import store from '/src/services/state-store.js'
+import store from '/src/services/store.js'
 const changeState = function () {
   store.state.settings = !store.state.settings
   console.log(`settings ${store.state.settings}`)
