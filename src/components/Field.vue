@@ -1,5 +1,7 @@
 <script setup>
 import store from '/src/services/store.js'
+import FingerPointers from './FingerPointers.vue'
+import Keyboard from './Keyboard.vue'
 
 document.body.addEventListener('keydown', function (e) {
   store.setEvent('keyDown', e)
@@ -11,7 +13,9 @@ document.body.addEventListener('keyup', function (e) {
 </script>
 
 <template>
-  <div>{{ `${store.event.keyDown.key}` }}</div>
+  <FingerPointers v-if="store.state.pointers && store.state.work" />
+
+  <div>{{ store.event.keyDown.key }}</div>
   <div class="field" id="field">
     <div class="line" id="line1"></div>
     <div class="line" id="line2"></div>
@@ -19,6 +23,8 @@ document.body.addEventListener('keyup', function (e) {
     <div class="line" id="line4"></div>
     <div class="line" id="line5"></div>
   </div>
+
+  <Keyboard v-if="store.state.keyboard && store.state.work" />
 </template>
 
 <style>

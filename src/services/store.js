@@ -1,4 +1,4 @@
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 
 const state = reactive({
   work: false,
@@ -21,7 +21,7 @@ const event = reactive({
 })
 
 const setEvent = function (propertyName, obj) {
-  event[propertyName] = obj
+  event[propertyName] = computed(() => obj)
 }
 
 export default {

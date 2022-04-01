@@ -2,10 +2,7 @@
 import NavigationMenu from './components/NavigationMenu.vue'
 import SettingsMenu from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
-import Keyboard from './components/Keyboard.vue'
 import store from '/src/services/store.js'
-import FingerPointers from './components/FingerPointers.vue'
-import { ref } from 'vue'
 
 // const keyDown = ref({})
 // document.body.addEventListener('keydown', function (e) {
@@ -18,9 +15,7 @@ const inputText = 'asdfasdf'
 <template>
   <NavigationMenu />
   <SettingsMenu v-if="store.state.settings" />
-  <FingerPointers v-if="store.state.pointers && store.state.work" />
   <Field v-if="store.state.work" />
-  <Keyboard v-if="store.state.keyboard && store.state.work" />
 </template>
 
 <style>
