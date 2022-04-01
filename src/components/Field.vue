@@ -54,9 +54,11 @@ document.body.addEventListener('keyup', function (e) {
   /* transition: visibility 3000ms, opacity 3000ms; */
   background-color: pink;
 }
+
 .hidden {
   background-color: red;
 }
+
 .field::before {
   position: absolute;
   content: '';
