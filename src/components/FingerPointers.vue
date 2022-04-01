@@ -1,15 +1,19 @@
 <script setup>
 import store from '/src/services/store.js'
-const st = true
+
+const props = defineProps({
+  keyDown: String,
+  keyUp: String,
+  shift: Boolean
+})
 </script>
-<!-- 'ё1!йфя' /[ё1!йфя]/i.test(store.event.keyDown.key) -->
+/^(?![ё1!йфя])/i.test(store.event.keyDown.key)
 <template>
+  <div>{{ keyDown }} {{ shift }}</div>
   <div class="finger-pointers">
     <div
       class="left-hand"
-      :class="{
-        'pointer-disabled': /^(?![ё1!йфя])/i.test(store.event.keyDown.key)
-      }"
+      :class="{ 'pointer-disabled': /^(?![ё1!йфя])/i.test(keyDown) }"
       id="left-pinky"
     ></div>
     <div class="left-hand pointer-disabled" id="left-ring"></div>

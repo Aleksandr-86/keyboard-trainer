@@ -7,7 +7,7 @@ import store from '/src/services/store.js'
 </script>
 
 <template>
-  <div v-if="store.state.work" class="keyboard">
+  <div class="keyboard">
     <div class="row1">
       <div class="button-up" id="backquote">Ё</div>
       <div class="button-up" id="digit1">1</div>

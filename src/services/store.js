@@ -11,23 +11,23 @@ const changeState = function (propertyName) {
   state[propertyName] = !state[propertyName]
 }
 
-const setTrue = function (propertyName) {
+const setTrueToState = function (propertyName) {
   state[propertyName] = true
 }
 
-const event = reactive({
-  keyDown: {},
-  keyUp: {}
-})
+// const event = reactive({
+//   keyDown: {},
+//   keyUp: {}
+// })
 
-const setEvent = function (propertyName, obj) {
-  event[propertyName] = computed(() => obj)
-}
+// const setEvent = function (propertyName, obj) {
+//   event[propertyName] = computed(() => obj)
+// }
 
 export default {
   state,
   changeState,
-  setTrue,
-  event,
-  setEvent
+  setTrueToState
+  // event,
+  // setEvent
 }

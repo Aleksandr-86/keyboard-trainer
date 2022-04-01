@@ -1,21 +1,26 @@
 <script setup>
+import { reactive } from 'vue'
 import store from '/src/services/store.js'
 import FingerPointers from './FingerPointers.vue'
 import Keyboard from './Keyboard.vue'
 
-document.body.addEventListener('keydown', function (e) {
-  store.setEvent('keyDown', e)
+const events = reactive({
+  keyDn: {},
+  keyUp: {}
 })
 
-document.body.addEventListener('keyup', function (e) {
-  store.setEvent('keyUp', e)
-})
+document.body.addEventListener('keydown', (e) => (events.keyDn = e))
+document.body.addEventListener('keyup', (e) => (events.keyUp = e))
 </script>
 
 <template>
-  <FingerPointers v-if="store.state.pointers && store.state.work" />
+  <FingerPointers
+    v-if="store.state.pointers && store.state.work"
+    :key-down="events.keyDn.key"
+    :shift="events.keyDn.shiftKey"
+  />
 
-  <div>{{ store.event.keyDown.key }}</div>
+  <!-- <div>{{ store.event.keyDown.key }}</div> -->
   <div class="field" id="field">
     <div class="line" id="line1"></div>
     <div class="line" id="line2"></div>
