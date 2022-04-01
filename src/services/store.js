@@ -11,7 +11,7 @@ const changeState = function (propertyName) {
   state[propertyName] = !state[propertyName]
 }
 
-const setTrueToState = function (propertyName) {
+const setTrue = function (propertyName) {
   state[propertyName] = true
 }
 
@@ -27,7 +27,7 @@ const setTrueToState = function (propertyName) {
 export default {
   state,
   changeState,
-  setTrueToState
+  setTrue
   // event,
   // setEvent
 }

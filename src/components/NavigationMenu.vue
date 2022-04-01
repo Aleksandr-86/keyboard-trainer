@@ -21,7 +21,7 @@ async function fillFieldFromBuffer() {
     // if (!box2.checked) fingerPointers.classList.remove('hidden')
     // field.classList.remove('hidden')
     // if (!box3.checked) keyboard.classList.remove('hidden')
-    store.setTrueToState('work')
+    store.setTrue('work')
   } else if (br === 'firefox') {
     // let str = document.querySelector('#input').value
     // charInserter(strPreparer(str), 0)

@@ -9,6 +9,8 @@ const events = reactive({
   keyUp: {}
 })
 
+const lang = 'rus'
+
 document.body.addEventListener('keydown', (e) => (events.keyDn = e))
 document.body.addEventListener('keyup', (e) => (events.keyUp = e))
 </script>
@@ -17,7 +19,7 @@ document.body.addEventListener('keyup', (e) => (events.keyUp = e))
   <FingerPointers
     v-if="store.state.pointers && store.state.work"
     :key-down="events.keyDn.key"
-    :shift="events.keyDn.shiftKey"
+    :lang="lang"
   />
 
   <!-- <div>{{ store.event.keyDown.key }}</div> -->
