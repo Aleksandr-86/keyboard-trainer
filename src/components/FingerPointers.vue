@@ -7,64 +7,51 @@ const props = defineProps({
   lang: String
 })
 
-const leftPinky = computed(() => {
-  if (props.lang === 'rus') {
-    return /^(?![ё1йфя])/i.test(props.keyDown)
-  } else if (props.lang === 'eng') {
-    return /^(?![`1qaz])/i.test(props.keyDown)
-  }
-})
+let leftPinky = true
+let leftRing = true
+let leftMiddle = true
+let leftIndex = true
 
-const leftRing = computed(() => {
-  if (props.lang === 'rus') {
-    return /^(?![2цыч])/i.test(props.keyDown)
-  } else if (props.lang === 'eng') {
-    return /^(?![])/i.test(props.keyDown)
-  }
-})
+let rightPinky = true
+let rightRing = true
+let rightMiddle = true
+let rightIndex = true
 
-const leftMiddle = computed(() => {
-  if (props.lang === 'rus') {
-    return /^(?![3увс])/i.test(props.keyDown)
-  } else if (props.lang === 'eng') {
-    return /^(?![])/i.test(props.keyDown)
-  }
-})
+if (props.lang === 'rus') {
+  leftPinky = computed(() => /^(?![ё1йфя])/i.test(props.keyDown))
+  leftRing = computed(() => /^(?![2цыч])/i.test(props.keyDown))
+  leftMiddle = computed(() => /^(?![3увс])/i.test(props.keyDown))
+  leftIndex = computed(() => /^(?![4кам5епи6])/i.test(props.keyDown))
 
-const leftIndex = computed(() => {
-  if (props.lang === 'rus') {
-    return /^(?![4кам5епи6])/i.test(props.keyDown)
-  } else if (props.lang === 'eng') {
-    return /^(?![])/i.test(props.keyDown)
-  }
-})
+  rightPinky = computed(() => /^(?![0зж.\-хэ=ъ\\])/i.test(props.keyDown))
+  rightRing = computed(() => /^(?![9щдю])/i.test(props.keyDown))
+  rightMiddle = computed(() => /^(?![8шлб])/i.test(props.keyDown))
+  rightIndex = computed(() => /^(?![7нртгоь])/i.test(props.keyDown))
+} else if (props.lang === 'eng') {
+  leftPinky = computed(() => /^(?![`1qaz])/i.test(props.keyDown))
+  leftRing = computed(() => /^(?![2wsx])/i.test(props.keyDown))
+  leftMiddle = computed(() => /^(?![3edc])/i.test(props.keyDown))
+  leftIndex = computed(() => /^(?![4rfv5tgb6])/i.test(props.keyDown))
 
-// const rightPinky = computed(() => /^(?![0.зж\-хэ=ъ\\])/i.test(props.keyDown))
-const rightPinky = computed(() => {
-  if (props.lang === 'rus') {
-    return /^(?![])/i.test(props.keyDown)
-  } else if (props.lang === 'eng') {
-    return /^(?![])/i.test(props.keyDown)
-  }
-})
-const rightRing = computed(() => /^(?![9щдю])/i.test(props.keyDown))
-const rightMiddle = computed(() => /^(?![8шлб])/i.test(props.keyDown))
-const rightIndex = computed(() => /^(?![7нртгоь])/i.test(props.keyDown))
+  rightPinky = computed(() => /^(?![0p;/\-\['=\]\\])/i.test(props.keyDown))
+  rightRing = computed(() => /^(?![9ol.])/i.test(props.keyDown))
+  rightMiddle = computed(() => /^(?![8ik,])/i.test(props.keyDown))
+  rightIndex = computed(() => /^(?![7yhnujm])/i.test(props.keyDown))
+}
 </script>
-/^(?![ё1!йфя])/i.test(store.event.keyDown.key)
 
 <template>
   <div>{{ keyDown }} {{ lang }}</div>
   <div class="finger-pointers">
-    <div class="left-hand" :class="{ 'pointer-disabled': leftPinky }"></div>
-    <div class="left-hand" :class="{ 'pointer-disabled': leftRing }"></div>
-    <div class="left-hand" :class="{ 'pointer-disabled': leftMiddle }"></div>
-    <div class="left-hand" :class="{ 'pointer-disabled': leftIndex }"></div>
+    <div class="left-hand" :class="{ disabled: leftPinky }"></div>
+    <div class="left-hand" :class="{ disabled: leftRing }"></div>
+    <div class="left-hand" :class="{ disabled: leftMiddle }"></div>
+    <div class="left-hand" :class="{ disabled: leftIndex }"></div>
 
-    <div class="right-hand" :class="{ 'pointer-disabled': rightPinky }"></div>
-    <div class="right-hand" :class="{ 'pointer-disabled': rightRing }"></div>
-    <div class="right-hand" :class="{ 'pointer-disabled': rightMiddle }"></div>
-    <div class="right-hand" :class="{ 'pointer-disabled': rightIndex }"></div>
+    <div class="right-hand" :class="{ disabled: rightPinky }"></div>
+    <div class="right-hand" :class="{ disabled: rightRing }"></div>
+    <div class="right-hand" :class="{ disabled: rightMiddle }"></div>
+    <div class="right-hand" :class="{ disabled: rightIndex }"></div>
   </div>
 </template>
 
@@ -122,7 +109,7 @@ const rightIndex = computed(() => /^(?![7нртгоь])/i.test(props.keyDown))
   background: rgba(255, 0, 0, 0.75);
 }
 
-.finger-pointers .pointer-disabled {
+.finger-pointers .disabled {
   background: rgba(50, 50, 50, 0.75);
 }
 </style>
