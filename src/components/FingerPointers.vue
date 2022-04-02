@@ -1,32 +1,70 @@
 <script setup>
+import { computed } from '@vue/reactivity'
+
 const props = defineProps({
   keyDown: String,
   keyUp: String,
   lang: String
 })
+
+const leftPinky = computed(() => {
+  if (props.lang === 'rus') {
+    return /^(?![ё1йфя])/i.test(props.keyDown)
+  } else if (props.lang === 'eng') {
+    return /^(?![`1qaz])/i.test(props.keyDown)
+  }
+})
+
+const leftRing = computed(() => {
+  if (props.lang === 'rus') {
+    return /^(?![2цыч])/i.test(props.keyDown)
+  } else if (props.lang === 'eng') {
+    return /^(?![])/i.test(props.keyDown)
+  }
+})
+
+const leftMiddle = computed(() => {
+  if (props.lang === 'rus') {
+    return /^(?![3увс])/i.test(props.keyDown)
+  } else if (props.lang === 'eng') {
+    return /^(?![])/i.test(props.keyDown)
+  }
+})
+
+const leftIndex = computed(() => {
+  if (props.lang === 'rus') {
+    return /^(?![4кам5епи6])/i.test(props.keyDown)
+  } else if (props.lang === 'eng') {
+    return /^(?![])/i.test(props.keyDown)
+  }
+})
+
+// const rightPinky = computed(() => /^(?![0.зж\-хэ=ъ\\])/i.test(props.keyDown))
+const rightPinky = computed(() => {
+  if (props.lang === 'rus') {
+    return /^(?![])/i.test(props.keyDown)
+  } else if (props.lang === 'eng') {
+    return /^(?![])/i.test(props.keyDown)
+  }
+})
+const rightRing = computed(() => /^(?![9щдю])/i.test(props.keyDown))
+const rightMiddle = computed(() => /^(?![8шлб])/i.test(props.keyDown))
+const rightIndex = computed(() => /^(?![7нртгоь])/i.test(props.keyDown))
 </script>
 /^(?![ё1!йфя])/i.test(store.event.keyDown.key)
 
 <template>
   <div>{{ keyDown }} {{ lang }}</div>
   <div class="finger-pointers">
-    <div
-      class="left-hand"
-      :class="{ 'pointer-disabled': /^(?![ё1!йфя])/i.test(keyDown) }"
-      id="left-pinky"
-    ></div>
-    <div class="left-hand pointer-disabled" id="left-ring"></div>
-    <div class="left-hand pointer-disabled" id="left-middle"></div>
-    <div class="left-hand pointer-disabled" id="left-index"></div>
+    <div class="left-hand" :class="{ 'pointer-disabled': leftPinky }"></div>
+    <div class="left-hand" :class="{ 'pointer-disabled': leftRing }"></div>
+    <div class="left-hand" :class="{ 'pointer-disabled': leftMiddle }"></div>
+    <div class="left-hand" :class="{ 'pointer-disabled': leftIndex }"></div>
 
-    <div
-      class="right-hand"
-      :class="{ 'pointer-disabled': /^(?![!])/i.test(keyDown) }"
-      id="right-pinky"
-    ></div>
-    <div class="right-hand pointer-disabled" id="right-ring"></div>
-    <div class="right-hand pointer-disabled" id="right-middle"></div>
-    <div class="right-hand pointer-disabled" id="right-index"></div>
+    <div class="right-hand" :class="{ 'pointer-disabled': rightPinky }"></div>
+    <div class="right-hand" :class="{ 'pointer-disabled': rightRing }"></div>
+    <div class="right-hand" :class="{ 'pointer-disabled': rightMiddle }"></div>
+    <div class="right-hand" :class="{ 'pointer-disabled': rightIndex }"></div>
   </div>
 </template>
 

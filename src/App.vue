@@ -8,8 +8,6 @@ import store from '/src/services/store.js'
 // document.body.addEventListener('keydown', function (e) {
 //   store.setEvent('keyDown', e)
 // })
-
-const inputText = 'asdfasdf'
 </script>
 
 <template>

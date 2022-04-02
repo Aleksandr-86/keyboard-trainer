@@ -5,11 +5,11 @@ import FingerPointers from './FingerPointers.vue'
 import Keyboard from './Keyboard.vue'
 
 const events = reactive({
-  keyDn: {},
-  keyUp: {}
+  keyDn: Object,
+  keyUp: Object
 })
 
-const lang = 'rus'
+const layoutLang = 'eng'
 
 document.body.addEventListener('keydown', (e) => (events.keyDn = e))
 document.body.addEventListener('keyup', (e) => (events.keyUp = e))
@@ -19,7 +19,7 @@ document.body.addEventListener('keyup', (e) => (events.keyUp = e))
   <FingerPointers
     v-if="store.state.pointers && store.state.work"
     :key-down="events.keyDn.key"
-    :lang="lang"
+    :lang="layoutLang"
   />
 
   <!-- <div>{{ store.event.keyDown.key }}</div> -->

@@ -6,7 +6,6 @@ async function fillFieldFromBuffer() {
   const br = useGetBrowser().browser
   if (br === 'chrome' || br === 'yabrowser') {
     let str = await navigator.clipboard.readText()
-
     // str = remEmoji(str) // removing emoji
     if (str === ' ' || str === '') return // buffer is empty
     // this.blur() // removing focus from an element

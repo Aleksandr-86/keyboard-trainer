@@ -1,4 +1,5 @@
 <script setup>
+import { reactive } from 'vue'
 import store from '/src/services/store.js'
 // const changeState = function () {
 //   store.state.settings = !store.state.settings
