@@ -7,6 +7,7 @@ export default {
     id: String,
     text: String
   },
+
   setup(props) {
     return () =>
       h(

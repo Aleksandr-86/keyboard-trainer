@@ -10,31 +10,20 @@ const props = defineProps({
 })
 
 const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
-const str = 'digit1'
+
+const arr = ['digit1', 'digit2', 'digit3']
 </script>
 
 <template>
   <div class="keyboard">
     <!-- <KeyboardButton :cod="pressed" :key="str" /> -->
     <!-- <Button :code="pressed" ky="digit1" text="1" /> -->
-    <Button :code="pressed" id="digit1" text="1" />
 
     <div class="row1">
-      <div class="button-up" :class="{ 'button-dn1': 'backquote' === pressed }">
-        <span>Ё</span>
-      </div>
-      <div class="button-up" :class="{ 'button-dn1': 'digit1' === pressed }">
-        <span>1</span>
-      </div>
-      <div class="button-up" :class="{ 'button-dn1': 'digit2' === pressed }">
-        <span>2</span>
-      </div>
-      <div class="button-up" :class="{ 'button-dn1': 'digit3' === pressed }">
-        <span>3</span>
-      </div>
-      <div class="button-up" :class="{ 'button-dn1': 'digit4' === pressed }">
-        <span>4</span>
-      </div>
+      <Button :code="pressed" id="backquote" text="Ё" />
+
+      <Button v-for="item in arr" :code="pressed" id="backquote" :text="item" />
+
       <div class="button-up" id="digit5">5</div>
       <div class="button-up" id="digit6">6</div>
       <div class="button-up" id="digit7">7</div>
