@@ -11,7 +11,12 @@ const props = defineProps({
 
 const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
 
-const arr = ['digit1', 'digit2', 'digit3']
+const row1 = {
+  digit1: '1',
+  digit2: '2',
+  digit3: '3',
+  digit3: '3'
+}
 </script>
 
 <template>
@@ -22,7 +27,11 @@ const arr = ['digit1', 'digit2', 'digit3']
     <div class="row1">
       <Button :code="pressed" id="backquote" text="Ё" />
 
-      <Button v-for="item in arr" :code="pressed" id="backquote" :text="item" />
+      <Button
+        v-for="(item, index) in row1"
+        :code="pressed"
+        :id="index"
+        :text="item" />
 
       <div class="button-up" id="digit5">5</div>
       <div class="button-up" id="digit6">6</div>
