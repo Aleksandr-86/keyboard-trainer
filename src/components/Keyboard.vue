@@ -21,16 +21,20 @@ const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
 
 <template>
   <div class="keyboard">
-    <!-- <div>{{ props.keyDown.toLowerCase() }}</div> -->
     <div class="row1">
-      <div class="button-up" id="backquote">Ё</div>
-      <div class="button-up" id="digit1">1</div>
-      <div class="button-up" id="digit2">2</div>
-      <div class="button-up" id="digit3">3</div>
-      <div
-        class="button-up"
-        id="digit4"
-        :class="{ 'button-dn1': 'digit4' === pressed }">
+      <div class="button-up" :class="{ 'button-dn1': 'backquote' === pressed }">
+        <span>Ё</span>
+      </div>
+      <div class="button-up" :class="{ 'button-dn1': 'digit1' === pressed }">
+        <span>1</span>
+      </div>
+      <div class="button-up" :class="{ 'button-dn1': 'digit2' === pressed }">
+        <span>2</span>
+      </div>
+      <div class="button-up" :class="{ 'button-dn1': 'digit3' === pressed }">
+        <span>3</span>
+      </div>
+      <div class="button-up" :class="{ 'button-dn1': 'digit4' === pressed }">
         <span>4</span>
       </div>
       <div class="button-up" id="digit5">5</div>
@@ -117,6 +121,10 @@ const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
   /* transition: all visibility 300ms, opacity 300ms; */
 }
 
+span {
+  /* text-transform: lowercase; */
+}
+
 .button-up,
 .button-dn1,
 .button-dn2 {
@@ -145,8 +153,8 @@ const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
 }
 
 .button-dn1 {
-  box-shadow: 0 0 30px 15px hsla(180, 100%, 50%, 0.7),
-    inset 0 0 45px hsla(180, 100%, 50%, 0.7);
+  box-shadow: 0 0 30px 15px hsla(180, 90%, 50%, 0.7),
+    inset 0 0 45px hsla(180, 90%, 50%, 0.7);
   z-index: 1;
 }
 
