@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, computed } from 'vue'
+import { reactive, computed, h, ref } from 'vue'
 import store from '/src/services/store.js'
 import FingerPointers from './FingerPointers.vue'
 import Keyboard from './Keyboard.vue'
@@ -14,14 +14,22 @@ const layoutLang = 'eng'
 
 document.body.addEventListener('keydown', (e) => {
   events.keyDn = e
-  events.capsLock = computed(() => e.getModifierState && e.getModifierState('CapsLock'))
+  events.capsLock = computed(
+    () => e.getModifierState && e.getModifierState('CapsLock')
+  )
 })
 
 document.body.addEventListener('keyup', (e) => (events.keyUp = e))
+
+const items = ref(['sdf', 'rrre', 'fff'])
 </script>
 
 <template>
-  <FingerPointers v-if="store.state.pointers && store.state.work" :key-down="events.keyDn.key" :caps="events.capsLock" :lang="layoutLang" />
+  <FingerPointers
+    v-if="store.state.pointers && store.state.work"
+    :key-down="events.keyDn.key"
+    :caps="events.capsLock"
+    :lang="layoutLang" />
 
   <div class="field" id="field">
     <div class="line" id="line1"></div>
@@ -31,7 +39,9 @@ document.body.addEventListener('keyup', (e) => (events.keyUp = e))
     <div class="line" id="line5"></div>
   </div>
 
-  <Keyboard v-if="store.state.keyboard && store.state.work" :key-down="events.keyDn.code" />
+  <Keyboard
+    v-if="store.state.keyboard && store.state.work"
+    :key-down="events.keyDn.code" />
 </template>
 
 <style>

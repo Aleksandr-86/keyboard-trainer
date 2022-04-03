@@ -1,7 +1,8 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import store from '/src/services/store.js'
+import Button from './Button.vue'
 
 const props = defineProps({
   keyDown: {},
@@ -9,16 +10,15 @@ const props = defineProps({
 })
 
 const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
-
-// const some = computed(() => {
-//   console.log(props.keyDown.toLowerCase())
-//   return props.keyDown
-// })
-// проверка синтаксиса
+const str = 'digit1'
 </script>
 
 <template>
   <div class="keyboard">
+    <!-- <KeyboardButton :cod="pressed" :key="str" /> -->
+    <!-- <Button :code="pressed" ky="digit1" text="1" /> -->
+    <Button :code="pressed" id="digit1" text="1" />
+
     <div class="row1">
       <div class="button-up" :class="{ 'button-dn1': 'backquote' === pressed }">
         <span>Ё</span>
