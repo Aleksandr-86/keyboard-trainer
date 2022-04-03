@@ -2,8 +2,8 @@
 import { computed } from '@vue/reactivity'
 
 const props = defineProps({
-  keyDown: String,
-  keyUp: String,
+  keyDown: {},
+  caps: {},
   lang: String
 })
 
@@ -18,30 +18,45 @@ let rightMiddle = true
 let rightIndex = true
 
 if (props.lang === 'rus') {
-  leftPinky = computed(() => /^(?![ё1йфя])/i.test(props.keyDown))
-  leftRing = computed(() => /^(?![2цыч])/i.test(props.keyDown))
-  leftMiddle = computed(() => /^(?![3увс])/i.test(props.keyDown))
-  leftIndex = computed(() => /^(?![4кам5епи6])/i.test(props.keyDown))
+  leftPinky = computed(() => {
+    if (props.caps) {
+      return /^(?![ё1йфя])/.test(props.keyDown)
+    }
+    return /^(?![ё1йфя])/.test(props.keyDown)
+  })
+  leftRing = computed(() => /^(?![2цыч])/.test(props.keyDown))
+  leftMiddle = computed(() => /^(?![3увс])/.test(props.keyDown))
+  leftIndex = computed(() => /^(?![4кам5епи6])/.test(props.keyDown))
 
-  rightPinky = computed(() => /^(?![0зж.\-хэ=ъ\\])/i.test(props.keyDown))
-  rightRing = computed(() => /^(?![9щдю])/i.test(props.keyDown))
-  rightMiddle = computed(() => /^(?![8шлб])/i.test(props.keyDown))
-  rightIndex = computed(() => /^(?![7нртгоь])/i.test(props.keyDown))
+  rightPinky = computed(() => /^(?![0зж.\-хэ=ъ\\])/.test(props.keyDown))
+  rightRing = computed(() => /^(?![9щдю])/.test(props.keyDown))
+  rightMiddle = computed(() => /^(?![8шлб])/.test(props.keyDown))
+  rightIndex = computed(() => /^(?![7нртгоь])/.test(props.keyDown))
 } else if (props.lang === 'eng') {
-  leftPinky = computed(() => /^(?![`1qaz])/i.test(props.keyDown))
-  leftRing = computed(() => /^(?![2wsx])/i.test(props.keyDown))
-  leftMiddle = computed(() => /^(?![3edc])/i.test(props.keyDown))
-  leftIndex = computed(() => /^(?![4rfv5tgb6])/i.test(props.keyDown))
+  leftPinky = computed(() => {
+    if (props.caps) {
+      return /^(?![`1qaz~!QAZ])/.test(props.keyDown)
+    }
+    return /^(?![`1qaz~!QAZ])/.test(props.keyDown)
+  })
+  leftRing = computed(() => /^(?![2wsx])/.test(props.keyDown))
+  leftMiddle = computed(() => /^(?![3edc])/.test(props.keyDown))
+  leftIndex = computed(() => /^(?![4rfv5tgb6])/.test(props.keyDown))
 
-  rightPinky = computed(() => /^(?![0p;/\-\['=\]\\])/i.test(props.keyDown))
-  rightRing = computed(() => /^(?![9ol.])/i.test(props.keyDown))
-  rightMiddle = computed(() => /^(?![8ik,])/i.test(props.keyDown))
-  rightIndex = computed(() => /^(?![7yhnujm])/i.test(props.keyDown))
+  rightPinky = computed(() => {
+    if (props.caps) {
+      return /^(?![0p;/\-\['=\]\\~!])/.test(props.keyDown)
+    }
+    return /^(?![0p;/\-\['=\]\\~!QAZWSXEDCRFVTGB])/.test(props.keyDown)
+  })
+
+  rightRing = computed(() => /^(?![9ol.])/.test(props.keyDown))
+  rightMiddle = computed(() => /^(?![8ik,])/.test(props.keyDown))
+  rightIndex = computed(() => /^(?![7yhnujm])/.test(props.keyDown))
 }
 </script>
 
 <template>
-  <div>{{ keyDown }} {{ lang }}</div>
   <div class="finger-pointers">
     <div class="left-hand" :class="{ disabled: leftPinky }"></div>
     <div class="left-hand" :class="{ disabled: leftRing }"></div>

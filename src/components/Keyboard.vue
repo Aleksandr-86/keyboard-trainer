@@ -1,20 +1,37 @@
 <script setup>
+import { computed } from '@vue/reactivity'
 import { reactive } from 'vue'
 import store from '/src/services/store.js'
-// const changeState = function () {
-//   store.state.settings = !store.state.settings
-//   console.log(`settings ${store.state.settings}`)
-// }
+
+const props = defineProps({
+  keyDown: {},
+  keyUp: {}
+})
+
+console.log(props.keyDown)
+
+const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
+
+// const some = computed(() => {
+//   console.log(props.keyDown.toLowerCase())
+//   return props.keyDown
+// })
 </script>
 
 <template>
   <div class="keyboard">
+    <!-- <div>{{ props.keyDown.toLowerCase() }}</div> -->
     <div class="row1">
       <div class="button-up" id="backquote">Ё</div>
       <div class="button-up" id="digit1">1</div>
       <div class="button-up" id="digit2">2</div>
       <div class="button-up" id="digit3">3</div>
-      <div class="button-up" id="digit4">4</div>
+      <div
+        class="button-up"
+        id="digit4"
+        :class="{ 'button-dn1': 'digit4' === pressed }">
+        4
+      </div>
       <div class="button-up" id="digit5">5</div>
       <div class="button-up" id="digit6">6</div>
       <div class="button-up" id="digit7">7</div>
@@ -88,12 +105,6 @@ import store from '/src/services/store.js'
 </template>
 
 <style>
-.btn1 {
-  background-color: greenyellow;
-  width: 80px;
-  height: 80px;
-}
-
 .keyboard {
   width: 945px;
   height: 318px;
