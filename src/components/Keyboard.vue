@@ -8,8 +8,6 @@ const props = defineProps({
   keyUp: {}
 })
 
-console.log(props.keyDown)
-
 const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
 
 // const some = computed(() => {
