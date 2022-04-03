@@ -16,6 +16,7 @@ const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
 //   console.log(props.keyDown.toLowerCase())
 //   return props.keyDown
 // })
+// проверка синтаксиса
 </script>
 
 <template>
@@ -30,7 +31,7 @@ const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
         class="button-up"
         id="digit4"
         :class="{ 'button-dn1': 'digit4' === pressed }">
-        4
+        <span>4</span>
       </div>
       <div class="button-up" id="digit5">5</div>
       <div class="button-up" id="digit6">6</div>
@@ -144,8 +145,9 @@ const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
 }
 
 .button-dn1 {
-  box-shadow: 0 0 30px 15px rgb(110, 30, 110, 0.5),
-    inset 0 0 30px rgb(110, 30, 110, 0.5);
+  box-shadow: 0 0 30px 15px hsla(180, 100%, 50%, 0.7),
+    inset 0 0 45px hsla(180, 100%, 50%, 0.7);
+  z-index: 1;
 }
 
 .button-dn2 {
