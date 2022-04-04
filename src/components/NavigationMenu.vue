@@ -26,9 +26,8 @@ async function fillFieldFromBuffer() {
     // if (!box3.checked) keyboard.classList.remove('hidden')
     // store.updateToken()
     // console.log(str)
-    // store.state.arrIndex = 0
+    store.state.arrIndex = 0
     store.state.fragment = str
-
     store.setTrue('work')
   } else if (br === 'firefox') {
     // let str = document.querySelector('#input').value
