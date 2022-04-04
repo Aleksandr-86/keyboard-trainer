@@ -17,6 +17,11 @@ const setTrue = function (propertyName) {
   state[propertyName] = true
 }
 
+const loadFragment = function (str) {
+  state.arrIndex = 0
+  state.fragment = str
+}
+
 const increaseIndex = function () {
   if (state.arrIndex + 200 >= state.fragment.length) return
   state.arrIndex += 200
@@ -35,6 +40,7 @@ export default {
   state,
   changeState,
   setTrue,
+  loadFragment,
   increaseIndex
   // event,
   // setEvent

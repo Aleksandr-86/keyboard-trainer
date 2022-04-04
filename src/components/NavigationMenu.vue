@@ -15,19 +15,20 @@ async function fillFieldFromBuffer() {
     // this.blur() // removing focus from an element
     // loadBackground(localStorage.backgroundPicture)
     // settingsMenu.classList.remove('settings-menu-open') // close settings menu
+
     // clearing finger pointers
     // fingerPointers
     // .querySelectorAll('*')
     // .forEach((elem) => elem.classList.add('pointer-disabled'))
+
     // clearCounters()
+
     // charInserter(strPreparer(str), 0)
+
     // if (!box2.checked) fingerPointers.classList.remove('hidden')
     // field.classList.remove('hidden')
     // if (!box3.checked) keyboard.classList.remove('hidden')
-    // store.updateToken()
-    // console.log(str)
-    store.state.arrIndex = 0
-    store.state.fragment = str
+    store.loadFragment(str)
     store.setTrue('work')
   } else if (br === 'firefox') {
     // let str = document.querySelector('#input').value

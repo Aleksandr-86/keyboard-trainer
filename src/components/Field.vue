@@ -38,7 +38,10 @@ const charsArr = computed(() =>
     <div
       v-for="(char, index) in charsArr"
       class="char"
-      :class="{ 'char-neutral-inactive': charTest(char) }">
+      :class="[
+        { 'char-neutral-inactive': charTest(char) },
+        { 'char-caret': index === 0 }
+      ]">
       {{ char }}
     </div>
   </div>
@@ -128,7 +131,7 @@ const charsArr = computed(() =>
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 39px;
+  width: 36px;
   height: 5px;
   background: rgba(30, 30, 30, 0.7);
   filter: drop-shadow(3px 2px 2px yellowgreen) brightness(250%);
