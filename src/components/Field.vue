@@ -22,9 +22,9 @@ document.body.addEventListener('keydown', (e) => {
 
 document.body.addEventListener('keyup', (e) => (events.keyUp = e))
 
-const charArr = store.fragment.split('')
-const arrIndex = 0
-const charsForField = charArr.slice(arrIndex, arrIndex + 200)
+const charsArr = computed(() =>
+  store.state.fragment.slice(store.state.arrIndex, store.state.arrIndex + 200)
+)
 </script>
 
 <template>
@@ -36,8 +36,7 @@ const charsForField = charArr.slice(arrIndex, arrIndex + 200)
 
   <div class="field" id="field">
     <div
-      v-for="(char, index) in charsForField"
-      :key="index"
+      v-for="(char, index) in charsArr"
       class="char"
       :class="{ 'char-neutral-inactive': charTest(char) }">
       {{ char }}

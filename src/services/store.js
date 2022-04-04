@@ -6,7 +6,7 @@ const state = reactive({
   keyboard: true,
   settings: false,
   fragment: String,
-  token: 0
+  arrIndex: 0
 })
 
 const changeState = function (propertyName) {
@@ -17,9 +17,9 @@ const setTrue = function (propertyName) {
   state[propertyName] = true
 }
 
-const updateToken = function () {
-  state.token = state.token + 1
-  console.log(state.token)
+const increaseIndex = function () {
+  if (state.arrIndex + 200 >= state.fragment.length) return
+  state.arrIndex += 200
 }
 
 // const event = reactive({
@@ -35,7 +35,7 @@ export default {
   state,
   changeState,
   setTrue,
-  updateToken
+  increaseIndex
   // event,
   // setEvent
 }

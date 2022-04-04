@@ -2,10 +2,8 @@
 import { useGetBrowser } from '/src/services/helpers.js'
 import store from '/src/services/store.js'
 
-function clearField() {
-  // document
-  //   .querySelectorAll('.field > div')
-  //   .forEach((char) => (char.innerHTML = ''))
+function upToDate() {
+  store.increaseIndex()
 }
 
 async function fillFieldFromBuffer() {
@@ -27,7 +25,10 @@ async function fillFieldFromBuffer() {
     // field.classList.remove('hidden')
     // if (!box3.checked) keyboard.classList.remove('hidden')
     // store.updateToken()
-    store.fragment = str
+    // console.log(str)
+    // store.state.arrIndex = 0
+    store.state.fragment = str
+
     store.setTrue('work')
   } else if (br === 'firefox') {
     // let str = document.querySelector('#input').value
@@ -44,7 +45,9 @@ async function fillFieldFromBuffer() {
     <li class="nav-children">
       <a href="#!">Отрывок</a>
       <ul>
-        <li><a @click="clearField" href="#!">На русском языке</a></li>
+        <li>
+          <a @click="upToDate" href="#!">На русском языке</a>
+        </li>
         <li><a href="#!">На английском языке</a></li>
       </ul>
     </li>
