@@ -15,13 +15,14 @@ const layoutLang = 'eng'
 document.body.addEventListener('keydown', (e) => {
   events.keyDn = e
   events.capsLock = computed(
-    () => e.getModifierState && e.getModifierState('CapsLock')
+    () => e.getModifierState && e.getModifierState('CapsLock') // Caps lock state
   )
 })
 
 document.body.addEventListener('keyup', (e) => (events.keyUp = e))
 
-const items = ref(['sdf', 'rrre', 'fff'])
+const str = 'проверочный текст lkz lskfjl'
+const charArr = str.split('')
 </script>
 
 <template>
@@ -32,11 +33,9 @@ const items = ref(['sdf', 'rrre', 'fff'])
     :lang="layoutLang" />
 
   <div class="field" id="field">
-    <div class="line" id="line1"></div>
-    <div class="line" id="line2"></div>
-    <div class="line" id="line3"></div>
-    <div class="line" id="line4"></div>
-    <div class="line" id="line5"></div>
+    <div v-for="n in 5" class="line" :id="['line' + n]">
+      <div v-for="char in charArr" class="char">{{ char }}</div>
+    </div>
   </div>
 
   <Keyboard

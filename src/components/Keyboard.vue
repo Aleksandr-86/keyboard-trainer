@@ -2,12 +2,12 @@
 import { computed } from '@vue/reactivity'
 
 const props = defineProps({
-  keyDown: {},
-  keyUp: {},
+  keyDown: String,
+  keyUp: String,
   lang: String
 })
 
-const arrBtns = {
+const buttonObj = {
   row1: {
     backquote: ['Ё', '`'],
     digit1: ['1', '1'],
@@ -93,16 +93,16 @@ const langIndex = computed(() => {
   }
 })
 
-const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
+const keyDown = computed(() => props.keyDown && props.keyDown.toLowerCase())
 </script>
 
 <template>
   <div class="keyboard">
     <div v-for="n in 5" :class="['row' + n]">
       <div
-        v-for="(item, id) in arrBtns['row' + n]"
+        v-for="(item, id) in buttonObj['row' + n]"
         class="button-up"
-        :class="{ 'button-dn1': pressed === id }"
+        :class="{ 'button-dn1': keyDown === id }"
         :id="id">
         {{ item[langIndex] }}
       </div>
