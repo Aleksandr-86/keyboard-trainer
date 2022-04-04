@@ -3,6 +3,7 @@ import { reactive, computed, h, ref } from 'vue'
 import store from '/src/services/store.js'
 import FingerPointers from './FingerPointers.vue'
 import Keyboard from './Keyboard.vue'
+import { charTest } from '/src/services/helpers.js'
 
 const events = reactive({
   keyDn: Object,
@@ -21,8 +22,9 @@ document.body.addEventListener('keydown', (e) => {
 
 document.body.addEventListener('keyup', (e) => (events.keyUp = e))
 
-const str = 'проверочный текст lkz lskfjl'
-const charArr = str.split('')
+const charArr = store.fragment.split('')
+const arrIndex = 0
+const charsForField = charArr.slice(arrIndex, arrIndex + 200)
 </script>
 
 <template>
@@ -33,8 +35,12 @@ const charArr = str.split('')
     :lang="layoutLang" />
 
   <div class="field" id="field">
-    <div v-for="n in 5" class="line" :id="['line' + n]">
-      <div v-for="char in charArr" class="char">{{ char }}</div>
+    <div
+      v-for="(char, index) in charsForField"
+      :key="index"
+      class="char"
+      :class="{ 'char-neutral-inactive': charTest(char) }">
+      {{ char }}
     </div>
   </div>
 

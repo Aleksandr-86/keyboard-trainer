@@ -30,8 +30,7 @@
       <img
         id="settings-imgPreview"
         src="/src/images/backgrounds/small/water.jpg"
-        alt="background-preview"
-      />
+        alt="background-preview" />
       <button type="button" id="settings-btn-next"></button>
     </div>
     <p class="settings-description"></p>

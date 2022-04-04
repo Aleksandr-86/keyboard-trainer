@@ -3,8 +3,7 @@ import { computed } from '@vue/reactivity'
 
 const props = defineProps({
   keyDown: String,
-  keyUp: String,
-  lang: String
+  keyUp: String
 })
 
 const buttonObj = {
