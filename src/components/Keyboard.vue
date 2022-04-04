@@ -1,8 +1,5 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import { reactive, ref } from 'vue'
-import store from '/src/services/store.js'
-import Button from './Button.vue'
 
 const props = defineProps({
   keyDown: {},
@@ -102,11 +99,13 @@ const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
 <template>
   <div class="keyboard">
     <div v-for="n in 5" :class="['row' + n]">
-      <Button
-        v-for="(item, index) in arrBtns['row' + n]"
-        :code="pressed"
-        :id="index"
-        :text="item[langIndex]" />
+      <div
+        v-for="(item, id) in arrBtns['row' + n]"
+        class="button-up"
+        :class="{ 'button-dn1': pressed === id }"
+        :id="id">
+        {{ item[langIndex] }}
+      </div>
     </div>
   </div>
 </template>
