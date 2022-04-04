@@ -41,7 +41,8 @@ const items = ref(['sdf', 'rrre', 'fff'])
 
   <Keyboard
     v-if="store.state.keyboard && store.state.work"
-    :key-down="events.keyDn.code" />
+    :key-down="events.keyDn.code"
+    lang="rus" />
 </template>
 
 <style>

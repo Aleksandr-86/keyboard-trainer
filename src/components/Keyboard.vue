@@ -6,101 +6,107 @@ import Button from './Button.vue'
 
 const props = defineProps({
   keyDown: {},
-  keyUp: {}
+  keyUp: {},
+  lang: String
+})
+
+const arrBtns = {
+  row1: {
+    backquote: ['Ё', '`'],
+    digit1: ['1', '1'],
+    digit2: ['2', '2'],
+    digit3: ['3', '3'],
+    digit4: ['4', '4'],
+    digit5: ['5', '5'],
+    digit6: ['6', '6'],
+    digit7: ['7', '7'],
+    digit8: ['8', '8'],
+    digit9: ['9', '9'],
+    digit0: ['0', '0'],
+    minus: ['-', '-'],
+    equal: ['=', '='],
+    backspace: ['Backspace', 'Backspace']
+  },
+
+  row2: {
+    tab: ['Tab', 'Tab'],
+    keyq: ['Й', 'Q'],
+    keyw: ['Ц', 'W'],
+    keye: ['У', 'E'],
+    keyr: ['К', 'R'],
+    keyt: ['Е', 'T'],
+    keyy: ['Н', 'Y'],
+    keyu: ['Г', 'U'],
+    keyi: ['Ш', 'I'],
+    keyo: ['Щ', 'O'],
+    keyp: ['З', 'P'],
+    bracketleft: ['Х', '['],
+    bracketright: ['Ъ', ']'],
+    backslash: ['\\', '\\']
+  },
+
+  row3: {
+    capslock: ['Caps', 'Caps'],
+    keya: ['Ф', 'A'],
+    keys: ['Ы', 'S'],
+    keyd: ['В', 'D'],
+    keyf: ['А', 'F'],
+    keyg: ['П', 'G'],
+    keyh: ['Р', 'H'],
+    keyj: ['О', 'J'],
+    keyk: ['Л', 'K'],
+    keyl: ['Д', 'L'],
+    semicolon: ['Ж', ';'],
+    quote: ['Э', "'"],
+    enter: ['Enter', 'Enter']
+  },
+
+  row4: {
+    shiftleft: ['Shift', 'Shift'],
+    keyz: ['Я', 'Z'],
+    keyx: ['Ч', 'X'],
+    keyc: ['С', 'C'],
+    keyv: ['М', 'V'],
+    keyb: ['И', 'B'],
+    keyn: ['Т', 'N'],
+    keym: ['Ь', 'M'],
+    comma: ['Б', ','],
+    period: ['Ю', '.'],
+    slash: ['.', '/'],
+    shiftright: ['Shift', 'Shift']
+  },
+
+  row5: {
+    controlleft: ['Ctrl', 'Ctrl'],
+    osleft: ['Win', 'Win'],
+    altleft: ['Alt', 'Alt'],
+    space: [' ', ' '],
+    altright: ['Alt', 'Alt'],
+    osright: ['Win', 'Win'],
+    contextmenu: ['Menu', 'Menu'],
+    controlright: ['Ctrl', 'Ctrl']
+  }
+}
+
+const langIndex = computed(() => {
+  if (props.lang === 'rus') {
+    return 0
+  } else if (props.lang === 'eng') {
+    return 1
+  }
 })
 
 const pressed = computed(() => props.keyDown && props.keyDown.toLowerCase())
-
-const row1 = {
-  digit1: '1',
-  digit2: '2',
-  digit3: '3',
-  digit3: '3'
-}
 </script>
 
 <template>
   <div class="keyboard">
-    <!-- <KeyboardButton :cod="pressed" :key="str" /> -->
-    <!-- <Button :code="pressed" ky="digit1" text="1" /> -->
-
-    <div class="row1">
-      <Button :code="pressed" id="backquote" text="Ё" />
-
+    <div v-for="n in 5" :class="['row' + n]">
       <Button
-        v-for="(item, index) in row1"
+        v-for="(item, index) in arrBtns['row' + n]"
         :code="pressed"
         :id="index"
-        :text="item" />
-
-      <div class="button-up" id="digit5">5</div>
-      <div class="button-up" id="digit6">6</div>
-      <div class="button-up" id="digit7">7</div>
-      <div class="button-up" id="digit8">8</div>
-      <div class="button-up" id="digit9">9</div>
-      <div class="button-up" id="digit0">0</div>
-      <div class="button-up" id="minus">-</div>
-      <div class="button-up" id="equal">=</div>
-      <div class="button-up" id="backspace">Backspace</div>
-    </div>
-
-    <div class="row2">
-      <div class="button-up" id="tab">Tab</div>
-      <div class="button-up" id="keyq">Й</div>
-      <div class="button-up" id="keyw">Ц</div>
-      <div class="button-up" id="keye">У</div>
-      <div class="button-up" id="keyr">К</div>
-      <div class="button-up" id="keyt">Е</div>
-      <div class="button-up" id="keyy">Н</div>
-      <div class="button-up" id="keyu">Г</div>
-      <div class="button-up" id="keyi">Ш</div>
-      <div class="button-up" id="keyo">Щ</div>
-      <div class="button-up" id="keyp">З</div>
-      <div class="button-up" id="bracketleft">Х</div>
-      <div class="button-up" id="bracketright">Ъ</div>
-      <div class="button-up" id="backslash">\</div>
-    </div>
-
-    <div class="row3">
-      <div class="button-up" id="capslock">Caps</div>
-      <div class="button-up" id="keya">Ф</div>
-      <div class="button-up" id="keys">Ы</div>
-      <div class="button-up" id="keyd">В</div>
-      <div class="button-up" id="keyf">А</div>
-      <div class="button-up" id="keyg">П</div>
-      <div class="button-up" id="keyh">Р</div>
-      <div class="button-up" id="keyj">О</div>
-      <div class="button-up" id="keyk">Л</div>
-      <div class="button-up" id="keyl">Д</div>
-      <div class="button-up" id="semicolon">Ж</div>
-      <div class="button-up" id="quote">Э</div>
-      <div class="button-up" id="enter">Enter</div>
-    </div>
-
-    <div class="row4">
-      <div class="button-up" id="shiftleft">Shift</div>
-      <div class="button-up" id="keyz">Я</div>
-      <div class="button-up" id="keyx">Ч</div>
-      <div class="button-up" id="keyc">С</div>
-      <div class="button-up" id="keyv">М</div>
-      <div class="button-up" id="keyb">И</div>
-      <div class="button-up" id="keyn">Т</div>
-      <div class="button-up" id="keym">Ь</div>
-      <div class="button-up" id="comma">Б</div>
-      <div class="button-up" id="period">Ю</div>
-      <div class="button-up" id="slash">.</div>
-      <div class="button-up" id="shiftright">Shift</div>
-    </div>
-
-    <div class="row5">
-      <div class="button-up" id="controlleft">Ctrl</div>
-      <div class="button-up" id="osleft">Win</div>
-      <div class="button-up" id="altleft">Alt</div>
-      <div class="button-up" id="space"></div>
-      <div class="button-up" id="altright">Alt</div>
-      <div class="button-up" id="osright">Win</div>
-      <div class="button-up" id="contextmenu">Menu</div>
-      <div class="button-up" id="controlright">Ctrl</div>
+        :text="item[langIndex]" />
     </div>
   </div>
 </template>
@@ -115,10 +121,6 @@ const row1 = {
   border-radius: 15px;
 
   /* transition: all visibility 300ms, opacity 300ms; */
-}
-
-span {
-  /* text-transform: lowercase; */
 }
 
 .button-up,
