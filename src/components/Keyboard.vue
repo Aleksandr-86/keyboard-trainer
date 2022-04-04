@@ -102,6 +102,7 @@ const keyDown = computed(() => props.keyDown && props.keyDown.toLowerCase())
       <div
         v-for="(item, id) in buttonObj['row' + n]"
         class="button-up"
+        :class="{ 'button-dn1': keyDown === id }"
         :id="id">
         {{ item[langIndex] }}
       </div>
