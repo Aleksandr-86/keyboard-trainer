@@ -15,6 +15,7 @@ const layoutLang = 'eng'
 
 document.body.addEventListener('keydown', (e) => {
   events.keyDn = e
+  store.moveCaret()
   events.capsLock = computed(
     () => e.getModifierState && e.getModifierState('CapsLock') // Caps lock state
   )
@@ -37,10 +38,11 @@ const charsArr = computed(() =>
   <div class="field" id="field">
     <div
       v-for="(char, index) in charsArr"
+      :key="index"
       class="char"
       :class="[
         { 'char-neutral-inactive': charTest(char) },
-        { 'char-caret': index === 0 }
+        { 'char-caret': index === store.state.caretPosition }
       ]">
       {{ char }}
     </div>

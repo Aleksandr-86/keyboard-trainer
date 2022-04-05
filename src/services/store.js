@@ -6,7 +6,8 @@ const state = reactive({
   keyboard: true,
   settings: false,
   fragment: String,
-  arrIndex: 0
+  arrIndex: 0,
+  caretPosition: 0
 })
 
 const changeState = function (propertyName) {
@@ -19,12 +20,27 @@ const setTrue = function (propertyName) {
 
 const loadFragment = function (str) {
   state.arrIndex = 0
+  state.caretPosition = 0
   state.fragment = str
 }
 
 const increaseIndex = function () {
   if (state.arrIndex + 200 >= state.fragment.length) return
   state.arrIndex += 200
+}
+
+const moveCaret = function () {
+  if (
+    state.arrIndex + 200 >= state.fragment.length &&
+    state.caretPosition >= 199
+  ) {
+    state.work = false
+    return
+  } else if (state.caretPosition >= 199) {
+    state.caretPosition = -1
+    increaseIndex()
+  }
+  state.caretPosition += 1
 }
 
 // const event = reactive({
@@ -41,7 +57,8 @@ export default {
   changeState,
   setTrue,
   loadFragment,
-  increaseIndex
+  increaseIndex,
+  moveCaret
   // event,
   // setEvent
 }
