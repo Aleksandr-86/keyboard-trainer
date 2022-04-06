@@ -21,10 +21,12 @@ document.body.addEventListener('keydown', (e) => {
   )
 })
 
-document.body.addEventListener('keyup', (e) => (events.keyUp = e))
-
 const charsArr = computed(() =>
-  store.state.fragment.slice(store.state.arrIndex, store.state.arrIndex + 200)
+  // store.state.fragment.slice(store.state.indexArr, store.state.indexArr + 200)
+  store.state.fragmentArr.slice(
+    store.state.indexArr,
+    store.state.indexArr + 200
+  )
 )
 </script>
 

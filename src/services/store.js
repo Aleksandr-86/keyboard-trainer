@@ -1,12 +1,13 @@
 import { reactive, computed } from 'vue'
+import { charTest } from '/src/services/helpers.js'
 
 const state = reactive({
   work: false,
   pointers: true,
   keyboard: true,
   settings: false,
-  fragment: String,
-  arrIndex: 0,
+  fragmentArr: Object,
+  indexArr: 0,
   caretPosition: 0
 })
 
@@ -19,28 +20,30 @@ const setTrue = function (propertyName) {
 }
 
 const loadFragment = function (str) {
-  state.arrIndex = 0
+  state.indexArr = 0
   state.caretPosition = 0
-  state.fragment = str
+  state.fragmentArr = str.split('')
 }
 
 const increaseIndex = function () {
-  if (state.arrIndex + 200 >= state.fragment.length) return
-  state.arrIndex += 200
+  if (state.indexArr + 200 >= state.fragmentArr.length) return
+  state.indexArr += 200
 }
 
 const moveCaret = function () {
+  state.caretPosition += 1
+  console.log(state.fragmentArr[state.caretPosition + state.indexArr])
+
   if (
-    state.arrIndex + 200 >= state.fragment.length &&
-    state.caretPosition >= 199
+    state.indexArr + 200 >= state.fragmentArr.length &&
+    state.caretPosition >= 200
   ) {
     state.work = false
     return
-  } else if (state.caretPosition >= 199) {
-    state.caretPosition = -1
+  } else if (state.caretPosition >= 200) {
+    state.caretPosition = 0
     increaseIndex()
   }
-  state.caretPosition += 1
 }
 
 // const event = reactive({
