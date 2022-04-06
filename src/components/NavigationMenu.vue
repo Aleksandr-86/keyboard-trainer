@@ -2,10 +2,6 @@
 import { useGetBrowser } from '/src/services/helpers.js'
 import store from '/src/services/store.js'
 
-function upToDate() {
-  store.increaseIndex()
-}
-
 async function fillFieldFromBuffer() {
   const br = useGetBrowser().browser
   if (br === 'chrome' || br === 'yabrowser') {
@@ -30,6 +26,7 @@ async function fillFieldFromBuffer() {
     // if (!box3.checked) keyboard.classList.remove('hidden')
     store.loadFragment(str)
     store.setTrue('work')
+    store.moveCaret()
   } else if (br === 'firefox') {
     // let str = document.querySelector('#input').value
     // charInserter(strPreparer(str), 0)
@@ -46,7 +43,7 @@ async function fillFieldFromBuffer() {
       <a href="#!">Отрывок</a>
       <ul>
         <li>
-          <a @click="upToDate" href="#!">На русском языке</a>
+          <a href="#!">На русском языке</a>
         </li>
         <li><a href="#!">На английском языке</a></li>
       </ul>

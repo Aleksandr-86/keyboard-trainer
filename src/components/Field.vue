@@ -14,15 +14,23 @@ const events = reactive({
 const layoutLang = 'eng'
 
 document.body.addEventListener('keydown', (e) => {
+  e.preventDefault()
+
   events.keyDn = e
-  store.moveCaret()
+  const code = e.code
+  if (code === 'ShiftLeft' || code === 'ShiftRight' || code === 'Backspace') {
+    return
+  }
+
   events.capsLock = computed(
     () => e.getModifierState && e.getModifierState('CapsLock') // Caps lock state
   )
+
+  store.recordingStat(e)
+  store.moveCaret('')
 })
 
 const charsArr = computed(() =>
-  // store.state.fragment.slice(store.state.indexArr, store.state.indexArr + 200)
   store.state.fragmentArr.slice(
     store.state.indexArr,
     store.state.indexArr + 200
@@ -43,8 +51,22 @@ const charsArr = computed(() =>
       :key="index"
       class="char"
       :class="[
+        { 'char-caret': index === store.state.caretPosition },
+        {
+          'char-neutral-active':
+            charTest(char) && index <= store.state.caretPosition
+        },
         { 'char-neutral-inactive': charTest(char) },
-        { 'char-caret': index === store.state.caretPosition }
+        {
+          'char-correct':
+            store.data.statArr[index + store.state.indexArr] === '1' &&
+            char !== ' '
+        },
+        {
+          'char-wrong':
+            store.data.statArr[index + store.state.indexArr] === '2' &&
+            char !== ' '
+        }
       ]">
       {{ char }}
     </div>
