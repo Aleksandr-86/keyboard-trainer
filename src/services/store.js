@@ -5,24 +5,21 @@ const state = reactive({
   work: false,
   pointers: true,
   keyboard: true,
-  settings: false,
-  fragmentArr: Object,
-  indexArr: Number,
-  caretPosition: Number
+  settings: false
 })
 
-// accounting of typing
 const data = reactive({
-  statArr: Object
+  fragmentArr: Object,
+  statArr: Object,
+  firstIndex: Number,
+  indexArr: Number
 })
 
 const recordingStat = function (e) {
-  if (e.key === state.fragmentArr[state.caretPosition + state.indexArr]) {
-    data.statArr[state.caretPosition + state.indexArr] = '1' // if char is correct
-  } else if (
-    e.key !== state.fragmentArr[state.caretPosition + state.indexArr]
-  ) {
-    data.statArr[state.caretPosition + state.indexArr] = '2' // if char is wrong
+  if (e.key === data.fragmentArr[data.indexArr]) {
+    data.statArr[data.indexArr] = '1' // if char is correct
+  } else if (e.key !== data.fragmentArr[data.indexArr]) {
+    data.statArr[data.indexArr] = '2' // if char is wrong
   }
 }
 
@@ -35,46 +32,46 @@ const setTrue = function (propertyName) {
 }
 
 const loadFragment = function (str) {
-  state.fragmentArr = str.split('')
+  data.fragmentArr = str.split('')
   // creating and filling the empty statistic array
-  data.statArr = new Array(state.fragmentArr.length).fill('0')
-  state.indexArr = 0
-  state.caretPosition = -1
+  data.statArr = new Array(data.fragmentArr.length).fill('0')
+  data.firstIndex = 0
+  data.indexArr = -1
 }
 
 const loadNextChars = function () {
-  if (state.indexArr + 200 >= state.fragmentArr.length) return
-  state.indexArr += 200
-  state.caretPosition = -1
-  moveCaret()
+  if (data.firstIndex + 200 >= data.fragmentArr.length) return
+  data.firstIndex += 200
+  // data.indexArr= -1
+  // moveCaret()
 }
 
 const moveCaret = function () {
-  state.caretPosition++
+  data.indexArr++
 
   // checking inappropriate chars and skipping those
-  let currentChar = state.fragmentArr[state.caretPosition + state.indexArr]
+  let currentChar = data.fragmentArr[data.indexArr]
   while (charTest(currentChar)) {
-    let nextChar = state.fragmentArr[state.caretPosition + state.indexArr + 1]
-    let previousChar =
-      state.fragmentArr[state.caretPosition + state.indexArr - 1]
-    if (previousChar === ' ' && nextChar === ' ') state.caretPosition++
+    let nextChar = data.fragmentArr[data.indexArr + 1]
+    let previousChar = data.fragmentArr[data.indexArr - 1]
+    if (previousChar === ' ' && nextChar === ' ') data.indexArr++
 
-    state.fragmentArr[state.caretPosition + state.indexArr - 1]
-    state.caretPosition++
+    // data.fragmentArr[state.indexArr + state.firstIndex- 1]
+    data.indexArr++
 
-    currentChar = state.fragmentArr[state.caretPosition + state.indexArr]
+    currentChar = data.fragmentArr[data.indexArr]
   }
 
   if (
-    state.indexArr + 200 >= state.fragmentArr.length &&
-    state.caretPosition >= 200
+    // state.firstIndex+ 200 >= data.fragmentArr.length &&
+    // state.indexArr >= 200
+    data.indexArr >= data.fragmentArr.length
   ) {
     // shouting down the field
     state.work = false
     return
-  } else if (state.caretPosition >= 200) {
-    state.caretPosition = 0
+  } else if (data.indexArr >= 200 + data.firstIndex) {
+    // state.indexArr = 0
     loadNextChars()
   }
 }

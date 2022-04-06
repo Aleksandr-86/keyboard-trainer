@@ -14,7 +14,7 @@ const events = reactive({
 const layoutLang = 'eng'
 
 document.body.addEventListener('keydown', (e) => {
-  e.preventDefault()
+  // e.preventDefault()
 
   events.keyDn = e
   const code = e.code
@@ -31,9 +31,9 @@ document.body.addEventListener('keydown', (e) => {
 })
 
 const charsArr = computed(() =>
-  store.state.fragmentArr.slice(
-    store.state.indexArr,
-    store.state.indexArr + 200
+  store.data.fragmentArr.slice(
+    store.data.firstIndex,
+    store.data.firstIndex + 200
   )
 )
 </script>
@@ -51,20 +51,20 @@ const charsArr = computed(() =>
       :key="index"
       class="char"
       :class="[
-        { 'char-caret': index === store.state.caretPosition },
+        { 'char-caret': index === store.data.indexArr % 200 },
         {
           'char-neutral-active':
-            charTest(char) && index <= store.state.caretPosition
+            charTest(char) && index <= store.data.indexArr % 200
         },
         { 'char-neutral-inactive': charTest(char) },
         {
           'char-correct':
-            store.data.statArr[index + store.state.indexArr] === '1' &&
+            store.data.statArr[index + store.data.firstIndex] === '1' &&
             char !== ' '
         },
         {
           'char-wrong':
-            store.data.statArr[index + store.state.indexArr] === '2' &&
+            store.data.statArr[index + store.data.firstIndex] === '2' &&
             char !== ' '
         }
       ]">
