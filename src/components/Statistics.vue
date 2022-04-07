@@ -33,11 +33,12 @@ if (numTotal >= 11 && numTotal <= 14) {
   tempStr = `Всего набрано <b>${numTotal}</b> знаков, из них:`
 }
 
+const msTime = store.data.timerStop - store.data.timerStart
 const strCorrectPercent = `(${rnd((numCorrect * 100) / numTotal)}%)`
 const strWrongPercent = `(${rnd((numWrong * 100) / numTotal)}%)`
-const time = msToMinutes(store.data.timerStop - store.data.timerStart)
+const time = msToMinutes(msTime)
 const charPerSecond = Math.floor(
-  (numTotal * 60) / ((store.data.timerStop - store.data.timerStart) / 1000)
+  (numTotal * 60) / ((timerStop - store.data.timerStart) / 1000)
 )
 </script>
 

@@ -12,6 +12,9 @@ const events = reactive({
 })
 
 const layoutLang = 'eng'
+const statArr = computed(() => store.data.statArr)
+const indexArr = computed(() => store.data.indexArr)
+const firstIndex = computed(() => store.data.firstIndex)
 
 document.body.addEventListener('keydown', (e) => {
   // e.preventDefault()
@@ -56,24 +59,20 @@ const charsArr = computed(() =>
       :key="index"
       class="char"
       :class="[
-        { 'char-caret': index === store.data.indexArr % 200 },
+        { 'char-caret': index === indexArr % 200 },
         {
-          'char-neutral-active':
-            charTest(char) && index <= store.data.indexArr % 200
+          'char-neutral-active': charTest(char) && index <= indexArr % 200
         },
         { 'char-neutral-inactive': charTest(char) },
         {
-          'char-correct':
-            store.data.statArr[index + store.data.firstIndex] === '1' &&
-            char !== ' '
+          'char-correct': statArr[index + firstIndex] === '1' && char !== ' '
         },
         {
-          'char-wrong':
-            store.data.statArr[index + store.data.firstIndex] === '2' &&
-            char !== ' '
+          'char-wrong': statArr[index + firstIndex] === '2' && char !== ' '
         }
       ]">
-      {{ char }}
+      <div v-if="char === '*'">&nbsp</div>
+      <div v-else>{{ char }}</div>
     </div>
   </div>
 
