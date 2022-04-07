@@ -7,6 +7,7 @@ const state = reactive({
   keyboard: true,
   settings: false,
   overlay: false,
+  bTimer: false,
   statistics: false
 })
 
@@ -15,6 +16,8 @@ const data = reactive({
   statArr: Object,
   firstIndex: Number,
   indexArr: Number,
+  timerStart: Number,
+  timerStop: Number,
   withoutMistake: 0
 })
 
@@ -75,6 +78,9 @@ const moveCaret = function () {
 
   if (data.indexArr >= data.fragmentArr.length) {
     // shouting down the field
+    data.timerStop = performance.now()
+    console.log(data.timerStart)
+    console.log(data.timerStop)
     state.work = false
     state.statistics = true
     state.overlay = true

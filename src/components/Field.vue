@@ -26,6 +26,11 @@ document.body.addEventListener('keydown', (e) => {
     () => e.getModifierState && e.getModifierState('CapsLock') // Caps lock state
   )
 
+  if (!store.state.bTimer) {
+    store.state.bTimer = true
+    store.data.timerStart = performance.now()
+  }
+
   store.recordingStat(e)
   store.moveCaret('')
 })
