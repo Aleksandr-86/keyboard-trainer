@@ -14,14 +14,23 @@ const data = reactive({
   fragmentArr: Object,
   statArr: Object,
   firstIndex: Number,
-  indexArr: Number
+  indexArr: Number,
+  withoutMistake: 0
 })
+
+let withoutMistake = 0
 
 const recordingStat = function (e) {
   if (e.key === data.fragmentArr[data.indexArr]) {
     data.statArr[data.indexArr] = '1' // if char is correct
+    withoutMistake++
   } else if (e.key !== data.fragmentArr[data.indexArr]) {
     data.statArr[data.indexArr] = '2' // if char is wrong
+    // counting amount without mistake
+    if (data.withoutMistake < withoutMistake) {
+      data.withoutMistake = withoutMistake
+    }
+    withoutMistake = 0
   }
 }
 

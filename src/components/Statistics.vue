@@ -11,10 +11,11 @@ function calcStat() {
   store.data.statArr.forEach((element) => {
     if (element === '1') {
       numCorrect++
+      numChars++
     } else if (element === '2') {
       numWrong++
+      numChars++
     }
-    numChars++
   })
 }
 calcStat()
@@ -36,54 +37,46 @@ const strWrongPercent = `(${rnd((numWrong * 100) / numChars)}%)`
 </script>
 
 <template>
-  <div class="statistics">
+  <div class="stat-base">
     <h3>Результат</h3>
-    <button class="statistics-close">+</button>
+    <button class="stat-close">+</button>
 
-    <div>
-      <div class="stat-first-row">Время набора:</div>
-      <div class="stat-second-row">время</div>
+    <div class="stat-first-row">Время набора:</div>
+    <div class="stat-second-row">время</div>
+
+    <div class="stat-first-row">Cкорость набора, зн/мин:</div>
+    <div class="stat-second-row">скорость</div>
+
+    <div class="stat-first-row" v-html="tempStr"></div>
+    <div class="stat-second-row"></div>
+
+    <div class="stat-first-row">- правильных</div>
+    <div class="stat-second-row">
+      <div>{{ numCorrect }}</div>
+      <div class="num-correct">{{ strCorrectPercent }}</div>
     </div>
-    <div>
-      <div class="stat-first-row">Cкорость набора, зн/мин:</div>
-      <div class="stat-second-row">скорость</div>
+
+    <div class="stat-first-row">- ошибочных</div>
+    <div class="stat-second-row">
+      <div>{{ numWrong }}</div>
+      <div class="num-wrong">{{ strWrongPercent }}</div>
     </div>
-    <div>
-      <div v-html="tempStr" class="stat-first-row"></div>
-      <div class="stat-second-row">!</div>
-    </div>
-    <div>
-      <div class="stat-first-row stat-pos">- правильных</div>
-      <div class="stat-second-row">
-        {{ numCorrect }}
-        <div class="num-correct">{{ strCorrectPercent }}</div>
-      </div>
-    </div>
-    <div>
-      <div class="stat-first-row stat-pos">- ошибочных</div>
-      <div class="stat-second-row">
-        {{ numWrong }}
-        <div class="num-wrong">{{ strWrongPercent }}</div>
-      </div>
-    </div>
+
     <div>
       <div class="stat-first-row">Знаков подряд без ошибки:</div>
-      <div class="stat-second-row"></div>
+      <div class="stat-second-row">{{ store.data.withoutMistake }}</div>
     </div>
-
-    <!-- <div id="statContainer"></div> -->
   </div>
 </template>
 
 <style>
-.statistics {
+.stat-base {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 75vh;
-  /* height: 24vh; */
-  height: 34vh;
+  width: 72vh;
+  height: auto;
 
   font-size: 3vh;
 
@@ -103,7 +96,7 @@ h3 {
   text-align: center;
 }
 
-.statistics-close {
+.stat-close {
   display: inline-block;
   font-size: 5vh;
   border: none;
@@ -118,7 +111,7 @@ h3 {
   color: black;
 }
 
-.statistics-close:hover {
+.stat-close:hover {
   transform: rotate(45deg) scale(1.1);
   color: darkviolet;
   transition: all 300ms ease-in-out;
@@ -140,22 +133,24 @@ h3 {
   color: rgb(205, 50, 50);
 }
 
-.stat-first-row {
-  text-align: left;
-  /* display: block; */
+.stat-first-row,
+.stat-second-row {
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
+  /* background: #fff2e1; */
 }
 
-.stat-pos {
-  margin-left: 2vh;
+.stat-first-row {
+  width: 67%;
+  text-align: left;
+  margin-right: 1%;
 }
 
 .stat-second-row {
   display: inline-flex;
   justify-content: center;
-  position: absolute;
+  width: 32%;
   text-align: center;
-  width: 15vh;
-  right: 3vh;
-  font-weight: bold;
 }
 </style>
