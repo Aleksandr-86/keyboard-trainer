@@ -5,7 +5,9 @@ const state = reactive({
   work: false,
   pointers: true,
   keyboard: true,
-  settings: false
+  settings: false,
+  overlay: false,
+  statistics: false
 })
 
 const data = reactive({
@@ -42,8 +44,6 @@ const loadFragment = function (str) {
 const loadNextChars = function () {
   if (data.firstIndex + 200 >= data.fragmentArr.length) return
   data.firstIndex += 200
-  // data.indexArr= -1
-  // moveCaret()
 }
 
 const moveCaret = function () {
@@ -52,9 +52,11 @@ const moveCaret = function () {
   // checking inappropriate chars and skipping those
   let currentChar = data.fragmentArr[data.indexArr]
   while (charTest(currentChar)) {
-    let nextChar = data.fragmentArr[data.indexArr + 1]
-    let previousChar = data.fragmentArr[data.indexArr - 1]
-    if (previousChar === ' ' && nextChar === ' ') data.indexArr++
+    if (
+      data.fragmentArr[data.indexArr + 1] === ' ' &&
+      data.fragmentArr[data.indexArr - 1] === ' '
+    )
+      data.indexArr++
 
     // data.fragmentArr[state.indexArr + state.firstIndex- 1]
     data.indexArr++
@@ -62,28 +64,16 @@ const moveCaret = function () {
     currentChar = data.fragmentArr[data.indexArr]
   }
 
-  if (
-    // state.firstIndex+ 200 >= data.fragmentArr.length &&
-    // state.indexArr >= 200
-    data.indexArr >= data.fragmentArr.length
-  ) {
+  if (data.indexArr >= data.fragmentArr.length) {
     // shouting down the field
     state.work = false
+    state.statistics = true
+    state.overlay = true
     return
   } else if (data.indexArr >= 200 + data.firstIndex) {
-    // state.indexArr = 0
     loadNextChars()
   }
 }
-
-// const event = reactive({
-//   keyDown: {},
-//   keyUp: {}
-// })
-
-// const setEvent = function (propertyName, obj) {
-//   event[propertyName] = computed(() => obj)
-// }
 
 export default {
   state,
@@ -94,6 +84,4 @@ export default {
   loadFragment,
   loadNextChars,
   moveCaret
-  // event,
-  // setEvent
 }

@@ -109,6 +109,22 @@ export function langTest(char, langLayout) {
   }
 }
 
+// rounding number
+export const rnd = (num) => Number(Math.round(Number(num + 'e2')) + 'e-2')
+
+// converting ms to minutes
+export function msToMinutes(ms) {
+  // converting ms into minutes:seconds
+  ms /= 1000
+  const minutes = Math.floor(ms / 60)
+    .toString()
+    .padStart(2, '0')
+  const seconds = Math.floor(ms - minutes * 60)
+    .toString()
+    .padStart(2, '0')
+  return `${minutes}:${seconds}`
+}
+
 // checking letter case
 // export const charCase = (char) => /[А-ЯЁA-Z.-=\\]/i.test(char) && char === char.toUpperCase();
 // export const charCase = (char) => /[А-ЯЁA-Z!"]/i.test(char) && char === char.toUpperCase();
