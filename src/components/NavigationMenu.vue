@@ -26,11 +26,17 @@ async function fillFieldFromBuffer() {
     // if (!box3.checked) keyboard.classList.remove('hidden')
 
     store.loadFragment(str)
-    if (store.state.work === false) {
-      store.setTrue('work')
-    } else {
+
+    if (store.state.work) {
       document.body.querySelector('.field').focus()
+      store.data.tempWithoutMistake = 0
+      store.data.withoutMistake = 0
+    } else {
+      store.setTrue('work')
     }
+
+    // store.state.work ? document.body.querySelector('.field').focus : store.setTrue
+
     store.moveCaret()
   } else if (br === 'firefox') {
     // let str = document.querySelector('#input').value

@@ -1,8 +1,9 @@
 <script setup>
-import { reactive, computed, h, ref } from 'vue'
+import { reactive, computed, onUnmounted } from 'vue'
 import store from '/src/services/store.js'
 import { charTest } from '/src/services/helpers.js'
 import FingerPointers from './FingerPointers.vue'
+import CurrentStatistics from './CurrentStatistics.vue'
 import Keyboard from './Keyboard.vue'
 
 const events = reactive({
@@ -33,6 +34,7 @@ const eListener = function (e) {
     () => e.getModifierState && e.getModifierState('CapsLock') // Caps lock state
   )
 
+  // timer on
   if (!store.state.bTimer) {
     store.state.bTimer = true
     store.data.timerStart = performance.now()
@@ -48,37 +50,47 @@ const charsArr = computed(() =>
     store.data.firstIndex + 200
   )
 )
+
+onUnmounted(() => {
+  if (store.data.withoutMistake < store.data.tempWithoutMistake) {
+    store.data.withoutMistake = store.data.tempWithoutMistake
+  }
+})
 </script>
 
 <template>
-  <FingerPointers
-    v-if="store.state.pointers && store.state.work"
-    :key-down="events.keyDn.key"
-    :caps="events.capsLock"
-    :lang="layoutLang" />
+  <div>
+    <FingerPointers
+      v-if="store.state.pointers && store.state.work"
+      :key-down="events.keyDn.key"
+      :caps="events.capsLock"
+      :lang="layoutLang" />
 
-  <div v-focus tabindex="0" @keydown.prevent="eListener" class="field">
-    <div
-      v-for="(char, index) in charsArr"
-      :key="index"
-      class="char"
-      :class="[
-        { 'char-caret': index === indexArr % 200 },
-        {
-          'char-neutral-active': charTest(char) && index <= indexArr % 200
-        },
-        { 'char-neutral-inactive': charTest(char) },
-        {
-          'char-correct': statArr[index + firstIndex] === '1' && char !== ' '
-        },
-        {
-          'char-wrong': statArr[index + firstIndex] === '2' && char !== ' '
-        }
-      ]">
-      <div v-if="char === '*'">&nbsp</div>
-      <div v-else>{{ char }}</div>
+    <div class="field" v-focus tabindex="0" @keydown.prevent="eListener">
+      <div
+        v-for="(char, index) in charsArr"
+        :key="index"
+        class="char"
+        :class="[
+          { 'char-caret': index === indexArr % 200 },
+          {
+            'char-neutral-active': charTest(char) && index <= indexArr % 200
+          },
+          { 'char-neutral-inactive': charTest(char) },
+          {
+            'char-correct': statArr[index + firstIndex] === '1' && char !== ' '
+          },
+          {
+            'char-wrong': statArr[index + firstIndex] === '2' && char !== ' '
+          }
+        ]">
+        <div v-if="char === '*'">&nbsp</div>
+        <div v-else>{{ char }}</div>
+      </div>
     </div>
   </div>
+
+  <CurrentStatistics />
 
   <Keyboard
     v-if="store.state.keyboard && store.state.work"

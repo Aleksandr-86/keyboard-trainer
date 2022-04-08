@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from '@vue/reactivity'
+import { onUnmounted } from 'vue'
 import store from '/src/services/store.js'
 import { rnd } from '/src/services/helpers.js'
 import { msToMinutes } from '/src/services/helpers.js'
@@ -18,10 +18,12 @@ function calcStat() {
       numTotal++
     }
   })
+
+  // clear statistics
 }
 calcStat()
 
-// forming the string
+// forming the temp string
 let tempStr = ''
 if (numTotal >= 11 && numTotal <= 14) {
   tempStr = `Всего набрано <b>${numTotal}</b> знаков, из них:`
@@ -38,6 +40,11 @@ const strCorrectPercent = `(${rnd((numCorrect * 100) / numTotal)}%)`
 const strWrongPercent = `(${rnd((numWrong * 100) / numTotal)}%)`
 const time = msToMinutes(msTime)
 const charPerSecond = Math.floor((numTotal * 60) / (msTime / 1000))
+
+onUnmounted(() => {
+  store.state.bTimer = false
+  store.data.withoutMistake = 0
+})
 </script>
 
 <template>

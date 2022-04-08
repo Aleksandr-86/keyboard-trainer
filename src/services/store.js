@@ -17,22 +17,21 @@ const data = reactive({
   indexArr: Number,
   timerStart: Number,
   timerStop: Number,
+  tempWithoutMistake: 0,
   withoutMistake: 0
 })
-
-let withoutMistake = 0
 
 const recordingStat = function (e) {
   if (e.key === data.fragmentArr[data.indexArr]) {
     data.statArr[data.indexArr] = '1' // if char is correct
-    withoutMistake++
+    data.tempWithoutMistake++
   } else if (e.key !== data.fragmentArr[data.indexArr]) {
     data.statArr[data.indexArr] = '2' // if char is wrong
     // counting amount without mistake
-    if (data.withoutMistake < withoutMistake) {
-      data.withoutMistake = withoutMistake
+    if (data.withoutMistake < data.tempWithoutMistake) {
+      data.withoutMistake = data.tempWithoutMistake
     }
-    withoutMistake = 0
+    data.tempWithoutMistake = 0
   }
 }
 
@@ -56,11 +55,14 @@ const loadFragment = function (str) {
   data.indexArr = -1
 }
 
+// loading next set of chars
 const loadNextChars = function () {
   if (data.firstIndex + 200 >= data.fragmentArr.length) return
   data.firstIndex += 200
 }
 
+/* moving caret (visually), moving over the inappropriate chars,
+   stopping timer, changing work state, enable statistics menu */
 const moveCaret = function () {
   data.indexArr++
 
@@ -84,9 +86,6 @@ const moveCaret = function () {
     data.timerStop = performance.now()
     state.work = false
     state.statistics = true
-    document.body.removeEventListener('click', function (e) {
-      console.log(removed)
-    })
     return
   } else if (data.indexArr >= 200 + data.firstIndex) {
     loadNextChars()
