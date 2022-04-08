@@ -51,12 +51,6 @@ const charsArr = computed(() =>
     store.data.firstIndex + 200
   )
 )
-
-onUnmounted(() => {
-  // if (store.data.withoutMistake < store.data.tempWithoutMistake) {
-  //   store.data.withoutMistake = store.data.tempWithoutMistake
-  // }
-})
 </script>
 
 <template>

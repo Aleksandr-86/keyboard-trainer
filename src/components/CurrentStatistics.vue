@@ -1,18 +1,28 @@
 <script setup>
 import { computed } from '@vue/reactivity'
+import { onUnmounted } from 'vue'
 import store from '../services/store'
 
 const tempWithoutMistake = computed(() => store.data.tempWithoutMistake)
 const withoutMistake = computed(() => store.data.withoutMistake)
+
+onUnmounted(() => {
+  store.data.tempWithoutMistake = 0
+  store.data.withoutMistake = 0
+})
 </script>
 
 <template>
   <div class="current-stat">
     <div>
-      <div v-if="tempWithoutMistake !== withoutMistake">
+      <div
+        v-if="tempWithoutMistake === 0 || tempWithoutMistake < withoutMistake"
+        class="temp-in-a-row">
         {{ tempWithoutMistake }}
       </div>
-      <div>{{ withoutMistake }}</div>
+      <div v-if="withoutMistake !== 0" class="in-a-row">
+        {{ withoutMistake }}
+      </div>
     </div>
   </div>
 </template>
@@ -38,23 +48,16 @@ const withoutMistake = computed(() => store.data.withoutMistake)
   border-radius: 10px;
 }
 
-.current-stat > div > div:first-child {
-  /* border-radius: 10px 10px 0 0; */
-  border-radius: 10px;
-  background-color: yellow;
-  border-bottom: 2px solid black;
-}
-
-.current-stat > div > div:last-child {
+.temp-in-a-row {
   height: inherit;
   border-radius: 10px;
-  /* border-radius: 0 0 10px 10px; */
-  background-color: yellowgreen;
-  /* vertical-align: center; */
-  overflow: hidden;
+  background-color: yellow;
+  /* border-bottom: 2px solid black; */
 }
 
-/* .current-stat > div > div:last-child::after {
-  content: '';
-} */
+.in-a-row {
+  height: inherit;
+  border-radius: 10px;
+  background-color: yellowgreen;
+}
 </style>
