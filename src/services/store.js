@@ -25,6 +25,9 @@ const recordingStat = function (e) {
   if (e.key === data.fragmentArr[data.indexArr]) {
     data.statArr[data.indexArr] = '1' // if char is correct
     data.tempWithoutMistake++
+    if (data.withoutMistake < data.tempWithoutMistake) {
+      data.withoutMistake = data.tempWithoutMistake
+    }
   } else if (e.key !== data.fragmentArr[data.indexArr]) {
     data.statArr[data.indexArr] = '2' // if char is wrong
     // counting amount without mistake

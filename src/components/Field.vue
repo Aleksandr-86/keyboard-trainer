@@ -44,6 +44,7 @@ const eListener = function (e) {
   store.moveCaret('')
 }
 
+// chars for field
 const charsArr = computed(() =>
   store.data.fragmentArr.slice(
     store.data.firstIndex,
@@ -52,9 +53,9 @@ const charsArr = computed(() =>
 )
 
 onUnmounted(() => {
-  if (store.data.withoutMistake < store.data.tempWithoutMistake) {
-    store.data.withoutMistake = store.data.tempWithoutMistake
-  }
+  // if (store.data.withoutMistake < store.data.tempWithoutMistake) {
+  //   store.data.withoutMistake = store.data.tempWithoutMistake
+  // }
 })
 </script>
 
@@ -87,10 +88,9 @@ onUnmounted(() => {
         <div v-if="char === '*'">&nbsp</div>
         <div v-else>{{ char }}</div>
       </div>
+      <CurrentStatistics />
     </div>
   </div>
-
-  <CurrentStatistics />
 
   <Keyboard
     v-if="store.state.keyboard && store.state.work"
@@ -109,24 +109,13 @@ onUnmounted(() => {
   }
 }
 
-.btn {
-  background-color: rgb(40, 190, 100);
-  width: 80px;
-  height: 80px;
-}
-
 .field {
-  /* display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start; */
-
-  outline: none;
-
-  --field-bar-width: 0;
-  --field-bar-hue: 0;
+  /* --field-bar-width: 0;
+  --field-bar-hue: 0; */
   width: 1440px;
-  height: 385px;
+  height: 380px;
   margin: 10px auto 50px;
+  outline: none;
   backdrop-filter: blur(200px);
   user-select: none;
   cursor: none;
@@ -134,11 +123,7 @@ onUnmounted(() => {
   background-color: pink;
 }
 
-.hidden {
-  background-color: red;
-}
-
-.field::before {
+/* .field::before {
   position: absolute;
   content: '';
   width: var(--field-bar-width);
@@ -148,7 +133,7 @@ onUnmounted(() => {
   background: hsl(var(--field-bar-hue), 80%, 50%);
   transform-origin: 0 50%;
   transform: rotate(270deg);
-}
+} */
 
 .field:hover {
   animation: hideCursor 3s;
@@ -156,13 +141,13 @@ onUnmounted(() => {
 
 .line {
   width: inherit;
-  height: 77px;
+  height: 76px;
 }
 
 .char {
   float: left;
   width: 36px;
-  height: 77px;
+  height: 76px;
   font-family: 'Consolas', monospace;
   font-size: 65px;
   background: rgba(50, 50, 50, 0.75);

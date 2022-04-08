@@ -1,8 +1,8 @@
 <script setup>
 import { onUnmounted } from 'vue'
-import store from '/src/services/store.js'
-import { rnd } from '/src/services/helpers.js'
-import { msToMinutes } from '/src/services/helpers.js'
+import store from '../services/store.js'
+import { rnd } from '../services/helpers.js'
+import { msToMinutes } from '../services/helpers.js'
 
 let numCorrect = 0
 let numWrong = 0

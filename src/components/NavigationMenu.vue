@@ -124,8 +124,9 @@ async function fillFieldFromBuffer() {
 .nav li.nav-children:hover > ul {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
-  background: rgb(60, 60, 60);
+  /* transform: translateY(0px); */
+  /* background: rgb(60, 60, 60); */
+  background: rgba(20, 20, 20, 0.8);
   position: absolute;
   left: 0;
 }
@@ -137,13 +138,15 @@ async function fillFieldFromBuffer() {
   position: absolute;
   z-index: 20;
   min-width: 220px;
+  text-align: left;
   top: 100%;
-  /*left: -30px;*/
+  /* left: -30px; */
   opacity: 0;
   visibility: hidden;
-  transform: translateY(5px);
+  /* transform: translateY(5px); */
+  /* transform: translateY(-50px); */
   /*transition: all 300ms cubic-bezier(0, 0, 1, 1);*/
-  transition: all 300ms;
+  transition: all 350ms;
 }
 
 .nav ul li {
