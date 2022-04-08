@@ -1,9 +1,9 @@
 <script setup>
 import { reactive, computed, h, ref } from 'vue'
 import store from '/src/services/store.js'
+import { charTest } from '/src/services/helpers.js'
 import FingerPointers from './FingerPointers.vue'
 import Keyboard from './Keyboard.vue'
-import { charTest } from '/src/services/helpers.js'
 
 const events = reactive({
   keyDn: Object,
@@ -16,9 +16,13 @@ const statArr = computed(() => store.data.statArr)
 const indexArr = computed(() => store.data.indexArr)
 const firstIndex = computed(() => store.data.firstIndex)
 
-document.body.addEventListener('keydown', (e) => {
-  // e.preventDefault()
+// a custom directive
+const vFocus = {
+  mounted: (el) => el.focus()
+}
 
+// event listener
+const eListener = function (e) {
   events.keyDn = e
   const code = e.code
   if (code === 'ShiftLeft' || code === 'ShiftRight' || code === 'Backspace') {
@@ -36,7 +40,7 @@ document.body.addEventListener('keydown', (e) => {
 
   store.recordingStat(e)
   store.moveCaret('')
-})
+}
 
 const charsArr = computed(() =>
   store.data.fragmentArr.slice(
@@ -53,7 +57,7 @@ const charsArr = computed(() =>
     :caps="events.capsLock"
     :lang="layoutLang" />
 
-  <div class="field" id="field">
+  <div v-focus tabindex="0" @keydown.prevent="eListener" class="field">
     <div
       v-for="(char, index) in charsArr"
       :key="index"
@@ -103,6 +107,8 @@ const charsArr = computed(() =>
   /* display: flex;
   flex-wrap: wrap;
   align-content: flex-start; */
+
+  outline: none;
 
   --field-bar-width: 0;
   --field-bar-hue: 0;

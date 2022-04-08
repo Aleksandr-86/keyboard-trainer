@@ -37,15 +37,15 @@ const msTime = store.data.timerStop - store.data.timerStart
 const strCorrectPercent = `(${rnd((numCorrect * 100) / numTotal)}%)`
 const strWrongPercent = `(${rnd((numWrong * 100) / numTotal)}%)`
 const time = msToMinutes(msTime)
-const charPerSecond = Math.floor(
-  (numTotal * 60) / ((timerStop - store.data.timerStart) / 1000)
-)
+const charPerSecond = Math.floor((numTotal * 60) / (msTime / 1000))
 </script>
 
 <template>
   <div class="stat-base">
     <h3>Результат</h3>
-    <button class="stat-close">+</button>
+    <button @click.left="store.setFalse('statistics')" class="stat-close">
+      +
+    </button>
 
     <div class="stat-first-row">Время набора:</div>
     <div class="stat-second-row">{{ time }}</div>
@@ -73,9 +73,26 @@ const charPerSecond = Math.floor(
       <div class="stat-second-row">{{ store.data.withoutMistake }}</div>
     </div>
   </div>
+  <div
+    @click.left="store.setFalse('statistics')"
+    v-if="store.state.statistics"
+    class="overlay"></div>
 </template>
 
 <style>
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(0.2vh);
+  z-index: 5;
+
+  /* transition: visibility 300ms, opacity 300ms; */
+}
+
 .stat-base {
   position: absolute;
   top: 50%;
@@ -93,13 +110,7 @@ const charPerSecond = Math.floor(
   z-index: 10;
 
   overflow: hidden;
-  transition: visibility 300ms, opacity 300ms;
-}
-
-h3 {
-  margin-top: -1.3vh;
-  margin-bottom: 1vh;
-  text-align: center;
+  /* transition: visibility 300ms, opacity 300ms; */
 }
 
 .stat-close {
@@ -120,7 +131,13 @@ h3 {
 .stat-close:hover {
   transform: rotate(45deg) scale(1.1);
   color: darkviolet;
-  transition: all 300ms ease-in-out;
+  /* transition: all 300ms ease-in-out; */
+}
+
+h3 {
+  margin-top: -1.3vh;
+  margin-bottom: 1vh;
+  text-align: center;
 }
 
 .num-total,

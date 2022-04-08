@@ -6,7 +6,6 @@ const state = reactive({
   pointers: true,
   keyboard: true,
   settings: false,
-  overlay: false,
   bTimer: false,
   statistics: false
 })
@@ -45,6 +44,10 @@ const setTrue = function (propertyName) {
   state[propertyName] = true
 }
 
+const setFalse = function (propertyName) {
+  state[propertyName] = false
+}
+
 const loadFragment = function (str) {
   data.fragmentArr = str.split('')
   // creating and filling the empty statistic array
@@ -81,7 +84,9 @@ const moveCaret = function () {
     data.timerStop = performance.now()
     state.work = false
     state.statistics = true
-    state.overlay = true
+    document.body.removeEventListener('click', function (e) {
+      console.log(removed)
+    })
     return
   } else if (data.indexArr >= 200 + data.firstIndex) {
     loadNextChars()
@@ -94,6 +99,7 @@ export default {
   recordingStat,
   changeState,
   setTrue,
+  setFalse,
   loadFragment,
   loadNextChars,
   moveCaret
