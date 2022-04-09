@@ -41,7 +41,9 @@ const eListener = function (e) {
     store.data.timerStart = performance.now()
 
     store.data.stopwatch = setInterval(() => {
-      store.data.elapsedTime = performance.now() - store.data.timerStart
+      store.data.elapsedTime = msToMinutes(
+        performance.now() - store.data.timerStart
+      )
     }, 10)
   }
 
