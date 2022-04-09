@@ -10,7 +10,6 @@ const withoutMistake = computed(() => store.data.withoutMistake)
 
 onUnmounted(() => {
   clearInterval(store.data.stopwatch)
-  // store.data.elapsedTimeStr = '00:00.00'
 })
 </script>
 
