@@ -2,11 +2,10 @@
 import { reactive, computed } from 'vue'
 import store from '/src/services/store.js'
 import { charTest } from '/src/services/helpers.js'
+import { msToMinutes } from '../services/helpers.js'
 import FingerPointers from './FingerPointers.vue'
 import CurrentStatistics from './CurrentStatistics.vue'
 import Keyboard from './Keyboard.vue'
-import { msToMinutes } from '../services/helpers'
-import { rnd } from '../services/helpers.js'
 
 const events = reactive({
   keyDn: Object,
@@ -42,9 +41,7 @@ const eListener = function (e) {
     store.data.timerStart = performance.now()
 
     store.data.stopwatch = setInterval(() => {
-      store.data.elapsedTime = msToMinutes(
-        performance.now() - store.data.timerStart
-      )
+      store.data.elapsedTime = performance.now() - store.data.timerStart
     }, 10)
   }
 

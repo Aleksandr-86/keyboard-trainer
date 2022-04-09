@@ -6,6 +6,7 @@ import store from '../services/store'
 
 const tempWithoutMistake = computed(() => store.data.tempWithoutMistake)
 const withoutMistake = computed(() => store.data.withoutMistake)
+// const elapsedTimeStr = msToMinutes(store.data.elapsedTime)
 
 onUnmounted(() => {
   clearInterval(store.data.stopwatch)
