@@ -42,8 +42,8 @@ const eListener = function (e) {
 
     // updating elapsed time reactive variables
     store.data.stopwatch = setInterval(() => {
-      store.data.elapsedTime = (performance.now() - store.data.timerStart) / 10
-      store.data.elapsedTimeStr = msToMinutes(store.data.elapsedTime * 10)
+      store.data.elapsedTime = performance.now() - store.data.timerStart
+      store.data.elapsedTimeStr = msToMinutes(store.data.elapsedTime)
     }, 10)
   }
 
