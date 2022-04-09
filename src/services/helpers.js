@@ -124,7 +124,7 @@ export function msToMinutes(ms) {
   const seconds = Math.floor(ms - minutes * 60)
     .toString()
     .padStart(2, '0')
-  const centiseconds = ms.toString().split('.')[1].slice(0, 2)
+  const centiseconds = ms.toString().split('.')[1]?.slice(0, 2)
 
   return `${minutes}:${seconds}.${centiseconds}`
 }

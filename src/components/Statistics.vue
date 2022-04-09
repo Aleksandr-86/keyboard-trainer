@@ -36,16 +36,17 @@ if (numTotal >= 11 && numTotal <= 14) {
   tempStr = `Всего набрано <b>${numTotal}</b> знаков, из них:`
 }
 
-const msTime = store.data.timerStop - store.data.timerStart
 const strCorrectPercent = `(${rnd((numCorrect * 100) / numTotal)}%)`
 const strWrongPercent = `(${rnd((numWrong * 100) / numTotal)}%)`
-const time = msToMinutes(msTime)
-const charPerSecond = Math.floor((numTotal * 60) / (msTime / 1000))
+const charPerSecond = Math.floor(
+  (numTotal * 60) / (store.data.elapsedTime / 100)
+)
 
 onUnmounted(() => {
   store.state.bTimer = false
   store.data.tempWithoutMistake = 0
   store.data.withoutMistake = 0
+  store.data.elapsedTimeStr = '00:00.00'
 })
 </script>
 
@@ -57,7 +58,7 @@ onUnmounted(() => {
     </button>
 
     <div class="stat-first-row">Время набора:</div>
-    <div class="stat-second-row">{{ time }}</div>
+    <div class="stat-second-row">{{ store.data.elapsedTimeStr }}</div>
 
     <div class="stat-first-row">Cкорость набора, зн/мин:</div>
     <div class="stat-second-row">{{ charPerSecond }}</div>

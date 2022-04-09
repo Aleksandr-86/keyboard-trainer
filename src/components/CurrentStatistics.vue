@@ -10,7 +10,7 @@ const withoutMistake = computed(() => store.data.withoutMistake)
 
 onUnmounted(() => {
   clearInterval(store.data.stopwatch)
-  store.data.elapsedTime = '00:00.00'
+  // store.data.elapsedTimeStr = '00:00.00'
 })
 </script>
 
@@ -27,7 +27,7 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="elapsed-time">
-      {{ store.data.elapsedTime }}
+      {{ store.data.elapsedTimeStr }}
     </div>
   </div>
 </template>
