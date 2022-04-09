@@ -10,6 +10,7 @@ const withoutMistake = computed(() => store.data.withoutMistake)
 
 onUnmounted(() => {
   clearInterval(store.data.stopwatch)
+  // clearInterval(store.data.charPerMinute)
 })
 </script>
 
@@ -27,6 +28,9 @@ onUnmounted(() => {
     </div>
     <div class="elapsed-time">
       {{ store.data.elapsedTimeStr }}
+    </div>
+    <div class="char-per-minute">
+      {{ store.data.charPerMin }}
     </div>
   </div>
 </template>

@@ -22,6 +22,12 @@ const data = reactive({
   elapsedTime: 0,
   elapsedTimeStr: '00:00.00',
 
+  typingMeter: Object,
+  charPerMin: 0,
+
+  numCorrect: 0,
+  numWrong: 0,
+
   tempWithoutMistake: 0,
   withoutMistake: 0
 })
@@ -33,6 +39,7 @@ const recordingStat = function (e) {
     if (data.withoutMistake < data.tempWithoutMistake) {
       data.withoutMistake = data.tempWithoutMistake
     }
+    data.numCorrect++
   } else if (e.key !== data.fragmentArr[data.indexArr]) {
     data.statArr[data.indexArr] = '2' // if char is wrong
     // counting amount without mistake
@@ -40,6 +47,7 @@ const recordingStat = function (e) {
       data.withoutMistake = data.tempWithoutMistake
     }
     data.tempWithoutMistake = 0
+    data.numWrong++
   }
 }
 

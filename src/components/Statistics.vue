@@ -5,24 +5,9 @@ import { rnd } from '../services/helpers.js'
 import { msToMinutes } from '../services/helpers.js'
 import { computed } from '@vue/reactivity'
 
-let numCorrect = 0
-let numWrong = 0
-let numTotal = 0
-
-function calcStat() {
-  store.data.statArr.forEach((element) => {
-    if (element === '1') {
-      numCorrect++
-      numTotal++
-    } else if (element === '2') {
-      numWrong++
-      numTotal++
-    }
-  })
-
-  // clear statistics
-}
-calcStat()
+const numCorrect = store.data.numCorrect
+const numWrong = store.data.numWrong
+const numTotal = numCorrect + numWrong
 
 // forming the temp string
 let tempStr = ''
@@ -46,8 +31,12 @@ onUnmounted(() => {
   store.state.bTimer = false
   store.data.tempWithoutMistake = 0
   store.data.withoutMistake = 0
+
   store.data.elapsedTime = 0
   store.data.elapsedTimeStr = '00:00.00'
+
+  store.data.numCorrect = 0
+  store.data.numWrong = 0
 })
 </script>
 
