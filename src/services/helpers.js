@@ -109,20 +109,25 @@ export function langTest(char, langLayout) {
   }
 }
 
-// rounding number
+// rounding number to 0,00
 export const rnd = (num) => Number(Math.round(Number(num + 'e2')) + 'e-2')
 
-// converting ms to minutes
+// returning ,00
+// const rndRemain = (num) =>
+
+// converting ms to the format: minutes:seconds.mille seconds
 export function msToMinutes(ms) {
-  // converting ms into minutes:seconds
-  ms /= 1000
   const minutes = Math.floor(ms / 60)
     .toString()
     .padStart(2, '0')
   const seconds = Math.floor(ms - minutes * 60)
     .toString()
     .padStart(2, '0')
-  return `${minutes}:${seconds}`
+
+  const centiseconds = 0
+  if (!ms) centiseconds = ms.toString().split('.')[1].slice(0, 2)
+
+  return `${minutes}:${seconds}.${centiseconds}`
 }
 
 // checking letter case

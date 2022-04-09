@@ -1,9 +1,16 @@
 <script setup>
 import { computed } from '@vue/reactivity'
+import { onUnmounted } from 'vue'
+import { msToMinutes } from '../services/helpers.js'
 import store from '../services/store'
 
 const tempWithoutMistake = computed(() => store.data.tempWithoutMistake)
 const withoutMistake = computed(() => store.data.withoutMistake)
+
+onUnmounted(() => {
+  clearInterval(store.data.stopwatch)
+  store.data.elapsedTime = 0
+})
 </script>
 
 <template>
@@ -18,6 +25,9 @@ const withoutMistake = computed(() => store.data.withoutMistake)
         {{ withoutMistake }}
       </div>
     </div>
+    <div class="elapsed-time">
+      {{ store.data.elapsedTime }}
+    </div>
   </div>
 </template>
 
@@ -26,7 +36,7 @@ const withoutMistake = computed(() => store.data.withoutMistake)
   display: inline-block;
   position: absolute;
   margin-left: 10px;
-  width: 100px;
+  width: 200px;
   height: 370px;
   background-color: rgb(123, 118, 123);
   padding: 5px;

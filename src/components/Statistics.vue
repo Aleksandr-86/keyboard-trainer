@@ -3,6 +3,7 @@ import { onUnmounted } from 'vue'
 import store from '../services/store.js'
 import { rnd } from '../services/helpers.js'
 import { msToMinutes } from '../services/helpers.js'
+import { computed } from '@vue/reactivity'
 
 let numCorrect = 0
 let numWrong = 0

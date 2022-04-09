@@ -15,8 +15,12 @@ const data = reactive({
   statArr: Object,
   firstIndex: Number,
   indexArr: Number,
+
   timerStart: Number,
   timerStop: Number,
+  stopwatch: Object,
+  elapsedTime: '00:00.00',
+
   tempWithoutMistake: 0,
   withoutMistake: 0
 })
