@@ -43,6 +43,7 @@ const charPerSecond = Math.floor((numTotal * 60) / (msTime / 1000))
 
 onUnmounted(() => {
   store.state.bTimer = false
+  store.data.tempWithoutMistake = 0
   store.data.withoutMistake = 0
 })
 </script>
@@ -76,7 +77,9 @@ onUnmounted(() => {
     </div>
 
     <div>
-      <div class="stat-first-row">Знаков подряд без ошибки:</div>
+      <div class="stat-first-row">
+        Максимальное количество знаков подряд без ошибки:
+      </div>
       <div class="stat-second-row">{{ store.data.withoutMistake }}</div>
     </div>
   </div>
@@ -113,7 +116,8 @@ onUnmounted(() => {
   background-color: rgb(215, 215, 215);
   padding: 2vh;
   border-radius: 1vh;
-  box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.3); */
+  box-shadow: 0 0 10vh 1vh rgba(0, 0, 0, 0.5);
   z-index: 10;
 
   overflow: hidden;

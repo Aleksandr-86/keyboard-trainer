@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, computed, onUnmounted } from 'vue'
+import { reactive, computed } from 'vue'
 import store from '/src/services/store.js'
 import { charTest } from '/src/services/helpers.js'
 import FingerPointers from './FingerPointers.vue'

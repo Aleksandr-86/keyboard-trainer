@@ -1,15 +1,9 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import { onUnmounted } from 'vue'
 import store from '../services/store'
 
 const tempWithoutMistake = computed(() => store.data.tempWithoutMistake)
 const withoutMistake = computed(() => store.data.withoutMistake)
-
-onUnmounted(() => {
-  store.data.tempWithoutMistake = 0
-  store.data.withoutMistake = 0
-})
 </script>
 
 <template>
