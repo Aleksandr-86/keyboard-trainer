@@ -6,7 +6,7 @@ import store from '../services/store'
 
 const tempWithoutMistake = computed(() => store.data.tempWithoutMistake)
 const withoutMistake = computed(() => store.data.withoutMistake)
-// const elapsedTimeStr = msToMinutes(store.data.elapsedTime)
+const elapsedTimeStr = computed(() => msToMinutes(store.data.elapsedTime))
 
 onUnmounted(() => {
   clearInterval(store.data.stopwatch)
@@ -27,7 +27,7 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="elapsed-time">
-      {{ store.data.elapsedTime }}
+      {{ elapsedTimeStr }}
     </div>
   </div>
 </template>
