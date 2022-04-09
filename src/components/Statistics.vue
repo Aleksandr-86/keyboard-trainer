@@ -39,7 +39,7 @@ if (numTotal >= 11 && numTotal <= 14) {
 const strCorrectPercent = `(${rnd((numCorrect * 100) / numTotal)}%)`
 const strWrongPercent = `(${rnd((numWrong * 100) / numTotal)}%)`
 const charPerSecond = Math.floor(
-  (numTotal * 60) / (store.data.elapsedTime / 100)
+  (numTotal * 60) / (Math.floor(store.data.elapsedTime) / 100)
 )
 
 onUnmounted(() => {

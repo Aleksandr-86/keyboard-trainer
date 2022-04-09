@@ -7,8 +7,6 @@ import FingerPointers from './FingerPointers.vue'
 import CurrentStatistics from './CurrentStatistics.vue'
 import Keyboard from './Keyboard.vue'
 
-console.log(store.data.elapsedTime)
-
 const events = reactive({
   keyDn: Object,
   keyUp: Object,
@@ -44,7 +42,6 @@ const eListener = function (e) {
 
     // updating elapsed time reactive variables
     store.data.stopwatch = setInterval(() => {
-      // elapsed time in centiseconds
       store.data.elapsedTime = (performance.now() - store.data.timerStart) / 10
       store.data.elapsedTimeStr = msToMinutes(store.data.elapsedTime * 10)
     }, 10)
