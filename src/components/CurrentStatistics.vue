@@ -3,6 +3,7 @@ import { computed } from '@vue/reactivity'
 import { onUnmounted } from 'vue'
 import { msToMinutes } from '../services/helpers.js'
 import store from '../services/store'
+import CharMeter from './CharMeter.vue'
 
 const tempWithoutMistake = computed(() => store.data.tempWithoutMistake)
 const withoutMistake = computed(() => store.data.withoutMistake)
@@ -40,17 +41,17 @@ onUnmounted(() => {
   display: inline-block;
   position: absolute;
   margin-left: 10px;
-  width: 200px;
+  width: 150px;
   height: 370px;
   background-color: rgb(123, 118, 123);
   padding: 5px;
-  font-size: 30px;
+  font-size: 35px;
 }
 
 .current-stat > div {
   display: flex;
   flex-direction: column;
-  height: 80px;
+  height: 100px;
   padding: 2px;
   border: 2px solid darkviolet;
   border-radius: 10px;

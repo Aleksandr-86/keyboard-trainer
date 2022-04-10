@@ -4,6 +4,7 @@ import SettingsMenu from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
 import Statistics from './components/Statistics.vue'
 import store from '/src/services/store.js'
+import CharMeter from './components/CharMeter.vue'
 </script>
 
 <template>
@@ -11,6 +12,7 @@ import store from '/src/services/store.js'
   <SettingsMenu v-if="store.state.settings" />
   <Field v-if="store.state.work" />
   <Statistics v-if="store.state.statistics" />
+  <!-- <CharMeter /> -->
 </template>
 
 <style>

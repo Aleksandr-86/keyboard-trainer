@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from '@vue/reactivity'
+import CharMeter from './CharMeter.vue'
 
 const props = defineProps({
   keyDown: String,
