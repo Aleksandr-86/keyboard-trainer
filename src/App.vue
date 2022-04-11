@@ -12,7 +12,7 @@ import CharMeter from './components/CharMeter.vue'
   <SettingsMenu v-if="store.state.settings" />
   <Field v-if="store.state.work" />
   <Statistics v-if="store.state.statistics" />
-  <!-- <CharMeter /> -->
+  <CharMeter :speed="10" />
 </template>
 
 <style>
@@ -29,7 +29,7 @@ html {
 #app {
   width: 100vw;
   height: 100vh;
-  background-color: rgb(212, 198, 166);
+  background-color: pink;
 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
