@@ -1,15 +1,13 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import { ref } from 'vue'
 
-// const props = defineProps({
-//   speed: 200
-// })
+const props = defineProps({
+  typingSpeed: Number
+})
 
-const speed = ref()
-speed.value = 0
-// const cp = computed(() => 'rotate(200deg)')
-const cp = computed(() => `rotate(${speed.value}deg)`)
+const speedToAngle = computed(() => {
+  return props.typingSpeed + 90
+})
 </script>
 
 <template>
@@ -32,7 +30,7 @@ const cp = computed(() => `rotate(${speed.value}deg)`)
         class="arrow"
         d="M 33.8521,125.7799 L 72.5,58.8397"
         stroke="red"
-        :style="{ transform: cp }" />
+        :style="{ transform: `rotate(${speedToAngle}deg)` }" />
     </svg>
   </div>
 </template>
@@ -72,7 +70,7 @@ const cp = computed(() => `rotate(${speed.value}deg)`)
 }
 
 .arrow {
-  /* transform: rotate(100deg); */
   transform-origin: 50% 50%;
+  transition: transform 3s;
 }
 </style>
