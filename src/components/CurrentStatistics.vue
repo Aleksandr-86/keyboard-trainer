@@ -19,11 +19,11 @@ onUnmounted(() => {
   <div class="current-stat">
     <div>
       <div
-        v-if="tempWithoutMistake === 0 || tempWithoutMistake < withoutMistake"
-        class="temp-in-a-row">
+        class="temp-in-a-row"
+        v-if="tempWithoutMistake === 0 || tempWithoutMistake < withoutMistake">
         {{ tempWithoutMistake }}
       </div>
-      <div v-if="withoutMistake !== 0" class="in-a-row">
+      <div class="in-a-row" v-if="withoutMistake !== 0">
         {{ withoutMistake }}
       </div>
     </div>
@@ -48,7 +48,8 @@ onUnmounted(() => {
   font-size: 35px;
 }
 
-.current-stat > div {
+.current-stat > div:first-child,
+.elapsed-time {
   display: flex;
   flex-direction: column;
   height: 100px;

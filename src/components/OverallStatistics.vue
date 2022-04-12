@@ -43,7 +43,9 @@ onUnmounted(() => {
 <template>
   <div class="stat-base">
     <h3>Результат</h3>
-    <button @click.left="store.setFalse('statistics')" class="stat-close">
+    <button
+      @click.left="store.setFalse('overallStatistics')"
+      class="stat-close">
       +
     </button>
 
@@ -76,8 +78,8 @@ onUnmounted(() => {
     </div>
   </div>
   <div
-    @click.left="store.setFalse('statistics')"
-    v-if="store.state.statistics"
+    @click.left="store.setFalse('overallStatistics')"
+    v-if="store.state.overallStatistics"
     class="overlay"></div>
 </template>
 
@@ -124,7 +126,7 @@ onUnmounted(() => {
   user-select: none;
   position: absolute;
   z-index: 1;
-  top: -1vh;
+  top: -7vh;
   right: 0.4vh;
   cursor: pointer;
   transform: rotate(45deg);
@@ -134,7 +136,7 @@ onUnmounted(() => {
 .stat-close:hover {
   transform: rotate(45deg) scale(1.1);
   color: darkviolet;
-  /* transition: all 300ms ease-in-out; */
+  transition: all 300ms ease-in-out;
 }
 
 h3 {

@@ -7,7 +7,7 @@ const state = reactive({
   keyboard: true,
   settings: false,
   bTimer: false,
-  statistics: false
+  overallStatistics: false
 })
 
 const data = reactive({
@@ -98,10 +98,10 @@ const moveCaret = function () {
   }
 
   if (data.indexArr >= data.fragmentArr.length) {
-    // shouting down the field
+    // shutting down the field
     data.timerStop = performance.now()
     state.work = false
-    state.statistics = true
+    state.overallStatistics = true
     return
   } else if (data.indexArr >= 200 + data.firstIndex) {
     loadNextChars()

@@ -2,7 +2,7 @@
 import NavigationMenu from './components/NavigationMenu.vue'
 import SettingsMenu from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
-import Statistics from './components/Statistics.vue'
+import OverallStatistics from './components/OverallStatistics.vue'
 import store from '/src/services/store.js'
 import CharMeter from './components/CharMeter.vue'
 </script>
@@ -11,8 +11,8 @@ import CharMeter from './components/CharMeter.vue'
   <NavigationMenu />
   <SettingsMenu v-if="store.state.settings" />
   <Field v-if="store.state.work" />
-  <Statistics v-if="store.state.statistics" />
-  <CharMeter :typing-speed="20" />
+  <OverallStatistics v-if="store.state.overallStatistics" />
+  <!-- <CharMeter :typing-speed="10" /> -->
 </template>
 
 <style>
