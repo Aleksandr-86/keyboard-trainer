@@ -55,7 +55,7 @@ const eListener = function (e) {
     }, 10)
   }
 
-  store.recordingStat(e)
+  store.recordingStatistics(e)
   store.moveCaret('')
 }
 

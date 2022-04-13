@@ -33,6 +33,7 @@ onUnmounted(() => {
     <div class="char-per-minute">
       {{ store.data.charPerMin }}
     </div>
+    <!-- <CharMeter :typing-speed="store.data.charPerMin" /> -->
   </div>
 </template>
 

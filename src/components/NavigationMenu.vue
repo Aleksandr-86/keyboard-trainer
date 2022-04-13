@@ -61,7 +61,7 @@ async function fillFieldFromBuffer() {
     </li>
     <li><a @click="store.state.caretPosition = 198" href="#!">Справка</a></li>
     <li>
-      <a @click="store.changeState('settings')" href="#!">Настройки</a>
+      <a @click="store.toggleState('settings')" href="#!">Настройки</a>
     </li>
   </ul>
 </template>

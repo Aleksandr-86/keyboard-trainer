@@ -1,12 +1,22 @@
-<script setup></script>
+<script setup>
+import { computed } from '@vue/reactivity'
+import store from '/src/services/store.js'
+
+const fn = function () {
+  console.log(store.state.checkbox)
+}
+</script>
 
 <template>
   <div class="settings-menu">
-    <label class="settings-btn-close">+</label>
+    <button @click="fn">кнопка</button>
+    <label class="settings-btn-close" @click="store.setFalse('settings')"
+      >+</label
+    >
     <div class="settings-title">Настройки:</div>
     <label class="custom-checkbox">
       Игнорировать регистр букв
-      <input type="checkbox" id="box1" />
+      <input type="checkbox" id="box1" v-model="store.state.checkbox" />
       <span class="check-mark"></span>
     </label>
     <label class="custom-checkbox">

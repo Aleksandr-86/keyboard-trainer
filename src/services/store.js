@@ -7,7 +7,8 @@ const state = reactive({
   keyboard: true,
   settings: false,
   bTimer: false,
-  overallStatistics: false
+  overallStatistics: false,
+  checkbox: false
 })
 
 const data = reactive({
@@ -32,7 +33,7 @@ const data = reactive({
   withoutMistake: 0
 })
 
-const recordingStat = function (e) {
+const recordingStatistics = function (e) {
   if (e.key === data.fragmentArr[data.indexArr]) {
     data.statArr[data.indexArr] = '1' // if char is correct
     data.tempWithoutMistake++
@@ -51,7 +52,7 @@ const recordingStat = function (e) {
   }
 }
 
-const changeState = function (propertyName) {
+const toggleState = function (propertyName) {
   state[propertyName] = !state[propertyName]
 }
 
@@ -111,8 +112,8 @@ const moveCaret = function () {
 export default {
   state,
   data,
-  recordingStat,
-  changeState,
+  recordingStatistics,
+  toggleState,
   setTrue,
   setFalse,
   loadFragment,
