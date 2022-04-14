@@ -18,15 +18,16 @@ const speedToAngle = computed(() => {
 const enable = function () {
   document
     .querySelector('#contour')
-    .setAttribute('d', 'M 0,0 L 300,0 L 300,25 L 0,25 L 0,0')
+    .setAttribute('d', 'M 0,0 L 200,0 L 200, L 0,25 L 0,0')
 }
 </script>
 
 <template>
   <button @click="enable">добавить</button>
   <div class="meter-wrapper">
-    <svg width="300px" height="50px" view-box="0 0 300 50">
-      <path id="contour" d="M 0,0 L 300,0 L 300,50 L 0,50 L 0,0" />
+    <svg width="200px" height="50px" view-box="0 0 200 50">
+      <path id="contour" d="M 0,0 L 200,0" />
+      <path id="meter-grid" d="M 0,0 L 300,0" />
     </svg>
 
     <!--
@@ -79,7 +80,7 @@ button {
   /* animation: draw 5s linear forwards; */
   fill: transparent;
   stroke: black;
-  stroke-width: 3;
+  stroke-width: 2;
   /* transition: d 3s; */
 
   transform: rotateY(10deg);
@@ -87,16 +88,22 @@ button {
   transform-origin: center;
 }
 
-.anim {
+#meter-grid {
+  stroke: black;
+  stroke-width: 25;
+  stroke-dasharray: 1 5;
 }
 
 .meter-wrapper {
+  width: 200px;
+  height: 50px;
   /* position: absolute; */
   /* left: 653px; */
   margin: 20px auto;
-  height: 50px;
+  /* height: 50px; */
   /* padding: 2px; */
   background-color: wheat;
+  border: 1px black solid;
 }
 
 .violet-range {

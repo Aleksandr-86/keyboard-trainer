@@ -12,7 +12,7 @@ import CharMeter from './components/CharMeter.vue'
   <SettingsMenu v-if="store.state.settings" />
   <Field v-if="store.state.work" />
   <OverallStatistics v-if="store.state.overallStatistics" />
-  <!-- <CharMeter :typing-speed="10" /> -->
+  <CharMeter :typing-speed="10" />
 </template>
 
 <style>
