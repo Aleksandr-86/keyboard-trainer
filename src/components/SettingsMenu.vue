@@ -9,29 +9,29 @@ const fn = function () {
 
 <template>
   <div class="settings-menu">
-    <button @click="fn">кнопка</button>
+    <!-- <button @click="fn">кнопка</button> -->
     <label class="settings-btn-close" @click="store.setFalse('settings')"
       >+</label
     >
     <div class="settings-title">Настройки:</div>
     <label class="custom-checkbox">
-      Игнорировать регистр букв
+      <div class="settings-description">Игнорировать регистр букв</div>
       <input type="checkbox" id="box1" v-model="store.state.checkbox" />
-      <span class="check-mark"></span>
+      <div class="check-mark"></div>
     </label>
     <label class="custom-checkbox">
-      Скрывать указатели пальцев
+      <div class="settings-description">Скрывать указатели пальцев</div>
       <input type="checkbox" id="box2" />
       <span class="check-mark"></span>
     </label>
     <label class="custom-checkbox">
-      Скрывать клавиатуру
+      <div class="settings-description">Скрывать клавиатуру</div>
       <input type="checkbox" id="box3" />
       <span class="check-mark"></span>
     </label>
-    Игнорировать ввод символов <br />
+    <div class="settings-description">Игнорировать набор символов</div>
     <label class="custom-checkbox">
-      несоответствущего языка
+      <div class="settings-description">несоответствущего языка</div>
       <input type="checkbox" id="box4" />
       <span class="check-mark"></span>
     </label>
@@ -45,11 +45,14 @@ const fn = function () {
     </div>
     <p class="settings-description"></p>
     <p class="settings-author"></p>
-    <a class="settings-link" href="#">ссылка на страницу</a>
+    <a class="settings-link" href="#!">ссылка на страницу</a>
   </div>
 </template>
 
 <style>
+.settings-description {
+  text-align: left;
+}
 .settings-menu {
   position: fixed;
   z-index: 2;

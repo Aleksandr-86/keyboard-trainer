@@ -11,6 +11,13 @@ const state = reactive({
   checkbox: false
 })
 
+const storage = reactive({
+  letterCase: false,
+  pointers: true,
+  keyboard: true,
+  inapLang: true
+})
+
 const data = reactive({
   fragmentArr: Object,
   statArr: Object,
