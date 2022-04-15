@@ -39,14 +39,23 @@ const data = reactive({
 })
 
 const recordingStatistics = function (e) {
-  if (e.key === data.fragmentArr[data.indexArr]) {
+  let key = e.key
+  let char = data.fragmentArr[data.indexArr]
+
+  // settings: ignore letter case
+  if (storage.letterCase) {
+    key = key.toLowerCase()
+    char = char.toLowerCase()
+  }
+
+  if (key === char) {
     data.statArr[data.indexArr] = '1' // if char is correct
     data.tempWithoutMistake++
     if (data.withoutMistake < data.tempWithoutMistake) {
       data.withoutMistake = data.tempWithoutMistake
     }
     data.numCorrect++
-  } else if (e.key !== data.fragmentArr[data.indexArr]) {
+  } else if (key !== char) {
     data.statArr[data.indexArr] = '2' // if char is wrong
     // counting amount without mistake
     if (data.withoutMistake < data.tempWithoutMistake) {

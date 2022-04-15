@@ -6,8 +6,8 @@ import OverallStatistics from './components/OverallStatistics.vue'
 import store from '/src/services/store.js'
 import CharMeter from './components/CharMeter.vue'
 import { onMounted } from 'vue'
-const showStore = () => console.warn(store.storage.letterCase)
-const showLocal = () => console.warn(localStorage.letterCase)
+const showStore = () => console.warn(store.storage.pointers)
+const showLocal = () => console.warn(localStorage.keyboard)
 
 onMounted(() => {
   for (const propertyName in store.storage) {
@@ -24,8 +24,8 @@ onMounted(() => {
 
 <template>
   <NavigationMenu />
-  <button @click="showStore">store</button>
-  <button @click="showLocal">local</button>
+  <!-- <button @click="showStore">pointers</button>
+  <button @click="showLocal">keyboard</button> -->
   <SettingsMenu v-if="store.state.settings" />
   <Field v-if="store.state.work" />
   <OverallStatistics v-if="store.state.overallStatistics" />

@@ -43,11 +43,9 @@ onUnmounted(() => {
 <template>
   <div class="stat-base">
     <h3>Результат</h3>
-    <button
-      @click.left="store.setFalse('overallStatistics')"
-      class="stat-close">
+    <label @click.left="store.setFalse('overallStatistics')" class="stat-close">
       +
-    </button>
+    </label>
 
     <div class="stat-first-row">Время набора:</div>
     <div class="stat-second-row">{{ store.data.elapsedTimeStr }}</div>
@@ -126,7 +124,7 @@ onUnmounted(() => {
   user-select: none;
   position: absolute;
   z-index: 1;
-  top: -7vh;
+  top: -1vh;
   right: 0.4vh;
   cursor: pointer;
   transform: rotate(45deg);

@@ -71,7 +71,7 @@ const charsArr = computed(() =>
 <template>
   <div>
     <FingerPointers
-      v-if="store.state.pointers && store.state.work"
+      v-if="!store.storage.pointers && store.state.work"
       :key-down="events.keyDn.key"
       :caps="events.capsLock"
       :lang="layoutLang" />
@@ -102,7 +102,7 @@ const charsArr = computed(() =>
   </div>
 
   <Keyboard
-    v-if="store.state.keyboard && store.state.work"
+    v-if="!store.storage.keyboard && store.state.work"
     :key-down="events.keyDn.code"
     lang="rus" />
 </template>
