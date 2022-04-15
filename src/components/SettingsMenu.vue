@@ -19,18 +19,30 @@ import store from '/src/services/store.js'
     </label>
     <label class="custom-checkbox">
       <div class="settings-description">Скрывать указатели пальцев</div>
-      <input type="checkbox" id="box2" />
+      <input
+        type="checkbox"
+        id="box2"
+        v-model="store.storage.pointers"
+        @click="store.toggleStorage('pointers')" />
       <span class="check-mark"></span>
     </label>
     <label class="custom-checkbox">
       <div class="settings-description">Скрывать клавиатуру</div>
-      <input type="checkbox" id="box3" />
+      <input
+        type="checkbox"
+        id="box3"
+        v-model="store.storage.keyboard"
+        @click="store.toggleStorage('keyboard')" />
       <span class="check-mark"></span>
     </label>
     <div class="settings-description">Игнорировать набор символов</div>
     <label class="custom-checkbox">
       <div class="settings-description">несоответствущего языка</div>
-      <input type="checkbox" id="box4" />
+      <input
+        type="checkbox"
+        id="box4"
+        v-model="store.storage.inapLang"
+        @click="store.toggleStorage('inapLang')" />
       <span class="check-mark"></span>
     </label>
     <div class="settings-picture">

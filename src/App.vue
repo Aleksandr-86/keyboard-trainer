@@ -10,8 +10,15 @@ const showStore = () => console.warn(store.storage.letterCase)
 const showLocal = () => console.warn(localStorage.letterCase)
 
 onMounted(() => {
-  if (localStorage.letterCase)
-    store.storage.letterCase = localStorage.letterCase === 'true'
+  for (const propertyName in store.storage) {
+    if (localStorage[propertyName])
+      store.storage[propertyName] = localStorage[propertyName] === 'true'
+  }
+
+  // if (localStorage.letterCase)
+  //   store.storage.letterCase = localStorage.letterCase === 'true'
+  // if (localStorage.pointers)
+  //   store.storage.pointers = localStorage.pointers === 'true'
 })
 </script>
 
@@ -44,7 +51,10 @@ html {
 #app {
   width: 100vw;
   height: 100vh;
-  background-color: pink;
+  /* background-color: pink; */
+  background: black url('/src/images/backgrounds/normal/mountain.jpg') no-repeat
+    fixed center center;
+  background-size: cover;
 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
