@@ -96,7 +96,7 @@ onUnmounted(() => {
             'char-wrong': statArr[index + firstIndex] === '2' && char !== ' '
           }
         ]">
-        <div v-if="char === '*'">&nbsp</div>
+        <div v-if="char === '\n'">&nbsp</div>
         <div v-else>{{ char }}</div>
       </div>
       <CurrentStatistics />

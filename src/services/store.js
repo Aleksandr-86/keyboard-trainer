@@ -1,5 +1,5 @@
 import { reactive, computed } from 'vue'
-import { charTest } from '/src/services/helpers.js'
+import { charTest, arrPreparer } from '/src/services/helpers.js'
 
 const state = reactive({
   work: false,
@@ -77,7 +77,10 @@ const setFalse = function (propertyName) {
 }
 
 const loadFragment = function (str) {
-  data.fragmentArr = str.split('')
+  console.log(str)
+  data.fragmentArr = arrPreparer(str)
+  console.log(data.fragmentArr)
+
   // creating and filling the empty statistic array
   data.statArr = new Array(data.fragmentArr.length).fill('0')
   data.firstIndex = 0
