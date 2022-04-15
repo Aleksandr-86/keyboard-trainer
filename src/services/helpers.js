@@ -126,7 +126,7 @@ export const remEmoji = (str) => str.replace(regexEmoji, '')
 
 // returns false if a char is inappropriate for being typed
 export const charTest = (char) =>
-  !/[0-9 А-ЯЁA-Z.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=]/i.test(char)
+  !/[0-9 А-ЯЁA-Z.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=\n]/i.test(char)
 
 export function langTest(char, langLayout) {
   if (/[А-ЯЁ]/i.test(char)) {

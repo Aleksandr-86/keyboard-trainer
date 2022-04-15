@@ -100,16 +100,23 @@ const moveCaret = function () {
 
   // checking inappropriate chars and skipping those
   let currentChar = data.fragmentArr[data.indexArr]
+
+  // checking special sign for skipping
+  while (currentChar === '\n') {
+    data.indexArr++
+    currentChar = data.fragmentArr[data.indexArr]
+  }
+
+  // checking inappropriate sign
   while (charTest(currentChar)) {
     if (
       data.fragmentArr[data.indexArr + 1] === ' ' &&
       data.fragmentArr[data.indexArr - 1] === ' '
-    )
+    ) {
       data.indexArr++
+    }
 
-    // data.fragmentArr[state.indexArr + state.firstIndex- 1]
     data.indexArr++
-
     currentChar = data.fragmentArr[data.indexArr]
   }
 
