@@ -88,7 +88,7 @@ export const arrPreparer = function (str) {
     // .replace(regexEmoji, '')
     .split(' ')
 
-  console.warn(tempArr)
+  // console.warn(tempArr)
 
   const arr = []
   let counter = 0
@@ -96,16 +96,20 @@ export const arrPreparer = function (str) {
   for (let i = 0; i < tempArr.length; i++) {
     const word = tempArr[i]
 
-    if (word === ' ' || word === '') {
+    if (word === ' ' && word === '') {
+      continue
+    } else if (counter === 0 && word === '\n') {
+      console.log(counter)
+      // skipping empty line
       continue
     } else if (word === '\n' || word.length + counter > 39) {
-      console.log(counter)
+      // console.log(counter)
       for (let j = 0; j < 40 - counter; j++) {
         arr.push('\n')
       }
       counter = 0
     } else if (word.length + counter <= 39) {
-      console.log(2)
+      // console.log(2)
       for (let j = 0; j < word.length; j++) {
         arr.push(word[j])
       }
