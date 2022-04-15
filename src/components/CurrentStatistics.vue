@@ -9,10 +9,7 @@ const tempWithoutMistake = computed(() => store.data.tempWithoutMistake)
 const withoutMistake = computed(() => store.data.withoutMistake)
 // const elapsedTimeStr = computed(() => msToMinutes(store.data.elapsedTime))
 
-onUnmounted(() => {
-  clearInterval(store.data.stopwatch)
-  // clearInterval(store.data.charPerMinute)
-})
+onUnmounted(() => {})
 </script>
 
 <template>

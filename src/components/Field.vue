@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, computed } from 'vue'
+import { reactive, computed, onUnmounted } from 'vue'
 import store from '/src/services/store.js'
 import { charTest } from '/src/services/helpers.js'
 import { msToMinutes } from '../services/helpers.js'
@@ -44,10 +44,7 @@ const eListener = function (e) {
     store.data.stopwatch = setInterval(() => {
       store.data.elapsedTime = performance.now() - store.data.timerStart
       store.data.elapsedTimeStr = msToMinutes(store.data.elapsedTime)
-    }, 10)
 
-    // creating and updating reactive char per minute variable
-    store.data.typingMeter = setInterval(() => {
       store.data.charPerMin = Math.floor(
         ((store.data.numCorrect + store.data.numWrong) * 60) /
           (Math.floor(store.data.elapsedTime) / 1000)
@@ -66,6 +63,11 @@ const charsArr = computed(() =>
     store.data.firstIndex + 200
   )
 )
+
+onUnmounted(() => {
+  clearInterval(store.data.stopwatch)
+  store.data.charPerMin = 0
+})
 </script>
 
 <template>

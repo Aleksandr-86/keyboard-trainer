@@ -27,8 +27,6 @@ const data = reactive({
   stopwatch: Object,
   elapsedTime: 0,
   elapsedTimeStr: '00:00.00',
-
-  typingMeter: Object,
   charPerMin: 0,
 
   numCorrect: 0,
@@ -49,15 +47,15 @@ const recordingStatistics = function (e) {
   }
 
   if (key === char) {
-    data.statArr[data.indexArr] = '1' // if char is correct
+    data.statArr[data.indexArr] = '1' // if the char is correct
     data.tempWithoutMistake++
     if (data.withoutMistake < data.tempWithoutMistake) {
       data.withoutMistake = data.tempWithoutMistake
     }
     data.numCorrect++
   } else if (key !== char) {
-    data.statArr[data.indexArr] = '2' // if char is wrong
-    // counting amount without mistake
+    data.statArr[data.indexArr] = '2' // if the char is wrong
+    // counting the number of letters without mistake
     if (data.withoutMistake < data.tempWithoutMistake) {
       data.withoutMistake = data.tempWithoutMistake
     }
