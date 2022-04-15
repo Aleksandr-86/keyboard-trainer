@@ -77,9 +77,9 @@ const setFalse = function (propertyName) {
 }
 
 const loadFragment = function (str) {
-  console.log(str)
+  // console.log(str)
   data.fragmentArr = arrPreparer(str)
-  console.log(data.fragmentArr)
+  // console.log(data.fragmentArr)
 
   // creating and filling the empty statistic array
   data.statArr = new Array(data.fragmentArr.length).fill('0')
