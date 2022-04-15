@@ -5,10 +5,20 @@ import Field from './components/Field.vue'
 import OverallStatistics from './components/OverallStatistics.vue'
 import store from '/src/services/store.js'
 import CharMeter from './components/CharMeter.vue'
+import { onMounted } from 'vue'
+const showStore = () => console.warn(store.storage.letterCase)
+const showLocal = () => console.warn(localStorage.letterCase)
+
+onMounted(() => {
+  if (localStorage.letterCase)
+    store.storage.letterCase = localStorage.letterCase === 'true'
+})
 </script>
 
 <template>
   <NavigationMenu />
+  <button @click="showStore">store</button>
+  <button @click="showLocal">local</button>
   <SettingsMenu v-if="store.state.settings" />
   <Field v-if="store.state.work" />
   <OverallStatistics v-if="store.state.overallStatistics" />
@@ -16,6 +26,11 @@ import CharMeter from './components/CharMeter.vue'
 </template>
 
 <style>
+button {
+  width: 100px;
+  height: 100px;
+  font-size: 30px;
+}
 * {
   margin: 0;
   padding: 0;

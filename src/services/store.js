@@ -3,8 +3,6 @@ import { charTest } from '/src/services/helpers.js'
 
 const state = reactive({
   work: false,
-  pointers: true,
-  keyboard: true,
   settings: false,
   bTimer: false,
   overallStatistics: false,
@@ -116,14 +114,21 @@ const moveCaret = function () {
   }
 }
 
+const toggleStorage = function (propertyName) {
+  storage[propertyName] = !storage[propertyName]
+  localStorage[propertyName] = storage[propertyName]
+}
+
 export default {
   state,
   data,
+  storage,
   recordingStatistics,
   toggleState,
   setTrue,
   setFalse,
   loadFragment,
   loadNextChars,
-  moveCaret
+  moveCaret,
+  toggleStorage
 }
