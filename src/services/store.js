@@ -102,7 +102,7 @@ const moveCaret = function () {
   let currentChar = data.fragmentArr[data.indexArr]
 
   // checking special sign for skipping
-  while (currentChar === '\n') {
+  while (currentChar === 'skip') {
     data.indexArr++
     currentChar = data.fragmentArr[data.indexArr]
   }
@@ -120,7 +120,10 @@ const moveCaret = function () {
     currentChar = data.fragmentArr[data.indexArr]
   }
 
-  if (data.indexArr >= data.fragmentArr.length) {
+  if (
+    data.indexArr >= data.fragmentArr.length ||
+    data.fragmentArr[data.indexArr] === 'end'
+  ) {
     // shutting down the field
     data.timerStop = performance.now()
     state.work = false

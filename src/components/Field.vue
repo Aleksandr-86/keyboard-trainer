@@ -93,12 +93,12 @@ onUnmounted(() => {
             'char-correct': statArr[index + firstIndex] === '1' && char !== ' '
           },
           {
-            'char-wrong': statArr[index + firstIndex] === '2' && char !== ' '
+            'char-wrong': statArr[index + firstIndex] === '2'
           }
         ]">
-        <!-- <div v-if="char === '\n'">&nbsp</div>
-        <div v-else>{{ char }}</div> -->
-        <div>{{ char }}</div>
+        <div v-if="char === 'skip'">&nbsp</div>
+        <div v-else-if="char === 'end'">&nbsp</div>
+        <div v-else>{{ char }}</div>
       </div>
       <CurrentStatistics />
     </div>
@@ -132,7 +132,7 @@ onUnmounted(() => {
   user-select: none;
   cursor: none;
   /* transition: visibility 3000ms, opacity 3000ms; */
-  background-color: pink;
+  /* background-coloa r: pink; */
 }
 
 /* .field::before {

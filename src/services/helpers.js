@@ -104,7 +104,7 @@ export const arrPreparer = function (str) {
     } else if (word === '\n' || word.length + counter > 39) {
       // console.log(counter)
       for (let j = 0; j < 40 - counter; j++) {
-        arr.push('\n')
+        arr.push('skip')
       }
       counter = 0
     } else if (word.length + counter <= 39) {
@@ -117,6 +117,13 @@ export const arrPreparer = function (str) {
     }
   }
 
+  arr.pop()
+  arr.push('end')
+  if (arr.length % 200 !== 0) {
+    for (let i = 0; i < arr.length % 200; i++) {
+      arr.push(' ')
+    }
+  }
   return arr
 }
 
