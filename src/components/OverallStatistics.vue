@@ -23,10 +23,7 @@ if (numTotal >= 11 && numTotal <= 14) {
 
 const strCorrectPercent = `(${rnd((numCorrect * 100) / numTotal, 2)}%)`
 const strWrongPercent = `(${rnd((numWrong * 100) / numTotal, 2)}%)`
-const charPerSecond = rnd(
-  (numTotal * 60) / (rnd(store.data.elapsedTime, 0) / 1000),
-  0
-)
+const charPerSecond = rnd((numTotal * 60) / (store.data.elapsedTime / 1000))
 
 onUnmounted(() => {
   store.state.bTimer = false
