@@ -167,10 +167,10 @@ export function langTest(char, langLayout) {
 }
 
 // rounding number to 0,00
-export const rnd = (num) => Number(Math.round(Number(num + 'e2')) + 'e-2')
-
-// returning ,00
-// const rndRemain = (num) =>
+// export const rnd = (num) => Number(Math.round(Number(num + 'e2')) + 'e-2')
+export const rnd = function (num, digit) {
+  return Number(Math.round(Number(num + 'e' + digit)) + 'e-' + digit)
+}
 
 // converting ms to the format: minutes:seconds.mille seconds
 export function msToMinutes(ms) {
