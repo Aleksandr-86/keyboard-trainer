@@ -81,9 +81,12 @@ const regexEmoji =
 
 // trim, remove \r, emoji and excess spaces => array
 export const arrPreparer = function (str) {
+  const lineLen = 40
+  let maxWordLen = 10
+
   const tempArr = str
     .trim()
-    .replace(/(\r\n)/g, ' \n ')
+    .replace(/(\n)|(\r\n)/g, ' \n ')
     // .replace(/ +/g, ' ')
     // .replace(regexEmoji, '')
     .split(' ')
@@ -95,35 +98,50 @@ export const arrPreparer = function (str) {
 
   for (let i = 0; i < tempArr.length; i++) {
     const word = tempArr[i]
+    const wordLen = word.length
 
     if (word === '' || word === ' ') {
+      console.log('первый')
       continue
-    } else if (word === '\n' && counter === 0) {
-      // skipping empty line
-      continue
-    } else if (word === '\n' || word.length + counter > 39) {
-      // console.log(counter)
+    } else if (word === '\n' && counter > 0) {
+      console.log('второй')
       for (let j = 0; j < 40 - counter; j++) {
         arr.push('skip')
       }
       counter = 0
-    } else if (word.length + counter <= 39) {
-      // console.log(2)
-      for (let j = 0; j < word.length; j++) {
+    } else if (word === '\n' && counter === 0) {
+      console.log('третий')
+      // skipping empty line
+      continue
+    } else if (word === '\n' || wordLen + counter > 39) {
+      console.log('четвёртый')
+      for (let j = 0; j < 40 - counter; j++) {
+        arr.push('skip')
+      }
+      counter = 0
+      i--
+    } else if (wordLen + counter <= 39) {
+      console.log('пятый')
+      for (let j = 0; j < wordLen; j++) {
         arr.push(word[j])
       }
       arr.push(' ')
-      counter = counter + word.length + 1
+      counter = counter + wordLen + 1
+    } else {
+      console.error('неучтённое условие!')
     }
   }
 
   arr.pop()
   arr.push('end')
-  if (arr.length % 200 !== 0) {
-    for (let i = 0; i < arr.length % 200; i++) {
+
+  const arrRemainder = arr.length % 200
+  if (arrRemainder !== 0) {
+    for (let i = 0; i < 200 - arrRemainder; i++) {
       arr.push(' ')
     }
   }
+
   return arr
 }
 
