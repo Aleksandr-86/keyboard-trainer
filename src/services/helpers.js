@@ -84,7 +84,7 @@ export const arrPreparer = function (str) {
   // number of characters per line
   const lineLen = 40
   // the maximum length of a word that will not be carried over to the next line
-  let maxWordLen = 999
+  let maxWordLen = 10
 
   const tempArr = str
     .trim()
