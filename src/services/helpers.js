@@ -105,7 +105,8 @@ export const arrPreparer = function (str) {
       continue
     } else if (word === '\n' && counter > 0) {
       console.log('второй')
-      for (let j = 0; j < 40 - counter; j++) {
+      // adding 'skip' signs till the end of the line
+      for (let j = 0; j < lineLen - counter; j++) {
         arr.push('skip')
       }
       counter = 0
@@ -113,22 +114,34 @@ export const arrPreparer = function (str) {
       console.log('третий')
       // skipping empty line
       continue
-    } else if (word === '\n' || wordLen + counter > 39) {
-      console.log('четвёртый')
-      for (let j = 0; j < 40 - counter; j++) {
-        arr.push('skip')
-      }
-      counter = 0
-      i--
-    } else if (wordLen + counter <= 39) {
-      console.log('пятый')
+    } else if (wordLen + counter < lineLen) {
       for (let j = 0; j < wordLen; j++) {
         arr.push(word[j])
       }
       arr.push(' ')
-      counter = counter + wordLen + 1
+      counter = (counter + wordLen + 1) % 40
+      console.log(`четвёртый, counter: ${counter}, word: ${word}`)
+    } else if (wordLen <= maxWordLen) {
+      for (let j = 0; j < lineLen - counter; j++) {
+        arr.push('skip')
+      }
+
+      for (let j = 0; j < wordLen; j++) {
+        arr.push(word[j])
+      }
+      arr.push(' ')
+      counter = wordLen + 1
+      console.log(`пятый, counter: ${counter}, word: ${word}`)
     } else {
-      console.error('неучтённое условие!')
+      console.log('шестой')
+      for (let j = 0; j < wordLen; j++) {
+        arr.push(word[j])
+      }
+      arr.push(' ')
+      counter = (wordLen - counter) % 40
+      counter++
+      // } else {
+      //   console.error('неучтённое условие!')
     }
   }
 
