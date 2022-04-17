@@ -81,8 +81,10 @@ const regexEmoji =
 
 // trim, remove \r, emoji and excess spaces => array
 export const arrPreparer = function (str) {
+  // number of characters per line
   const lineLen = 40
-  let maxWordLen = 10
+  // the maximum length of a word that will not be carried over to the next line
+  let maxWordLen = 999
 
   const tempArr = str
     .trim()
@@ -90,8 +92,6 @@ export const arrPreparer = function (str) {
     // .replace(/ +/g, ' ')
     // .replace(regexEmoji, '')
     .split(' ')
-
-  console.warn(tempArr)
 
   const arr = []
   let counter = 0
@@ -101,27 +101,23 @@ export const arrPreparer = function (str) {
     const wordLen = word.length
 
     if (word === '' || word === ' ') {
-      console.log('первый')
+      continue
+    } else if (word === '\n' && counter === 0) {
+      // skipping empty line
       continue
     } else if (word === '\n' && counter > 0) {
-      console.log('второй')
       // adding 'skip' signs till the end of the line
       for (let j = 0; j < lineLen - counter; j++) {
         arr.push('skip')
       }
       counter = 0
-    } else if (word === '\n' && counter === 0) {
-      console.log('третий')
-      // skipping empty line
-      continue
     } else if (wordLen + counter < lineLen) {
       for (let j = 0; j < wordLen; j++) {
         arr.push(word[j])
       }
       arr.push(' ')
       counter = (counter + wordLen + 1) % 40
-      console.log(`четвёртый, counter: ${counter}, word: ${word}`)
-    } else if (wordLen <= maxWordLen) {
+    } else if (wordLen <= maxWordLen || counter + wordLen === lineLen) {
       for (let j = 0; j < lineLen - counter; j++) {
         arr.push('skip')
       }
@@ -130,18 +126,13 @@ export const arrPreparer = function (str) {
         arr.push(word[j])
       }
       arr.push(' ')
-      counter = wordLen + 1
-      console.log(`пятый, counter: ${counter}, word: ${word}`)
+      counter = (wordLen + 1) % 40
     } else {
-      console.log('шестой')
       for (let j = 0; j < wordLen; j++) {
         arr.push(word[j])
       }
       arr.push(' ')
-      counter = (wordLen - counter) % 40
-      counter++
-      // } else {
-      //   console.error('неучтённое условие!')
+      counter = (counter + wordLen + 1) % 40
     }
   }
 
