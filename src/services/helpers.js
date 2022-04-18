@@ -89,9 +89,9 @@ export const arrPreparer = function (str) {
   const tempArr = str
     .trim()
     .replace(/(\n)|(\r\n)/g, ' \n ')
-    // .replace(/ +/g, ' ')
-    // .replace(regexEmoji, '')
+    .replace(/ +/g, ' ')
     .split(' ')
+  // .replace(regexEmoji, '')
 
   const arr = []
   let counter = 0
@@ -173,6 +173,10 @@ export function langTest(char, langLayout) {
 // rounding
 export const rnd = function (num, digit = 0) {
   return Number(Math.round(Number(num + 'e' + digit)) + 'e-' + digit)
+}
+
+export const randomNum = function (min, max) {
+  return Math.floor(Math.random() * (max - min + 1))
 }
 
 // converting ms to the format: minutes:seconds.mille seconds

@@ -1,5 +1,5 @@
 import { reactive, computed } from 'vue'
-import { charTest, arrPreparer } from '/src/services/helpers.js'
+import { charTest, arrPreparer, randomNum } from '/src/services/helpers.js'
 
 const state = reactive({
   work: false,
@@ -76,10 +76,24 @@ const setFalse = function (propertyName) {
   state[propertyName] = false
 }
 
-const loadFragment = function (str) {
-  // console.log(str)
-  data.fragmentArr = arrPreparer(str)
-  // console.log(data.fragmentArr)
+const loadFragment = function (str, amount) {
+  const textLength = str.length
+  const lowBound = str.indexOf('.', amount) + 1
+  const highBound = str.lastIndexOf('.', textLength - amount) + 1
+
+  let snippet
+  const randomPoint = randomNum(0, textLength)
+  if (randomNum <= lowBound) {
+    snippet = str.substring(0, lowBound)
+  } else if (randomNum >= highBound) {
+    snippet = str.substring(highBound, textLength)
+  } else {
+    const startOfSnippet = str.lastIndexOf('.', randomPoint) + 1
+    const endOfSnippet = str.indexOf('.', randomPoint + amount) + 1
+    snippet = str.substring(startOfSnippet, endOfSnippet).trim()
+  }
+
+  data.fragmentArr = arrPreparer(snippet)
 
   // creating and filling the empty statistic array
   data.statArr = new Array(data.fragmentArr.length).fill('0')

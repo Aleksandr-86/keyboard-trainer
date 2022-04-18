@@ -1,17 +1,13 @@
 <script setup>
 import { getBrowser } from '/src/services/helpers.js'
-import {
-  useLoadSnippet,
-  getRandomText,
-  foo
-} from '../services/useLoadSnippet.js'
+import { useRandomSnippet } from '../services/useRandomSnippet.js'
 import store from '/src/services/store.js'
 
-function initialAdjust() {
-  store.clearStat()
-  store.setTrue('work')
-  store.moveCaret()
-}
+// function initialAdjust() {
+//   store.clearStat()
+//   store.setTrue('work')
+//   store.moveCaret()
+// }
 
 async function fillFieldFromBuffer() {
   document.body.querySelector('#buffer').blur() // removing focus from an element
@@ -30,22 +26,8 @@ async function fillFieldFromBuffer() {
   }
 }
 
-async function loadRussianSnippet() {
-  // try {
-  //   const filePath = `/src/books/russian/some.txt`
-  //   fetch(filePath)
-  //     .then((response) => response.text())
-  //     .then((text) => {
-  //       store.loadFragment(text)
-  //     })
-  // } catch (error) {
-  //   return null
-  // }
-
-  // foo(console.log)
-
-  foo(store.loadFragment, `/src/books/russian/amphibian_man.txt`)
-  // initialAdjust()
+function loadRussianSnippet() {
+  useRandomSnippet(store.loadFragment, 'russian', 300)
 }
 </script>
 
