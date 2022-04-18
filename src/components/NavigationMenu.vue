@@ -1,42 +1,19 @@
 <script setup>
-import { useGetBrowser } from '/src/services/helpers.js'
+import { getBrowser } from '/src/services/helpers.js'
 import store from '/src/services/store.js'
 
 async function fillFieldFromBuffer() {
-  const br = useGetBrowser().browser
+  document.body.querySelector('#buffer').blur() // removing focus from an element
+
+  const br = getBrowser().browser
   if (br === 'chrome' || br === 'yabrowser') {
     let str = await navigator.clipboard.readText()
     // str = remEmoji(str) // removing emoji
     if (str === ' ' || str === '') return // buffer is empty
-    // this.blur() // removing focus from an element
     // loadBackground(localStorage.backgroundPicture)
-    // settingsMenu.classList.remove('settings-menu-open') // close settings menu
-
-    // clearing finger pointers
-    // fingerPointers
-    // .querySelectorAll('*')
-    // .forEach((elem) => elem.classList.add('pointer-disabled'))
-
-    // clearCounters()
-
-    // charInserter(strPreparer(str), 0)
-
-    // if (!box2.checked) fingerPointers.classList.remove('hidden')
-    // field.classList.remove('hidden')
-    // if (!box3.checked) keyboard.classList.remove('hidden')
-
     store.loadFragment(str)
-
-    if (store.state.work) {
-      document.body.querySelector('.field').focus()
-      store.data.tempWithoutMistake = 0
-      store.data.withoutMistake = 0
-    } else {
-      store.setTrue('work')
-    }
-
-    // store.state.work ? document.body.querySelector('.field').focus : store.setTrue
-
+    store.clearStat()
+    store.setTrue('work')
     store.moveCaret()
   } else if (br === 'firefox') {
     // let str = document.querySelector('#input').value
@@ -48,7 +25,7 @@ async function fillFieldFromBuffer() {
 <template>
   <ul class="nav">
     <li>
-      <a @click="fillFieldFromBuffer" href="#!">Буфер обмена</a>
+      <a @click="fillFieldFromBuffer" href="#!" id="buffer">Буфер обмена</a>
     </li>
     <li class="nav-children">
       <a href="#!">Отрывок</a>

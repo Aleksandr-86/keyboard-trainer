@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, computed, onUnmounted } from 'vue'
+import { reactive, computed, onUnmounted, onMounted } from 'vue'
 import store from '/src/services/store.js'
 import { charTest } from '/src/services/helpers.js'
 import { msToMinutes } from '../services/helpers.js'
@@ -18,16 +18,25 @@ const statArr = computed(() => store.data.statArr)
 const indexArr = computed(() => store.data.indexArr)
 const firstIndex = computed(() => store.data.firstIndex)
 
-// a custom directive
-const vFocus = {
-  mounted: (el) => el.focus()
-}
+// chars for field
+const charsArr = computed(() =>
+  store.data.fragmentArr.slice(
+    store.data.firstIndex,
+    store.data.firstIndex + 200
+  )
+)
 
 // event listener
 const eListener = function (e) {
   events.keyDn = e
   const code = e.code
-  if (code === 'ShiftLeft' || code === 'ShiftRight' || code === 'Backspace') {
+  console.log()
+  if (
+    code === 'ShiftLeft' ||
+    code === 'ShiftRight' ||
+    code === 'Backspace' ||
+    code === 'Enter'
+  ) {
     return
   }
 
@@ -44,7 +53,7 @@ const eListener = function (e) {
     store.data.stopwatch = setInterval(() => {
       store.data.elapsedTime = performance.now() - store.data.timerStart
       store.data.elapsedTimeStr = msToMinutes(store.data.elapsedTime)
-
+      // console.log(store.data.elapsedTime)
       store.data.charPerMin = Math.floor(
         ((store.data.numCorrect + store.data.numWrong) * 60) /
           (Math.floor(store.data.elapsedTime) / 1000)
@@ -56,15 +65,12 @@ const eListener = function (e) {
   store.moveCaret('')
 }
 
-// chars for field
-const charsArr = computed(() =>
-  store.data.fragmentArr.slice(
-    store.data.firstIndex,
-    store.data.firstIndex + 200
-  )
-)
+onMounted(() => {
+  document.body.addEventListener('keydown', eListener)
+})
 
 onUnmounted(() => {
+  document.body.removeEventListener('keydown', eListener)
   clearInterval(store.data.stopwatch)
   store.data.charPerMin = 0
 })
@@ -78,7 +84,8 @@ onUnmounted(() => {
       :caps="events.capsLock"
       :lang="layoutLang" />
 
-    <div class="field" v-focus tabindex="0" @keydown.prevent="eListener">
+    <!-- <div class="field" v-focus tabindex="0" @keydown.prevent="eListener"> -->
+    <div class="field">
       <div
         v-for="(char, index) in charsArr"
         :key="index"

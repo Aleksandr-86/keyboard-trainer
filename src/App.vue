@@ -23,7 +23,6 @@ onMounted(() => {
 
 <template>
   <NavigationMenu />
-  <button @click="showLocal">work</button>
   <SettingsMenu v-if="store.state.settings" />
   <Field v-if="store.state.work" />
   <OverallStatistics v-if="store.state.overallStatistics" />

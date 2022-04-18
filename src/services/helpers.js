@@ -1,5 +1,5 @@
 // defining the browser and returning object with information about it
-export function useGetBrowser() {
+export function getBrowser() {
   const ua = navigator.userAgent
 
   let bName = (function () {

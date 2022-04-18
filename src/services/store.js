@@ -139,6 +139,20 @@ const toggleStorage = function (propertyName) {
   localStorage[propertyName] = storage[propertyName]
 }
 
+const clearStat = function () {
+  state.bTimer = false
+  clearInterval(data.stopwatch)
+  data.elapsedTime = 0
+  data.elapsedTimeStr = '00:00.00'
+  data.charPerMin = 0
+
+  data.numCorrect = 0
+  data.numWrong = 0
+
+  data.tempWithoutMistake = 0
+  data.withoutMistake = 0
+}
+
 export default {
   state,
   data,
@@ -150,5 +164,6 @@ export default {
   loadFragment,
   loadNextChars,
   moveCaret,
-  toggleStorage
+  toggleStorage,
+  clearStat
 }
