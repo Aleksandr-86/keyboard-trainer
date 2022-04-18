@@ -85,6 +85,10 @@ const loadFragment = function (str) {
   data.statArr = new Array(data.fragmentArr.length).fill('0')
   data.firstIndex = 0
   data.indexArr = -1
+
+  clearStat()
+  setTrue('work')
+  moveCaret()
 }
 
 // loading next set of chars

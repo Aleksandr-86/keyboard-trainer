@@ -1,6 +1,17 @@
 <script setup>
 import { getBrowser } from '/src/services/helpers.js'
+import {
+  useLoadSnippet,
+  getRandomText,
+  foo
+} from '../services/useLoadSnippet.js'
 import store from '/src/services/store.js'
+
+function initialAdjust() {
+  store.clearStat()
+  store.setTrue('work')
+  store.moveCaret()
+}
 
 async function fillFieldFromBuffer() {
   document.body.querySelector('#buffer').blur() // removing focus from an element
@@ -12,13 +23,29 @@ async function fillFieldFromBuffer() {
     if (str === ' ' || str === '') return // buffer is empty
     // loadBackground(localStorage.backgroundPicture)
     store.loadFragment(str)
-    store.clearStat()
-    store.setTrue('work')
-    store.moveCaret()
+    // initialAdjust()
   } else if (br === 'firefox') {
     // let str = document.querySelector('#input').value
     // charInserter(strPreparer(str), 0)
   }
+}
+
+async function loadRussianSnippet() {
+  // try {
+  //   const filePath = `/src/books/russian/some.txt`
+  //   fetch(filePath)
+  //     .then((response) => response.text())
+  //     .then((text) => {
+  //       store.loadFragment(text)
+  //     })
+  // } catch (error) {
+  //   return null
+  // }
+
+  // foo(console.log)
+
+  foo(store.loadFragment, `/src/books/russian/amphibian_man.txt`)
+  // initialAdjust()
 }
 </script>
 
@@ -31,7 +58,7 @@ async function fillFieldFromBuffer() {
       <a href="#!">Отрывок</a>
       <ul>
         <li>
-          <a href="#!">На русском языке</a>
+          <a @click="loadRussianSnippet" href="#!">На русском языке</a>
         </li>
         <li><a href="#!">На английском языке</a></li>
       </ul>
