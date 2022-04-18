@@ -1,8 +1,7 @@
 <script setup>
 import { reactive, computed, onUnmounted, onMounted } from 'vue'
 import store from '/src/services/store.js'
-import { charTest } from '/src/services/helpers.js'
-import { msToMinutes } from '../services/helpers.js'
+import { charTest, msToMinutes } from '../services/helpers.js'
 import FingerPointers from './FingerPointers.vue'
 import CurrentStatistics from './CurrentStatistics.vue'
 import Keyboard from './Keyboard.vue'
@@ -30,19 +29,27 @@ const charsArr = computed(() =>
 const eListener = function (e) {
   events.keyDn = e
   const code = e.code
-  console.log()
+  const ctrl = e.ctrlKey
+  const shift = e.shiftKey
+
+  // console.log(
+  //   `altKey ${e.altKey}, ctrlKey ${e.ctrlKey}, shiftKey ${e.shiftKey}`
+  // )
+
   if (
     code === 'ShiftLeft' ||
     code === 'ShiftRight' ||
     code === 'Backspace' ||
-    code === 'Enter'
+    code === 'Enter' ||
+    code === 'ControlLeft' ||
+    code === 'ControlRight'
   ) {
     return
   }
 
-  events.capsLock = computed(
-    () => e.getModifierState && e.getModifierState('CapsLock') // Caps lock state
-  )
+  events.capsLock = e.getModifierState && e.getModifierState('CapsLock')
+
+  console.log(events.capsLock)
 
   // timer on
   if (!store.state.bTimer) {
@@ -84,7 +91,6 @@ onUnmounted(() => {
       :caps="events.capsLock"
       :lang="layoutLang" />
 
-    <!-- <div class="field" v-focus tabindex="0" @keydown.prevent="eListener"> -->
     <div class="field">
       <div
         v-for="(char, index) in charsArr"
