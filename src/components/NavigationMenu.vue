@@ -18,10 +18,6 @@ async function fillFieldFromBuffer() {
     // charInserter(strPreparer(str), 0)
   }
 }
-
-function loadRussianSnippet() {
-  store.randomSnippet('russian', 2)
-}
 </script>
 
 <template>
@@ -33,12 +29,18 @@ function loadRussianSnippet() {
       <a href="#!">Отрывок</a>
       <ul>
         <li>
-          <a @click="loadRussianSnippet" href="#!">На русском языке</a>
+          <a @click="store.randomSnippet('russian', 2)" href="#!"
+            >На русском языке</a
+          >
         </li>
-        <li><a href="#!">На английском языке</a></li>
+        <li>
+          <a @click="store.randomSnippet('english', 2)" href="#!"
+            >На английском языке</a
+          >
+        </li>
       </ul>
     </li>
-    <li><a @click="store.state.caretPosition = 198" href="#!">Справка</a></li>
+    <li><a href="#!">Справка</a></li>
     <li>
       <a @click="store.toggleState('settings')" href="#!">Настройки</a>
     </li>
