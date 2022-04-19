@@ -6,6 +6,8 @@ import OverallStatistics from './components/OverallStatistics.vue'
 import store from '/src/services/store.js'
 import CharMeter from './components/CharMeter.vue'
 import { onMounted } from 'vue'
+import { arrBackgrounds } from '/src/services/background-list.js'
+import { computed } from '@vue/reactivity'
 
 onMounted(() => {
   for (const propertyName in store.storage) {
@@ -13,10 +15,9 @@ onMounted(() => {
       store.storage[propertyName] = localStorage[propertyName] === 'true'
   }
 
-  // if (localStorage.letterCase)
-  //   store.storage.letterCase = localStorage.letterCase === 'true'
-  // if (localStorage.pointers)
-  //   store.storage.pointers = localStorage.pointers === 'true'
+  const obj = store.storage.background
+  document.body.style.background = `black url("/src/images/backgrounds/normal/${obj.name}.jpg") no-repeat fixed center center`
+  document.body.style.backgroundSize = 'cover'
 })
 
 const fn = function () {
@@ -32,6 +33,8 @@ const fn = function () {
   <OverallStatistics v-if="store.state.overallStatistics" />
   <!-- <CharMeter :typing-speed="10" /> -->
 </template>
+
+<style scoped></style>
 
 <style>
 * {
@@ -54,14 +57,13 @@ html {
 #app {
   width: 100vw;
   height: 100vh;
-  /* background-color: pink; */
-  background: black url('/src/images/backgrounds/normal/mountain.jpg') no-repeat
-    fixed center center;
-  background-size: cover;
+  /* background: pink no-repeat fixed center center; */
+  /* background-size: cover; */
 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background 1000ms linear;
   text-align: center;
   /* color: hsl(300, 100%, 20%); */
   /* margin-top: 60px; */

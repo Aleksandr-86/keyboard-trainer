@@ -8,6 +8,7 @@ import {
 } from '/src/services/helpers.js'
 
 import bookList from '/src/services/book-list.js'
+import { arrBackgrounds } from '/src/services/background-list.js'
 
 const state = reactive({
   work: false,
@@ -21,7 +22,8 @@ const storage = reactive({
   letterCase: false,
   pointers: true,
   keyboard: true,
-  inapLang: true
+  inapLang: true,
+  background: arrBackgrounds[5]
 })
 
 const data = reactive({

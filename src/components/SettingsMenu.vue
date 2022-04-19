@@ -8,6 +8,7 @@ import store from '/src/services/store.js'
       >+</label
     >
     <div class="settings-title">Настройки:</div>
+
     <label class="custom-checkbox">
       <div class="settings-description">Игнорировать регистр букв</div>
       <input
@@ -17,6 +18,7 @@ import store from '/src/services/store.js'
         @click="store.toggleStorage('letterCase')" />
       <div class="check-mark"></div>
     </label>
+
     <label class="custom-checkbox">
       <div class="settings-description">Скрывать указатели пальцев</div>
       <input
@@ -26,6 +28,7 @@ import store from '/src/services/store.js'
         @click="store.toggleStorage('pointers')" />
       <span class="check-mark"></span>
     </label>
+
     <label class="custom-checkbox">
       <div class="settings-description">Скрывать клавиатуру</div>
       <input
@@ -35,6 +38,7 @@ import store from '/src/services/store.js'
         @click="store.toggleStorage('keyboard')" />
       <span class="check-mark"></span>
     </label>
+
     <div class="settings-description">Игнорировать набор символов</div>
     <label class="custom-checkbox">
       <div class="settings-description">несоответствущего языка</div>
@@ -45,6 +49,7 @@ import store from '/src/services/store.js'
         @click="store.toggleStorage('inapLang')" />
       <span class="check-mark"></span>
     </label>
+
     <div class="settings-picture">
       <button type="button" id="settings-btn-previous"></button>
       <img
@@ -53,6 +58,7 @@ import store from '/src/services/store.js'
         alt="background-preview" />
       <button type="button" id="settings-btn-next"></button>
     </div>
+
     <p class="settings-description"></p>
     <p class="settings-author"></p>
     <a class="settings-link" href="#!">ссылка на страницу</a>
@@ -63,6 +69,7 @@ import store from '/src/services/store.js'
 .settings-description {
   text-align: left;
 }
+
 .settings-menu {
   position: fixed;
   z-index: 2;

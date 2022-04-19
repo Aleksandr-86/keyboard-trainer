@@ -34,7 +34,7 @@ async function fillFieldFromBuffer() {
           >
         </li>
         <li>
-          <a @click="store.randomSnippet('english', 300)" href="#!"
+          <a @click="store.randomSnippet('english', 3)" href="#!"
             >На английском языке</a
           >
         </li>

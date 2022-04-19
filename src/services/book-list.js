@@ -30,17 +30,17 @@ const arrOfEngBooks = [
   },
   {
     title: 'Приключения Шерлока Холмса',
-    author: 'Артура Игнейшуса Конан Дойла',
+    author: 'Артура Конан Дойла',
     name: 'the_adventures_of_sherlock_holmes'
   },
   {
     title: 'Великий Гэтсби',
-    author: 'Френсиса Скотта Кей Фицджеральда',
+    author: 'Френсиса Скотта Фицджеральда',
     name: 'the_great_gatsby'
   },
   {
     title: 'Затерянный мир',
-    author: 'Артура Игнейшуса Конан Дойла',
+    author: 'Артура Конан Дойла',
     name: 'the_lost_world'
   },
   {
