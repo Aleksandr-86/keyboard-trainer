@@ -6,7 +6,6 @@ import OverallStatistics from './components/OverallStatistics.vue'
 import store from '/src/services/store.js'
 import CharMeter from './components/CharMeter.vue'
 import { onMounted } from 'vue'
-const showLocal = () => console.warn(store.state.work)
 
 onMounted(() => {
   for (const propertyName in store.storage) {
@@ -19,10 +18,15 @@ onMounted(() => {
   // if (localStorage.pointers)
   //   store.storage.pointers = localStorage.pointers === 'true'
 })
+
+const fn = function () {
+  console.log(typeof store.data.currentBook)
+}
 </script>
 
 <template>
   <NavigationMenu />
+  <!-- <button @click="fn">КНИГА</button> -->
   <SettingsMenu v-if="store.state.settings" />
   <Field v-if="store.state.work" />
   <OverallStatistics v-if="store.state.overallStatistics" />

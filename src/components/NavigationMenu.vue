@@ -1,13 +1,6 @@
 <script setup>
 import { getBrowser } from '/src/services/helpers.js'
-import { useRandomSnippet } from '../services/useRandomSnippet.js'
 import store from '/src/services/store.js'
-
-// function initialAdjust() {
-//   store.clearStat()
-//   store.setTrue('work')
-//   store.moveCaret()
-// }
 
 async function fillFieldFromBuffer() {
   document.body.querySelector('#buffer').blur() // removing focus from an element
@@ -27,7 +20,7 @@ async function fillFieldFromBuffer() {
 }
 
 function loadRussianSnippet() {
-  useRandomSnippet(store.loadFragment, 'russian', 300)
+  store.randomSnippet('russian', 2)
 }
 </script>
 

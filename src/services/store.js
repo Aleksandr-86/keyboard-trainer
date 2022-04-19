@@ -1,5 +1,7 @@
-import { reactive, computed } from 'vue'
+import { reactive } from 'vue'
 import { charTest, arrPreparer, randomNum } from '/src/services/helpers.js'
+
+import bookList from '/src/services/book-list.js'
 
 const state = reactive({
   work: false,
@@ -33,7 +35,9 @@ const data = reactive({
   numWrong: 0,
 
   tempWithoutMistake: 0,
-  withoutMistake: 0
+  withoutMistake: 0,
+
+  currentBook: 0
 })
 
 const recordingStatistics = function (e) {
@@ -76,24 +80,27 @@ const setFalse = function (propertyName) {
   state[propertyName] = false
 }
 
-const loadFragment = function (str, amount) {
-  const textLength = str.length
-  const lowBound = str.indexOf('.', amount) + 1
-  const highBound = str.lastIndexOf('.', textLength - amount) + 1
-
-  let snippet
-  const randomPoint = randomNum(0, textLength)
-  if (randomNum <= lowBound) {
-    snippet = str.substring(0, lowBound)
-  } else if (randomNum >= highBound) {
-    snippet = str.substring(highBound, textLength)
+const loadFragment = function (str, amount = 0) {
+  if (amount === 0) {
+    data.fragmentArr = arrPreparer(str)
   } else {
-    const startOfSnippet = str.lastIndexOf('.', randomPoint) + 1
-    const endOfSnippet = str.indexOf('.', randomPoint + amount) + 1
-    snippet = str.substring(startOfSnippet, endOfSnippet).trim()
-  }
+    const textLength = str.length
+    const lowBound = str.indexOf('.', amount) + 1
+    const highBound = str.lastIndexOf('.', textLength - amount) + 1
 
-  data.fragmentArr = arrPreparer(snippet)
+    let snippet
+    const randomPoint = randomNum(0, textLength)
+    if (randomNum <= lowBound) {
+      snippet = str.substring(0, lowBound)
+    } else if (randomNum >= highBound) {
+      snippet = str.substring(highBound, textLength)
+    } else {
+      const startOfSnippet = str.lastIndexOf('.', randomPoint) + 1
+      const endOfSnippet = str.indexOf('.', randomPoint + amount) + 1
+      snippet = str.substring(startOfSnippet, endOfSnippet).trim()
+    }
+    data.fragmentArr = arrPreparer(snippet)
+  }
 
   // creating and filling the empty statistic array
   data.statArr = new Array(data.fragmentArr.length).fill('0')
@@ -171,6 +178,27 @@ const clearStat = function () {
   data.withoutMistake = 0
 }
 
+const randomSnippet = function (lang, amount) {
+  let arrOfBooks
+  if (lang === 'russian') {
+    arrOfBooks = bookList.arrOfRusBooks
+  } else {
+    arrOfBooks = bookList.arrOfEngBooks
+  }
+
+  const obj = arrOfBooks[randomNum(0, 4)] // choosing a random book
+  data.currentBook = obj
+  const filePath = `/src/books/${lang}/${obj.name}.txt`
+
+  var httpRequest = new XMLHttpRequest()
+  httpRequest.onload = function () {
+    // When the request is loaded
+    loadFragment(httpRequest.responseText, amount) // We're calling our method
+  }
+  httpRequest.open('GET', filePath)
+  httpRequest.send()
+}
+
 export default {
   state,
   data,
@@ -183,5 +211,6 @@ export default {
   loadNextChars,
   moveCaret,
   toggleStorage,
-  clearStat
+  clearStat,
+  randomSnippet
 }

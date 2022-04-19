@@ -175,11 +175,12 @@ export const rnd = function (num, digit = 0) {
   return Number(Math.round(Number(num + 'e' + digit)) + 'e-' + digit)
 }
 
+// random number
 export const randomNum = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1))
 }
 
-// converting ms to the format: minutes:seconds.mille seconds
+// converting ms to the format: minutes:seconds.milliseconds
 export function msToMinutes(ms) {
   ms /= 1000
   const minutes = Math.floor(ms / 60)

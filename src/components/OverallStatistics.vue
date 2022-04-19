@@ -25,6 +25,9 @@ const strCorrectPercent = `(${rnd((numCorrect * 100) / numTotal, 2)}%)`
 const strWrongPercent = `(${rnd((numWrong * 100) / numTotal, 2)}%)`
 const charPerSecond = rnd((numTotal * 60) / (store.data.elapsedTime / 1000))
 
+const isSnippet = typeof store.data.currentBook === 'object'
+const book = store.data.currentBook
+
 onUnmounted(() => {
   store.state.bTimer = false
   store.data.tempWithoutMistake = 0
@@ -35,15 +38,25 @@ onUnmounted(() => {
 
   store.data.numCorrect = 0
   store.data.numWrong = 0
+
+  store.data.currentBook = 0
 })
 </script>
 
 <template>
   <div class="stat-base">
-    <h3>Результат</h3>
+    <h4 v-if="isSnippet">Результат набора отрывка из книги:</h4>
+    <h4 v-else>Результат набора текста из буфера обмена</h4>
+
+    <h4 v-if="isSnippet" class="stat-violet">«{{ book.title }}»</h4>
+    <h4 v-if="isSnippet" class="stat-violet">{{ book.author }}</h4>
     <label @click.left="store.setFalse('overallStatistics')" class="stat-close">
       +
     </label>
+    <!-- <div class="stat-first-row" v-if="isSnippet">Автор: {{}}</div>
+    <div class="stat-second-row" v-if="isSnippet">
+      store.data.currentBook.name
+    </div> -->
 
     <div class="stat-first-row">Время набора:</div>
     <div class="stat-second-row">{{ store.data.elapsedTimeStr }}</div>
@@ -135,10 +148,14 @@ onUnmounted(() => {
   transition: all 300ms ease-in-out;
 }
 
-h3 {
+h4 {
   margin-top: -1.3vh;
   margin-bottom: 1vh;
   text-align: center;
+}
+
+.stat-violet {
+  color: hsl(282, 100%, 25%);
 }
 
 .num-total,
@@ -150,11 +167,11 @@ h3 {
 }
 
 .num-correct {
-  color: rgb(0, 160, 40);
+  color: hsl(135, 100%, 30%);
 }
 
 .num-wrong {
-  color: rgb(205, 50, 50);
+  color: hsl(0, 100%, 38%);
 }
 
 .stat-first-row {

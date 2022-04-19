@@ -49,7 +49,7 @@ const eListener = function (e) {
 
   events.capsLock = e.getModifierState && e.getModifierState('CapsLock')
 
-  console.log(events.capsLock)
+  // console.log(events.capsLock)
 
   // timer on
   if (!store.state.bTimer) {
