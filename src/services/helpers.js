@@ -84,15 +84,9 @@ export const arrPreparer = function (str) {
   // number of characters per line
   const lineLen = 40
   // the maximum length of a word that will not be carried over to the next line
-  let maxWordLen = 10
+  let maxWordLen = 15
 
-  const tempArr = str
-    .trim()
-    .replace(/(\n)|(\r\n)/g, ' \n ')
-    .replace(/ +/g, ' ')
-    .split(' ')
-  // .replace(regexEmoji, '')
-
+  const tempArr = str.split(' ')
   const arr = []
   let counter = 0
 
@@ -149,9 +143,19 @@ export const arrPreparer = function (str) {
   return arr
 }
 
+export const strPrepWithNewLines = (str) =>
+  str
+    .trim()
+    .replace(/(\n)|(\r\n)/g, ' \n ')
+    .replace(/ +/g, ' ')
+// .replace(regexEmoji, '')
+
 // removing excess spaces
-export const remExSpaces = (str) =>
-  str.replace(/(\n)|(\r\n)/g, ' ').replace(/ +/g, ' ')
+export const strPrepWithoutNewLines = (str) =>
+  str
+    .trim()
+    .replace(/(\n)|(\r\n)/g, ' ')
+    .replace(/ +/g, ' ')
 
 // removing emoji
 export const remEmoji = (str) => str.replace(regexEmoji, '')

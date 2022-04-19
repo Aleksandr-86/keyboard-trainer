@@ -1,5 +1,11 @@
 import { reactive } from 'vue'
-import { charTest, arrPreparer, randomNum } from '/src/services/helpers.js'
+import {
+  charTest,
+  arrPreparer,
+  randomNum,
+  strPrepWithNewLines,
+  strPrepWithoutNewLines
+} from '/src/services/helpers.js'
 
 import bookList from '/src/services/book-list.js'
 
@@ -82,8 +88,11 @@ const setFalse = function (propertyName) {
 
 const loadFragment = function (str, amount = 0) {
   if (amount === 0) {
-    data.fragmentArr = arrPreparer(str)
+    // buffer
+    data.fragmentArr = arrPreparer(strPrepWithNewLines(str))
   } else {
+    // snippets from the books
+    str = strPrepWithoutNewLines(str)
     const textLength = str.length
     const lowBound = str.indexOf('.', amount) + 1
     const highBound = str.lastIndexOf('.', textLength - amount) + 1
