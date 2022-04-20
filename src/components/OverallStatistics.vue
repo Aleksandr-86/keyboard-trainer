@@ -155,7 +155,7 @@ h4 {
 }
 
 .stat-violet {
-  color: hsl(282, 100%, 25%);
+  color: hsl(282, 100%, 23%);
 }
 
 .num-total,

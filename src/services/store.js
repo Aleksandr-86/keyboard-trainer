@@ -4,7 +4,8 @@ import {
   arrPreparer,
   randomNum,
   strPrepWithNewLines,
-  strPrepWithoutNewLines
+  strPrepWithoutNewLines,
+  getSomeSentences
 } from '/src/services/helpers.js'
 
 import bookList from '/src/services/book-list.js'
@@ -90,27 +91,12 @@ const setFalse = function (propertyName) {
 
 const loadFragment = function (str, amount = 0) {
   if (amount === 0) {
-    // buffer
+    // case: buffer
     data.fragmentArr = arrPreparer(strPrepWithNewLines(str))
   } else {
-    // snippets from the books
+    // case: snippets from the books
     str = strPrepWithoutNewLines(str)
-    const textLength = str.length
-    const lowBound = str.indexOf('.', amount) + 1
-    const highBound = str.lastIndexOf('.', textLength - amount) + 1
-
-    let snippet
-    const randomPoint = randomNum(0, textLength)
-    if (randomNum <= lowBound) {
-      snippet = str.substring(0, lowBound)
-    } else if (randomNum >= highBound) {
-      snippet = str.substring(highBound, textLength)
-    } else {
-      const startOfSnippet = str.lastIndexOf('.', randomPoint) + 1
-      const endOfSnippet = str.indexOf('.', randomPoint + amount) + 1
-      snippet = str.substring(startOfSnippet, endOfSnippet).trim()
-    }
-    data.fragmentArr = arrPreparer(snippet)
+    data.fragmentArr = arrPreparer(getSomeSentences(str, amount))
   }
 
   // creating and filling the empty statistic array
@@ -197,7 +183,8 @@ const randomSnippet = function (lang, amount) {
     arrOfBooks = bookList.arrOfEngBooks
   }
 
-  const obj = arrOfBooks[randomNum(0, 4)] // choosing a random book
+  // const obj = arrOfBooks[randomNum(0, 4)] // choosing a random book
+  const obj = arrOfBooks[1] // choosing a random book
   data.currentBook = obj
   const filePath = `/src/books/${lang}/${obj.name}.txt`
 

@@ -198,6 +198,86 @@ export function msToMinutes(ms) {
   return `${minutes}:${seconds}.${centiseconds}`
 }
 
+export const getSomeSentences = function (str, minLength) {
+  const strLength = str.length
+  const dots = str.indexOf('…') !== -1 // checking if dots '…' sign exist
+
+  let lowCriticalBound = Math.min(
+    str.indexOf('.') + 1,
+    str.indexOf('?') + 1,
+    str.indexOf('!') + 1
+  )
+  if (dots) {
+    const lowCriticalBoundDots = str.indexOf('…') + 1
+    lowCriticalBound = Math.min(lowCriticalBound, lowCriticalBoundDots)
+  }
+
+  console.warn(str.substring(0, lowCriticalBound))
+
+  let penultimateSign = Math.max(
+    str.lastIndexOf('.', strLength - 2),
+    str.lastIndexOf('?', strLength - 2),
+    str.lastIndexOf('!', strLength - 2)
+  )
+  if (dots) {
+    const penultimateSignDots = str.lastIndexOf('…', strLength - 2)
+    penultimateSign = Math.max(penultimateSign, penultimateSignDots)
+  }
+  penultimateSign += 2
+
+  console.warn(str.substring(penultimateSign, str.length))
+
+  let lowBound = Math.min(
+    str.indexOf('.', minLength) + 1,
+    str.indexOf('?', minLength) + 1,
+    str.indexOf('!', minLength) + 1
+  )
+  if (dots) {
+    const lowBoundDots = str.indexOf('…', minLength) + 1
+    lowBound = Math.min(lowBound, lowBoundDots)
+  }
+
+  // const highBound = str.lastIndexOf('.', textLength - minLength) + 1
+  const highBound = Math.max(
+    str.lastIndexOf('.', strLength - minLength) + 1,
+    str.lastIndexOf('?', strLength - minLength) + 1,
+    str.lastIndexOf('!', strLength - minLength) + 1
+    // str.lastIndexOf('…', textLength - minLength) + 1
+  )
+
+  let snippet = ''
+  // const randomPoint = randomNum(0, strLength)
+  const randomPoint = 2
+  if (randomPoint <= lowBound) {
+    console.log('1')
+    return str.substring(0, lowCriticalBound)
+    // } else if (true) {
+  } else if (randomPoint >= highBound) {
+    console.log('2')
+    return str.substring(highBound, strLength)
+  } else {
+    console.log('3')
+    const startOfSnippet = Math.max(
+      str.lastIndexOf('.', randomPoint) + 1,
+      str.lastIndexOf('?', randomPoint) + 1,
+      str.lastIndexOf('!', randomPoint) + 1,
+      str.lastIndexOf('…', randomPoint) + 1
+    )
+
+    let endOfSnippet = Math.min(
+      str.indexOf('.', randomPoint + minLength) + 1,
+      str.indexOf('?', randomPoint + minLength) + 1,
+      str.indexOf('!', randomPoint + minLength) + 1
+    )
+    if (dots) {
+      const endOfSnippetDots = str.indexOf('…', randomPoint + minLength) + 1
+      endOfSnippet = Math.min(endOfSnippet, endOfSnippetDots)
+    }
+
+    return str.substring(startOfSnippet, endOfSnippet).trim()
+  }
+}
+
 // checking letter case
 // export const charCase = (char) => /[А-ЯЁA-Z.-=\\]/i.test(char) && char === char.toUpperCase();
 // export const charCase = (char) => /[А-ЯЁA-Z!"]/i.test(char) && char === char.toUpperCase();
