@@ -198,81 +198,100 @@ export function msToMinutes(ms) {
   return `${minutes}:${seconds}.${centiseconds}`
 }
 
-export const getSomeSentences = function (str, minLength) {
+export const getSomeSentences = function (str, minSnippetLength) {
   const strLength = str.length
-  const dots = str.indexOf('…') !== -1 // checking if dots '…' sign exist
+  const bDots = str.indexOf('…') !== -1 // checking if the dots '…' sign exist
+  // console.log(
+  //   `strLength: ${strLength}, correctChar: ${
+  //     str.split('').filter((value) => !charTest(value)).length
+  //   }`
+  // )
 
   let lowCriticalBound = Math.min(
-    str.indexOf('.') + 1,
-    str.indexOf('?') + 1,
-    str.indexOf('!') + 1
+    str.indexOf('.', minSnippetLength) + 1,
+    str.indexOf('?', minSnippetLength) + 1,
+    str.indexOf('!', minSnippetLength) + 1
   )
-  if (dots) {
-    const lowCriticalBoundDots = str.indexOf('…') + 1
+  if (bDots) {
+    const lowCriticalBoundDots = str.indexOf('…', minSnippetLength) + 1
     lowCriticalBound = Math.min(lowCriticalBound, lowCriticalBoundDots)
   }
 
-  console.warn(str.substring(0, lowCriticalBound))
+  let lowBound = 0
+  if (lowCriticalBound < minSnippetLength) {
+    lowBound = Math.min(
+      str.indexOf('.', minSnippetLength) + 1,
+      str.indexOf('?', minSnippetLength) + 1,
+      str.indexOf('!', minSnippetLength) + 1
+    )
+    if (bDots) {
+      const lowBoundDots = str.indexOf('…', minSnippetLength) + 1
+      lowBound = Math.min(lowBound, lowBoundDots)
+    }
+  } else {
+    lowBound = lowCriticalBound
+  }
 
-  let penultimateSign = Math.max(
+  console.warn(str.substring(0, lowBound))
+
+  let highCriticalBound = Math.max(
     str.lastIndexOf('.', strLength - 2),
     str.lastIndexOf('?', strLength - 2),
     str.lastIndexOf('!', strLength - 2)
   )
-  if (dots) {
-    const penultimateSignDots = str.lastIndexOf('…', strLength - 2)
-    penultimateSign = Math.max(penultimateSign, penultimateSignDots)
+  if (bDots) {
+    const highCriticalBoundDots = str.lastIndexOf('…', strLength - 2)
+    highCriticalBound = Math.max(highCriticalBound, highCriticalBoundDots)
   }
-  penultimateSign += 2
+  highCriticalBound += 2
 
-  console.warn(str.substring(penultimateSign, str.length))
-
-  let lowBound = Math.min(
-    str.indexOf('.', minLength) + 1,
-    str.indexOf('?', minLength) + 1,
-    str.indexOf('!', minLength) + 1
-  )
-  if (dots) {
-    const lowBoundDots = str.indexOf('…', minLength) + 1
-    lowBound = Math.min(lowBound, lowBoundDots)
+  let highBound = 0
+  if (highCriticalBound < minSnippetLength) {
+    highBound = Math.max(
+      str.lastIndexOf('.', strLength - minSnippetLength) + 1,
+      str.lastIndexOf('?', strLength - minSnippetLength) + 1,
+      str.lastIndexOf('!', strLength - minSnippetLength) + 1
+      // str.lastIndexOf('…', textLength - minSnippetLength) + 1
+    )
+  } else {
+    highBound = highCriticalBound
   }
 
-  // const highBound = str.lastIndexOf('.', textLength - minLength) + 1
-  const highBound = Math.max(
-    str.lastIndexOf('.', strLength - minLength) + 1,
-    str.lastIndexOf('?', strLength - minLength) + 1,
-    str.lastIndexOf('!', strLength - minLength) + 1
-    // str.lastIndexOf('…', textLength - minLength) + 1
+  console.log(`lowCriticalBound: ${lowCriticalBound}, lowBound: ${lowBound}`)
+  console.log(
+    `highCriticalBound: ${highCriticalBound}, highBound: ${highBound}`
   )
 
-  let snippet = ''
   // const randomPoint = randomNum(0, strLength)
-  const randomPoint = 2
+  const randomPoint = 1
   if (randomPoint <= lowBound) {
-    console.log('1')
+    console.log('1 вариант')
     return str.substring(0, lowCriticalBound)
     // } else if (true) {
   } else if (randomPoint >= highBound) {
-    console.log('2')
+    console.log('2 вариант')
     return str.substring(highBound, strLength)
   } else {
-    console.log('3')
-    const startOfSnippet = Math.max(
-      str.lastIndexOf('.', randomPoint) + 1,
-      str.lastIndexOf('?', randomPoint) + 1,
-      str.lastIndexOf('!', randomPoint) + 1,
-      str.lastIndexOf('…', randomPoint) + 1
+    console.log('3 вариант')
+    const endOfSnippet = Math.min(
+      str.lastIndexOf('.', randomPoint + minSnippetLength) + 1,
+      str.lastIndexOf('?', randomPoint + minSnippetLength) + 1,
+      str.lastIndexOf('!', randomPoint + minSnippetLength) + 1,
+      str.lastIndexOf('…', randomPoint + minSnippetLength) + 1
     )
 
-    let endOfSnippet = Math.min(
-      str.indexOf('.', randomPoint + minLength) + 1,
-      str.indexOf('?', randomPoint + minLength) + 1,
-      str.indexOf('!', randomPoint + minLength) + 1
+    let startOfSnippet = Math.max(
+      str.indexOf('.', randomPoint) + 1,
+      str.indexOf('?', randomPoint) + 1,
+      str.indexOf('!', randomPoint) + 1
     )
-    if (dots) {
-      const endOfSnippetDots = str.indexOf('…', randomPoint + minLength) + 1
-      endOfSnippet = Math.min(endOfSnippet, endOfSnippetDots)
+    if (bDots) {
+      const startOfSnippetDots =
+        str.indexOf('…', randomPoint + minSnippetLength) + 1
+      startOfSnippet = Math.min(startOfSnippet, startOfSnippetDots)
     }
+
+    console.warn(`start: ${startOfSnippet}, end: ${endOfSnippet}`)
 
     return str.substring(startOfSnippet, endOfSnippet).trim()
   }
