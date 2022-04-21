@@ -181,7 +181,8 @@ export const rnd = function (num, digit = 0) {
 
 // random number
 export const randomNum = function (min, max) {
-  return Math.floor(Math.random() * (max - min + 1))
+  const difference = Math.floor(Math.random() * (max - min + 1))
+  return min + difference
 }
 
 // converting ms to the format: minutes:seconds.milliseconds
@@ -200,101 +201,135 @@ export function msToMinutes(ms) {
 
 export const getSomeSentences = function (str, minSnippetLength) {
   const strLength = str.length
-  const bDots = str.indexOf('…') !== -1 // checking if the dots '…' sign exist
-  // console.log(
-  //   `strLength: ${strLength}, correctChar: ${
-  //     str.split('').filter((value) => !charTest(value)).length
-  //   }`
-  // )
-
-  let lowCriticalBound = Math.min(
-    str.indexOf('.', minSnippetLength) + 1,
-    str.indexOf('?', minSnippetLength) + 1,
-    str.indexOf('!', minSnippetLength) + 1
-  )
-  if (bDots) {
-    const lowCriticalBoundDots = str.indexOf('…', minSnippetLength) + 1
-    lowCriticalBound = Math.min(lowCriticalBound, lowCriticalBoundDots)
-  }
+  if (minSnippetLength >= strLength) return str
 
   let lowBound = 0
-  if (lowCriticalBound < minSnippetLength) {
-    lowBound = Math.min(
-      str.indexOf('.', minSnippetLength) + 1,
-      str.indexOf('?', minSnippetLength) + 1,
-      str.indexOf('!', minSnippetLength) + 1
-    )
-    if (bDots) {
-      const lowBoundDots = str.indexOf('…', minSnippetLength) + 1
-      lowBound = Math.min(lowBound, lowBoundDots)
-    }
-  } else {
-    lowBound = lowCriticalBound
-  }
+  let highBound = strLength
 
-  console.warn(str.substring(0, lowBound))
+  // searching for the index of the end of the previous sentence
+  function findPreviousSignIndex(str, point) {
+    let char = str[point]
+    let bSign = char === '.' || char === '?' || char === '!' || char === '…'
 
-  let highCriticalBound = Math.max(
-    str.lastIndexOf('.', strLength - 2),
-    str.lastIndexOf('?', strLength - 2),
-    str.lastIndexOf('!', strLength - 2)
-  )
-  if (bDots) {
-    const highCriticalBoundDots = str.lastIndexOf('…', strLength - 2)
-    highCriticalBound = Math.max(highCriticalBound, highCriticalBoundDots)
-  }
-  highCriticalBound += 2
-
-  let highBound = 0
-  if (highCriticalBound < minSnippetLength) {
-    highBound = Math.max(
-      str.lastIndexOf('.', strLength - minSnippetLength) + 1,
-      str.lastIndexOf('?', strLength - minSnippetLength) + 1,
-      str.lastIndexOf('!', strLength - minSnippetLength) + 1
-      // str.lastIndexOf('…', textLength - minSnippetLength) + 1
-    )
-  } else {
-    highBound = highCriticalBound
-  }
-
-  console.log(`lowCriticalBound: ${lowCriticalBound}, lowBound: ${lowBound}`)
-  console.log(
-    `highCriticalBound: ${highCriticalBound}, highBound: ${highBound}`
-  )
-
-  // const randomPoint = randomNum(0, strLength)
-  const randomPoint = 1
-  if (randomPoint <= lowBound) {
-    console.log('1 вариант')
-    return str.substring(0, lowCriticalBound)
-    // } else if (true) {
-  } else if (randomPoint >= highBound) {
-    console.log('2 вариант')
-    return str.substring(highBound, strLength)
-  } else {
-    console.log('3 вариант')
-    const endOfSnippet = Math.min(
-      str.lastIndexOf('.', randomPoint + minSnippetLength) + 1,
-      str.lastIndexOf('?', randomPoint + minSnippetLength) + 1,
-      str.lastIndexOf('!', randomPoint + minSnippetLength) + 1,
-      str.lastIndexOf('…', randomPoint + minSnippetLength) + 1
-    )
-
-    let startOfSnippet = Math.max(
-      str.indexOf('.', randomPoint) + 1,
-      str.indexOf('?', randomPoint) + 1,
-      str.indexOf('!', randomPoint) + 1
-    )
-    if (bDots) {
-      const startOfSnippetDots =
-        str.indexOf('…', randomPoint + minSnippetLength) + 1
-      startOfSnippet = Math.min(startOfSnippet, startOfSnippetDots)
+    // skipping some signs, moving point -->
+    while (bSign) {
+      point++
+      if (point >= strLength - 1) return strLength - 1
+      char = str[point]
+      bSign = char === '.' || char === '?' || char === '!' || char === '…'
     }
 
-    console.warn(`start: ${startOfSnippet}, end: ${endOfSnippet}`)
-
-    return str.substring(startOfSnippet, endOfSnippet).trim()
+    return Math.max(
+      str.lastIndexOf('.', point),
+      str.lastIndexOf('?', point),
+      str.lastIndexOf('!', point),
+      str.lastIndexOf('…', point),
+      0
+    )
   }
+
+  // searching for the index of the end of the current sentence
+  function findNextSignIndex(str, point) {
+    let char = str[point]
+    let bSign = char === '.' || char === '?' || char === '!' || char === '…'
+
+    while (bSign) {
+      point++
+      if (point >= strLength - 1) return strLength - 1
+      char = str[point]
+      bSign = char === '.' || char === '?' || char === '!' || char === '…'
+    }
+
+    let nextSignIndex = str.length - 1
+
+    if (str.indexOf('.', point) !== -1) {
+      const temp = str.indexOf('.', point)
+      if (temp < nextSignIndex) nextSignIndex = temp
+    }
+    if (str.indexOf('?', point) !== -1) {
+      const temp = str.indexOf('?', point)
+      if (temp < nextSignIndex) nextSignIndex = temp
+    }
+    if (str.indexOf('!', point) !== -1) {
+      const temp = str.indexOf('!', point)
+      if (temp < nextSignIndex) nextSignIndex = temp
+    }
+    if (str.indexOf('…', point) !== -1) {
+      const temp = str.indexOf('…', point)
+      if (temp < nextSignIndex) nextSignIndex = temp
+    }
+
+    return nextSignIndex
+  }
+
+  let lastIndex = strLength - 1
+  let lastChar = str[lastIndex]
+  let bSign =
+    lastChar === '.' || lastChar === '?' || lastChar === '!' || lastChar === '…'
+
+  while (bSign) {
+    lastIndex--
+    lastChar = str[lastIndex]
+    bSign =
+      lastChar === '.' ||
+      lastChar === '?' ||
+      lastChar === '!' ||
+      lastChar === '…'
+  }
+
+  // choosing random char index
+  let randomIndex = randomNum(0, lastIndex)
+
+  lowBound = findPreviousSignIndex(str, randomIndex)
+  if (lowBound !== 0) lowBound = lowBound + 2
+  highBound = findNextSignIndex(str, lowBound + minSnippetLength) + 1
+
+  let snippet = str.substring(lowBound, highBound)
+  let inapChars = snippet.split('').filter((char) => charTest(char)).length
+
+  let flag = 0
+  while (snippet.length - inapChars < minSnippetLength) {
+    if (strLength / 2 < randomIndex) {
+      flag = 1
+      let char = str[lowBound]
+      let bSign = char === '.' || char === '?' || char === '!' || char === '…'
+
+      // skipping some signs, moving point <--
+      while (bSign) {
+        lowBound--
+        if (lowBound <= 0) {
+          lowBound = 0
+          break
+        }
+        char = str[lowBound]
+        bSign = char === '.' || char === '?' || char === '!' || char === '…'
+      }
+
+      lowBound = findPreviousSignIndex(str, lowBound)
+      snippet = str.substring(lowBound, highBound)
+    } else {
+      flag = 2
+      let char = str[highBound]
+      let bSign = char === '.' || char === '?' || char === '!' || char === '…'
+
+      // skipping some signs, moving point -->
+      while (bSign) {
+        highBound++
+        if (highBound >= strLength - 1) {
+          highBound = strLength - 1
+          break
+        }
+        char = str[highBound]
+        bSign = char === '.' || char === '?' || char === '!' || char === '…'
+      }
+
+      highBound = findNextSignIndex(str, highBound) + 1
+      snippet = str.substring(lowBound, highBound)
+    }
+    inapChars = snippet.split('').filter((char) => charTest(char)).length
+  }
+
+  return snippet
 }
 
 // checking letter case
