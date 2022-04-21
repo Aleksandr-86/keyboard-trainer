@@ -284,59 +284,12 @@ export const getSomeSentences = function (str, minSnippetLength) {
 
   // choosing random char index
   let randomIndex = randomNum(0, lastIndex - minSnippetLength)
-  // let randomIndex = lastIndex
 
   lowBound = findPreviousSignIndex(str, randomIndex)
   if (lowBound !== 0) lowBound = lowBound + 2
   highBound = findNextSignIndex(str, lowBound + minSnippetLength) + 1
 
-  let snippet = str.substring(lowBound, highBound)
-
-  // let inapChars = snippet.split('').filter((char) => charTest(char)).length
-
-  // // getting the missing amount of characters
-  // while (snippet.length - inapChars < minSnippetLength) {
-  //   console.warn('while')
-  //   if (strLength / 2 < randomIndex) {
-  //     console.warn('while1')
-
-  //     // skipping some signs, moving point <--
-  //     let char = str[lowBound]
-  //     let bSign = char === '.' || char === '?' || char === '!' || char === '…'
-  //     while (bSign) {
-  //       if (lowBound <= 0) {
-  //         lowBound = 0
-  //         break
-  //       }
-  //       char = str[lowBound]
-  //       bSign = char === '.' || char === '?' || char === '!' || char === '…'
-  //     }
-
-  //     lowBound = findPreviousSignIndex(str, lowBound) + 2
-  //     snippet = str.substring(lowBound, highBound)
-  //   } else {
-  //     console.warn('while2')
-
-  //     // skipping some signs, moving point -->
-  //     let char = str[highBound]
-  //     let bSign = char === '.' || char === '?' || char === '!' || char === '…'
-  //     while (bSign) {
-  //       highBound++
-  //       if (highBound >= strLength - 1) {
-  //         highBound = strLength - 1
-  //         break
-  //       }
-  //       char = str[highBound]
-  //       bSign = char === '.' || char === '?' || char === '!' || char === '…'
-  //     }
-
-  //     highBound = findNextSignIndex(str, highBound) + 1
-  //     snippet = str.substring(lowBound, highBound)
-  //   }
-  //   inapChars = snippet.split('').filter((char) => charTest(char)).length
-  // }
-
-  return snippet
+  return str.substring(lowBound, highBound)
 }
 
 // checking letter case
