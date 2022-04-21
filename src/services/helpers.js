@@ -265,7 +265,11 @@ export const getSomeSentences = function (str, minSnippetLength) {
   let lastIndex = strLength - 1
   let lastChar = str[lastIndex]
   let bSign =
-    lastChar === '.' || lastChar === '?' || lastChar === '!' || lastChar === '…'
+    lastChar === '.' ||
+    lastChar === '?' ||
+    lastChar === '!' ||
+    lastChar === '…' ||
+    charTest(lastChar)
 
   while (bSign) {
     lastIndex--
@@ -274,60 +278,63 @@ export const getSomeSentences = function (str, minSnippetLength) {
       lastChar === '.' ||
       lastChar === '?' ||
       lastChar === '!' ||
-      lastChar === '…'
+      lastChar === '…' ||
+      charTest(lastChar)
   }
 
   // choosing random char index
-  let randomIndex = randomNum(0, lastIndex)
+  let randomIndex = randomNum(0, lastIndex - minSnippetLength)
+  // let randomIndex = lastIndex
 
   lowBound = findPreviousSignIndex(str, randomIndex)
   if (lowBound !== 0) lowBound = lowBound + 2
   highBound = findNextSignIndex(str, lowBound + minSnippetLength) + 1
 
   let snippet = str.substring(lowBound, highBound)
-  let inapChars = snippet.split('').filter((char) => charTest(char)).length
 
-  let flag = 0
-  while (snippet.length - inapChars < minSnippetLength) {
-    if (strLength / 2 < randomIndex) {
-      flag = 1
-      let char = str[lowBound]
-      let bSign = char === '.' || char === '?' || char === '!' || char === '…'
+  // let inapChars = snippet.split('').filter((char) => charTest(char)).length
 
-      // skipping some signs, moving point <--
-      while (bSign) {
-        lowBound--
-        if (lowBound <= 0) {
-          lowBound = 0
-          break
-        }
-        char = str[lowBound]
-        bSign = char === '.' || char === '?' || char === '!' || char === '…'
-      }
+  // // getting the missing amount of characters
+  // while (snippet.length - inapChars < minSnippetLength) {
+  //   console.warn('while')
+  //   if (strLength / 2 < randomIndex) {
+  //     console.warn('while1')
 
-      lowBound = findPreviousSignIndex(str, lowBound)
-      snippet = str.substring(lowBound, highBound)
-    } else {
-      flag = 2
-      let char = str[highBound]
-      let bSign = char === '.' || char === '?' || char === '!' || char === '…'
+  //     // skipping some signs, moving point <--
+  //     let char = str[lowBound]
+  //     let bSign = char === '.' || char === '?' || char === '!' || char === '…'
+  //     while (bSign) {
+  //       if (lowBound <= 0) {
+  //         lowBound = 0
+  //         break
+  //       }
+  //       char = str[lowBound]
+  //       bSign = char === '.' || char === '?' || char === '!' || char === '…'
+  //     }
 
-      // skipping some signs, moving point -->
-      while (bSign) {
-        highBound++
-        if (highBound >= strLength - 1) {
-          highBound = strLength - 1
-          break
-        }
-        char = str[highBound]
-        bSign = char === '.' || char === '?' || char === '!' || char === '…'
-      }
+  //     lowBound = findPreviousSignIndex(str, lowBound) + 2
+  //     snippet = str.substring(lowBound, highBound)
+  //   } else {
+  //     console.warn('while2')
 
-      highBound = findNextSignIndex(str, highBound) + 1
-      snippet = str.substring(lowBound, highBound)
-    }
-    inapChars = snippet.split('').filter((char) => charTest(char)).length
-  }
+  //     // skipping some signs, moving point -->
+  //     let char = str[highBound]
+  //     let bSign = char === '.' || char === '?' || char === '!' || char === '…'
+  //     while (bSign) {
+  //       highBound++
+  //       if (highBound >= strLength - 1) {
+  //         highBound = strLength - 1
+  //         break
+  //       }
+  //       char = str[highBound]
+  //       bSign = char === '.' || char === '?' || char === '!' || char === '…'
+  //     }
+
+  //     highBound = findNextSignIndex(str, highBound) + 1
+  //     snippet = str.substring(lowBound, highBound)
+  //   }
+  //   inapChars = snippet.split('').filter((char) => charTest(char)).length
+  // }
 
   return snippet
 }

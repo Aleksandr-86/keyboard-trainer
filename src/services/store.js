@@ -184,7 +184,7 @@ const randomSnippet = function (lang, amount) {
   }
 
   const obj = arrOfBooks[randomNum(0, 4)] // choosing a random book
-  // const obj = arrOfBooks[1] // choosing a random book
+  // const obj = arrOfBooks[2] // choosing a random book
   data.currentBook = obj
   const filePath = `/src/books/${lang}/${obj.name}.txt`
 
