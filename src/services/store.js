@@ -24,7 +24,8 @@ const storage = reactive({
   pointers: true,
   keyboard: true,
   inapLang: true,
-  background: arrBackgrounds[5]
+  background: arrBackgrounds[5],
+  langOfSnippets: 'russian'
 })
 
 const data = reactive({
@@ -79,6 +80,7 @@ const recordingStatistics = function (e) {
 
 const toggleState = function (propertyName) {
   state[propertyName] = !state[propertyName]
+  console.log(storage.langOfSnippets)
 }
 
 const setTrue = function (propertyName) {
@@ -130,7 +132,7 @@ const moveCaret = function () {
   }
 
   // checking inappropriate sign
-  while (charTest(currentChar)) {
+  while (charTest(currentChar) || currentChar === 'skip') {
     if (
       data.fragmentArr[data.indexArr + 1] === ' ' &&
       data.fragmentArr[data.indexArr - 1] === ' '
@@ -179,12 +181,13 @@ const randomSnippet = function (lang, amount) {
   let arrOfBooks
   if (lang === 'russian') {
     arrOfBooks = bookList.arrOfRusBooks
+    storage.langOfSnippets = 'russian' // underline the corresponding link in the nav menu
   } else {
     arrOfBooks = bookList.arrOfEngBooks
+    storage.langOfSnippets = 'english' // underline the corresponding link in the nav menu
   }
 
   const obj = arrOfBooks[randomNum(0, 4)] // choosing a random book
-  // const obj = arrOfBooks[2] // choosing a random book
   data.currentBook = obj
   const filePath = `/src/books/${lang}/${obj.name}.txt`
 

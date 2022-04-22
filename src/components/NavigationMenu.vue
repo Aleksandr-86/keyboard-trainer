@@ -3,7 +3,7 @@ import { getBrowser } from '/src/services/helpers.js'
 import store from '/src/services/store.js'
 
 async function fillFieldFromBuffer() {
-  document.body.querySelector('#buffer').blur() // removing focus from an element
+  document.body.querySelector('#nav-buffer').blur() // removing focus from an element
 
   const br = getBrowser().browser
   if (br === 'chrome' || br === 'yabrowser') {
@@ -18,36 +18,64 @@ async function fillFieldFromBuffer() {
     // charInserter(strPreparer(str), 0)
   }
 }
+
+function toggleLangOfSnippets() {
+  store.storage.langOfSnippets = !store.storage.langOfSnippets
+}
 </script>
 
 <template>
   <ul class="nav">
     <li>
-      <a @click="fillFieldFromBuffer" href="#!" id="buffer">Буфер обмена</a>
+      <a @click="fillFieldFromBuffer" href="#!" id="nav-buffer">Буфер обмена</a>
+    </li>
+    <li>
+      <a
+        @click="store.randomSnippet(store.storage.langOfSnippets, 1)"
+        id="nav-snippet"
+        href="#!"
+        >Отрывок</a
+      >
     </li>
     <li class="nav-children">
-      <a href="#!">Отрывок</a>
+      <a id="nav-drop-down" href="#!">▼</a>
       <ul>
         <li>
-          <a @click="store.randomSnippet('russian', 1)" href="#!"
+          <a
+            @click="store.randomSnippet('russian', 1)"
+            :class="{
+              'nav-underscore-none': store.storage.langOfSnippets !== 'russian'
+            }"
+            href="#!"
             >На русском языке</a
           >
         </li>
         <li>
-          <a @click="store.randomSnippet('english', 1)" href="#!"
+          <a
+            @click="store.randomSnippet('english', 1)"
+            :class="{
+              'nav-underscore-none': store.storage.langOfSnippets !== 'english'
+            }"
+            href="#!"
             >На английском языке</a
           >
         </li>
       </ul>
     </li>
-    <li><a href="#!">Справка</a></li>
+    <li><a id="nav-info" href="#!">Справка</a></li>
     <li>
-      <a @click="store.toggleState('settings')" href="#!">Настройки</a>
+      <a @click="store.toggleState('settings')" id="nav-settings" href="#!"
+        >Настройки</a
+      >
     </li>
   </ul>
 </template>
 
 <style>
+a {
+  text-align: left;
+}
+
 .nav {
   background: rgba(20, 20, 20, 0.8);
   display: flex;
@@ -61,8 +89,14 @@ async function fillFieldFromBuffer() {
   display: inline-flex;
 }
 
-.nav > li + li {
+#nav-snippet,
+#nav-drop-down,
+#nav-settings {
   margin-left: 20px;
+}
+
+#nav-info {
+  margin-left: 15px;
 }
 
 .nav > li > a {
@@ -88,25 +122,15 @@ async function fillFieldFromBuffer() {
 
 .nav li.nav-children {
   position: relative;
-  margin-right: 12px;
 }
 
-.nav li.nav-children:after {
-  position: absolute;
-  content: '\2039';
-  color: rgb(183, 152, 51);
-  font-size: 25px;
-  font-weight: bold;
-  right: -12px;
-  top: 12px;
-  transform: rotate(-90deg);
+#nav-drop-down {
+  margin-left: 5px;
 }
 
 .nav li.nav-children:hover > ul {
   opacity: 1;
   visibility: visible;
-  /* transform: translateY(0px); */
-  /* background: rgb(60, 60, 60); */
   background: rgba(20, 20, 20, 0.8);
   position: absolute;
   left: 0;
@@ -121,12 +145,8 @@ async function fillFieldFromBuffer() {
   min-width: 220px;
   text-align: left;
   top: 100%;
-  /* left: -30px; */
   opacity: 0;
   visibility: hidden;
-  /* transform: translateY(5px); */
-  /* transform: translateY(-50px); */
-  /*transition: all 300ms cubic-bezier(0, 0, 1, 1);*/
   transition: all 350ms;
 }
 
@@ -134,6 +154,7 @@ async function fillFieldFromBuffer() {
   display: block;
   padding: 0 5px;
   line-height: 1.1;
+  text-align: left;
 }
 
 .nav ul li:last-child {
@@ -145,17 +166,26 @@ async function fillFieldFromBuffer() {
   color: rgb(112, 128, 144);
   padding: 10px;
   transition: all 300ms;
-  text-decoration: none;
+  /* text-decoration: none; */
 }
 
 .nav ul li a:hover {
   color: rgb(0, 0, 0);
   background: darkseagreen;
-  text-decoration: none;
+  /* text-decoration: none; */
 }
 
 .nav > li > ul > li > a {
   font-size: 25px;
   font-weight: bold;
+}
+
+/* .nav-children > ul > li > a {
+  background-color: red;
+  text-align: right;
+} */
+
+.nav-underscore-none {
+  text-decoration: none;
 }
 </style>

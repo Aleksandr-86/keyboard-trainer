@@ -99,7 +99,10 @@ onUnmounted(() => {
         :class="[
           { 'char-caret': index === indexArr % 200 },
           {
-            'char-neutral-active': charTest(char) && index <= indexArr % 200
+            'char-neutral-active':
+              char !== 'skip' &&
+              statArr[index + firstIndex] === '0' &&
+              index < indexArr % 200
           },
           { 'char-neutral-inactive': charTest(char) },
           {
