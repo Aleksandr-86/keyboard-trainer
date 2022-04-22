@@ -123,7 +123,7 @@ onUnmounted(() => {
   <Keyboard
     v-if="!store.storage.keyboard && store.state.work"
     :key-down="events.keyDn.code"
-    lang="rus" />
+    :lang="store.data.keyboardLang" />
 </template>
 
 <style>

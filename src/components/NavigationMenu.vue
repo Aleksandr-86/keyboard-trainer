@@ -124,12 +124,15 @@ function toggleLangOfSnippets() {
   margin-left: 5px;
 }
 
+.nav li.nav-children > ul {
+  left: -128px;
+}
+
 .nav li.nav-children:hover > ul {
   opacity: 1;
   visibility: visible;
   background: rgba(20, 20, 20, 0.8);
   position: absolute;
-  left: -128px;
 }
 
 .nav ul {

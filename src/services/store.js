@@ -1,6 +1,7 @@
 import { reactive } from 'vue'
 import {
   charTest,
+  langTest,
   arrPreparer,
   randomNum,
   strPrepWithNewLines,
@@ -47,7 +48,8 @@ const data = reactive({
   tempWithoutMistake: 0,
   withoutMistake: 0,
 
-  currentBook: 0
+  currentBook: 0,
+  keyboardLang: 'russian'
 })
 
 const recordingStatistics = function (e) {
@@ -156,6 +158,12 @@ const moveCaret = function () {
   } else if (data.indexArr >= 200 + data.firstIndex) {
     loadNextChars()
   }
+
+  data.keyboardLang = langTest(
+    data.fragmentArr[data.indexArr],
+    data.keyboardLang
+  )
+  // console.warn(data.keyboardLang)
 }
 
 const toggleStorage = function (propertyName) {

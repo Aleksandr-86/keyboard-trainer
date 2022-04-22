@@ -166,9 +166,9 @@ export const charTest = (char) =>
 
 export function langTest(char, langLayout) {
   if (/[А-ЯЁ]/i.test(char)) {
-    return 'rus'
+    return 'russian'
   } else if (/[A-Z@#$^&<>|\[\]{}']/i.test(char)) {
-    return 'eng'
+    return 'english'
   } else {
     return langLayout
   }

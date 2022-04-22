@@ -87,10 +87,10 @@ const buttonObj = {
 }
 
 const langIndex = computed(() => {
-  if (props.lang === 'rus') {
-    return 0
-  } else if (props.lang === 'eng') {
+  if (props.lang === 'english') {
     return 1
+  } else {
+    return 0
   }
 })
 
