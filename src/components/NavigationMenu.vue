@@ -31,7 +31,7 @@ function toggleLangOfSnippets() {
     </li>
     <li>
       <a
-        @click="store.randomSnippet(store.storage.langOfSnippets, 1)"
+        @click="store.randomSnippet(store.storage.langOfSnippets, 160)"
         id="nav-snippet"
         href="#!"
         >Отрывок</a
@@ -42,7 +42,7 @@ function toggleLangOfSnippets() {
       <ul>
         <li>
           <a
-            @click="store.randomSnippet('russian', 1)"
+            @click="store.randomSnippet('russian', 160)"
             :class="{
               'nav-underscore-none': store.storage.langOfSnippets !== 'russian'
             }"
@@ -52,7 +52,7 @@ function toggleLangOfSnippets() {
         </li>
         <li>
           <a
-            @click="store.randomSnippet('english', 1)"
+            @click="store.randomSnippet('english', 160)"
             :class="{
               'nav-underscore-none': store.storage.langOfSnippets !== 'english'
             }"
@@ -72,10 +72,6 @@ function toggleLangOfSnippets() {
 </template>
 
 <style>
-a {
-  text-align: left;
-}
-
 .nav {
   background: rgba(20, 20, 20, 0.8);
   display: flex;
@@ -133,7 +129,7 @@ a {
   visibility: visible;
   background: rgba(20, 20, 20, 0.8);
   position: absolute;
-  left: 0;
+  left: -128px;
 }
 
 .nav ul {
@@ -154,7 +150,7 @@ a {
   display: block;
   padding: 0 5px;
   line-height: 1.1;
-  text-align: left;
+  /* text-align: left; */
 }
 
 .nav ul li:last-child {
