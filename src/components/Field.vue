@@ -9,10 +9,11 @@ import Keyboard from './Keyboard.vue'
 const events = reactive({
   keyDn: Object,
   keyUp: Object,
+  keyValue: {},
   capsLock: false
 })
 
-const layoutLang = 'eng'
+// const layoutLang = 'eng'
 const statArr = computed(() => store.data.statArr)
 const indexArr = computed(() => store.data.indexArr)
 const firstIndex = computed(() => store.data.firstIndex)
@@ -29,9 +30,10 @@ const charsArr = computed(() =>
 const eListener = function (e) {
   events.keyDn = e
   const code = e.code
+  events.keyValue = e.key
   const ctrl = e.ctrlKey
   const shift = e.shiftKey
-
+  // console.warn(keyKey)
   // console.log(
   //   `altKey ${e.altKey}, ctrlKey ${e.ctrlKey}, shiftKey ${e.shiftKey}`
   // )
@@ -89,7 +91,7 @@ onUnmounted(() => {
       v-if="!store.storage.pointers && store.state.work"
       :key-down="events.keyDn.key"
       :caps="events.capsLock"
-      :lang="layoutLang" />
+      lang="russian" />
 
     <div class="field">
       <div
@@ -122,7 +124,9 @@ onUnmounted(() => {
 
   <Keyboard
     v-if="!store.storage.keyboard && store.state.work"
-    :key-down="events.keyDn.code"
+    :key-code="events.keyDn.code"
+    :key-value="events.code"
+    :target-key="store.data.fragmentArr[store.data.indexArr]"
     :lang="store.data.keyboardLang" />
 </template>
 
@@ -148,7 +152,7 @@ onUnmounted(() => {
   user-select: none;
   cursor: none;
   /* transition: visibility 3000ms, opacity 3000ms; */
-  /* background-coloa r: pink; */
+  /* background-color: pink; */
 }
 
 /* .field::before {

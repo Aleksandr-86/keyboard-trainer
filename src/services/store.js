@@ -31,9 +31,9 @@ const storage = reactive({
 
 const data = reactive({
   fragmentArr: Object,
-  statArr: Object,
-  firstIndex: Number,
   indexArr: Number,
+  firstIndex: Number,
+  statArr: Object,
 
   timerStart: Number,
   timerStop: Number,
@@ -128,10 +128,10 @@ const moveCaret = function () {
   let currentChar = data.fragmentArr[data.indexArr]
 
   // checking special sign for skipping
-  while (currentChar === 'skip') {
-    data.indexArr++
-    currentChar = data.fragmentArr[data.indexArr]
-  }
+  // while (currentChar === 'skip') {
+  //   data.indexArr++
+  //   currentChar = data.fragmentArr[data.indexArr]
+  // }
 
   // checking inappropriate sign
   while (charTest(currentChar) || currentChar === 'skip') {
@@ -163,7 +163,6 @@ const moveCaret = function () {
     data.fragmentArr[data.indexArr],
     data.keyboardLang
   )
-  // console.warn(data.keyboardLang)
 }
 
 const toggleStorage = function (propertyName) {

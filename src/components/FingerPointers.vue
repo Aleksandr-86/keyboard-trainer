@@ -17,7 +17,7 @@ let rightRing = true
 let rightMiddle = true
 let rightIndex = true
 
-if (props.lang === 'rus') {
+if (props.lang === 'russian') {
   leftPinky = computed(() => {
     if (props.caps) {
       return /^(?![ё1йфя])/.test(props.keyDown)
@@ -32,7 +32,7 @@ if (props.lang === 'rus') {
   rightRing = computed(() => /^(?![9щдю])/.test(props.keyDown))
   rightMiddle = computed(() => /^(?![8шлб])/.test(props.keyDown))
   rightIndex = computed(() => /^(?![7нртгоь])/.test(props.keyDown))
-} else if (props.lang === 'eng') {
+} else if (props.lang === 'english') {
   leftPinky = computed(() => {
     if (props.caps) {
       return /^(?![`1qaz~!QAZ])/.test(props.keyDown)

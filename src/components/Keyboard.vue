@@ -1,22 +1,24 @@
 <script setup>
-import { computed } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import CharMeter from './CharMeter.vue'
 
 const props = defineProps({
-  keyDown: String,
-  keyUp: String,
-  lang: String
+  keyCode: String,
+  keyValue: String,
+  targetKey: String,
+  lang: String,
+  color: String
 })
 
 const buttonObj = {
   row1: {
     backquote: ['Ё', '`'],
-    digit1: ['1', '1'],
-    digit2: ['2', '2'],
-    digit3: ['3', '3'],
-    digit4: ['4', '4'],
-    digit5: ['5', '5'],
-    digit6: ['6', '6'],
+    digit1: ['1', '1', 'blue'],
+    digit2: ['2', '2', 'green'],
+    digit3: ['3', '3', 'yellow'],
+    digit4: ['4', '4', 'red'],
+    digit5: ['5', '5', 'red'],
+    digit6: ['6', '6', 'red'],
     digit7: ['7', '7'],
     digit8: ['8', '8'],
     digit9: ['9', '9'],
@@ -94,16 +96,26 @@ const langIndex = computed(() => {
   }
 })
 
-const keyDown = computed(() => props.keyDown && props.keyDown.toLowerCase())
+const keyCode = computed(() => props.keyCode && props.keyCode.toLowerCase())
+const color = computed(() => (props.color = buttonObj[props.keyCode][2]))
+// const color = ref('red')
+console.warn(buttonObj.row1.digit2[2])
 </script>
 
 <template>
+  <button @click="color = color === 'red' ? 'green' : 'red'" class="btn">
+    {{ keyValue }},{{ keyCode }}, {{ targetKey }}
+  </button>
   <div class="keyboard">
     <div v-for="n in 5" :class="['row' + n]">
       <div
         v-for="(item, id) in buttonObj['row' + n]"
         class="button-up"
-        :class="{ 'button-dn1': keyDown === id }"
+        :class="[
+          { 'button-dn1': id === keyCode },
+          // { 'button-dn2': item[langIndex].toLowerCase() === targetKey }
+          { 'button-dn2': item[langIndex].toLowerCase() === targetKey }
+        ]"
         :id="id">
         {{ item[langIndex] }}
       </div>
@@ -112,6 +124,10 @@ const keyDown = computed(() => props.keyDown && props.keyDown.toLowerCase())
 </template>
 
 <style>
+.btn {
+  width: 300px;
+}
+
 .keyboard {
   width: 945px;
   height: 318px;
@@ -131,13 +147,13 @@ const keyDown = computed(() => props.keyDown && props.keyDown.toLowerCase())
   height: 60px;
   margin-top: 3px;
   margin-right: 3px;
-  font-size: 21px;
+  font-size: 23px;
   font-family: 'Consolas', monospace;
   text-align: center;
 
   color: black;
   background: rgb(200, 200, 200);
-  border: none;
+  /* border: none; */
   border-radius: 15px;
 }
 
@@ -151,20 +167,25 @@ const keyDown = computed(() => props.keyDown && props.keyDown.toLowerCase())
 }
 
 .button-dn1 {
-  box-shadow: 0 0 30px 15px hsla(180, 90%, 50%, 0.7),
-    inset 0 0 45px hsla(180, 90%, 50%, 0.7);
-  z-index: 1;
+  /* box-shadow: 0 0 30px 15px hsla(120, 90%, 70%, 0.7),
+    inset 0 0 45px hsla(120, 90%, 70%, 0.7); */
+  /* background-color: hsl(120, 100%, 65%); */
+  /* z-index: 1; */
+  box-shadow: inset 0 0 50px hsl(120, 100%, 60%);
 }
 
 .button-dn2 {
-  box-shadow: 0 0 30px 15px rgb(0, 255, 255, 0.5),
-    inset 0 0 30px rgb(0, 255, 255, 0.5);
+  /* box-shadow: 0 0 30px 15px hsla(180, 90%, 50%, 0.7),
+    inset 0 0 30px hsla(180, 90%, 50%, 0.7); */
+  /* z-index: 1; */
+  /* box-shadow: inset 0 0 50px hsl(180, 90%, 50%); */
+  box-shadow: inset 0 0 0 3px v-bind(color), inset 0 0 50px hsl(180, 90%, 50%);
 }
 
-.button-dn1:after,
+/* .button-dn1:after,
 .button-dn2:after {
   height: 68px;
-}
+} */
 
 .row1,
 .row2,
