@@ -2,7 +2,6 @@
 import { reactive, computed, onUnmounted, onMounted } from 'vue'
 import store from '/src/services/store.js'
 import { charTest, msToMinutes } from '../services/helpers.js'
-import FingerPointers from './FingerPointers.vue'
 import CurrentStatistics from './CurrentStatistics.vue'
 import Keyboard from './Keyboard.vue'
 
@@ -86,40 +85,32 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div>
-    <FingerPointers
-      v-if="!store.storage.pointers && store.state.work"
-      :key-down="events.keyDn.key"
-      :caps="events.capsLock"
-      lang="russian" />
-
-    <div class="field">
-      <div
-        v-for="(char, index) in charsArr"
-        :key="index"
-        class="char"
-        :class="[
-          { 'char-caret': index === indexArr % 200 },
-          {
-            'char-neutral-active':
-              char !== 'skip' &&
-              statArr[index + firstIndex] === '0' &&
-              index < indexArr % 200
-          },
-          { 'char-neutral-inactive': charTest(char) },
-          {
-            'char-correct': statArr[index + firstIndex] === '1' && char !== ' '
-          },
-          {
-            'char-wrong': statArr[index + firstIndex] === '2'
-          }
-        ]">
-        <div v-if="char === 'skip'">&nbsp</div>
-        <div v-else-if="char === 'end'">&nbsp</div>
-        <div v-else>{{ char }}</div>
-      </div>
-      <CurrentStatistics />
+  <div class="field">
+    <div
+      v-for="(char, index) in charsArr"
+      :key="index"
+      class="char"
+      :class="[
+        { 'char-caret': index === indexArr % 200 },
+        {
+          'char-neutral-active':
+            char !== 'skip' &&
+            statArr[index + firstIndex] === '0' &&
+            index < indexArr % 200
+        },
+        { 'char-neutral-inactive': charTest(char) },
+        {
+          'char-correct': statArr[index + firstIndex] === '1' && char !== ' '
+        },
+        {
+          'char-wrong': statArr[index + firstIndex] === '2'
+        }
+      ]">
+      <div v-if="char === 'skip'">&nbsp</div>
+      <div v-else-if="char === 'end'">&nbsp</div>
+      <div v-else>{{ char }}</div>
     </div>
+    <CurrentStatistics />
   </div>
 
   <Keyboard
