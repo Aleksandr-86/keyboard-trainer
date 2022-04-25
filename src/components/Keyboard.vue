@@ -118,8 +118,13 @@ const boardColor = computed(() => {
   }
 })
 
-// console.warn(buttonObj[props.keyCode][2])
-// console.warn(buttonObj['digit3'])
+const wide = computed(() => {
+  if (store.storage.pointers) {
+    return '11px'
+  } else {
+    return '0px'
+  }
+})
 </script>
 
 <template>
@@ -147,8 +152,7 @@ const boardColor = computed(() => {
 }
 
 .keyboard {
-  /* width: 945px; */
-  width: 956px;
+  width: calc(v-bind(wide) + 945px);
   height: 318px;
   margin: 0 auto;
   user-select: none;
@@ -229,7 +233,7 @@ const boardColor = computed(() => {
 #keyt,
 #keyg,
 #keyb {
-  margin-right: 14px;
+  margin-right: calc(v-bind(wide) + 3px);
 }
 
 #backspace {
@@ -270,7 +274,8 @@ const boardColor = computed(() => {
 }
 
 #space {
-  width: 404px;
+  width: calc(v-bind(wide) + 393px);
+  /* width: 404px; */
 }
 
 #controlright {
