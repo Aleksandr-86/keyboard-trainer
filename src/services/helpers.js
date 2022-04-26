@@ -162,17 +162,22 @@ export const remEmoji = (str) => str.replace(regexEmoji, '')
 
 // returns false if a char is inappropriate for being typed
 export const charTest = (char) =>
-  !/[0-9 А-ЯЁA-Z.,<>/\\'"\[\]{}|!@№#;$%:^?&*()\-_+=\n]/i.test(char)
+  !/[0-9 А-ЯЁA-Z.,<>/\\'"\[\]{}|`~!@№#;$%:^?&*()\-_+=\n]/i.test(char)
 
 export function langTest(char, langLayout) {
   if (/[А-ЯЁ]/i.test(char)) {
     return 'russian'
-  } else if (/[A-Z@#$^&<>|\[\]{}']/i.test(char)) {
+  } else if (/[A-Z`@#$^&<>|\[\]{}']/i.test(char)) {
     return 'english'
+  } else if (/[~!]/i.test(char)) {
+    console.warn('eng2')
+    return 'english2'
   } else {
     return langLayout
   }
 }
+
+export const isUpCase = (char) => char !== char.toLowerCase()
 
 // rounding
 export const rnd = function (num, digit = 0) {

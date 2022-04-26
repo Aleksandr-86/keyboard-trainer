@@ -25,7 +25,7 @@ import store from '/src/services/store.js'
         type="checkbox"
         id="box2"
         v-model="store.storage.pointers"
-        @click="store.toggleStorage('pointers')" />
+        @click.left="store.toggleStorage('pointers')" />
       <span class="check-mark"></span>
     </label>
 

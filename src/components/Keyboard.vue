@@ -1,7 +1,8 @@
 <script setup>
 import { computed, ref } from '@vue/reactivity'
 import store from '../services/store'
-import CharMeter from './CharMeter.vue'
+import { isUpCase } from '../services/helpers.js'
+// import CharMeter from './CharMeter.vue'
 
 const props = defineProps({
   keyCode: String,
@@ -11,8 +12,8 @@ const props = defineProps({
 })
 
 const buttonObj = {
-  backquote: ['Ё', '`'],
-  digit1: ['1', '1'],
+  backquote: ['ё', '`', '~'],
+  digit1: ['1', '1', '1'],
   digit2: ['2', '2'],
   digit3: ['3', '3'],
   digit4: ['4', '4'],
@@ -81,6 +82,8 @@ const buttonObj = {
 const langIndex = computed(() => {
   if (props.lang === 'english') {
     return 1
+  } else if (props.lang === 'english2') {
+    return 2
   } else {
     return 0
   }
@@ -88,26 +91,40 @@ const langIndex = computed(() => {
 
 const keyCode = computed(() => props.keyCode && props.keyCode.toLowerCase())
 
+let lShift = computed(() => {
+  let targetChar = store.data.fragmentArr[store.data.indexArr]
+  if (isUpCase(targetChar)) {
+    if (/ё1йфя2цыч3увс4кам56епи/.test(targetChar.toLowerCase())) {
+      return 'transparent'
+    } else {
+      return 'green'
+    }
+  }
+})
+
 const boardColor = computed(() => {
-  const targetChar = store.data.fragmentArr[store.data.indexArr].toLowerCase()
+  if (store.storage.pointers) return
+
+  let targetChar = store.data.fragmentArr[store.data.indexArr].toLowerCase()
 
   if (props.lang === 'russian') {
     if (/[ё1йфя0зж.\-хэ=ъ\\]/.test(targetChar)) {
-      return 'green'
+      return 'hsl(33, 100%, 45%)'
     } else if (/[2цыч9щдю]/.test(targetChar)) {
-      return 'blue'
+      return 'hsl(120, 100%, 33%)'
     } else if (/[3увс8шлб]/.test(targetChar)) {
-      return 'darkorange'
+      return 'blue'
     } else if (/[4кам5епи67нртгоь]/.test(targetChar)) {
       return 'darkviolet'
     }
   } else if (props.lang === 'english') {
-    if (/[`1qaz~!0p;/\-\['=\]\\]/.test(targetChar)) {
-      return 'green'
+    // if (/[`1qaz~!0p;/\-\['=\]\\]/.test(targetChar)) {
+    if (/[`~!1qaz0)p;:/?\-_\[{'"=+\]}\\|]/.test(targetChar)) {
+      return 'hsl(33, 100%, 45%)'
     } else if (/[2wsx9ol.]/.test(targetChar)) {
-      return 'blue'
+      return 'hsl(120, 100%, 33%)'
     } else if (/[3edc8ik,]/.test(targetChar)) {
-      return 'darkorange'
+      return 'blue'
     } else if (/[4rfv5tgb67yhnujm]/.test(targetChar)) {
       return 'darkviolet'
     }
@@ -118,11 +135,11 @@ const boardColor = computed(() => {
   }
 })
 
-const wide = computed(() => {
+const keyboardDivision = computed(() => {
   if (store.storage.pointers) {
-    return '11px'
-  } else {
     return '0px'
+  } else {
+    return '11px'
   }
 })
 </script>
@@ -136,9 +153,9 @@ const wide = computed(() => {
       :class="[
         // { 'button-dn1': id === keyCode },
         {
-          'button-dn2':
-            item[langIndex].toLowerCase() === targetKey.toLowerCase()
+          'button-dn2': item[langIndex] === targetKey.toLowerCase()
         }
+        // { 'button-dn3': id === 'shiftright' }
       ]"
       :id="id">
       {{ item[langIndex] }}
@@ -152,19 +169,19 @@ const wide = computed(() => {
 }
 
 .keyboard {
-  width: calc(v-bind(wide) + 945px);
+  width: calc(v-bind(keyboardDivision) + 945px);
   height: 318px;
   margin: 0 auto;
   user-select: none;
   background: rgb(170, 170, 170);
   border-radius: 15px;
-
   /* transition: all visibility 300ms, opacity 300ms; */
 }
 
 .button-up,
 .button-dn1,
-.button-dn2 {
+.button-dn2,
+.button-dn3 {
   display: inline-block;
   width: 60px;
   height: 60px;
@@ -173,7 +190,6 @@ const wide = computed(() => {
   font-size: 23px;
   font-family: 'Consolas', monospace;
   text-align: center;
-
   color: black;
   background: rgb(200, 200, 200);
   /* border: none; */
@@ -182,7 +198,8 @@ const wide = computed(() => {
 
 .button-up:after,
 .button-dn1:after,
-.button-dn2:after {
+.button-dn2:after,
+.button-dn3:after {
   content: '';
   height: 63px;
   display: inline-block;
@@ -207,10 +224,9 @@ const wide = computed(() => {
   box-shadow: inset 0 0 0 3px v-bind(boardColor);
 }
 
-/* .button-dn1:after,
-.button-dn2:after {
-  height: 68px;
-} */
+.button-dn3 {
+  box-shadow: inset 0 0 0 3px hsl(120, 100%, 33%);
+}
 
 .row1,
 .row2,
@@ -229,11 +245,16 @@ const wide = computed(() => {
   margin-left: 3px;
 }
 
+#keyf,
+#keyj {
+  text-decoration: underline;
+}
+
 #digit6,
 #keyt,
 #keyg,
 #keyb {
-  margin-right: calc(v-bind(wide) + 3px);
+  margin-right: calc(v-bind(keyboardDivision) + 3px);
 }
 
 #backspace {
@@ -258,6 +279,7 @@ const wide = computed(() => {
 
 #shiftleft {
   width: 138px;
+  box-shadow: inset 0 0 0 3px v-bind(lShift);
 }
 
 #shiftright {
@@ -274,8 +296,7 @@ const wide = computed(() => {
 }
 
 #space {
-  width: calc(v-bind(wide) + 393px);
-  /* width: 404px; */
+  width: calc(v-bind(keyboardDivision) + 393px);
 }
 
 #controlright {

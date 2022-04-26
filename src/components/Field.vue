@@ -38,7 +38,7 @@ const eListener = function (e) {
   // )
 
   if (
-    code === 'ShiftLeft' ||
+    code == 'ShiftLeft' ||
     code === 'ShiftRight' ||
     code === 'Backspace' ||
     code === 'Enter' ||
