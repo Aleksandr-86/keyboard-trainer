@@ -117,7 +117,7 @@ onUnmounted(() => {
     v-if="!store.storage.keyboard && store.state.work"
     :key-code="events.keyDn.code"
     :key-value="events.code"
-    :target-key="store.data.fragmentArr[store.data.indexArr]"
+    :target-char="store.data.fragmentArr[store.data.indexArr]"
     :lang="store.data.keyboardLang" />
 </template>
 

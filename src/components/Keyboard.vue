@@ -7,7 +7,7 @@ import { isUpCase } from '../services/helpers.js'
 const props = defineProps({
   keyCode: String,
   keyValue: String,
-  targetKey: String,
+  targetChar: String,
   lang: String
 })
 
@@ -94,7 +94,8 @@ const langIndex = computed(() => {
 const keyCode = computed(() => props.keyCode && props.keyCode.toLowerCase())
 
 let lShift = computed(() => {
-  let targetChar = store.data.fragmentArr[store.data.indexArr]
+  let targetChar = props.targetChar
+
   if (
     isUpCase(targetChar) &&
     /[нртгоьшлбщдюзжхэъyhnujmikolp]/.test(targetChar.toLowerCase())
@@ -115,6 +116,26 @@ let lShift = computed(() => {
   }
 })
 
+let rShift = computed(() => {
+  let targetChar = props.targetChar
+
+  if (
+    isUpCase(targetChar) &&
+    /[ёйфяцычувскамепиqazwsxedcrfvtgb]/.test(targetChar.toLowerCase())
+  ) {
+    return 'hsla(25, 85%, 45%, 1)'
+  } else if (props.lang === 'russian-extended' && /[!"№;%:]/.test(targetChar)) {
+    return 'hsla(25, 85%, 45%, 1)'
+  } else if (
+    props.lang === 'english-extended' &&
+    /[~!@#$%^]/.test(targetChar)
+  ) {
+    return 'hsla(25, 85%, 45%, 1)'
+  } else {
+    return 'transparent'
+  }
+})
+
 const boardColor = computed(() => {
   if (store.storage.pointers) return
 
@@ -128,7 +149,7 @@ const boardColor = computed(() => {
     } else if (/[3№увс8*шлб]/.test(targetChar)) {
       return 'hsla(120, 80%, 30%, 1)'
     } else if (/[4;кам5%епи6:7?нртгоь]/.test(targetChar)) {
-      return 'hsla(280, 100%, 55%, 1)'
+      return 'hsla(285, 70%, 55%, 1)'
     }
   } else if (
     props.lang === 'english-basic' ||
@@ -141,7 +162,7 @@ const boardColor = computed(() => {
     } else if (/[3#edc8*ik,<]/.test(targetChar)) {
       return 'hsla(120, 80%, 30%, 1)'
     } else if (/[4$rfv5%tgb6^7&yhnujm]/.test(targetChar)) {
-      return 'hsla(280, 100%, 55%, 1)'
+      return 'hsla(285, 70%, 55%, 1)'
     }
   }
 
@@ -161,7 +182,7 @@ const keyboardDivision = computed(() => {
 
 <template>
   <button class="btn">
-    langIndex: {{ langIndex }}, targetKey: _{{ targetKey }}_, keyCode:
+    langIndex: {{ langIndex }}, targetChar: _{{ targetChar }}_, keyCode:
     {{ keyCode }}
   </button>
   <div class="keyboard">
@@ -170,8 +191,9 @@ const keyboardDivision = computed(() => {
       class="button-up"
       :class="[
         {
-          'button-dn2': item[langIndex] === targetKey.toLowerCase()
+          'button-dn2': item[langIndex] === targetChar.toLowerCase()
         }
+
         // {
         //   'button-orange-pointer': 'keya, semicolon'.includes(id)
         // },
@@ -331,7 +353,7 @@ const keyboardDivision = computed(() => {
 
 #shiftright {
   width: 168px;
-  /* box-shadow: inset 0 0 0 3px v-bind(rShift); */
+  box-shadow: inset 0 0 0 3px v-bind(rShift);
 }
 
 #controlleft,
