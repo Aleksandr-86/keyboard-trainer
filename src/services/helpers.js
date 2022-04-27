@@ -165,27 +165,13 @@ export const charTest = (char) =>
   !/[0-9 А-ЯЁA-Z.,<>/\\'"\[\]{}|`~!@№#;$%:^?&*()\-_+=\n]/i.test(char)
 
 export function langTest(char, langLayout) {
-  if (/[!?"%*():_+]/i.test(char)) {
-    if (langLayout === 'russian-basic') {
-      return 'russian-extended'
-    } else if (langLayout === 'english-basic') {
-      return 'english-extended'
-    } else {
-      return langLayout
-    }
-  } else if (/[0-9]/i.test(char)) {
-    if (langLayout === 'russian-extended') {
-      return 'russian-basic'
-    } else if (langLayout === 'english-extended') {
-      return 'english-basic'
-    } else {
-      return langLayout
-    }
-  } else if (/[А-ЯЁ]/i.test(char)) {
+  if (/[А-ЯЁ]/i.test(char)) {
     return 'russian-basic'
-  } else if (/[A-Z`@#$^&<>|\[\]{}']/i.test(char)) {
+  } else if (/[A-Z`\[\]']/i.test(char)) {
     return 'english-basic'
-  } else if (/[~!]/i.test(char)) {
+  } else if (/[№]/i.test(char)) {
+    return 'russian-extended'
+  } else if (/[~@#$^&{}|]/i.test(char)) {
     return 'english-extended'
   } else {
     return langLayout

@@ -110,30 +110,34 @@ const boardColor = computed(() => {
   let targetChar = store.data.fragmentArr[store.data.indexArr].toLowerCase()
 
   if (props.lang === 'russian-basic' || props.lang === 'russian-extended') {
-    if (/[ё1йфя0зж.\-хэ=ъ\\]/.test(targetChar)) {
+    if (/[ё1!йфя0)зж.,\-_хэ=+ъ\\/]/.test(targetChar)) {
+      console.warn('русский оранжевый')
       return 'hsl(33, 100%, 45%)'
-    } else if (/[2цыч9щдю]/.test(targetChar)) {
+    } else if (/[2"цыч9(щдю]/.test(targetChar)) {
+      console.warn('русский зелёный')
       return 'hsl(120, 100%, 33%)'
-    } else if (/[3увс8шлб]/.test(targetChar)) {
+    } else if (/[3№увс8*шлб]/.test(targetChar)) {
+      console.warn('русский синий')
       return 'blue'
-    } else if (/[4кам5епи67нртгоь]/.test(targetChar)) {
-      return 'darkviolet'
-    }
-  } else if (
-    props.lang === 'english-basic' ||
-    props.lang === 'english-extended'
-  ) {
-    // if (/[`1qaz~!0p;/\-\['=\]\\]/.test(targetChar)) {
-    if (/[`~!1qaz0)p;:/?\-_\[{'"=+\]}\\|]/.test(targetChar)) {
-      return 'hsl(33, 100%, 45%)'
-    } else if (/[2wsx9ol.]/.test(targetChar)) {
-      return 'hsl(120, 100%, 33%)'
-    } else if (/[3edc8ik,]/.test(targetChar)) {
-      return 'blue'
-    } else if (/[4rfv5tgb67yhnujm]/.test(targetChar)) {
+    } else if (/[4;кам5%епи6:7?нртгоь]/.test(targetChar)) {
+      console.warn('русский фиолетовый')
       return 'darkviolet'
     }
   }
+  // } else if (
+  //   props.lang === 'english-basic' ||
+  //   props.lang === 'english-extended'
+  // ) {
+  //   if (/[`~1!qaz0)p;:/?-_\[{'"=+\]}\\|]/.test(targetChar)) {
+  //     return 'hsl(33, 100%, 45%)'
+  //   } else if (/[2@wsx9(ol.>]/.test(targetChar)) {
+  //     return 'hsl(120, 100%, 33%)'
+  //   } else if (/[3#edc8*ik,<]/.test(targetChar)) {
+  //     return 'blue'
+  //   } else if (/[4$rfv5%tgb6^7&yhnujm]/.test(targetChar)) {
+  //     return 'darkviolet'
+  //   }
+  // }
 
   if (/ /.test(targetChar)) {
     return 'black'
@@ -150,13 +154,16 @@ const keyboardDivision = computed(() => {
 </script>
 
 <template>
-  <button class="btn">{{ keyValue }},{{ keyCode }}, _{{ targetKey }}_</button>
+  <button class="btn">
+    langIndex: {{ langIndex }}, targetKey: _{{ targetKey }}_, keyCode:
+    {{ keyCode }}
+  </button>
   <div class="keyboard">
     <div
       v-for="(item, id) in buttonObj"
       class="button-up"
       :class="[
-        // { 'button-dn1': id === keyCode },
+        // { 'button-dn1': item[langIndex] === '@' },
         {
           'button-dn2': item[langIndex] === targetKey.toLowerCase()
         }
@@ -170,7 +177,7 @@ const keyboardDivision = computed(() => {
 
 <style>
 .btn {
-  width: 300px;
+  width: 900px;
 }
 
 .keyboard {

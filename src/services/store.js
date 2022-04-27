@@ -49,7 +49,7 @@ const data = reactive({
   withoutMistake: 0,
 
   currentBook: 0,
-  keyboardLang: 'russian'
+  keyboardLang: 'russian-basic'
 })
 
 const recordingStatistics = function (e) {
