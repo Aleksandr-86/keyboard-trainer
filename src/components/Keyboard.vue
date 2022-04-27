@@ -95,12 +95,23 @@ const keyCode = computed(() => props.keyCode && props.keyCode.toLowerCase())
 
 let lShift = computed(() => {
   let targetChar = store.data.fragmentArr[store.data.indexArr]
-  if (isUpCase(targetChar)) {
-    if (/ё1йфя2цыч3увс4кам56епи/.test(targetChar.toLowerCase())) {
-      return 'transparent'
-    } else {
-      return 'green'
-    }
+  if (
+    isUpCase(targetChar) &&
+    /[нртгоьшлбщдюзжхэъyhnujmikolp]/.test(targetChar.toLowerCase())
+  ) {
+    return 'hsla(25, 85%, 45%, 1)'
+  } else if (
+    props.lang === 'russian-extended' &&
+    /[?*()_+,/]/.test(targetChar)
+  ) {
+    return 'hsla(25, 85%, 45%, 1)'
+  } else if (
+    props.lang === 'english-extended' &&
+    /[&*()_+{}|:"<>?]/.test(targetChar)
+  ) {
+    return 'hsla(25, 85%, 45%, 1)'
+  } else {
+    return 'transparent'
   }
 })
 
@@ -111,33 +122,28 @@ const boardColor = computed(() => {
 
   if (props.lang === 'russian-basic' || props.lang === 'russian-extended') {
     if (/[ё1!йфя0)зж.,\-_хэ=+ъ\\/]/.test(targetChar)) {
-      console.warn('русский оранжевый')
-      return 'hsl(33, 100%, 45%)'
+      return 'hsla(25, 85%, 45%, 1)'
     } else if (/[2"цыч9(щдю]/.test(targetChar)) {
-      console.warn('русский зелёный')
-      return 'hsl(120, 100%, 33%)'
+      return 'hsla(240, 100%, 50%, 1)'
     } else if (/[3№увс8*шлб]/.test(targetChar)) {
-      console.warn('русский синий')
-      return 'blue'
+      return 'hsla(120, 80%, 30%, 1)'
     } else if (/[4;кам5%епи6:7?нртгоь]/.test(targetChar)) {
-      console.warn('русский фиолетовый')
-      return 'darkviolet'
+      return 'hsla(280, 100%, 55%, 1)'
+    }
+  } else if (
+    props.lang === 'english-basic' ||
+    props.lang === 'english-extended'
+  ) {
+    if (/[`~1!qaz0)p;:/?\-_\[{'"=+\]}\\|]/.test(targetChar)) {
+      return 'hsla(25, 85%, 45%, 1)'
+    } else if (/[2@wsx9(ol.>]/.test(targetChar)) {
+      return 'hsla(240, 100%, 50%, 1)'
+    } else if (/[3#edc8*ik,<]/.test(targetChar)) {
+      return 'hsla(120, 80%, 30%, 1)'
+    } else if (/[4$rfv5%tgb6^7&yhnujm]/.test(targetChar)) {
+      return 'hsla(280, 100%, 55%, 1)'
     }
   }
-  // } else if (
-  //   props.lang === 'english-basic' ||
-  //   props.lang === 'english-extended'
-  // ) {
-  //   if (/[`~1!qaz0)p;:/?-_\[{'"=+\]}\\|]/.test(targetChar)) {
-  //     return 'hsl(33, 100%, 45%)'
-  //   } else if (/[2@wsx9(ol.>]/.test(targetChar)) {
-  //     return 'hsl(120, 100%, 33%)'
-  //   } else if (/[3#edc8*ik,<]/.test(targetChar)) {
-  //     return 'blue'
-  //   } else if (/[4$rfv5%tgb6^7&yhnujm]/.test(targetChar)) {
-  //     return 'darkviolet'
-  //   }
-  // }
 
   if (/ /.test(targetChar)) {
     return 'black'
@@ -163,11 +169,21 @@ const keyboardDivision = computed(() => {
       v-for="(item, id) in buttonObj"
       class="button-up"
       :class="[
-        // { 'button-dn1': item[langIndex] === '@' },
         {
           'button-dn2': item[langIndex] === targetKey.toLowerCase()
         }
-        // { 'button-dn3': id === 'shiftright' }
+        // {
+        //   'button-orange-pointer': 'keya, semicolon'.includes(id)
+        // },
+        // {
+        //   'button-green-pointer': 'keys, keyl'.includes(id)
+        // },
+        // {
+        //   'button-blue-pointer': 'keyd, keyk'.includes(id)
+        // },
+        // {
+        //   'button-violet-pointer': 'keyf, keyj'.includes(id)
+        // }
       ]"
       :id="id">
       {{ item[langIndex] }}
@@ -219,6 +235,28 @@ const keyboardDivision = computed(() => {
   vertical-align: middle;
 }
 
+.button-grey-board {
+  /* box-shadow: inset 0 0 10px 3px hsla(0, 0%, 40%); */
+  box-shadow: inset 0 0 0 3px hsla(0, 0%, 40%);
+}
+
+.button-orange-pointer {
+  box-shadow: inset 0 0 0 3px hsla(25, 85%, 45%, 1);
+}
+
+.button-green-pointer {
+  box-shadow: inset 0 0 0 3px hsla(240, 100%, 50%, 1);
+}
+
+.button-blue-pointer {
+  box-shadow: inset 0 0 0 3px hsla(120, 80%, 30%, 1);
+}
+
+.button-violet-pointer {
+  /* box-shadow: inset 0 0 0 3px hsla(282, 100%, 41%, 0.2); */
+  box-shadow: inset 0 0 0 3px hsla(270, 100%, 55%, 1);
+}
+
 .button-dn1 {
   /* box-shadow: 0 0 30px 15px hsla(120, 90%, 70%, 0.7),
     inset 0 0 45px hsla(120, 90%, 70%, 0.7); */
@@ -235,6 +273,7 @@ const keyboardDivision = computed(() => {
   /* box-shadow: inset 0 0 0 3px v-bind(boardColor),
     inset 0 0 50px hsl(180, 90%, 50%); */
   box-shadow: inset 0 0 0 3px v-bind(boardColor);
+  /* box-shadow: inset 0 0 10px 3px v-bind(boardColor); */
 }
 
 .button-dn3 {
@@ -256,11 +295,6 @@ const keyboardDivision = computed(() => {
 .row4 div:first-child,
 .row5 div:first-child {
   margin-left: 3px;
-}
-
-#keyf,
-#keyj {
-  text-decoration: underline;
 }
 
 #digit6,
@@ -297,6 +331,7 @@ const keyboardDivision = computed(() => {
 
 #shiftright {
   width: 168px;
+  /* box-shadow: inset 0 0 0 3px v-bind(rShift); */
 }
 
 #controlleft,

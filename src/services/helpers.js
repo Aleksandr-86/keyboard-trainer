@@ -173,6 +173,17 @@ export function langTest(char, langLayout) {
     return 'russian-extended'
   } else if (/[~@#$^&{}|]/i.test(char)) {
     return 'english-extended'
+  } else if (langLayout === 'russian-basic' && /[!";%:?*()_+,/]/.test(char)) {
+    return 'russian-extended'
+  } else if (langLayout === 'russian-extended' && /[0-9\-=.\\ ]/.test(char)) {
+    return 'russian-basic'
+  } else if (langLayout === 'english-basic' && /[!%*()_+<>?{}:"|]/.test(char)) {
+    return 'english-extended'
+  } else if (
+    langLayout === 'english-extended' &&
+    /[0-9\-=,./\[\];'\\ ]/.test(char)
+  ) {
+    return 'english-basic'
   } else {
     return langLayout
   }
