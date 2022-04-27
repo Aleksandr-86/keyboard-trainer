@@ -12,80 +12,82 @@ const props = defineProps({
 })
 
 const buttonObj = {
-  backquote: ['ё', '`', '~'],
-  digit1: ['1', '1', '1'],
-  digit2: ['2', '2'],
-  digit3: ['3', '3'],
-  digit4: ['4', '4'],
-  digit5: ['5', '5'],
-  digit6: ['6', '6'],
-  digit7: ['7', '7'],
-  digit8: ['8', '8'],
-  digit9: ['9', '9'],
-  digit0: ['0', '0'],
-  minus: ['-', '-'],
-  equal: ['=', '='],
-  backspace: ['Backspace', 'Backspace'],
+  backquote: ['ё', 'ё', '`', '~'],
+  digit1: ['1', '!', '1', '!'],
+  digit2: ['2', '"', '2', '@'],
+  digit3: ['3', '№', '3', '#'],
+  digit4: ['4', ';', '4', '$'],
+  digit5: ['5', '%', '5', '%'],
+  digit6: ['6', ':', '6', '^'],
+  digit7: ['7', '?', '7', '&'],
+  digit8: ['8', '*', '8', '*'],
+  digit9: ['9', '(', '9', '('],
+  digit0: ['0', ')', '0', ')'],
+  minus: ['-', '_', '-', '_'],
+  equal: ['=', '+', '=', '+'],
+  backspace: ['backspace', 'backspace', 'backspace', 'backspace'],
 
-  tab: ['Tab', 'Tab'],
-  keyq: ['Й', 'Q'],
-  keyw: ['Ц', 'W'],
-  keye: ['У', 'E'],
-  keyr: ['К', 'R'],
-  keyt: ['Е', 'T'],
-  keyy: ['Н', 'Y'],
-  keyu: ['Г', 'U'],
-  keyi: ['Ш', 'I'],
-  keyo: ['Щ', 'O'],
-  keyp: ['З', 'P'],
-  bracketleft: ['Х', '['],
-  bracketright: ['Ъ', ']'],
-  backslash: ['\\', '\\'],
+  tab: ['tab', 'tab', 'tab', 'tab'],
+  keyq: ['й', 'й', 'q', 'q'],
+  keyw: ['ц', 'ц', 'w', 'w'],
+  keye: ['у', 'у', 'e', 'e'],
+  keyr: ['к', 'к', 'r', 'r'],
+  keyt: ['е', 'е', 't', 't'],
+  keyy: ['н', 'н', 'y', 'y'],
+  keyu: ['г', 'г', 'u', 'u'],
+  keyi: ['ш', 'ш', 'i', 'i'],
+  keyo: ['щ', 'щ', 'o', 'o'],
+  keyp: ['з', 'з', 'p', 'p'],
+  bracketleft: ['х', 'х', '[', '{'],
+  bracketright: ['ъ', 'ъ', ']', '}'],
+  backslash: ['\\', '/', '\\', '|'],
 
-  capslock: ['Caps', 'Caps'],
-  keya: ['Ф', 'A'],
-  keys: ['Ы', 'S'],
-  keyd: ['В', 'D'],
-  keyf: ['А', 'F'],
-  keyg: ['П', 'G'],
-  keyh: ['Р', 'H'],
-  keyj: ['О', 'J'],
-  keyk: ['Л', 'K'],
-  keyl: ['Д', 'L'],
-  semicolon: ['Ж', ';'],
-  quote: ['Э', "'"],
-  enter: ['Enter', 'Enter'],
+  capslock: ['Caps', 'Caps', 'Caps', 'Caps'],
+  keya: ['ф', 'ф', 'a', 'a'],
+  keys: ['ы', 'ы', 's', 's'],
+  keyd: ['в', 'в', 'd', 'd'],
+  keyf: ['а', 'а', 'f', 'f'],
+  keyg: ['п', 'п', 'g', 'g'],
+  keyh: ['р', 'р', 'h', 'h'],
+  keyj: ['о', 'о', 'j', 'j'],
+  keyk: ['л', 'л', 'k', 'k'],
+  keyl: ['д', 'д', 'l', 'l'],
+  semicolon: ['ж', 'ж', ';', ':'],
+  quote: ['э', 'э', "'", '"'],
+  enter: ['Enter', 'Enter', 'Enter', 'Enter'],
 
-  shiftleft: ['Shift', 'Shift'],
-  keyz: ['Я', 'Z'],
-  keyx: ['Ч', 'X'],
-  keyc: ['С', 'C'],
-  keyv: ['М', 'V'],
-  keyb: ['И', 'B'],
-  keyn: ['Т', 'N'],
-  keym: ['Ь', 'M'],
-  comma: ['Б', ','],
-  period: ['Ю', '.'],
-  slash: ['.', '/'],
-  shiftright: ['Shift', 'Shift'],
+  shiftleft: ['Shift', 'Shift', 'Shift', 'Shift'],
+  keyz: ['я', 'я', 'z', 'z'],
+  keyx: ['ч', 'ч', 'x', 'x'],
+  keyc: ['с', 'с', 'c', 'c'],
+  keyv: ['м', 'м', 'v', 'v'],
+  keyb: ['и', 'и', 'b', 'b'],
+  keyn: ['т', 'т', 'n', 'n'],
+  keym: ['ь', 'ь', 'm', 'm'],
+  comma: ['б', 'б', ',', '<'],
+  period: ['ю', 'ю', '.', '>'],
+  slash: ['.', ',', '/', '?'],
+  shiftright: ['Shift', 'Shift', 'Shift', 'Shift'],
 
-  controlleft: ['Ctrl', 'Ctrl'],
-  osleft: ['Win', 'Win'],
-  altleft: ['Alt', 'Alt'],
-  space: [' ', ' '],
-  altright: ['Alt', 'Alt'],
-  osright: ['Win', 'Win'],
-  contextmenu: ['Menu', 'Menu'],
-  controlright: ['Ctrl', 'Ctrl']
+  controlleft: ['Ctrl', 'Ctrl', 'Ctrl', 'Ctrl'],
+  osleft: ['Win', 'Win', 'Win', 'Win'],
+  altleft: ['Alt', 'Alt', 'Alt', 'Alt'],
+  space: [' ', ' ', ' ', ' '],
+  altright: ['Alt', 'Alt', 'Alt', 'Alt'],
+  osright: ['Win', 'Win', 'Win', 'Win'],
+  contextmenu: ['Menu', 'Menu', 'Menu', 'Menu'],
+  controlright: ['Ctrl', 'Ctrl', 'Ctrl', 'Ctrl']
 }
 
 const langIndex = computed(() => {
-  if (props.lang === 'english') {
-    return 1
-  } else if (props.lang === 'english2') {
-    return 2
-  } else {
+  if (props.lang === 'russian-basic') {
     return 0
+  } else if (props.lang === 'russian-extended') {
+    return 1
+  } else if (props.lang === 'english-basic') {
+    return 2
+  } else if (props.lang === 'english-extended') {
+    return 3
   }
 })
 
@@ -107,7 +109,7 @@ const boardColor = computed(() => {
 
   let targetChar = store.data.fragmentArr[store.data.indexArr].toLowerCase()
 
-  if (props.lang === 'russian') {
+  if (props.lang === 'russian-basic' || props.lang === 'russian-extended') {
     if (/[ё1йфя0зж.\-хэ=ъ\\]/.test(targetChar)) {
       return 'hsl(33, 100%, 45%)'
     } else if (/[2цыч9щдю]/.test(targetChar)) {
@@ -117,7 +119,10 @@ const boardColor = computed(() => {
     } else if (/[4кам5епи67нртгоь]/.test(targetChar)) {
       return 'darkviolet'
     }
-  } else if (props.lang === 'english') {
+  } else if (
+    props.lang === 'english-basic' ||
+    props.lang === 'english-extended'
+  ) {
     // if (/[`1qaz~!0p;/\-\['=\]\\]/.test(targetChar)) {
     if (/[`~!1qaz0)p;:/?\-_\[{'"=+\]}\\|]/.test(targetChar)) {
       return 'hsl(33, 100%, 45%)'
@@ -190,6 +195,7 @@ const keyboardDivision = computed(() => {
   font-size: 23px;
   font-family: 'Consolas', monospace;
   text-align: center;
+  text-transform: capitalize;
   color: black;
   background: rgb(200, 200, 200);
   /* border: none; */

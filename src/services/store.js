@@ -163,7 +163,6 @@ const moveCaret = function () {
     data.fragmentArr[data.indexArr],
     data.keyboardLang
   )
-  // console.warn(`data.keyboardLang ${data.keyboardLang}`)
 }
 
 const toggleStorage = function (propertyName) {
