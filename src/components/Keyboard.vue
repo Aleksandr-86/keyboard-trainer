@@ -196,13 +196,6 @@ const fn = function () {
 //   flag = !flag
 //   console.warn(flag)
 // }
-
-const playSound = function () {
-  console.warn('playSound function')
-  let audio = new Audio()
-  audio.src = '/src/sounds/type.mp3'
-  audio.play()
-}
 </script>
 
 <template>
