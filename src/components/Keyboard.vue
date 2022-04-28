@@ -143,31 +143,31 @@ const boardColor = computed(() => {
 
   if (props.lang === 'russian-basic' || props.lang === 'russian-extended') {
     if (/[ё1!йфя0)зж.,\-_хэ=+ъ\\/]/.test(targetChar)) {
-      return 'hsla(25, 85%, 45%, 1)'
+      return 'hsla(25, 80%, 45%, 1)'
     } else if (/[2"цыч9(щдю]/.test(targetChar)) {
-      return 'hsla(240, 100%, 50%, 1)'
-    } else if (/[3№увс8*шлб]/.test(targetChar)) {
       return 'hsla(120, 80%, 30%, 1)'
+    } else if (/[3№увс8*шлб]/.test(targetChar)) {
+      return 'hsla(240, 80%, 50%, 1)'
     } else if (/[4;кам5%епи6:7?нртгоь]/.test(targetChar)) {
-      return 'hsla(285, 70%, 55%, 1)'
+      return 'hsla(285, 80%, 55%, 1)'
     }
   } else if (
     props.lang === 'english-basic' ||
     props.lang === 'english-extended'
   ) {
     if (/[`~1!qaz0)p;:/?\-_\[{'"=+\]}\\|]/.test(targetChar)) {
-      return 'hsla(25, 85%, 45%, 1)'
+      return 'hsla(25, 80%, 45%, 1)'
     } else if (/[2@wsx9(ol.>]/.test(targetChar)) {
-      return 'hsla(240, 100%, 50%, 1)'
-    } else if (/[3#edc8*ik,<]/.test(targetChar)) {
       return 'hsla(120, 80%, 30%, 1)'
+    } else if (/[3#edc8*ik,<]/.test(targetChar)) {
+      return 'hsla(240, 80%, 50%, 1)'
     } else if (/[4$rfv5%tgb6^7&yhnujm]/.test(targetChar)) {
-      return 'hsla(285, 70%, 55%, 1)'
+      return 'hsla(285, 80%, 55%, 1)'
     }
   }
 
   if (/ /.test(targetChar)) {
-    return 'black'
+    return 'hsla(0, 0%, 0%, 0.4)'
   }
 })
 
@@ -178,37 +178,50 @@ const keyboardDivision = computed(() => {
     return '11px'
   }
 })
+
+const replayAnimations = () => {
+  console.log('replay is on')
+  const element = document.body.querySelector('#keyf')
+  element.className = 'button'
+}
+
+const fn = function () {
+  console.warn('animation ended')
+  const elem = document.body.querySelector('#keyf')
+  // elem.classList.remove('button-dn1')
+}
+
+// let flag = true
+// const changeFlag = function () {
+//   flag = !flag
+//   console.warn(flag)
+// }
+
+const playSound = function () {
+  console.warn('playSound function')
+  let audio = new Audio()
+  audio.src = '/src/sounds/type.mp3'
+  audio.play()
+}
 </script>
 
 <template>
-  <button class="btn">
+  <button @click="replayAnimations" class="btn">
     langIndex: {{ langIndex }}, targetChar: _{{ targetChar }}_, keyCode:
     {{ keyCode }}
   </button>
   <div class="keyboard">
     <div
-      v-for="(item, id) in buttonObj"
-      class="button-up"
+      v-for="(value, id) in buttonObj"
+      class="button"
       :class="[
         {
-          'button-dn2': item[langIndex] === targetChar.toLowerCase()
+          'button-marked': value[langIndex] === targetChar.toLowerCase()
         }
-
-        // {
-        //   'button-orange-pointer': 'keya, semicolon'.includes(id)
-        // },
-        // {
-        //   'button-green-pointer': 'keys, keyl'.includes(id)
-        // },
-        // {
-        //   'button-blue-pointer': 'keyd, keyk'.includes(id)
-        // },
-        // {
-        //   'button-violet-pointer': 'keyf, keyj'.includes(id)
-        // }
       ]"
-      :id="id">
-      {{ item[langIndex] }}
+      :id="id"
+      @click="playSound">
+      {{ value[langIndex] }}
     </div>
   </div>
 </template>
@@ -228,10 +241,8 @@ const keyboardDivision = computed(() => {
   /* transition: all visibility 300ms, opacity 300ms; */
 }
 
-.button-up,
-.button-dn1,
-.button-dn2,
-.button-dn3 {
+.button,
+.button-marked {
   display: inline-block;
   width: 60px;
   height: 60px;
@@ -242,23 +253,20 @@ const keyboardDivision = computed(() => {
   text-align: center;
   text-transform: capitalize;
   color: black;
-  background: rgb(200, 200, 200);
+  background: hsl(0, 0%, 80%);
   /* border: none; */
   border-radius: 15px;
 }
 
-.button-up:after,
-.button-dn1:after,
-.button-dn2:after,
-.button-dn3:after {
+.button:after,
+.button-marked:after {
   content: '';
   height: 63px;
   display: inline-block;
   vertical-align: middle;
 }
 
-.button-grey-board {
-  /* box-shadow: inset 0 0 10px 3px hsla(0, 0%, 40%); */
+/* .button-grey-board {
   box-shadow: inset 0 0 0 3px hsla(0, 0%, 40%);
 }
 
@@ -275,31 +283,28 @@ const keyboardDivision = computed(() => {
 }
 
 .button-violet-pointer {
-  /* box-shadow: inset 0 0 0 3px hsla(282, 100%, 41%, 0.2); */
   box-shadow: inset 0 0 0 3px hsla(270, 100%, 55%, 1);
+} */
+
+@keyframes fadeGreenColor {
+  0% {
+    background-color: hsla(120, 80%, 65%);
+  }
+  100% {
+    background: hsl(0, 0%, 80%);
+  }
+}
+
+.button-marked {
+  box-shadow: inset 0 0 0 3px v-bind(boardColor);
 }
 
 .button-dn1 {
-  /* box-shadow: 0 0 30px 15px hsla(120, 90%, 70%, 0.7),
-    inset 0 0 45px hsla(120, 90%, 70%, 0.7); */
-  /* background-color: hsl(120, 100%, 65%); */
-  /* z-index: 1; */
-  box-shadow: inset 0 0 50px hsl(120, 100%, 60%);
-}
-
-.button-dn2 {
-  /* box-shadow: 0 0 30px 15px hsla(180, 90%, 50%, 0.7),
-    inset 0 0 30px hsla(180, 90%, 50%, 0.7); */
-  /* z-index: 1; */
-  /* box-shadow: inset 0 0 50px hsl(180, 90%, 50%); */
-  /* box-shadow: inset 0 0 0 3px v-bind(boardColor),
-    inset 0 0 50px hsl(180, 90%, 50%); */
-  box-shadow: inset 0 0 0 3px v-bind(boardColor);
-  /* box-shadow: inset 0 0 10px 3px v-bind(boardColor); */
+  animation: fadeGreenColor 3s;
 }
 
 .button-dn3 {
-  box-shadow: inset 0 0 0 3px hsl(120, 100%, 33%);
+  background-color: hsla(0, 100%, 75%, 1);
 }
 
 .row1,

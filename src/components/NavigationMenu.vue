@@ -4,6 +4,7 @@ import store from '/src/services/store.js'
 
 async function fillFieldFromBuffer() {
   document.body.querySelector('#nav-buffer').blur() // removing focus from an element
+  store.data.currentBook = 0 // for sake of overall statistics menu
 
   const br = getBrowser().browser
   if (br === 'chrome' || br === 'yabrowser') {

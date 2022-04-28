@@ -25,6 +25,9 @@ const charsArr = computed(() =>
   )
 )
 
+let audio = new Audio()
+audio.src = '/src/sounds/type.mp3'
+
 // event listener
 const eListener = function (e) {
   events.keyDn = e
@@ -47,6 +50,13 @@ const eListener = function (e) {
   ) {
     return
   }
+
+  // audio.pause()
+  // audio.currentTime = 0
+  const audio = new Audio()
+  audio.src = '/src/sounds/type.mp3'
+  audio.volume = 0.5
+  audio.play()
 
   events.capsLock = e.getModifierState && e.getModifierState('CapsLock')
 
