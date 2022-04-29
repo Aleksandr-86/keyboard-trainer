@@ -80,6 +80,7 @@ function toggleLangOfSnippets() {
   list-style: none;
   font-family: 'Montserrat', sans-serif;
   flex-wrap: wrap;
+  z-index: 10;
 }
 
 .nav > li {

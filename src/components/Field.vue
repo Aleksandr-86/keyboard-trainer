@@ -53,10 +53,11 @@ const eListener = function (e) {
 
   // audio.pause()
   // audio.currentTime = 0
-  const audio = new Audio()
-  audio.src = '/src/sounds/type.mp3'
-  audio.volume = 0.5
-  audio.play()
+
+  // const audio = new Audio()
+  // audio.src = '/src/sounds/type.mp3'
+  // audio.volume = 0.1
+  // audio.play()
 
   events.capsLock = e.getModifierState && e.getModifierState('CapsLock')
 

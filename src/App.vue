@@ -1,5 +1,6 @@
 <script setup>
 import NavigationMenu from './components/NavigationMenu.vue'
+import Background from './components/Background.vue'
 import SettingsMenu from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
 import OverallStatistics from './components/OverallStatistics.vue'
@@ -8,6 +9,7 @@ import CharMeter from './components/CharMeter.vue'
 import { onMounted } from 'vue'
 import { arrBackgrounds } from '/src/services/background-list.js'
 import { computed } from '@vue/reactivity'
+import Background1 from './components/Background.vue'
 
 onMounted(() => {
   for (const propertyName in store.storage) {
@@ -15,10 +17,13 @@ onMounted(() => {
       store.storage[propertyName] = localStorage[propertyName] === 'true'
   }
 
-  const obj = store.storage.background
-  document.body.style.background = `black url("/src/images/backgrounds/normal/${obj.name}.jpg") no-repeat fixed center center`
-  document.body.style.backgroundSize = 'cover'
+  // const obj = store.storage.background
+  // document.body.style.background = `black url("/src/images/backgrounds/normal/${obj.name}.jpg") no-repeat fixed center center`
+  // document.body.style.backgroundSize = 'cover'
 })
+
+// const background = `url('/src/images/backgrounds/normal/mountain.jpg')`
+const background = `url('/src/images/backgrounds/normal/okhotskoye.jpg')`
 
 const fn = function () {
   console.log(typeof store.data.currentBook)
@@ -26,12 +31,15 @@ const fn = function () {
 </script>
 
 <template>
+  <!-- <div id="background"> -->
+  <!-- <Background /> -->
   <NavigationMenu />
   <!-- <button @click="fn">КНИГА</button> -->
   <SettingsMenu v-if="store.state.settings" />
   <Field v-if="store.state.work" />
   <OverallStatistics v-if="store.state.overallStatistics" />
   <!-- <CharMeter :typing-speed="10" /> -->
+  <!-- </div> -->
 </template>
 
 <style scoped></style>
@@ -40,6 +48,31 @@ const fn = function () {
 * {
   margin: 0;
   padding: 0;
+}
+
+#background {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: no-repeat center center fixed;
+  background-image: v-bind(background);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  transition: background-image 2s 2s linear;
+}
+
+body {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: wheat no-repeat center center fixed;
+  background-image: v-bind(background);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 button {
@@ -63,7 +96,7 @@ html {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background 1000ms linear;
+  /* transition: background 1000ms linear; */
   text-align: center;
   /* color: hsl(300, 100%, 20%); */
   /* margin-top: 60px; */
