@@ -103,45 +103,47 @@ const shift = computed(
 )
 
 let lShift = computed(() => {
-  if (store.storage.pointers) return
+  // if (store.storage.pointers) return
   let targetChar = props.targetChar
+  const orange = 'hsla(30, 80%, 45%, 1)'
 
   if (
     isUpCase(targetChar) &&
     /[нртгоьшлбщдюзжхэъyhnujmikolp]/.test(targetChar.toLowerCase())
   ) {
-    return 'hsla(25, 85%, 45%, 1)'
+    return orange
   } else if (
     props.lang === 'russian-extended' &&
     /[?*()_+,/]/.test(targetChar)
   ) {
-    return 'hsla(25, 85%, 45%, 1)'
+    return orange
   } else if (
     props.lang === 'english-extended' &&
     /[&*()_+{}|:"<>?]/.test(targetChar)
   ) {
-    return 'hsla(25, 85%, 45%, 1)'
+    return orange
   } else {
     return 'transparent'
   }
 })
 
 let rShift = computed(() => {
-  if (store.storage.pointers) return
+  // if (store.storage.pointers) return
   let targetChar = props.targetChar
+  const orange = 'hsla(30, 80%, 45%, 1)'
 
   if (
     isUpCase(targetChar) &&
     /[ёйфяцычувскамепиqazwsxedcrfvtgb]/.test(targetChar.toLowerCase())
   ) {
-    return 'hsla(25, 85%, 45%, 1)'
+    return orange
   } else if (props.lang === 'russian-extended' && /[!"№;%:]/.test(targetChar)) {
-    return 'hsla(25, 85%, 45%, 1)'
+    return orange
   } else if (
     props.lang === 'english-extended' &&
     /[~!@#$%^]/.test(targetChar)
   ) {
-    return 'hsla(25, 85%, 45%, 1)'
+    return orange
   } else {
     return 'transparent'
   }
@@ -154,7 +156,7 @@ const boardColor = computed(() => {
 
   if (props.lang === 'russian-basic' || props.lang === 'russian-extended') {
     if (/[ё1!йфя0)зж.,\-_хэ=+ъ\\/]/.test(targetChar)) {
-      return 'hsla(25, 80%, 45%, 1)'
+      return 'hsla(30, 80%, 45%, 1)'
     } else if (/[2"цыч9(щдю]/.test(targetChar)) {
       return 'hsla(120, 80%, 30%, 1)'
     } else if (/[3№увс8*шлб]/.test(targetChar)) {
@@ -169,7 +171,7 @@ const boardColor = computed(() => {
     props.lang === 'english-extended'
   ) {
     if (/[`~1!qaz0)p;:/?\-_\[{'"=+\]}\\|]/.test(targetChar)) {
-      return 'hsla(25, 80%, 45%, 1)'
+      return 'hsla(30, 80%, 45%, 1)'
     } else if (/[2@wsx9(ol.>]/.test(targetChar)) {
       return 'hsla(120, 80%, 30%, 1)'
     } else if (/[3#edc8*ik,<]/.test(targetChar)) {
