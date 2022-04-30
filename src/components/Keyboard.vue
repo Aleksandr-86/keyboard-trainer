@@ -94,6 +94,7 @@ const langIndex = computed(() => {
 const keyCode = computed(() => props.keyCode && props.keyCode.toLowerCase())
 
 let lShift = computed(() => {
+  if (store.storage.pointers) return
   let targetChar = props.targetChar
 
   if (
@@ -117,6 +118,7 @@ let lShift = computed(() => {
 })
 
 let rShift = computed(() => {
+  if (store.storage.pointers) return
   let targetChar = props.targetChar
 
   if (
@@ -179,17 +181,16 @@ const keyboardDivision = computed(() => {
   }
 })
 
-const replayAnimations = () => {
-  console.log('replay is on')
-  const element = document.body.querySelector('#keyf')
-  element.className = 'button'
-}
+// const replayAnimations = () => {
+//   console.log('replay is on')
+//   const element = document.body.querySelector('#keyf')
+//   element.className = 'button'
+// }
 
-const fn = function () {
-  console.warn('animation ended')
-  const elem = document.body.querySelector('#keyf')
-  // elem.classList.remove('button-dn1')
-}
+// const fn = function () {
+//   console.warn('animation ended')
+//   const elem = document.body.querySelector('#keyf')
+// }
 
 // let flag = true
 // const changeFlag = function () {
@@ -199,7 +200,7 @@ const fn = function () {
 </script>
 
 <template>
-  <button @click="replayAnimations" class="btn">
+  <button class="btn">
     langIndex: {{ langIndex }}, targetChar: _{{ targetChar }}_, keyCode:
     {{ keyCode }}
   </button>
@@ -210,10 +211,12 @@ const fn = function () {
       :class="[
         {
           'button-marked': value[langIndex] === targetChar.toLowerCase()
+        },
+        {
+          'button-correct': id === keyCode
         }
       ]"
-      :id="id"
-      @click="playSound">
+      :id="id">
       {{ value[langIndex] }}
     </div>
   </div>
@@ -292,11 +295,11 @@ const fn = function () {
   box-shadow: inset 0 0 0 3px v-bind(boardColor);
 }
 
-.button-dn1 {
-  animation: fadeGreenColor 3s;
+.button-correct {
+  background-color: hsla(120, 80%, 65%, 1);
 }
 
-.button-dn3 {
+.button-wrong {
   background-color: hsla(0, 100%, 75%, 1);
 }
 
