@@ -29,6 +29,7 @@ let audio = new Audio()
 audio.src = '/src/sounds/type.mp3'
 
 // event listener
+let tempChar = ''
 const eListener = function (e) {
   events.keyDn = e
   const code = e.code
@@ -53,7 +54,6 @@ const eListener = function (e) {
   audio.play()
 
   events.capsLock = e.getModifierState && e.getModifierState('CapsLock')
-
   // console.log(events.capsLock)
 
   // timer on
@@ -73,20 +73,18 @@ const eListener = function (e) {
     }, 10)
   }
 
-  // // releasing the key
-  // document.body.addEventListener(
-  //   'keyup',
-  //   function (e) {
-  //     // if (btnDn === btnUp) {
-  //     setTimeout(function () {
-  //       btnDn.classList.remove('red')
-  //     }, 400)
-  //   },
-  //   { once: true }
-  // )
-
   store.recordingStatistics(e)
   store.moveCaret('')
+  const tempChar = e.key
+
+  if (store.data.indexArr >= 1) {
+    if (
+      store.data.fragmentArr[store.data.indexArr - 1] !== tempChar &&
+      !charTest(store.data.fragmentArr[store.data.indexArr - 1])
+    ) {
+      store.data.fragmentArr[store.data.indexArr - 1] = tempChar
+    }
+  }
 }
 
 onMounted(() => {
