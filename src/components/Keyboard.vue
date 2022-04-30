@@ -148,7 +148,7 @@ let rShift = computed(() => {
 })
 
 const boardColor = computed(() => {
-  if (store.storage.pointers) return
+  // if (store.storage.pointers) return
 
   let targetChar = store.data.fragmentArr[store.data.indexArr].toLowerCase()
 
@@ -158,9 +158,11 @@ const boardColor = computed(() => {
     } else if (/[2"цыч9(щдю]/.test(targetChar)) {
       return 'hsla(120, 80%, 30%, 1)'
     } else if (/[3№увс8*шлб]/.test(targetChar)) {
-      return 'hsla(240, 80%, 50%, 1)'
-    } else if (/[4;кам5%епи6:7?нртгоь]/.test(targetChar)) {
       return 'hsla(285, 80%, 55%, 1)'
+    } else if (/[4;кам5%епи6:]/.test(targetChar)) {
+      return 'hsla(240, 80%, 50%, 1)'
+    } else if (/[7?нртгоь]/.test(targetChar)) {
+      return 'hsla(0, 75%, 50%, 1)'
     }
   } else if (
     props.lang === 'english-basic' ||
@@ -171,9 +173,11 @@ const boardColor = computed(() => {
     } else if (/[2@wsx9(ol.>]/.test(targetChar)) {
       return 'hsla(120, 80%, 30%, 1)'
     } else if (/[3#edc8*ik,<]/.test(targetChar)) {
-      return 'hsla(240, 80%, 50%, 1)'
-    } else if (/[4$rfv5%tgb6^7&yhnujm]/.test(targetChar)) {
       return 'hsla(285, 80%, 55%, 1)'
+    } else if (/[4$rfv5%tgb6^]/.test(targetChar)) {
+      return 'hsla(240, 80%, 50%, 1)'
+    } else if (/[7&yhnujm]/.test(targetChar)) {
+      return 'hsla(0, 75%, 50%, 1)'
     }
   }
 
@@ -226,22 +230,23 @@ const previousChar = computed(() => {
       :class="[
         {
           'button-marked': value[langIndex] === targetChar.toLowerCase()
-        },
-        {
-          'button-correct':
-            id !== 'shiftleft' &&
-            id !== 'shiftright' &&
-            id === keyCode &&
-            (previousChar === keyValue || previousChar === 'skip')
-        },
-        {
-          'button-wrong':
-            id !== 'shiftleft' &&
-            id !== 'shiftright' &&
-            previousChar !== 'skip' &&
-            previousChar !== keyValue &&
-            id === keyCode
         }
+        // {
+        //   'button-correct':
+        //     store.storage.pointers &&
+        //     id !== 'shiftleft' &&
+        //     id !== 'shiftright' &&
+        //     id === keyCode &&
+        //     (previousChar === keyValue || previousChar === 'skip')
+        // },
+        // {
+        //   'button-wrong':
+        //     id !== 'shiftleft' &&
+        //     id !== 'shiftright' &&
+        //     previousChar !== 'skip' &&
+        //     previousChar !== keyValue &&
+        //     id === keyCode
+        // }
       ]"
       :id="id">
       {{ value[langIndex] }}

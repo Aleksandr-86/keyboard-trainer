@@ -20,7 +20,7 @@ const changeBackground = function (direction) {
       store.storage.backgroundPreview = 0
       return
     }
-    localStorage.background++
+    localStorage.background = background + 1
     store.storage.backgroundPreview++
   } else if (direction === 'previous') {
     if (background <= 0) {
@@ -29,7 +29,7 @@ const changeBackground = function (direction) {
       store.storage.backgroundPreview = length
       return
     }
-    localStorage.background--
+    localStorage.background = background - 1
     store.storage.backgroundPreview--
   }
 }

@@ -22,8 +22,8 @@ const storage = reactive({
   background: 0,
   backgroundPreview: 0,
   letterCase: false,
-  pointers: true,
-  keyboard: true,
+  pointers: false,
+  keyboard: false,
   inapLang: true,
   langOfSnippets: 'russian'
 })
