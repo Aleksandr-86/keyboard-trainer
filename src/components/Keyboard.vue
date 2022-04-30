@@ -197,6 +197,7 @@ const keyboardDivision = computed(() => {
 //   flag = !flag
 //   console.warn(flag)
 // }
+const shiftPressed = computed(() => {})
 </script>
 
 <template>
