@@ -1,7 +1,7 @@
 <script setup>
 import { reactive, computed, onUnmounted, onMounted } from 'vue'
 import store from '/src/services/store.js'
-import { charTest, msToMinutes } from '../services/helpers.js'
+import { charTest, msToMinutes, isAuxiliaryKeys } from '../services/helpers.js'
 import CurrentStatistics from './CurrentStatistics.vue'
 import Keyboard from './Keyboard.vue'
 
@@ -33,23 +33,16 @@ const eListener = function (e) {
   events.keyDn = e
   const code = e.code
   events.keyValue = e.key
-  const ctrl = e.ctrlKey
-  const shift = e.shiftKey
+  // const ctrl = e.ctrlKey
+  // const shift = e.shiftKey
+  const btnDn = document.querySelector(`#${e.code.toLowerCase()}`)
+
   // console.warn(keyKey)
   // console.log(
   //   `altKey ${e.altKey}, ctrlKey ${e.ctrlKey}, shiftKey ${e.shiftKey}`
   // )
 
-  if (
-    code == 'ShiftLeft' ||
-    code === 'ShiftRight' ||
-    code === 'Backspace' ||
-    code === 'Enter' ||
-    code === 'ControlLeft' ||
-    code === 'ControlRight'
-  ) {
-    return
-  }
+  if (isAuxiliaryKeys(code)) return
 
   // audio.pause()
   // audio.currentTime = 0
@@ -79,6 +72,18 @@ const eListener = function (e) {
       )
     }, 10)
   }
+
+  // // releasing the key
+  // document.body.addEventListener(
+  //   'keyup',
+  //   function (e) {
+  //     // if (btnDn === btnUp) {
+  //     setTimeout(function () {
+  //       btnDn.classList.remove('red')
+  //     }, 400)
+  //   },
+  //   { once: true }
+  // )
 
   store.recordingStatistics(e)
   store.moveCaret('')
@@ -126,8 +131,7 @@ onUnmounted(() => {
 
   <Keyboard
     v-if="!store.storage.keyboard && store.state.work"
-    :key-code="events.keyDn.code"
-    :key-value="events.code"
+    :event-keydown="events.keyDn"
     :target-char="store.data.fragmentArr[store.data.indexArr]"
     :lang="store.data.keyboardLang" />
 </template>
@@ -141,6 +145,10 @@ onUnmounted(() => {
   100% {
     cursor: none;
   }
+}
+
+.red {
+  background-color: red;
 }
 
 .field {

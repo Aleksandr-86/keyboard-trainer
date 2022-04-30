@@ -5,8 +5,7 @@ import { isUpCase } from '../services/helpers.js'
 // import CharMeter from './CharMeter.vue'
 
 const props = defineProps({
-  keyCode: String,
-  keyValue: String,
+  eventKeydown: {},
   targetChar: String,
   lang: String
 })
@@ -91,7 +90,17 @@ const langIndex = computed(() => {
   }
 })
 
-const keyCode = computed(() => props.keyCode && props.keyCode.toLowerCase())
+const keyCode = computed(
+  () => props.eventKeydown.code && props.eventKeydown.code.toLowerCase()
+)
+
+const keyValue = computed(
+  () => props.eventKeydown.key && props.eventKeydown.key.toLowerCase()
+)
+
+const shift = computed(
+  () => props.eventKeydown.key && props.eventKeydown.shiftKey
+)
 
 let lShift = computed(() => {
   if (store.storage.pointers) return
@@ -197,13 +206,18 @@ const keyboardDivision = computed(() => {
 //   flag = !flag
 //   console.warn(flag)
 // }
-const shiftPressed = computed(() => {})
+
+const previousChar = computed(() => {
+  if (store.data.indexArr >= 1) {
+    return store.data.fragmentArr[store.data.indexArr - 1].toLowerCase()
+  }
+})
 </script>
 
 <template>
   <button class="btn">
     langIndex: {{ langIndex }}, targetChar: _{{ targetChar }}_, keyCode:
-    {{ keyCode }}
+    {{ props.eventKeydown.code }}, keyValue: _{{ keyValue }}_
   </button>
   <div class="keyboard">
     <div
@@ -214,7 +228,19 @@ const shiftPressed = computed(() => {})
           'button-marked': value[langIndex] === targetChar.toLowerCase()
         },
         {
-          'button-correct': id === keyCode
+          'button-correct':
+            id !== 'shiftleft' &&
+            id !== 'shiftright' &&
+            id === keyCode &&
+            (previousChar === keyValue || previousChar === 'skip')
+        },
+        {
+          'button-wrong':
+            id !== 'shiftleft' &&
+            id !== 'shiftright' &&
+            previousChar !== 'skip' &&
+            previousChar !== keyValue &&
+            id === keyCode
         }
       ]"
       :id="id">

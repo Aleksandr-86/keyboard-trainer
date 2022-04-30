@@ -191,6 +191,27 @@ export function langTest(char, langLayout) {
 
 export const isUpCase = (char) => char !== char.toLowerCase()
 
+export const isAuxiliaryKeys = function (code) {
+  if (
+    code === 'Tab' ||
+    code === 'CapsLock' ||
+    code == 'ShiftLeft' ||
+    code == 'ControlLeft' ||
+    code == 'MetaLeft' ||
+    code == 'AltLeft' ||
+    code == 'AltRight' ||
+    code == 'ContexMenu' ||
+    code == 'MetaRight' ||
+    code === 'ControlRight' ||
+    code === 'ShiftRight' ||
+    code === 'Backspace'
+  ) {
+    return true
+  } else {
+    return false
+  }
+}
+
 // rounding
 export const rnd = function (num, digit = 0) {
   return Number(Math.round(Number(num + 'e' + digit)) + 'e-' + digit)
