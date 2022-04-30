@@ -8,9 +8,7 @@ import {
   strPrepWithoutNewLines,
   getSomeSentences
 } from '/src/services/helpers.js'
-
 import bookList from '/src/services/book-list.js'
-import { arrBackgrounds } from '/src/services/background-list.js'
 
 const state = reactive({
   work: false,
@@ -21,7 +19,8 @@ const state = reactive({
 })
 
 const storage = reactive({
-  backgroundNum: 0,
+  background: 0,
+  backgroundPreview: 0,
   letterCase: false,
   pointers: true,
   keyboard: true,
@@ -188,9 +187,11 @@ const randomSnippet = function (lang, amount) {
   if (lang === 'russian') {
     arrOfBooks = bookList.arrOfRusBooks
     storage.langOfSnippets = 'russian' // underline the corresponding link in the nav menu
+    localStorage.langOfSnippets = 'russian'
   } else {
     arrOfBooks = bookList.arrOfEngBooks
     storage.langOfSnippets = 'english' // underline the corresponding link in the nav menu
+    localStorage.langOfSnippets = 'english'
   }
 
   const obj = arrOfBooks[randomNum(0, 4)] // choosing a random book

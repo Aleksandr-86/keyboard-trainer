@@ -1,33 +1,48 @@
 <script setup>
+import { computed } from '@vue/reactivity'
 import store from '/src/services/store.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
 
+const backgroundPreview = computed(
+  () =>
+    `/src/images/backgrounds/small/${
+      arrBackgrounds[store.storage.backgroundPreview].name
+    }.jpg`
+)
+
 const changeBackground = function (direction) {
-  const backgroundNum = localStorage.backgroundNum
+  let background = 0
+  if (localStorage.background) background = Number(localStorage.background)
+
   if (direction === 'next') {
-    if (backgroundNum === arrBackgrounds.length - 1) {
-      store.storage.backgroundNum = 0
-      localStorage.backgroundNum = 0
+    if (background >= arrBackgrounds.length - 1) {
+      localStorage.background = 0
+      store.storage.backgroundPreview = 0
+      return
     }
-    store.storage.backgroundNum++
-    localStorage.background = store.storage.backgroundNum
+    localStorage.background++
+    store.storage.backgroundPreview++
   } else if (direction === 'previous') {
-    if (backgroundNum === 0) {
+    if (background <= 0) {
       const length = arrBackgrounds.length - 1
-      store.storage.backgroundNum == length
       localStorage.background = length
+      store.storage.backgroundPreview = length
+      return
     }
-    store.storage.backgroundNum--
-    localStorage.backgroundNum = store.storage.backgroundNum
+    localStorage.background--
+    store.storage.backgroundPreview--
   }
+}
+
+const closeSettingMenu = function () {
+  store.storage.background = store.storage.backgroundPreview
+  store.setFalse('settings')
 }
 </script>
 
 <template>
   <div class="settings-menu">
-    <label class="settings-btn-close" @click="store.setFalse('settings')"
-      >+</label
-    >
+    <label class="settings-btn-close" @click="closeSettingMenu">+</label>
     <div class="settings-title">Настройки:</div>
 
     <label class="custom-checkbox">
@@ -78,7 +93,7 @@ const changeBackground = function (direction) {
         id="settings-btn-previous"></button>
       <img
         id="settings-imgPreview"
-        src="/src/images/backgrounds/small/water.jpg"
+        :src="backgroundPreview"
         alt="background-preview" />
       <button
         @click="changeBackground('next')"

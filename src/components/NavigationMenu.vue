@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from '@vue/reactivity'
 import { getBrowser } from '/src/services/helpers.js'
 import store from '/src/services/store.js'
 
@@ -20,9 +21,19 @@ async function fillFieldFromBuffer() {
   }
 }
 
-function toggleLangOfSnippets() {
-  store.storage.langOfSnippets = !store.storage.langOfSnippets
+const toggleSettings = function () {
+  store.toggleState('settings')
+  if (store.state.settings === false) {
+    store.storage.background = store.storage.backgroundPreview
+  }
 }
+
+// const langOfSnippetsRu = computed(
+//   () => store.storage.langOfSnippets !== 'russian'
+// )
+// const langOfSnippetsEn = computed(
+//   () => store.storage.langOfSnippets !== 'english'
+// )
 </script>
 
 <template>
@@ -65,9 +76,7 @@ function toggleLangOfSnippets() {
     </li>
     <li><a id="nav-info" href="#!">Справка</a></li>
     <li>
-      <a @click="store.toggleState('settings')" id="nav-settings" href="#!"
-        >Настройки</a
-      >
+      <a @click="toggleSettings" id="nav-settings" href="#!">Настройки</a>
     </li>
   </ul>
 </template>

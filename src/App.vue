@@ -13,24 +13,31 @@ import { computed } from '@vue/reactivity'
 
 onMounted(() => {
   for (const propertyName in store.storage) {
-    if (localStorage[propertyName])
+    if (
+      (propertyName === 'background' || propertyName === 'backgroundPreview') &&
+      localStorage.background
+    ) {
+      store.storage[propertyName] = localStorage.background
+    } else if (
+      propertyName === 'langOfSnippets' &&
+      localStorage.langOfSnippets
+    ) {
+      store.storage.langOfSnippets = localStorage.langOfSnippets
+    } else if (localStorage[propertyName]) {
       store.storage[propertyName] = localStorage[propertyName] === 'true'
+    }
   }
-
-  // const obj = store.storage.background
-  // document.body.style.background = `black url("/src/images/backgrounds/normal/${obj.name}.jpg") no-repeat fixed center center`
-  // document.body.style.backgroundSize = 'cover'
 })
-// const background = `url('/src/images/backgrounds/normal/mountain.jpg')`
+
 const background = computed(
   () =>
     `url('/src/images/backgrounds/normal/${
-      arrBackgrounds[localStorage.backgroundNum].name
+      arrBackgrounds[store.storage.background].name
     }.jpg')`
 )
 
 // const fn = function () {
-//   console.log(typeof store.data.currentBook)
+//   console.log(store.storage.langOfSnippets)
 // }
 </script>
 
@@ -65,18 +72,6 @@ const background = computed(
   -o-background-size: cover;
   background-size: cover;
   transition: background-image 500ms linear;
-}
-
-body {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background: wheat no-repeat center center fixed;
-  background-image: v-bind(background);
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
 
 button {
