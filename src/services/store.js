@@ -21,11 +21,11 @@ const state = reactive({
 })
 
 const storage = reactive({
+  backgroundNum: 0,
   letterCase: false,
   pointers: true,
   keyboard: true,
   inapLang: true,
-  background: arrBackgrounds[5],
   langOfSnippets: 'russian'
 })
 
@@ -82,7 +82,6 @@ const recordingStatistics = function (e) {
 
 const toggleState = function (propertyName) {
   state[propertyName] = !state[propertyName]
-  console.log(storage.langOfSnippets)
 }
 
 const setTrue = function (propertyName) {

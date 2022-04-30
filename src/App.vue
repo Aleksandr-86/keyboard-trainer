@@ -9,7 +9,7 @@ import CharMeter from './components/CharMeter.vue'
 import { onMounted } from 'vue'
 import { arrBackgrounds } from '/src/services/background-list.js'
 import { computed } from '@vue/reactivity'
-import Background1 from './components/Background.vue'
+// import Background1 from './components/Background.vue'
 
 onMounted(() => {
   for (const propertyName in store.storage) {
@@ -21,25 +21,29 @@ onMounted(() => {
   // document.body.style.background = `black url("/src/images/backgrounds/normal/${obj.name}.jpg") no-repeat fixed center center`
   // document.body.style.backgroundSize = 'cover'
 })
-
 // const background = `url('/src/images/backgrounds/normal/mountain.jpg')`
-const background = `url('/src/images/backgrounds/normal/okhotskoye.jpg')`
+const background = computed(
+  () =>
+    `url('/src/images/backgrounds/normal/${
+      arrBackgrounds[localStorage.backgroundNum].name
+    }.jpg')`
+)
 
-const fn = function () {
-  console.log(typeof store.data.currentBook)
-}
+// const fn = function () {
+//   console.log(typeof store.data.currentBook)
+// }
 </script>
 
 <template>
-  <!-- <div id="background"> -->
-  <!-- <Background /> -->
-  <NavigationMenu />
-  <!-- <button @click="fn">КНИГА</button> -->
-  <SettingsMenu v-if="store.state.settings" />
-  <Field v-if="store.state.work" />
-  <OverallStatistics v-if="store.state.overallStatistics" />
-  <!-- <CharMeter :typing-speed="10" /> -->
-  <!-- </div> -->
+  <div id="background">
+    <!-- <Background /> -->
+    <NavigationMenu />
+    <!-- <button @click="fn">КНИГА</button> -->
+    <SettingsMenu v-if="store.state.settings" />
+    <Field v-if="store.state.work" />
+    <OverallStatistics v-if="store.state.overallStatistics" />
+    <!-- <CharMeter :typing-speed="10" /> -->
+  </div>
 </template>
 
 <style scoped></style>
@@ -60,7 +64,7 @@ const fn = function () {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  transition: background-image 2s 2s linear;
+  transition: background-image 500ms linear;
 }
 
 body {

@@ -1,5 +1,26 @@
 <script setup>
 import store from '/src/services/store.js'
+import { arrBackgrounds } from '/src/services/background-list.js'
+
+const changeBackground = function (direction) {
+  const backgroundNum = localStorage.backgroundNum
+  if (direction === 'next') {
+    if (backgroundNum === arrBackgrounds.length - 1) {
+      store.storage.backgroundNum = 0
+      localStorage.backgroundNum = 0
+    }
+    store.storage.backgroundNum++
+    localStorage.background = store.storage.backgroundNum
+  } else if (direction === 'previous') {
+    if (backgroundNum === 0) {
+      const length = arrBackgrounds.length - 1
+      store.storage.backgroundNum == length
+      localStorage.background = length
+    }
+    store.storage.backgroundNum--
+    localStorage.backgroundNum = store.storage.backgroundNum
+  }
+}
 </script>
 
 <template>
@@ -51,12 +72,18 @@ import store from '/src/services/store.js'
     </label>
 
     <div class="settings-picture">
-      <button type="button" id="settings-btn-previous"></button>
+      <button
+        @click="changeBackground('previous')"
+        type="button"
+        id="settings-btn-previous"></button>
       <img
         id="settings-imgPreview"
         src="/src/images/backgrounds/small/water.jpg"
         alt="background-preview" />
-      <button type="button" id="settings-btn-next"></button>
+      <button
+        @click="changeBackground('next')"
+        type="button"
+        id="settings-btn-next"></button>
     </div>
 
     <p class="settings-description"></p>
