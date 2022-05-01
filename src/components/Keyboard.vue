@@ -24,9 +24,9 @@ const buttonObj = {
   digit0: [')0', ')0'],
   minus: ['_-', '_-'],
   equal: ['+=', '+='],
-  backspace: ['b', 'b'],
+  backspace: ['backspace', 'backspace'],
 
-  tab: ['t', 't'],
+  tab: ['tab', 'tab'],
   keyq: ['й', 'q'],
   keyw: ['ц', 'w'],
   keye: ['у', 'e'],
@@ -41,7 +41,7 @@ const buttonObj = {
   bracketright: ['ъ', '}]'],
   backslash: ['/\\', '|\\'],
 
-  capslock: ['C', 'C'],
+  capslock: ['caps', 'caps'],
   keya: ['ф', 'a'],
   keys: ['ы', 's', 's'],
   keyd: ['в', 'd', 'd'],
@@ -53,9 +53,9 @@ const buttonObj = {
   keyl: ['д', 'l', 'l'],
   semicolon: ['ж', ':;'],
   quote: ['э', `"'`],
-  enter: ['E', 'E'],
+  enter: ['enter', 'enter'],
 
-  shiftleft: ['S', 'S'],
+  shiftleft: ['shift', 'shift'],
   keyz: ['я', 'z'],
   keyx: ['ч', 'x'],
   keyc: ['с', 'c'],
@@ -66,16 +66,16 @@ const buttonObj = {
   comma: ['б', '<,'],
   period: ['ю', '>.'],
   slash: [',.', '?/'],
-  shiftright: ['S', 'S'],
+  shiftright: ['shift', 'shift'],
 
-  controlleft: ['C', 'C'],
-  osleft: ['W', 'W'],
-  altleft: ['A', 'A'],
+  controlleft: ['ctrl', 'ctrl'],
+  osleft: ['win', 'win'],
+  altleft: ['alt', 'alt'],
   space: [' ', ' '],
-  altright: ['A', 'A'],
-  osright: ['W', 'W'],
-  contextmenu: ['M', 'M'],
-  controlright: ['C', 'C']
+  altright: ['alt', 'alt'],
+  osright: ['win', 'win'],
+  contextmenu: ['menu', 'menu'],
+  controlright: ['ctrl', 'ctrl']
 }
 
 const langIndex = computed(() => {
@@ -113,12 +113,28 @@ let lShift = computed(() => {
     return magenta
   } else if (props.lang === 'english' && /[&*()_+{}|:"<>?]/.test(targetChar)) {
     return magenta
-  } else {
-    return 'transparent'
   }
 })
 
-let rShift = computed(() => {
+const rShiftBorder = computed(() => {
+  if (store.storage.pointers) return
+
+  let targetChar = props.targetChar
+  const magenta = 'hsla(300, 80%, 40%, 1)'
+
+  if (
+    isUpCase(targetChar) &&
+    /[ёйфяцычувскамепиqazwsxedcrfvtgb]/.test(targetChar.toLowerCase())
+  ) {
+    return magenta
+  } else if (props.lang === 'russian' && /[!"№;%:]/.test(targetChar)) {
+    return magenta
+  } else if (props.lang === 'english' && /[~!@#$%^]/.test(targetChar)) {
+    return magenta
+  }
+})
+
+const rShiftColor = computed(() => {
   if (store.storage.pointers) return
 
   let targetChar = props.targetChar
@@ -134,7 +150,7 @@ let rShift = computed(() => {
   } else if (props.lang === 'english' && /[~!@#$%^]/.test(targetChar)) {
     return magenta
   } else {
-    return 'transparent'
+    return 'hsl(0, 0%, 70%)'
   }
 })
 
@@ -170,7 +186,8 @@ const boardColor = computed(() => {
   }
 
   if (/ /.test(targetChar)) {
-    return 'hsla(0, 0%, 0%, 0.4)'
+    // return 'hsla(0, 0%, 0%, 0.4)'
+    return 'hsl(0, 0%, 70%)'
   }
 })
 </script>
@@ -185,26 +202,34 @@ const boardColor = computed(() => {
       v-for="(value, id) in buttonObj"
       :class="[
         {
-          'button-marked': value[langIndex].includes(targetChar.toLowerCase())
+          // 'button-marked': value[langIndex].includes(targetChar.toLowerCase())
+          'button-marked':
+            value[langIndex] === targetChar.toLowerCase() ||
+            (value[langIndex].length === 2 &&
+              value[langIndex].includes(targetChar.toLowerCase()))
         },
-        { button: value[langIndex].length === 1 },
-        { 'button-double': value[langIndex].length !== 1 }
+        {
+          button: value[langIndex].length === 1 || value[langIndex].length > 2
+        },
+        { 'button-double': value[langIndex].length === 2 }
       ]"
       :id="id">
       <div
-        v-if="value[langIndex].length === 1"
+        v-if="value[langIndex].length === 1 || value[langIndex].length > 2"
         :class="[
           { 'board-color': value[langIndex] === targetChar.toLowerCase() }
         ]">
         {{ value[langIndex] }}
       </div>
+
       <div
-        v-if="value[langIndex].length > 1"
+        v-if="value[langIndex].length === 2"
         :class="[{ 'board-color': value[langIndex][0] === targetChar }]">
         {{ value[langIndex][0] }}
       </div>
+
       <div
-        v-if="value[langIndex].length > 1"
+        v-if="value[langIndex].length === 2"
         :class="[{ 'board-color': value[langIndex][1] === targetChar }]">
         {{ value[langIndex][1] }}
       </div>
@@ -341,11 +366,13 @@ const boardColor = computed(() => {
 #shiftleft {
   width: 138px;
   box-shadow: inset 0 0 0 3px v-bind(lShift);
+  /* color: v-bind(lShift); */
 }
 
 #shiftright {
   width: 168px;
-  box-shadow: inset 0 0 0 3px v-bind(rShift);
+  box-shadow: inset 0 0 0 3px v-bind(rShiftBorder);
+  color: v-bind(rShiftColor);
 }
 
 #controlleft,
