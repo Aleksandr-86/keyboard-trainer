@@ -13,11 +13,9 @@ import { computed } from '@vue/reactivity'
 
 onMounted(() => {
   for (const propertyName in store.storage) {
-    if (
-      (propertyName === 'background' || propertyName === 'backgroundPreview') &&
-      localStorage.background
-    ) {
-      store.storage[propertyName] = localStorage.background
+    if (propertyName === 'background' && localStorage.background) {
+      store.storage.background = localStorage.background
+      store.data.backgroundPreview = store.storage.background
     } else if (
       propertyName === 'langOfSnippets' &&
       localStorage.langOfSnippets
@@ -61,19 +59,6 @@ const background = computed(
   padding: 0;
 }
 
-#background {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background: no-repeat center center fixed;
-  background-image: v-bind(background);
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  transition: background-image 500ms linear;
-}
-
 button {
   margin: 0;
   width: 100px;
@@ -99,5 +84,18 @@ html {
   text-align: center;
   /* color: hsl(300, 100%, 20%); */
   /* margin-top: 60px; */
+}
+
+#background {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: no-repeat center center fixed;
+  background-image: v-bind(background);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  transition: background-image 500ms linear;
 }
 </style>

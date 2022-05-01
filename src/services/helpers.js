@@ -164,7 +164,17 @@ export const remEmoji = (str) => str.replace(regexEmoji, '')
 export const charTest = (char) =>
   !/[0-9 А-ЯЁA-Z.,<>/\\'"\[\]{}|`~!@№#;$%:^?&*()\-_+=\n]/i.test(char)
 
-export function langTest(char, langLayout) {
+export function langTest(char, lang) {
+  if (/[А-ЯЁ№]/i.test(char)) {
+    return 'russian'
+  } else if (/[A-Z`~@#$^&{}|]/i.test(char)) {
+    return 'english'
+  } else {
+    return 'neutral'
+  }
+}
+
+export function keyboardLangTest(char, langLayout) {
   if (/[А-ЯЁ]/i.test(char)) {
     return 'russian-basic'
   } else if (/[A-Z`\[\]']/i.test(char)) {

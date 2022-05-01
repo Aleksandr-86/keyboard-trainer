@@ -103,7 +103,8 @@ const shift = computed(
 )
 
 let lShift = computed(() => {
-  // if (store.storage.pointers) return
+  if (store.storage.pointers) return
+
   let targetChar = props.targetChar
   const orange = 'hsla(30, 80%, 45%, 1)'
 
@@ -128,7 +129,8 @@ let lShift = computed(() => {
 })
 
 let rShift = computed(() => {
-  // if (store.storage.pointers) return
+  if (store.storage.pointers) return
+
   let targetChar = props.targetChar
   const orange = 'hsla(30, 80%, 45%, 1)'
 
@@ -150,7 +152,7 @@ let rShift = computed(() => {
 })
 
 const boardColor = computed(() => {
-  // if (store.storage.pointers) return
+  if (store.storage.pointers) return
 
   let targetChar = store.data.fragmentArr[store.data.indexArr].toLowerCase()
 
@@ -188,31 +190,6 @@ const boardColor = computed(() => {
   }
 })
 
-const keyboardDivision = computed(() => {
-  if (store.storage.pointers) {
-    return '0px'
-  } else {
-    return '11px'
-  }
-})
-
-// const replayAnimations = () => {
-//   console.log('replay is on')
-//   const element = document.body.querySelector('#keyf')
-//   element.className = 'button'
-// }
-
-// const fn = function () {
-//   console.warn('animation ended')
-//   const elem = document.body.querySelector('#keyf')
-// }
-
-// let flag = true
-// const changeFlag = function () {
-//   flag = !flag
-//   console.warn(flag)
-// }
-
 const previousChar = computed(() => {
   if (store.data.indexArr >= 1) {
     return store.data.fragmentArr[store.data.indexArr - 1].toLowerCase()
@@ -232,23 +209,23 @@ const previousChar = computed(() => {
       :class="[
         {
           'button-marked': value[langIndex] === targetChar.toLowerCase()
+        },
+        {
+          'button-correct':
+            store.storage.pointers &&
+            id !== 'shiftleft' &&
+            id !== 'shiftright' &&
+            id === keyCode &&
+            (previousChar === keyValue || previousChar === 'skip')
+        },
+        {
+          'button-wrong':
+            id !== 'shiftleft' &&
+            id !== 'shiftright' &&
+            previousChar !== 'skip' &&
+            previousChar !== keyValue &&
+            id === keyCode
         }
-        // {
-        //   'button-correct':
-        //     store.storage.pointers &&
-        //     id !== 'shiftleft' &&
-        //     id !== 'shiftright' &&
-        //     id === keyCode &&
-        //     (previousChar === keyValue || previousChar === 'skip')
-        // },
-        // {
-        //   'button-wrong':
-        //     id !== 'shiftleft' &&
-        //     id !== 'shiftright' &&
-        //     previousChar !== 'skip' &&
-        //     previousChar !== keyValue &&
-        //     id === keyCode
-        // }
       ]"
       :id="id">
       {{ value[langIndex] }}
@@ -257,18 +234,32 @@ const previousChar = computed(() => {
 </template>
 
 <style>
+@keyframes hideCursor {
+  0%,
+  99% {
+    cursor: default;
+  }
+  100% {
+    cursor: none;
+  }
+}
+
 .btn {
   width: 900px;
 }
 
 .keyboard {
-  width: calc(v-bind(keyboardDivision) + 945px);
+  width: 945px;
   height: 318px;
   margin: 0 auto;
   user-select: none;
   background: rgb(170, 170, 170);
   border-radius: 15px;
-  /* transition: all visibility 300ms, opacity 300ms; */
+}
+
+.keyboard:hover {
+  cursor: none;
+  animation: hideCursor 2500ms;
 }
 
 .button,
@@ -354,13 +345,6 @@ const previousChar = computed(() => {
   margin-left: 3px;
 }
 
-#digit6,
-#keyt,
-#keyg,
-#keyb {
-  margin-right: calc(v-bind(keyboardDivision) + 3px);
-}
-
 #backspace {
   width: 120px;
 }
@@ -401,7 +385,7 @@ const previousChar = computed(() => {
 }
 
 #space {
-  width: calc(v-bind(keyboardDivision) + 393px);
+  width: 393px;
 }
 
 #controlright {

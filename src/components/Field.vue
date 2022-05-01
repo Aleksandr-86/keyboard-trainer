@@ -1,7 +1,13 @@
 <script setup>
 import { reactive, computed, onUnmounted, onMounted } from 'vue'
 import store from '/src/services/store.js'
-import { charTest, msToMinutes, isAuxiliaryKeys } from '../services/helpers.js'
+import {
+  charTest,
+  msToMinutes,
+  isAuxiliaryKeys,
+  keyboardLangTest,
+  langTest
+} from '../services/helpers.js'
 import CurrentStatistics from './CurrentStatistics.vue'
 import Keyboard from './Keyboard.vue'
 
@@ -12,7 +18,6 @@ const events = reactive({
   capsLock: false
 })
 
-// const layoutLang = 'eng'
 const statArr = computed(() => store.data.statArr)
 const indexArr = computed(() => store.data.indexArr)
 const firstIndex = computed(() => store.data.firstIndex)
@@ -25,23 +30,11 @@ const charsArr = computed(() =>
   )
 )
 
-let audio = new Audio()
-audio.src = '/src/sounds/type.mp3'
-
 // event listener
-let tempChar = ''
 const eListener = function (e) {
   events.keyDn = e
   const code = e.code
   events.keyValue = e.key
-  // const ctrl = e.ctrlKey
-  // const shift = e.shiftKey
-  const btnDn = document.querySelector(`#${e.code.toLowerCase()}`)
-
-  // console.warn(keyKey)
-  // console.log(
-  //   `altKey ${e.altKey}, ctrlKey ${e.ctrlKey}, shiftKey ${e.shiftKey}`
-  // )
 
   if (isAuxiliaryKeys(code)) return
 
@@ -65,7 +58,6 @@ const eListener = function (e) {
     store.data.stopwatch = setInterval(() => {
       store.data.elapsedTime = performance.now() - store.data.timerStart
       store.data.elapsedTimeStr = msToMinutes(store.data.elapsedTime)
-      // console.log(store.data.elapsedTime)
       store.data.charPerMin = Math.floor(
         ((store.data.numCorrect + store.data.numWrong) * 60) /
           (Math.floor(store.data.elapsedTime) / 1000)
@@ -75,16 +67,6 @@ const eListener = function (e) {
 
   store.recordingStatistics(e)
   store.moveCaret('')
-  const tempChar = e.key
-
-  if (store.data.indexArr >= 1) {
-    if (
-      store.data.fragmentArr[store.data.indexArr - 1] !== tempChar &&
-      !charTest(store.data.fragmentArr[store.data.indexArr - 1])
-    ) {
-      store.data.fragmentArr[store.data.indexArr - 1] = tempChar
-    }
-  }
 }
 
 onMounted(() => {
@@ -145,38 +127,18 @@ onUnmounted(() => {
   }
 }
 
-.red {
-  background-color: red;
-}
-
 .field {
-  /* --field-bar-width: 0;
-  --field-bar-hue: 0; */
   width: 1440px;
   height: 380px;
   margin: 10px auto 50px;
   outline: none;
   backdrop-filter: blur(200px);
   user-select: none;
-  cursor: none;
-  /* transition: visibility 3000ms, opacity 3000ms; */
-  /* background-color: pink; */
 }
 
-/* .field::before {
-  position: absolute;
-  content: '';
-  width: var(--field-bar-width);
-  height: 14px;
-  left: -7px;
-  bottom: -7px;
-  background: hsl(var(--field-bar-hue), 80%, 50%);
-  transform-origin: 0 50%;
-  transform: rotate(270deg);
-} */
-
 .field:hover {
-  animation: hideCursor 3s;
+  cursor: none;
+  animation: hideCursor 2500ms;
 }
 
 .line {
@@ -206,8 +168,8 @@ onUnmounted(() => {
   right: 0;
   width: 36px;
   height: 5px;
-  background: rgba(30, 30, 30, 0.7);
-  filter: drop-shadow(3px 2px 2px yellowgreen) brightness(250%);
+  background: rgba(50, 50, 50, 0.75);
+  filter: drop-shadow(3px 2px 2px yellowgreen) brightness(230%);
 }
 
 .char-correct {

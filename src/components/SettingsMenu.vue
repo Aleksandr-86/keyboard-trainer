@@ -6,7 +6,7 @@ import { arrBackgrounds } from '/src/services/background-list.js'
 const backgroundPreview = computed(
   () =>
     `/src/images/backgrounds/small/${
-      arrBackgrounds[store.storage.backgroundPreview].name
+      arrBackgrounds[store.data.backgroundPreview].name
     }.jpg`
 )
 
@@ -17,25 +17,25 @@ const changeBackground = function (direction) {
   if (direction === 'next') {
     if (background >= arrBackgrounds.length - 1) {
       localStorage.background = 0
-      store.storage.backgroundPreview = 0
+      store.data.backgroundPreview = 0
       return
     }
     localStorage.background = background + 1
-    store.storage.backgroundPreview++
+    store.data.backgroundPreview++
   } else if (direction === 'previous') {
     if (background <= 0) {
       const length = arrBackgrounds.length - 1
       localStorage.background = length
-      store.storage.backgroundPreview = length
+      store.data.backgroundPreview = length
       return
     }
     localStorage.background = background - 1
-    store.storage.backgroundPreview--
+    store.data.backgroundPreview--
   }
 }
 
 const closeSettingMenu = function () {
-  store.storage.background = store.storage.backgroundPreview
+  store.storage.background = store.data.backgroundPreview
   store.setFalse('settings')
 }
 </script>
@@ -72,17 +72,6 @@ const closeSettingMenu = function () {
         id="box3"
         v-model="store.storage.keyboard"
         @click="store.toggleStorage('keyboard')" />
-      <span class="check-mark"></span>
-    </label>
-
-    <div class="settings-description">Игнорировать набор символов</div>
-    <label class="custom-checkbox">
-      <div class="settings-description">несоответствущего языка</div>
-      <input
-        type="checkbox"
-        id="box4"
-        v-model="store.storage.inapLang"
-        @click="store.toggleStorage('inapLang')" />
       <span class="check-mark"></span>
     </label>
 

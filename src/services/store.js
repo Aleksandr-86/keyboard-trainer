@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 import {
   charTest,
-  langTest,
+  keyboardLangTest,
   arrPreparer,
   randomNum,
   strPrepWithNewLines,
@@ -20,11 +20,9 @@ const state = reactive({
 
 const storage = reactive({
   background: 0,
-  backgroundPreview: 0,
   letterCase: false,
   pointers: false,
   keyboard: false,
-  inapLang: true,
   langOfSnippets: 'russian'
 })
 
@@ -48,7 +46,8 @@ const data = reactive({
   withoutMistake: 0,
 
   currentBook: 0,
-  keyboardLang: 'russian-basic'
+  keyboardLang: 'russian-basic',
+  backgroundPreview: 0
 })
 
 const recordingStatistics = function (e) {
@@ -125,12 +124,6 @@ const moveCaret = function () {
   // checking inappropriate chars and skipping those
   let currentChar = data.fragmentArr[data.indexArr]
 
-  // checking special sign for skipping
-  // while (currentChar === 'skip') {
-  //   data.indexArr++
-  //   currentChar = data.fragmentArr[data.indexArr]
-  // }
-
   // checking inappropriate sign
   while (charTest(currentChar) || currentChar === 'skip') {
     if (
@@ -157,7 +150,7 @@ const moveCaret = function () {
     loadNextChars()
   }
 
-  data.keyboardLang = langTest(
+  data.keyboardLang = keyboardLangTest(
     data.fragmentArr[data.indexArr],
     data.keyboardLang
   )

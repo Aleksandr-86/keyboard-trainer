@@ -24,7 +24,7 @@ async function fillFieldFromBuffer() {
 const toggleSettings = function () {
   store.toggleState('settings')
   if (store.state.settings === false) {
-    store.storage.background = store.storage.backgroundPreview
+    store.storage.background = store.data.backgroundPreview
   }
 }
 
