@@ -48,12 +48,36 @@ const background = computed(
     <Field v-if="store.state.work" />
     <OverallStatistics v-if="store.state.overallStatistics" />
     <!-- <CharMeter :typing-speed="10" /> -->
+    <div class="btn-double">
+      <div>!</div>
+      <div>2</div>
+    </div>
   </div>
 </template>
 
-<style scoped></style>
-
 <style>
+.btn-double {
+  display: inline-block;
+
+  width: 60px;
+  height: 60px;
+  margin-top: 3px;
+  margin-right: 3px;
+  font-size: 23px;
+  font-family: 'Consolas', monospace;
+  text-align: center;
+  /* text-transform: capitalize; */
+  color: black;
+  background: hsl(0, 0%, 80%);
+  /* border: none; */
+  border-radius: 15px;
+}
+
+.btn-double > div {
+  margin: 2px;
+  height: 27px;
+}
+
 * {
   margin: 0;
   padding: 0;

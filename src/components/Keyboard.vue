@@ -90,17 +90,17 @@ const langIndex = computed(() => {
   }
 })
 
-const keyCode = computed(
-  () => props.eventKeydown.code && props.eventKeydown.code.toLowerCase()
-)
+// const keyCode = computed(
+//   () => props.eventKeydown.code && props.eventKeydown.code.toLowerCase()
+// )
 
 const keyValue = computed(
   () => props.eventKeydown.key && props.eventKeydown.key.toLowerCase()
 )
 
-const shift = computed(
-  () => props.eventKeydown.key && props.eventKeydown.shiftKey
-)
+// const shift = computed(
+//   () => props.eventKeydown.key && props.eventKeydown.shiftKey
+// )
 
 let lShift = computed(() => {
   if (store.storage.pointers) return
@@ -227,6 +227,7 @@ const previousChar = computed(() => {
         //     id === keyCode
         // }
       ]"
+      data-last-string="!"
       :id="id">
       {{ value[langIndex] }}
     </div>
@@ -243,6 +244,15 @@ const previousChar = computed(() => {
     cursor: none;
   }
 }
+
+/* #digit1::first-letter {
+  vertical-align: top;
+}
+
+#digit1::after {
+  content: attr(data-last-string);
+  color: red;
+} */
 
 .btn {
   width: 900px;
@@ -263,6 +273,7 @@ const previousChar = computed(() => {
 }
 
 .button,
+.button-double,
 .button-marked {
   display: inline-block;
   width: 60px;
@@ -272,7 +283,7 @@ const previousChar = computed(() => {
   font-size: 23px;
   font-family: 'Consolas', monospace;
   text-align: center;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   color: black;
   background: hsl(0, 0%, 80%);
   /* border: none; */
@@ -285,6 +296,11 @@ const previousChar = computed(() => {
   height: 63px;
   display: inline-block;
   vertical-align: middle;
+}
+
+.btn-double > div {
+  margin: 2px;
+  height: 27px;
 }
 
 /* .button-grey-board {
