@@ -86,39 +86,33 @@ const langIndex = computed(() => {
   }
 })
 
-const keyCode = computed(
-  () => props.eventKeydown.code && props.eventKeydown.code.toLowerCase()
-)
+// const keyCode = computed(
+//   () => props.eventKeydown.code && props.eventKeydown.code.toLowerCase()
+// )
 
 const keyValue = computed(
   () => props.eventKeydown.key && props.eventKeydown.key.toLowerCase()
 )
 
-const shift = computed(
-  () => props.eventKeydown.key && props.eventKeydown.shiftKey
-)
+// const shift = computed(
+//   () => props.eventKeydown.key && props.eventKeydown.shiftKey
+// )
 
 let lShift = computed(() => {
   if (store.storage.pointers) return
 
   let targetChar = props.targetChar
-  const orange = 'hsla(30, 80%, 45%, 1)'
+  const magenta = 'hsla(300, 80%, 40%, 1)'
 
   if (
     isUpCase(targetChar) &&
     /[нртгоьшлбщдюзжхэъyhnujmikolp]/.test(targetChar.toLowerCase())
   ) {
-    return orange
-  } else if (
-    props.lang === 'russian-extended' &&
-    /[?*()_+,/]/.test(targetChar)
-  ) {
-    return orange
-  } else if (
-    props.lang === 'english-extended' &&
-    /[&*()_+{}|:"<>?]/.test(targetChar)
-  ) {
-    return orange
+    return magenta
+  } else if (props.lang === 'russian' && /[?*()_+,/]/.test(targetChar)) {
+    return magenta
+  } else if (props.lang === 'english' && /[&*()_+{}|:"<>?]/.test(targetChar)) {
+    return magenta
   } else {
     return 'transparent'
   }
@@ -128,20 +122,17 @@ let rShift = computed(() => {
   if (store.storage.pointers) return
 
   let targetChar = props.targetChar
-  const orange = 'hsla(30, 80%, 45%, 1)'
+  const magenta = 'hsla(300, 80%, 40%, 1)'
 
   if (
     isUpCase(targetChar) &&
     /[ёйфяцычувскамепиqazwsxedcrfvtgb]/.test(targetChar.toLowerCase())
   ) {
-    return orange
-  } else if (props.lang === 'russian-extended' && /[!"№;%:]/.test(targetChar)) {
-    return orange
-  } else if (
-    props.lang === 'english-extended' &&
-    /[~!@#$%^]/.test(targetChar)
-  ) {
-    return orange
+    return magenta
+  } else if (props.lang === 'russian' && /[!"№;%:]/.test(targetChar)) {
+    return magenta
+  } else if (props.lang === 'english' && /[~!@#$%^]/.test(targetChar)) {
+    return magenta
   } else {
     return 'transparent'
   }
@@ -154,11 +145,11 @@ const boardColor = computed(() => {
 
   if (props.lang === 'russian') {
     if (/[ё1!йфя0)зж.,\-_хэ=+ъ\\/]/.test(targetChar)) {
-      return 'hsla(30, 80%, 45%, 1)'
+      return 'hsla(300, 80%, 40%, 1)'
     } else if (/[2"цыч9(щдю]/.test(targetChar)) {
-      return 'hsla(120, 80%, 30%, 1)'
+      return 'hsla(180, 100%, 35%, 1)'
     } else if (/[3№увс8*шлб]/.test(targetChar)) {
-      return 'hsla(285, 80%, 55%, 1)'
+      return 'hsla(120, 80%, 30%, 1)'
     } else if (/[4;кам5%епи6:]/.test(targetChar)) {
       return 'hsla(240, 80%, 50%, 1)'
     } else if (/[7?нртгоь]/.test(targetChar)) {
@@ -166,13 +157,13 @@ const boardColor = computed(() => {
     }
   } else if (props.lang === 'english') {
     if (/[`~1!qaz0)p;:/?\-_\[{'"=+\]}\\|]/.test(targetChar)) {
-      return 'hsla(30, 80%, 45%, 1)'
+      return 'hsla(300, 60%, 40%, 1)'
     } else if (/[2@wsx9(ol.>]/.test(targetChar)) {
-      return 'hsla(120, 80%, 30%, 1)'
+      return 'hsla(180, 80%, 35%, 1)'
     } else if (/[3#edc8*ik,<]/.test(targetChar)) {
-      return 'hsla(285, 80%, 55%, 1)'
+      return 'hsla(120, 80%, 30%, 1)'
     } else if (/[4$rfv5%tgb6^]/.test(targetChar)) {
-      return 'hsla(240, 80%, 50%, 1)'
+      return 'hsla(240, 50%, 50%, 1)'
     } else if (/[7&yhnujm]/.test(targetChar)) {
       return 'hsla(0, 75%, 50%, 1)'
     }
@@ -196,17 +187,27 @@ const boardColor = computed(() => {
         {
           'button-marked': value[langIndex].includes(targetChar.toLowerCase())
         },
-        {
-          button: value[langIndex].length <= 1
-        },
-        {
-          'button-double': value[langIndex].length > 1
-        }
+        { button: value[langIndex].length === 1 },
+        { 'button-double': value[langIndex].length !== 1 }
       ]"
       :id="id">
-      <div v-if="value[langIndex].length <= 1">{{ value[langIndex] }}</div>
-      <div v-if="value[langIndex].length > 1">{{ value[langIndex][0] }}</div>
-      <div v-if="value[langIndex].length > 1">{{ value[langIndex][1] }}</div>
+      <div
+        v-if="value[langIndex].length === 1"
+        :class="[
+          { 'board-color': value[langIndex] === targetChar.toLowerCase() }
+        ]">
+        {{ value[langIndex] }}
+      </div>
+      <div
+        v-if="value[langIndex].length > 1"
+        :class="[{ 'board-color': value[langIndex][0] === targetChar }]">
+        {{ value[langIndex][0] }}
+      </div>
+      <div
+        v-if="value[langIndex].length > 1"
+        :class="[{ 'board-color': value[langIndex][1] === targetChar }]">
+        {{ value[langIndex][1] }}
+      </div>
     </div>
   </div>
 </template>
@@ -231,7 +232,8 @@ const boardColor = computed(() => {
   height: 318px;
   margin: 0 auto;
   user-select: none;
-  background: rgb(170, 170, 170);
+  /* background: rgb(170, 170, 170); */
+  background: hsl(0, 0%, 15%);
   border-radius: 15px;
 }
 
@@ -243,7 +245,7 @@ const boardColor = computed(() => {
 .button,
 .button-double,
 .button-marked {
-  display: inline-block;
+  /* display: inline-block; */
   float: left;
   width: 60px;
   height: 60px;
@@ -252,9 +254,11 @@ const boardColor = computed(() => {
   font-size: 23px;
   font-family: 'Consolas', monospace;
   text-align: center;
-  /* text-transform: capitalize; */
-  color: black;
-  background: hsl(0, 0%, 80%);
+  text-transform: capitalize;
+  /* color: black;
+  background: hsl(0, 0%, 80%); */
+  color: hsl(0, 0%, 70%);
+  background: hsl(0, 0%, 0%);
   /* border: none; */
   border-radius: 15px;
 }
@@ -272,38 +276,9 @@ const boardColor = computed(() => {
   height: 27px;
 }
 
-/* .button:after,
-.button-marked:after {
-  content: '';
-  height: 63px;
-  display: inline-block;
-  vertical-align: middle;
+.board-color {
+  color: v-bind(boardColor);
 }
-
-.btn-double > div {
-  margin: 2px;
-  height: 27px;
-} */
-
-/* .button-grey-board {
-  box-shadow: inset 0 0 0 3px hsla(0, 0%, 40%);
-}
-
-.button-orange-pointer {
-  box-shadow: inset 0 0 0 3px hsla(25, 85%, 45%, 1);
-}
-
-.button-green-pointer {
-  box-shadow: inset 0 0 0 3px hsla(240, 100%, 50%, 1);
-}
-
-.button-blue-pointer {
-  box-shadow: inset 0 0 0 3px hsla(120, 80%, 30%, 1);
-}
-
-.button-violet-pointer {
-  box-shadow: inset 0 0 0 3px hsla(270, 100%, 55%, 1);
-} */
 
 @keyframes fadeGreenColor {
   0% {
