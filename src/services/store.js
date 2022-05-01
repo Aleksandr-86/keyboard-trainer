@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 import {
   charTest,
-  keyboardLangTest,
+  keyboardLayoutTest,
   arrPreparer,
   randomNum,
   strPrepWithNewLines,
@@ -46,7 +46,7 @@ const data = reactive({
   withoutMistake: 0,
 
   currentBook: 0,
-  keyboardLang: 'russian-basic',
+  keyboardLayout: 'russian-basic',
   backgroundPreview: 0
 })
 
@@ -150,9 +150,9 @@ const moveCaret = function () {
     loadNextChars()
   }
 
-  data.keyboardLang = keyboardLangTest(
+  data.keyboardLayout = keyboardLayoutTest(
     data.fragmentArr[data.indexArr],
-    data.keyboardLang
+    data.keyboardLayout
   )
 }
 

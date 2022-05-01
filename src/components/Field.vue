@@ -1,13 +1,7 @@
 <script setup>
 import { reactive, computed, onUnmounted, onMounted } from 'vue'
 import store from '/src/services/store.js'
-import {
-  charTest,
-  msToMinutes,
-  isAuxiliaryKeys,
-  keyboardLangTest,
-  langTest
-} from '../services/helpers.js'
+import { charTest, msToMinutes, isAuxiliaryKeys } from '../services/helpers.js'
 import CurrentStatistics from './CurrentStatistics.vue'
 import Keyboard from './Keyboard.vue'
 
@@ -113,7 +107,7 @@ onUnmounted(() => {
     v-if="!store.storage.keyboard && store.state.work"
     :event-keydown="events.keyDn"
     :target-char="store.data.fragmentArr[store.data.indexArr]"
-    :lang="store.data.keyboardLang" />
+    :lang="store.data.keyboardLayout" />
 </template>
 
 <style>

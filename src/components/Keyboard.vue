@@ -209,23 +209,23 @@ const previousChar = computed(() => {
       :class="[
         {
           'button-marked': value[langIndex] === targetChar.toLowerCase()
-        },
-        {
-          'button-correct':
-            store.storage.pointers &&
-            id !== 'shiftleft' &&
-            id !== 'shiftright' &&
-            id === keyCode &&
-            (previousChar === keyValue || previousChar === 'skip')
-        },
-        {
-          'button-wrong':
-            id !== 'shiftleft' &&
-            id !== 'shiftright' &&
-            previousChar !== 'skip' &&
-            previousChar !== keyValue &&
-            id === keyCode
         }
+        // {
+        //   'button-correct':
+        //     store.storage.pointers &&
+        //     id !== 'shiftleft' &&
+        //     id !== 'shiftright' &&
+        //     id === keyCode &&
+        //     (previousChar === keyValue || previousChar === 'skip')
+        // },
+        // {
+        //   'button-wrong':
+        //     id !== 'shiftleft' &&
+        //     id !== 'shiftright' &&
+        //     previousChar !== 'skip' &&
+        //     previousChar !== keyValue &&
+        //     id === keyCode
+        // }
       ]"
       :id="id">
       {{ value[langIndex] }}

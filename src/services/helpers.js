@@ -174,28 +174,29 @@ export function langTest(char, lang) {
   }
 }
 
-export function keyboardLangTest(char, langLayout) {
+export function keyboardLayoutTest(char, layout) {
   if (/[А-ЯЁ]/i.test(char)) {
     return 'russian-basic'
   } else if (/[A-Z`\[\]']/i.test(char)) {
     return 'english-basic'
   } else if (/[№]/i.test(char)) {
     return 'russian-extended'
-  } else if (/[~@#$^&{}|]/i.test(char)) {
+    // } else if (/[~@#$^&{}|]/i.test(char)) {
+  } else if (/[~@#$^&{}|<>]/i.test(char)) {
     return 'english-extended'
-  } else if (langLayout === 'russian-basic' && /[!";%:?*()_+,/]/.test(char)) {
+  } else if (layout === 'russian-basic' && /[!";%:?*()_+,/]/.test(char)) {
     return 'russian-extended'
-  } else if (langLayout === 'russian-extended' && /[0-9\-=.\\ ]/.test(char)) {
+  } else if (layout === 'russian-extended' && /[0-9\-=.\\ ]/.test(char)) {
     return 'russian-basic'
-  } else if (langLayout === 'english-basic' && /[!%*()_+<>?{}:"|]/.test(char)) {
+  } else if (layout === 'english-basic' && /[!%*()_+<>?{}:"|]/.test(char)) {
     return 'english-extended'
   } else if (
-    langLayout === 'english-extended' &&
+    layout === 'english-extended' &&
     /[0-9\-=,./\[\];'\\ ]/.test(char)
   ) {
     return 'english-basic'
   } else {
-    return langLayout
+    return layout
   }
 }
 

@@ -7,9 +7,15 @@ import CharMeter from './CharMeter.vue'
 
 const tempWithoutMistake = computed(() => store.data.tempWithoutMistake)
 const withoutMistake = computed(() => store.data.withoutMistake)
-// const elapsedTimeStr = computed(() => msToMinutes(store.data.elapsedTime))
+const keyboardLayout = computed(() => {
+  const layout = store.data.keyboardLayout
+  if (layout === 'russian-basic' || layout === 'russian-extended') {
+    return 'Русский'
+  } else {
+    return 'Английский'
+  }
+})
 
-const keyboardLang = computed(() => store.data.keyboardLang)
 onUnmounted(() => {})
 </script>
 
@@ -31,11 +37,8 @@ onUnmounted(() => {})
     <div class="char-per-minute">
       {{ store.data.charPerMin }}
     </div>
-    <div v-if="keyboardLang === 'russian-basic'">Русский базовый</div>
-    <div v-if="keyboardLang === 'russian-extended'">Русский расширенный</div>
-    <div v-if="keyboardLang === 'english-basic'">Английский базовый</div>
-    <div v-if="keyboardLang === 'english-extended'">Английский расширенный</div>
     <!-- <CharMeter :typing-speed="store.data.charPerMin" /> -->
+    <div>{{ keyboardLayout }}</div>
   </div>
 </template>
 
