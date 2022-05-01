@@ -174,29 +174,13 @@ export function langTest(char, lang) {
   }
 }
 
-export function keyboardLayoutTest(char, layout) {
-  if (/[А-ЯЁ]/i.test(char)) {
-    return 'russian-basic'
-  } else if (/[A-Z`\[\]']/i.test(char)) {
-    return 'english-basic'
-  } else if (/[№]/i.test(char)) {
-    return 'russian-extended'
-    // } else if (/[~@#$^&{}|]/i.test(char)) {
-  } else if (/[~@#$^&{}|<>]/i.test(char)) {
-    return 'english-extended'
-  } else if (layout === 'russian-basic' && /[!";%:?*()_+,/]/.test(char)) {
-    return 'russian-extended'
-  } else if (layout === 'russian-extended' && /[0-9\-=.\\ ]/.test(char)) {
-    return 'russian-basic'
-  } else if (layout === 'english-basic' && /[!%*()_+<>?{}:"|]/.test(char)) {
-    return 'english-extended'
-  } else if (
-    layout === 'english-extended' &&
-    /[0-9\-=,./\[\];'\\ ]/.test(char)
-  ) {
-    return 'english-basic'
+export function keyboardLayoutTest(char, keyboardLayout) {
+  if (/[ЁА-Я№]/i.test(char)) {
+    return 'russian'
+  } else if (/[A-Z`~@#$^&\[{\]}|'<>]/i.test(char)) {
+    return 'english'
   } else {
-    return layout
+    return keyboardLayout
   }
 }
 

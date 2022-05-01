@@ -48,17 +48,17 @@ const background = computed(
     <Field v-if="store.state.work" />
     <OverallStatistics v-if="store.state.overallStatistics" />
     <!-- <CharMeter :typing-speed="10" /> -->
-    <div class="btn-double">
+    <!-- <div class="button-double">
       <div>!</div>
       <div>2</div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <style>
-.btn-double {
+/* .button,
+.button-double {
   display: inline-block;
-
   width: 60px;
   height: 60px;
   margin-top: 3px;
@@ -66,17 +66,23 @@ const background = computed(
   font-size: 23px;
   font-family: 'Consolas', monospace;
   text-align: center;
-  /* text-transform: capitalize; */
   color: black;
   background: hsl(0, 0%, 80%);
-  /* border: none; */
   border-radius: 15px;
 }
 
-.btn-double > div {
-  margin: 2px;
-  height: 27px;
+.button > div {
+  position: relative;
+  background-color: greenyellow;
+  top: 16px;
+  height: 28px;
 }
+
+.button-double > div {
+  background-color: aqua;
+  margin-top: 2px;
+  height: 27px;
+} */
 
 * {
   margin: 0;

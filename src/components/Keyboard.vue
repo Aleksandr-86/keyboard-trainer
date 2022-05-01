@@ -11,96 +11,92 @@ const props = defineProps({
 })
 
 const buttonObj = {
-  backquote: ['ё', 'ё', '`', '~'],
-  digit1: ['1', '!', '1', '!'],
-  digit2: ['2', '"', '2', '@'],
-  digit3: ['3', '№', '3', '#'],
-  digit4: ['4', ';', '4', '$'],
-  digit5: ['5', '%', '5', '%'],
-  digit6: ['6', ':', '6', '^'],
-  digit7: ['7', '?', '7', '&'],
-  digit8: ['8', '*', '8', '*'],
-  digit9: ['9', '(', '9', '('],
-  digit0: ['0', ')', '0', ')'],
-  minus: ['-', '_', '-', '_'],
-  equal: ['=', '+', '=', '+'],
-  backspace: ['backspace', 'backspace', 'backspace', 'backspace'],
+  backquote: ['ё', '~`'],
+  digit1: ['!1', '!1'],
+  digit2: ['"2', '@2'],
+  digit3: ['№3', '#3'],
+  digit4: [';4', '$4'],
+  digit5: ['%5', '%5'],
+  digit6: [':6', '^6'],
+  digit7: ['?7', '&7'],
+  digit8: ['*8', '*8'],
+  digit9: ['(9', '(9'],
+  digit0: [')0', ')0'],
+  minus: ['_-', '_-'],
+  equal: ['+=', '+='],
+  backspace: ['b', 'b'],
 
-  tab: ['tab', 'tab', 'tab', 'tab'],
-  keyq: ['й', 'й', 'q', 'q'],
-  keyw: ['ц', 'ц', 'w', 'w'],
-  keye: ['у', 'у', 'e', 'e'],
-  keyr: ['к', 'к', 'r', 'r'],
-  keyt: ['е', 'е', 't', 't'],
-  keyy: ['н', 'н', 'y', 'y'],
-  keyu: ['г', 'г', 'u', 'u'],
-  keyi: ['ш', 'ш', 'i', 'i'],
-  keyo: ['щ', 'щ', 'o', 'o'],
-  keyp: ['з', 'з', 'p', 'p'],
-  bracketleft: ['х', 'х', '[', '{'],
-  bracketright: ['ъ', 'ъ', ']', '}'],
-  backslash: ['\\', '/', '\\', '|'],
+  tab: ['t', 't'],
+  keyq: ['й', 'q'],
+  keyw: ['ц', 'w'],
+  keye: ['у', 'e'],
+  keyr: ['к', 'r'],
+  keyt: ['е', 't'],
+  keyy: ['н', 'y'],
+  keyu: ['г', 'u'],
+  keyi: ['ш', 'i'],
+  keyo: ['щ', 'o'],
+  keyp: ['з', 'p'],
+  bracketleft: ['х', '{['],
+  bracketright: ['ъ', '}]'],
+  backslash: ['/\\', '|\\'],
 
-  capslock: ['Caps', 'Caps', 'Caps', 'Caps'],
-  keya: ['ф', 'ф', 'a', 'a'],
-  keys: ['ы', 'ы', 's', 's'],
-  keyd: ['в', 'в', 'd', 'd'],
-  keyf: ['а', 'а', 'f', 'f'],
-  keyg: ['п', 'п', 'g', 'g'],
-  keyh: ['р', 'р', 'h', 'h'],
-  keyj: ['о', 'о', 'j', 'j'],
-  keyk: ['л', 'л', 'k', 'k'],
-  keyl: ['д', 'д', 'l', 'l'],
-  semicolon: ['ж', 'ж', ';', ':'],
-  quote: ['э', 'э', "'", '"'],
-  enter: ['Enter', 'Enter', 'Enter', 'Enter'],
+  capslock: ['C', 'C'],
+  keya: ['ф', 'a'],
+  keys: ['ы', 's', 's'],
+  keyd: ['в', 'd', 'd'],
+  keyf: ['а', 'f', 'f'],
+  keyg: ['п', 'g', 'g'],
+  keyh: ['р', 'h', 'h'],
+  keyj: ['о', 'j', 'j'],
+  keyk: ['л', 'k', 'k'],
+  keyl: ['д', 'l', 'l'],
+  semicolon: ['ж', ':;'],
+  quote: ['э', `"'`],
+  enter: ['E', 'E'],
 
-  shiftleft: ['Shift', 'Shift', 'Shift', 'Shift'],
-  keyz: ['я', 'я', 'z', 'z'],
-  keyx: ['ч', 'ч', 'x', 'x'],
-  keyc: ['с', 'с', 'c', 'c'],
-  keyv: ['м', 'м', 'v', 'v'],
-  keyb: ['и', 'и', 'b', 'b'],
-  keyn: ['т', 'т', 'n', 'n'],
-  keym: ['ь', 'ь', 'm', 'm'],
-  comma: ['б', 'б', ',', '<'],
-  period: ['ю', 'ю', '.', '>'],
-  slash: ['.', ',', '/', '?'],
-  shiftright: ['Shift', 'Shift', 'Shift', 'Shift'],
+  shiftleft: ['S', 'S'],
+  keyz: ['я', 'z'],
+  keyx: ['ч', 'x'],
+  keyc: ['с', 'c'],
+  keyv: ['м', 'v'],
+  keyb: ['и', 'b'],
+  keyn: ['т', 'n'],
+  keym: ['ь', 'm'],
+  comma: ['б', '<,'],
+  period: ['ю', '>.'],
+  slash: [',.', '?/'],
+  shiftright: ['S', 'S'],
 
-  controlleft: ['Ctrl', 'Ctrl', 'Ctrl', 'Ctrl'],
-  osleft: ['Win', 'Win', 'Win', 'Win'],
-  altleft: ['Alt', 'Alt', 'Alt', 'Alt'],
-  space: [' ', ' ', ' ', ' '],
-  altright: ['Alt', 'Alt', 'Alt', 'Alt'],
-  osright: ['Win', 'Win', 'Win', 'Win'],
-  contextmenu: ['Menu', 'Menu', 'Menu', 'Menu'],
-  controlright: ['Ctrl', 'Ctrl', 'Ctrl', 'Ctrl']
+  controlleft: ['C', 'C'],
+  osleft: ['W', 'W'],
+  altleft: ['A', 'A'],
+  space: [' ', ' '],
+  altright: ['A', 'A'],
+  osright: ['W', 'W'],
+  contextmenu: ['M', 'M'],
+  controlright: ['C', 'C']
 }
 
 const langIndex = computed(() => {
-  if (props.lang === 'russian-basic') {
+  if (props.lang === 'russian') {
     return 0
-  } else if (props.lang === 'russian-extended') {
+  } else if (props.lang === 'english') {
     return 1
-  } else if (props.lang === 'english-basic') {
-    return 2
-  } else if (props.lang === 'english-extended') {
-    return 3
   }
 })
 
-// const keyCode = computed(
-//   () => props.eventKeydown.code && props.eventKeydown.code.toLowerCase()
-// )
+const keyCode = computed(
+  () => props.eventKeydown.code && props.eventKeydown.code.toLowerCase()
+)
 
 const keyValue = computed(
   () => props.eventKeydown.key && props.eventKeydown.key.toLowerCase()
 )
 
-// const shift = computed(
-//   () => props.eventKeydown.key && props.eventKeydown.shiftKey
-// )
+const shift = computed(
+  () => props.eventKeydown.key && props.eventKeydown.shiftKey
+)
 
 let lShift = computed(() => {
   if (store.storage.pointers) return
@@ -156,7 +152,7 @@ const boardColor = computed(() => {
 
   let targetChar = store.data.fragmentArr[store.data.indexArr].toLowerCase()
 
-  if (props.lang === 'russian-basic' || props.lang === 'russian-extended') {
+  if (props.lang === 'russian') {
     if (/[ё1!йфя0)зж.,\-_хэ=+ъ\\/]/.test(targetChar)) {
       return 'hsla(30, 80%, 45%, 1)'
     } else if (/[2"цыч9(щдю]/.test(targetChar)) {
@@ -168,10 +164,7 @@ const boardColor = computed(() => {
     } else if (/[7?нртгоь]/.test(targetChar)) {
       return 'hsla(0, 75%, 50%, 1)'
     }
-  } else if (
-    props.lang === 'english-basic' ||
-    props.lang === 'english-extended'
-  ) {
+  } else if (props.lang === 'english') {
     if (/[`~1!qaz0)p;:/?\-_\[{'"=+\]}\\|]/.test(targetChar)) {
       return 'hsla(30, 80%, 45%, 1)'
     } else if (/[2@wsx9(ol.>]/.test(targetChar)) {
@@ -189,12 +182,6 @@ const boardColor = computed(() => {
     return 'hsla(0, 0%, 0%, 0.4)'
   }
 })
-
-const previousChar = computed(() => {
-  if (store.data.indexArr >= 1) {
-    return store.data.fragmentArr[store.data.indexArr - 1].toLowerCase()
-  }
-})
 </script>
 
 <template>
@@ -205,31 +192,21 @@ const previousChar = computed(() => {
   <div class="keyboard">
     <div
       v-for="(value, id) in buttonObj"
-      class="button"
       :class="[
         {
-          'button-marked': value[langIndex] === targetChar.toLowerCase()
+          'button-marked': value[langIndex].includes(targetChar.toLowerCase())
+        },
+        {
+          button: value[langIndex].length <= 1
+        },
+        {
+          'button-double': value[langIndex].length > 1
         }
-        // {
-        //   'button-correct':
-        //     store.storage.pointers &&
-        //     id !== 'shiftleft' &&
-        //     id !== 'shiftright' &&
-        //     id === keyCode &&
-        //     (previousChar === keyValue || previousChar === 'skip')
-        // },
-        // {
-        //   'button-wrong':
-        //     id !== 'shiftleft' &&
-        //     id !== 'shiftright' &&
-        //     previousChar !== 'skip' &&
-        //     previousChar !== keyValue &&
-        //     id === keyCode
-        // }
       ]"
-      data-last-string="!"
       :id="id">
-      {{ value[langIndex] }}
+      <div v-if="value[langIndex].length <= 1">{{ value[langIndex] }}</div>
+      <div v-if="value[langIndex].length > 1">{{ value[langIndex][0] }}</div>
+      <div v-if="value[langIndex].length > 1">{{ value[langIndex][1] }}</div>
     </div>
   </div>
 </template>
@@ -244,15 +221,6 @@ const previousChar = computed(() => {
     cursor: none;
   }
 }
-
-/* #digit1::first-letter {
-  vertical-align: top;
-}
-
-#digit1::after {
-  content: attr(data-last-string);
-  color: red;
-} */
 
 .btn {
   width: 900px;
@@ -276,6 +244,7 @@ const previousChar = computed(() => {
 .button-double,
 .button-marked {
   display: inline-block;
+  float: left;
   width: 60px;
   height: 60px;
   margin-top: 3px;
@@ -290,7 +259,20 @@ const previousChar = computed(() => {
   border-radius: 15px;
 }
 
-.button:after,
+.button > div {
+  position: relative;
+  /* background-color: greenyellow; */
+  top: 16px;
+  height: 28px;
+}
+
+.button-double > div {
+  /* background-color: aqua; */
+  margin-top: 2px;
+  height: 27px;
+}
+
+/* .button:after,
 .button-marked:after {
   content: '';
   height: 63px;
@@ -301,7 +283,7 @@ const previousChar = computed(() => {
 .btn-double > div {
   margin: 2px;
   height: 27px;
-}
+} */
 
 /* .button-grey-board {
   box-shadow: inset 0 0 0 3px hsla(0, 0%, 40%);

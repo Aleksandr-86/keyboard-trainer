@@ -46,7 +46,7 @@ const data = reactive({
   withoutMistake: 0,
 
   currentBook: 0,
-  keyboardLayout: 'russian-basic',
+  keyboardLayout: 'russian',
   backgroundPreview: 0
 })
 
