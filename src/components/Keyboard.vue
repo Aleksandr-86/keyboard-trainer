@@ -175,7 +175,7 @@ const boardColor = computed(() => {
     if (/[`~1!qaz0)p;:/?\-_\[{'"=+\]}\\|]/.test(targetChar)) {
       return 'hsla(300, 60%, 40%, 1)'
     } else if (/[2@wsx9(ol.>]/.test(targetChar)) {
-      return 'hsla(180, 80%, 35%, 1)'
+      return 'hsla(60, 80%, 35%, 1)'
     } else if (/[3#edc8*ik,<]/.test(targetChar)) {
       return 'hsla(120, 80%, 30%, 1)'
     } else if (/[4$rfv5%tgb6^]/.test(targetChar)) {
