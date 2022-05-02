@@ -1,15 +1,15 @@
 <script setup>
+import { onMounted } from 'vue'
+import { arrBackgrounds } from '/src/services/background-list.js'
+import { computed } from '@vue/reactivity'
 import NavigationMenu from './components/NavigationMenu.vue'
-import Background from './components/Background.vue'
+import Slider from './components/Slider.vue'
+// import Background from './components/Background.vue'
 import SettingsMenu from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
 import OverallStatistics from './components/OverallStatistics.vue'
 import store from '/src/services/store.js'
-import CharMeter from './components/CharMeter.vue'
-import { onMounted } from 'vue'
-import { arrBackgrounds } from '/src/services/background-list.js'
-import { computed } from '@vue/reactivity'
-// import Background1 from './components/Background.vue'
+// import CharMeter from './components/CharMeter.vue'
 
 onMounted(() => {
   for (const propertyName in store.storage) {
@@ -43,6 +43,7 @@ const background = computed(
   <div id="background">
     <!-- <Background /> -->
     <NavigationMenu />
+    <Slider />
     <!-- <button @click="fn">КНИГА</button> -->
     <SettingsMenu v-if="store.state.settings" />
     <Field v-if="store.state.work" />
