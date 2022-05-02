@@ -75,7 +75,10 @@ const buttonObj = {
   altright: ['alt', 'alt'],
   osright: ['win', 'win'],
   contextmenu: ['menu', 'menu'],
-  controlright: ['ctrl', 'ctrl']
+  controlright: ['ctrl', 'ctrl'],
+
+  leftside: ['1', '2'],
+  rightside: ['1', '2']
 }
 
 const langIndex = computed(() => {
@@ -199,7 +202,7 @@ const boardColor = computed(() => {
   </button>
   <div class="keyboard">
     <div
-      v-for="(value, id) in buttonObj"
+      v-for="(value, id, index) in buttonObj"
       :class="[
         {
           // 'button-marked': value[langIndex].includes(targetChar.toLowerCase())
@@ -209,7 +212,10 @@ const boardColor = computed(() => {
               value[langIndex].includes(targetChar.toLowerCase()))
         },
         {
-          button: value[langIndex].length === 1 || value[langIndex].length > 2
+          button:
+            (value[langIndex].length === 1 || value[langIndex].length > 2) &&
+            index !== 61 &&
+            index !== 62
         },
         { 'button-double': value[langIndex].length === 2 }
       ]"
