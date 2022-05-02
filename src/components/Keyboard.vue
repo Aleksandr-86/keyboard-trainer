@@ -326,20 +326,11 @@ const boardColor = computed(() => {
   background-color: hsla(0, 100%, 75%, 1);
 }
 
-.row1,
-.row2,
-.row3,
-.row4,
-.row5 {
-  display: flex;
-  width: inherit;
-}
-
-.row1 div:first-child,
-.row2 div:first-child,
-.row3 div:first-child,
-.row4 div:first-child,
-.row5 div:first-child {
+#backquote,
+#tab,
+#capslock,
+#shiftleft,
+#controlleft {
   margin-left: 3px;
 }
 
