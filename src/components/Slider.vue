@@ -22,6 +22,7 @@ onMounted(() => {
 
 const fn = function () {
   hsla.hue = hue.valueAsNumber
+  console.warn(hsla.hue)
 }
 </script>
 
