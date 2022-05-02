@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from '@vue/reactivity'
+import { computed, reactive } from '@vue/reactivity'
 import store from '../services/store'
 import { isUpCase } from '../services/helpers.js'
 // import CharMeter from './CharMeter.vue'
@@ -8,6 +8,13 @@ const props = defineProps({
   eventKeydown: {},
   targetChar: String,
   lang: String
+})
+
+const shift = reactive({
+  leftBorder: String,
+  leftColor: String,
+  rightBorder: String,
+  rightColor: String
 })
 
 const buttonObj = {
@@ -43,14 +50,14 @@ const buttonObj = {
 
   capslock: ['caps', 'caps'],
   keya: ['ф', 'a'],
-  keys: ['ы', 's', 's'],
-  keyd: ['в', 'd', 'd'],
-  keyf: ['а', 'f', 'f'],
-  keyg: ['п', 'g', 'g'],
-  keyh: ['р', 'h', 'h'],
-  keyj: ['о', 'j', 'j'],
-  keyk: ['л', 'k', 'k'],
-  keyl: ['д', 'l', 'l'],
+  keys: ['ы', 's'],
+  keyd: ['в', 'd'],
+  keyf: ['а', 'f'],
+  keyg: ['п', 'g'],
+  keyh: ['р', 'h'],
+  keyj: ['о', 'j'],
+  keyk: ['л', 'k'],
+  keyl: ['д', 'l'],
   semicolon: ['ж', ':;'],
   quote: ['э', `"'`],
   enter: ['enter', 'enter'],
@@ -77,8 +84,8 @@ const buttonObj = {
   contextmenu: ['menu', 'menu'],
   controlright: ['ctrl', 'ctrl'],
 
-  leftside: ['1', '2'],
-  rightside: ['1', '2']
+  leftside: ['ёйфяцычувскамепи!"№;%:', 'qazwsxedcrfvtgb~!@#$%^'],
+  rightside: ['нртгоьшлбщдюзжхэъ?*()_+,/', 'yhnujmikolp&*()_+{}|:"<>?']
 }
 
 const langIndex = computed(() => {
