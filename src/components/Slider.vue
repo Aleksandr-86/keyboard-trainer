@@ -2,18 +2,20 @@
 import { onMounted, reactive, computed } from 'vue'
 
 const hsla = reactive({
-  hue: 0,
-  saturation: 0,
-  lightness: 0,
-  alpha: 0
+  hue: Number,
+  saturation: Number,
+  lightness: Number,
+  alpha: Number
 })
 
-const inputHue = function () {
-  hsla.hue = sliderhue.valueAsNumber
+const inputChange = function (propertyName) {
+  const obj = document.body.querySelector(`#${propertyName}`)
+  hsla[propertyName] = obj.valueAsNumber
 }
 
 onMounted(() => {
   hsla.hue = 355
+  hue.value = 355
 })
 </script>
 
@@ -23,10 +25,10 @@ onMounted(() => {
     <div class="slider-description">Оттенок</div>
     <div class="slider">
       <input
-        @input="inputHue"
+        @input="inputChange('hue')"
         type="range"
         class="slider-input"
-        id="sliderhue"
+        id="hue"
         min="0"
         max="360" />
 
