@@ -10,14 +10,24 @@ const props = defineProps({
   lang: String
 })
 
-const shift = reactive({
-  leftBorder: String,
-  leftColor: String,
-  rightBorder: String,
-  rightColor: String
-})
+// const shift = reactive({
+//   leftBorder: 'neutral',
+//   leftColor: String,
+//   rightBorder: String,
+//   rightColor: String
+// })
 
 const keyboardArr = [
+  {
+    side: 'left',
+    chars: ['ёйфяцычувскамепи', 'qazwsxedcrfvtgb'],
+    signs: ['!"№;%:', '~!@#$%^']
+  },
+  {
+    side: 'right',
+    chars: ['нртгоьшлбщдюзжхэъ', 'yhnujmikolp'],
+    signs: ['?*()_+,/', '&*()_+{}|:"<>?']
+  },
   { code: 'Backquote', value: ['ё', '~`'] },
   { code: 'Digit1', value: ['!1', '!1'] },
   { code: 'Digit2', value: ['"2', '@2'] },
@@ -82,16 +92,7 @@ const keyboardArr = [
   { code: 'AltRight', value: ['alt', 'alt'] },
   { code: 'MetaRight', value: ['win', 'win'] },
   { code: 'ContextMenu', value: ['menu', 'menu'] },
-  { code: 'ControlRight', value: ['ctrl', 'ctrl'] },
-
-  {
-    side: 'left',
-    value: ['ёйфяцычувскамепи!"№;%:', 'qazwsxedcrfvtgb~!@#$%^']
-  },
-  {
-    side: 'right',
-    value: ['нртгоьшлбщдюзжхэъ?*()_+,/', 'yhnujmikolp&*()_+{}|:"<>?']
-  }
+  { code: 'ControlRight', value: ['ctrl', 'ctrl'] }
 ]
 
 const langIndex = computed(() => {
@@ -101,7 +102,6 @@ const langIndex = computed(() => {
     return 1
   }
 })
-
 // const keyCode = computed(
 //   () => props.eventKeydown.code && props.eventKeydown.code.toLowerCase()
 // )
@@ -110,71 +110,43 @@ const keyValue = computed(
   () => props.eventKeydown.key && props.eventKeydown.key.toLowerCase()
 )
 
-// const shift = computed(
-//   () => props.eventKeydown.key && props.eventKeydown.shiftKey
-// )
-
-// let lShift = computed(() => {
-//   if (store.storage.pointers) return
-
-//   let targetChar = props.targetChar
-//   const magenta = 'hsla(300, 80%, 40%, 1)'
-
-//   if (
-//     isUpCase(targetChar) &&
-//     /[нртгоьшлбщдюзжхэъyhnujmikolp]/.test(targetChar.toLowerCase())
-//   ) {
-//     return magenta
-//   } else if (props.lang === 'russian' && /[?*()_+,/]/.test(targetChar)) {
-//     return magenta
-//   } else if (props.lang === 'english' && /[&*()_+{}|:"<>?]/.test(targetChar)) {
-//     return magenta
-//   }
-// })
-
-// const rShiftBorder = computed(() => {
-//   if (store.storage.pointers) return
-
-//   let targetChar = props.targetChar
-//   const magenta = 'hsla(300, 80%, 40%, 1)'
-
-//   if (
-//     isUpCase(targetChar) &&
-//     /[ёйфяцычувскамепиqazwsxedcrfvtgb]/.test(targetChar.toLowerCase())
-//   ) {
-//     return magenta
-//   } else if (props.lang === 'russian' && /[!"№;%:]/.test(targetChar)) {
-//     return magenta
-//   } else if (props.lang === 'english' && /[~!@#$%^]/.test(targetChar)) {
-//     return magenta
-//   }
-// })
-
-// const rShiftColor = computed(() => {
-//   if (store.storage.pointers) return
-
-//   let targetChar = props.targetChar
-//   const magenta = 'hsla(300, 80%, 40%, 1)'
-
-//   if (
-//     isUpCase(targetChar) &&
-//     /[ёйфяцычувскамепиqazwsxedcrfvtgb]/.test(targetChar.toLowerCase())
-//   ) {
-//     return magenta
-//   } else if (props.lang === 'russian' && /[!"№;%:]/.test(targetChar)) {
-//     return magenta
-//   } else if (props.lang === 'english' && /[~!@#$%^]/.test(targetChar)) {
-//     return magenta
-//   } else {
-//     return 'hsl(0, 0%, 70%)'
-//   }
-// })
-
+let lShiftBorder = 'neutral'
+let lShiftColor = 'hsla(0, 0%, 70%, 1)'
+let rShiftBorder = 'neutral'
+let rShiftColor = 'hsla(0, 0%, 70%, 1)'
 const boardColor = computed(() => {
   if (store.storage.pointers) return
 
-  let targetChar = store.data.fragmentArr[store.data.indexArr].toLowerCase()
+  let targetChar = store.data.fragmentArr[store.data.indexArr]
+  const magenta = 'hsla(300, 80%, 40%, 1)'
 
+  const lChars = keyboardArr[0].chars[langIndex.value]
+  const lSigns = keyboardArr[0].signs[langIndex.value]
+  const rChars = keyboardArr[1].chars[langIndex.value]
+  const rSigns = keyboardArr[1].signs[langIndex.value]
+
+  if (isUpCase(targetChar)) {
+    if (lChars.includes(targetChar.toLowerCase())) {
+      rShiftBorder = magenta
+      rShiftColor = magenta
+    } else if (rChars.includes(targetChar.toLowerCase())) {
+      lShiftBorder = magenta
+      lShiftColor = magenta
+    }
+  } else if (lSigns.includes(targetChar)) {
+    rShiftBorder = magenta
+    rShiftColor = magenta
+  } else if (rSigns.includes(targetChar)) {
+    lShiftBorder = magenta
+    lShiftColor = magenta
+  } else {
+    lShiftBorder = 'neutral'
+    lShiftColor = 'hsla(0, 0%, 70%, 1)'
+    rShiftBorder = 'neutral'
+    rShiftColor = 'hsla(0, 0%, 70%, 1)'
+  }
+
+  targetChar = targetChar.toLowerCase()
   if (props.lang === 'russian') {
     if (/[ё1!йфя0)зж.,\-_хэ=+ъ\\/]/.test(targetChar)) {
       return 'hsla(300, 80%, 40%, 1)'
@@ -215,8 +187,13 @@ const boardColor = computed(() => {
   </button>
   <div class="keyboard">
     <div
-      v-for="(obj, value) in keyboardArr.slice(0, -2)"
+      v-for="obj in keyboardArr.slice(2)"
+      :id="obj.code.toLowerCase()"
       :class="[
+        {
+          button:
+            obj.value[langIndex].length === 1 || obj.value[langIndex].length > 2
+        },
         {
           // 'button-marked': value[langIndex].includes(targetChar.toLowerCase())
           'button-marked':
@@ -224,16 +201,8 @@ const boardColor = computed(() => {
             (obj.value[langIndex].length === 2 &&
               obj.value[langIndex].includes(targetChar.toLowerCase()))
         },
-        {
-          // 'button-marked': obj.code === 'ShiftLeft'
-        },
-        {
-          button:
-            obj.value[langIndex].length === 1 || obj.value[langIndex].length > 2
-        },
         { 'button-double': obj.value[langIndex].length === 2 }
-      ]"
-      :id="obj.code.toLowerCase()">
+      ]">
       <div
         v-if="
           obj.value[langIndex].length === 1 || obj.value[langIndex].length > 2
@@ -304,8 +273,8 @@ const boardColor = computed(() => {
   text-transform: capitalize;
   /* color: black;
   background: hsl(0, 0%, 80%); */
-  color: hsl(0, 0%, 70%);
-  background: hsl(0, 0%, 0%);
+  color: hsla(0, 0%, 70%, 1);
+  background: hsla(0, 0%, 0%, 1);
   /* border: none; */
   border-radius: 15px;
 }
@@ -378,14 +347,14 @@ const boardColor = computed(() => {
 
 #shiftleft {
   width: 138px;
-  box-shadow: inset 0 0 0 3px v-bind(lShift);
-  /* color: v-bind(lShift); */
+  box-shadow: inset 0 0 0 3px v-bind(lShiftBorder);
+  color: v-bind(lShiftColor);
 }
 
 #shiftright {
   width: 168px;
   box-shadow: inset 0 0 0 3px v-bind(rShiftBorder);
-  /* color: v-bind(rShiftColor); */
+  color: v-bind(rShiftColor);
 }
 
 #controlleft,
