@@ -110,41 +110,44 @@ const keyValue = computed(
   () => props.eventKeydown.key && props.eventKeydown.key.toLowerCase()
 )
 
-let lShiftBorder = 'neutral'
-let lShiftColor = 'hsla(0, 0%, 70%, 1)'
-let rShiftBorder = 'neutral'
-let rShiftColor = 'hsla(0, 0%, 70%, 1)'
+const lShift = computed(() => {
+  if (store.storage.pointers) return
+
+  const rChars = keyboardArr[1].chars[langIndex.value]
+  const rSigns = keyboardArr[1].signs[langIndex.value]
+  let targetChar = store.data.fragmentArr[store.data.indexArr]
+
+  if (
+    (rChars.includes(targetChar.toLowerCase()) && isUpCase(targetChar)) ||
+    rSigns.includes(targetChar)
+  ) {
+    return true
+  } else {
+    return false
+  }
+})
+
+const rShift = computed(() => {
+  if (store.storage.pointers) return
+
+  const lChars = keyboardArr[0].chars[langIndex.value]
+  const lSigns = keyboardArr[0].signs[langIndex.value]
+  let targetChar = store.data.fragmentArr[store.data.indexArr]
+
+  if (
+    (lChars.includes(targetChar.toLowerCase()) && isUpCase(targetChar)) ||
+    lSigns.includes(targetChar)
+  ) {
+    return true
+  } else {
+    return false
+  }
+})
+
 const boardColor = computed(() => {
   if (store.storage.pointers) return
 
   let targetChar = store.data.fragmentArr[store.data.indexArr]
-  const magenta = 'hsla(300, 80%, 40%, 1)'
-
-  const lChars = keyboardArr[0].chars[langIndex.value]
-  const lSigns = keyboardArr[0].signs[langIndex.value]
-  const rChars = keyboardArr[1].chars[langIndex.value]
-  const rSigns = keyboardArr[1].signs[langIndex.value]
-
-  if (isUpCase(targetChar)) {
-    if (lChars.includes(targetChar.toLowerCase())) {
-      rShiftBorder = magenta
-      rShiftColor = magenta
-    } else if (rChars.includes(targetChar.toLowerCase())) {
-      lShiftBorder = magenta
-      lShiftColor = magenta
-    }
-  } else if (lSigns.includes(targetChar)) {
-    rShiftBorder = magenta
-    rShiftColor = magenta
-  } else if (rSigns.includes(targetChar)) {
-    lShiftBorder = magenta
-    lShiftColor = magenta
-  } else {
-    lShiftBorder = 'neutral'
-    lShiftColor = 'hsla(0, 0%, 70%, 1)'
-    rShiftBorder = 'neutral'
-    rShiftColor = 'hsla(0, 0%, 70%, 1)'
-  }
 
   targetChar = targetChar.toLowerCase()
   if (props.lang === 'russian') {
@@ -167,7 +170,8 @@ const boardColor = computed(() => {
     } else if (/[3#edc8*ik,<]/.test(targetChar)) {
       return 'hsla(120, 80%, 30%, 1)'
     } else if (/[4$rfv5%tgb6^]/.test(targetChar)) {
-      return 'hsla(240, 70%, 55%, 1)'
+      // return 'hsla(240, 70%, 55%, 1)'
+      return 'hsla(180, 100%, 35%, 1)'
     } else if (/[7&yhnujm]/.test(targetChar)) {
       return 'hsla(0, 75%, 50%, 1)'
     }
@@ -195,8 +199,13 @@ const boardColor = computed(() => {
             obj.value[langIndex].length === 1 || obj.value[langIndex].length > 2
         },
         {
+          'button-marked-shift':
+            (obj.code === 'ShiftLeft' && lShift) ||
+            (obj.code === 'ShiftRight' && rShift)
+        },
+        {
           // 'button-marked': value[langIndex].includes(targetChar.toLowerCase())
-          'button-marked':
+          'button-marked-border':
             obj.value[langIndex] === targetChar.toLowerCase() ||
             (obj.value[langIndex].length === 2 &&
               obj.value[langIndex].includes(targetChar.toLowerCase()))
@@ -208,20 +217,27 @@ const boardColor = computed(() => {
           obj.value[langIndex].length === 1 || obj.value[langIndex].length > 2
         "
         :class="[
-          { 'char-color': obj.value[langIndex] === targetChar.toLowerCase() }
+          {
+            'button-marked-color':
+              obj.value[langIndex] === targetChar.toLowerCase()
+          }
         ]">
         {{ obj.value[langIndex] }}
       </div>
 
       <div
         v-if="obj.value[langIndex].length === 2"
-        :class="[{ 'char-color': obj.value[langIndex][0] === targetChar }]">
+        :class="[
+          { 'button-marked-color': obj.value[langIndex][0] === targetChar }
+        ]">
         {{ obj.value[langIndex][0] }}
       </div>
 
       <div
         v-if="obj.value[langIndex].length === 2"
-        :class="[{ 'char-color': obj.value[langIndex][1] === targetChar }]">
+        :class="[
+          { 'button-marked-color': obj.value[langIndex][1] === targetChar }
+        ]">
         {{ obj.value[langIndex][1] }}
       </div>
     </div>
@@ -292,8 +308,17 @@ const boardColor = computed(() => {
   height: 27px;
 }
 
-.char-color {
+.button-marked-color {
   color: v-bind(boardColor);
+}
+
+.button-marked-border {
+  box-shadow: inset 0 0 0 3px v-bind(boardColor);
+}
+
+.button-marked-shift {
+  box-shadow: inset 0 0 0 3px hsla(300, 80%, 40%, 1);
+  color: hsla(300, 80%, 40%, 1);
 }
 
 @keyframes fadeGreenColor {
@@ -303,10 +328,6 @@ const boardColor = computed(() => {
   100% {
     background: hsl(0, 0%, 80%);
   }
-}
-
-.button-marked {
-  box-shadow: inset 0 0 0 3px v-bind(boardColor);
 }
 
 .button-correct {
@@ -347,14 +368,14 @@ const boardColor = computed(() => {
 
 #shiftleft {
   width: 138px;
-  box-shadow: inset 0 0 0 3px v-bind(lShiftBorder);
-  color: v-bind(lShiftColor);
+  /* box-shadow: inset 0 0 0 3px v-bind(lShiftBorder); */
+  /* color: v-bind(lShiftColor); */
 }
 
 #shiftright {
   width: 168px;
-  box-shadow: inset 0 0 0 3px v-bind(rShiftBorder);
-  color: v-bind(rShiftColor);
+  /* box-shadow: inset 0 0 0 3px v-bind(rShiftBorder); */
+  /* color: v-bind(rShiftColor); */
 }
 
 #controlleft,
