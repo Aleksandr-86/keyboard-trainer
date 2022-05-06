@@ -17,76 +17,88 @@ const shift = reactive({
   rightColor: String
 })
 
-const buttonObj = {
-  backquote: ['ё', '~`'],
-  digit1: ['!1', '!1'],
-  digit2: ['"2', '@2'],
-  digit3: ['№3', '#3'],
-  digit4: [';4', '$4'],
-  digit5: ['%5', '%5'],
-  digit6: [':6', '^6'],
-  digit7: ['?7', '&7'],
-  digit8: ['*8', '*8'],
-  digit9: ['(9', '(9'],
-  digit0: [')0', ')0'],
-  minus: ['_-', '_-'],
-  equal: ['+=', '+='],
-  backspace: ['backspace', 'backspace'],
+const keyboardArr = [
+  { code: 'Backquote', value: ['ё', '~`'] },
+  { code: 'Digit1', value: ['!1', '!1'] },
+  { code: 'Digit2', value: ['"2', '@2'] },
+  { code: 'Digit3', value: ['№3', '#3'] },
+  { code: 'Digit4', value: [';4', '$4'] },
+  { code: 'Digit5', value: ['%5', '%5'] },
+  { code: 'Digit6', value: [':6', '^6'] },
+  { code: 'Digit7', value: ['?7', '&7'] },
+  { code: 'Digit8', value: ['*8', '*8'] },
+  { code: 'Digit9', value: ['(9', '(9'] },
+  { code: 'Digit', value: [')0', ')0'] },
+  { code: 'Minus', value: ['_-', '_-'] },
+  { code: 'Equal', value: ['+=', '+='] },
+  { code: 'Backspace', value: ['backspace', 'backspace'] },
 
-  tab: ['tab', 'tab'],
-  keyq: ['й', 'q'],
-  keyw: ['ц', 'w'],
-  keye: ['у', 'e'],
-  keyr: ['к', 'r'],
-  keyt: ['е', 't'],
-  keyy: ['н', 'y'],
-  keyu: ['г', 'u'],
-  keyi: ['ш', 'i'],
-  keyo: ['щ', 'o'],
-  keyp: ['з', 'p'],
-  bracketleft: ['х', '{['],
-  bracketright: ['ъ', '}]'],
-  backslash: ['/\\', '|\\'],
+  { code: 'Tab', value: ['tab', 'tab'] },
+  { code: 'KeyQ', value: ['й', 'q'] },
+  { code: 'KeyW', value: ['ц', 'w'] },
+  { code: 'KeyE', value: ['у', 'e'] },
+  { code: 'KeyR', value: ['к', 'r'] },
+  { code: 'KeyT', value: ['е', 't'] },
+  { code: 'KeyY', value: ['н', 'y'] },
+  { code: 'KeyU', value: ['г', 'u'] },
+  { code: 'KeyI', value: ['ш', 'i'] },
+  { code: 'KeyO', value: ['щ', 'o'] },
+  { code: 'KeyP', value: ['з', 'p'] },
+  { code: 'BracketLeft', value: ['х', '{['] },
+  { code: 'BracketRight', value: ['ъ', '}]'] },
+  { code: 'Backslash', value: ['/\\', '|\\'] },
 
-  capslock: ['caps', 'caps'],
-  keya: ['ф', 'a'],
-  keys: ['ы', 's'],
-  keyd: ['в', 'd'],
-  keyf: ['а', 'f'],
-  keyg: ['п', 'g'],
-  keyh: ['р', 'h'],
-  keyj: ['о', 'j'],
-  keyk: ['л', 'k'],
-  keyl: ['д', 'l'],
-  semicolon: ['ж', ':;'],
-  quote: ['э', `"'`],
-  enter: ['enter', 'enter'],
+  { code: 'CapsLock', value: ['caps', 'caps'] },
+  { code: 'KeyA', value: ['ф', 'a'] },
+  { code: 'KeyS', value: ['ы', 's'] },
+  { code: 'KeyD', value: ['в', 'd'] },
+  { code: 'KeyF', value: ['а', 'f'] },
+  { code: 'KeyG', value: ['п', 'g'] },
+  { code: 'KeyH', value: ['р', 'h'] },
+  { code: 'KeyJ', value: ['о', 'j'] },
+  { code: 'KeyK', value: ['л', 'k'] },
+  { code: 'KeyL', value: ['д', 'l'] },
+  { code: 'Semicolon', value: ['ж', ':;'] },
+  { code: 'Quote', value: ['э', `"'`] },
+  { code: 'Enter', value: ['enter', 'enter'] },
 
-  shiftleft: ['shift', 'shift'],
-  keyz: ['я', 'z'],
-  keyx: ['ч', 'x'],
-  keyc: ['с', 'c'],
-  keyv: ['м', 'v'],
-  keyb: ['и', 'b'],
-  keyn: ['т', 'n'],
-  keym: ['ь', 'm'],
-  comma: ['б', '<,'],
-  period: ['ю', '>.'],
-  slash: [',.', '?/'],
-  shiftright: ['shift', 'shift'],
+  { code: 'shiftleft', value: ['shift', 'shift'] },
+  { code: 'keyz', value: ['я', 'z'] },
+  { code: 'keyx', value: ['ч', 'x'] },
+  { code: 'keyc', value: ['с', 'c'] },
+  { code: 'keyv', value: ['м', 'v'] },
+  { code: 'keyb', value: ['и', 'b'] },
+  { code: 'keyn', value: ['т', 'n'] },
+  { code: 'keym', value: ['ь', 'm'] },
+  { code: 'comma', value: ['б', '<,'] },
+  { code: 'period', value: ['ю', '>.'] },
+  { code: 'slash', value: [',.', '?/'] },
+  { code: 'shiftright', value: ['shift', 'shift'] },
 
-  controlleft: ['ctrl', 'ctrl'],
-  osleft: ['win', 'win'],
-  altleft: ['alt', 'alt'],
-  space: [' ', ' '],
-  altright: ['alt', 'alt'],
-  osright: ['win', 'win'],
-  contextmenu: ['menu', 'menu'],
-  controlright: ['ctrl', 'ctrl'],
+  { code: 'controlleft', value: ['ctrl', 'ctrl'] },
+  { code: 'osleft', value: ['win', 'win'] },
+  { code: 'altleft', value: ['alt', 'alt'] },
+  { code: 'space', value: [' ', ' '] },
+  { code: 'altright', value: ['alt', 'alt'] },
+  { code: 'osright', value: ['win', 'win'] },
+  { code: 'contextmenu', value: ['menu', 'menu'] },
+  { code: 'controlright', value: ['ctrl', 'ctrl'] },
 
-  leftside: ['ёйфяцычувскамепи!"№;%:', 'qazwsxedcrfvtgb~!@#$%^'],
-  rightside: ['нртгоьшлбщдюзжхэъ?*()_+,/', 'yhnujmikolp&*()_+{}|:"<>?']
-}
+  {
+    code: 'leftside',
+    value: ['ёйфяцычувскамепи!"№;%:', 'qazwsxedcrfvtgb~!@#$%^']
+  },
+  {
+    code: 'rightside',
+    value: ['нртгоьшлбщдюзжхэъ?*()_+,/', 'yhnujmikolp&*()_+{}|:"<>?']
+  }
+]
+
+// const keyboardButtons = [
+//   { code: 'Enter', value: ['в', 'd'] },
+//   { code: 'KeyF', value: ['а', 'f'] },
+//   { code: 'KeyG', value: ['п', 'g'] }
+// ]
 
 const langIndex = computed(() => {
   if (props.lang === 'russian') {
@@ -209,34 +221,38 @@ const boardColor = computed(() => {
   </button>
   <div class="keyboard">
     <div
-      v-for="(value, id, index) in buttonObj"
+      v-for="(obj, value) in keyboardArr.slice(0, -2)"
       :class="[
         {
-          // 'button-marked': value[langIndex].includes(targetChar.toLowerCase())
-          'button-marked':
-            value[langIndex] === targetChar.toLowerCase() ||
-            (value[langIndex].length === 2 &&
-              value[langIndex].includes(targetChar.toLowerCase()))
-        },
-        {
-          'button-marked': id === 'shiftleft'
-        },
-
-        {
-          button: value[langIndex].length === 1 || value[langIndex].length > 2
-        },
-        { 'button-double': value[langIndex].length === 2 }
+          button: true
+        }
+        // {
+        //   // 'button-marked': value[langIndex].includes(targetChar.toLowerCase())
+        //   'button-marked':
+        //     value[langIndex] === targetChar.toLowerCase() ||
+        //     (value[langIndex].length === 2 &&
+        //       value[langIndex].includes(targetChar.toLowerCase()))
+        // },
+        // {
+        //   'button-marked': id === 'shiftleft'
+        // },
+        // {
+        //   button: value[langIndex].length === 1 || value[langIndex].length > 2
+        // },
+        // { 'button-double': value[langIndex].length === 2 }
       ]"
-      :id="id">
+      :id="obj.code.toLowerCase()">
       <div
-        v-if="value[langIndex].length === 1 || value[langIndex].length > 2"
+        v-if="
+          obj.value[langIndex].length === 1 || obj.value[langIndex].length > 2
+        "
         :class="[
           { 'board-color': value[langIndex] === targetChar.toLowerCase() }
         ]">
-        {{ value[langIndex] }}
+        {{ obj.value[langIndex] }}
       </div>
 
-      <div
+      <!-- <div
         v-if="value[langIndex].length === 2"
         :class="[{ 'board-color': value[langIndex][0] === targetChar }]">
         {{ value[langIndex][0] }}
@@ -246,8 +262,15 @@ const boardColor = computed(() => {
         v-if="value[langIndex].length === 2"
         :class="[{ 'board-color': value[langIndex][1] === targetChar }]">
         {{ value[langIndex][1] }}
-      </div>
+      </div> -->
     </div>
+
+    <!-- <div
+      v-for="(obj, id) in keyboardButtons"
+      class="button"
+      :id="obj.code.toLowerCase()">
+      {{ obj.value[langIndex] }}
+    </div> -->
   </div>
 </template>
 

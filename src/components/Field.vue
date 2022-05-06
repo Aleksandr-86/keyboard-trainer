@@ -29,7 +29,6 @@ const eListener = function (e) {
   events.keyDn = e
   const code = e.code
   events.keyValue = e.key
-
   if (isAuxiliaryKeys(code)) return
 
   // audio.pause()
