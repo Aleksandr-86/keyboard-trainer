@@ -27,20 +27,32 @@ const fn = function () {
 </script>
 
 <template>
-  <div>
-    <input @click="fn" type="range" id="hue" min="0" max="360" value="20" />
+  <div class="slider-container">
+    <input
+      @click="fn"
+      type="range"
+      class="slider"
+      id="hue"
+      min="0"
+      max="360"
+      step="1"
+      value="20" />
     <label for="hue">{{ hsla.hue }}</label>
   </div>
 </template>
 
 <style scoped>
 .slider-container {
-  width: 100%;
+  width: 380px;
+  background-color: grey;
+  margin-top: 10px;
 }
 
 .slider {
   -webkit-appearance: none;
-  width: 100%;
+  /* width: 100%; */
+  width: 300px;
+  margin-right: 35px;
   height: 15px;
   border-radius: 5px;
   background: #d3d3d3;
@@ -52,6 +64,12 @@ const fn = function () {
 
 .slider:hover {
   opacity: 1;
+}
+
+label {
+  /* margin-left: 15px; */
+  color: black;
+  width: 45px;
 }
 
 .slider::-webkit-slider-thumb {

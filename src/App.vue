@@ -43,7 +43,6 @@ const background = computed(
   <div id="background">
     <!-- <Background /> -->
     <NavigationMenu />
-    <Slider />
     <!-- <button @click="fn">КНИГА</button> -->
     <SettingsMenu v-if="store.state.settings" />
     <Field v-if="store.state.work" />

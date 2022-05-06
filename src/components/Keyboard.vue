@@ -108,61 +108,61 @@ const keyValue = computed(
 //   () => props.eventKeydown.key && props.eventKeydown.shiftKey
 // )
 
-let lShift = computed(() => {
-  if (store.storage.pointers) return
+// let lShift = computed(() => {
+//   if (store.storage.pointers) return
 
-  let targetChar = props.targetChar
-  const magenta = 'hsla(300, 80%, 40%, 1)'
+//   let targetChar = props.targetChar
+//   const magenta = 'hsla(300, 80%, 40%, 1)'
 
-  if (
-    isUpCase(targetChar) &&
-    /[нртгоьшлбщдюзжхэъyhnujmikolp]/.test(targetChar.toLowerCase())
-  ) {
-    return magenta
-  } else if (props.lang === 'russian' && /[?*()_+,/]/.test(targetChar)) {
-    return magenta
-  } else if (props.lang === 'english' && /[&*()_+{}|:"<>?]/.test(targetChar)) {
-    return magenta
-  }
-})
+//   if (
+//     isUpCase(targetChar) &&
+//     /[нртгоьшлбщдюзжхэъyhnujmikolp]/.test(targetChar.toLowerCase())
+//   ) {
+//     return magenta
+//   } else if (props.lang === 'russian' && /[?*()_+,/]/.test(targetChar)) {
+//     return magenta
+//   } else if (props.lang === 'english' && /[&*()_+{}|:"<>?]/.test(targetChar)) {
+//     return magenta
+//   }
+// })
 
-const rShiftBorder = computed(() => {
-  if (store.storage.pointers) return
+// const rShiftBorder = computed(() => {
+//   if (store.storage.pointers) return
 
-  let targetChar = props.targetChar
-  const magenta = 'hsla(300, 80%, 40%, 1)'
+//   let targetChar = props.targetChar
+//   const magenta = 'hsla(300, 80%, 40%, 1)'
 
-  if (
-    isUpCase(targetChar) &&
-    /[ёйфяцычувскамепиqazwsxedcrfvtgb]/.test(targetChar.toLowerCase())
-  ) {
-    return magenta
-  } else if (props.lang === 'russian' && /[!"№;%:]/.test(targetChar)) {
-    return magenta
-  } else if (props.lang === 'english' && /[~!@#$%^]/.test(targetChar)) {
-    return magenta
-  }
-})
+//   if (
+//     isUpCase(targetChar) &&
+//     /[ёйфяцычувскамепиqazwsxedcrfvtgb]/.test(targetChar.toLowerCase())
+//   ) {
+//     return magenta
+//   } else if (props.lang === 'russian' && /[!"№;%:]/.test(targetChar)) {
+//     return magenta
+//   } else if (props.lang === 'english' && /[~!@#$%^]/.test(targetChar)) {
+//     return magenta
+//   }
+// })
 
-const rShiftColor = computed(() => {
-  if (store.storage.pointers) return
+// const rShiftColor = computed(() => {
+//   if (store.storage.pointers) return
 
-  let targetChar = props.targetChar
-  const magenta = 'hsla(300, 80%, 40%, 1)'
+//   let targetChar = props.targetChar
+//   const magenta = 'hsla(300, 80%, 40%, 1)'
 
-  if (
-    isUpCase(targetChar) &&
-    /[ёйфяцычувскамепиqazwsxedcrfvtgb]/.test(targetChar.toLowerCase())
-  ) {
-    return magenta
-  } else if (props.lang === 'russian' && /[!"№;%:]/.test(targetChar)) {
-    return magenta
-  } else if (props.lang === 'english' && /[~!@#$%^]/.test(targetChar)) {
-    return magenta
-  } else {
-    return 'hsl(0, 0%, 70%)'
-  }
-})
+//   if (
+//     isUpCase(targetChar) &&
+//     /[ёйфяцычувскамепиqazwsxedcrfvtgb]/.test(targetChar.toLowerCase())
+//   ) {
+//     return magenta
+//   } else if (props.lang === 'russian' && /[!"№;%:]/.test(targetChar)) {
+//     return magenta
+//   } else if (props.lang === 'english' && /[~!@#$%^]/.test(targetChar)) {
+//     return magenta
+//   } else {
+//     return 'hsl(0, 0%, 70%)'
+//   }
+// })
 
 const boardColor = computed(() => {
   if (store.storage.pointers) return
@@ -219,10 +219,11 @@ const boardColor = computed(() => {
               value[langIndex].includes(targetChar.toLowerCase()))
         },
         {
-          button:
-            (value[langIndex].length === 1 || value[langIndex].length > 2) &&
-            index !== 61 &&
-            index !== 62
+          'button-marked': id === 'shiftleft'
+        },
+
+        {
+          button: value[langIndex].length === 1 || value[langIndex].length > 2
         },
         { 'button-double': value[langIndex].length === 2 }
       ]"
