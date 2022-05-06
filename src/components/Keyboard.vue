@@ -62,43 +62,37 @@ const keyboardArr = [
   { code: 'Quote', value: ['э', `"'`] },
   { code: 'Enter', value: ['enter', 'enter'] },
 
-  { code: 'shiftleft', value: ['shift', 'shift'] },
-  { code: 'keyz', value: ['я', 'z'] },
-  { code: 'keyx', value: ['ч', 'x'] },
-  { code: 'keyc', value: ['с', 'c'] },
-  { code: 'keyv', value: ['м', 'v'] },
-  { code: 'keyb', value: ['и', 'b'] },
-  { code: 'keyn', value: ['т', 'n'] },
-  { code: 'keym', value: ['ь', 'm'] },
-  { code: 'comma', value: ['б', '<,'] },
-  { code: 'period', value: ['ю', '>.'] },
-  { code: 'slash', value: [',.', '?/'] },
-  { code: 'shiftright', value: ['shift', 'shift'] },
+  { code: 'ShiftLeft', value: ['shift', 'shift'] },
+  { code: 'KeyZ', value: ['я', 'z'] },
+  { code: 'KeyX', value: ['ч', 'x'] },
+  { code: 'KeyC', value: ['с', 'c'] },
+  { code: 'KeyV', value: ['м', 'v'] },
+  { code: 'KeyB', value: ['и', 'b'] },
+  { code: 'KeyN', value: ['т', 'n'] },
+  { code: 'KeyM', value: ['ь', 'm'] },
+  { code: 'Comma', value: ['б', '<,'] },
+  { code: 'Period', value: ['ю', '>.'] },
+  { code: 'Slash', value: [',.', '?/'] },
+  { code: 'ShiftRight', value: ['shift', 'shift'] },
 
-  { code: 'controlleft', value: ['ctrl', 'ctrl'] },
-  { code: 'osleft', value: ['win', 'win'] },
-  { code: 'altleft', value: ['alt', 'alt'] },
-  { code: 'space', value: [' ', ' '] },
-  { code: 'altright', value: ['alt', 'alt'] },
-  { code: 'osright', value: ['win', 'win'] },
-  { code: 'contextmenu', value: ['menu', 'menu'] },
-  { code: 'controlright', value: ['ctrl', 'ctrl'] },
+  { code: 'ControlLeft', value: ['ctrl', 'ctrl'] },
+  { code: 'MetaLeft', value: ['win', 'win'] },
+  { code: 'AltLeft', value: ['alt', 'alt'] },
+  { code: 'Space', value: [' ', ' '] },
+  { code: 'AltRight', value: ['alt', 'alt'] },
+  { code: 'MetaRight', value: ['win', 'win'] },
+  { code: 'ContextMenu', value: ['menu', 'menu'] },
+  { code: 'ControlRight', value: ['ctrl', 'ctrl'] },
 
   {
-    code: 'leftside',
+    side: 'left',
     value: ['ёйфяцычувскамепи!"№;%:', 'qazwsxedcrfvtgb~!@#$%^']
   },
   {
-    code: 'rightside',
+    side: 'right',
     value: ['нртгоьшлбщдюзжхэъ?*()_+,/', 'yhnujmikolp&*()_+{}|:"<>?']
   }
 ]
-
-// const keyboardButtons = [
-//   { code: 'Enter', value: ['в', 'd'] },
-//   { code: 'KeyF', value: ['а', 'f'] },
-//   { code: 'KeyG', value: ['п', 'g'] }
-// ]
 
 const langIndex = computed(() => {
   if (props.lang === 'russian') {
@@ -224,22 +218,20 @@ const boardColor = computed(() => {
       v-for="(obj, value) in keyboardArr.slice(0, -2)"
       :class="[
         {
-          button: true
-        }
-        // {
-        //   // 'button-marked': value[langIndex].includes(targetChar.toLowerCase())
-        //   'button-marked':
-        //     value[langIndex] === targetChar.toLowerCase() ||
-        //     (value[langIndex].length === 2 &&
-        //       value[langIndex].includes(targetChar.toLowerCase()))
-        // },
-        // {
-        //   'button-marked': id === 'shiftleft'
-        // },
-        // {
-        //   button: value[langIndex].length === 1 || value[langIndex].length > 2
-        // },
-        // { 'button-double': value[langIndex].length === 2 }
+          // 'button-marked': value[langIndex].includes(targetChar.toLowerCase())
+          'button-marked':
+            obj.value[langIndex] === targetChar.toLowerCase() ||
+            (obj.value[langIndex].length === 2 &&
+              obj.value[langIndex].includes(targetChar.toLowerCase()))
+        },
+        {
+          // 'button-marked': obj.code === 'ShiftLeft'
+        },
+        {
+          button:
+            obj.value[langIndex].length === 1 || obj.value[langIndex].length > 2
+        },
+        { 'button-double': obj.value[langIndex].length === 2 }
       ]"
       :id="obj.code.toLowerCase()">
       <div
@@ -247,30 +239,23 @@ const boardColor = computed(() => {
           obj.value[langIndex].length === 1 || obj.value[langIndex].length > 2
         "
         :class="[
-          { 'board-color': value[langIndex] === targetChar.toLowerCase() }
+          { 'char-color': obj.value[langIndex] === targetChar.toLowerCase() }
         ]">
         {{ obj.value[langIndex] }}
       </div>
 
-      <!-- <div
-        v-if="value[langIndex].length === 2"
-        :class="[{ 'board-color': value[langIndex][0] === targetChar }]">
-        {{ value[langIndex][0] }}
+      <div
+        v-if="obj.value[langIndex].length === 2"
+        :class="[{ 'char-color': obj.value[langIndex][0] === targetChar }]">
+        {{ obj.value[langIndex][0] }}
       </div>
 
       <div
-        v-if="value[langIndex].length === 2"
-        :class="[{ 'board-color': value[langIndex][1] === targetChar }]">
-        {{ value[langIndex][1] }}
-      </div> -->
+        v-if="obj.value[langIndex].length === 2"
+        :class="[{ 'char-color': obj.value[langIndex][1] === targetChar }]">
+        {{ obj.value[langIndex][1] }}
+      </div>
     </div>
-
-    <!-- <div
-      v-for="(obj, id) in keyboardButtons"
-      class="button"
-      :id="obj.code.toLowerCase()">
-      {{ obj.value[langIndex] }}
-    </div> -->
   </div>
 </template>
 
@@ -338,7 +323,7 @@ const boardColor = computed(() => {
   height: 27px;
 }
 
-.board-color {
+.char-color {
   color: v-bind(boardColor);
 }
 
@@ -400,14 +385,14 @@ const boardColor = computed(() => {
 #shiftright {
   width: 168px;
   box-shadow: inset 0 0 0 3px v-bind(rShiftBorder);
-  color: v-bind(rShiftColor);
+  /* color: v-bind(rShiftColor); */
 }
 
 #controlleft,
-#osleft,
+#metaleft,
 #altleft,
 #altright,
-#osright,
+#metaright,
 #contextmenu {
   width: 75px;
 }
