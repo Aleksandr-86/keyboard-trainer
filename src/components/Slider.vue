@@ -27,6 +27,7 @@ const fn = function () {
 </script>
 
 <template>
+  <label for="hue">{{ hsla.hue }}</label>
   <div class="slider-container">
     <input
       @click="fn"
@@ -37,7 +38,6 @@ const fn = function () {
       max="360"
       step="1"
       value="20" />
-    <label for="hue">{{ hsla.hue }}</label>
   </div>
 </template>
 
