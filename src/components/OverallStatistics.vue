@@ -67,8 +67,7 @@ onUnmounted(() => {
     <div class="stat-first-row">Cкорость набора, зн/мин:</div>
     <div class="stat-second-row">{{ charPerSecond }}</div>
 
-    <div class="stat-first-row" v-html="tempStr"></div>
-    <div class="stat-second-row"></div>
+    <div class="stat-line" v-html="tempStr"></div>
 
     <div class="stat-first-row">- правильных</div>
     <div class="stat-second-row">
@@ -82,11 +81,11 @@ onUnmounted(() => {
       <div class="num-wrong">{{ strWrongPercent }}</div>
     </div>
 
-    <div>
-      <div class="stat-first-row">
+    <div class="stat-flex">
+      <div class="first-column">
         Максимальное количество знаков подряд без ошибки:
       </div>
-      <div class="stat-second-row">{{ store.data.withoutMistake }}</div>
+      <div class="second-column">{{ store.data.withoutMistake }}</div>
     </div>
   </div>
   <div
@@ -96,6 +95,29 @@ onUnmounted(() => {
 </template>
 
 <style>
+.stat-line {
+  float: left;
+}
+
+.stat-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: aquamarine;
+}
+
+.first-column {
+  background-color: pink;
+  text-align: left;
+  width: 67%;
+}
+
+.second-column {
+  background-color: hsl(34, 78%, 71%);
+  font-weight: bold;
+  width: 32%;
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -114,6 +136,7 @@ onUnmounted(() => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  /* width: 72vh; */
   width: 72vh;
   height: auto;
 
@@ -158,7 +181,8 @@ h4 {
 }
 
 .stat-violet {
-  color: hsl(282, 100%, 23%);
+  /* color: hsl(282, 100%, 23%); */
+  color: hsl(282, 100%, 25%);
 }
 
 .num-total,
@@ -170,11 +194,12 @@ h4 {
 }
 
 .num-correct {
+  /* color: hsl(135, 100%, 30%); */
   color: hsl(135, 100%, 30%);
 }
 
 .num-wrong {
-  color: hsl(0, 100%, 38%);
+  color: hsl(0, 100%, 35%);
 }
 
 .stat-first-row {
@@ -182,13 +207,15 @@ h4 {
   width: 67%;
   text-align: left;
   margin-right: 1%;
+  background-color: aqua;
 }
 
 .stat-second-row {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   width: 32%;
   font-weight: bold;
+  background-color: antiquewhite;
 }
 
 .stat-time {
@@ -198,7 +225,8 @@ h4 {
 
 .stat-ms {
   position: fixed;
-  color: hsla(240, 100%, 35%, 1);
+  color: hsl(240, 80%, 30%);
+  /* color: hsla(0, 0%, 0%, 0.4); */
   font-weight: bold;
 }
 </style>
