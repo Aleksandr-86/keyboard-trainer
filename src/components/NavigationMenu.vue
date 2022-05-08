@@ -90,6 +90,7 @@ const toggleSettings = function () {
   font-family: 'Montserrat', sans-serif;
   flex-wrap: wrap;
   z-index: 10;
+  user-select: none;
 }
 
 .nav > li {

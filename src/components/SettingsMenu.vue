@@ -118,6 +118,7 @@ const closeSettingMenu = function () {
   /* transition: left 3000ms; */
   font-size: 25px;
   font-family: 'Montserrat', sans-serif;
+  user-select: none;
 }
 
 .settings-menu-open {
@@ -143,7 +144,7 @@ const closeSettingMenu = function () {
   right: 8px;
   cursor: pointer;
   transform: rotate(45deg);
-  color: rgb(191, 226, 255);
+  color: #bfe2ff;
 }
 
 .settings-btn-close:hover {

@@ -12,13 +12,13 @@ const numTotal = numCorrect + numWrong
 // forming the temp string
 let tempStr = ''
 if (numTotal >= 11 && numTotal <= 14) {
-  tempStr = `Всего набрано <b>${numTotal}</b> знаков, в том числе:`
+  tempStr = `Всего набрано <b>${numTotal}</b> знаков, из них:`
 } else if (numTotal % 10 === 1) {
-  tempStr = `Всего набран <b>${numTotal}</b> знак, в том числе:`
+  tempStr = `Всего набран <b>${numTotal}</b> знак, из них:`
 } else if (numTotal % 10 >= 2 && numTotal % 10 <= 4) {
-  tempStr = `Всего набрано <b>${numTotal}</b> знака, в том числе:`
+  tempStr = `Всего набрано <b>${numTotal}</b> знака, из них:`
 } else if (numTotal % 10 === 0 || (numTotal % 10 >= 5 && numTotal % 10 <= 9)) {
-  tempStr = `Всего набрано <b>${numTotal}</b> знаков, в том числе:`
+  tempStr = `Всего набрано <b>${numTotal}</b> знаков, из них:`
 }
 
 const strCorrectPercent = `(${rnd((numCorrect * 100) / numTotal, 2)}%)`
@@ -74,7 +74,9 @@ const withoutMistake = store.data.numWrong === 0
       class="stat-line"
       v-html="tempStr.split(',')[0] + ' без единой ошибки.'"></div>
     <div v-else>
-      <div class="stat-line" v-html="tempStr"></div>
+      <div class="stat-row-last">
+        <div class="stat-first-column" v-html="tempStr"></div>
+      </div>
 
       <div class="stat-first-column">- правильных</div>
       <div class="stat-second-column">
@@ -201,7 +203,7 @@ h4 {
 
 .stat-ms {
   position: fixed;
-  color: hsl(240, 80%, 30%);
+  color: hsl(240, 100%, 40%);
   font-weight: bold;
 }
 
