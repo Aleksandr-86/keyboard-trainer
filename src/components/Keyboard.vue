@@ -152,13 +152,13 @@ const boardColor = computed(() => {
   targetChar = targetChar.toLowerCase()
   if (props.lang === 'russian') {
     if (/[ё1!йфя0)зж.,\-_хэ=+ъ\\/]/.test(targetChar)) {
-      return 'hsla(300, 80%, 40%, 1)'
+      return 'hsla(300, 60%, 40%, 1)'
     } else if (/[2"цыч9(щдю]/.test(targetChar)) {
-      return 'hsla(180, 100%, 35%, 1)'
+      return 'hsla(60, 80%, 35%, 1)'
     } else if (/[3№увс8*шлб]/.test(targetChar)) {
       return 'hsla(120, 80%, 30%, 1)'
     } else if (/[4;кам5%епи6:]/.test(targetChar)) {
-      return 'hsla(240, 80%, 50%, 1)'
+      return 'hsla(180, 100%, 35%, 1)'
     } else if (/[7?нртгоь]/.test(targetChar)) {
       return 'hsla(0, 75%, 50%, 1)'
     }
@@ -191,7 +191,8 @@ const boardColor = computed(() => {
   </button>
   <div class="keyboard">
     <div
-      v-for="obj in keyboardArr.slice(2)"
+      v-for="(obj, index) in keyboardArr.slice(2)"
+      :key="index"
       :id="obj.code.toLowerCase()"
       :class="[
         {

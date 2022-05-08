@@ -12,13 +12,13 @@ const numTotal = numCorrect + numWrong
 // forming the temp string
 let tempStr = ''
 if (numTotal >= 11 && numTotal <= 14) {
-  tempStr = `Всего набрано <b>${numTotal}</b> знаков, из них:`
+  tempStr = `Всего набрано <b>${numTotal}</b> знаков, в том числе:`
 } else if (numTotal % 10 === 1) {
-  tempStr = `Всего набран <b>${numTotal}</b> знак:`
+  tempStr = `Всего набран <b>${numTotal}</b> знак, в том числе:`
 } else if (numTotal % 10 >= 2 && numTotal % 10 <= 4) {
-  tempStr = `Всего набрано <b>${numTotal}</b> знака, из них:`
+  tempStr = `Всего набрано <b>${numTotal}</b> знака, в том числе:`
 } else if (numTotal % 10 === 0 || (numTotal % 10 >= 5 && numTotal % 10 <= 9)) {
-  tempStr = `Всего набрано <b>${numTotal}</b> знаков, из них:`
+  tempStr = `Всего набрано <b>${numTotal}</b> знаков, в том числе:`
 }
 
 const strCorrectPercent = `(${rnd((numCorrect * 100) / numTotal, 2)}%)`
@@ -44,7 +44,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="stat-base">
+  <div class="stat-container">
     <h4 v-if="isSnippet">Результат набора отрывка из книги:</h4>
     <h4 v-else>Результат набора текста из буфера обмена</h4>
 
@@ -59,7 +59,10 @@ onUnmounted(() => {
     </div> -->
 
     <div class="stat-first-row">Время набора:</div>
-    <div class="stat-second-row">{{ store.data.elapsedTimeStr }}</div>
+    <div class="stat-time">
+      {{ store.data.elapsedTimeStr.split('.')[0] }}
+    </div>
+    <span class="stat-ms">.{{ store.data.elapsedTimeStr.split('.')[1] }}</span>
 
     <div class="stat-first-row">Cкорость набора, зн/мин:</div>
     <div class="stat-second-row">{{ charPerSecond }}</div>
@@ -106,7 +109,7 @@ onUnmounted(() => {
   /* transition: visibility 300ms, opacity 300ms; */
 }
 
-.stat-base {
+.stat-container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -175,7 +178,7 @@ h4 {
 }
 
 .stat-first-row {
-  display: inline-block;
+  float: left;
   width: 67%;
   text-align: left;
   margin-right: 1%;
@@ -185,6 +188,17 @@ h4 {
   display: inline-flex;
   justify-content: center;
   width: 32%;
+  font-weight: bold;
+}
+
+.stat-time {
+  display: inline-flex;
+  font-weight: bold;
+}
+
+.stat-ms {
+  position: fixed;
+  color: hsla(240, 100%, 35%, 1);
   font-weight: bold;
 }
 </style>

@@ -220,6 +220,10 @@ export const randomNum = function (min, max) {
 
 // converting ms to the format: minutes:seconds.milliseconds
 export function msToMinutes(ms) {
+  const centiseconds = Math.trunc(ms / 10)
+    .toString()
+    .slice(-2)
+    .padStart(2, '0')
   ms /= 1000
   const minutes = Math.floor(ms / 60)
     .toString()
@@ -227,8 +231,6 @@ export function msToMinutes(ms) {
   const seconds = Math.floor(ms - minutes * 60)
     .toString()
     .padStart(2, '0')
-  const centiseconds = ms.toString().split('.')[1]?.slice(0, 2).padEnd(2, '0')
-
   return `${minutes}:${seconds}.${centiseconds}`
 }
 
