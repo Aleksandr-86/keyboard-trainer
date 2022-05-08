@@ -58,34 +58,34 @@ onUnmounted(() => {
       store.data.currentBook.name
     </div> -->
 
-    <div class="stat-first-row">Время набора:</div>
+    <div class="stat-first-column">Время набора:</div>
     <div class="stat-time">
       {{ store.data.elapsedTimeStr.split('.')[0] }}
     </div>
     <span class="stat-ms">.{{ store.data.elapsedTimeStr.split('.')[1] }}</span>
 
-    <div class="stat-first-row">Cкорость набора, зн/мин:</div>
-    <div class="stat-second-row">{{ charPerSecond }}</div>
+    <div class="stat-first-column">Cкорость набора, зн/мин:</div>
+    <div class="stat-second-column">{{ charPerSecond }}</div>
 
     <div class="stat-line" v-html="tempStr"></div>
 
-    <div class="stat-first-row">- правильных</div>
-    <div class="stat-second-row">
+    <div class="stat-first-column">- правильных</div>
+    <div class="stat-second-column">
       <div>{{ numCorrect }}</div>
       <div class="num-correct">{{ strCorrectPercent }}</div>
     </div>
 
-    <div class="stat-first-row">- ошибочных</div>
-    <div class="stat-second-row">
+    <div class="stat-first-column">- ошибочных</div>
+    <div class="stat-second-column">
       <div>{{ numWrong }}</div>
       <div class="num-wrong">{{ strWrongPercent }}</div>
     </div>
 
-    <div class="stat-flex">
-      <div class="first-column">
+    <div class="stat-row-last">
+      <div class="stat-first-column">
         Максимальное количество знаков подряд без ошибки:
       </div>
-      <div class="second-column">{{ store.data.withoutMistake }}</div>
+      <div class="stat-second-column">{{ store.data.withoutMistake }}</div>
     </div>
   </div>
   <div
@@ -95,29 +95,6 @@ onUnmounted(() => {
 </template>
 
 <style>
-.stat-line {
-  float: left;
-}
-
-.stat-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  background-color: aquamarine;
-}
-
-.first-column {
-  background-color: pink;
-  text-align: left;
-  width: 67%;
-}
-
-.second-column {
-  background-color: hsl(34, 78%, 71%);
-  font-weight: bold;
-  width: 32%;
-}
-
 .overlay {
   position: absolute;
   top: 0;
@@ -180,17 +157,17 @@ h4 {
   text-align: center;
 }
 
-.stat-violet {
-  /* color: hsl(282, 100%, 23%); */
-  color: hsl(282, 100%, 25%);
-}
-
 .num-total,
 .num-correct,
 .num-wrong,
 .num-max {
   /* display: inline-grid; */
   margin-left: 1vh;
+}
+
+.stat-violet {
+  /* color: hsl(282, 100%, 23%); */
+  color: hsl(282, 100%, 25%);
 }
 
 .num-correct {
@@ -202,20 +179,18 @@ h4 {
   color: hsl(0, 100%, 35%);
 }
 
-.stat-first-row {
+.stat-first-column {
   float: left;
   width: 67%;
   text-align: left;
   margin-right: 1%;
-  background-color: aqua;
 }
 
-.stat-second-row {
+.stat-second-column {
   display: flex;
   justify-content: center;
   width: 32%;
   font-weight: bold;
-  background-color: antiquewhite;
 }
 
 .stat-time {
@@ -226,7 +201,16 @@ h4 {
 .stat-ms {
   position: fixed;
   color: hsl(240, 80%, 30%);
-  /* color: hsla(0, 0%, 0%, 0.4); */
   font-weight: bold;
+}
+
+.stat-line {
+  float: left;
+}
+
+.stat-row-last {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 </style>
