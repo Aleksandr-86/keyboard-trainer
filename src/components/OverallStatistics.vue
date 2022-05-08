@@ -41,6 +41,8 @@ onUnmounted(() => {
 
   store.data.currentBook = 0
 })
+
+const withoutMistake = store.data.numWrong === 0
 </script>
 
 <template>
@@ -67,35 +69,41 @@ onUnmounted(() => {
     <div class="stat-first-column">Cкорость набора, зн/мин:</div>
     <div class="stat-second-column">{{ charPerSecond }}</div>
 
-    <div class="stat-line" v-html="tempStr"></div>
+    <div
+      v-if="withoutMistake"
+      class="stat-line"
+      v-html="tempStr.split(',')[0] + ' без единой ошибки.'"></div>
+    <div v-else>
+      <div class="stat-line" v-html="tempStr"></div>
 
-    <div class="stat-first-column">- правильных</div>
-    <div class="stat-second-column">
-      <div>{{ numCorrect }}</div>
-      <div class="num-correct">{{ strCorrectPercent }}</div>
-    </div>
-
-    <div class="stat-first-column">- ошибочных</div>
-    <div class="stat-second-column">
-      <div>{{ numWrong }}</div>
-      <div class="num-wrong">{{ strWrongPercent }}</div>
-    </div>
-
-    <div class="stat-row-last">
-      <div class="stat-first-column">
-        Максимальное количество знаков подряд без ошибки:
+      <div class="stat-first-column">- правильных</div>
+      <div class="stat-second-column">
+        <div>{{ numCorrect }}</div>
+        <div class="stat-green">{{ strCorrectPercent }}</div>
       </div>
-      <div class="stat-second-column">{{ store.data.withoutMistake }}</div>
+
+      <div class="stat-first-column">- ошибочных</div>
+      <div class="stat-second-column">
+        <div>{{ numWrong }}</div>
+        <div class="stat-red">{{ strWrongPercent }}</div>
+      </div>
+
+      <div class="stat-row-last">
+        <div class="stat-first-column">
+          Максимальное количество знаков подряд без ошибки:
+        </div>
+        <div class="stat-second-column">{{ store.data.withoutMistake }}</div>
+      </div>
     </div>
   </div>
   <div
     @click.left="store.setFalse('overallStatistics')"
     v-if="store.state.overallStatistics"
-    class="overlay"></div>
+    class="stat-overlay"></div>
 </template>
 
 <style>
-.overlay {
+.stat-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -113,7 +121,6 @@ onUnmounted(() => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* width: 72vh; */
   width: 72vh;
   height: auto;
 
@@ -157,26 +164,20 @@ h4 {
   text-align: center;
 }
 
-.num-total,
-.num-correct,
-.num-wrong,
-.num-max {
-  /* display: inline-grid; */
-  margin-left: 1vh;
-}
-
 .stat-violet {
   /* color: hsl(282, 100%, 23%); */
   color: hsl(282, 100%, 25%);
 }
 
-.num-correct {
+.stat-green {
   /* color: hsl(135, 100%, 30%); */
   color: hsl(135, 100%, 30%);
+  margin-left: 1vh;
 }
 
-.num-wrong {
+.stat-red {
   color: hsl(0, 100%, 35%);
+  margin-left: 1vh;
 }
 
 .stat-first-column {

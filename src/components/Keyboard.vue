@@ -156,7 +156,7 @@ const boardColor = computed(() => {
     } else if (/[2"цыч9(щдю]/.test(targetChar)) {
       return 'hsla(60, 80%, 35%, 1)'
     } else if (/[3№увс8*шлб]/.test(targetChar)) {
-      return 'hsla(120, 80%, 30%, 1)'
+      return 'hsla(120, 80%, 33%, 1)'
     } else if (/[4;кам5%епи6:]/.test(targetChar)) {
       return 'hsla(180, 100%, 35%, 1)'
     } else if (/[7?нртгоь]/.test(targetChar)) {
@@ -168,7 +168,7 @@ const boardColor = computed(() => {
     } else if (/[2@wsx9(ol.>]/.test(targetChar)) {
       return 'hsla(60, 80%, 35%, 1)'
     } else if (/[3#edc8*ik,<]/.test(targetChar)) {
-      return 'hsla(120, 80%, 30%, 1)'
+      return 'hsla(120, 80%, 33%, 1)'
     } else if (/[4$rfv5%tgb6^]/.test(targetChar)) {
       // return 'hsla(240, 70%, 55%, 1)'
       return 'hsla(180, 100%, 35%, 1)'
