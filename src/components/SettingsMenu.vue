@@ -119,6 +119,7 @@ const closeSettingMenu = function () {
   font-size: 25px;
   font-family: 'Montserrat', sans-serif;
   user-select: none;
+  overflow: auto;
 }
 
 .settings-menu-open {
