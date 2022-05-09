@@ -7,27 +7,27 @@ import CharMeter from './CharMeter.vue'
 
 const tempWithoutMistake = computed(() => store.data.tempWithoutMistake)
 const withoutMistake = computed(() => store.data.withoutMistake)
+const remainingChars = computed(() => store.data.remainingChars)
 
 onUnmounted(() => {})
 </script>
 
 <template>
   <div class="current-stat">
-    <div>
-      <div
-        class="temp-in-a-row"
-        v-if="tempWithoutMistake === 0 || tempWithoutMistake < withoutMistake">
-        {{ tempWithoutMistake }}
-      </div>
-      <div class="in-a-row" v-if="withoutMistake !== 0">
-        {{ withoutMistake }}
-      </div>
+    <div class="without-mistake" v-if="tempWithoutMistake === withoutMistake">
+      {{ withoutMistake }}
     </div>
-    <div class="elapsed-time">
-      {{ store.data.elapsedTimeStr }}
+    <div class="without-mistake" v-else>
+      {{ tempWithoutMistake }}/{{ withoutMistake }}
+    </div>
+    <div class="without-mistake">
+      {{ remainingChars }}
     </div>
     <div class="char-per-minute">
       {{ store.data.charPerMin }}
+    </div>
+    <div class="elapsed-time">
+      {{ store.data.elapsedTimeStr }}
     </div>
     <!-- <CharMeter :typing-speed="store.data.charPerMin" /> -->
   </div>
@@ -35,36 +35,33 @@ onUnmounted(() => {})
 
 <style>
 .current-stat {
-  display: inline-block;
-  position: absolute;
-  margin-left: 10px;
-  width: 150px;
-  height: 370px;
-  background-color: rgb(123, 118, 123);
-  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px auto;
+  width: fit-content;
+  background: hsla(0, 0%, 30%);
   font-size: 35px;
 }
 
-.current-stat > div:first-child,
-.elapsed-time {
-  display: flex;
-  flex-direction: column;
-  height: 100px;
-  padding: 2px;
+.without-mistake {
+  padding: 5px;
+  min-width: 131px;
+  border-radius: 10px;
+}
+
+.char-per-minute {
+  padding: 5px;
+  min-width: 80px;
   border: 2px solid darkviolet;
   border-radius: 10px;
 }
 
-.temp-in-a-row {
-  height: inherit;
+.elapsed-time {
+  min-width: 133px;
+  padding: 5px;
+  text-align: center;
+  border: 2px solid darkviolet;
   border-radius: 10px;
-  background-color: yellow;
-  /* border-bottom: 2px solid black; */
-}
-
-.in-a-row {
-  height: inherit;
-  border-radius: 10px;
-  background-color: yellowgreen;
 }
 </style>

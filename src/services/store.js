@@ -44,6 +44,7 @@ const data = reactive({
 
   tempWithoutMistake: 0,
   withoutMistake: 0,
+  remainingChars: 0,
 
   currentBook: 0,
   keyboardLayout: 'russian',
@@ -60,6 +61,7 @@ const recordingStatistics = function (e) {
     char = char.toLowerCase()
   }
 
+  data.remainingChars--
   if (key === char) {
     data.statArr[data.indexArr] = '1' // if the char is correct
     data.tempWithoutMistake++
@@ -100,8 +102,19 @@ const loadFragment = function (str, amount = 0) {
     data.fragmentArr = arrPreparer(getSomeSentences(str, amount))
   }
 
+  let tempLength = 0
+  let tempIncorrect = 0
+  for (let i = 0; i < data.fragmentArr.length; i++) {
+    tempLength++
+    const char = data.fragmentArr[i]
+    if (char === 'end') break
+    if (charTest(char) || char === 'skip') tempIncorrect++
+  }
+  data.remainingChars = tempLength - tempIncorrect - 1
+
   // creating and filling the empty statistic array
   data.statArr = new Array(data.fragmentArr.length).fill('0')
+
   data.firstIndex = 0
   data.indexArr = -1
 

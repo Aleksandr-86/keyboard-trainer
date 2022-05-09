@@ -74,6 +74,7 @@ onUnmounted(() => {
 </script>
 
 <template>
+  <CurrentStatistics />
   <div class="field">
     <div
       v-for="(char, index) in charsArr"
@@ -99,7 +100,6 @@ onUnmounted(() => {
       <div v-else-if="char === 'end'">&nbsp</div>
       <div v-else>{{ char }}</div>
     </div>
-    <CurrentStatistics />
   </div>
 
   <Keyboard
@@ -123,7 +123,7 @@ onUnmounted(() => {
 .field {
   width: 1440px;
   height: 380px;
-  margin: 10px auto 50px;
+  margin: 5px auto 50px;
   outline: none;
   backdrop-filter: blur(200px);
   user-select: none;
