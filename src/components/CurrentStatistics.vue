@@ -13,28 +13,22 @@ onUnmounted(() => {})
 </script>
 
 <template>
-  <div class="current-stat">
+  <div class="current-stat-container">
     <div class="without-mistake" v-if="tempWithoutMistake === withoutMistake">
       {{ withoutMistake }}
     </div>
     <div class="without-mistake" v-else>
       {{ tempWithoutMistake }}/{{ withoutMistake }}
     </div>
-    <div class="without-mistake">
-      {{ remainingChars }}
-    </div>
-    <div class="char-per-minute">
-      {{ store.data.charPerMin }}
-    </div>
-    <div class="elapsed-time">
-      {{ store.data.elapsedTimeStr }}
-    </div>
+    <div class="remaining-chars">{{ remainingChars }}</div>
+    <div class="char-per-minute">{{ store.data.charPerMin }}</div>
+    <div class="elapsed-time">{{ store.data.elapsedTimeStr }}</div>
     <!-- <CharMeter :typing-speed="store.data.charPerMin" /> -->
   </div>
 </template>
 
 <style>
-.current-stat {
+.current-stat-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -42,26 +36,32 @@ onUnmounted(() => {})
   width: fit-content;
   background: hsla(0, 0%, 30%);
   font-size: 35px;
+  color: hsl(160, 80%, 45%);
+  border: 2px solid darkviolet;
+  border-radius: 10px;
 }
 
 .without-mistake {
   padding: 5px;
   min-width: 131px;
-  border-radius: 10px;
+  border-right: 2px solid darkviolet;
+}
+
+.remaining-chars {
+  padding: 5px;
+  min-width: 57px;
+  border-right: 2px solid darkviolet;
 }
 
 .char-per-minute {
   padding: 5px;
   min-width: 80px;
-  border: 2px solid darkviolet;
-  border-radius: 10px;
+  border-right: 2px solid darkviolet;
 }
 
 .elapsed-time {
   min-width: 133px;
   padding: 5px;
   text-align: center;
-  border: 2px solid darkviolet;
-  border-radius: 10px;
 }
 </style>
