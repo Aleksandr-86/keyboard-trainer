@@ -260,8 +260,8 @@ const boardColor = computed(() => {
 }
 
 .keyboard {
-  width: 945px;
-  height: 318px;
+  width: 971px;
+  height: 328px;
   margin: 0 auto;
   user-select: none;
   /* background: rgb(170, 170, 170); */
@@ -279,8 +279,8 @@ const boardColor = computed(() => {
 .button-marked {
   /* display: inline-block; */
   float: left;
-  width: 60px;
-  height: 60px;
+  width: 62px;
+  height: 62px;
   margin-top: 3px;
   margin-right: 3px;
   font-size: 23px;
@@ -305,15 +305,15 @@ const boardColor = computed(() => {
 .button-double > div {
   /* background-color: aqua; */
   /* margin-top: 2px; */
-  height: 27px;
+  height: 30px;
 }
 
 .button-double > div:first-child {
-  margin-top: 3px;
+  margin-top: 1px;
 }
 
 .button-double > div:last-child {
-  /* margin-bottom: 3px; */
+  margin-bottom: 1px;
 }
 
 .button-marked-color {
@@ -359,47 +359,44 @@ const boardColor = computed(() => {
 }
 
 #tab {
-  width: 90px;
+  width: 91px;
 }
 
 #backslash {
-  width: 90px;
+  width: 91px;
 }
 
 #capslock {
-  width: 107px;
+  width: 109px;
 }
 
 #enter {
-  width: 136px;
+  width: 138px;
 }
 
 #shiftleft {
-  width: 138px;
+  width: 141px;
   /* box-shadow: inset 0 0 0 3px v-bind(lShiftBorder); */
   /* color: v-bind(lShiftColor); */
 }
 
 #shiftright {
-  width: 168px;
+  width: 171px;
   /* box-shadow: inset 0 0 0 3px v-bind(rShiftBorder); */
   /* color: v-bind(rShiftColor); */
 }
 
 #controlleft,
+#controlright,
 #metaleft,
 #altleft,
 #altright,
 #metaright,
 #contextmenu {
-  width: 75px;
+  width: 77px;
 }
 
 #space {
-  width: 393px;
-}
-
-#controlright {
-  width: 75px;
+  width: 405px;
 }
 </style>
