@@ -4,64 +4,115 @@ import { onUnmounted } from 'vue'
 import { msToMinutes } from '../services/helpers.js'
 import store from '../services/store'
 import CharMeter from './CharMeter.vue'
+import { reactive } from 'vue'
 
 const tempWithoutMistake = computed(() => store.data.tempWithoutMistake)
 const withoutMistake = computed(() => store.data.withoutMistake)
 const remainingChars = computed(() => store.data.remainingChars)
 
-onUnmounted(() => {})
+const elapsedTime = computed(() => store.data.elapsedTime === 0)
 </script>
 
 <template>
   <div class="current-stat-container">
-    <div class="without-mistake" v-if="tempWithoutMistake === withoutMistake">
-      {{ withoutMistake }}
+    <div class="without-mistake">
+      <transition name="hide">
+        <span v-if="elapsedTime" class="current-stat-description">
+          Без ошибок:&nbsp
+        </span>
+      </transition>
+      <span v-if="tempWithoutMistake === withoutMistake">
+        {{ withoutMistake }}
+      </span>
+      <span v-else>{{ tempWithoutMistake }}/{{ withoutMistake }}</span>
     </div>
-    <div class="without-mistake" v-else>
-      {{ tempWithoutMistake }}/{{ withoutMistake }}
+    <div class="remaining-chars">
+      <transition name="hide">
+        <span v-if="elapsedTime" class="current-stat-description">
+          Осталось знаков:
+        </span>
+      </transition>
+      {{ remainingChars }}
     </div>
-    <div class="remaining-chars">{{ remainingChars }}</div>
-    <div class="char-per-minute">{{ store.data.charPerMin }}</div>
-    <div class="elapsed-time">{{ store.data.elapsedTimeStr }}</div>
-    <!-- <CharMeter :typing-speed="store.data.charPerMin" /> -->
+    <div class="char-per-minute">
+      <transition name="hide">
+        <span v-if="elapsedTime" class="current-stat-description">
+          Знаков в минуту:
+        </span>
+      </transition>
+      {{ store.data.charPerMin }}
+    </div>
+    <div class="elapsed-time">
+      <transition name="hide">
+        <span v-if="elapsedTime" class="current-stat-description">Время:</span>
+      </transition>
+      {{ store.data.elapsedTimeStr }}
+    </div>
   </div>
 </template>
 
 <style>
+.hide-leave-active {
+  transition: all 1.4s linear;
+}
+
+.hide-leave-from {
+  max-width: 297px;
+  opacity: 1;
+}
+
+.hide-leave-to {
+  max-width: 0;
+  opacity: 0;
+}
+
+.current-stat-description {
+  display: inline-flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .current-stat-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 5px auto;
   width: fit-content;
-  background: hsla(0, 0%, 30%);
+  background: hsla(160, 20%, 20%);
   font-size: 35px;
   color: hsl(160, 80%, 45%);
-  border: 2px solid darkviolet;
+  /* border: 2px solid hsl(282, 100%, 41%); */
+  border: 2px solid hsl(160, 80%, 45%);
   border-radius: 10px;
 }
 
 .without-mistake {
-  padding: 5px;
-  min-width: 131px;
-  border-right: 2px solid darkviolet;
+  display: flex;
+  justify-content: center;
+  align-content: stretch;
+  padding: 5px 10px 5px 10px;
+  min-width: 129px;
+  border-right: 2px solid hsl(160, 80%, 45%);
+  overflow: hidden;
+  white-space: nowrap;
+  transition: min-width 3s 1s;
 }
 
 .remaining-chars {
-  padding: 5px;
-  min-width: 57px;
-  border-right: 2px solid darkviolet;
+  padding: 5px 10px 5px 10px;
+  min-width: 59px;
+  border-right: 2px solid hsl(160, 80%, 45%);
 }
 
 .char-per-minute {
-  padding: 5px;
-  min-width: 80px;
-  border-right: 2px solid darkviolet;
+  padding: 5px 10px 5px 10px;
+  min-width: 59px;
+  border-right: 2px solid hsl(160, 80%, 45%);
 }
 
 .elapsed-time {
-  min-width: 133px;
-  padding: 5px;
+  padding: 5px 10px 5px 10px;
+  min-width: 129px;
   text-align: center;
 }
 </style>

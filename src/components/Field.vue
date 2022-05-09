@@ -51,10 +51,14 @@ const eListener = function (e) {
     store.data.stopwatch = setInterval(() => {
       store.data.elapsedTime = performance.now() - store.data.timerStart
       store.data.elapsedTimeStr = msToMinutes(store.data.elapsedTime)
-      store.data.charPerMin = Math.floor(
+      let charPerMin = Math.floor(
         ((store.data.numCorrect + store.data.numWrong) * 60) /
           (Math.floor(store.data.elapsedTime) / 1000)
       )
+        .toString()
+        .padStart(3, '0')
+      if (charPerMin > 999) charPerMin = 999
+      store.data.charPerMin = charPerMin
     }, 10)
   }
 

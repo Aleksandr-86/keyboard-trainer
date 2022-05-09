@@ -37,7 +37,7 @@ const data = reactive({
   stopwatch: Object,
   elapsedTime: 0,
   elapsedTimeStr: '00:00.00',
-  charPerMin: 0,
+  charPerMin: '000',
 
   numCorrect: 0,
   numWrong: 0,
@@ -75,7 +75,6 @@ const recordingStatistics = function (e) {
     if (data.withoutMistake < data.tempWithoutMistake) {
       data.withoutMistake = data.tempWithoutMistake
     }
-    data.tempWithoutMistake = 0
     data.numWrong++
   }
 }
@@ -179,7 +178,7 @@ const clearStat = function () {
   clearInterval(data.stopwatch)
   data.elapsedTime = 0
   data.elapsedTimeStr = '00:00.00'
-  data.charPerMin = 0
+  data.charPerMin = '000'
 
   data.numCorrect = 0
   data.numWrong = 0

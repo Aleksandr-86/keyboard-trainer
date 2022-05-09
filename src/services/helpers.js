@@ -143,7 +143,7 @@ export const arrPreparer = function (str) {
   return arr
 }
 
-export const strPrepWithNewLines = (str) =>
+export const strPrepWithNewLines = str =>
   str
     .trim()
     .replace(/(\n)|(\r\n)/g, ' \n ')
@@ -151,17 +151,17 @@ export const strPrepWithNewLines = (str) =>
 // .replace(regexEmoji, '')
 
 // removing excess spaces
-export const strPrepWithoutNewLines = (str) =>
+export const strPrepWithoutNewLines = str =>
   str
     .trim()
     .replace(/(\n)|(\r\n)/g, ' ')
     .replace(/ +/g, ' ')
 
 // removing emoji
-export const remEmoji = (str) => str.replace(regexEmoji, '')
+export const remEmoji = str => str.replace(regexEmoji, '')
 
 // returns false if a char is inappropriate for being typed
-export const charTest = (char) =>
+export const charTest = char =>
   !/[0-9 А-ЯЁA-Z.,<>/\\'"\[\]{}|`~!@№#;$%:^?&*()\-_+=\n]/i.test(char)
 
 export function langTest(char, lang) {
@@ -184,7 +184,7 @@ export function keyboardLayoutTest(char, keyboardLayout) {
   }
 }
 
-export const isUpCase = (char) => char !== char.toLowerCase()
+export const isUpCase = char => char !== char.toLowerCase()
 
 export const isAuxiliaryKeys = function (code) {
   if (
