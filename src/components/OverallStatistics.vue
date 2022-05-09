@@ -164,6 +164,7 @@ h4 {
   margin-top: -1.3vh;
   margin-bottom: 1vh;
   text-align: center;
+  overflow-wrap: break-word;
 }
 
 .stat-violet {
