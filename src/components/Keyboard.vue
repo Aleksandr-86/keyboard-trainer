@@ -170,7 +170,6 @@ const boardColor = computed(() => {
     } else if (/[3#edc8*ik,<]/.test(targetChar)) {
       return 'hsla(120, 80%, 33%, 1)'
     } else if (/[4$rfv5%tgb6^]/.test(targetChar)) {
-      // return 'hsla(240, 70%, 55%, 1)'
       return 'hsla(180, 100%, 35%, 1)'
     } else if (/[7&yhnujm]/.test(targetChar)) {
       return 'hsla(0, 75%, 50%, 1)'
@@ -305,8 +304,16 @@ const boardColor = computed(() => {
 
 .button-double > div {
   /* background-color: aqua; */
-  margin-top: 2px;
+  /* margin-top: 2px; */
   height: 27px;
+}
+
+.button-double > div:first-child {
+  margin-top: 3px;
+}
+
+.button-double > div:last-child {
+  /* margin-bottom: 3px; */
 }
 
 .button-marked-color {
