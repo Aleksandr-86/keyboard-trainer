@@ -97,7 +97,8 @@ const closeSettingMenu = function () {
     <a class="settings-link" href="#!">ссылка на страницу</a>
 
     <Slider title="Мизинцы" property="pointers" num="0" />
-    <Slider title="Средние пальцы" property="pointers" num="1" />
+    <Slider title="Безымянные пальцы" property="pointers" num="1" />
+    <Slider title="Средние пальцы" property="pointers" num="2" />
   </div>
 </template>
 
@@ -113,7 +114,7 @@ const closeSettingMenu = function () {
   left: 0;
   /* left: -420px; */
   background: rgb(60, 60, 60);
-  width: 380px;
+  width: 400px;
   height: 100vh;
   box-shadow: none;
   color: rgb(200, 200, 200);

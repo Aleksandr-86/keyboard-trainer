@@ -52,7 +52,11 @@ const data = reactive({
 })
 
 const colors = reactive({
-  pointers: ['hsla(300, 60%, 40%, 1)', 'hsla(120, 80%, 33%, 1)']
+  pointers: [
+    'hsla(300, 60%, 40%, 1)',
+    'hsla(60, 80%, 35%, 1)',
+    'hsla(120, 80%, 33%, 1)'
+  ]
 })
 
 const recordingStatistics = function (e) {

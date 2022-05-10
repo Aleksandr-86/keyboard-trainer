@@ -12,7 +12,8 @@ const hsla = reactive({
   hue: Number,
   saturation: Number,
   lightness: Number,
-  alpha: Number
+  alpha: Number,
+  flag: false
 })
 
 const color = computed(
@@ -26,93 +27,140 @@ const getNumbersFromString = function (str) {
   return str.match(/[0-9]+/g)
 }
 
+const toggleSlider = function () {
+  hsla.flag = !hsla.flag
+}
+
 onMounted(() => {
   const colorNum = getNumbersFromString(store.colors[props.property][props.num])
-
-  hsla.hue = colorNum[0]
-  hue.value = colorNum[0]
-  hsla.saturation = colorNum[1]
-  saturation.value = colorNum[1]
-  hsla.lightness = colorNum[2]
-  lightness.value = colorNum[2]
-  hsla.alpha = colorNum[3]
-  alpha.value = colorNum[3]
+  let i = 0
+  for (const propertyName in hsla) {
+    hsla[propertyName] = colorNum[i]
+    ;[propertyName].value = colorNum[i]
+    i++
+  }
 })
 </script>
 
 <template>
   <div class="slider-container">
-    <div class="slider-container-description">{{ props.title }}</div>
-    <div>{{ color }}</div>
-    <div>{{ props.color }}</div>
-
-    <div class="slider-description">Оттенок</div>
-    <div class="slider">
-      <input
-        v-model="hsla.hue"
-        type="range"
-        class="slider-input"
-        id="hue"
-        min="0"
-        max="360" />
-      <label class="slider-label" for="hue">{{ hsla.hue }}</label>
+    <div class="slider-title-container">
+      <div class="slider-title">{{ props.title }}</div>
+      <div @click="toggleSlider" class="slider-sample"></div>
     </div>
 
-    <div class="slider-description">Насыщенность</div>
-    <div class="slider">
-      <input
-        v-model="hsla.saturation"
-        type="range"
-        class="slider-input"
-        id="saturation"
-        min="0"
-        max="100" />
-      <label class="slider-label" for="saturation">{{ hsla.saturation }}</label>
-    </div>
+    <transition-group name="hide">
+      <div v-if="hsla.flag">
+        <div class="slider-description">Оттенок</div>
+        <div class="slider">
+          <input
+            v-model="hsla.hue"
+            type="range"
+            class="slider-input"
+            id="hue"
+            min="0"
+            max="360"
+            key="2" />
+          <label class="slider-label" for="hue">{{ hsla.hue }}</label>
+        </div>
 
-    <div class="slider-description">Яркость</div>
-    <div class="slider">
-      <input
-        v-model="hsla.lightness"
-        type="range"
-        class="slider-input"
-        id="lightness"
-        min="0"
-        max="100" />
-      <label class="slider-label" for="lightness">{{ hsla.lightness }}</label>
-    </div>
+        <div class="slider-description">Насыщенность</div>
+        <div class="slider">
+          <input
+            v-model="hsla.saturation"
+            type="range"
+            class="slider-input"
+            id="saturation"
+            min="0"
+            max="100" />
+          <label class="slider-label" for="saturation">{{
+            hsla.saturation
+          }}</label>
+        </div>
 
-    <div class="slider-description">Прозрачность</div>
-    <div class="slider">
-      <input
-        v-model="hsla.alpha"
-        type="range"
-        class="slider-input"
-        id="alpha"
-        min="0"
-        max="1"
-        step="0.01" />
-      <label class="slider-label" for="alpha">{{ hsla.alpha }}</label>
-    </div>
+        <div class="slider-description">Яркость</div>
+        <div class="slider">
+          <input
+            v-model="hsla.lightness"
+            type="range"
+            class="slider-input"
+            id="lightness"
+            min="0"
+            max="100" />
+          <label class="slider-label" for="lightness">{{
+            hsla.lightness
+          }}</label>
+        </div>
+
+        <div class="slider-description">Прозрачность</div>
+        <div class="slider">
+          <input
+            v-model="hsla.alpha"
+            type="range"
+            class="slider-input"
+            id="alpha"
+            min="0"
+            max="1"
+            step="0.01" />
+          <label class="slider-label" for="alpha">{{ hsla.alpha }}</label>
+        </div>
+      </div>
+    </transition-group>
   </div>
 </template>
 
 <style scoped>
-.slider-description {
-  text-align: left;
+.hide-enter-active,
+.hide-leave-active {
+  transition: all 0.25s linear;
+}
+
+.hide-enter-to,
+.hide-leave-from {
+  max-height: 290px;
+  opacity: 1;
+}
+
+.hide-enter-from,
+.hide-leave-to {
+  max-height: 29px;
+  opacity: 0;
 }
 
 .slider-container {
-  width: 380px;
+  width: 385px;
   /* background-color: grey; */
-  background-color: v-bind(color);
   margin-top: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 2px;
+  overflow: hidden;
 }
 
-.slider-container-description {
+.slider-title-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.slider-title {
   text-align: left;
-  margin-bottom: 5px;
-  background-color: red;
+  vertical-align: center;
+  height: 29px;
+  margin-bottom: 10px;
+  /* background-color: red; */
+}
+
+.slider-sample {
+  margin-left: 20px;
+  width: 30px;
+  height: 29px;
+  border-radius: 50%;
+  border: 1px solid hsl(0, 0%, 78%);
+  background-color: v-bind(color);
+}
+
+.slider-description {
+  text-align: left;
 }
 
 .slider {
