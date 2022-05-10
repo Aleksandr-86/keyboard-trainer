@@ -31,6 +31,14 @@ const toggleSlider = function () {
   hsla.flag = !hsla.flag
 }
 
+const border = computed(() => {
+  if (hsla.flag) {
+    return '1px solid hsl(0, 0%, 78%)'
+  } else {
+    return '1px solid transparent'
+  }
+})
+
 onMounted(() => {
   const colorNum = getNumbersFromString(store.colors[props.property][props.num])
   let i = 0
@@ -49,9 +57,9 @@ onMounted(() => {
       <div @click="toggleSlider" class="slider-sample"></div>
     </div>
 
-    <transition-group name="hide">
+    <transition-group name="hide-slider">
       <div v-if="hsla.flag">
-        <div class="slider-description">Оттенок</div>
+        <div class="slider-description">Тон</div>
         <div class="slider">
           <input
             v-model="hsla.hue"
@@ -78,7 +86,7 @@ onMounted(() => {
           }}</label>
         </div>
 
-        <div class="slider-description">Яркость</div>
+        <div class="slider-description">Светлота</div>
         <div class="slider">
           <input
             v-model="hsla.lightness"
@@ -110,19 +118,19 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.hide-enter-active,
-.hide-leave-active {
+.hide-slider-enter-active,
+.hide-slider-leave-active {
   transition: all 0.25s linear;
 }
 
-.hide-enter-to,
-.hide-leave-from {
+.hide-slider-enter-to,
+.hide-slider-leave-from {
   max-height: 290px;
   opacity: 1;
 }
 
-.hide-enter-from,
-.hide-leave-to {
+.hide-slider-enter-from,
+.hide-slider-leave-to {
   max-height: 29px;
   opacity: 0;
 }
@@ -130,8 +138,9 @@ onMounted(() => {
 .slider-container {
   width: 385px;
   /* background-color: grey; */
-  margin-top: 10px;
-  border: 2px solid black;
+  margin-top: 5px;
+  /* border: 2px solid black; */
+  border: v-bind(border);
   border-radius: 10px;
   padding: 2px;
   overflow: hidden;
@@ -140,6 +149,7 @@ onMounted(() => {
 .slider-title-container {
   display: flex;
   justify-content: flex-start;
+  border-bottom: v-bind(border);
 }
 
 .slider-title {

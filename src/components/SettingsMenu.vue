@@ -96,9 +96,13 @@ const closeSettingMenu = function () {
     <p class="settings-author"></p>
     <a class="settings-link" href="#!">ссылка на страницу</a>
 
-    <Slider title="Мизинцы" property="pointers" num="0" />
-    <Slider title="Безымянные пальцы" property="pointers" num="1" />
-    <Slider title="Средние пальцы" property="pointers" num="2" />
+    <Slider title="Модификатор (Shift)" property="pointers" num="0" />
+    <Slider title="Мизинцы" property="pointers" num="1" />
+    <Slider title="Безымянные" property="pointers" num="2" />
+    <Slider title="Средние" property="pointers" num="3" />
+    <Slider title="Левый указательный" property="pointers" num="4" />
+    <Slider title="Большие" property="pointers" num="5" />
+    <Slider title="Правый указательный" property="pointers" num="6" />
   </div>
 </template>
 
@@ -114,7 +118,7 @@ const closeSettingMenu = function () {
   left: 0;
   /* left: -420px; */
   background: rgb(60, 60, 60);
-  width: 400px;
+  width: 395px;
   height: 100vh;
   box-shadow: none;
   color: rgb(200, 200, 200);

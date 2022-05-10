@@ -144,9 +144,13 @@ const rShift = computed(() => {
   }
 })
 
-const pinkyFingers = computed(() => store.colors.pointers[0])
-const ringFingers = computed(() => store.colors.pointers[1])
-const middleFingers = computed(() => store.colors.pointers[2])
+const shiftColor = computed(() => store.colors.pointers[0])
+const pinkyFingers = computed(() => store.colors.pointers[1])
+const ringFingers = computed(() => store.colors.pointers[2])
+const middleFingers = computed(() => store.colors.pointers[3])
+const lIndexFinger = computed(() => store.colors.pointers[4])
+const thumbs = computed(() => store.colors.pointers[5])
+const rIndexFinger = computed(() => store.colors.pointers[6])
 
 const boardColor = computed(() => {
   if (store.storage.pointers) return
@@ -177,16 +181,14 @@ const boardColor = computed(() => {
       // return 'hsla(120, 80%, 33%, 1)'
       return middleFingers.value
     } else if (/[4$rfv5%tgb6^]/.test(targetChar)) {
-      return 'hsla(180, 100%, 35%, 1)'
+      // return 'hsla(180, 100%, 35%, 1)'
+      return lIndexFinger.value
     } else if (/[7&yhnujm]/.test(targetChar)) {
-      return 'hsla(0, 75%, 50%, 1)'
+      return rIndexFinger.value
     }
   }
 
-  if (/ /.test(targetChar)) {
-    // return 'hsla(0, 0%, 0%, 0.4)'
-    return 'hsl(0, 0%, 70%)'
-  }
+  if (/ /.test(targetChar)) return thumbs.value
 })
 </script>
 
@@ -332,8 +334,8 @@ const boardColor = computed(() => {
 }
 
 .button-marked-shift {
-  box-shadow: inset 0 0 0 3px hsla(300, 80%, 40%, 1);
-  color: hsla(300, 80%, 40%, 1);
+  box-shadow: inset 0 0 0 3px v-bind(shiftColor);
+  color: v-bind(shiftColor);
 }
 
 @keyframes fadeGreenColor {
