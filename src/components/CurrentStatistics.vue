@@ -79,6 +79,7 @@ const elapsedTime = computed(() => store.data.elapsedTime === 0)
   margin: 5px auto;
   width: fit-content;
   background: hsla(160, 20%, 20%);
+  /* backdrop-filter: blur(200px); */
   font-size: 35px;
   color: hsl(160, 80%, 45%);
   /* border: 2px solid hsl(282, 100%, 41%); */

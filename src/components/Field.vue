@@ -130,6 +130,7 @@ onUnmounted(() => {
   margin: 5px auto 50px;
   outline: none;
   backdrop-filter: blur(200px);
+  background-color: hsla(0, 0%, 0%, 0);
   user-select: none;
 }
 
@@ -149,8 +150,8 @@ onUnmounted(() => {
   height: 76px;
   font-family: 'Consolas', monospace;
   font-size: 65px;
-  background: rgba(50, 50, 50, 0.75);
-  color: rgb(165, 165, 165);
+  background: hsla(0, 0%, 20%, 0.75);
+  color: hsla(0, 0%, 65%, 1);
 }
 
 .char-caret {
