@@ -144,6 +144,9 @@ const rShift = computed(() => {
   }
 })
 
+const pinkyFinger = computed(() => store.colors.pointers[0])
+const ringFinger = computed(() => store.colors.pointers[1])
+
 const boardColor = computed(() => {
   if (store.storage.pointers) return
 
@@ -164,9 +167,11 @@ const boardColor = computed(() => {
     }
   } else if (props.lang === 'english') {
     if (/[`~1!qaz0)p;:/?\-_\[{'"=+\]}\\|]/.test(targetChar)) {
-      return 'hsla(300, 60%, 40%, 1)'
+      // return 'hsla(300, 60%, 40%, 1)'
+      return pinkyFinger.value
     } else if (/[2@wsx9(ol.>]/.test(targetChar)) {
-      return 'hsla(60, 80%, 35%, 1)'
+      // return 'hsla(60, 80%, 35%, 1)'
+      return ringFinger.value
     } else if (/[3#edc8*ik,<]/.test(targetChar)) {
       return 'hsla(120, 80%, 33%, 1)'
     } else if (/[4$rfv5%tgb6^]/.test(targetChar)) {

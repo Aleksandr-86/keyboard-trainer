@@ -51,6 +51,10 @@ const data = reactive({
   backgroundPreview: 0
 })
 
+const colors = reactive({
+  pointers: ['hsla(300, 60%, 40%, 1)', 'hsla(120, 80%, 33%, 1)']
+})
+
 const recordingStatistics = function (e) {
   let key = e.key
   let char = data.fragmentArr[data.indexArr]
@@ -76,6 +80,7 @@ const recordingStatistics = function (e) {
       data.withoutMistake = data.tempWithoutMistake
     }
     data.numWrong++
+    data.tempWithoutMistake = 0
   }
 }
 
@@ -216,6 +221,7 @@ export default {
   state,
   data,
   storage,
+  colors,
   recordingStatistics,
   toggleState,
   setTrue,

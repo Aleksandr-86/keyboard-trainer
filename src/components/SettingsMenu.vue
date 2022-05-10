@@ -3,6 +3,7 @@ import { computed } from '@vue/reactivity'
 import store from '/src/services/store.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
 import Slider from '../components/Slider.vue'
+import { reactive } from 'vue'
 
 const backgroundPreview = computed(
   () =>
@@ -94,7 +95,9 @@ const closeSettingMenu = function () {
     <p class="settings-description"></p>
     <p class="settings-author"></p>
     <a class="settings-link" href="#!">ссылка на страницу</a>
-    <Slider />
+
+    <Slider title="Мизинцы" property="pointers" num="0" />
+    <Slider title="Средние пальцы" property="pointers" num="1" />
   </div>
 </template>
 

@@ -1,5 +1,12 @@
 <script setup>
-import { onMounted, reactive, computed } from 'vue'
+import { onMounted, reactive, computed, watch } from 'vue'
+import store from '../services/store'
+
+const props = defineProps({
+  title: String,
+  property: String,
+  num: String
+})
 
 const hsla = reactive({
   hue: Number,
@@ -8,31 +15,84 @@ const hsla = reactive({
   alpha: Number
 })
 
-const inputChange = function (propertyName) {
-  const obj = document.body.querySelector(`#${propertyName}`)
-  hsla[propertyName] = obj.valueAsNumber
+const color = computed(
+  () =>
+    `hsla(${hsla.hue}, ${hsla.saturation}%, ${hsla.lightness}%, ${hsla.alpha})`
+)
+
+watch(color, newValue => (store.colors[props.property][props.num] = newValue))
+
+const getNumbersFromString = function (str) {
+  return str.match(/[0-9]+/g)
 }
 
 onMounted(() => {
-  hsla.hue = 355
-  hue.value = 355
+  const colorNum = getNumbersFromString(store.colors[props.property][props.num])
+
+  hsla.hue = colorNum[0]
+  hue.value = colorNum[0]
+  hsla.saturation = colorNum[1]
+  saturation.value = colorNum[1]
+  hsla.lightness = colorNum[2]
+  lightness.value = colorNum[2]
+  hsla.alpha = colorNum[3]
+  alpha.value = colorNum[3]
 })
 </script>
 
 <template>
   <div class="slider-container">
-    <div class="slider-container-description">Левый указательный палец</div>
+    <div class="slider-container-description">{{ props.title }}</div>
+    <div>{{ color }}</div>
+    <div>{{ props.color }}</div>
+
     <div class="slider-description">Оттенок</div>
     <div class="slider">
       <input
-        @input="inputChange('hue')"
+        v-model="hsla.hue"
         type="range"
         class="slider-input"
         id="hue"
         min="0"
         max="360" />
-
       <label class="slider-label" for="hue">{{ hsla.hue }}</label>
+    </div>
+
+    <div class="slider-description">Насыщенность</div>
+    <div class="slider">
+      <input
+        v-model="hsla.saturation"
+        type="range"
+        class="slider-input"
+        id="saturation"
+        min="0"
+        max="100" />
+      <label class="slider-label" for="saturation">{{ hsla.saturation }}</label>
+    </div>
+
+    <div class="slider-description">Яркость</div>
+    <div class="slider">
+      <input
+        v-model="hsla.lightness"
+        type="range"
+        class="slider-input"
+        id="lightness"
+        min="0"
+        max="100" />
+      <label class="slider-label" for="lightness">{{ hsla.lightness }}</label>
+    </div>
+
+    <div class="slider-description">Прозрачность</div>
+    <div class="slider">
+      <input
+        v-model="hsla.alpha"
+        type="range"
+        class="slider-input"
+        id="alpha"
+        min="0"
+        max="1"
+        step="0.01" />
+      <label class="slider-label" for="alpha">{{ hsla.alpha }}</label>
     </div>
   </div>
 </template>
@@ -44,7 +104,8 @@ onMounted(() => {
 
 .slider-container {
   width: 380px;
-  background-color: grey;
+  /* background-color: grey; */
+  background-color: v-bind(color);
   margin-top: 10px;
 }
 
