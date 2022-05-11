@@ -12,7 +12,7 @@ const title = computed(() => {
   if (page.value === 0) {
     return 'Общие настройки'
   } else if (page.value === 1) {
-    return 'Цвета поля'
+    return 'Цвета поля и статистики'
   } else if (page.value === 2) {
     return 'Цвета клавиатуры'
   }
@@ -79,11 +79,11 @@ const closeSettingMenu = function () {
     <label class="settings-btn-close" @click="closeSettingMenu">+</label>
 
     <div class="settings-title-container">
-      <button @click="turnThePage('prev')" class="settings-btn-turn">
+      <button @click="turnThePage('prev')" class="settings-btn-page">
         &lt;
       </button>
-      <div class="settings-title">{{ title }}</div>
-      <button @click="turnThePage('next')" class="settings-btn-turn">
+      <div>{{ title }}</div>
+      <button @click="turnThePage('next')" class="settings-btn-page">
         &gt;
       </button>
     </div>
@@ -121,37 +121,41 @@ const closeSettingMenu = function () {
         </label>
 
         <div class="settings-picture">
-          <button
-            @click="changeBackground('prev')"
-            type="button"
-            id="settings-btn-prev"></button>
           <img
-            id="settings-imgPreview"
+            id="settings-preview"
             :src="backgroundPreview"
             alt="background-preview" />
-          <button
-            @click="changeBackground('next')"
-            type="button"
-            id="settings-btn-next"></button>
+          <div class="settings-btn-preview-container">
+            <button
+              @click="changeBackground('prev')"
+              class="settings-btn-preview">
+              &#9668;
+            </button>
+            <button
+              @click="changeBackground('next')"
+              class="settings-btn-preview">
+              &#9658;
+            </button>
+          </div>
         </div>
-
-        <p class="settings-description"></p>
-        <p class="settings-author"></p>
-        <a class="settings-link" href="#!">ссылка на страницу</a>
+        <div>
+          <p class="settings-description"></p>
+          <p class="settings-author"></p>
+          <a class="settings-link" href="#!">ссылка на страницу</a>
+        </div>
       </div>
     </transition>
 
     <transition :name="direction">
-      <div v-if="page === 1" class="settings-page-container">
-        <Slider title="Модификатор (Shift)" property="pointers" num="0" />
-        <Slider title="Мизинцы" property="pointers" num="1" />
-        <Slider title="Безымянные" property="pointers" num="2" />
-        <Slider title="Средние" property="pointers" num="3" />
-      </div>
+      <div v-if="page === 1" class="settings-page-container"></div>
     </transition>
 
     <transition :name="direction">
       <div v-if="page === 2" class="settings-page-container">
+        <Slider title="Модификатор (Shift)" property="pointers" num="0" />
+        <Slider title="Мизинцы" property="pointers" num="1" />
+        <Slider title="Безымянные" property="pointers" num="2" />
+        <Slider title="Средние" property="pointers" num="3" />
         <Slider title="Левый указательный" property="pointers" num="4" />
         <Slider title="Большие" property="pointers" num="5" />
         <Slider title="Правый указательный" property="pointers" num="6" />
@@ -216,18 +220,25 @@ const closeSettingMenu = function () {
 
 .settings-title-container {
   display: flex;
+  height: 40px;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 2px solid rgb(191, 226, 255);
-}
-
-.settings-btn-turn {
-  width: 50px;
-}
-
-.settings-title {
-  font-size: 25px;
+  margin: 20px 0 10px 0;
   padding-bottom: 10px;
-  margin-bottom: 20px;
+}
+
+.settings-btn-page {
+  width: 30px;
+  height: 40px;
+  background-color: hsl(0, 0%, 50%);
+  border-radius: 7px;
+  border: none;
+}
+
+.settings-btn-page:hover {
+  /* color: hsl(189, 100%, 50%); */
+  color: lightgreen;
 }
 
 .settings-page-container {
@@ -257,6 +268,10 @@ const closeSettingMenu = function () {
   transform: rotate(45deg) scale(1.1);
   color: darkviolet;
   transition: all 300ms ease-in-out;
+}
+
+.settings-description {
+  text-align: left;
 }
 
 /* checkbox */
@@ -319,13 +334,62 @@ const closeSettingMenu = function () {
 
 .settings-picture {
   display: flex;
-  margin-top: 20px;
-  float: left;
-  height: 200px;
-  line-height: 200px;
+  /* margin-top: 20px; */
+  /* float: left; */
+  /* height: 200px; */
+  /* line-height: 200px; */
 }
 
-#settings-btn-prev,
+#settings-preview {
+  width: 395px;
+  height: 245px;
+}
+
+.settings-btn-preview-container {
+  position: absolute;
+  /* position: fixed; */
+
+  /* left: 0; */
+  width: 395px;
+  margin-top: 95px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings-btn-preview {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  font-size: 40px;
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+  border-color: hsla(0, 0%, 0%, 0.4);
+  color: hsla(0, 0%, 0%, 0.4);
+  /* filter: drop-shadow(0 0 3px yellowgreen) brightness(230%); */
+  border-style: double;
+}
+
+.settings-btn-preview:hover {
+  border-color: hsla(120, 100%, 50%, 0.4);
+  color: hsla(120, 100%, 50%, 0.4);
+  /* filter: drop-shadow(0 0 1px hsl(120, 100%, 50%)) brightness(200%); */
+  /* transform: scale(1.1); */
+}
+.settings-btn-preview:active {
+  background-image: none;
+  background-color: transparent;
+  transform: scale(0.9);
+}
+
+.settings-btn-preview:first-child {
+  margin-left: 10px;
+  padding-right: 7px;
+}
+.settings-btn-preview:last-child {
+  margin-right: 10px;
+  padding-left: 7px;
+}
+/* #settings-btn-prev,
 #settings-btn-next {
   width: 30px;
   background: rgb(100, 100, 100);
@@ -339,9 +403,9 @@ const closeSettingMenu = function () {
 #settings-btn-next {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-}
+} */
 
-.settings-picture div {
+/* .settings-picture div {
   width: 320px;
-}
+} */
 </style>

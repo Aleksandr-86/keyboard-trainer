@@ -138,7 +138,7 @@ onMounted(() => {
 .slider-container {
   width: 385px;
   /* background-color: grey; */
-  margin-top: 5px;
+  /* margin-top: 5px; */
   /* border: 2px solid black; */
   border: v-bind(border);
   border-radius: 10px;
