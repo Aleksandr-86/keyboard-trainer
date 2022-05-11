@@ -3,10 +3,21 @@ import { computed } from '@vue/reactivity'
 import store from '/src/services/store.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
 import Slider from '../components/Slider.vue'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const page = ref(0)
 const direction = ref('slide-next')
+
+const title = computed(() => {
+  if (page.value === 0) {
+    return 'Общие настройки'
+  } else if (page.value === 1) {
+    return 'Цвета поля'
+  } else if (page.value === 2) {
+    return 'Цвета клавиатуры'
+  }
+  console.warn(title)
+})
 
 const turnThePage = function (dir) {
   if (dir === 'next') {
@@ -71,7 +82,7 @@ const closeSettingMenu = function () {
       <button @click="turnThePage('prev')" class="settings-btn-turn">
         &lt;
       </button>
-      <div class="settings-title">Общие настройки:</div>
+      <div class="settings-title">{{ title }}</div>
       <button @click="turnThePage('next')" class="settings-btn-turn">
         &gt;
       </button>
@@ -205,7 +216,7 @@ const closeSettingMenu = function () {
 
 .settings-title-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   border-bottom: 2px solid rgb(191, 226, 255);
 }
 

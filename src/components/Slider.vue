@@ -148,7 +148,7 @@ onMounted(() => {
 
 .slider-title-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   border-bottom: v-bind(border);
 }
 
