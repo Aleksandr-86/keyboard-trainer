@@ -100,8 +100,8 @@ onUnmounted(() => {
           'char-wrong': statArr[index + firstIndex] === '2'
         }
       ]">
-      <div v-if="char === 'skip'">&nbsp</div>
-      <div v-else-if="char === 'end'">&nbsp</div>
+      <div v-if="char === 'skip'">&nbsp;</div>
+      <div v-else-if="char === 'end'">&nbsp;</div>
       <div v-else>{{ char }}</div>
     </div>
   </div>

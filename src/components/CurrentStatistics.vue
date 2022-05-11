@@ -18,7 +18,7 @@ const elapsedTime = computed(() => store.data.elapsedTime === 0)
     <div class="without-mistake">
       <!-- <transition name="hide">
         <span v-if="elapsedTime" class="current-stat-description">
-          Без ошибок:&nbsp
+          Без ошибок:&nbsp;
         </span>
       </transition> -->
       <span v-if="tempWithoutMistake === withoutMistake">
