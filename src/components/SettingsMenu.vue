@@ -223,8 +223,8 @@ const closeSettingMenu = function () {
   height: 40px;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid rgb(191, 226, 255);
-  margin: 20px 0 10px 0;
+  border-bottom: 2px solid hsl(207, 100%, 87%);
+  margin: 10px 0 10px 0;
   padding-bottom: 10px;
 }
 
@@ -239,6 +239,10 @@ const closeSettingMenu = function () {
 .settings-btn-page:hover {
   /* color: hsl(189, 100%, 50%); */
   color: lightgreen;
+}
+
+.settings-btn-page:active {
+  font-size: 24px;
 }
 
 .settings-page-container {
@@ -370,15 +374,17 @@ const closeSettingMenu = function () {
 }
 
 .settings-btn-preview:hover {
-  border-color: hsla(120, 100%, 50%, 0.4);
-  color: hsla(120, 100%, 50%, 0.4);
+  border-color: hsla(120, 100%, 50%, 0.7);
+  color: hsla(120, 100%, 50%, 0.7);
   /* filter: drop-shadow(0 0 1px hsl(120, 100%, 50%)) brightness(200%); */
   /* transform: scale(1.1); */
 }
 .settings-btn-preview:active {
-  background-image: none;
-  background-color: transparent;
-  transform: scale(0.9);
+  /* color: hsla(120, 100%, 50%, 0.8); */
+  font-size: 37px;
+  /* background-image: none;
+  background-color: transparent; */
+  /* transform: scale(0.95); */
 }
 
 .settings-btn-preview:first-child {

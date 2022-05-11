@@ -165,7 +165,7 @@ onMounted(() => {
   width: 30px;
   height: 29px;
   border-radius: 50%;
-  border: 1px solid hsl(0, 0%, 78%);
+  border: 1px solid hsl(207, 100%, 78%);
   background-color: v-bind(color);
 }
 
