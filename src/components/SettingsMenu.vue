@@ -154,7 +154,7 @@ const closeSettingMenu = function () {
 .slide-next-leave-active,
 .slide-prev-enter-active,
 .slide-prev-leave-active {
-  transition: all 1s linear;
+  transition: all 0.1s linear;
 }
 
 .slide-next-enter-from {
