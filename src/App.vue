@@ -34,9 +34,9 @@ const background = computed(
     }.jpg')`
 )
 
-// const fn = function () {
-//   console.log(store.storage.langOfSnippets)
-// }
+const fn = function (e) {
+  console.log(e.target)
+}
 </script>
 
 <template>

@@ -3,7 +3,7 @@ import { computed } from '@vue/reactivity'
 import store from '/src/services/store.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
 import Slider from '../components/Slider.vue'
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 
 const page = ref(0)
 const direction = ref('slide-next')
@@ -75,14 +75,12 @@ const closeSettingMenu = function () {
 </script>
 
 <template>
-  <div class="settings-container">
-    <label class="settings-btn-close" @click="closeSettingMenu">+</label>
-
+  <div v-click-outside="closeSettingMenu" class="settings-container">
     <div class="settings-title-container">
       <button @click="turnThePage('prev')" class="settings-btn-page">
         &lt;
       </button>
-      <div>{{ title }}</div>
+      <div class="settings-title">{{ title }}</div>
       <button @click="turnThePage('next')" class="settings-btn-page">
         &gt;
       </button>
@@ -201,21 +199,19 @@ const closeSettingMenu = function () {
 
 .settings-container {
   position: fixed;
-  z-index: 2;
   top: 0;
   left: 0;
-  /* left: -420px; */
-  background: rgb(60, 60, 60);
+  background: hsl(40, 2%, 22%);
+  color: hsl(0, 0%, 78%);
   width: 395px;
   height: 100vh;
   box-shadow: none;
-  color: rgb(200, 200, 200);
-  padding: 40px 20px;
-  /* transition: left 3000ms; */
+  padding: 20px 20px;
   font-size: 25px;
   font-family: 'Montserrat', sans-serif;
   user-select: none;
   overflow: auto;
+  z-index: 2;
 }
 
 .settings-title-container {
@@ -223,9 +219,14 @@ const closeSettingMenu = function () {
   height: 40px;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid hsl(207, 100%, 87%);
-  margin: 10px 0 10px 0;
+  border-bottom: 2px solid hsl(0, 0%, 78%);
+  margin-bottom: 10px;
   padding-bottom: 10px;
+  z-index: 20;
+}
+
+.settings-title {
+  width: 290px;
 }
 
 .settings-btn-page {
@@ -253,26 +254,6 @@ const closeSettingMenu = function () {
   box-shadow: 10px 0 20px rgba(0, 0, 0, 0.4);
   left: 0;
 } */
-
-.settings-btn-close {
-  display: inline-block;
-  font-size: 50px;
-  background: none;
-  user-select: none;
-  position: absolute;
-  z-index: 1;
-  top: -5.5px;
-  right: 8px;
-  cursor: pointer;
-  transform: rotate(45deg);
-  color: #bfe2ff;
-}
-
-.settings-btn-close:hover {
-  transform: rotate(45deg) scale(1.1);
-  color: darkviolet;
-  transition: all 300ms ease-in-out;
-}
 
 .settings-description {
   text-align: left;
