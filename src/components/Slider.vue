@@ -31,6 +31,10 @@ const toggleSlider = function () {
   hsla.flag = !hsla.flag
 }
 
+const outsideToggle = function () {
+  if (hsla.flag === true) hsla.flag = false
+}
+
 const border = computed(() => {
   if (hsla.flag) {
     return '1px solid hsl(0, 0%, 78%)'
@@ -51,7 +55,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="slider-container">
+  <div v-click-outside="outsideToggle" class="slider-container">
     <div class="slider-title-container">
       <div class="slider-title">{{ props.title }}</div>
       <div @click="toggleSlider" class="slider-sample"></div>
