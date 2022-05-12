@@ -52,13 +52,6 @@ const withoutMistake = store.data.numWrong === 0
 
     <h4 v-if="isSnippet" class="stat-violet">«{{ book.title }}»</h4>
     <h4 v-if="isSnippet" class="stat-violet">{{ book.author }}</h4>
-    <label @click.left="store.setFalse('overallStatistics')" class="stat-close">
-      +
-    </label>
-    <!-- <div class="stat-first-row" v-if="isSnippet">Автор: {{}}</div>
-    <div class="stat-second-row" v-if="isSnippet">
-      store.data.currentBook.name
-    </div> -->
 
     <div class="stat-first-column">Время набора:</div>
     <div class="stat-time">
@@ -134,30 +127,9 @@ const withoutMistake = store.data.numWrong === 0
   /* box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.3); */
   box-shadow: 0 0 10vh 1vh rgba(0, 0, 0, 0.5);
   z-index: 10;
-
+  user-select: none;
   overflow: hidden;
   /* transition: visibility 300ms, opacity 300ms; */
-}
-
-.stat-close {
-  display: inline-block;
-  font-size: 5vh;
-  border: none;
-  background: none;
-  user-select: none;
-  position: absolute;
-  z-index: 1;
-  top: -1vh;
-  right: 0.4vh;
-  cursor: pointer;
-  transform: rotate(45deg);
-  color: black;
-}
-
-.stat-close:hover {
-  transform: rotate(45deg) scale(1.1);
-  color: darkviolet;
-  transition: all 300ms ease-in-out;
 }
 
 h4 {

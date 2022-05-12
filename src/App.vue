@@ -41,17 +41,10 @@ const fn = function (e) {
 
 <template>
   <div id="background">
-    <!-- <Background /> -->
     <NavigationMenu />
-    <!-- <button @click="fn">КНИГА</button> -->
     <SettingsMenu v-if="store.state.settings" />
     <Field v-if="store.state.work" />
     <OverallStatistics v-if="store.state.overallStatistics" />
-    <!-- <CharMeter :typing-speed="10" /> -->
-    <!-- <div class="button-double">
-      <div>!</div>
-      <div>2</div>
-    </div> -->
   </div>
 </template>
 
