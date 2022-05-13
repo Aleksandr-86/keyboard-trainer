@@ -355,17 +355,8 @@ const closeSettingMenu = function () {
 }
 
 .settings-btn-preview:hover {
-  border-color: hsla(120, 100%, 50%, 0.7);
-  color: hsla(120, 100%, 50%, 0.7);
-  /* filter: drop-shadow(0 0 1px hsl(120, 100%, 50%)) brightness(200%); */
-  /* transform: scale(1.1); */
-}
-.settings-btn-preview:active {
-  /* color: hsla(120, 100%, 50%, 0.8); */
-  font-size: 37px;
-  /* background-image: none;
-  background-color: transparent; */
-  /* transform: scale(0.95); */
+  border-color: hsla(120, 100%, 45%, 0.65);
+  color: hsla(120, 100%, 45%, 0.65);
 }
 
 .settings-btn-preview:first-child {
