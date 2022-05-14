@@ -56,10 +56,11 @@ onMounted(() => {
 <template>
   <div v-click-outside="() => (hsla.flag = false)" class="slider-container">
     <!-- <div class="slider-container"> -->
-    <div class="slider-title-container">
+    <div @click="toggleSlider" class="slider-title-container">
       <div class="slider-title">{{ props.title }}</div>
-      <div @click="toggleSlider" class="slider-sample"></div>
+      <div class="slider-sample"></div>
     </div>
+    <div class="slider-line"></div>
 
     <transition-group name="hide-slider">
       <div v-if="hsla.flag">
@@ -154,36 +155,53 @@ onMounted(() => {
   width: 438px;
   border: v-bind(border);
   border-radius: 7px;
-  padding: 5px 5px 5px 10px;
+  padding: 5px 5px 5px 6px;
   overflow: hidden;
 }
 
 .slider-title-container {
   display: flex;
-  height: 34px;
+  /* height: 24px; */
+  height: 100%;
   justify-content: space-between;
+  align-items: center;
   /* margin-bottom: 5px; */
-  border-bottom: v-bind(border);
+  /* border-bottom: v-bind(border);
+  padding-bottom: 5px; */
+  padding: 1px 1px 1px 2px;
+}
+
+.slider-title-container:hover {
+  background: hsl(40, 40%, 25%);
+  border-radius: 7px;
 }
 
 .slider-title {
-  text-align: left;
+  /* text-align: left; */
   height: 29px;
-  margin-bottom: 5px;
 }
 
 .slider-sample {
   /* margin-left: 20px; */
-  width: 27px;
-  height: 27px;
+  width: 33px;
+  height: 33px;
   border: 1px solid hsl(0, 0%, 83%);
   border-radius: 7px;
   background-color: v-bind(color);
 }
 
+.slider-line {
+  width: 433px;
+  margin-left: 4px;
+  margin-top: 5px;
+  /* border-bottom: 1px solid hsl(0, 0%, 78%); */
+  border-bottom: v-bind(border);
+}
+
 .slider-description {
   height: 29px;
   text-align: left;
+  margin-left: 4px;
 }
 
 .slider {
@@ -191,6 +209,7 @@ onMounted(() => {
   justify-content: flex-start;
   align-items: center;
   height: 29px;
+  margin-left: 4px;
 }
 
 .slider-input-container {
