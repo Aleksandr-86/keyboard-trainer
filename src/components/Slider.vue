@@ -63,7 +63,7 @@ onMounted(() => {
 
     <transition-group name="hide-slider">
       <div v-if="hsla.flag">
-        <div class="slider-description">Тон</div>
+        <div class="slider-description">тон</div>
         <div class="slider">
           <div class="slider-input-container">
             <input
@@ -78,7 +78,7 @@ onMounted(() => {
           <label class="slider-label" for="hue">{{ hsla.hue }}</label>
         </div>
 
-        <div class="slider-description">Насыщенность</div>
+        <div class="slider-description">насыщенность</div>
         <div class="slider">
           <div class="slider-input-container">
             <input
@@ -95,7 +95,7 @@ onMounted(() => {
           }}</label>
         </div>
 
-        <div class="slider-description">Светлота</div>
+        <div class="slider-description">светлота</div>
         <div class="slider">
           <div class="slider-input-container">
             <input
@@ -112,7 +112,7 @@ onMounted(() => {
           }}</label>
         </div>
 
-        <div class="slider-description">Прозрачность</div>
+        <div class="slider-description">прозрачность</div>
         <div class="slider">
           <div class="slider-input-container">
             <input
@@ -151,48 +151,46 @@ onMounted(() => {
 }
 
 .slider-container {
-  width: 385px;
-  /* background-color: grey; */
-  /* margin-top: 5px; */
-  /* border: 2px solid black; */
+  width: 438px;
   border: v-bind(border);
-  border-radius: 10px;
-  padding: 2px;
+  border-radius: 7px;
+  padding: 5px 5px 5px 10px;
   overflow: hidden;
 }
 
 .slider-title-container {
   display: flex;
+  height: 34px;
   justify-content: space-between;
+  /* margin-bottom: 5px; */
   border-bottom: v-bind(border);
 }
 
 .slider-title {
   text-align: left;
-  vertical-align: center;
   height: 29px;
-  margin-bottom: 10px;
-  /* background-color: red; */
+  margin-bottom: 5px;
 }
 
 .slider-sample {
-  margin-left: 20px;
-  width: 30px;
-  height: 29px;
-  border-radius: 50%;
+  /* margin-left: 20px; */
+  width: 27px;
+  height: 27px;
   border: 1px solid hsl(0, 0%, 83%);
+  border-radius: 7px;
   background-color: v-bind(color);
 }
 
 .slider-description {
+  height: 29px;
   text-align: left;
 }
 
 .slider {
   display: flex;
-  /* float: left; */
   justify-content: flex-start;
   align-items: center;
+  height: 29px;
 }
 
 .slider-input-container {
@@ -204,8 +202,7 @@ onMounted(() => {
   top: 0;
   left: 0;
   -webkit-appearance: none;
-  /* width: 100%; */
-  width: 330px;
+  width: 388px;
   height: 18px;
   border-radius: 5px;
   background: hsl(0, 0%, 83%);
@@ -216,7 +213,7 @@ onMounted(() => {
 }
 
 .slider-chess-background {
-  width: 330px;
+  width: 388px;
   height: 18px;
   background: no-repeat url('/src/images/icons/chess-board.svg');
   border-radius: 5px;
@@ -316,7 +313,7 @@ onMounted(() => {
 
 .slider-label {
   margin-left: 5px;
-  color: black;
+  color: hsl(0, 0%, 83%);
   width: 45px;
 }
 </style>

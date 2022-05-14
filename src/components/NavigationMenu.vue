@@ -111,7 +111,7 @@ const toggleSettings = function () {
   padding: 20px 0 20px 0;
   position: relative;
   text-transform: uppercase;
-  color: rgb(112, 128, 144);
+  color: hsl(210, 13%, 50%);
   font-weight: bold;
   letter-spacing: 0;
   font-size: 25px;

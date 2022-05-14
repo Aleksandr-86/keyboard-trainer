@@ -150,13 +150,14 @@ const closeSettingMenu = function () {
 
     <transition :name="direction">
       <div v-if="page === 2" class="settings-page-container">
-        <Slider title="Модификатор (Shift)" property="pointers" num="0" />
-        <Slider title="Мизинцы" property="pointers" num="1" />
-        <Slider title="Безымянные" property="pointers" num="2" />
-        <Slider title="Средние" property="pointers" num="3" />
-        <Slider title="Левый указательный" property="pointers" num="4" />
-        <Slider title="Большие" property="pointers" num="5" />
-        <Slider title="Правый указательный" property="pointers" num="6" />
+        <div class="settings-description">Указатели пальцев:</div>
+        <Slider title="модификатор (Shift)" property="pointers" num="0" />
+        <Slider title="мизинцы" property="pointers" num="1" />
+        <Slider title="безымянные" property="pointers" num="2" />
+        <Slider title="средние" property="pointers" num="3" />
+        <Slider title="левый указательный" property="pointers" num="4" />
+        <Slider title="большие" property="pointers" num="5" />
+        <Slider title="правый указательный" property="pointers" num="6" />
       </div>
     </transition>
   </div>
@@ -164,7 +165,7 @@ const closeSettingMenu = function () {
 
 <style scoped>
 .slide-next-enter-active,
-.slide-next-leave-active,
+.slide-next-leave-active5,
 .slide-prev-enter-active,
 .slide-prev-leave-active {
   transition: all 0.1s linear;
@@ -198,12 +199,12 @@ const closeSettingMenu = function () {
 }
 
 .settings-container {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   background: hsl(40, 2%, 22%);
   color: hsl(0, 0%, 78%);
-  width: 395px;
+  width: 455px;
   height: 100vh;
   box-shadow: none;
   padding: 20px 20px;
@@ -216,12 +217,12 @@ const closeSettingMenu = function () {
 
 .settings-title-container {
   display: flex;
-  height: 40px;
+  height: 29px;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   border-bottom: 2px solid hsl(0, 0%, 78%);
   margin-bottom: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 18px;
   z-index: 20;
 }
 
@@ -230,16 +231,18 @@ const closeSettingMenu = function () {
 }
 
 .settings-btn-page {
-  width: 30px;
-  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 29px;
+  height: 29px;
   background-color: hsl(0, 0%, 50%);
   border-radius: 7px;
   border: none;
 }
 
 .settings-btn-page:hover {
-  /* color: hsl(189, 100%, 50%); */
-  color: lightgreen;
+  color: hsl(120, 73%, 75%);
 }
 
 .settings-btn-page:active {
@@ -256,7 +259,10 @@ const closeSettingMenu = function () {
 } */
 
 .settings-description {
+  /* border: 1px solid green; */
   text-align: left;
+  /* height: 29px; */
+  margin-bottom: 2px;
 }
 
 /* checkbox */
@@ -326,17 +332,14 @@ const closeSettingMenu = function () {
 }
 
 #settings-preview {
-  width: 395px;
-  height: 245px;
+  width: 455px;
+  height: 281px;
 }
 
 .settings-btn-preview-container {
   position: absolute;
-  /* position: fixed; */
-
-  /* left: 0; */
-  width: 395px;
-  margin-top: 95px;
+  width: 455px;
+  margin-top: 100px;
   display: flex;
   justify-content: space-between;
 }
