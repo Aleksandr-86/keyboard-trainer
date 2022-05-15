@@ -152,12 +152,12 @@ const closeSettingMenu = function () {
       <div v-if="page === 2" class="settings-page-container">
         <div class="settings-description">Указатели пальцев:</div>
         <Slider title="модификатор (Shift)" property="pointers" num="0" />
-        <Slider title="мизинцы" property="pointers" num="1" />
+        <!-- <Slider title="мизинцы" property="pointers" num="1" />
         <Slider title="безымянные" property="pointers" num="2" />
         <Slider title="средние" property="pointers" num="3" />
         <Slider title="левый указательный" property="pointers" num="4" />
         <Slider title="большие" property="pointers" num="5" />
-        <Slider title="правый указательный" property="pointers" num="6" />
+        <Slider title="правый указательный" property="pointers" num="6" /> -->
       </div>
     </transition>
   </div>

@@ -43,13 +43,13 @@ const border = computed(() => {
 })
 
 onMounted(() => {
-  const colorNum = getNumbersFromString(store.colors[props.property][props.num])
-  let i = 0
-  for (const propertyName in hsla) {
-    hsla[propertyName] = colorNum[i]
-    ;[propertyName].value = colorNum[i]
-    i++
-  }
+  const colorsArr = getNumbersFromString(
+    store.colors[props.property][props.num]
+  )
+  hsla.hue = colorsArr[0]
+  hsla.saturation = colorsArr[1]
+  hsla.lightness = colorsArr[2]
+  hsla.alpha = colorsArr[3]
 })
 </script>
 
