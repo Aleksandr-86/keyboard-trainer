@@ -29,7 +29,7 @@ const color = computed(
 watch(color, newValue => (store.colors[props.property][props.num] = newValue))
 
 const getNumbersFromString = function (str) {
-  return str.match(/[0-9]+/g)
+  return str.match(/[0-9.]+/g)
 }
 
 const toggleSlider = () => (hsla.flag = !hsla.flag)
