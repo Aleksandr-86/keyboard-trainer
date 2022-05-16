@@ -17,12 +17,13 @@ const indexArr = computed(() => store.data.indexArr)
 const firstIndex = computed(() => store.data.firstIndex)
 
 const fieldBackground = computed(() => store.colors.field[0])
-const charNeutralBackground = computed(() => store.colors.field[1])
-const charNeutralColor = computed(() => store.colors.field[2])
+const charBackground = computed(() => store.colors.field[1])
+const charColor = computed(() => store.colors.field[2])
 const charCorrectColor = computed(() => store.colors.field[3])
 const charWrongColor = computed(() => store.colors.field[4])
-const caretBackground = computed(() => store.colors.field[5])
-const caretColor = computed(() => store.colors.field[6])
+const charNeutralColor = computed(() => store.colors.field[5])
+const caretBackground = computed(() => store.colors.field[6])
+const caretColor = computed(() => store.colors.field[7])
 
 // chars for field
 const charsArr = computed(() =>
@@ -94,6 +95,7 @@ onUnmounted(() => {
       class="char"
       :class="[
         { 'char-caret': index === indexArr % 200 },
+        { zindex: index + firstIndex < indexArr },
         {
           'char-neutral-active':
             char !== 'skip' &&
@@ -140,7 +142,6 @@ onUnmounted(() => {
   backdrop-filter: blur(200px);
   background-color: v-bind(fieldBackground);
   user-select: none;
-  z-index: 1;
 }
 
 .field:hover {
@@ -154,9 +155,12 @@ onUnmounted(() => {
   height: 76px;
   font-family: 'Consolas', monospace;
   font-size: 65px;
-  background: v-bind(charNeutralBackground);
-  color: v-bind(charNeutralColor);
-  z-index: 2;
+  background: v-bind(charBackground);
+  color: v-bind(charColor);
+}
+
+.zindex {
+  z-index: 50;
 }
 
 .char-caret {
@@ -188,11 +192,11 @@ onUnmounted(() => {
 }
 
 .char-neutral-inactive {
-  color: rgb(100, 100, 180);
+  color: v-bind(charNeutralColor);
 }
 
 .char-neutral-active {
-  color: rgb(100, 100, 180);
-  filter: drop-shadow(3px 2px 2px) brightness(95%);
+  color: v-bind(charNeutralColor);
+  filter: drop-shadow(3px 2px 2px);
 }
 </style>

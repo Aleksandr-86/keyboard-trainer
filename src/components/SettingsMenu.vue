@@ -2,7 +2,7 @@
 import { computed } from '@vue/reactivity'
 import store from '/src/services/store.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
-import Slider from '../components/Slider.vue'
+import HslaSlider from '../components/HslaSlider.vue'
 import { ref } from 'vue'
 
 const page = ref(0)
@@ -145,30 +145,41 @@ const closeSettingMenu = function () {
 
     <transition :name="direction">
       <div v-if="page === 1" class="settings-page-container">
+        <div class="settings-category">Тень:</div>
+        <label class="custom-checkbox">
+          <div class="settings-description">символ</div>
+          <input
+            type="checkbox"
+            id="box3"
+            v-model="store.storage.keyboard"
+            @click="store.toggleStorage('keyboard')" />
+          <span class="check-mark"></span>
+        </label>
         <div class="settings-category">Цвет:</div>
-        <Slider title="фон поля" property="field" num="0" />
-        <Slider title="фон символа" property="field" num="1" />
-        <Slider title="нейтральный символ" property="field" num="2" />
-        <Slider title="верно введённый символ" property="field" num="3" />
-        <Slider title="неверно введённый символ" property="field" num="4" />
-        <Slider title="каретка" property="field" num="5" />
-        <Slider title="тень каретки" property="field" num="6" />
+        <HslaSlider title="фон поля" property="field" num="0" />
+        <HslaSlider title="фон символа" property="field" num="1" />
+        <HslaSlider title="нейтральный символ" property="field" num="2" />
+        <HslaSlider title="верно введённый символ" property="field" num="3" />
+        <HslaSlider title="неверно введённый символ" property="field" num="4" />
+        <HslaSlider title="ненабираемый символ" property="field" num="5" />
+        <HslaSlider title="каретка" property="field" num="6" />
+        <HslaSlider title="тень каретки" property="field" num="7" />
       </div>
     </transition>
 
     <transition :name="direction">
       <div v-if="page === 2" class="settings-page-container">
         <div class="settings-category">Клавиатура:</div>
-        <Slider title="фон клавиатуры" property="keyboard" num="0" />
-        <Slider title="фон клавиш" property="keyboard" num="1" />
-        <Slider title="текст клавиш" property="keyboard" num="2" />
-        <Slider title="модификатор (Shift)" property="pointers" num="0" />
-        <Slider title="мизинцы" property="pointers" num="1" />
-        <Slider title="безымянные" property="pointers" num="2" />
-        <Slider title="средние" property="pointers" num="3" />
-        <Slider title="левый указательный" property="pointers" num="4" />
-        <Slider title="большие" property="pointers" num="5" />
-        <Slider title="правый указательный" property="pointers" num="6" />
+        <HslaSlider title="фон клавиатуры" property="keyboard" num="0" />
+        <HslaSlider title="фон клавиш" property="keyboard" num="1" />
+        <HslaSlider title="текст клавиш" property="keyboard" num="2" />
+        <HslaSlider title="модификатор (Shift)" property="pointers" num="0" />
+        <HslaSlider title="мизинцы" property="pointers" num="1" />
+        <HslaSlider title="безымянные" property="pointers" num="2" />
+        <HslaSlider title="средние" property="pointers" num="3" />
+        <HslaSlider title="левый указательный" property="pointers" num="4" />
+        <HslaSlider title="большие" property="pointers" num="5" />
+        <HslaSlider title="правый указательный" property="pointers" num="6" />
       </div>
     </transition>
   </div>
@@ -302,7 +313,7 @@ const closeSettingMenu = function () {
   right: 0;
   height: 25px;
   width: 25px;
-  background-color: rgb(238, 238, 238);
+  background-color: hsl(0, 0%, 93%);
 }
 
 .custom-checkbox:hover input ~ .check-mark {
