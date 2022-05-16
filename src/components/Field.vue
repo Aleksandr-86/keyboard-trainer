@@ -95,7 +95,6 @@ onUnmounted(() => {
       class="char"
       :class="[
         { 'char-caret': index === indexArr % 200 },
-        { zindex: index + firstIndex < indexArr },
         {
           'char-neutral-active':
             char !== 'skip' &&
@@ -157,10 +156,6 @@ onUnmounted(() => {
   font-size: 65px;
   background: v-bind(charBackground);
   color: v-bind(charColor);
-}
-
-.zindex {
-  z-index: 50;
 }
 
 .char-caret {
