@@ -16,6 +16,14 @@ const statArr = computed(() => store.data.statArr)
 const indexArr = computed(() => store.data.indexArr)
 const firstIndex = computed(() => store.data.firstIndex)
 
+const fieldBackground = computed(() => store.colors.field[0])
+const charNeutralBackground = computed(() => store.colors.field[1])
+const charNeutralColor = computed(() => store.colors.field[2])
+const charCorrectColor = computed(() => store.colors.field[3])
+const charWrongColor = computed(() => store.colors.field[4])
+const caretBackground = computed(() => store.colors.field[5])
+const caretColor = computed(() => store.colors.field[6])
+
 // chars for field
 const charsArr = computed(() =>
   store.data.fragmentArr.slice(
@@ -113,7 +121,7 @@ onUnmounted(() => {
     :lang="store.data.keyboardLayout" />
 </template>
 
-<style>
+<style scoped>
 @keyframes hideCursor {
   0%,
   99% {
@@ -130,18 +138,14 @@ onUnmounted(() => {
   margin: 5px auto 50px;
   outline: none;
   backdrop-filter: blur(200px);
-  background-color: hsla(0, 0%, 0%, 0);
+  background-color: v-bind(fieldBackground);
   user-select: none;
+  z-index: 1;
 }
 
 .field:hover {
   cursor: none;
   animation: hideCursor 2500ms;
-}
-
-.line {
-  width: inherit;
-  height: 76px;
 }
 
 .char {
@@ -150,8 +154,9 @@ onUnmounted(() => {
   height: 76px;
   font-family: 'Consolas', monospace;
   font-size: 65px;
-  background: hsla(0, 0%, 20%, 0.75);
-  color: hsla(0, 0%, 65%, 1);
+  background: v-bind(charNeutralBackground);
+  color: v-bind(charNeutralColor);
+  z-index: 2;
 }
 
 .char-caret {
@@ -166,18 +171,20 @@ onUnmounted(() => {
   right: 0;
   width: 36px;
   height: 5px;
-  background: rgba(50, 50, 50, 0.75);
-  filter: drop-shadow(3px 2px 2px yellowgreen) brightness(230%);
+  background: v-bind(caretBackground);
+  color: v-bind(caretColor);
+  filter: drop-shadow(3px 2px 2px) brightness(230%);
 }
 
 .char-correct {
-  color: rgb(40, 190, 100);
-  filter: drop-shadow(3px 2px 2px) brightness(95%);
+  color: v-bind(charCorrectColor);
+  /* filter: drop-shadow(3px 2px 2px) brightness(95%); */
+  filter: drop-shadow(3px 2px 2px);
 }
 
 .char-wrong {
-  color: rgb(255, 50, 50);
-  filter: drop-shadow(3px 2px 2px) brightness(95%);
+  color: v-bind(charWrongColor);
+  filter: drop-shadow(3px 2px 2px);
 }
 
 .char-neutral-inactive {

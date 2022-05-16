@@ -221,7 +221,7 @@ onMounted(() => {
   top: 0;
   left: 0;
   -webkit-appearance: none;
-  width: 388px;
+  width: 384px;
   height: 18px;
   border-radius: 5px;
   background: hsl(0, 0%, 83%);
@@ -232,7 +232,7 @@ onMounted(() => {
 }
 
 .slider-chess-background {
-  width: 388px;
+  width: 384px;
   height: 18px;
   background: no-repeat url('/src/images/icons/chess-board.svg');
   border-radius: 5px;

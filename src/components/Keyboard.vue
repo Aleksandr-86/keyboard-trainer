@@ -152,6 +152,10 @@ const lIndexFinger = computed(() => store.colors.pointers[4])
 const thumbs = computed(() => store.colors.pointers[5])
 const rIndexFinger = computed(() => store.colors.pointers[6])
 
+const keyboardBackground = computed(() => store.colors.keyboard[0])
+const keyBackground = computed(() => store.colors.keyboard[1])
+const keyColor = computed(() => store.colors.keyboard[2])
+
 const boardColor = computed(() => {
   if (store.storage.pointers) return
 
@@ -253,7 +257,7 @@ const boardColor = computed(() => {
   </div>
 </template>
 
-<style>
+<style scoped>
 @keyframes hideCursor {
   0%,
   99% {
@@ -274,7 +278,7 @@ const boardColor = computed(() => {
   margin: 0 auto;
   user-select: none;
   /* background: rgb(170, 170, 170); */
-  background: hsl(0, 0%, 15%);
+  background: v-bind(keyboardBackground);
   border-radius: 15px;
 }
 
@@ -298,8 +302,8 @@ const boardColor = computed(() => {
   text-transform: capitalize;
   /* color: black;
   background: hsl(0, 0%, 80%); */
-  color: hsla(0, 0%, 70%, 1);
-  background: hsla(0, 0%, 0%, 1);
+  background: v-bind(keyBackground);
+  color: v-bind(keyColor);
   /* border: none; */
   border-radius: 15px;
 }
@@ -338,14 +342,14 @@ const boardColor = computed(() => {
   color: v-bind(shiftColor);
 }
 
-@keyframes fadeGreenColor {
+/* @keyframes fadeGreenColor {
   0% {
     background-color: hsla(120, 80%, 65%);
   }
   100% {
     background: hsl(0, 0%, 80%);
   }
-}
+} */
 
 .button-correct {
   background-color: hsla(120, 80%, 65%, 1);
