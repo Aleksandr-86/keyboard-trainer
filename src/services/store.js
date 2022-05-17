@@ -21,7 +21,7 @@ const state = reactive({
 const storage = reactive({
   main: { background: 0, letterCase: true, langOfSnippets: 'russian' },
   visibility: { keyboard: true, pointers: true },
-  shadow: { charCorrect: false, charWrong: false, charNeutral: true },
+  shadow: { charCorrect: true, charWrong: true, charNeutral: true },
   field: {
     /* цвета поля: фон поля, фон символа, нейтральный символ, верно введённый
   символ, неверно введённый символ, каретка, тень каретки, */
@@ -30,8 +30,8 @@ const storage = reactive({
     charColor: 'hsla(0, 0%, 65%, 1)',
     charCorrectColor: 'hsla(144, 65%, 45%, 1)',
     charWrongColor: 'hsla(0, 100%, 60%, 1)',
-    charNeutralColor: 'hsl(240, 35%, 55%, 1)',
-    caretBackground: 'hsla(240,100%, 85%, 0.5)',
+    charNeutralColor: 'hsl(180, 100%, 45%, 0.75)',
+    caretBackground: 'hsla(240, 100%, 85%, 0.5)',
     caretColor: 'hsla(320, 100%, 50%, 1)'
   },
   keyboard: {
@@ -225,7 +225,6 @@ const clearStat = function () {
 }
 
 const randomSnippet = function (lang, amount) {
-  console.warn(lang)
   let arrOfBooks
   if (lang === 'russian') {
     arrOfBooks = bookList.arrOfRusBooks

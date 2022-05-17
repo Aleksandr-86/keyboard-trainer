@@ -46,7 +46,6 @@ const border = computed(() => {
 
 onMounted(() => {
   const paramsArr = props.property.split('.')
-  console.warn(paramsArr)
   const colorsArr = getNumbersFromString(
     store.storage[paramsArr[0]][paramsArr[1]]
   )
