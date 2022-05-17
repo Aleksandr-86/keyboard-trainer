@@ -12,18 +12,37 @@ const events = reactive({
   capsLock: false
 })
 
+/** stats */
 const statArr = computed(() => store.data.statArr)
 const indexArr = computed(() => store.data.indexArr)
 const firstIndex = computed(() => store.data.firstIndex)
 
-const fieldBackground = computed(() => store.colors.field[0])
-const charBackground = computed(() => store.colors.field[1])
-const charColor = computed(() => store.colors.field[2])
-const charCorrectColor = computed(() => store.colors.field[3])
-const charWrongColor = computed(() => store.colors.field[4])
-const charNeutralColor = computed(() => store.colors.field[5])
-const caretBackground = computed(() => store.colors.field[6])
-const caretColor = computed(() => store.colors.field[7])
+/** colors */
+const fieldBackground = computed(() => store.storage.field.background)
+const charBackground = computed(() => store.storage.field.charBackground)
+const charColor = computed(() => store.storage.field.charColor)
+const charCorrectColor = computed(() => store.storage.field.charCorrectColor)
+const charWrongColor = computed(() => store.storage.field.charWrongColor)
+const charNeutralColor = computed(() => store.storage.field.charNeutralColor)
+const caretBackground = computed(() => store.storage.field.caretBackground)
+const caretColor = computed(() => store.storage.field.caretColor)
+
+/** shadows */
+const charCorrectShadow = computed(() => {
+  if (store.storage.shadow.charCorrect) {
+    return 'drop-shadow(3px 2px 2px)'
+  } else {
+    return 'none'
+  }
+})
+
+const charWrongShadow = computed(() => {
+  if (store.storage.shadow.charWrong) {
+    return 'drop-shadow(3px 2px 2px)'
+  } else {
+    return 'none'
+  }
+})
 
 // chars for field
 const charsArr = computed(() =>
@@ -178,12 +197,12 @@ onUnmounted(() => {
 .char-correct {
   color: v-bind(charCorrectColor);
   /* filter: drop-shadow(3px 2px 2px) brightness(95%); */
-  filter: drop-shadow(3px 2px 2px);
+  filter: v-bind(charCorrectShadow);
 }
 
 .char-wrong {
   color: v-bind(charWrongColor);
-  filter: drop-shadow(3px 2px 2px);
+  filter: v-bind(charWrongShadow);
 }
 
 .char-neutral-inactive {

@@ -19,11 +19,33 @@ const state = reactive({
 })
 
 const storage = reactive({
-  background: 0,
-  letterCase: false,
-  pointers: false,
-  keyboard: false,
-  langOfSnippets: 'russian'
+  main: { background: 0, letterCase: true, langOfSnippets: 'russian' },
+  visibility: { keyboard: true, pointers: true },
+  shadow: { charCorrect: false, charWrong: false, charNeutral: true },
+  field: {
+    /* цвета поля: фон поля, фон символа, нейтральный символ, верно введённый
+  символ, неверно введённый символ, каретка, тень каретки, */
+    background: 'hsla(0, 0%, 0%, 0)',
+    charBackground: 'hsla(0, 0%, 20%, 0.75)',
+    charColor: 'hsla(0, 0%, 65%, 1)',
+    charCorrectColor: 'hsla(144, 65%, 45%, 1)',
+    charWrongColor: 'hsla(0, 100%, 60%, 1)',
+    charNeutralColor: 'hsl(240, 35%, 55%, 1)',
+    caretBackground: 'hsla(240,100%, 85%, 0.5)',
+    caretColor: 'hsla(320, 100%, 50%, 1)'
+  },
+  keyboard: {
+    background: 'hsla(0, 0%, 15%, 1)',
+    keyBackground: 'hsla(0, 0%, 0%, 1)',
+    keyColor: 'hsla(0, 0%, 70%, 1)',
+    shift: 'hsla(300, 80%, 40%, 1)',
+    pinky: 'hsla(300, 60%, 40%, 1)',
+    ring: 'hsla(60, 80%, 35%, 1)',
+    middle: 'hsla(120, 80%, 33%, 1)',
+    lIndex: 'hsla(180, 100%, 35%, 1)',
+    thumbs: 'hsla(0, 0%, 70%, 1)',
+    rIndex: 'hsla(0, 75%, 50%, 1)'
+  }
 })
 
 const data = reactive({
@@ -52,35 +74,17 @@ const data = reactive({
 })
 
 const colors = reactive({
-  /* цвета поля: фон поля, фон символа, нейтральный символ, верно введённый
-  символ, неверно введённый символ, каретка, тень каретки, */
-  field: [
-    'hsla(0, 0%, 0%, 0)',
-    'hsla(0, 0%, 20%, 0.75)',
-    'hsla(0, 0%, 65%, 1)',
-    'hsla(144, 65%, 45%, 1)',
-    'hsla(0, 100%, 60%, 1)',
-    'hsl(240, 35%, 55%, 1)',
-    'hsla(240,100%, 85%, 0.5)',
-    'hsla(320, 100%, 50%, 1)'
-  ],
-  /* цвета клавиатуры: фон клавиатуры, фон клавиш, текст клавиш */
-  keyboard: [
-    'hsla(0, 0%, 15%, 1)',
-    'hsla(0, 0%, 0%, 1)',
-    'hsla(0, 0%, 70%, 1)'
-  ],
   /* цвета указателей пальцев: мизинцев, безымянных, средних, 
-  левого указательного, больших, правого указательного модификатора (shift) */
-  pointers: [
-    'hsla(300, 80%, 40%, 1)',
-    'hsla(300, 60%, 40%, 1)',
-    'hsla(60, 80%, 35%, 1)',
-    'hsla(120, 80%, 33%, 1)',
-    'hsla(180, 100%, 35%, 1)',
-    'hsla(0, 0%, 70%, 1)',
-    'hsla(0, 75%, 50%, 1)'
-  ]
+  левого указательного, больших, правого указательного, модификатора (shift) */
+  // pointers: {
+  //   shift: 'hsla(300, 80%, 40%, 1)',
+  //   pinky: 'hsla(300, 60%, 40%, 1)',
+  //   ring: 'hsla(60, 80%, 35%, 1)',
+  //   middle: 'hsla(120, 80%, 33%, 1)',
+  //   lIndex: 'hsla(180, 100%, 35%, 1)',
+  //   thumb: 'hsla(0, 0%, 70%, 1)',
+  //   rIndex: 'hsla(0, 75%, 50%, 1)'
+  // }
 })
 
 const recordingStatistics = function (e) {
@@ -88,7 +92,7 @@ const recordingStatistics = function (e) {
   let char = data.fragmentArr[data.indexArr]
 
   // settings: ignore letter case
-  if (storage.letterCase) {
+  if (!storage.letterCase) {
     key = key.toLowerCase()
     char = char.toLowerCase()
   }
@@ -201,9 +205,9 @@ const moveCaret = function () {
   )
 }
 
-const toggleStorage = function (propertyName) {
-  storage[propertyName] = !storage[propertyName]
-  localStorage[propertyName] = storage[propertyName]
+const changeStorage = function (property) {
+  const str = JSON.stringify(storage[property])
+  localStorage[property] = str
 }
 
 const clearStat = function () {
@@ -221,15 +225,16 @@ const clearStat = function () {
 }
 
 const randomSnippet = function (lang, amount) {
+  console.warn(lang)
   let arrOfBooks
   if (lang === 'russian') {
     arrOfBooks = bookList.arrOfRusBooks
-    storage.langOfSnippets = 'russian' // underline the corresponding link in the nav menu
-    localStorage.langOfSnippets = 'russian'
+    storage.main.langOfSnippets = 'russian' // underline the corresponding link in the nav menu
+    // localStorage.main.langOfSnippets = 'russian'
   } else {
     arrOfBooks = bookList.arrOfEngBooks
-    storage.langOfSnippets = 'english' // underline the corresponding link in the nav menu
-    localStorage.langOfSnippets = 'english'
+    storage.main.langOfSnippets = 'english' // underline the corresponding link in the nav menu
+    // localStorage.main.langOfSnippets = 'english'
   }
 
   const obj = arrOfBooks[randomNum(0, 4)] // choosing a random book
@@ -257,7 +262,7 @@ export default {
   loadFragment,
   loadNextChars,
   moveCaret,
-  toggleStorage,
+  changeStorage,
   clearStat,
   randomSnippet
 }

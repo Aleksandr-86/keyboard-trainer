@@ -4,8 +4,7 @@ import store from '../services/store'
 
 const props = defineProps({
   title: String,
-  property: String,
-  num: String
+  property: String
 })
 
 const hsla = reactive({
@@ -26,7 +25,10 @@ const color = computed(
     `hsla(${hsla.hue}, ${hsla.saturation}%, ${hsla.lightness}%, ${hsla.alpha})`
 )
 
-watch(color, newValue => (store.colors[props.property][props.num] = newValue))
+watch(color, newValue => {
+  const paramsArr = props.property.split('.')
+  store.storage[paramsArr[0]][paramsArr[1]] = newValue
+})
 
 const getNumbersFromString = function (str) {
   return str.match(/[0-9.]+/g)
@@ -43,8 +45,10 @@ const border = computed(() => {
 })
 
 onMounted(() => {
+  const paramsArr = props.property.split('.')
+  console.warn(paramsArr)
   const colorsArr = getNumbersFromString(
-    store.colors[props.property][props.num]
+    store.storage[paramsArr[0]][paramsArr[1]]
   )
   hsla.hue = colorsArr[0]
   hsla.saturation = colorsArr[1]

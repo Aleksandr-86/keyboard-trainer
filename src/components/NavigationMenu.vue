@@ -1,7 +1,6 @@
 <script setup>
-import { computed } from '@vue/reactivity'
-import { getBrowser } from '/src/services/helpers.js'
 import store from '/src/services/store.js'
+import { getBrowser } from '/src/services/helpers.js'
 
 async function fillFieldFromBuffer() {
   document.body.querySelector('#nav-buffer').blur() // removing focus from an element
@@ -12,9 +11,7 @@ async function fillFieldFromBuffer() {
     let str = await navigator.clipboard.readText()
     // str = remEmoji(str) // removing emoji
     if (str === ' ' || str === '') return // buffer is empty
-    // loadBackground(localStorage.backgroundPicture)
     store.loadFragment(str)
-    // initialAdjust()
   } else if (br === 'firefox') {
     // let str = document.querySelector('#input').value
     // charInserter(strPreparer(str), 0)
@@ -24,16 +21,9 @@ async function fillFieldFromBuffer() {
 const toggleSettings = function () {
   store.toggleState('settings')
   if (store.state.settings === false) {
-    store.storage.background = store.data.backgroundPreview
+    store.storage.main.background = store.data.backgroundPreview
   }
 }
-
-// const langOfSnippetsRu = computed(
-//   () => store.storage.langOfSnippets !== 'russian'
-// )
-// const langOfSnippetsEn = computed(
-//   () => store.storage.langOfSnippets !== 'english'
-// )
 </script>
 
 <template>
@@ -43,7 +33,7 @@ const toggleSettings = function () {
     </li>
     <li>
       <a
-        @click="store.randomSnippet(store.storage.langOfSnippets, 160)"
+        @click="store.randomSnippet(store.storage.main.langOfSnippets, 160)"
         id="nav-snippet"
         href="#!"
         >Отрывок</a
@@ -56,7 +46,8 @@ const toggleSettings = function () {
           <a
             @click="store.randomSnippet('russian', 160)"
             :class="{
-              'nav-underscore-none': store.storage.langOfSnippets !== 'russian'
+              'nav-underscore-none':
+                store.storage.main.langOfSnippets !== 'russian'
             }"
             href="#!"
             >На русском языке</a
@@ -66,7 +57,8 @@ const toggleSettings = function () {
           <a
             @click="store.randomSnippet('english', 160)"
             :class="{
-              'nav-underscore-none': store.storage.langOfSnippets !== 'english'
+              'nav-underscore-none':
+                store.storage.main.langOfSnippets !== 'english'
             }"
             href="#!"
             >На английском языке</a

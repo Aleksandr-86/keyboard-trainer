@@ -11,31 +11,31 @@ import store from '/src/services/store.js'
 // import CharMeter from './components/CharMeter.vue'
 
 onMounted(() => {
-  for (const propertyName in store.storage) {
-    if (propertyName === 'background' && localStorage.background) {
-      store.storage.background = localStorage.background
-      store.data.backgroundPreview = store.storage.background
-    } else if (
-      propertyName === 'langOfSnippets' &&
-      localStorage.langOfSnippets
-    ) {
-      store.storage.langOfSnippets = localStorage.langOfSnippets
-    } else if (localStorage[propertyName]) {
-      store.storage[propertyName] = localStorage[propertyName] === 'true'
-    }
-  }
+  // for (const propertyName in store.storage) {
+  //   if (propertyName === 'background' && localStorage.background) {
+  //     store.storage.background = localStorage.background
+  //     store.data.backgroundPreview = store.storage.background
+  //   } else if (
+  //     propertyName === 'langOfSnippets' &&
+  //     localStorage.langOfSnippets
+  //   ) {
+  //     store.storage.langOfSnippets = localStorage.langOfSnippets
+  //   } else if (localStorage[propertyName]) {
+  //     store.storage[propertyName] = localStorage[propertyName] === 'true'
+  //   }
+  // }
 })
 
 const background = computed(
   () =>
     `url('/src/images/backgrounds/normal/${
-      arrBackgrounds[store.storage.background].name
+      arrBackgrounds[store.storage.main.background].name
     }.jpg')`
 )
 
-const fn = function (e) {
-  console.log(e.target)
-}
+// const fn = function (e) {
+//   console.log(e.target)
+// }
 </script>
 
 <template>

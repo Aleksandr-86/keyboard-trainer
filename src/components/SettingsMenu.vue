@@ -88,32 +88,32 @@ const closeSettingMenu = function () {
     <transition :name="direction">
       <div v-if="page === 0" class="settings-page-container">
         <label class="custom-checkbox">
-          <div class="settings-description">Игнорировать регистр букв</div>
+          <div class="settings-description">Учитывать регистр букв</div>
           <input
             type="checkbox"
             id="box1"
-            v-model="store.storage.letterCase"
-            @click="store.toggleStorage('letterCase')" />
+            v-model="store.storage.main.letterCase"
+            @click="store.changeStorage('main')" />
           <div class="check-mark"></div>
         </label>
 
         <label class="custom-checkbox">
-          <div class="settings-description">Скрывать указатели пальцев</div>
+          <div class="settings-description">Отображать указатели пальцев</div>
           <input
             type="checkbox"
             id="box2"
-            v-model="store.storage.pointers"
-            @click.left="store.toggleStorage('pointers')" />
+            v-model="store.storage.visibility.pointers"
+            @click.left="store.changeStorage('visibility')" />
           <span class="check-mark"></span>
         </label>
 
         <label class="custom-checkbox">
-          <div class="settings-description">Скрывать клавиатуру</div>
+          <div class="settings-description">Отображать клавиатуру</div>
           <input
             type="checkbox"
             id="box3"
-            v-model="store.storage.keyboard"
-            @click="store.toggleStorage('keyboard')" />
+            v-model="store.storage.visibility.keyboard"
+            @click="store.changeStorage('visibility')" />
           <span class="check-mark"></span>
         </label>
 
@@ -145,41 +145,58 @@ const closeSettingMenu = function () {
 
     <transition :name="direction">
       <div v-if="page === 1" class="settings-page-container">
+        <div class="settings-category">Цвет:</div>
+        <HslaSlider title="фон поля" property="field.background" />
+        <HslaSlider title="фон символа" property="field.charBackground" />
+        <HslaSlider title="нейтральный символ" property="field.charColor" />
+        <HslaSlider
+          title="верно введённый символ"
+          property="field.charCorrectColor" />
+        <HslaSlider
+          title="неверно введённый символ"
+          property="field.charWrongColor" />
+        <HslaSlider
+          title="ненабираемый символ"
+          property="field.charNeutralColor" />
+        <HslaSlider title="каретка" property="field.caretBackground" />
+        <HslaSlider title="тень каретки" property="field.caretColor" />
+
         <div class="settings-category">Тень:</div>
         <label class="custom-checkbox">
-          <div class="settings-description">символ</div>
+          <div class="settings-description">верно введённый символ</div>
           <input
             type="checkbox"
-            id="box3"
-            v-model="store.storage.keyboard"
-            @click="store.toggleStorage('keyboard')" />
+            id="box4"
+            v-model="store.storage.shadow.charCorrect"
+            @click="store.changeStorage('shadow')" />
           <span class="check-mark"></span>
         </label>
-        <div class="settings-category">Цвет:</div>
-        <HslaSlider title="фон поля" property="field" num="0" />
-        <HslaSlider title="фон символа" property="field" num="1" />
-        <HslaSlider title="нейтральный символ" property="field" num="2" />
-        <HslaSlider title="верно введённый символ" property="field" num="3" />
-        <HslaSlider title="неверно введённый символ" property="field" num="4" />
-        <HslaSlider title="ненабираемый символ" property="field" num="5" />
-        <HslaSlider title="каретка" property="field" num="6" />
-        <HslaSlider title="тень каретки" property="field" num="7" />
+
+        <label class="custom-checkbox">
+          <div class="settings-description">неверно введённый символ</div>
+          <input
+            type="checkbox"
+            id="box5"
+            v-model="store.storage.shadow.charWrong"
+            @click="store.changeStorage('shadow')" />
+          <span class="check-mark"></span>
+        </label>
       </div>
     </transition>
 
     <transition :name="direction">
       <div v-if="page === 2" class="settings-page-container">
         <div class="settings-category">Клавиатура:</div>
-        <HslaSlider title="фон клавиатуры" property="keyboard" num="0" />
-        <HslaSlider title="фон клавиш" property="keyboard" num="1" />
-        <HslaSlider title="текст клавиш" property="keyboard" num="2" />
-        <HslaSlider title="модификатор (Shift)" property="pointers" num="0" />
-        <HslaSlider title="мизинцы" property="pointers" num="1" />
-        <HslaSlider title="безымянные" property="pointers" num="2" />
-        <HslaSlider title="средние" property="pointers" num="3" />
-        <HslaSlider title="левый указательный" property="pointers" num="4" />
-        <HslaSlider title="большие" property="pointers" num="5" />
-        <HslaSlider title="правый указательный" property="pointers" num="6" />
+        <HslaSlider title="фон клавиатуры" property="keyboard.background" />
+        <HslaSlider title="фон клавиш" property="keyboard.keyBackground" />
+        <HslaSlider title="текст клавиш" property="keyboard.keyColor" />
+        <HslaSlider title="модификатор (Shift)" property="keyboard.shift" />
+        <HslaSlider title="мизинцы" property="keyboard.pinky" />
+        <HslaSlider title="безымянные" property="keyboard.ring" />
+        <HslaSlider title="средние" property="keyboard.middle" />
+        <HslaSlider title="левый указательный" property="keyboard.lIndex" />
+        <HslaSlider title="большие" property="keyboard.thumbs" />
+        <HslaSlider title="правый указательный" property="keyboard.rIndex" />
       </div>
     </transition>
   </div>

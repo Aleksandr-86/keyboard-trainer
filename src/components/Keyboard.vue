@@ -144,17 +144,17 @@ const rShift = computed(() => {
   }
 })
 
-const shiftColor = computed(() => store.colors.pointers[0])
-const pinkyFingers = computed(() => store.colors.pointers[1])
-const ringFingers = computed(() => store.colors.pointers[2])
-const middleFingers = computed(() => store.colors.pointers[3])
-const lIndexFinger = computed(() => store.colors.pointers[4])
-const thumbs = computed(() => store.colors.pointers[5])
-const rIndexFinger = computed(() => store.colors.pointers[6])
+const keyboardBackground = computed(() => store.colors.keyboard.background)
+const keyBackground = computed(() => store.colors.keyboard.keyBackground)
+const keyColor = computed(() => store.colors.keyboard.keyColor)
 
-const keyboardBackground = computed(() => store.colors.keyboard[0])
-const keyBackground = computed(() => store.colors.keyboard[1])
-const keyColor = computed(() => store.colors.keyboard[2])
+const shiftColor = computed(() => store.storage.keyboard.shift)
+const pinkyFingers = computed(() => store.storage.keyboard.pinky)
+const ringFingers = computed(() => store.storage.keyboard.ring)
+const middleFingers = computed(() => store.storage.keyboard.middle)
+const lIndexFinger = computed(() => store.storage.keyboard.lIndex)
+const thumbs = computed(() => store.storage.keyboard.thumbs)
+const rIndexFinger = computed(() => store.storage.keyboard.rIndex)
 
 const boardColor = computed(() => {
   if (store.storage.pointers) return
