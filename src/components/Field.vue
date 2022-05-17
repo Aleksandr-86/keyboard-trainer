@@ -172,7 +172,7 @@ onUnmounted(() => {
   height: 5px;
   background: v-bind(caretBackground);
   color: v-bind(caretColor);
-  filter: drop-shadow(3px 2px 2px) brightness(230%);
+  filter: drop-shadow(3px 2px 2px);
 }
 
 .char-correct {
