@@ -11,19 +11,21 @@ import store from '/src/services/store.js'
 // import CharMeter from './components/CharMeter.vue'
 
 onMounted(() => {
-  // for (const propertyName in store.storage) {
-  //   if (propertyName === 'background' && localStorage.background) {
-  //     store.storage.background = localStorage.background
-  //     store.data.backgroundPreview = store.storage.background
-  //   } else if (
-  //     propertyName === 'langOfSnippets' &&
-  //     localStorage.langOfSnippets
-  //   ) {
-  //     store.storage.langOfSnippets = localStorage.langOfSnippets
-  //   } else if (localStorage[propertyName]) {
-  //     store.storage[propertyName] = localStorage[propertyName] === 'true'
-  //   }
-  // }
+  if (localStorage.main) {
+    const obj = JSON.parse(localStorage.main)
+    store.data.backgroundPreview = obj.background
+  }
+
+  for (const key in store.storage) {
+    if (localStorage[key]) {
+      const obj = JSON.parse(localStorage[key])
+
+      for (const property in obj) {
+        store.storage[key][property] = obj[property]
+        // console.warn(obj[property])
+      }
+    }
+  }
 })
 
 const background = computed(

@@ -3,7 +3,7 @@ import { computed } from '@vue/reactivity'
 import store from '/src/services/store.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
 import HslaSlider from '../components/HslaSlider.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const page = ref(0)
 const direction = ref('slide-next')
@@ -44,31 +44,27 @@ const backgroundPreview = computed(
 )
 
 const changeBackground = function (direction) {
-  let background = 0
-  if (localStorage.background) background = Number(localStorage.background)
+  const backgroundPreview = store.data.backgroundPreview
 
   if (direction === 'next') {
-    if (background >= arrBackgrounds.length - 1) {
-      localStorage.background = 0
+    if (backgroundPreview >= arrBackgrounds.length - 1) {
       store.data.backgroundPreview = 0
       return
     }
-    localStorage.background = background + 1
     store.data.backgroundPreview++
   } else if (direction === 'prev') {
-    if (background <= 0) {
-      const length = arrBackgrounds.length - 1
-      localStorage.background = length
-      store.data.backgroundPreview = length
+    if (backgroundPreview <= 0) {
+      store.data.backgroundPreview = arrBackgrounds.length - 1
       return
     }
-    localStorage.background = background - 1
     store.data.backgroundPreview--
   }
 }
 
 const closeSettingMenu = function () {
   store.storage.main.background = store.data.backgroundPreview
+  localStorage.main = JSON.stringify(store.storage.main)
+  localStorage.field = JSON.stringify(store.storage.field)
   store.setFalse('settings')
 }
 </script>
