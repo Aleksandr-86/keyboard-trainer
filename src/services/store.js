@@ -31,8 +31,8 @@ const storage = reactive({
     charCorrectColor: 'hsla(144, 65%, 45%, 1)',
     charWrongColor: 'hsla(0, 100%, 60%, 1)',
     charNeutralColor: 'hsl(180, 100%, 45%, 0.75)',
-    caretBackground: 'hsla(240, 100%, 85%, 0.5)',
-    caretColor: 'hsla(320, 100%, 50%, 1)'
+    caretBackground: 'hsla(35, 100%, 80%, 0.4)',
+    caretColor: 'hsla(35, 100%, 50%, 0.5)'
   },
   keyboard: {
     background: 'hsla(0, 0%, 15%, 1)',

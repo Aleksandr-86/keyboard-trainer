@@ -68,7 +68,7 @@ const changeBackground = function (direction) {
 }
 
 const closeSettingMenu = function () {
-  store.storage.background = store.data.backgroundPreview
+  store.storage.main.background = store.data.backgroundPreview
   store.setFalse('settings')
 }
 </script>
