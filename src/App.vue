@@ -22,7 +22,6 @@ onMounted(() => {
 
       for (const property in obj) {
         store.storage[key][property] = obj[property]
-        // console.warn(obj[property])
       }
     }
   }

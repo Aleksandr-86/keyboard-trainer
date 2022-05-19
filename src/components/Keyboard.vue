@@ -144,9 +144,9 @@ const rShift = computed(() => {
   }
 })
 
-const keyboardBackground = computed(() => store.colors.keyboard.background)
-const keyBackground = computed(() => store.colors.keyboard.keyBackground)
-const keyColor = computed(() => store.colors.keyboard.keyColor)
+const keyboardBackground = computed(() => store.storage.keyboard.background)
+const keyBackground = computed(() => store.storage.keyboard.keyBackground)
+const keyColor = computed(() => store.storage.keyboard.keyColor)
 
 const shiftColor = computed(() => store.storage.keyboard.shift)
 const pinkyFingers = computed(() => store.storage.keyboard.pinky)

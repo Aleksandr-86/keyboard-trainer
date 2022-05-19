@@ -92,10 +92,11 @@ const recordingStatistics = function (e) {
   let char = data.fragmentArr[data.indexArr]
 
   // settings: ignore letter case
-  if (!storage.letterCase) {
+  if (storage.main.letterCase) {
     key = key.toLowerCase()
     char = char.toLowerCase()
   }
+  console.warn(storage.main.letterCase)
 
   data.remainingChars--
   if (key === char) {
@@ -206,8 +207,7 @@ const moveCaret = function () {
 }
 
 const changeStorage = function (property) {
-  const str = JSON.stringify(storage[property])
-  localStorage[property] = str
+  localStorage[property] = JSON.stringify(storage[property])
 }
 
 const clearStat = function () {

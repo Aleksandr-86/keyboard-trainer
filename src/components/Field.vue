@@ -135,7 +135,7 @@ onUnmounted(() => {
   </div>
 
   <Keyboard
-    v-if="!store.storage.keyboard && store.state.work"
+    v-if="store.storage.visibility.keyboard && store.state.work"
     :event-keydown="events.keyDn"
     :target-char="store.data.fragmentArr[store.data.indexArr]"
     :lang="store.data.keyboardLayout" />

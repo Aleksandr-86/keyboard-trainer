@@ -63,8 +63,9 @@ const changeBackground = function (direction) {
 
 const closeSettingMenu = function () {
   store.storage.main.background = store.data.backgroundPreview
-  localStorage.main = JSON.stringify(store.storage.main)
-  localStorage.field = JSON.stringify(store.storage.field)
+  for (const key in store.storage) {
+    localStorage[key] = JSON.stringify(store.storage[key])
+  }
   store.setFalse('settings')
 }
 </script>
@@ -84,7 +85,7 @@ const closeSettingMenu = function () {
     <transition :name="direction">
       <div v-if="page === 0" class="settings-page-container">
         <label class="custom-checkbox">
-          <div class="settings-description">Учитывать регистр букв</div>
+          <div class="settings-description">Игнорировать регистр букв</div>
           <input
             type="checkbox"
             id="box1"
@@ -94,7 +95,7 @@ const closeSettingMenu = function () {
         </label>
 
         <label class="custom-checkbox">
-          <div class="settings-description">Отображать указатели пальцев</div>
+          <div class="settings-description">Скрывать указатели пальцев</div>
           <input
             type="checkbox"
             id="box2"
@@ -104,7 +105,7 @@ const closeSettingMenu = function () {
         </label>
 
         <label class="custom-checkbox">
-          <div class="settings-description">Отображать клавиатуру</div>
+          <div class="settings-description">Скрывать клавиатуру</div>
           <input
             type="checkbox"
             id="box3"
