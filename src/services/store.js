@@ -213,16 +213,16 @@ const clearStat = function () {
 }
 
 const randomSnippet = function (lang, amount) {
-  let arrOfBooks
+  let arrOfBooks = []
+
   if (lang === 'russian') {
     arrOfBooks = bookList.arrOfRusBooks
     storage.main.langOfSnippets = 'russian' // underline the corresponding link in the nav menu
-    // localStorage.main.langOfSnippets = 'russian'
   } else {
     arrOfBooks = bookList.arrOfEngBooks
     storage.main.langOfSnippets = 'english' // underline the corresponding link in the nav menu
-    // localStorage.main.langOfSnippets = 'english'
   }
+  localStorage.main = JSON.stringify(storage.main)
 
   const obj = arrOfBooks[randomNum(0, 4)] // choosing a random book
   data.currentBook = obj

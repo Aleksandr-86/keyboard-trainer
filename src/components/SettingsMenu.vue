@@ -93,22 +93,19 @@ const closeSettingMenu = function () {
 
     <transition :name="direction">
       <div v-if="page === 0" class="settings-page-container">
-        <Checkbox
-          title="Учитывать регистр букв"
-          object="main"
-          property="letterCase" />
+        <Checkbox title="Учитывать регистр букв" obj="main" prop="letterCase" />
         <Checkbox
           title="Отображать текущую статистику"
-          object="visibility"
-          property="currentStatistics" />
+          obj="visibility"
+          prop="currentStatistics" />
         <Checkbox
           title="Отображать клавиатуру"
-          object="visibility"
-          property="keyboard" />
+          obj="visibility"
+          prop="keyboard" />
         <Checkbox
           title="Отображать указатели пальцев"
-          object="visibility"
-          property="pointers" />
+          obj="visibility"
+          prop="pointers" />
 
         <div class="settings-picture">
           <img
@@ -159,16 +156,13 @@ const closeSettingMenu = function () {
         <div class="settings-category">Тень:</div>
         <Checkbox
           title="верно введённый символ"
-          object="shadow"
-          property="charCorrect" />
+          obj="shadow"
+          prop="charCorrect" />
         <Checkbox
           title="неверно введённый символ"
-          object="shadow"
-          property="charWrong" />
-        <Checkbox
-          title="ненабираемый символ"
-          object="shadow"
-          property="charSpecial" />
+          obj="shadow"
+          prop="charWrong" />
+        <Checkbox title="ненабираемый символ" obj="shadow" prop="charSpecial" />
       </div>
     </transition>
 

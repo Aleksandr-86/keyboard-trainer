@@ -5,21 +5,19 @@ import store from '../services/store'
 
 const props = defineProps({
   title: String,
-  object: String,
-  property: String
+  obj: String,
+  prop: String
 })
 
-watch(store.storage[props.object], newValue => {
-  localStorage[props.object] = JSON.stringify(newValue)
+watch(store.storage[props.obj], newValue => {
+  localStorage[props.obj] = JSON.stringify(newValue)
 })
 </script>
 
 <template>
   <label class="checkbox">
     <div class="checkbox-title">{{ props.title }}</div>
-    <input
-      type="checkbox"
-      v-model="store.storage[props.object][props.property]" />
+    <input type="checkbox" v-model="store.storage[props.obj][props.prop]" />
     <span class="check-mark"></span>
   </label>
 </template>
@@ -92,7 +90,7 @@ watch(store.storage[props.object], newValue => {
 
 .checkbox .check-mark:after {
   left: 12px;
-  top: 6px;
+  top: 5px;
   width: 8px;
   height: 17px;
   border: solid white;

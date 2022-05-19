@@ -19,9 +19,6 @@ async function fillFieldFromBuffer() {
 }
 
 const toggleSettings = function () {
-  // for (const key in store.storage) {
-  //   localStorage[key] = JSON.stringify(store.storage[key])
-  // }
   store.toggleState('settings')
   if (store.state.settings === false) {
     store.storage.main.background = store.data.backgroundPreview
