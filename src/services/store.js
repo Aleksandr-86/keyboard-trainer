@@ -25,19 +25,18 @@ const storage = reactive({
     caret: true,
     charCorrect: true,
     charWrong: true,
-    charNeutral: true
+    charSpecial: true
   },
   field: {
     /* цвета поля: фон поля, фон символа, нейтральный символ, верно введённый
   символ, неверно введённый символ, каретка, тень каретки, */
     background: 'hsla(0, 0%, 0%, 0)',
     charBackground: 'hsla(0, 0%, 20%, 0.75)',
-    caretBackground: 'hsla(35, 100%, 80%, 0.4)',
-    caretColor: 'hsla(35, 100%, 50%, 0.5)',
+    caretBackground: 'hsla(280, 85%, 70%, 0.65)',
     charColor: 'hsla(0, 0%, 65%, 1)',
     charCorrectColor: 'hsla(144, 65%, 45%, 1)',
     charWrongColor: 'hsla(0, 100%, 60%, 1)',
-    charNeutralColor: 'hsl(180, 100%, 45%, 0.75)'
+    charSpecialColor: 'hsl(180, 100%, 45%, 0.75)'
   },
   keyboard: {
     background: 'hsla(0, 0%, 15%, 1)',

@@ -23,19 +23,10 @@ const charBackground = computed(() => store.storage.field.charBackground)
 const charColor = computed(() => store.storage.field.charColor)
 const charCorrectColor = computed(() => store.storage.field.charCorrectColor)
 const charWrongColor = computed(() => store.storage.field.charWrongColor)
-const charNeutralColor = computed(() => store.storage.field.charNeutralColor)
+const charSpecialColor = computed(() => store.storage.field.charSpecialColor)
 const caretBackground = computed(() => store.storage.field.caretBackground)
-const caretColor = computed(() => store.storage.field.caretColor)
 
 /** shadows */
-const caretShadow = computed(() => {
-  if (store.storage.shadow.caret) {
-    return 'drop-shadow(3px 2px 2px)'
-  } else {
-    return 'none'
-  }
-})
-
 const charCorrectShadow = computed(() => {
   if (store.storage.shadow.charCorrect) {
     return 'drop-shadow(3px 2px 2px)'
@@ -52,8 +43,8 @@ const charWrongShadow = computed(() => {
   }
 })
 
-const charNeutralShadow = computed(() => {
-  if (store.storage.shadow.charNeutral) {
+const charSpecialShadow = computed(() => {
+  if (store.storage.shadow.charSpecial) {
     return 'drop-shadow(3px 2px 2px)'
   } else {
     return 'none'
@@ -131,12 +122,12 @@ onUnmounted(() => {
       :class="[
         { 'char-caret': index === indexArr % 200 },
         {
-          'char-neutral-active':
+          'char-special-active':
             char !== 'skip' &&
             statArr[index + firstIndex] === '0' &&
             index < indexArr % 200
         },
-        { 'char-neutral-inactive': charTest(char) },
+        { 'char-special-inactive': charTest(char) },
         {
           'char-correct': statArr[index + firstIndex] === '1' && char !== ' '
         },
@@ -206,13 +197,10 @@ onUnmounted(() => {
   width: 36px;
   height: 5px;
   background: v-bind(caretBackground);
-  color: v-bind(caretColor);
-  filter: v-bind(caretShadow);
 }
 
 .char-correct {
   color: v-bind(charCorrectColor);
-  /* filter: drop-shadow(3px 2px 2px) brightness(95%); */
   filter: v-bind(charCorrectShadow);
 }
 
@@ -221,12 +209,12 @@ onUnmounted(() => {
   filter: v-bind(charWrongShadow);
 }
 
-.char-neutral-inactive {
-  color: v-bind(charNeutralColor);
+.char-special-inactive {
+  color: v-bind(charSpecialColor);
 }
 
-.char-neutral-active {
-  color: v-bind(charNeutralColor);
-  filter: v-bind(charNeutralShadow);
+.char-special-active {
+  color: v-bind(charSpecialColor);
+  filter: v-bind(charSpecialShadow);
 }
 </style>

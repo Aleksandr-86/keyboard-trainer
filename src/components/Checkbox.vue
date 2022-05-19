@@ -1,13 +1,17 @@
 <script setup>
 import { computed } from '@vue/reactivity'
+import { watch } from 'vue'
 import store from '../services/store'
 
 const props = defineProps({
   title: String,
+  object: String,
   property: String
 })
 
-const paramsArr = computed(() => props.property.split('.'))
+watch(store.storage[props.object], newValue => {
+  localStorage[props.object] = JSON.stringify(newValue)
+})
 </script>
 
 <template>
@@ -15,8 +19,7 @@ const paramsArr = computed(() => props.property.split('.'))
     <div class="checkbox-title">{{ props.title }}</div>
     <input
       type="checkbox"
-      v-model="store.storage[paramsArr[0]][paramsArr[1]]"
-      @click="store.changeStorage([paramsArr[0]])" />
+      v-model="store.storage[props.object][props.property]" />
     <span class="check-mark"></span>
   </label>
 </template>
@@ -88,10 +91,8 @@ const paramsArr = computed(() => props.property.split('.'))
 }
 
 .checkbox .check-mark:after {
-  /* left: 9px; */
-  left: 11px;
-  /* top: 5px; */
-  top: 5px;
+  left: 12px;
+  top: 6px;
   width: 8px;
   height: 17px;
   border: solid white;

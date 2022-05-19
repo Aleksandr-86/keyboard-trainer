@@ -45,20 +45,29 @@ const backgroundPreview = computed(
 
 const changeBackground = function (direction) {
   const backgroundPreview = store.data.backgroundPreview
+  function saveBackgroundInStorage() {
+    const tempObj = { ...store.storage.main }
+    tempObj.background = store.data.backgroundPreview
+    localStorage.main = JSON.stringify(tempObj)
+  }
 
   if (direction === 'next') {
     if (backgroundPreview >= arrBackgrounds.length - 1) {
       store.data.backgroundPreview = 0
+      saveBackgroundInStorage()
       return
     }
     store.data.backgroundPreview++
   } else if (direction === 'prev') {
     if (backgroundPreview <= 0) {
       store.data.backgroundPreview = arrBackgrounds.length - 1
+      saveBackgroundInStorage()
       return
     }
     store.data.backgroundPreview--
   }
+
+  saveBackgroundInStorage()
 }
 
 const closeSettingMenu = function () {
@@ -84,16 +93,22 @@ const closeSettingMenu = function () {
 
     <transition :name="direction">
       <div v-if="page === 0" class="settings-page-container">
-        <Checkbox title="Учитывать регистр букв" property="main.letterCase" />
+        <Checkbox
+          title="Учитывать регистр букв"
+          object="main"
+          property="letterCase" />
         <Checkbox
           title="Отображать текущую статистику"
-          property="visibility.currentStatistics" />
+          object="visibility"
+          property="currentStatistics" />
         <Checkbox
           title="Отображать клавиатуру"
-          property="visibility.keyboard" />
+          object="visibility"
+          property="keyboard" />
         <Checkbox
           title="Отображать указатели пальцев"
-          property="visibility.pointers" />
+          object="visibility"
+          property="pointers" />
 
         <div class="settings-picture">
           <img
@@ -127,7 +142,6 @@ const closeSettingMenu = function () {
         <HslaSlider title="фон поля" property="field.background" />
         <HslaSlider title="фон символа" property="field.charBackground" />
         <HslaSlider title="фон каретки" property="field.caretBackground" />
-        <HslaSlider title="каретка" property="field.caretColor" />
         <HslaSlider title="нейтральный символ" property="field.charColor" />
         <HslaSlider
           title="верно введённый символ"
@@ -137,17 +151,21 @@ const closeSettingMenu = function () {
           property="field.charWrongColor" />
         <HslaSlider
           title="ненабираемый символ"
-          property="field.charNeutralColor" />
+          property="field.charSpecialColor" />
 
         <div class="settings-category">Тень:</div>
-        <Checkbox title="каретка" property="shadow.caret" />
         <Checkbox
           title="верно введённый символ"
-          property="shadow.charCorrect" />
+          object="shadow"
+          property="charCorrect" />
         <Checkbox
           title="неверно введённый символ"
-          property="shadow.charWrong" />
-        <Checkbox title="ненабираемый символ" property="shadow.charNeutral" />
+          object="shadow"
+          property="charWrong" />
+        <Checkbox
+          title="ненабираемый символ"
+          object="shadow"
+          property="charSpecial" />
       </div>
     </transition>
 
