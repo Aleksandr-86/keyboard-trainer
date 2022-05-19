@@ -1,0 +1,95 @@
+<script setup>
+import { computed } from '@vue/reactivity'
+import store from '../services/store'
+
+const props = defineProps({
+  title: String,
+  property: String
+})
+
+const paramsArr = computed(() => props.property.split('.'))
+</script>
+
+<template>
+  <label class="checkbox">
+    <div class="checkbox-title">{{ props.title }}</div>
+    <input
+      type="checkbox"
+      v-model="store.storage[paramsArr[0]][paramsArr[1]]"
+      @click="store.changeStorage([paramsArr[0]])" />
+    <span class="check-mark"></span>
+  </label>
+</template>
+
+<style scoped>
+.checkbox {
+  display: block;
+
+  /* width: 398px; */
+  height: 37px;
+  border-radius: 7px;
+  margin-right: 12px;
+  position: relative;
+  padding-right: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 25px;
+  user-select: none;
+}
+
+.checkbox:hover {
+  background: hsl(120, 20%, 25%);
+}
+
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-title {
+  text-align: left;
+  margin-bottom: 2px;
+}
+
+.check-mark {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  height: 25px;
+  width: 25px;
+  background-color: hsl(0, 0%, 93%);
+}
+
+.checkbox:hover input ~ .check-mark {
+  background-color: lightgreen;
+}
+
+.checkbox input:checked ~ .check-mark {
+  background-color: limegreen;
+}
+
+.check-mark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.checkbox input:checked ~ .check-mark:after {
+  display: block;
+}
+
+.checkbox .check-mark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+</style>

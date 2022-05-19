@@ -73,26 +73,11 @@ const data = reactive({
   backgroundPreview: 0
 })
 
-const colors = reactive({
-  /* цвета указателей пальцев: мизинцев, безымянных, средних, 
-  левого указательного, больших, правого указательного, модификатора (shift) */
-  // pointers: {
-  //   shift: 'hsla(300, 80%, 40%, 1)',
-  //   pinky: 'hsla(300, 60%, 40%, 1)',
-  //   ring: 'hsla(60, 80%, 35%, 1)',
-  //   middle: 'hsla(120, 80%, 33%, 1)',
-  //   lIndex: 'hsla(180, 100%, 35%, 1)',
-  //   thumb: 'hsla(0, 0%, 70%, 1)',
-  //   rIndex: 'hsla(0, 75%, 50%, 1)'
-  // }
-})
-
 const recordingStatistics = function (e) {
   let key = e.key
   let char = data.fragmentArr[data.indexArr]
 
-  // settings: ignore letter case
-  if (storage.main.letterCase) {
+  if (!storage.main.letterCase) {
     key = key.toLowerCase()
     char = char.toLowerCase()
   }
@@ -252,7 +237,6 @@ export default {
   state,
   data,
   storage,
-  colors,
   recordingStatistics,
   toggleState,
   setTrue,

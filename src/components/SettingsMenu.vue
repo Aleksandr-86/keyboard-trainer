@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import store from '/src/services/store.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
 import HslaSlider from '../components/HslaSlider.vue'
+import Checkbox from '../components/Checkbox.vue'
 
 const page = ref(0)
 const direction = ref('slide-next')
@@ -83,41 +84,16 @@ const closeSettingMenu = function () {
 
     <transition :name="direction">
       <div v-if="page === 0" class="settings-page-container">
-        <label class="custom-checkbox">
-          <div class="settings-description">Учитывать регистр букв</div>
-          <input
-            type="checkbox"
-            v-model="store.storage.main.letterCase"
-            @click="store.changeStorage('main')" />
-          <div class="check-mark"></div>
-        </label>
-
-        <label class="custom-checkbox">
-          <div class="settings-description">Отображать текущую статистику</div>
-          <input
-            type="checkbox"
-            v-model="store.storage.visibility.currentStatistics"
-            @click="store.changeStorage('visibility')" />
-          <span class="check-mark"></span>
-        </label>
-
-        <label class="custom-checkbox">
-          <div class="settings-description">Отображать клавиатуру</div>
-          <input
-            type="checkbox"
-            v-model="store.storage.visibility.keyboard"
-            @click="store.changeStorage('visibility')" />
-          <span class="check-mark"></span>
-        </label>
-
-        <label class="custom-checkbox">
-          <div class="settings-description">Отображать указатели пальцев</div>
-          <input
-            type="checkbox"
-            v-model="store.storage.visibility.pointers"
-            @click.left="store.changeStorage('visibility')" />
-          <span class="check-mark"></span>
-        </label>
+        <Checkbox title="Учитывать регистр букв" property="main.letterCase" />
+        <Checkbox
+          title="Отображать текущую статистику"
+          property="visibility.currentStatistics" />
+        <Checkbox
+          title="Отображать клавиатуру"
+          property="visibility.keyboard" />
+        <Checkbox
+          title="Отображать указатели пальцев"
+          property="visibility.pointers" />
 
         <div class="settings-picture">
           <img
@@ -242,7 +218,7 @@ const closeSettingMenu = function () {
   position: absolute;
   top: 0;
   left: 0;
-  background: hsl(40, 2%, 22%);
+  background: hsl(120, 2%, 22%);
   color: hsl(0, 0%, 78%);
   width: 455px;
   height: 100vh;
@@ -307,71 +283,6 @@ const closeSettingMenu = function () {
 }
 
 /* checkbox */
-.custom-checkbox {
-  display: block;
-  position: relative;
-  padding-right: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 25px;
-  user-select: none;
-}
-
-.custom-checkbox:hover {
-  background-color: red;
-}
-
-.custom-checkbox input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.check-mark {
-  position: absolute;
-  top: 3px;
-  right: 0;
-  height: 25px;
-  width: 25px;
-  background-color: hsl(0, 0%, 93%);
-}
-
-#box5,
-#box6 {
-  margin-right: 12px;
-}
-
-.custom-checkbox:hover input ~ .check-mark {
-  background-color: lightgreen;
-}
-
-.custom-checkbox input:checked ~ .check-mark {
-  background-color: limegreen;
-}
-
-.check-mark:after {
-  content: '';
-  position: absolute;
-  display: none;
-}
-
-.custom-checkbox input:checked ~ .check-mark:after {
-  display: block;
-}
-
-.custom-checkbox .check-mark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
 
 .settings-picture {
   display: flex;

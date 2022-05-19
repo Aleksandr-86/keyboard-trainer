@@ -174,7 +174,7 @@ onMounted(() => {
 }
 
 .slider-title-container:hover {
-  background: hsl(40, 40%, 25%);
+  background: hsl(120, 20%, 25%);
   border-radius: 7px;
 }
 
