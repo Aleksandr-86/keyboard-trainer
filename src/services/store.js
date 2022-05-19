@@ -20,7 +20,7 @@ const state = reactive({
 
 const storage = reactive({
   main: { background: 0, letterCase: true, langOfSnippets: 'russian' },
-  visibility: { keyboard: true, pointers: true },
+  visibility: { currentStatistics: true, keyboard: true, pointers: true },
   shadow: { charCorrect: true, charWrong: true, charNeutral: true },
   field: {
     /* цвета поля: фон поля, фон символа, нейтральный символ, верно введённый
@@ -96,7 +96,6 @@ const recordingStatistics = function (e) {
     key = key.toLowerCase()
     char = char.toLowerCase()
   }
-  console.warn(storage.main.letterCase)
 
   data.remainingChars--
   if (key === char) {

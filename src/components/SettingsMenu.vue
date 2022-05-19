@@ -87,19 +87,17 @@ const closeSettingMenu = function () {
           <div class="settings-description">Учитывать регистр букв</div>
           <input
             type="checkbox"
-            id="box1"
             v-model="store.storage.main.letterCase"
             @click="store.changeStorage('main')" />
           <div class="check-mark"></div>
         </label>
 
         <label class="custom-checkbox">
-          <div class="settings-description">Отображать указатели пальцев</div>
+          <div class="settings-description">Отображать текущую статистику</div>
           <input
             type="checkbox"
-            id="box2"
-            v-model="store.storage.visibility.pointers"
-            @click.left="store.changeStorage('visibility')" />
+            v-model="store.storage.visibility.currentStatistics"
+            @click="store.changeStorage('visibility')" />
           <span class="check-mark"></span>
         </label>
 
@@ -107,9 +105,17 @@ const closeSettingMenu = function () {
           <div class="settings-description">Отображать клавиатуру</div>
           <input
             type="checkbox"
-            id="box3"
             v-model="store.storage.visibility.keyboard"
             @click="store.changeStorage('visibility')" />
+          <span class="check-mark"></span>
+        </label>
+
+        <label class="custom-checkbox">
+          <div class="settings-description">Отображать указатели пальцев</div>
+          <input
+            type="checkbox"
+            v-model="store.storage.visibility.pointers"
+            @click.left="store.changeStorage('visibility')" />
           <span class="check-mark"></span>
         </label>
 
@@ -162,10 +168,9 @@ const closeSettingMenu = function () {
           <div class="settings-description">верно введённый символ</div>
           <input
             type="checkbox"
-            id="box4"
             v-model="store.storage.shadow.charCorrect"
             @click="store.changeStorage('shadow')" />
-          <span class="check-mark"></span>
+          <span class="check-mark" id="box5"></span>
         </label>
 
         <label class="custom-checkbox">
@@ -175,7 +180,7 @@ const closeSettingMenu = function () {
             id="box5"
             v-model="store.storage.shadow.charWrong"
             @click="store.changeStorage('shadow')" />
-          <span class="check-mark"></span>
+          <span class="check-mark" id="box6"></span>
         </label>
       </div>
     </transition>
@@ -312,6 +317,10 @@ const closeSettingMenu = function () {
   user-select: none;
 }
 
+.custom-checkbox:hover {
+  background-color: red;
+}
+
 .custom-checkbox input {
   position: absolute;
   opacity: 0;
@@ -327,6 +336,11 @@ const closeSettingMenu = function () {
   height: 25px;
   width: 25px;
   background-color: hsl(0, 0%, 93%);
+}
+
+#box5,
+#box6 {
+  margin-right: 12px;
 }
 
 .custom-checkbox:hover input ~ .check-mark {

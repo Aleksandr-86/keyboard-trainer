@@ -106,7 +106,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <CurrentStatistics />
+  <CurrentStatistics v-if="store.storage.visibility.currentStatistics" />
   <div class="field">
     <div
       v-for="(char, index) in charsArr"
@@ -135,7 +135,7 @@ onUnmounted(() => {
   </div>
 
   <Keyboard
-    v-if="store.storage.visibility.keyboard && store.state.work"
+    v-if="store.storage.visibility.keyboard"
     :event-keydown="events.keyDn"
     :target-char="store.data.fragmentArr[store.data.indexArr]"
     :lang="store.data.keyboardLayout" />
