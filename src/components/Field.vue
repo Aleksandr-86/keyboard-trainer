@@ -44,6 +44,14 @@ const charWrongShadow = computed(() => {
   }
 })
 
+const charNeutralShadow = computed(() => {
+  if (store.storage.shadow.charNeutral) {
+    return 'drop-shadow(3px 2px 2px)'
+  } else {
+    return 'none'
+  }
+})
+
 // chars for field
 const charsArr = computed(() =>
   store.data.fragmentArr.slice(
@@ -211,6 +219,6 @@ onUnmounted(() => {
 
 .char-neutral-active {
   color: v-bind(charNeutralColor);
-  filter: drop-shadow(3px 2px 2px);
+  filter: v-bind(charNeutralShadow);
 }
 </style>

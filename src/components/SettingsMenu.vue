@@ -140,24 +140,13 @@ const closeSettingMenu = function () {
         <HslaSlider title="тень каретки" property="field.caretColor" />
 
         <div class="settings-category">Тень:</div>
-        <label class="custom-checkbox">
-          <div class="settings-description">верно введённый символ</div>
-          <input
-            type="checkbox"
-            v-model="store.storage.shadow.charCorrect"
-            @click="store.changeStorage('shadow')" />
-          <span class="check-mark" id="box5"></span>
-        </label>
-
-        <label class="custom-checkbox">
-          <div class="settings-description">неверно введённый символ</div>
-          <input
-            type="checkbox"
-            id="box5"
-            v-model="store.storage.shadow.charWrong"
-            @click="store.changeStorage('shadow')" />
-          <span class="check-mark" id="box6"></span>
-        </label>
+        <Checkbox
+          title="верно введённый символ"
+          property="shadow.charCorrect" />
+        <Checkbox
+          title="неверно введённый символ"
+          property="shadow.charWrong" />
+        <Checkbox title="ненабираемый символ" property="shadow.charNeutral" />
       </div>
     </transition>
 
@@ -331,23 +320,4 @@ const closeSettingMenu = function () {
   margin-right: 10px;
   padding-left: 7px;
 }
-/* #settings-btn-prev,
-#settings-btn-next {
-  width: 30px;
-  background: rgb(100, 100, 100);
-}
-
-#settings-btn-prev {
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-}
-
-#settings-btn-next {
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-} */
-
-/* .settings-picture div {
-  width: 320px;
-} */
 </style>

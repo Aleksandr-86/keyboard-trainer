@@ -23,15 +23,16 @@ const paramsArr = computed(() => props.property.split('.'))
 
 <style scoped>
 .checkbox {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  /* width: 398px; */
   height: 37px;
   border-radius: 7px;
-  margin-right: 12px;
+  margin-right: 9px;
   position: relative;
-  padding-right: 35px;
-  margin-bottom: 12px;
+  padding-right: 3px;
+  /* margin-bottom: 12px; */
   cursor: pointer;
   font-size: 25px;
   user-select: none;
@@ -55,8 +56,9 @@ const paramsArr = computed(() => props.property.split('.'))
 }
 
 .check-mark {
-  position: absolute;
-  top: 3px;
+  /* position: absolute; */
+  position: relative;
+  /* top: 3px; */
   right: 0;
   height: 25px;
   width: 25px;
