@@ -73,7 +73,7 @@ const toggleSettings = function () {
   </ul>
 </template>
 
-<style>
+<style scoped>
 .nav {
   background: rgba(20, 20, 20, 0.8);
   display: flex;

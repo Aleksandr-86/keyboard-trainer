@@ -2,8 +2,6 @@
 import { onUnmounted } from 'vue'
 import store from '../services/store.js'
 import { rnd } from '../services/helpers.js'
-import { msToMinutes } from '../services/helpers.js'
-import { computed } from '@vue/reactivity'
 
 const numCorrect = store.data.numCorrect
 const numWrong = store.data.numWrong
@@ -97,7 +95,7 @@ const withoutMistake = store.data.numWrong === 0
     class="stat-overlay"></div>
 </template>
 
-<style>
+<style scoped>
 .stat-overlay {
   position: absolute;
   top: 0;

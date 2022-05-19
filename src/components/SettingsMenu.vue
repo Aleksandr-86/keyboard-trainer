@@ -1,9 +1,8 @@
 <script setup>
-import { computed } from '@vue/reactivity'
+import { computed, ref } from 'vue'
 import store from '/src/services/store.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
 import HslaSlider from '../components/HslaSlider.vue'
-import { onMounted, ref } from 'vue'
 
 const page = ref(0)
 const direction = ref('slide-next')
@@ -85,7 +84,7 @@ const closeSettingMenu = function () {
     <transition :name="direction">
       <div v-if="page === 0" class="settings-page-container">
         <label class="custom-checkbox">
-          <div class="settings-description">Игнорировать регистр букв</div>
+          <div class="settings-description">Учитывать регистр букв</div>
           <input
             type="checkbox"
             id="box1"
@@ -95,7 +94,7 @@ const closeSettingMenu = function () {
         </label>
 
         <label class="custom-checkbox">
-          <div class="settings-description">Скрывать указатели пальцев</div>
+          <div class="settings-description">Отображать указатели пальцев</div>
           <input
             type="checkbox"
             id="box2"
@@ -105,7 +104,7 @@ const closeSettingMenu = function () {
         </label>
 
         <label class="custom-checkbox">
-          <div class="settings-description">Скрывать клавиатуру</div>
+          <div class="settings-description">Отображать клавиатуру</div>
           <input
             type="checkbox"
             id="box3"

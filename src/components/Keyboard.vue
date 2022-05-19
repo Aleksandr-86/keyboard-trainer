@@ -1,21 +1,13 @@
 <script setup>
-import { computed, reactive } from '@vue/reactivity'
+import { computed } from '@vue/reactivity'
 import store from '../services/store'
 import { isUpCase } from '../services/helpers.js'
-// import CharMeter from './CharMeter.vue'
 
 const props = defineProps({
   eventKeydown: {},
   targetChar: String,
   lang: String
 })
-
-// const shift = reactive({
-//   leftBorder: 'neutral',
-//   leftColor: String,
-//   rightBorder: String,
-//   rightColor: String
-// })
 
 const keyboardArr = [
   {
@@ -102,16 +94,13 @@ const langIndex = computed(() => {
     return 1
   }
 })
-// const keyCode = computed(
-//   () => props.eventKeydown.code && props.eventKeydown.code.toLowerCase()
-// )
 
 const keyValue = computed(
   () => props.eventKeydown.key && props.eventKeydown.key.toLowerCase()
 )
 
 const lShift = computed(() => {
-  if (store.storage.pointers) return
+  if (!store.storage.visibility.pointers) return
 
   const rChars = keyboardArr[1].chars[langIndex.value]
   const rSigns = keyboardArr[1].signs[langIndex.value]
@@ -128,7 +117,7 @@ const lShift = computed(() => {
 })
 
 const rShift = computed(() => {
-  if (store.storage.pointers) return
+  if (!store.storage.visibility.pointers) return
 
   const lChars = keyboardArr[0].chars[langIndex.value]
   const lSigns = keyboardArr[0].signs[langIndex.value]
@@ -157,35 +146,31 @@ const thumbs = computed(() => store.storage.keyboard.thumbs)
 const rIndexFinger = computed(() => store.storage.keyboard.rIndex)
 
 const boardColor = computed(() => {
-  if (store.storage.pointers) return
+  if (!store.storage.visibility.pointers) return
 
   let targetChar = store.data.fragmentArr[store.data.indexArr]
 
   targetChar = targetChar.toLowerCase()
   if (props.lang === 'russian') {
     if (/[ё1!йфя0)зж.,\-_хэ=+ъ\\/]/.test(targetChar)) {
-      return 'hsla(300, 60%, 40%, 1)'
+      return pinkyFingers.value
     } else if (/[2"цыч9(щдю]/.test(targetChar)) {
-      return 'hsla(60, 80%, 35%, 1)'
+      return ringFingers.value
     } else if (/[3№увс8*шлб]/.test(targetChar)) {
-      return 'hsla(120, 80%, 33%, 1)'
+      return middleFingers.value
     } else if (/[4;кам5%епи6:]/.test(targetChar)) {
-      return 'hsla(180, 100%, 35%, 1)'
+      return lIndexFinger.value
     } else if (/[7?нртгоь]/.test(targetChar)) {
-      return 'hsla(0, 75%, 50%, 1)'
+      return rIndexFinger.value
     }
   } else if (props.lang === 'english') {
     if (/[`~1!qaz0)p;:/?\-_\[{'"=+\]}\\|]/.test(targetChar)) {
-      // return 'hsla(300, 60%, 40%, 1)'
       return pinkyFingers.value
     } else if (/[2@wsx9(ol.>]/.test(targetChar)) {
-      // return 'hsla(60, 80%, 35%, 1)'
       return ringFingers.value
     } else if (/[3#edc8*ik,<]/.test(targetChar)) {
-      // return 'hsla(120, 80%, 33%, 1)'
       return middleFingers.value
     } else if (/[4$rfv5%tgb6^]/.test(targetChar)) {
-      // return 'hsla(180, 100%, 35%, 1)'
       return lIndexFinger.value
     } else if (/[7&yhnujm]/.test(targetChar)) {
       return rIndexFinger.value
@@ -217,7 +202,6 @@ const boardColor = computed(() => {
             (obj.code === 'ShiftRight' && rShift)
         },
         {
-          // 'button-marked': value[langIndex].includes(targetChar.toLowerCase())
           'button-marked-border':
             obj.value[langIndex] === targetChar.toLowerCase() ||
             (obj.value[langIndex].length === 2 &&

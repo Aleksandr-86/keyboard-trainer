@@ -1,10 +1,6 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import { onUnmounted } from 'vue'
-import { msToMinutes } from '../services/helpers.js'
 import store from '../services/store'
-import CharMeter from './CharMeter.vue'
-import { reactive } from 'vue'
 
 const tempWithoutMistake = computed(() => store.data.tempWithoutMistake)
 const withoutMistake = computed(() => store.data.withoutMistake)
@@ -51,7 +47,7 @@ const elapsedTime = computed(() => store.data.elapsedTime === 0)
   </div>
 </template>
 
-<style>
+<style scoped>
 .hide-leave-active {
   transition: all 1.4s linear;
 }

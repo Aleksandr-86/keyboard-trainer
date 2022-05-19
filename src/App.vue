@@ -1,14 +1,11 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
+import store from '/src/services/store.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
-import { computed } from '@vue/reactivity'
 import NavigationMenu from './components/NavigationMenu.vue'
-// import Background from './components/Background.vue'
 import SettingsMenu from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
 import OverallStatistics from './components/OverallStatistics.vue'
-import store from '/src/services/store.js'
-// import CharMeter from './components/CharMeter.vue'
 
 onMounted(() => {
   if (localStorage.main) {

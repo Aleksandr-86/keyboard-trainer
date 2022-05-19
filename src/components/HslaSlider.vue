@@ -58,7 +58,6 @@ onMounted(() => {
 
 <template>
   <div v-click-outside="() => (hsla.flag = false)" class="slider-container">
-    <!-- <div class="slider-container"> -->
     <div @click="toggleSlider" class="slider-title-container">
       <div class="slider-title">{{ props.title }}</div>
       <div class="slider-sample"></div>
