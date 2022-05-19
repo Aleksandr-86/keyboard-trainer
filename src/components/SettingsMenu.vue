@@ -10,9 +10,9 @@ const direction = ref('slide-next')
 
 const title = computed(() => {
   if (page.value === 0) {
-    return 'Общие настройки'
+    return 'Общая настройка'
   } else if (page.value === 1) {
-    return 'Настройки поля'
+    return 'Настройка поля'
   } else if (page.value === 2) {
     return 'Цвета указателей пальцев'
   }
@@ -126,6 +126,8 @@ const closeSettingMenu = function () {
         <div class="settings-category">Цвет:</div>
         <HslaSlider title="фон поля" property="field.background" />
         <HslaSlider title="фон символа" property="field.charBackground" />
+        <HslaSlider title="фон каретки" property="field.caretBackground" />
+        <HslaSlider title="каретка" property="field.caretColor" />
         <HslaSlider title="нейтральный символ" property="field.charColor" />
         <HslaSlider
           title="верно введённый символ"
@@ -136,10 +138,9 @@ const closeSettingMenu = function () {
         <HslaSlider
           title="ненабираемый символ"
           property="field.charNeutralColor" />
-        <HslaSlider title="каретка" property="field.caretBackground" />
-        <HslaSlider title="тень каретки" property="field.caretColor" />
 
         <div class="settings-category">Тень:</div>
+        <Checkbox title="каретка" property="shadow.caret" />
         <Checkbox
           title="верно введённый символ"
           property="shadow.charCorrect" />

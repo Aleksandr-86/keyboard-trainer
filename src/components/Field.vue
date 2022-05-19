@@ -28,6 +28,14 @@ const caretBackground = computed(() => store.storage.field.caretBackground)
 const caretColor = computed(() => store.storage.field.caretColor)
 
 /** shadows */
+const caretShadow = computed(() => {
+  if (store.storage.shadow.caret) {
+    return 'drop-shadow(3px 2px 2px)'
+  } else {
+    return 'none'
+  }
+})
+
 const charCorrectShadow = computed(() => {
   if (store.storage.shadow.charCorrect) {
     return 'drop-shadow(3px 2px 2px)'
@@ -199,7 +207,7 @@ onUnmounted(() => {
   height: 5px;
   background: v-bind(caretBackground);
   color: v-bind(caretColor);
-  filter: drop-shadow(3px 2px 2px);
+  filter: v-bind(caretShadow);
 }
 
 .char-correct {

@@ -26,13 +26,14 @@ const paramsArr = computed(() => props.property.split('.'))
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 
   height: 37px;
   border-radius: 7px;
-  margin-right: 9px;
-  position: relative;
-  padding-right: 3px;
-  /* margin-bottom: 12px; */
+  margin-right: 6px;
+
+  padding: 0 1px 0 2px;
+  margin-bottom: 12px;
   cursor: pointer;
   font-size: 25px;
   user-select: none;
@@ -60,13 +61,16 @@ const paramsArr = computed(() => props.property.split('.'))
   position: relative;
   /* top: 3px; */
   right: 0;
-  height: 25px;
-  width: 25px;
+  /* height: 25px;
+  width: 25px; */
+  height: 35px;
+  width: 35px;
   background-color: hsl(0, 0%, 93%);
+  border-radius: 7px;
 }
 
 .checkbox:hover input ~ .check-mark {
-  background-color: lightgreen;
+  background-color: hsl(120, 73%, 90%);
 }
 
 .checkbox input:checked ~ .check-mark {
@@ -84,12 +88,14 @@ const paramsArr = computed(() => props.property.split('.'))
 }
 
 .checkbox .check-mark:after {
-  left: 9px;
+  /* left: 9px; */
+  left: 11px;
+  /* top: 5px; */
   top: 5px;
-  width: 5px;
-  height: 10px;
+  width: 8px;
+  height: 17px;
   border: solid white;
-  border-width: 0 3px 3px 0;
+  border-width: 0 4px 4px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
