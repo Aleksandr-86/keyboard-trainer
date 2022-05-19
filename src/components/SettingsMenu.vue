@@ -139,19 +139,22 @@ const closeSettingMenu = function () {
     <transition :name="direction">
       <div v-if="page === 1" class="settings-page-container">
         <div class="settings-category">Цвет:</div>
-        <HslaSlider title="фон поля" property="field.background" />
-        <HslaSlider title="фон символа" property="field.charBackground" />
-        <HslaSlider title="фон каретки" property="field.caretBackground" />
-        <HslaSlider title="нейтральный символ" property="field.charColor" />
+        <HslaSlider title="фон поля" obj="field" prop="background" />
+        <HslaSlider title="фон символа" obj="field" prop="charBackground" />
+        <HslaSlider title="фон каретки" obj="field" prop="caretBackground" />
+        <HslaSlider title="нейтральный символ" obj="field" prop="charColor" />
         <HslaSlider
           title="верно введённый символ"
-          property="field.charCorrectColor" />
+          obj="field"
+          prop="charCorrectColor" />
         <HslaSlider
           title="неверно введённый символ"
-          property="field.charWrongColor" />
+          obj="field"
+          prop="charWrongColor" />
         <HslaSlider
           title="ненабираемый символ"
-          property="field.charSpecialColor" />
+          obj="field"
+          prop="charSpecialColor" />
 
         <div class="settings-category">Тень:</div>
         <Checkbox
@@ -172,16 +175,16 @@ const closeSettingMenu = function () {
     <transition :name="direction">
       <div v-if="page === 2" class="settings-page-container">
         <div class="settings-category">Клавиатура:</div>
-        <HslaSlider title="фон клавиатуры" property="keyboard.background" />
-        <HslaSlider title="фон клавиш" property="keyboard.keyBackground" />
-        <HslaSlider title="текст клавиш" property="keyboard.keyColor" />
-        <HslaSlider title="модификатор (Shift)" property="keyboard.shift" />
-        <HslaSlider title="мизинцы" property="keyboard.pinky" />
-        <HslaSlider title="безымянные" property="keyboard.ring" />
-        <HslaSlider title="средние" property="keyboard.middle" />
-        <HslaSlider title="левый указательный" property="keyboard.lIndex" />
-        <HslaSlider title="большие" property="keyboard.thumbs" />
-        <HslaSlider title="правый указательный" property="keyboard.rIndex" />
+        <HslaSlider title="фон клавиатуры" obj="keyboard" prop="background" />
+        <HslaSlider title="фон клавиш" obj="keyboard" prop="keyBackground" />
+        <HslaSlider title="текст клавиш" obj="keyboard" prop="keyColor" />
+        <HslaSlider title="модификатор (Shift)" obj="keyboard" prop="shift" />
+        <HslaSlider title="мизинцы" obj="keyboard" prop="pinky" />
+        <HslaSlider title="безымянные" obj="keyboard" prop="ring" />
+        <HslaSlider title="средние" obj="keyboard" prop="middle" />
+        <HslaSlider title="левый указательный" obj="keyboard" prop="lIndex" />
+        <HslaSlider title="большие" obj="keyboard" prop="thumbs" />
+        <HslaSlider title="правый указательный" obj="keyboard" prop="rIndex" />
       </div>
     </transition>
   </div>

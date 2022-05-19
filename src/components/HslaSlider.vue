@@ -4,7 +4,8 @@ import store from '../services/store'
 
 const props = defineProps({
   title: String,
-  property: String
+  obj: String,
+  prop: String
 })
 
 const hsla = reactive({
@@ -26,8 +27,7 @@ const color = computed(
 )
 
 watch(color, newValue => {
-  const paramsArr = props.property.split('.')
-  store.storage[paramsArr[0]][paramsArr[1]] = newValue
+  store.storage[props.obj][props.prop] = newValue
 })
 
 const getNumbersFromString = function (str) {
@@ -44,11 +44,12 @@ const border = computed(() => {
   }
 })
 
+const saveToStorage = function () {
+  localStorage[props.obj] = JSON.stringify(store.storage[props.obj])
+}
+
 onMounted(() => {
-  const paramsArr = props.property.split('.')
-  const colorsArr = getNumbersFromString(
-    store.storage[paramsArr[0]][paramsArr[1]]
-  )
+  const colorsArr = getNumbersFromString(store.storage[props.obj][props.prop])
   hsla.hue = colorsArr[0]
   hsla.saturation = colorsArr[1]
   hsla.lightness = colorsArr[2]
@@ -75,7 +76,8 @@ onMounted(() => {
               class="slider-input"
               id="hue"
               min="0"
-              max="360" />
+              max="360"
+              @mouseup="saveToStorage" />
             <div class="slider-chess-background"></div>
           </div>
           <label class="slider-label" for="hue">{{ hsla.hue }}</label>
@@ -90,7 +92,8 @@ onMounted(() => {
               class="slider-input"
               id="saturation"
               min="0"
-              max="100" />
+              max="100"
+              @mouseup="saveToStorage" />
             <div class="slider-chess-background"></div>
           </div>
           <label class="slider-label" for="saturation">{{
@@ -107,7 +110,8 @@ onMounted(() => {
               class="slider-input"
               id="lightness"
               min="0"
-              max="100" />
+              max="100"
+              @mouseup="saveToStorage" />
             <div class="slider-chess-background"></div>
           </div>
           <label class="slider-label" for="lightness">{{
@@ -125,7 +129,8 @@ onMounted(() => {
               id="alpha"
               min="0"
               max="1"
-              step="0.01" />
+              step="0.01"
+              @mouseup="saveToStorage" />
             <div class="slider-chess-background"></div>
           </div>
           <label class="slider-label" for="alpha">{{ hsla.alpha }}</label>
