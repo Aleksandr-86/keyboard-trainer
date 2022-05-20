@@ -144,12 +144,12 @@ h4 {
 
 .stat-green {
   /* color: hsl(135, 100%, 30%); */
-  color: hsl(135, 100%, 30%);
+  color: hsl(135, 100%, 25%);
   margin-left: 1vh;
 }
 
 .stat-red {
-  color: hsl(0, 100%, 35%);
+  color: hsl(0, 100%, 30%);
   margin-left: 1vh;
 }
 
@@ -174,7 +174,7 @@ h4 {
 
 .stat-ms {
   position: fixed;
-  color: hsl(240, 100%, 40%);
+  color: hsl(240, 100%, 30%);
   font-weight: bold;
 }
 

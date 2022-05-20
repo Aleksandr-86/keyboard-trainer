@@ -12,12 +12,12 @@ const events = reactive({
   capsLock: false
 })
 
-/** stats */
+//  stats
 const statArr = computed(() => store.data.statArr)
 const indexArr = computed(() => store.data.indexArr)
 const firstIndex = computed(() => store.data.firstIndex)
 
-/** colors */
+// colors
 const fieldBackground = computed(() => store.storage.field.background)
 const charBackground = computed(() => store.storage.field.charBackground)
 const charColor = computed(() => store.storage.field.charColor)
@@ -26,7 +26,7 @@ const charWrongColor = computed(() => store.storage.field.charWrongColor)
 const charSpecialColor = computed(() => store.storage.field.charSpecialColor)
 const caretBackground = computed(() => store.storage.field.caretBackground)
 
-/** shadows */
+// shadows
 const charCorrectShadow = computed(() => {
   if (store.storage.shadow.charCorrect) {
     return 'drop-shadow(3px 2px 2px)'
@@ -34,6 +34,9 @@ const charCorrectShadow = computed(() => {
     return 'none'
   }
 })
+
+// blur
+const fieldBlur = computed(() => `blur(${store.storage.blur.field}px)`)
 
 const charWrongShadow = computed(() => {
   if (store.storage.shadow.charWrong) {
@@ -164,7 +167,7 @@ onUnmounted(() => {
   height: 380px;
   margin: 5px auto 50px;
   outline: none;
-  backdrop-filter: blur(200px);
+  backdrop-filter: v-bind(fieldBlur);
   background-color: v-bind(fieldBackground);
   user-select: none;
 }

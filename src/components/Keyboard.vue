@@ -95,13 +95,7 @@ const langIndex = computed(() => {
   }
 })
 
-const keyValue = computed(
-  () => props.eventKeydown.key && props.eventKeydown.key.toLowerCase()
-)
-
 const lShift = computed(() => {
-  if (!store.storage.visibility.pointers) return
-
   const rChars = keyboardArr[1].chars[langIndex.value]
   const rSigns = keyboardArr[1].signs[langIndex.value]
   let targetChar = store.data.fragmentArr[store.data.indexArr]
@@ -117,8 +111,6 @@ const lShift = computed(() => {
 })
 
 const rShift = computed(() => {
-  if (!store.storage.visibility.pointers) return
-
   const lChars = keyboardArr[0].chars[langIndex.value]
   const lSigns = keyboardArr[0].signs[langIndex.value]
   let targetChar = store.data.fragmentArr[store.data.indexArr]
@@ -146,8 +138,6 @@ const thumbs = computed(() => store.storage.keyboard.thumbs)
 const rIndexFinger = computed(() => store.storage.keyboard.rIndex)
 
 const boardColor = computed(() => {
-  if (!store.storage.visibility.pointers) return
-
   let targetChar = store.data.fragmentArr[store.data.indexArr]
 
   targetChar = targetChar.toLowerCase()
@@ -182,10 +172,6 @@ const boardColor = computed(() => {
 </script>
 
 <template>
-  <button class="btn">
-    langIndex: {{ langIndex }}, targetChar: _{{ targetChar }}_, keyCode:
-    {{ props.eventKeydown.code }}, keyValue: _{{ keyValue }}_
-  </button>
   <div class="keyboard">
     <div
       v-for="(obj, index) in keyboardArr.slice(2)"
@@ -261,7 +247,6 @@ const boardColor = computed(() => {
   height: 328px;
   margin: 0 auto;
   user-select: none;
-  /* background: rgb(170, 170, 170); */
   background: v-bind(keyboardBackground);
   border-radius: 15px;
 }
@@ -274,7 +259,6 @@ const boardColor = computed(() => {
 .button,
 .button-double,
 .button-marked {
-  /* display: inline-block; */
   float: left;
   width: 62px;
   height: 62px;
@@ -284,8 +268,6 @@ const boardColor = computed(() => {
   font-family: 'Consolas', monospace;
   text-align: center;
   text-transform: capitalize;
-  /* color: black;
-  background: hsl(0, 0%, 80%); */
   background: v-bind(keyBackground);
   color: v-bind(keyColor);
   /* border: none; */
@@ -294,14 +276,11 @@ const boardColor = computed(() => {
 
 .button > div {
   position: relative;
-  /* background-color: greenyellow; */
   top: 16px;
   height: 28px;
 }
 
 .button-double > div {
-  /* background-color: aqua; */
-  /* margin-top: 2px; */
   height: 30px;
 }
 
@@ -324,23 +303,6 @@ const boardColor = computed(() => {
 .button-marked-shift {
   box-shadow: inset 0 0 0 3px v-bind(shiftColor);
   color: v-bind(shiftColor);
-}
-
-/* @keyframes fadeGreenColor {
-  0% {
-    background-color: hsla(120, 80%, 65%);
-  }
-  100% {
-    background: hsl(0, 0%, 80%);
-  }
-} */
-
-.button-correct {
-  background-color: hsla(120, 80%, 65%, 1);
-}
-
-.button-wrong {
-  background-color: hsla(0, 100%, 75%, 1);
 }
 
 #backquote,
@@ -373,14 +335,10 @@ const boardColor = computed(() => {
 
 #shiftleft {
   width: 141px;
-  /* box-shadow: inset 0 0 0 3px v-bind(lShiftBorder); */
-  /* color: v-bind(lShiftColor); */
 }
 
 #shiftright {
   width: 171px;
-  /* box-shadow: inset 0 0 0 3px v-bind(rShiftBorder); */
-  /* color: v-bind(rShiftColor); */
 }
 
 #controlleft,

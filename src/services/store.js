@@ -20,13 +20,13 @@ const state = reactive({
 
 const storage = reactive({
   main: { background: 0, letterCase: true, langOfSnippets: 'russian' },
-  visibility: { currentStatistics: true, keyboard: true, pointers: true },
+  visibility: { currentStatistics: true, keyboard: true },
   shadow: {
-    caret: true,
     charCorrect: true,
     charWrong: true,
     charSpecial: true
   },
+  blur: { field: 200 },
   field: {
     /* цвета поля: фон поля, фон символа, нейтральный символ, верно введённый
   символ, неверно введённый символ, каретка, тень каретки, */

@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import store from '/src/services/store.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
 import HslaSlider from '../components/HslaSlider.vue'
+import SingleSlider from '../components/SingleSlider.vue'
 import Checkbox from '../components/Checkbox.vue'
 
 const page = ref(0)
@@ -10,11 +11,11 @@ const direction = ref('slide-next')
 
 const title = computed(() => {
   if (page.value === 0) {
-    return 'Общая настройка'
+    return 'Общие настройки'
   } else if (page.value === 1) {
-    return 'Настройка поля'
+    return 'Настройки поля'
   } else if (page.value === 2) {
-    return 'Цвета указателей пальцев'
+    return 'Цвета клавиатуры'
   }
 })
 
@@ -102,10 +103,6 @@ const closeSettingMenu = function () {
           title="Отображать клавиатуру"
           obj="visibility"
           prop="keyboard" />
-        <Checkbox
-          title="Отображать указатели пальцев"
-          obj="visibility"
-          prop="pointers" />
 
         <div class="settings-picture">
           <img
@@ -153,7 +150,7 @@ const closeSettingMenu = function () {
           obj="field"
           prop="charSpecialColor" />
 
-        <div class="settings-category">Тень:</div>
+        <div class="settings-category-margin">Тень:</div>
         <Checkbox
           title="верно введённый символ"
           obj="shadow"
@@ -163,21 +160,22 @@ const closeSettingMenu = function () {
           obj="shadow"
           prop="charWrong" />
         <Checkbox title="ненабираемый символ" obj="shadow" prop="charSpecial" />
+        <div class="settings-category-margin">Размытие:</div>
+        <SingleSlider title="поле" obj="blur" prop="field" />
       </div>
     </transition>
 
     <transition :name="direction">
       <div v-if="page === 2" class="settings-page-container">
-        <div class="settings-category">Клавиатура:</div>
         <HslaSlider title="фон клавиатуры" obj="keyboard" prop="background" />
         <HslaSlider title="фон клавиш" obj="keyboard" prop="keyBackground" />
         <HslaSlider title="текст клавиш" obj="keyboard" prop="keyColor" />
         <HslaSlider title="модификатор (Shift)" obj="keyboard" prop="shift" />
         <HslaSlider title="мизинцы" obj="keyboard" prop="pinky" />
-        <HslaSlider title="безымянные" obj="keyboard" prop="ring" />
-        <HslaSlider title="средние" obj="keyboard" prop="middle" />
+        <HslaSlider title="безымянные пальцы" obj="keyboard" prop="ring" />
+        <HslaSlider title="средние пальцы" obj="keyboard" prop="middle" />
         <HslaSlider title="левый указательный" obj="keyboard" prop="lIndex" />
-        <HslaSlider title="большие" obj="keyboard" prop="thumbs" />
+        <HslaSlider title="большие пальцы" obj="keyboard" prop="thumbs" />
         <HslaSlider title="правый указательный" obj="keyboard" prop="rIndex" />
       </div>
     </transition>
@@ -280,6 +278,12 @@ const closeSettingMenu = function () {
   margin-bottom: 7px;
 }
 
+.settings-category-margin {
+  text-align: left;
+  text-decoration: underline;
+  margin-bottom: 14px;
+}
+
 .settings-description {
   /* border: 1px solid green; */
   text-align: left;
@@ -288,13 +292,8 @@ const closeSettingMenu = function () {
 }
 
 /* checkbox */
-
 .settings-picture {
   display: flex;
-  /* margin-top: 20px; */
-  /* float: left; */
-  /* height: 200px; */
-  /* line-height: 200px; */
 }
 
 #settings-preview {

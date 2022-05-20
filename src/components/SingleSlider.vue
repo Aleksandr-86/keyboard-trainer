@@ -1,103 +1,32 @@
 <script setup>
-import { onMounted, reactive, computed, watch } from 'vue'
 import store from '../services/store'
 
 const props = defineProps({
-  title: String
-  // property: String,
-  // num: String
-})
-
-// const hsla = reactive({
-//   hue: Number,
-//   saturation: Number,
-//   lightness: Number,
-//   alpha: Number,
-//   flag: false
-// })
-
-const hue = computed(() => hsla.hue)
-
-// const color = computed(
-//   () =>
-//     `hsla(${hsla.hue}, ${hsla.saturation}%, ${hsla.lightness}%, ${hsla.alpha})`
-// )
-
-// watch(color, newValue => (store.colors[props.property][props.num] = newValue))
-
-// const getNumbersFromString = function (str) {
-//   return str.match(/[0-9.]+/g)
-// }
-
-// const toggleSlider = () => (hsla.flag = !hsla.flag)
-
-// const border = computed(() => {
-//   if (hsla.flag) {
-//     return '1px solid hsl(0, 0%, 78%)'
-//   } else {
-//     return '1px solid transparent'
-//   }
-// })
-
-onMounted(() => {
-  // const colorsArr = getNumbersFromString(
-  //   store.colors[props.property][props.num]
-  // )
-  // hsla.hue = colorsArr[0]
-  // hsla.saturation = colorsArr[1]
-  // hsla.lightness = colorsArr[2]
-  // hsla.alpha = colorsArr[3]
+  title: String,
+  obj: String,
+  prop: String
 })
 </script>
 
 <template>
   <div class="slider-container">
-    <div class="slider-title-container">
-      <div class="slider-title">d</div>
-    </div>
-
-    <div class="slider-description">тон</div>
+    <div class="slider-title">{{ props.title }}</div>
     <div class="slider">
-      <div class="slider-input-container">
-        <input
-          type="range"
-          class="slider-input"
-          id="slider"
-          min="0"
-          max="360" />
-      </div>
-      <label class="slider-label" for="slider">x</label>
+      <input
+        v-model="store.storage[obj][prop]"
+        type="range"
+        class="slider-input"
+        min="0"
+        max="300" />
+      <label class="slider-label">{{ store.storage[obj][prop] }}</label>
     </div>
   </div>
 </template>
 
 <style scoped>
-.slider-title-container {
-  display: flex;
-  /* height: 24px; */
-  height: 100%;
-  justify-content: space-between;
-  align-items: center;
-  /* margin-bottom: 5px; */
-  /* border-bottom: v-bind(border);
-  padding-bottom: 5px; */
-  padding: 1px 1px 1px 2px;
-}
-
-.slider-title-container:hover {
-  background: hsl(40, 40%, 25%);
-  border-radius: 7px;
-}
-
 .slider-title {
-  /* text-align: left; */
-  height: 29px;
-}
-
-.slider-description {
-  height: 29px;
   text-align: left;
-  margin-left: 4px;
+  height: 29px;
 }
 
 .slider {
@@ -108,16 +37,12 @@ onMounted(() => {
   margin-left: 4px;
 }
 
-.slider-input-container {
-  position: relative;
-}
-
 .slider-input {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 0;
   -webkit-appearance: none;
-  width: 384px;
+  width: 397px;
   height: 18px;
   border-radius: 5px;
   background: hsl(0, 0%, 83%);
