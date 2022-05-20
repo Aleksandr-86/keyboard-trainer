@@ -3,7 +3,9 @@ import store from '../services/store'
 
 const props = defineProps({
   obj: String,
-  prop: String
+  prop: String,
+  max: String,
+  step: String
 })
 </script>
 
@@ -15,7 +17,9 @@ const props = defineProps({
         type="range"
         class="slider-input"
         min="0"
-        max="300" />
+        :max="props.max"
+        :step="props.step" />
+
       <label class="slider-label">{{
         store.storage[props.obj][props.prop]
       }}</label>
@@ -34,7 +38,7 @@ const props = defineProps({
   justify-content: flex-start;
   align-items: center;
   height: 29px;
-  margin-left: 4px;
+  /* margin-left: 4px; */
 }
 
 .slider-input {

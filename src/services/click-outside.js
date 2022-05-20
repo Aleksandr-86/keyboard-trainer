@@ -2,19 +2,19 @@ export default function directive(app) {
   /* https://stackoverflow.com/a/71638445 
 	you can name the directive whatever you want. -> click-outside */
   app.directive('click-outside', {
-    beforeMount(el, binding) {
-      el.clickOutsideEvent = evt => {
-        evt.stopPropagation()
-        if (!(el === evt.target || el.contains(evt.target))) {
-          binding.value(evt, el)
+    beforeMount(element, binding) {
+      element.clickOutsideEvent = event => {
+        event.stopPropagation()
+        if (!(element === event.target || element.contains(event.target))) {
+          binding.value(event, element)
         }
       }
       window.requestAnimationFrame(() => {
-        document.addEventListener('click', el.clickOutsideEvent)
+        document.addEventListener('click', element.clickOutsideEvent)
       })
     },
-    unmounted(el) {
-      document.removeEventListener('click', el.clickOutsideEvent)
+    unmounted(element) {
+      document.removeEventListener('click', element.clickOutsideEvent)
     }
   })
 }

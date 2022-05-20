@@ -4,7 +4,7 @@ export const arrBackgrounds = [
     name: 'mountain',
     author: 'Игорь Дудковский',
     location: 'гора',
-    link: 'https://www.pexels.com/@igor65'
+    link: 'https://developer.mozilla.org/ru/docs/Web/SVG/Tutorial/Fills_and_Strokes'
   },
   {
     num: 2,

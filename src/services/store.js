@@ -39,9 +39,16 @@ const storage = reactive({
     middle: 'hsla(120, 80%, 33%, 1)',
     lIndex: 'hsla(180, 100%, 35%, 1)',
     thumbs: 'hsla(0, 0%, 70%, 1)',
-    rIndex: 'hsla(0, 75%, 50%, 1)'
+    rIndex: 'hsla(0, 75%, 50%, 1)',
+    underline: true
   },
-  main: { background: 0, letterCase: true, langOfSnippets: 'russian' },
+  main: {
+    background: 0,
+    langOfSnippets: 'russian',
+    letterCase: true,
+    speaker: false,
+    volume: 0.2
+  },
   shadow: {
     charCorrect: true,
     charWrong: true,

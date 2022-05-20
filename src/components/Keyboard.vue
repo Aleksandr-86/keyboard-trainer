@@ -137,6 +137,14 @@ const lIndexFinger = computed(() => store.storage.keyboard.lIndex)
 const thumbs = computed(() => store.storage.keyboard.thumbs)
 const rIndexFinger = computed(() => store.storage.keyboard.rIndex)
 
+const keyUnderline = computed(() => {
+  if (store.storage.keyboard.underline) {
+    return 'underline'
+  } else {
+    return 'none'
+  }
+})
+
 const boardColor = computed(() => {
   let targetChar = store.data.fragmentArr[store.data.indexArr]
 
@@ -303,6 +311,11 @@ const boardColor = computed(() => {
 .button-marked-shift {
   box-shadow: inset 0 0 0 3px v-bind(shiftColor);
   color: v-bind(shiftColor);
+}
+
+#keyf,
+#keyj {
+  text-decoration: v-bind(keyUnderline);
 }
 
 #backquote,

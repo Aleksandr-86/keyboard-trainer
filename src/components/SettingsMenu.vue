@@ -80,17 +80,8 @@ const closeSettingMenu = function () {
 }
 
 const defaultValues = {
-  main: { background: 0, letterCase: true, langOfSnippets: 'russian' },
-  visibility: { currentStatistics: true, keyboard: true },
-  shadow: {
-    charCorrect: true,
-    charWrong: true,
-    charSpecial: true
-  },
   blur: { field: 200 },
   field: {
-    /* цвета поля: фон поля, фон символа, нейтральный символ, верно введённый
-  символ, неверно введённый символ, каретка, тень каретки, */
     background: 'hsla(0, 0%, 0%, 0)',
     charBackground: 'hsla(0, 0%, 20%, 0.75)',
     caretBackground: 'hsla(280, 85%, 70%, 0.65)',
@@ -109,8 +100,22 @@ const defaultValues = {
     middle: 'hsla(120, 80%, 33%, 1)',
     lIndex: 'hsla(180, 100%, 35%, 1)',
     thumbs: 'hsla(0, 0%, 70%, 1)',
-    rIndex: 'hsla(0, 75%, 50%, 1)'
-  }
+    rIndex: 'hsla(0, 75%, 50%, 1)',
+    underline: true
+  },
+  main: {
+    background: 0,
+    langOfSnippets: 'russian',
+    letterCase: true,
+    speaker: false,
+    volume: 0.2
+  },
+  shadow: {
+    charCorrect: true,
+    charWrong: true,
+    charSpecial: true
+  },
+  visibility: { currentStatistics: true, keyboard: true }
 }
 
 function clearSettings() {
@@ -149,6 +154,9 @@ function clearSettings() {
           title="Отображать клавиатуру"
           obj="visibility"
           prop="keyboard" />
+        <Checkbox title="Отображать засечки" obj="keyboard" prop="underline" />
+        <div class="settings-category-margin">Громкость печати:</div>
+        <SingleSlider obj="main" prop="volume" max="1" step="0.01" />
 
         <div class="settings-image">
           <img
@@ -174,18 +182,18 @@ function clearSettings() {
             Местоположение:
             {{ arrBackgrounds[store.data.backgroundPreview].location }}
           </p>
-          <p class="settings-image-description">
+          <p class="settings-image-link">
             Автор снимка:
-            {{ arrBackgrounds[store.data.backgroundPreview].author }}
+            <a :href="arrBackgrounds[store.data.backgroundPreview].link">{{
+              arrBackgrounds[store.data.backgroundPreview].author
+            }}</a>
           </p>
-          <a class="settings-image-link" href="#!">ссылка на страницу</a>
         </div>
       </div>
     </transition>
 
     <transition :name="direction">
       <div v-if="page === 1" class="settings-page-container">
-        <div class="settings-category">Цвет:</div>
         <HslaSlider title="фон поля" obj="field" prop="background" />
         <HslaSlider title="фон символа" obj="field" prop="charBackground" />
         <HslaSlider title="фон каретки" obj="field" prop="caretBackground" />
@@ -217,9 +225,9 @@ function clearSettings() {
             title="ненабираемый символ"
             obj="shadow"
             prop="charSpecial" />
-          <div class="settings-category-margin">Размытие поля:</div>
         </div>
-        <SingleSlider obj="blur" prop="field" />
+        <div class="settings-category-margin">Размытие поля:</div>
+        <SingleSlider obj="blur" prop="field" max="300" step="1" />
       </div>
     </transition>
 
