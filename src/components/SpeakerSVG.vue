@@ -23,6 +23,10 @@ function toggleSpeaker() {
         d="M1,14 L13,14 L25,2 L25,42 L13,30 L1,30 Z1,14"
         fill="none" />
       <path stroke-width="2" d="M13,14 L13,30" />
+      <path
+        stroke-width="2"
+        d="M27.6331,14.7655 C31.2834,19.2237 31.2834,24.7763 27.6331,29.2345"
+        fill="none" />
     </svg>
   </div>
 </template>
