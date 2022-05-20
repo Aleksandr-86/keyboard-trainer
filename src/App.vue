@@ -7,6 +7,8 @@ import SettingsMenu from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
 import OverallStatistics from './components/OverallStatistics.vue'
 
+import SpeakerSVG from './components/SpeakerSVG.vue'
+
 onMounted(() => {
   if (localStorage.main) {
     const obj = JSON.parse(localStorage.main)
@@ -39,6 +41,7 @@ const background = computed(
 <template>
   <div id="background">
     <NavigationMenu />
+    <SpeakerSVG />
     <SettingsMenu v-if="store.state.settings" />
     <Field v-if="store.state.work" />
     <OverallStatistics v-if="store.state.overallStatistics" />
