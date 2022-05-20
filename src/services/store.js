@@ -19,17 +19,8 @@ const state = reactive({
 })
 
 const storage = reactive({
-  main: { background: 0, letterCase: true, langOfSnippets: 'russian' },
-  visibility: { currentStatistics: true, keyboard: true },
-  shadow: {
-    charCorrect: true,
-    charWrong: true,
-    charSpecial: true
-  },
   blur: { field: 200 },
   field: {
-    /* цвета поля: фон поля, фон символа, нейтральный символ, верно введённый
-  символ, неверно введённый символ, каретка, тень каретки, */
     background: 'hsla(0, 0%, 0%, 0)',
     charBackground: 'hsla(0, 0%, 20%, 0.75)',
     caretBackground: 'hsla(280, 85%, 70%, 0.65)',
@@ -49,7 +40,14 @@ const storage = reactive({
     lIndex: 'hsla(180, 100%, 35%, 1)',
     thumbs: 'hsla(0, 0%, 70%, 1)',
     rIndex: 'hsla(0, 75%, 50%, 1)'
-  }
+  },
+  main: { background: 0, letterCase: true, langOfSnippets: 'russian' },
+  shadow: {
+    charCorrect: true,
+    charWrong: true,
+    charSpecial: true
+  },
+  visibility: { currentStatistics: true, keyboard: true }
 })
 
 const data = reactive({

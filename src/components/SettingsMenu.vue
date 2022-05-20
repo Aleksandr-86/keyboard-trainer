@@ -37,7 +37,7 @@ const turnThePage = function (dir) {
   }
 }
 
-const backgroundPreview = computed(
+const backgroundPreviewPath = computed(
   () =>
     `/src/images/backgrounds/small/${
       arrBackgrounds[store.data.backgroundPreview].name
@@ -78,6 +78,51 @@ const closeSettingMenu = function () {
   }
   store.setFalse('settings')
 }
+
+const defaultValues = {
+  main: { background: 0, letterCase: true, langOfSnippets: 'russian' },
+  visibility: { currentStatistics: true, keyboard: true },
+  shadow: {
+    charCorrect: true,
+    charWrong: true,
+    charSpecial: true
+  },
+  blur: { field: 200 },
+  field: {
+    /* цвета поля: фон поля, фон символа, нейтральный символ, верно введённый
+  символ, неверно введённый символ, каретка, тень каретки, */
+    background: 'hsla(0, 0%, 0%, 0)',
+    charBackground: 'hsla(0, 0%, 20%, 0.75)',
+    caretBackground: 'hsla(280, 85%, 70%, 0.65)',
+    charColor: 'hsla(0, 0%, 65%, 1)',
+    charCorrectColor: 'hsla(144, 65%, 45%, 1)',
+    charWrongColor: 'hsla(0, 100%, 60%, 1)',
+    charSpecialColor: 'hsl(180, 100%, 45%, 0.75)'
+  },
+  keyboard: {
+    background: 'hsla(0, 0%, 15%, 1)',
+    keyBackground: 'hsla(0, 0%, 0%, 1)',
+    keyColor: 'hsla(0, 0%, 70%, 1)',
+    shift: 'hsla(300, 80%, 40%, 1)',
+    pinky: 'hsla(300, 60%, 40%, 1)',
+    ring: 'hsla(60, 80%, 35%, 1)',
+    middle: 'hsla(120, 80%, 33%, 1)',
+    lIndex: 'hsla(180, 100%, 35%, 1)',
+    thumbs: 'hsla(0, 0%, 70%, 1)',
+    rIndex: 'hsla(0, 75%, 50%, 1)'
+  }
+}
+
+function clearSettings() {
+  for (const key in defaultValues) {
+    store.storage[key] = defaultValues[key]
+  }
+  store.data.backgroundPreview = 0
+  localStorage.clear()
+  // store.setFalse('settings')
+  console.warn(defaultValues)
+  console.warn(store.storage)
+}
 </script>
 
 <template>
@@ -94,6 +139,9 @@ const closeSettingMenu = function () {
 
     <transition :name="direction">
       <div v-if="page === 0" class="settings-page-container">
+        <button @click="clearSettings" class="settings-btn-default">
+          Сброс
+        </button>
         <Checkbox title="Учитывать регистр букв" obj="main" prop="letterCase" />
         <Checkbox
           title="Отображать текущую статистику"
@@ -104,11 +152,11 @@ const closeSettingMenu = function () {
           obj="visibility"
           prop="keyboard" />
 
-        <div class="settings-picture">
+        <div class="settings-image">
           <img
             id="settings-preview"
-            :src="backgroundPreview"
-            alt="background-preview" />
+            :src="backgroundPreviewPath"
+            :alt="arrBackgrounds[store.data.backgroundPreview].location" />
           <div class="settings-btn-preview-container">
             <button
               @click="changeBackground('prev')"
@@ -123,9 +171,16 @@ const closeSettingMenu = function () {
           </div>
         </div>
         <div>
-          <p class="settings-description"></p>
-          <p class="settings-author"></p>
-          <a class="settings-link" href="#!">ссылка на страницу</a>
+          <div>{{}}</div>
+          <p class="settings-image-description">
+            Местоположение:
+            {{ arrBackgrounds[store.data.backgroundPreview].location }}
+          </p>
+          <p class="settings-image-description">
+            Автор снимка:
+            {{ arrBackgrounds[store.data.backgroundPreview].author }}
+          </p>
+          <a class="settings-image-link" href="#!">ссылка на страницу</a>
         </div>
       </div>
     </transition>
@@ -151,16 +206,21 @@ const closeSettingMenu = function () {
           prop="charSpecialColor" />
 
         <div class="settings-category-margin">Тень:</div>
-        <Checkbox
-          title="верно введённый символ"
-          obj="shadow"
-          prop="charCorrect" />
-        <Checkbox
-          title="неверно введённый символ"
-          obj="shadow"
-          prop="charWrong" />
-        <Checkbox title="ненабираемый символ" obj="shadow" prop="charSpecial" />
-        <div class="settings-category-margin">Размытие:</div>
+        <div class="settings-shadow-checkbox">
+          <Checkbox
+            title="верно введённый символ"
+            obj="shadow"
+            prop="charCorrect" />
+          <Checkbox
+            title="неверно введённый символ"
+            obj="shadow"
+            prop="charWrong" />
+          <Checkbox
+            title="ненабираемый символ"
+            obj="shadow"
+            prop="charSpecial" />
+          <div class="settings-category-margin">Размытие:</div>
+        </div>
         <SingleSlider title="поле" obj="blur" prop="field" />
       </div>
     </transition>
@@ -268,6 +328,28 @@ const closeSettingMenu = function () {
   font-size: 24px;
 }
 
+.settings-btn-default {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 455px;
+  /* height: 37px; */
+  font: inherit;
+  font-weight: bold;
+  border: none;
+  border-radius: 7px;
+  margin-bottom: 10px;
+  background-color: hsl(33, 100%, 88%);
+}
+
+.settings-btn-default:hover {
+  background-color: hsl(0, 100%, 50%);
+}
+
+.settings-btn-default:active {
+  background-color: hsl(120, 50%, 50%);
+}
+
 .settings-page-container {
   position: absolute;
 }
@@ -284,6 +366,10 @@ const closeSettingMenu = function () {
   margin-bottom: 14px;
 }
 
+.settings-shadow-checkbox {
+  margin-right: 6px;
+}
+
 .settings-description {
   /* border: 1px solid green; */
   text-align: left;
@@ -292,8 +378,13 @@ const closeSettingMenu = function () {
 }
 
 /* checkbox */
-.settings-picture {
+.settings-image {
   display: flex;
+}
+
+.settings-image-description,
+.settings-image-link {
+  text-align: left;
 }
 
 #settings-preview {

@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from '@vue/reactivity'
 import { watch } from 'vue'
 import store from '../services/store'
 
@@ -31,7 +30,6 @@ watch(store.storage[props.obj], newValue => {
 
   height: 37px;
   border-radius: 7px;
-  margin-right: 6px;
 
   padding: 0 1px 0 2px;
   margin-bottom: 12px;
