@@ -2,7 +2,6 @@
 import store from '../services/store'
 
 const props = defineProps({
-  title: String,
   obj: String,
   prop: String
 })
@@ -10,15 +9,16 @@ const props = defineProps({
 
 <template>
   <div class="slider-container">
-    <div class="slider-title">{{ props.title }}</div>
     <div class="slider">
       <input
-        v-model="store.storage[obj][prop]"
+        v-model="store.storage[props.obj][props.prop]"
         type="range"
         class="slider-input"
         min="0"
         max="300" />
-      <label class="slider-label">{{ store.storage[obj][prop] }}</label>
+      <label class="slider-label">{{
+        store.storage[props.obj][props.prop]
+      }}</label>
     </div>
   </div>
 </template>

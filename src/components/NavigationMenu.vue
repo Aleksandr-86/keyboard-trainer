@@ -1,6 +1,7 @@
 <script setup>
 import store from '/src/services/store.js'
 import { getBrowser } from '/src/services/helpers.js'
+import SpeakerSVG from './SpeakerSVG.vue'
 
 async function fillFieldFromBuffer() {
   document.body.querySelector('#nav-buffer').blur() // removing focus from an element
@@ -27,58 +28,68 @@ const toggleSettings = function () {
 </script>
 
 <template>
-  <ul class="nav">
-    <li>
-      <a @click="fillFieldFromBuffer" href="#!" id="nav-buffer">Буфер обмена</a>
-    </li>
-    <li>
-      <a
-        @click="store.randomSnippet(store.storage.main.langOfSnippets, 160)"
-        id="nav-snippet"
-        href="#!"
-        >Отрывок</a
-      >
-    </li>
-    <li class="nav-children">
-      <a id="nav-drop-down" href="#!">▼</a>
-      <ul>
-        <li>
-          <a
-            @click="store.randomSnippet('russian', 160)"
-            :class="{
-              'nav-underscore-none':
-                store.storage.main.langOfSnippets !== 'russian'
-            }"
-            href="#!"
-            >На русском языке</a
-          >
-        </li>
-        <li>
-          <a
-            @click="store.randomSnippet('english', 160)"
-            :class="{
-              'nav-underscore-none':
-                store.storage.main.langOfSnippets !== 'english'
-            }"
-            href="#!"
-            >На английском языке</a
-          >
-        </li>
-      </ul>
-    </li>
-    <li><a id="nav-info" href="#!">Справка</a></li>
-    <li>
-      <a @click="toggleSettings" id="nav-settings" href="#!">Настройки</a>
-    </li>
-  </ul>
+  <div>
+    <SpeakerSVG class="nav-speaker" />
+    <ul class="nav">
+      <li>
+        <a @click="fillFieldFromBuffer" href="#!" id="nav-buffer"
+          >Буфер обмена</a
+        >
+      </li>
+      <li>
+        <a
+          @click="store.randomSnippet(store.storage.main.langOfSnippets, 160)"
+          id="nav-snippet"
+          href="#!"
+          >Отрывок</a
+        >
+      </li>
+      <li class="nav-children">
+        <a id="nav-drop-down" href="#!">▼</a>
+        <ul>
+          <li>
+            <a
+              @click="store.randomSnippet('russian', 160)"
+              :class="{
+                'nav-underscore-none':
+                  store.storage.main.langOfSnippets !== 'russian'
+              }"
+              href="#!"
+              >На русском языке</a
+            >
+          </li>
+          <li>
+            <a
+              @click="store.randomSnippet('english', 160)"
+              :class="{
+                'nav-underscore-none':
+                  store.storage.main.langOfSnippets !== 'english'
+              }"
+              href="#!"
+              >На английском языке</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li><a id="nav-info" href="#!">Справка</a></li>
+      <li>
+        <a @click="toggleSettings" id="nav-settings" href="#!">Настройки</a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <style scoped>
+.nav-speaker {
+  left: 20px;
+}
 .nav {
   background: rgba(20, 20, 20, 0.8);
   display: flex;
   justify-content: center;
+  align-items: center;
   list-style: none;
+  height: 70px;
   font-family: 'Montserrat', sans-serif;
   flex-wrap: wrap;
   z-index: 10;

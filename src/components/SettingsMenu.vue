@@ -119,9 +119,7 @@ function clearSettings() {
   }
   store.data.backgroundPreview = 0
   localStorage.clear()
-  // store.setFalse('settings')
-  console.warn(defaultValues)
-  console.warn(store.storage)
+  store.setFalse('settings')
 }
 </script>
 
@@ -219,9 +217,9 @@ function clearSettings() {
             title="ненабираемый символ"
             obj="shadow"
             prop="charSpecial" />
-          <div class="settings-category-margin">Размытие:</div>
+          <div class="settings-category-margin">Размытие поля:</div>
         </div>
-        <SingleSlider title="поле" obj="blur" prop="field" />
+        <SingleSlider obj="blur" prop="field" />
       </div>
     </transition>
 
@@ -301,7 +299,7 @@ function clearSettings() {
   /* align-items: center; */
   border-bottom: 2px solid hsl(0, 0%, 78%);
   margin-bottom: 10px;
-  padding-bottom: 18px;
+  padding-bottom: 19px;
   z-index: 20;
 }
 
@@ -380,11 +378,18 @@ function clearSettings() {
 /* checkbox */
 .settings-image {
   display: flex;
+  margin-bottom: 10px;
 }
 
 .settings-image-description,
 .settings-image-link {
   text-align: left;
+  margin: 10px 0 10px 0;
+}
+
+.settings-image-link {
+  display: block;
+  text-decoration: none;
 }
 
 #settings-preview {
