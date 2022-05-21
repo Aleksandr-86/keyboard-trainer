@@ -16,13 +16,15 @@ const title = computed(() => {
     return 'Настройки поля'
   } else if (page.value === 2) {
     return 'Цвета клавиатуры'
+  } else if (page.value === 3) {
+    return 'Цвета общей статистики'
   }
 })
 
 const turnThePage = function (dir) {
   if (dir === 'next') {
     direction.value = 'slide-next'
-    if (page.value >= 2) {
+    if (page.value >= 3) {
       page.value = 0
       return
     }
@@ -30,7 +32,7 @@ const turnThePage = function (dir) {
   } else if (dir === 'prev') {
     direction.value = 'slide-prev'
     if (page.value <= 0) {
-      page.value = 2
+      page.value = 3
       return
     }
     page.value--
@@ -109,6 +111,12 @@ const defaultValues = {
     letterCase: true,
     speaker: false,
     volume: 0.2
+  },
+  overallStatistics: {
+    title: 'hsla(282, 100%, 25%, 1)',
+    ms: 'hsla(240, 100%, 30%, 1)',
+    correct: 'hsla(135, 100%, 25%, 1)',
+    wrong: 'hsla(0, 100%, 30%, 1)'
   },
   shadow: {
     charCorrect: true,
@@ -249,6 +257,24 @@ function clearSettings() {
         <HslaSlider title="левый указательный" obj="keyboard" prop="lIndex" />
         <HslaSlider title="большие пальцы" obj="keyboard" prop="thumbs" />
         <HslaSlider title="правый указательный" obj="keyboard" prop="rIndex" />
+      </div>
+    </transition>
+
+    <transition :name="direction">
+      <div v-if="page === 3" class="settings-page-container">
+        <HslaSlider
+          title="название книги и автор"
+          obj="overallStatistics"
+          prop="title" />
+        <HslaSlider title="миллисекунды" obj="overallStatistics" prop="ms" />
+        <HslaSlider
+          title="процент правильных символов"
+          obj="overallStatistics"
+          prop="correct" />
+        <HslaSlider
+          title="процент ошибочных символов"
+          obj="overallStatistics"
+          prop="wrong" />
       </div>
     </transition>
   </div>

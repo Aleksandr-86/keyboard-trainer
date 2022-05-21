@@ -2,6 +2,7 @@
 import { onUnmounted } from 'vue'
 import store from '../services/store.js'
 import { rnd } from '../services/helpers.js'
+import { computed } from '@vue/reactivity'
 
 const numCorrect = store.data.numCorrect
 const numWrong = store.data.numWrong
@@ -25,6 +26,11 @@ const charPerSecond = rnd((numTotal * 60) / (store.data.elapsedTime / 1000))
 
 const isSnippet = typeof store.data.currentBook === 'object'
 const book = store.data.currentBook
+
+const titleColor = computed(() => store.storage.overallStatistics.title)
+const msColor = computed(() => store.storage.overallStatistics.ms)
+const correctColor = computed(() => store.storage.overallStatistics.correct)
+const wrongColor = computed(() => store.storage.overallStatistics.wrong)
 
 onUnmounted(() => {
   store.state.bTimer = false
@@ -139,17 +145,17 @@ h4 {
 
 .stat-violet {
   /* color: hsl(282, 100%, 23%); */
-  color: hsl(282, 100%, 25%);
+  color: v-bind(titleColor);
 }
 
 .stat-green {
   /* color: hsl(135, 100%, 30%); */
-  color: hsl(135, 100%, 25%);
+  color: v-bind(correctColor);
   margin-left: 1vh;
 }
 
 .stat-red {
-  color: hsl(0, 100%, 30%);
+  color: v-bind(wrongColor);
   margin-left: 1vh;
 }
 
@@ -174,7 +180,7 @@ h4 {
 
 .stat-ms {
   position: fixed;
-  color: hsl(240, 100%, 30%);
+  color: v-bind(msColor);
   font-weight: bold;
 }
 

@@ -7,7 +7,7 @@ const props = defineProps({
   prop: String,
   max: String,
   step: String,
-  disabled: String
+  disabled: Boolean
 })
 
 const opacity = computed(() => {

@@ -49,6 +49,12 @@ const storage = reactive({
     speaker: false,
     volume: 0.2
   },
+  overallStatistics: {
+    title: 'hsla(282, 100%, 25%, 1)',
+    ms: 'hsla(240, 100%, 30%, 1)',
+    correct: 'hsla(135, 100%, 25%, 1)',
+    wrong: 'hsla(0, 100%, 30%, 1)'
+  },
   shadow: {
     charCorrect: true,
     charWrong: true,
