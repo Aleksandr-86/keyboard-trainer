@@ -81,7 +81,7 @@ const toggleSettings = function () {
 
 <style scoped>
 .nav-speaker {
-  margin-top: 10px;
+  margin-top: 13px;
   left: 10px;
 }
 .nav {
