@@ -26,6 +26,8 @@ const color = computed(
     `hsla(${hsla.hue}, ${hsla.saturation}%, ${hsla.lightness}%, ${hsla.alpha})`
 )
 
+const thumbBackground = computed(() => `hsl(${hsla.hue}, 100%, 50%)`)
+
 watch(color, newValue => {
   store.storage[props.obj][props.prop] = newValue
 })
@@ -176,6 +178,7 @@ onMounted(() => {
   /* border-bottom: v-bind(border);
   padding-bottom: 5px; */
   padding: 1px 1px 1px 2px;
+  cursor: pointer;
 }
 
 .slider-title-container:hover {
@@ -233,9 +236,7 @@ onMounted(() => {
   border-radius: 5px;
   background: hsl(0, 0%, 83%);
   outline: none;
-  /* opacity: 0.7; */
-  /* -webkit-transition: 0.2s;
-  transition: opacity 0.2s; */
+  cursor: pointer;
 }
 
 .slider-chess-background {
@@ -323,9 +324,8 @@ onMounted(() => {
   width: 15px;
   height: 25px;
   border-radius: 5px;
-  /* background: hsl(v-bind(hue), 100%, 50%); */
-  /* filter: invert(1); */
-  background: hsl(0, 0%, 83%);
+  filter: invert(1);
+  background-color: v-bind(thumbBackground);
   cursor: pointer;
 }
 
@@ -333,7 +333,9 @@ onMounted(() => {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: hsl(122, 39%, 49%);
+  /* background: hsl(122, 39%, 49%); */
+  filter: invert(1);
+  background-color: v-bind(thumbBackground);
   cursor: pointer;
 }
 

@@ -1,11 +1,29 @@
 <script setup>
+import { computed } from '@vue/reactivity'
 import store from '../services/store'
 
 const props = defineProps({
   obj: String,
   prop: String,
   max: String,
-  step: String
+  step: String,
+  disabled: String
+})
+
+const opacity = computed(() => {
+  if (props.disabled) {
+    return 0.5
+  } else {
+    return 1
+  }
+})
+
+const cursor = computed(() => {
+  if (props.disabled) {
+    return 'not-allowed'
+  } else {
+    return 'pointer'
+  }
 })
 </script>
 
@@ -18,7 +36,8 @@ const props = defineProps({
         class="slider-input"
         min="0"
         :max="props.max"
-        :step="props.step" />
+        :step="props.step"
+        :disabled="props.disabled" />
 
       <label class="slider-label">{{
         store.storage[props.obj][props.prop]
@@ -28,11 +47,6 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.slider-title {
-  text-align: left;
-  height: 29px;
-}
-
 .slider {
   display: flex;
   justify-content: flex-start;
@@ -51,9 +65,10 @@ const props = defineProps({
   border-radius: 5px;
   background: hsl(0, 0%, 83%);
   outline: none;
-  /* opacity: 0.7; */
-  /* -webkit-transition: 0.2s;
-  transition: opacity 0.2s; */
+  opacity: v-bind(opacity);
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  cursor: v-bind(cursor);
 }
 
 .slider-input::-webkit-slider-thumb {
@@ -62,10 +77,8 @@ const props = defineProps({
   width: 15px;
   height: 25px;
   border-radius: 5px;
-  /* background: hsl(v-bind(hue), 100%, 50%); */
-  /* filter: invert(1); */
   background: hsl(0, 0%, 83%);
-  cursor: pointer;
+  cursor: v-bind(cursor);
 }
 
 .slider-input::-moz-range-thumb {
@@ -73,12 +86,15 @@ const props = defineProps({
   height: 25px;
   border-radius: 50%;
   background: hsl(122, 39%, 49%);
-  cursor: pointer;
+  cursor: v-bind(cursor);
 }
 
 .slider-label {
   margin-left: 5px;
   color: hsl(0, 0%, 83%);
   width: 45px;
+  opacity: v-bind(opacity);
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
 </style>

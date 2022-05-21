@@ -155,8 +155,14 @@ function clearSettings() {
           obj="visibility"
           prop="keyboard" />
         <Checkbox title="Отображать засечки" obj="keyboard" prop="underline" />
-        <div class="settings-category-margin">Громкость печати:</div>
-        <SingleSlider obj="main" prop="volume" max="1" step="0.01" />
+        <div class="settings-category-margin">Звук:</div>
+        <Checkbox title="Озвучивать печать" obj="main" prop="speaker" />
+        <SingleSlider
+          obj="main"
+          prop="volume"
+          max="1"
+          step="0.01"
+          :disabled="!store.storage.main.speaker" />
 
         <div class="settings-image">
           <img
@@ -401,6 +407,7 @@ function clearSettings() {
 }
 
 #settings-preview {
+  margin-top: 10px;
   width: 455px;
   height: 281px;
 }

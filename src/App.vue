@@ -41,7 +41,7 @@ const background = computed(
 <template>
   <div id="background">
     <NavigationMenu />
-    <SpeakerSVG />
+    <!-- <SpeakerSVG /> -->
     <SettingsMenu v-if="store.state.settings" />
     <Field v-if="store.state.work" />
     <OverallStatistics v-if="store.state.overallStatistics" />
