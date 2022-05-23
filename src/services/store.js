@@ -132,9 +132,48 @@ const loadFragment = function (str, amount = 0) {
   if (amount === 0) {
     // case: buffer
     data.fragmentArr = arrPreparer(strPrepWithNewLines(str))
+
+    console.warn(str.length)
+    let correct = 0
+    let inCorrect = 0
+    let eng = 0
+    for (let i = 0; i < str.length; i++) {
+      if (charTest(str[i])) {
+        inCorrect++
+        console.warn(`_${str[i]}_`, i)
+      } else {
+        correct++
+      }
+    }
+    console.error(
+      `correct: ${correct}, inCorrect: ${inCorrect}, sum: ${
+        correct + inCorrect
+      }`
+    )
   } else {
     // case: snippets from the books
     str = strPrepWithoutNewLines(str)
+
+    console.warn(str.length)
+    let correct = 0
+    let inCorrect = 0
+    for (let i = 0; i < str.length; i++) {
+      if (charTest(str[i])) {
+        inCorrect++
+        console.warn(`_${str[i]}_`, i)
+      } else if (/[A-Z`~@#$^&{}|]/i.test(str[i])) {
+        eng++
+        console.warn(`eng: ${str[i]}`)
+      } else {
+        correct++
+      }
+    }
+    console.error(
+      `correct: ${correct}, inCorrect: ${inCorrect}, sum: ${
+        correct + inCorrect
+      }`
+    )
+
     data.fragmentArr = arrPreparer(getSomeSentences(str, amount))
   }
 
@@ -235,11 +274,14 @@ const randomSnippet = function (lang, amount) {
   }
   localStorage.main = JSON.stringify(storage.main)
 
-  const obj = arrOfBooks[randomNum(0, 4)] // choosing a random book
+  // console.warn(arrOfBooks.length - 1)
+  // const obj = arrOfBooks[randomNum(0, arrOfBooks.length - 1)] // choosing a random book
+  const obj = arrOfBooks[0] // choosing a random book
+
   data.currentBook = obj
   const filePath = `/src/books/${lang}/${obj.name}.txt`
 
-  var httpRequest = new XMLHttpRequest()
+  const httpRequest = new XMLHttpRequest()
   httpRequest.onload = function () {
     // When the request is loaded
     loadFragment(httpRequest.responseText, amount) // We're calling our method

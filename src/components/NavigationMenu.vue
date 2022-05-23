@@ -32,17 +32,17 @@ const toggleSettings = function () {
     <SpeakerSVG class="nav-speaker" />
     <ul class="nav">
       <li>
-        <a @click="fillFieldFromBuffer" href="#!" id="nav-buffer"
-          >Буфер обмена</a
-        >
+        <a @click="fillFieldFromBuffer" href="#!" id="nav-buffer">
+          Буфер обмена
+        </a>
       </li>
       <li>
         <a
           @click="store.randomSnippet(store.storage.main.langOfSnippets, 160)"
           id="nav-snippet"
-          href="#!"
-          >Отрывок</a
-        >
+          href="#!">
+          Отрывок
+        </a>
       </li>
       <li class="nav-children">
         <a id="nav-drop-down" href="#!">▼</a>
@@ -54,9 +54,9 @@ const toggleSettings = function () {
                 'nav-underscore-none':
                   store.storage.main.langOfSnippets !== 'russian'
               }"
-              href="#!"
-              >На русском языке</a
-            >
+              href="#!">
+              На русском языке
+            </a>
           </li>
           <li>
             <a
@@ -65,9 +65,9 @@ const toggleSettings = function () {
                 'nav-underscore-none':
                   store.storage.main.langOfSnippets !== 'english'
               }"
-              href="#!"
-              >На английском языке</a
-            >
+              href="#!">
+              На английском языке
+            </a>
           </li>
         </ul>
       </li>

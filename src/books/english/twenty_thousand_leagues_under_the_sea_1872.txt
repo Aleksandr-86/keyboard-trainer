@@ -1,7 +1,3 @@
-Title: Twenty Thousand Leagues under the Sea (slightly abridged)
-
-Author: Jules Verne
-
 CHAPTER I
 
 A SHIFTING REEF
@@ -25,9 +21,9 @@ question, the untiring rapidity of its movements, its surprising power
 of locomotion, and the peculiar life with which it seemed endowed.  If
 it was a whale, it surpassed in size all those hitherto classified in
 science.  Taking into consideration the mean of observations made at
-divers times--rejecting the timid estimate of those who assigned to
+divers times rejecting the timid estimate of those who assigned to
 this object a length of two hundred feet, equally with the exaggerated
-opinions which set it down as a mile in width and three in length--we
+opinions which set it down as a mile in width and three in length we
 might fairly conclude that this mysterious being surpassed greatly all
 dimensions admitted by the learned ones of the day, if it existed at
 all.  And that it DID exist was an undeniable fact; and, with that
@@ -60,7 +56,7 @@ Fifteen days later, two thousand miles farther off, the Helvetia, of
 the Compagnie-Nationale, and the Shannon, of the Royal Mail Steamship
 Company, sailing to windward in that portion of the Atlantic lying
 between the United States and Europe, respectively signalled the
-monster to each other in 42Â° 15' N. lat. and 60Â° 35' W. long.
+monster to each other in 42° 15' N. lat. and 60° 35' W. long.
 In these simultaneous observations they thought themselves justified in
 estimating the minimum length of the mammal at more than three hundred
 and fifty feet, as the Shannon and Helvetia were of smaller dimensions
@@ -94,7 +90,7 @@ monster became a small island, a rock, a reef, but a reef of indefinite
 and shifting proportions.
 
 On the 5th of March, 1867, the Moravian, of the Montreal Ocean Company,
-finding herself during the night in 27Â° 30' lat. and 72Â° 15'
+finding herself during the night in 27° 30' lat. and 72° 15'
 long., struck on her starboard quarter a rock, marked in no chart for
 that part of the sea.  Under the combined efforts of the wind and its
 four hundred horse power, it was going at the rate of thirteen knots.
@@ -120,7 +116,7 @@ belonged, the circumstance became extensively circulated.
 
 The 13th of April, 1867, the sea being beautiful, the breeze
 favourable, the Scotia, of the Cunard Company's line, found herself in
-15Â° 12' long. and 45Â° 37' lat.  She was going at the speed of
+15° 12' long. and 45° 37' lat.  She was going at the speed of
 thirteen knots and a half.
 
 At seventeen minutes past four in the afternoon, whilst the passengers
@@ -172,10 +168,9 @@ Now, it was the "monster" who, justly or unjustly, was accused of their
 disappearance, and, thanks to it, communication between the different
 continents became more and more dangerous.  The public demanded sharply
 that the seas should at any price be relieved from this formidable
-cetacean.[1]
+cetacean.
 
 
-[1] Member of the whale family.
 
 
 
@@ -250,13 +245,13 @@ suggestions, it becomes necessary to admit the existence of a marine
 animal of enormous power.
 
 "The great depths of the ocean are entirely unknown to us.  Soundings
-cannot reach them.  What passes in those remote depths--what beings
+cannot reach them.  What passes in those remote depths what beings
 live, or can live, twelve or fifteen miles beneath the surface of the
-waters--what is the organisation of these animals, we can scarcely
+waters what is the organisation of these animals, we can scarcely
 conjecture.  However, the solution of the problem submitted to me may
 modify the form of the dilemma.  Either we do know all the varieties of
 beings which people our planet, or we do not.  If we do NOT know them
-all--if Nature has still secrets in the deeps for us, nothing is more
+all if Nature has still secrets in the deeps for us, nothing is more
 conformable to reason than to admit the existence of fishes, or
 cetaceans of other kinds, or even of new species, of an organisation
 formed to inhabit the strata inaccessible to soundings, and which an
@@ -341,7 +336,7 @@ letter worded as follows:
 To M. ARONNAX, Professor in the Museum of Paris, Fifth Avenue Hotel,
 New York.
 
-SIR,--If you will consent to join the Abraham Lincoln in this
+SIR, If you will consent to join the Abraham Lincoln in this
 expedition, the Government of the United States will with pleasure see
 France represented in the enterprise.  Commander Farragut has a cabin
 at your disposal.
@@ -363,8 +358,8 @@ life, was to chase this disturbing monster and purge it from the world.
 But I had just returned from a fatiguing journey, weary and longing for
 repose.  I aspired to nothing more than again seeing my country, my
 friends, my little lodging by the Jardin des Plantes, my dear and
-precious collections--but nothing could keep me back!  I forgot
-all--fatigue, friends and collections--and accepted without hesitation
+precious collections but nothing could keep me back!  I forgot
+all fatigue, friends and collections and accepted without hesitation
 the offer of the American Government.
 
 "Besides," thought I, "all roads lead back to Europe; and the unicorn
@@ -382,7 +377,7 @@ accompanied me in all my travels.  I liked him, and he returned the
 liking well.  He was quiet by nature, regular from principle, zealous
 from habit, evincing little disturbance at the different surprises of
 life, very quick with his hands, and apt at any service required of
-him; and, despite his name, never giving advice--even when asked for it.
+him; and, despite his name, never giving advice even when asked for it.
 
 Conseil had followed me for the last ten years wherever science led.
 Never once did he complain of the length or fatigue of a journey, never
@@ -420,7 +415,7 @@ two hours."
 "As you please, sir," replied Conseil, quietly.
 
 "Not an instant to lose; lock in my trunk all travelling utensils,
-coats, shirts, and stockings--without counting, as many as you can, and
+coats, shirts, and stockings without counting, as many as you can, and
 make haste."
 
 "And your collections, sir?" observed Conseil.
@@ -438,7 +433,7 @@ take our passage in the Abraham, Lincoln."
 
 "As you think proper, sir," coolly replied Conseil.
 
-"You see, my friend, it has to do with the monster--the famous narwhal.
+"You see, my friend, it has to do with the monster the famous narwhal.
 We are going to purge it from the seas.  A glorious mission, but a
 dangerous one!  We cannot tell where we may go; these animals can be
 very capricious.  But we will go whether or no; we have got a captain
@@ -461,7 +456,7 @@ The Abraham Lincoln had been well chosen and equipped for her new
 destination.  She was a frigate of great speed, fitted with
 high-pressure engines which admitted a pressure of seven atmospheres.
 Under this the Abraham Lincoln attained the mean speed of nearly
-eighteen knots and a third an hour--a considerable speed, but,
+eighteen knots and a third an hour a considerable speed, but,
 nevertheless, insufficient to grapple with this gigantic cetacean.
 
 The interior arrangements of the frigate corresponded to its nautical
@@ -502,7 +497,7 @@ Captain Farragut was a good seaman, worthy of the frigate he commanded.
 His vessel and he were one.  He was the soul of it.  On the question of
 the monster there was no doubt in his mind, and he would not allow the
 existence of the animal to be disputed on board.  He believed in it, as
-certain good women believe in the leviathan--by faith, not by reason.
+certain good women believe in the leviathan by faith, not by reason.
 The monster did exist, and he had sworn to rid the seas of it.  Either
 Captain Farragut would kill the narwhal, or the narwhal would kill the
 captain.  There was no third course.
@@ -604,7 +599,7 @@ struck his broad forehead with his hand (a habit of his), as if to
 collect himself, and said at last, "Perhaps I have, Mr. Aronnax."
 
 "But, Ned, you, a whaler by profession, familiarised with all the great
-marine mammalia--YOU ought to be the last to doubt under such
+marine mammalia YOU ought to be the last to doubt under such
 circumstances!"
 
 "That is just what deceives you, Professor," replied Ned.  "As a whaler
@@ -616,7 +611,7 @@ iron plates of a steamer."
 "But, Ned, they tell of ships which the teeth of the narwhal have
 pierced through and through."
 
-"Wooden ships--that is possible," replied the Canadian, "but I have
+"Wooden ships that is possible," replied the Canadian, "but I have
 never seen it done; and, until further proof, I deny that whales,
 cetaceans, or sea-unicorns could ever produce the effect you describe."
 
@@ -676,14 +671,14 @@ water surrounds me, but does not penetrate."
 would undergo a pressure of 97,500 lb.; at 320 feet, ten times that
 pressure; at 3,200 feet, a hundred times that pressure; lastly, at
 32,000 feet, a thousand times that pressure would be 97,500,000
-lb.--that is to say, that you would be flattened as if you had been
+lb. that is to say, that you would be flattened as if you had been
 drawn from the plates of a hydraulic machine!"
 
 "The devil!" exclaimed Ned.
 
 "Very well, my worthy harpooner, if some vertebrate, several hundred
 yards long, and large in proportion, can maintain itself in such
-depths--of those whose surface is represented by millions of square
+depths of those whose surface is represented by millions of square
 inches, that is by tens of millions of pounds, we must estimate the
 pressure they undergo.  Consider, then, what must be the resistance of
 their bony structure, and the strength of their organisation to
@@ -696,7 +691,7 @@ inches thick, like the armoured frigates."
 if hurled with the speed of an express train against the hull of a
 vessel."
 
-"Yes--certainly--perhaps," replied the Canadian, shaken by these
+"Yes certainly perhaps," replied the Canadian, shaken by these
 figures, but not yet willing to give in.
 
 "Well, have I convinced you?"
@@ -792,7 +787,7 @@ tropic of Cancer, and made for the China Seas.  We were on the theatre
 of the last diversions of the monster:  and, to say truth, we no longer
 LIVED on board.  The entire ship's crew were undergoing a nervous
 excitement, of which I can give no idea:  they could not eat, they
-could not sleep--twenty times a day, a misconception or an optical
+could not sleep twenty times a day, a misconception or an optical
 illusion of some sailor seated on the taffrail, would cause dreadful
 perspirations, and these emotions, twenty times repeated, kept us in a
 state of excitement so violent that a reaction was unavoidable.
@@ -812,7 +807,7 @@ of Captain Farragut, the frigate would have headed due southward.  This
 useless search could not last much longer.  The Abraham Lincoln had
 nothing to reproach herself with, she had done her best to succeed.
 Never had an American ship's crew shown more zeal or patience; its
-failure could not be placed to their charge--there remained nothing but
+failure could not be placed to their charge there remained nothing but
 to return.
 
 This was represented to the commander.  The sailors could not hide
@@ -844,7 +839,7 @@ speaking) expire; after that time, Commander Farragut, faithful to his
 promise, was to turn the course to the south-east and abandon for ever
 the northern regions of the Pacific.
 
-The frigate was then in 31Â° 15' N. lat. and 136Â° 42' E. long.
+The frigate was then in 31° 15' N. lat. and 136° 42' E. long.
 The coast of Japan still remained less than two hundred miles to
 leeward.  Night was approaching.  They had just struck eight bells;
 large clouds veiled the face of the moon, then in its first quarter.
@@ -882,7 +877,7 @@ Plantes, and have drawn all the curious people of the capital!"
 laughed at for our pains."
 
 "That's tolerably certain," replied Conseil, quietly; "I think they
-will make fun of you, sir.  And, must I say it----?"
+will make fun of you, sir.  And, must I say it  ?"
 
 "Go on, my good friend."
 
@@ -890,14 +885,14 @@ will make fun of you, sir.  And, must I say it----?"
 
 "Indeed!"
 
-"When one has the honour of being a _savant_ as you are, sir, one should
-not expose one's self to----"
+"When one has the honour of being a savant as you are, sir, one should
+not expose one's self to  "
 
 Conseil had not time to finish his compliment.  In the midst of general
 silence a voice had just been heard.  It was the voice of Ned Land
 shouting:
 
-"Look out there!  The very thing we are looking for--on our weather
+"Look out there!  The very thing we are looking for on our weather
 beam!"
 
 
@@ -907,7 +902,7 @@ CHAPTER VI
 AT FULL STEAM
 
 At this cry the whole ship's crew hurried towards the
-harpooner--commander, officers, masters, sailors, cabin boys; even the
+harpooner commander, officers, masters, sailors, cabin boys; even the
 engineers left their engines, and the stokers their furnaces.
 
 The order to stop her had been given, and the frigate now simply went
@@ -957,8 +952,8 @@ like those volumes of steam that the express trains leave behind.  All
 at once from the dark line of the horizon whither it retired to gain
 its momentum, the monster rushed suddenly towards the Abraham Lincoln
 with alarming rapidity, stopped suddenly about twenty feet from the
-hull, and died out--not diving under the water, for its brilliancy did
-not abate--but suddenly, and as if the source of this brilliant
+hull, and died out not diving under the water, for its brilliancy did
+not abate but suddenly, and as if the source of this brilliant
 emanation was exhausted.  Then it reappeared on the other side of the
 vessel, as if it had turned and slid under the hull.  Any moment a
 collision might have occurred which would have been fatal to us.
@@ -1030,7 +1025,7 @@ The fishing implements were laid along the hammock nettings.  The
 second lieutenant loaded the blunder busses, which could throw harpoons
 to the distance of a mile, and long duck-guns, with explosive bullets,
 which inflicted mortal wounds even to the most terrible animals.  Ned
-Land contented himself with sharpening his harpoon--a terrible weapon
+Land contented himself with sharpening his harpoon a terrible weapon
 in his hands.
 
 At six o'clock day began to break; and, with the first glimmer of
@@ -1113,7 +1108,7 @@ For a whole hour the frigate kept up this pace, without gaining six
 feet.  It was humiliating for one of the swiftest sailers in the
 American navy.  A stubborn anger seized the crew; the sailors abused
 the monster, who, as before, disdained to answer them; the captain no
-longer contented himself with twisting his beard--he gnawed it.
+longer contented himself with twisting his beard he gnawed it.
 
 The engineer was called again.
 
@@ -1139,7 +1134,7 @@ made 19 3/10 miles.
 
 What a pursuit!  No, I cannot describe the emotion that vibrated
 through me.  Ned Land kept his post, harpoon in hand.  Several times
-the animal let us gain upon it.--"We shall catch it! we shall catch
+the animal let us gain upon it. "We shall catch it! we shall catch
 it!" cried the Canadian.  But just as he was going to strike, the
 cetacean stole away with a rapidity that could not be estimated at less
 than thirty miles an hour, and even during our maximum of speed, it
@@ -1161,7 +1156,7 @@ shot passed some feet above the cetacean, which was half a mile off.
 "Another, more to the right," cried the commander, "and five dollars to
 whoever will hit that infernal beast."
 
-An old gunner with a grey beard--that I can see now--with steady eye
+An old gunner with a grey beard that I can see now with steady eye
 and grave face, went up to the gun and took a long aim.  A loud report
 was heard, with which were mingled the cheers of the crew.
 
@@ -1279,7 +1274,7 @@ at the wheel say, `The screw and the rudder are broken.'
 "Broken?"
 
 "Yes, broken by the monster's teeth.  It is the only injury the Abraham
-Lincoln has sustained.  But it is a bad look-out for us--she no longer
+Lincoln has sustained.  But it is a bad look-out for us she no longer
 answers her helm."
 
 "Then we are lost!"
@@ -1313,7 +1308,7 @@ more than ten minutes each; and relieving each other thus, we could
 swim on for some hours, perhaps till day-break. Poor chance! but hope
 is so firmly rooted in the heart of man!  Moreover, there were two of
 us.  Indeed I declare (though it may seem improbable) if I sought to
-destroy all hope--if I wished to despair, I could not.
+destroy all hope if I wished to despair, I could not.
 
 The collision of the frigate with the cetacean had occurred about
 eleven o'clock in the evening before.  I reckoned then we should have
@@ -1369,7 +1364,7 @@ then fell back exhausted.
 
 "What did you see?"
 
-"I saw----" murmured he; "I saw--but do not talk--reserve all your
+"I saw  " murmured he; "I saw but do not talk reserve all your
 strength!"
 
 What had he seen?  Then, I know not why, the thought of the monster
@@ -1384,7 +1379,7 @@ over me.  I raised my head for the last time, then I sank.
 
 At this moment a hard body struck me.  I clung to it: then I felt that
 I was being drawn up, that I was brought to the surface of the water,
-that my chest collapsed--I fainted.
+that my chest collapsed I fainted.
 
 It is certain that I soon came to, thanks to the vigorous rubbings that
 I received.  I half opened my eyes.
@@ -1519,7 +1514,7 @@ protesting."
 "Not quite," sharply replied the Canadian, "but pretty near, at all
 events.  Things look black.  Happily, my bowie knife I have still, and
 I can always see well enough to use it.  The first of these pirates who
-lays a hand on me----"
+lays a hand on me  "
 
 "Do not excite yourself, Ned," I said to the harpooner, "and do not
 compromise us by useless violence.  Who knows that they will not listen
@@ -1565,11 +1560,11 @@ penetrating look, and the vivacity which characterises the population
 of Southern France.
 
 The second stranger merits a more detailed description.  I made out his
-prevailing qualities directly:  self-confidence--because his head was
+prevailing qualities directly:  self-confidence because his head was
 well set on his shoulders, and his black eyes looked around with cold
-assurance; calmness--for his skin, rather pale, showed his coolness of
-blood; energy--evinced by the rapid contraction of his lofty brows; and
-courage--because his deep breathing denoted great power of lungs.
+assurance; calmness for his skin, rather pale, showed his coolness of
+blood; energy evinced by the rapid contraction of his lofty brows; and
+courage because his deep breathing denoted great power of lungs.
 
 Whether this person was thirty-five or fifty years of age, I could not
 say.  He was tall, had a large forehead, straight nose, a clearly cut
@@ -1579,7 +1574,7 @@ specimen I had ever met.  One particular feature was his eyes, rather
 far from each other, and which could take in nearly a quarter of the
 horizon at once.
 
-This faculty--(I verified it later)--gave him a range of vision far
+This faculty (I verified it later) gave him a range of vision far
 superior to Ned Land's. When this stranger fixed upon an object, his
 eyebrows met, his large eyelids closed around so as to contract the
 range of his vision, and he looked as if he magnified the objects
@@ -1615,8 +1610,8 @@ and with extreme attention; but nothing in his countenance indicated
 that he had understood my story.  When I finished, he said not a word.
 
 There remained one resource, to speak English.  Perhaps they would know
-this almost universal language.  I knew it--as well as the German
-language--well enough to read it fluently, but not to speak it
+this almost universal language.  I knew it as well as the German
+language well enough to read it fluently, but not to speak it
 correctly.  But, anyhow, we must make ourselves understood.
 
 "Go on in your turn," I said to the harpooner; "speak your best
@@ -1677,7 +1672,7 @@ incomprehensible."
 As he said these words, the door opened.  A steward entered.  He
 brought us clothes, coats and trousers, made of a stuff I did not know.
 I hastened to dress myself, and my companions followed my example.
-During that time, the steward--dumb, perhaps deaf--had arranged the
+During that time, the steward dumb, perhaps deaf had arranged the
 table, and laid three plates.
 
 "This is something like!" said Conseil.
@@ -1698,7 +1693,7 @@ to us, I recognised several fish delicately dressed; but of some,
 although excellent, I could give no opinion, neither could I tell to
 what kingdom they belonged, whether animal or vegetable.  As to the
 dinner-service, it was elegant, and in perfect taste.  Each
-utensil--spoon, fork, knife, plate--had a letter engraved on it, with a
+utensil spoon, fork, knife, plate had a letter engraved on it, with a
 motto above it, of which this is an exact facsimile:
 
 
@@ -1723,7 +1718,7 @@ My two companions stretched themselves on the cabin carpet, and were
 soon sound asleep.  For my own part, too many thoughts crowded my
 brain, too many insoluble questions pressed upon me, too many fancies
 kept my eyes half open.  Where were we?  What strange power carried us
-on?  I felt--or rather fancied I felt--the machine sinking down to the
+on?  I felt or rather fancied I felt the machine sinking down to the
 lowest beds of the sea.  Dreadful nightmares beset me; I saw in these
 mysterious asylums a world of unknown animals, amongst which this
 submarine boat seemed to be of the same kind, living, moving, and
@@ -1742,7 +1737,7 @@ companions had not moved, and were still stretched in their corner.
 
 Hardly roused from my somewhat hard couch, I felt my brain freed, my
 mind clear.  I then began an attentive examination of our cell.
-Nothing was changed inside.  The prison was still a prison--the
+Nothing was changed inside.  The prison was still a prison the
 prisoners, prisoners.  However, the steward, during our sleep, had
 cleared the table.  I breathed with difficulty.  The heavy air seemed
 to oppress my lungs.  Although the cell was large, we had evidently
@@ -1756,8 +1751,8 @@ the whole in the submarine boat.  That gave rise to a question in my
 mind.  How would the commander of this floating dwelling-place proceed?
 Would he obtain air by chemical means, in getting by heat the oxygen
 contained in chlorate of potash, and in absorbing carbonic acid by
-caustic potash?  Or--a more convenient, economical, and consequently
-more probable alternative--would he be satisfied to rise and take
+caustic potash?  Or a more convenient, economical, and consequently
+more probable alternative would he be satisfied to rise and take
 breath at the surface of the water, like a whale, and so renew for
 twenty-four hours the atmospheric provision?
 
@@ -1957,7 +1952,7 @@ surface, he defied all attempts made against him?
 What vessel could resist the shock of his submarine monitor?  What
 cuirass, however thick, could withstand the blows of his spur?  No man
 could demand from him an account of his actions; God, if he believed in
-one--his conscience, if he had one--were the sole judges to whom he was
+one his conscience, if he had one were the sole judges to whom he was
 answerable.
 
 These reflections crossed my mind rapidly, whilst the stranger
@@ -1991,7 +1986,7 @@ pale of social laws.  Amongst the surprises which the future was
 preparing for me, this might not be the least.
 
 "We accept," I answered; "only I will ask your permission, sir, to
-address one question to you--one only."
+address one question to you one only."
 
 "Speak, sir."
 
@@ -2002,7 +1997,7 @@ address one question to you--one only."
 "I ask you, then, what you mean by this liberty?"
 
 "Just the liberty to go, to come, to see, to observe even all that
-passes here save under rare circumstances--the liberty, in short, which
+passes here save under rare circumstances the liberty, in short, which
 we enjoy ourselves, my companions and I."
 
 It was evident that we did not understand one another.
@@ -2030,9 +2025,9 @@ abuse your situation towards us; it is cruelty."
 "No, sir, it is clemency.  You are my prisoners of war.  I keep you,
 when I could, by a word, plunge you into the depths of the ocean.  You
 attacked me.  You came to surprise a secret which no man in the world
-must penetrate--the secret of my whole existence.  And you think that I
+must penetrate the secret of my whole existence.  And you think that I
 am going to send you back to that world which must know me no more?
-Never!  In retaining you, it is not you whom I guard--it is myself."
+Never!  In retaining you, it is not you whom I guard it is myself."
 
 These words indicated a resolution taken on the part of the commander,
 against which no arguments would prevail.
@@ -2055,7 +2050,7 @@ complain of in the chance which has bound you to my fate.  You will
 find amongst the books which are my favourite study the work which you
 have published on `the depths of the sea.'  I have often read it.  You
 have carried out your work as far as terrestrial science permitted you.
-But you do not know all--you have not seen all.  Let me tell you then,
+But you do not know all you have not seen all.  Let me tell you then,
 Professor, that you will not regret the time passed on board my vessel.
 You are going to visit the land of marvels."
 
@@ -2152,14 +2147,14 @@ desert, where man is never lonely, for he feels life stirring on all
 sides.  The sea is only the embodiment of a supernatural and wonderful
 existence.  It is nothing but love and emotion; it is the `Living
 Infinite,' as one of your poets has said.  In fact, Professor, Nature
-manifests herself in it by her three kingdoms--mineral, vegetable, and
+manifests herself in it by her three kingdoms mineral, vegetable, and
 animal.  The sea is the vast reservoir of Nature.  The globe began with
 sea, so to speak; and who knows if it will not end with it?  In it is
 supreme tranquillity.  The sea does not belong to despots.  Upon its
 surface men can still exercise unjust laws, fight, tear one another to
 pieces, and be carried away with terrestrial horrors.  But at thirty
 feet below its level, their reign ceases, their influence is quenched,
-and their power disappears.  Ah! sir, live--live in the bosom of the
+and their power disappears.  Ah! sir, live live in the bosom of the
 waters!  There only is independence!  There I recognise no masters!
 There I am free!"
 
@@ -2302,7 +2297,7 @@ friends who are sleeping six feet under the earth!"
 Captain Nemo was silent, and seemed lost in a profound reverie. I
 contemplated him with deep interest, analysing in silence the strange
 expression of his countenance. Leaning on his elbow against an angle of
-a costly mosaic table, he no longer saw me,--he had forgotten my
+a costly mosaic table, he no longer saw me, he had forgotten my
 presence.
 
 I did not disturb this reverie, and continued my observation of the
@@ -2321,7 +2316,7 @@ the Norwegian seas, variegated unbellulairae, alcyonariae, a whole
 series of madrepores, which my master Milne Edwards has so cleverly
 classified, amongst which I remarked some wonderful flabellinae
 oculinae of the Island of Bourbon, the "Neptune's car" of the Antilles,
-superb varieties of corals--in short, every species of those curious
+superb varieties of corals in short, every species of those curious
 polypi of which entire islands are formed, which will one day become
 continents. Of the echinodermes, remarkable for their coating of
 spines, asteri, sea-stars, pantacrinae, comatules, asterophons, echini,
@@ -2335,7 +2330,7 @@ to describe minutely. Amongst these specimens I will quote from memory
 only the elegant royal hammer-fish of the Indian Ocean, whose regular
 white spots stood out brightly on a red and brown ground, an imperial
 spondyle, bright-coloured, bristling with spines, a rare specimen in
-the European museums--(I estimated its value at not less than L1000); a
+the European museums (I estimated its value at not less than L1000); a
 common hammer-fish of the seas of New Holland, which is only procured
 with difficulty; exotic buccardia of Senegal; fragile white bivalve
 shells, which a breath might shatter like a soap-bubble; several
@@ -2567,7 +2562,7 @@ board the Nautilus.
 
 At the bottom was a fourth partition that separated this office from
 the engine-room. A door opened, and I found myself in the compartment
-where Captain Nemo--certainly an engineer of a very high order--had
+where Captain Nemo certainly an engineer of a very high order had
 arranged his locomotive machinery.  This engine-room, clearly lighted,
 did not measure less than sixty-five feet in length.  It was divided
 into two parts; the first contained the materials for producing
@@ -2697,7 +2692,7 @@ difficulty in the way."
 pressure of 100 atmospheres.  If, then, just now you were to empty the
 supplementary reservoirs, to lighten the vessel, and to go up to the
 surface, the pumps must overcome the pressure of 100 atmospheres, which
-is 1,500 lbs.  per square inch.  From that a power----"
+is 1,500 lbs.  per square inch.  From that a power  "
 
 "That electricity alone can give," said the Captain, hastily.  "I
 repeat, sir, that the dynamic power of my engines is almost infinite.
@@ -2894,7 +2889,7 @@ its disc touched the horizon.  Whilst taking observations not a muscle
 moved, the instrument could not have been more motionless in a hand of
 marble.
 
-"Twelve o'clock, sir," said he.  "When you like----"
+"Twelve o'clock, sir," said he.  "When you like  "
 
 I cast a last look upon the sea, slightly yellowed by the Japanese
 coast, and descended to the saloon.
@@ -2954,7 +2949,7 @@ move amongst such wonders.  So be quiet and let us try and see what
 passes around us."
 
 "See!" exclaimed the harpooner, "but we can see nothing in this iron
-prison!  We are walking--we are sailing--blindly."
+prison!  We are walking we are sailing blindly."
 
 Ned Land had scarcely pronounced these words when all was suddenly
 darkness.  The luminous ceiling was gone, and so rapidly that my eyes
@@ -3074,7 +3069,7 @@ depth below the surface between twenty-five and thirty fathoms.
 The next day, 10th of November, the same desertion, the same solitude.
 I did not see one of the ship's crew: Ned and Conseil spent the greater
 part of the day with me.  They were astonished at the puzzling absence
-of the Captain.  Was this singular man ill?--had he altered his
+of the Captain.  Was this singular man ill? had he altered his
 intentions with regard to us?
 
 After all, as Conseil said, we enjoyed perfect liberty, we were
@@ -3162,7 +3157,7 @@ to hunt in a forest, I contented myself with replying:
 
 "Let us first see where the Island of Crespo is."
 
-I consulted the planisphere, and in 32Â° 40' N. lat. and 157Â°
+I consulted the planisphere, and in 32° 40' N. lat. and 157°
 50' W. long., I found a small island, recognised in 1801 by Captain
 Crespo, and marked in the ancient Spanish maps as Rocca de la Plata,
 the meaning of which is The Silver Rock.  We were then about eighteen
@@ -3207,7 +3202,7 @@ without saying a word.  Then he began:
 you evidently thought me mad.  Sir, you should never judge lightly of
 any man."
 
-"But Captain, believe me----"
+"But Captain, believe me  "
 
 "Be kind enough to listen, and you will then see whether you have any
 cause to accuse me of folly and contradiction."
@@ -3256,7 +3251,7 @@ conditions the reservoir of the apparatus can furnish breathable air
 for nine or ten hours."
 
 "I have no further objections to make," I answered.  "I will only ask
-you one thing, Captain--how can you light your road at the bottom of
+you one thing, Captain how can you light your road at the bottom of
 the sea?"
 
 "With the Ruhmkorff apparatus, M. Aronnax; one is carried on the back,
@@ -3536,7 +3531,7 @@ copses?
 
 This forest was composed of large tree-plants; and the moment we
 penetrated under its vast arcades, I was struck by the singular
-position of their branches--a position I had not yet observed.
+position of their branches a position I had not yet observed.
 
 Not an herb which carpeted the ground, not a branch which clothed the
 trees, was either broken or bent, nor did they extend horizontally; all
@@ -3786,7 +3781,7 @@ discovered in it a circulation as real as the circulation of blood in
 animals.
 
 "Yes, the ocean has indeed circulation, and to promote it, the Creator
-has caused things to multiply in it--caloric, salt, and animalculae."
+has caused things to multiply in it caloric, salt, and animalculae."
 
 When Captain Nemo spoke thus, he seemed altogether changed, and aroused
 an extraordinary emotion in me.
@@ -3795,7 +3790,7 @@ an extraordinary emotion in me.
 foundations of nautical towns, clusters of submarine houses, which,
 like the Nautilus, would ascend every morning to breathe at the surface
 of the water, free towns, independent cities.  Yet who knows whether
-some despot----"
+some despot  "
 
 Captain Nemo finished his sentence with a violent gesture.  Then,
 addressing me as if to chase away some sorrowful thought:
@@ -3840,7 +3835,7 @@ the bed of the sea.  The thermometer indicated a temperature of 4.25
 latitudes.
 
 At three o'clock in the morning of the 26th of November the Nautilus
-crossed the tropic of Cancer at 172Â° long.  On 27th instant it
+crossed the tropic of Cancer at 172° long.  On 27th instant it
 sighted the Sandwich Islands, where Cook died, February 14, 1779.  We
 had then gone 4,860 leagues from our starting-point. In the morning,
 when I went on the platform, I saw two miles to windward, Hawaii, the
@@ -3850,7 +3845,7 @@ with the side, and the volcanoes that overtop Mouna-Rea, which rise
 5,000 yards above the level of the sea.  Besides other things the nets
 brought up, were several flabellariae and graceful polypi, that are
 peculiar to that part of the ocean.  The direction of the Nautilus was
-still to the south-east. It crossed the equator December 1, in 142Â°
+still to the south-east. It crossed the equator December 1, in 142°
 long.; and on the 4th of the same month, after crossing rapidly and
 without anything in particular occurring, we sighted the Marquesas
 group.  I saw, three miles off, Martin's peak in Nouka-Hiva, the
@@ -3898,12 +3893,12 @@ vessel had had to sacrifice its masts.  But, lying on its side, it had
 filled, and it was heeling over to port.  This skeleton of what it had
 once been was a sad spectacle as it lay lost under the waves, but
 sadder still was the sight of the bridge, where some corpses, bound
-with ropes, were still lying.  I counted five--four men, one of whom
+with ropes, were still lying.  I counted five four men, one of whom
 was standing at the helm, and a woman standing by the poop, holding an
 infant in her arms.  She was quite young.  I could distinguish her
 features, which the water had not decomposed, by the brilliant light
 from the Nautilus.  In one despairing effort, she had raised her infant
-above her head--poor little thing!--whose arms encircled its mother's
+above her head poor little thing! whose arms encircled its mother's
 neck.  The attitude of the four sailors was frightful, distorted as
 they were by their convulsive movements, whilst making a last effort to
 free themselves from the cords that bound them to the vessel.  The
@@ -3918,7 +3913,7 @@ moments.  And I saw already, coming towards it with hungry eyes,
 enormous sharks, attracted by the human flesh.
 
 However, the Nautilus, turning, went round the submerged vessel, and in
-one instant I read on the stern--"The Florida, Sunderland."
+one instant I read on the stern "The Florida, Sunderland."
 
 
 
@@ -3972,7 +3967,7 @@ in the rough beds of the sea, near the surface; and consequently it is
 from the upper part that they begin their operations, in which they
 bury themselves by degrees with the debris of the secretions that
 support them. Such is, at least, Darwin's theory, who thus explains the
-formation of the _atolls_, a superior theory (to my mind) to that given
+formation of the atolls, a superior theory (to my mind) to that given
 of the foundation of the madreporical works, summits of mountains or
 volcanoes, that are submerged some feet below the level of the sea.
 
@@ -3985,7 +3980,7 @@ of an inch in a hundred years.
 
 Towards evening Clermont-Tonnerre was lost in the distance, and the
 route of the Nautilus was sensibly changed. After having crossed the
-tropic of Capricorn in 135Â° longitude, it sailed W.N.W., making
+tropic of Capricorn in 135° longitude, it sailed W.N.W., making
 again for the tropical zone. Although the summer sun was very strong,
 we did not suffer from heat, for at fifteen or twenty fathoms below the
 surface, the temperature did not rise above from ten to twelve degrees.
@@ -4000,8 +3995,8 @@ On the 25th of December the Nautilus sailed into the midst of the New
 Hebrides, discovered by Quiros in 1606, and that Bougainville explored
 in 1768, and to which Cook gave its present name in 1773.  This group
 is composed principally of nine large islands, that form a band of 120
-leagues N.N.S. to S.S.W., between 15Â° and 2Â° S. lat., and 164
-deg. and 168Â° long.  We passed tolerably near to the Island of
+leagues N.N.S. to S.S.W., between 15° and 2° S. lat., and 164
+deg. and 168° long.  We passed tolerably near to the Island of
 Aurou, that at noon looked like a mass of green woods, surmounted by a
 peak of great height.
 
@@ -4039,7 +4034,7 @@ To the N.E. two volcanic islands emerged of unequal size, surrounded by
 a coral reef that measured forty miles in circumference.  We were close
 to Vanikoro, really the one to which Dumont d'Urville gave the name of
 Isle de la Recherche, and exactly facing the little harbour of Vanou,
-situated in 16Â° 4' S. lat., and 164Â° 32' E. long.  The earth
+situated in 16° 4' S. lat., and 164° 32' E. long.  The earth
 seemed covered with verdure from the shore to the summits in the
 interior, that were crowned by Mount Kapogo, 476 feet high.  The
 Nautilus, having passed the outer belt of rocks by a narrow strait,
@@ -4060,7 +4055,7 @@ ironically.
 "Easily."
 
 I related to him all that the last works of Dumont d'Urville had made
-known--works from which the following is a brief account.
+known works from which the following is a brief account.
 
 La Perouse, and his second, Captain de Langle, were sent by Louis XVI,
 in 1785, on a voyage of circumnavigation.  They embarked in the
@@ -4072,8 +4067,8 @@ Bruni d'Entrecasteaux.
 
 Two months after, they learned from Bowen, commander of the Albemarle,
 that the debris of shipwrecked vessels had been seen on the coasts of
-New Georgia.  But D'Entrecasteaux, ignoring this communication--rather
-uncertain, besides--directed his course towards the Admiralty Islands,
+New Georgia.  But D'Entrecasteaux, ignoring this communication rather
+uncertain, besides directed his course towards the Admiralty Islands,
 mentioned in a report of Captain Hunter's as being the place where La
 Perouse was wrecked.
 
@@ -4105,10 +4100,10 @@ The Recherche, after touching at several points in the Pacific, cast
 anchor before Vanikoro, 7th July, 1827, in that same harbour of Vanou
 where the Nautilus was at this time.
 
-There it collected numerous relics of the wreck--iron utensils,
+There it collected numerous relics of the wreck iron utensils,
 anchors, pulley-strops, swivel-guns, an 18 lb. shot, fragments of
 astronomical instruments, a piece of crown work, and a bronze clock,
-bearing this inscription--"Bazin m'a fait," the mark of the foundry of
+bearing this inscription "Bazin m'a fait," the mark of the foundry of
 the arsenal at Brest about 1785.  There could be no further doubt.
 
 Dillon, having made all inquiries, stayed in the unlucky place till
@@ -4124,7 +4119,7 @@ Dumont d'Urville, commander of the Astrolabe, had then sailed, and two
 months after Dillon had left Vanikoro he put into Hobart Town.  There
 he learned the results of Dillon's inquiries, and found that a certain
 James Hobbs, second lieutenant of the Union of Calcutta, after landing
-on an island situated 8Â° 18' S. lat., and 156Â° 30' E. long.,
+on an island situated 8° 18' S. lat., and 156° 30' E. long.,
 had seen some iron bars and red stuffs used by the natives of these
 parts.  Dumont d'Urville, much perplexed, and not knowing how to credit
 the reports of low-class journals, decided to follow Dillon's track.
@@ -4178,9 +4173,9 @@ panels were opened.
 
 I hastened to the aperture, and under the crustations of coral, covered
 with fungi, syphonules, alcyons, madrepores, through myriads of
-charming fish--girelles, glyphisidri, pompherides, diacopes, and
-holocentres--I recognised certain debris that the drags had not been
-able to tear up--iron stirrups, anchors, cannons, bullets, capstan
+charming fish girelles, glyphisidri, pompherides, diacopes, and
+holocentres I recognised certain debris that the drags had not been
+able to tear up iron stirrups, anchors, cannons, bullets, capstan
 fittings, the stem of a ship, all objects clearly proving the wreck of
 some vessel, and now carpeted with living flowers. While I was looking
 on this desolate scene, Captain Nemo said, in a sad voice:
@@ -4332,7 +4327,7 @@ exchanging words in their incomprehensible dialect.
 She was situated thus:  Two miles, on the starboard side, appeared
 Gilboa, stretching from north to west like an immense arm.  Towards the
 south and east some coral showed itself, left by the ebb.  We had run
-aground, and in one of those seas where the tides are middling--a sorry
+aground, and in one of those seas where the tides are middling a sorry
 matter for the floating of the Nautilus.  However, the vessel had not
 suffered, for her keel was solidly joined.  But, if she could neither
 glide off nor move, she ran the risk of being for ever fastened to
@@ -4446,8 +4441,8 @@ ordinary course."
 and if the game is not such as will hunt the hunter himself."
 
 "Well said, M. Aronnax," replied the Canadian, whose teeth seemed
-sharpened like the edge of a hatchet; "but I will eat tiger--loin of
-tiger--if there is no other quadruped on this island."
+sharpened like the edge of a hatchet; "but I will eat tiger loin of
+tiger if there is no other quadruped on this island."
 
 "Friend Ned is uneasy about it," said Conseil.
 
@@ -4557,8 +4552,8 @@ no longer.
 "Master," he said, "I shall die if I do not taste a little of this
 bread-fruit pie."
 
-"Taste it, friend Ned--taste it as you want.  We are here to make
-experiments--make them."
+"Taste it, friend Ned taste it as you want.  We are here to make
+experiments make them."
 
 "It won't take long," said the Canadian.
 
@@ -4820,7 +4815,7 @@ three arose, shouldered our guns, and were ready to reply to any attack.
 
 "Are they apes?" cried Ned Land.
 
-"Very nearly--they are savages."
+"Very nearly they are savages."
 
 "To the boat!"  I said, hurrying to the sea.
 
@@ -4870,7 +4865,7 @@ at having set foot on a strange land and finding savages?  Savages!
 where are there not any?  Besides, are they worse than others, these
 whom you call savages?"
 
-"But Captain----"
+"But Captain  "
 
 "How many have you counted?"
 
@@ -4889,8 +4884,8 @@ for, in this low latitude, the sun sets rapidly and without twilight.
 I could only see the island indistinctly; but the numerous fires,
 lighted on the beach, showed that the natives did not think of leaving
 it.  I was alone for several hours, sometimes thinking of the
-natives--but without any dread of them, for the imperturbable
-confidence of the Captain was catching--sometimes forgetting them to
+natives but without any dread of them, for the imperturbable
+confidence of the Captain was catching sometimes forgetting them to
 admire the splendours of the night in the tropics.  My remembrances
 went to France in the train of those zodiacal stars that would shine in
 some hours' time.  The moon shone in the midst of the constellations of
@@ -4905,8 +4900,8 @@ At six o'clock in the morning of the 8th January I went up on to the
 platform.  The dawn was breaking.  The island soon showed itself
 through the dissipating fogs, first the shore, then the summits.
 
-The natives were there, more numerous than on the day before--five or
-six hundred perhaps--some of them, profiting by the low water, had come
+The natives were there, more numerous than on the day before five or
+six hundred perhaps some of them, profiting by the low water, had come
 on to the coral, at less than two cable-lengths from the Nautilus.  I
 distinguished them easily; they were true Papuans, with athletic
 figures, men of good race, large high foreheads, large, but not broad
@@ -5031,7 +5026,7 @@ at the door that opened into the Captain's room.  "Come in," was the
 answer.
 
 I entered, and found Captain Nemo deep in algebraical calculations of
-_x_ and other quantities.
+x and other quantities.
 
 "I am disturbing you," said I, for courtesy's sake.
 
@@ -5048,7 +5043,7 @@ savages."
 
 "Well, sir, we must close the hatches."
 
-"Exactly, and I came to say to you----"
+"Exactly, and I came to say to you  "
 
 "Nothing can be more simple," said Captain Nemo.  And, pressing an
 electric button, he transmitted an order to the ship's crew.
@@ -5205,7 +5200,7 @@ rail with both hands, he, in his turn, was overthrown.
 
 This explained all.  It was no rail; but a metallic cable charged with
 electricity from the deck communicating with the platform.  Whoever
-touched it felt a powerful shock--and this shock would have been mortal
+touched it felt a powerful shock and this shock would have been mortal
 if Captain Nemo had discharged into the conductor the whole force of
 the current.  It might truly be said that between his assailants and
 himself he had stretched a network of electricity which none could pass
@@ -5240,15 +5235,15 @@ my admiration was unbounded, and from the structure it extended to the
 engineer who had called it into existence.
 
 Our course was directed to the west, and on the 11th of January we
-doubled Cape Wessel, situation in 135Â° long. and 10Â° S. lat.,
+doubled Cape Wessel, situation in 135° long. and 10° S. lat.,
 which forms the east point of the Gulf of Carpentaria.  The reefs were
 still numerous, but more equalised, and marked on the chart with
 extreme precision.  The Nautilus easily avoided the breakers of Money
-to port and the Victoria reefs to starboard, placed at 130Â° long.
+to port and the Victoria reefs to starboard, placed at 130° long.
 and on the 10th parallel, which we strictly followed.
 
 On the 13th of January, Captain Nemo arrived in the Sea of Timor, and
-recognised the island of that name in 122Â° long.
+recognised the island of that name in 122° long.
 
 From this point the direction of the Nautilus inclined towards the
 south-west. Her head was set for the Indian Ocean.  Where would the
@@ -5344,7 +5339,7 @@ Thus this life seemed easy and natural, and we thought no longer of the
 life we led on land; but something happened to recall us to the
 strangeness of our situation.
 
-On the 18th of January, the Nautilus was in 105Â° long. and 15Â°
+On the 18th of January, the Nautilus was in 105° long. and 15°
 S. lat.  The weather was threatening, the sea rough and rolling.  There
 was a strong east wind.  The barometer, which had been going down for
 some days, foreboded a coming storm.  I went up on to the platform just
@@ -5778,7 +5773,7 @@ I could no longer content myself with the theory which satisfied
 Conseil.
 
 That worthy fellow persisted in seeing in the Commander of the Nautilus
-one of those unknown _savants_ who return mankind contempt for
+one of those unknown savants who return mankind contempt for
 indifference.  For him, he was a misunderstood genius who, tired of
 earth's deceptions, had taken refuge in this inaccessible medium, where
 he might follow his instincts freely.  To my mind, this explains but
@@ -5812,7 +5807,7 @@ in a horizontal plane.  The electric lamp was combined in such a way as
 to give its most powerful light.  Indeed, it was produced in vacuo,
 which insured both its steadiness and its intensity.  This vacuum
 economised the graphite points between which the luminous arc was
-developed--an important point of economy for Captain Nemo, who could
+developed an important point of economy for Captain Nemo, who could
 not easily have replaced them; and under these conditions their waste
 was imperceptible.  When the Nautilus was ready to continue its
 submarine journey, I went down to the saloon.  The panel was closed,
@@ -5897,8 +5892,8 @@ and forty miles, or twenty-two miles an hour.  If we recognised so many
 different varieties of fish, it was because, attracted by the electric
 light, they tried to follow us; the greater part, however, were soon
 distanced by our speed, though some kept their place in the waters of
-the Nautilus for a time.  The morning of the 24th, in 12Â° 5' S.
-lat., and 94Â° 33' long., we observed Keeling Island, a coral
+the Nautilus for a time.  The morning of the 24th, in 12° 5' S.
+lat., and 94° 33' long., we observed Keeling Island, a coral
 formation, planted with magnificent cocos, and which had been visited
 by Mr. Darwin and Captain Fitzroy.  The Nautilus skirted the shores of
 this desert island for a little distance.  Its nets brought up numerous
@@ -5916,7 +5911,7 @@ inclined planes, which certain internal levers placed obliquely to the
 waterline.  In that way we went about two miles, but without ever
 obtaining the greatest depths of the Indian Sea, which soundings of
 seven thousand fathoms have never reached.  As to the temperature of
-the lower strata, the thermometer invariably indicated 4Â° above
+the lower strata, the thermometer invariably indicated 4° above
 zero.  I only observed that in the upper regions the water was always
 colder in the high levels than at the surface of the sea.
 
@@ -5962,7 +5957,7 @@ meridian and entered the northern hemisphere.  During the day a
 formidable troop of sharks accompanied us, terrible creatures, which
 multiply in these seas and make them very dangerous.  They were
 "cestracio philippi" sharks, with brown backs and whitish bellies,
-armed with eleven rows of teeth--eyed sharks--their throat being marked
+armed with eleven rows of teeth eyed sharks their throat being marked
 with a large black spot surrounded with white like an eye.  There were
 also some Isabella sharks, with rounded snouts marked with dark spots.
 These powerful creatures often hurled themselves at the windows of the
@@ -6022,7 +6017,7 @@ CHAPTER II
 A NOVEL PROPOSAL OF CAPTAIN NEMO'S
 
 On the 28th of February, when at noon the Nautilus came to the surface
-of the sea, in 9Â° 4' N. lat., there was land in sight about eight
+of the sea, in 9° 4' N. lat., there was land in sight about eight
 miles to westward.  The first thing I noticed was a range of mountains
 about two thousand feet high, the shapes of which were most capricious.
 On taking the bearings, I knew that we were nearing the island of
@@ -6092,8 +6087,8 @@ I think a little hesitation in this case would not be ill-timed."
 At this moment Conseil and the Canadian entered, quite composed, and
 even joyous.  They knew not what awaited them.
 
-"Faith, sir," said Ned Land, "your Captain Nemo--the devil take
-him!--has just made us a very pleasant offer."
+"Faith, sir," said Ned Land, "your Captain Nemo the devil take
+him! has just made us a very pleasant offer."
 
 "Ah!" said I, "you know?"
 
@@ -6212,7 +6207,7 @@ iron-swivel, hoisting them into the vessel, cutting off their tails
 with a blow of a chopper, ripping them up, and throwing their heart
 into the sea!"
 
-"Then, it is a question of----"
+"Then, it is a question of  "
 
 "Precisely."
 
@@ -6222,7 +6217,7 @@ into the sea!"
 
 "Faith, with a good harpoon!  You know, sir, these sharks are
 ill-fashioned beasts.  They turn on their bellies to seize you, and in
-that time----"
+that time  "
 
 Ned Land had a way of saying "seize" which made my blood run cold.
 
@@ -6586,7 +6581,7 @@ At half-past eight we were again on board the Nautilus.  There I
 reflected on the incidents which had taken place in our excursion to
 the Manaar Bank.
 
-Two conclusions I must inevitably draw from it--one bearing upon the
+Two conclusions I must inevitably draw from it one bearing upon the
 unparalleled courage of Captain Nemo, the other upon his devotion to a
 human being, a representative of that race from which he fled beneath
 the sea.  Whatever he might say, this strange man had not yet succeeded
@@ -6610,7 +6605,7 @@ miles an hour, slid into the labyrinth of canals which separate the
 Maldives from the Laccadives.  It coasted even the Island of Kiltan, a
 land originally coraline, discovered by Vasco da Gama in 1499, and one
 of the nineteen principal islands of the Laccadive Archipelago,
-situated between 10Â° and 14Â° 30' N. lat., and 69Â° 50' 72"
+situated between 10° and 14° 30' N. lat., and 69° 50' 72"
 E. long.
 
 We had made 16,220 miles, or 7,500 (French) leagues from our
@@ -6938,7 +6933,7 @@ the round of Africa, and doubled the Cape of Good Hope!"
 Cape of Good Hope, sir?"
 
 "Well, unless the Nautilus sails on dry land, and passes above the
-isthmus----"
+isthmus  "
 
 "Or beneath it, M. Aronnax."
 
@@ -6984,7 +6979,7 @@ CHAPTER V
 
 THE ARABIAN TUNNEL
 
-That same evening, in 21Â° 30' N. lat., the Nautilus floated on the
+That same evening, in 21° 30' N. lat., the Nautilus floated on the
 surface of the sea, approaching the Arabian coast.  I saw Djeddah, the
 most important counting-house of Egypt, Syria, Turkey, and India.  I
 distinguished clearly enough its buildings, the vessels anchored at the
@@ -7100,7 +7095,7 @@ the water.
 
 "Curse it!" exclaimed the Canadian furiously; "I have missed it!"
 
-"No," said I; "the creature is wounded--look at the blood; but your
+"No," said I; "the creature is wounded look at the blood; but your
 weapon has not stuck in his body."
 
 "My harpoon! my harpoon!" cried Ned Land.
@@ -7337,7 +7332,7 @@ That is my idea."
 
 "Where and when?"
 
-"Where I do not know--when I cannot say; or, rather, I suppose it will
+"Where I do not know when I cannot say; or, rather, I suppose it will
 end when these seas have nothing more to teach us."
 
 "Then what do you hope for?" demanded the Canadian.
@@ -7377,7 +7372,7 @@ first opportunity to leave the Nautilus."
 
 "Well, M. Aronnax, that is wisely said."
 
-"Only one observation--just one.  The occasion must be serious, and our
+"Only one observation just one.  The occasion must be serious, and our
 first attempt must succeed; if it fails, we shall never find another,
 and Captain Nemo will never forgive us."
 
@@ -7414,7 +7409,7 @@ will ruin us."
 
 "Certainly, M. Aronnax."
 
-"Well, I think--I do not say I hope--I think that this favourable
+"Well, I think I do not say I hope I think that this favourable
 opportunity will never present itself."
 
 "Why not?"
@@ -7534,7 +7529,7 @@ At that moment, Captain Nemo turned to me.
 Whereupon he turned and left the saloon.
 
 I returned to my room much troubled, as one may believe.  I vainly
-tried to sleep--I sought the connecting link between the apparition of
+tried to sleep I sought the connecting link between the apparition of
 the diver and the chest filled with gold.  Soon, I felt by certain
 movements of pitching and tossing that the Nautilus was leaving the
 depths and returning to the surface.
@@ -7558,8 +7553,8 @@ companions were not less surprised than myself.
 
 To that there was no possible answer.  I returned to the saloon after
 having breakfast and set to work.  Till five o'clock in the evening I
-employed myself in arranging my notes.  At that moment--(ought I to
-attribute it to some peculiar idiosyncrasy)--I felt so great a heat
+employed myself in arranging my notes.  At that moment (ought I to
+attribute it to some peculiar idiosyncrasy) I felt so great a heat
 that I was obliged to take off my coat.  It was strange, for we were
 under low latitudes; and even then the Nautilus, submerged as it was,
 ought to experience no change of temperature.  I looked at the
@@ -7692,7 +7687,7 @@ that Ned Land, to his great disgust, was obliged to renounce his
 intended flight.  He could not launch the pinnace, going at the rate of
 twelve or thirteen yards every second.  To quit the Nautilus under such
 conditions would be as bad as jumping from a train going at full
-speed--an imprudent thing, to say the least of it.  Besides, our vessel
+speed an imprudent thing, to say the least of it.  Besides, our vessel
 only mounted to the surface of the waves at night to renew its stock of
 air; it was steered entirely by the compass and the log.
 
@@ -7756,7 +7751,7 @@ since lost all its vital heat."
 
 "In some hundreds of thousands of years, my boy."
 
-"Then," said Conseil, "we shall have time to finish our journey--that
+"Then," said Conseil, "we shall have time to finish our journey that
 is, if Ned Land does not interfere with it."
 
 And Conseil, reassured, returned to the study of the bank, which the
@@ -7793,7 +7788,7 @@ VIGO BAY
 
 The Atlantic! a vast sheet of water whose superficial area covers
 twenty-five millions of square miles, the length of which is nine
-thousand miles, with a mean breadth of two thousand seven hundred--an
+thousand miles, with a mean breadth of two thousand seven hundred an
 ocean whose parallel winding shores embrace an immense circumference,
 watered by the largest rivers of the world, the St. Lawrence, the
 Mississippi, the Amazon, the Plata, the Orinoco, the Niger, the
@@ -7955,7 +7950,7 @@ plunged into my most secret thoughts, and I hurried from the room.
 There my eye fell upon the compass.  Our course was still north.  The
 log indicated moderate speed, the manometer a depth of about sixty feet.
 
-I returned to my room, clothed myself warmly--sea boots, an otterskin
+I returned to my room, clothed myself warmly sea boots, an otterskin
 cap, a great coat of byssus, lined with sealskin; I was ready, I was
 waiting.  The vibration of the screw alone broke the deep silence which
 reigned on board.  I listened attentively.  Would no loud voice
@@ -8097,7 +8092,7 @@ these waters at two millions."
 
 "Doubtless; but to extract this money the expense would be greater than
 the profit.  Here, on the contrary, I have but to pick up what man has
-lost--and not only in Vigo Bay, but in a thousand other ports where
+lost and not only in Vigo Bay, but in a thousand other ports where
 shipwrecks have happened, and which are marked on my submarine map.
 Can you understand now the source of the millions I am worth?"
 
@@ -8172,7 +8167,7 @@ Vigo on his own account.
 
 "However," said he, "all is not ended.  It is only a blow of the
 harpoon lost.  Another time we must succeed; and to-night, if
-necessary----"
+necessary  "
 
 "In what direction is the Nautilus going?"  I asked.
 
@@ -8199,7 +8194,7 @@ this brightness to take its height.  Then, the sea becoming more
 billowy, we descended, and the panel closed.
 
 An hour after, upon consulting the chart, I saw the position of the
-Nautilus was marked at 16Â° 17' long., and 33Â° 22' lat., at 150
+Nautilus was marked at 16° 17' long., and 33° 22' lat., at 150
 leagues from the nearest coast.  There was no means of flight, and I
 leave you to imagine the rage of the Canadian when I informed him of
 our situation.
@@ -8274,7 +8269,7 @@ whitish lantern of the Nautilus beginning to pale in the distance.
 
 But the rosy light which guided us increased and lit up the horizon.
 The presence of this fire under water puzzled me in the highest degree.
-Was I going towards a natural phenomenon as yet unknown to the _savants_
+Was I going towards a natural phenomenon as yet unknown to the savants
 of the earth?  Or even (for this thought crossed my brain) had the hand
 of man aught to do with this conflagration?  Had he fanned this flame?
 Was I to meet in these depths companions and friends of Captain Nemo
@@ -8317,7 +8312,7 @@ bind-weed which hung from one tree to the other; and frightening the
 fishes, which flew from branch to branch.  Pressing onward, I felt no
 fatigue.  I followed my guide, who was never tired.  What a spectacle!
 How can I express it? how paint the aspect of those woods and rocks in
-this medium--their under parts dark and wild, the upper coloured with
+this medium their under parts dark and wild, the upper coloured with
 red tints, by that light which the reflecting powers of the waters
 doubled?  We climbed rocks which fell directly after with gigantic
 bounds and the low growling of an avalanche.  To right and left ran
@@ -8370,7 +8365,7 @@ swallowed by cataclysms?  Who had placed those rocks and stones like
 cromlechs of prehistoric times?  Where was I?  Whither had Captain
 Nemo's fancy hurried me?
 
-I would fain have asked him; not being able to, I stopped him--I seized
+I would fain have asked him; not being able to, I stopped him I seized
 his arm.  But, shaking his head, and pointing to the highest point of
 the mountain, he seemed to say:
 
@@ -8400,7 +8395,7 @@ Rapid currents bearing all these gases in diffusion and torrents of
 lava slid to the bottom of the mountain like an eruption of Vesuvius on
 another Terra del Greco.
 
-There indeed under my eyes, ruined, destroyed, lay a town--its roofs
+There indeed under my eyes, ruined, destroyed, lay a town its roofs
 open to the sky, its temples fallen, its arches dislocated, its columns
 lying on the ground, from which one would still recognise the massive
 character of Tuscan architecture.  Further on, some remains of a
@@ -8408,7 +8403,7 @@ gigantic aqueduct; here the high base of an Acropolis, with the
 floating outline of a Parthenon; there traces of a quay, as if an
 ancient port had formerly abutted on the borders of the ocean, and
 disappeared with its merchant vessels and its war-galleys. Farther on
-again, long lines of sunken walls and broad, deserted streets--a
+again, long lines of sunken walls and broad, deserted streets a
 perfect Pompeii escaped beneath the waters.  Such was the sight that
 Captain Nemo brought before my eyes!
 
@@ -8441,7 +8436,7 @@ landscape, Captain Nemo remained motionless, as if petrified in mute
 ecstasy, leaning on a mossy stone.  Was he dreaming of those
 generations long since disappeared?  Was he asking them the secret of
 human destiny?  Was it here this strange man came to steep himself in
-historical recollections, and live again this ancient life--he who
+historical recollections, and live again this ancient life he who
 wanted no modern one?  What would I not have given to know his
 thoughts, to share them, to understand them!  We remained for an hour
 at this place, contemplating the vast plains under the brightness of
@@ -8489,7 +8484,7 @@ of lava.  I thought that a mountainous region was succeeding the long
 plains; and accordingly, after a few evolutions of the Nautilus, I saw
 the southerly horizon blocked by a high wall which seemed to close all
 exit.  Its summit evidently passed the level of the ocean.  It must be
-a continent, or at least an island--one of the Canaries, or of the Cape
+a continent, or at least an island one of the Canaries, or of the Cape
 Verde Islands.  The bearings not being yet taken, perhaps designedly, I
 was ignorant of our exact position.  In any case, such a wall seemed to
 me to mark the limits of that Atlantis, of which we had in reality
@@ -8563,13 +8558,13 @@ which now gives entrance to the life-giving air we breathe."
 "But what is this volcanic mountain?"
 
 "It belongs to one of the numerous islands with which this sea is
-strewn--to vessels a simple sandbank--to us an immense cavern.  Chance
+strewn to vessels a simple sandbank to us an immense cavern.  Chance
 led me to discover it, and chance served me well."
 
 "But of what use is this refuge, Captain?  The Nautilus wants no port."
 
 "No, sir; but it wants electricity to make it move, and the wherewithal
-to make the electricity--sodium to feed the elements, coal from which
+to make the electricity sodium to feed the elements, coal from which
 to get the sodium, and a coal-mine to supply the coal.  And exactly on
 this spot the sea covers entire forests embedded during the geological
 periods, now mineralised and transformed into coal; for me they are an
@@ -8697,8 +8692,6 @@ filled his haversack.
 "When I have mixed this honey with the paste of the bread-fruit," said
 he, "I shall be able to offer you a succulent cake."
 
-[Transcriber's Note: 'bread-fruit' has been substituted for
-'artocarpus' in this ed.]
 
 "'Pon my word," said Conseil, "it will be gingerbread."
 
@@ -8727,7 +8720,7 @@ now obliged to descend toward the shore, the crest becoming
 impracticable.  Above us the crater seemed to gape like the mouth of a
 well.  From this place the sky could be clearly seen, and clouds,
 dissipated by the west wind, leaving behind them, even on the summit of
-the mountain, their misty remnants--certain proof that they were only
+the mountain, their misty remnants certain proof that they were only
 moderately high, for the volcano did not rise more than eight hundred
 feet above the level of the ocean.  Half an hour after the Canadian's
 last exploit we had regained the inner shore.  Here the flora was
@@ -8754,12 +8747,12 @@ That day the Nautilus crossed a singular part of the Atlantic Ocean.
 No one can be ignorant of the existence of a current of warm water
 known by the name of the Gulf Stream.  After leaving the Gulf of
 Florida, we went in the direction of Spitzbergen.  But before entering
-the Gulf of Mexico, about 45Â° of N. lat., this current divides into
+the Gulf of Mexico, about 45° of N. lat., this current divides into
 two arms, the principal one going towards the coast of Ireland and
 Norway, whilst the second bends to the south about the height of the
 Azores; then, touching the African shore, and describing a lengthened
-oval, returns to the Antilles.  This second arm--it is rather a collar
-than an arm--surrounds with its circles of warm water that portion of
+oval, returns to the Antilles.  This second arm it is rather a collar
+than an arm surrounds with its circles of warm water that portion of
 the cold, quiet, immovable ocean called the Sargasso Sea, a perfect
 lake in the open Atlantic: it takes no less than three years for the
 great current to pass round it.  Such was the region the Nautilus was
@@ -8789,7 +8782,7 @@ bottoms, side-planks stove in, and so weighted with shells and
 barnacles that they could not again rise to the surface.  And time will
 one day justify Maury's other opinion, that these substances thus
 accumulated for ages will become petrified by the action of the water
-and will then form inexhaustible coal-mines--a precious reserve
+and will then form inexhaustible coal-mines a precious reserve
 prepared by far-seeing Nature for the moment when men shall have
 exhausted the mines of continents.
 
@@ -8811,7 +8804,7 @@ to leave the boat.  Nor had we any means of opposing Captain Nemo's
 will.  Our only course was to submit; but what we could neither gain by
 force nor cunning, I liked to think might be obtained by persuasion.
 This voyage ended, would he not consent to restore our liberty, under
-an oath never to reveal his existence?--an oath of honour which we
+an oath never to reveal his existence? an oath of honour which we
 should have religiously kept.  But we must consider that delicate
 question with the Captain.  But was I free to claim this liberty?  Had
 he not himself said from the beginning, in the firmest manner, that the
@@ -8841,13 +8834,13 @@ ended the chase by plunging under the water.  Our navigation continued
 until the 13th of March; that day the Nautilus was employed in taking
 soundings, which greatly interested me.  We had then made about 13,000
 leagues since our departure from the high seas of the Pacific.  The
-bearings gave us 45Â° 37' S. lat., and 37Â° 53' W. long.  It was
+bearings gave us 45° 37' S. lat., and 37° 53' W. long.  It was
 the same water in which Captain Denham of the Herald sounded 7,000
 fathoms without finding the bottom.  There, too, Lieutenant Parker, of
 the American frigate Congress, could not touch the bottom with 15,140
 fathoms.  Captain Nemo intended seeking the bottom of the ocean by a
 diagonal sufficiently lengthened by means of lateral planes placed at
-an angle of 45Â° with the water-line of the Nautilus.  Then the
+an angle of 45° with the water-line of the Nautilus.  Then the
 screw set to work at its maximum speed, its four blades beating the
 waves with in describable force.  Under this powerful pressure, the
 hull of the Nautilus quivered like a sonorous chord and sank regularly
@@ -9005,13 +8998,13 @@ accustomed as he was to a life of liberty and activity.  Events were
 rare which could rouse him to any show of spirit; but that day an event
 did happen which recalled the bright days of the harpooner.  About
 eleven in the morning, being on the surface of the ocean, the Nautilus
-fell in with a troop of whales--an encounter which did not astonish me,
+fell in with a troop of whales an encounter which did not astonish me,
 knowing that these creatures, hunted to death, had taken refuge in high
 latitudes.
 
 We were seated on the platform, with a quiet sea.  The month of October
 in those latitudes gave us some lovely autumnal days.  It was the
-Canadian--he could not be mistaken--who signalled a whale on the
+Canadian he could not be mistaken who signalled a whale on the
 eastern horizon.  Looking attentively, one might see its black back
 rise and fall with the waves five miles from the Nautilus.
 
@@ -9071,7 +9064,7 @@ Then, returning to the conversation, he said:
 "You spoke of the cachalot as a small creature.  I have heard of
 gigantic ones.  They are intelligent cetacea.  It is said of some that
 they cover themselves with seaweed and fucus, and then are taken for
-islands.  People encamp upon them, and settle there; lights a fire----"
+islands.  People encamp upon them, and settle there; lights a fire  "
 
 "And build houses," said Conseil.
 
@@ -9081,7 +9074,7 @@ carrying with it all the inhabitants to the bottom of the sea."
 "Something like the travels of Sinbad the Sailor," I replied, laughing.
 
 "Ah!" suddenly exclaimed Ned Land, "it is not one whale; there are
-ten--there are twenty--it is a whole troop!  And I not able to do
+ten there are twenty it is a whole troop!  And I not able to do
 anything! hands and feet tied!"
 
 "But, friend Ned," said Conseil, "why do you not ask Captain Nemo's
@@ -9113,7 +9106,7 @@ southern whale (like the Greenland whale, an inoffensive creature),
 your traders do a culpable action, Master Land.  They have already
 depopulated the whole of Baffin's Bay, and are annihilating a class of
 useful animals.  Leave the unfortunate cetacea alone.  They have plenty
-of natural enemies--cachalots, swordfish, and sawfish--without you
+of natural enemies cachalots, swordfish, and sawfish without you
 troubling them."
 
 The Captain was right.  The barbarous and inconsiderate greed of these
@@ -9128,7 +9121,7 @@ M. Aronnax, about eight miles to leeward, those blackish moving points?"
 
 "Yes, Captain," I replied.
 
-"Those are cachalots--terrible animals, which I have met in troops of
+"Those are cachalots terrible animals, which I have met in troops of
 two or three hundred.  As to those, they are cruel, mischievous
 creatures; they would be right in exterminating them."
 
@@ -9257,7 +9250,7 @@ pole?  I did not think so, for every attempt to reach that point had
 hitherto failed.  Again, the season was far advanced, for in the
 Antarctic regions the 13th of March corresponds with the 13th of
 September of northern regions, which begin at the equinoctial season.
-On the 14th of March I saw floating ice in latitude 55Â°, merely
+On the 14th of March I saw floating ice in latitude 55°, merely
 pale bits of debris from twenty to twenty-five feet long, forming banks
 over which the sea curled.  The Nautilus remained on the surface of the
 ocean.  Ned Land, who had fished in the Arctic Seas, was familiar with
@@ -9275,7 +9268,7 @@ calcareous reflections resembled a perfect town of marble.  The more we
 neared the south the more these floating islands increased both in
 number and importance.
 
-At 60Â° lat. every pass had disappeared.  But, seeking carefully,
+At 60° lat. every pass had disappeared.  But, seeking carefully,
 Captain Nemo soon found a narrow opening, through which he boldly
 slipped, knowing, however, that it would close behind him.  Thus,
 guided by this clever hand, the Nautilus passed through all the ice
@@ -9284,7 +9277,7 @@ ice-fields or smooth plains, seeming to have no limits, drift-ice or
 floating ice-packs, plains broken up, called palchs when they are
 circular, and streams when they are made up of long strips.  The
 temperature was very low; the thermometer exposed to the air marked 2
-deg. or 3Â° below zero, but we were warmly clad with fur, at the
+deg. or 3° below zero, but we were warmly clad with fur, at the
 expense of the sea-bear and seal.  The interior of the Nautilus, warmed
 regularly by its electric apparatus, defied the most intense cold.
 Besides, it would only have been necessary to go some yards beneath the
@@ -9344,7 +9337,7 @@ mountains soldered together.
 I knew that to Ned Land, as well as to all other navigators who had
 preceded us, this was an inevitable obstacle.  The sun appearing for an
 instant at noon, Captain Nemo took an observation as near as possible,
-which gave our situation at 51Â° 30' long. and 67Â° 39' of S.
+which gave our situation at 51° 30' long. and 67° 39' of S.
 lat.  We had advanced one degree more in this Antarctic region.  Of the
 liquid surface of the sea there was no longer a glimpse.  Under the
 spur of the Nautilus lay stretched a vast plain, entangled with
@@ -9354,7 +9347,7 @@ were with an axe and clothed with greyish tints; huge mirrors,
 reflecting a few rays of sunshine, half drowned in the fog.  And over
 this desolate face of nature a stern silence reigned, scarcely broken
 by the flapping of the wings of petrels and puffins.  Everything was
-frozen--even the noise.  The Nautilus was then obliged to stop in its
+frozen even the noise.  The Nautilus was then obliged to stop in its
 adventurous course amid these fields of ice.  In spite of our efforts,
 in spite of the powerful means employed to break up the ice, the
 Nautilus remained immovable.  Generally, when we can proceed no
@@ -9388,14 +9381,14 @@ go further still."
 
 "To the pole!"  I exclaimed, unable to repress a gesture of incredulity.
 
-"Yes," replied the Captain, coldly, "to the Antarctic pole--to that
+"Yes," replied the Captain, coldly, "to the Antarctic pole to that
 unknown point from whence springs every meridian of the globe.  You
 know whether I can do as I please with the Nautilus!"
 
 Yes, I knew that.  I knew that this man was bold, even to rashness.
 But to conquer those obstacles which bristled round the South Pole,
 rendering it more inaccessible than the North, which had not yet been
-reached by the boldest navigators--was it not a mad enterprise, one
+reached by the boldest navigators was it not a mad enterprise, one
 which only a maniac would have conceived?  It then came into my head to
 ask Captain Nemo if he had ever discovered that pole which had never
 yet been trodden by a human creature?
@@ -9417,8 +9410,8 @@ flashing upon my mind.  I understood; the wonderful qualities of the
 Nautilus were going to serve us in this superhuman enterprise.
 
 "I see we are beginning to understand one another, sir," said the
-Captain, half smiling.  "You begin to see the possibility--I should say
-the success--of this attempt.  That which is impossible for an ordinary
+Captain, half smiling.  "You begin to see the possibility I should say
+the success of this attempt.  That which is impossible for an ordinary
 vessel is easy to the Nautilus.  If a continent lies before the pole,
 it must stop before the continent; but if, on the contrary, the pole is
 washed by open sea, it will go even to the pole."
@@ -9441,7 +9434,7 @@ above the surface, they are not more than 900 beneath.  And what are
 sea-water, and there brave with impunity the thirty or forty degrees of
 surface cold."
 
-"Just so, sir--just so," I replied, getting animated.
+"Just so, sir just so," I replied, getting animated.
 
 "The only difficulty," continued Captain Nemo, "is that of remaining
 several days without renewing our provision of air."
@@ -9481,7 +9474,7 @@ pumps of the Nautilus were working air into the reservoirs and storing
 it at high pressure.  About four o'clock, Captain Nemo announced the
 closing of the panels on the platform.  I threw one last look at the
 massive iceberg which we were going to cross.  The weather was clear,
-the atmosphere pure enough, the cold very great, being 12Â° below
+the atmosphere pure enough, the cold very great, being 12° below
 zero; but, the wind having gone down, this temperature was not so
 unbearable.  About ten men mounted the sides of the Nautilus, armed
 with pickaxes to break the ice around the vessel, which was soon free.
@@ -9492,7 +9485,7 @@ place with Conseil in the saloon; through the open window we could see
 the lower beds of the Southern Ocean.  The thermometer went up, the
 needle of the compass deviated on the dial.  At about 900 feet, as
 Captain Nemo had foreseen, we were floating beneath the undulating
-bottom of the iceberg.  But the Nautilus went lower still--it went to
+bottom of the iceberg.  But the Nautilus went lower still it went to
 the depth of four hundred fathoms.  The temperature of the water at the
 surface showed twelve degrees, it was now only ten; we had gained two.
 I need not say the temperature of the Nautilus was raised by its
@@ -9504,10 +9497,10 @@ accomplished with wonderful precision.
 "I believe we shall," I said, in a tone of firm conviction.
 
 In this open sea, the Nautilus had taken its course direct to the pole,
-without leaving the fifty-second meridian.  From 67Â° 30' to 90
+without leaving the fifty-second meridian.  From 67° 30' to 90
 deg., twenty-two degrees and a half of latitude remained to travel;
 that is, about five hundred leagues.  The Nautilus kept up a mean speed
-of twenty-six miles an hour--the speed of an express train.  If that
+of twenty-six miles an hour the speed of an express train.  If that
 was kept up, in forty hours we should reach the pole.
 
 For a part of the night the novelty of the situation kept us at the
@@ -9528,7 +9521,7 @@ very thick, judging from the deadened sound.  We had in deed "struck,"
 to use a sea expression, but in an inverse sense, and at a thousand
 feet deep.  This would give three thousand feet of ice above us; one
 thousand being above the water-mark. The iceberg was then higher than
-at its borders--not a very reassuring fact.  Several times that day the
+at its borders not a very reassuring fact.  Several times that day the
 Nautilus tried again, and every time it struck the wall which lay like
 a ceiling above it.  Sometimes it met with but 900 yards, only 200 of
 which rose above the surface.  It was twice the height it was when the
@@ -9562,10 +9555,10 @@ CHAPTER XIV
 THE SOUTH POLE
 
 I rushed on to the platform.  Yes! the open sea, with but a few
-scattered pieces of ice and moving icebergs--a long stretch of sea; a
+scattered pieces of ice and moving icebergs a long stretch of sea; a
 world of birds in the air, and myriads of fishes under those waters,
 which varied from intense blue to olive green, according to the bottom.
-The thermometer marked 3Â° C. above zero.  It was comparatively
+The thermometer marked 3° C. above zero.  It was comparatively
 spring, shut up as we were behind this iceberg, whose lengthened mass
 was dimly seen on our northern horizon.
 
@@ -9625,7 +9618,7 @@ nothing of their expansive powers, though, having climbed a high
 acclivity, I could see no volcano for a radius of several miles.  We
 know that in those Antarctic countries, James Ross found two craters,
 the Erebus and Terror, in full activity, on the 167th meridian,
-latitude 77Â° 32'. The vegetation of this desolate continent seemed
+latitude 77° 32'. The vegetation of this desolate continent seemed
 to me much restricted.  Some lichens lay upon the black rocks; some
 microscopic plants, rudimentary diatomas, a kind of cells placed
 between two quartz shells; long purple and scarlet weed, supported on
@@ -9686,7 +9679,7 @@ of this violent storm.  The Nautilus did not remain motionless, but
 skirted the coast, advancing ten miles more to the south in the
 half-light left by the sun as it skirted the edge of the horizon.  The
 next day, the 20th of March, the snow had ceased.  The cold was a
-little greater, the thermometer showing 2Â° below zero.  The fog
+little greater, the thermometer showing 2° below zero.  The fog
 was rising, and I hoped that that day our observations might be taken.
 Captain Nemo not having yet appeared, the boat took Conseil and myself
 to land.  The soil was still of the same volcanic nature; everywhere
@@ -9715,9 +9708,9 @@ some already strong enough to go a few steps.  When they wished to
 change their place, they took little jumps, made by the contraction of
 their bodies, and helped awkwardly enough by their imperfect fin,
 which, as with the lamantin, their cousins, forms a perfect forearm.  I
-should say that, in the water, which is their element--the spine of
+should say that, in the water, which is their element the spine of
 these creatures is flexible; with smooth and close skin and webbed
-feet--they swim admirably.  In resting on the earth they take the most
+feet they swim admirably.  In resting on the earth they take the most
 graceful attitudes.  Thus the ancients, observing their soft and
 expressive looks, which cannot be surpassed by the most beautiful look
 a woman can give, their clear voluptuous eyes, their charming
@@ -9919,7 +9912,7 @@ The next day, the 22nd of March, at six in the morning, preparations
 for departure were begun.  The last gleams of twilight were melting
 into night.  The cold was great, the constellations shone with
 wonderful intensity.  In the zenith glittered that wondrous Southern
-Cross--the polar bear of Antarctic regions.  The thermometer showed 120
+Cross the polar bear of Antarctic regions.  The thermometer showed 120
 below zero, and when the wind freshened it was most biting.  Flakes of
 ice increased on the open water.  The sea seemed everywhere alike.
 Numerous blackish patches spread on the surface, showing the formation
@@ -10000,7 +9993,7 @@ Torres Straits:
 
 "Yes."
 
-"And this has happened--how?"
+"And this has happened how?"
 
 "From a caprice of nature, not from the ignorance of man.  Not a
 mistake has been made in the working.  But we cannot prevent
@@ -10311,7 +10304,7 @@ directly the pure air drawn from the reservoirs, and supplied by our
 apparatus, and to quit the impoverished and vitiated atmosphere.
 Towards evening the trench was dug one yard deeper.  When I returned on
 board, I was nearly suffocated by the carbonic acid with which the air
-was filled--ah! if we had only the chemical means to drive away this
+was filled ah! if we had only the chemical means to drive away this
 deleterious gas.  We had plenty of oxygen; all this water contained a
 considerable quantity, and by dissolving it with our powerful piles, it
 would restore the vivifying fluid.  I had thought well over it; but of
@@ -10327,7 +10320,7 @@ The side walls and the lower surface of the iceberg thickened visibly.
 It was evident that they would meet before the Nautilus was able to
 disengage itself.  Despair seized me for an instant; my pickaxe nearly
 fell from my hands.  What was the good of digging if I must be
-suffocated, crushed by the water that was turning into stone?--a
+suffocated, crushed by the water that was turning into stone? a
 punishment that the ferocity of the savages even would not have
 invented!  Just then Captain Nemo passed near me.  I touched his hand
 and showed him the walls of our prison.  The wall to port had advanced
@@ -10368,7 +10361,7 @@ The Captain looked in my face.  "After to-morrow they will be empty!"
 
 A cold sweat came over me.  However, ought I to have been astonished at
 the answer?  On March 22, the Nautilus was in the open polar seas.  We
-were at 26Â°. For five days we had lived on the reserve on board.
+were at 26°. For five days we had lived on the reserve on board.
 And what was left of the respirable air must be kept for the workers.
 Even now, as I write, my recollection is still so vivid that an
 involuntary terror seizes me and my lungs seem to be without air.
@@ -10388,18 +10381,18 @@ raise the temperature in this part and stay the congelation?"
 
 "Let us try it, Professor."
 
-The thermometer then stood at 7Â° outside.  Captain Nemo took me to
+The thermometer then stood at 7° outside.  Captain Nemo took me to
 the galleys, where the vast distillatory machines stood that furnished
 the drinkable water by evaporation.  They filled these with water, and
 all the electric heat from the piles was thrown through the worms
-bathed in the liquid.  In a few minutes this water reached 100Â°. It
+bathed in the liquid.  In a few minutes this water reached 100°. It
 was directed towards the pumps, while fresh water replaced it in
 proportion.  The heat developed by the troughs was such that cold
 water, drawn up from the sea after only having gone through the
 machines, came boiling into the body of the pump.  The injection was
-begun, and three hours after the thermometer marked 6Â° below zero
+begun, and three hours after the thermometer marked 6° below zero
 outside.  One degree was gained.  Two hours later the thermometer only
-marked 4Â°.
+marked 4°.
 
 "We shall succeed," I said to the Captain, after having anxiously
 watched the result of the operation.
@@ -10407,9 +10400,9 @@ watched the result of the operation.
 "I think," he answered, "that we shall not be crushed.  We have no more
 suffocation to fear."
 
-During the night the temperature of the water rose to 1Â° below
+During the night the temperature of the water rose to 1° below
 zero.  The injections could not carry it to a higher point.  But, as
-the congelation of the sea-water produces at least 2Â°, I was at
+the congelation of the sea-water produces at least 2°, I was at
 least reassured against the dangers of solidification.
 
 The next day, March 27th, six yards of ice had been cleared, twelve
@@ -10510,8 +10503,8 @@ impelled by its powerful screw, it attacked the ice-field from beneath
 like a formidable battering-ram.  It broke it by backing and then
 rushing forward against the field, which gradually gave way; and at
 last, dashing suddenly against it, shot forwards on the ice-field, that
-crushed beneath its weight.  The panel was opened--one might say torn
-off--and the pure air came in in abundance to all parts of the Nautilus.
+crushed beneath its weight.  The panel was opened one might say torn
+off and the pure air came in in abundance to all parts of the Nautilus.
 
 
 
@@ -10589,7 +10582,7 @@ approached the coast, which was only some few miles off.  From the
 glass windows in the drawing-room, I saw long seaweeds and gigantic
 fuci and varech, of which the open polar sea contains so many
 specimens, with their sharp polished filaments; they measured about 300
-yards in length--real cables, thicker than one's thumb; and, having
+yards in length real cables, thicker than one's thumb; and, having
 great tenacity, they are often used as ropes for vessels.  Another weed
 known as velp, with leaves four feet long, buried in the coral
 concretions, hung at the bottom.  It served as nest and food for
@@ -10632,7 +10625,7 @@ Islands, an other wall not less considerable, that encloses thus all
 the sunk continent of the Atlantic.  The bottom of this immense valley
 is dotted with some mountains, that give to these submarine places a
 picturesque aspect.  I speak, moreover, from the manuscript charts that
-were in the library of the Nautilus--charts evidently due to Captain
+were in the library of the Nautilus charts evidently due to Captain
 Nemo's hand, and made after his personal observations.  For two days
 the desert and deep waters were visited by means of the inclined
 planes.  The Nautilus was furnished with long diagonal broadsides which
@@ -10657,7 +10650,7 @@ species the phyctalis protexta, peculiar to that part of the ocean,
 with a little cylindrical trunk, ornamented With vertical lines,
 speckled with red dots, crowning a marvellous blossoming of tentacles.
 As to the molluscs, they consisted of some I had already
-observed--turritellas, olive porphyras, with regular lines
+observed turritellas, olive porphyras, with regular lines
 intercrossed, with red spots standing out plainly against the flesh;
 odd pteroceras, like petrified scorpions; translucid hyaleas,
 argonauts, cuttle-fish (excellent eating), and certain species of
@@ -10667,8 +10660,8 @@ now an opportunity of studying several species of fish on these shores.
 Amongst the cartilaginous ones, petromyzons-pricka, a sort of eel,
 fifteen inches long, with a greenish head, violet fins, grey-blue back,
 brown belly, silvered and sown with bright spots, the pupil of the eye
-encircled with gold--a curious animal, that the current of the Amazon
-had drawn to the sea, for they inhabit fresh waters--tuberculated
+encircled with gold a curious animal, that the current of the Amazon
+had drawn to the sea, for they inhabit fresh waters tuberculated
 streaks, with pointed snouts, and a long loose tail, armed with a long
 jagged sting; little sharks, a yard long, grey and whitish skin, and
 several rows of teeth, bent back, that are generally known by the name
@@ -10708,7 +10701,7 @@ movements, and made so many efforts, that one last turn had nearly sent
 it into the sea. But Conseil, not wishing to let the fish go, rushed to
 it, and, before I could prevent him, had seized it with both hands. In
 a moment he was overthrown, his legs in the air, and half his body
-paralysed, crying--
+paralysed, crying 
 
 "Oh! master, master! help me!"
 
@@ -11115,7 +11108,7 @@ in your native seas.  I will speak, now we are in mine.  When I think
 that before long the Nautilus will be by Nova Scotia, and that there
 near New foundland is a large bay, and into that bay the St. Lawrence
 empties itself, and that the St. Lawrence is my river, the river by
-Quebec, my native town--when I think of this, I feel furious, it makes
+Quebec, my native town when I think of this, I feel furious, it makes
 my hair stand on end.  Sir, I would rather throw myself into the sea!
 I will not stay here!  I am stifled!"
 
@@ -11182,12 +11175,12 @@ then be revealed some day.
 thus.  The result of your studies must not be lost.  But the means you
 employ seem to me to be primitive.  Who knows where the winds will
 carry this case, and in whose hands it will fall?  Could you not use
-some other means?  Could not you, or one of yours----"
+some other means?  Could not you, or one of yours  "
 
 "Never, sir!" he said, hastily interrupting me.
 
 "But I and my companions are ready to keep this manuscript in store;
-and, if you will put us at liberty----"
+and, if you will put us at liberty  "
 
 "At liberty?" said the Captain, rising.
 
@@ -11219,7 +11212,7 @@ frail hope of bequeathing one day, to future time, the result of my
 labours.  But it is otherwise with Ned Land.  Every man, worthy of the
 name, deserves some consideration.  Have you thought that love of
 liberty, hatred of slavery, can give rise to schemes of revenge in a
-nature like the Canadian's; that he could think, attempt, and try----"
+nature like the Canadian's; that he could think, attempt, and try  "
 
 I was silenced; Captain Nemo rose.
 
@@ -11312,7 +11305,7 @@ the surface of that ocean?
 
 CHAPTER XX
 
-FROM LATITUDE 47Â° 24' TO LONGITUDE 17Â° 28'
+FROM LATITUDE 47° 24' TO LONGITUDE 17° 28'
 
 In consequence of the storm, we had been thrown eastward once more.
 All hope of escape on the shores of New York or St. Lawrence had faded
@@ -11336,7 +11329,7 @@ North Pole by the counter-current of cold water which skirts the
 American coast.  There also are heaped up those erratic blocks which
 are carried along by the broken ice; and close by, a vast charnel-house
 of molluscs, which perish here by millions.  The depth of the sea is
-not great at Newfoundland--not more than some hundreds of fathoms; but
+not great at Newfoundland not more than some hundreds of fathoms; but
 towards the south is a depression of 1,500 fathoms.  There the Gulf
 Stream widens.  It loses some of its speed and some of its temperature,
 but it becomes a sea.
@@ -11482,7 +11475,7 @@ America, under the command of Admiral Van Stebel.  On the 11th and 12th
 Prairal of the second year, this squadron fell in with an English
 vessel.  Sir, to-day is the 13th Prairal, the first of June, 1868.  It
 is now seventy-four years ago, day for day on this very spot, in
-latitude 47Â° 24', longitude 17Â° 28', that this vessel, after
+latitude 47° 24', longitude 17° 28', that this vessel, after
 fighting heroically, losing its three masts, with the water in its
 hold, and the third of its crew disabled, preferred sinking with its
 356 sailors to surrendering; and, nailing its colours to the poop,
@@ -11507,7 +11500,7 @@ on my mind.  My eyes did not leave the Captain, who, with his hand
 stretched out to sea, was watching with a glowing eye the glorious
 wreck.  Perhaps I was never to know who he was, from whence he came, or
 where he was going to, but I saw the man move, and apart from the
-_savant_.  It was no common misanthropy which had shut Captain Nemo and
+savant.  It was no common misanthropy which had shut Captain Nemo and
 his companions within the Nautilus, but a hatred, either monstrous or
 sublime, which time could never weaken.  Did this hatred still seek for
 vengeance?  The future would soon teach me that.  But the Nautilus was
@@ -11674,7 +11667,7 @@ when Captain Nemo imposed silence, saying:
 
 "I am the law, and I am the judge!  I am the oppressed, and there is
 the oppressor!  Through him I have lost all that I loved, cherished,
-and venerated--country, wife, children, father, and mother.  I saw all
+and venerated country, wife, children, father, and mother.  I saw all
 perish!  All that I hate is there!  Say no more!"
 
 I cast a last look at the man-of-war, which was putting on steam, and
@@ -11847,7 +11840,7 @@ foundered imagination of Edgar Poe roamed at will.  Like the fabulous
 Gordon Pym, at every moment I expected to see "that veiled human
 figure, of larger proportions than those of any inhabitant of the
 earth, thrown across the cataract which defends the approach to the
-pole." I estimated (though, perhaps, I may be mistaken)--I estimated
+pole." I estimated (though, perhaps, I may be mistaken) I estimated
 this adventurous course of the Nautilus to have lasted fifteen or
 twenty days.  And I know not how much longer it might have lasted, had
 it not been for the catastrophe which ended this voyage.  Of Captain
@@ -11872,7 +11865,7 @@ All appear to be stupefied.  You will be ready, sir?"
 "Yes; where are we?"
 
 "In sight of land.  I took the reckoning this morning in the
-fog--twenty miles to the east."
+fog twenty miles to the east."
 
 "What country is it?"
 
@@ -11899,7 +11892,7 @@ thick brown shadows, we must fly.  I returned to the saloon, fearing
 and yet hoping to see Captain Nemo, wishing and yet not wishing to see
 him.  What could I have said to him?  Could I hide the involuntary
 horror with which he inspired me?  No. It was better that I should not
-meet him face to face; better to forget him.  And yet----  How long
+meet him face to face; better to forget him.  And yet    How long
 seemed that day, the last that I should pass in the Nautilus.  I
 remained alone.  Ned Land and Conseil avoided speaking, for fear of
 betraying themselves.  At six I dined, but I was not hungry; I forced
@@ -11937,7 +11930,7 @@ and stretched myself on my bed to quiet my bodily agitation.  My nerves
 were somewhat calmer, but in my excited brain I saw over again all my
 existence on board the Nautilus; every incident, either happy or
 unfortunate, which had happened since my disappearance from the Abraham
-Lincoln--the submarine hunt, the Torres Straits, the savages of Papua,
+Lincoln the submarine hunt, the Torres Straits, the savages of Papua,
 the running ashore, the coral cemetery, the passage of Suez, the Island
 of Santorin, the Cretan diver, Vigo Bay, Atlantis, the iceberg, the
 South Pole, the imprisonment in the ice, the fight among the poulps,
@@ -12067,7 +12060,7 @@ CHAPTER XXIII
 CONCLUSION
 
 Thus ends the voyage under the seas.  What passed during that
-night--how the boat escaped from the eddies of the maelstrom--how Ned
+night how the boat escaped from the eddies of the maelstrom how Ned
 Land, Conseil, and myself ever came out of the gulf, I cannot tell.
 
 But when I returned to consciousness, I was lying in a fisherman's hut,
@@ -12101,7 +12094,7 @@ missing vessel tell us by its nationality that of Captain Nemo?
 
 I hope so.  And I also hope that his powerful vessel has conquered the
 sea at its most terrible gulf, and that the Nautilus has survived where
-so many other vessels have been lost!  If it be so--if Captain Nemo
+so many other vessels have been lost!  If it be so if Captain Nemo
 still inhabits the ocean, his adopted country, may hatred be appeased
 in that savage heart!  May the contemplation of so many wonders
 extinguish for ever the spirit of vengeance!  May the judge disappear,
@@ -12110,6 +12103,6 @@ his destiny be strange, it is also sublime.  Have I not understood it
 myself?  Have I not lived ten months of this unnatural life?  And to
 the question asked by Ecclesiastes three thousand years ago, "That
 which is far off and exceeding deep, who can find it out?" two men
-alone of all now living have the right to give an answer----
+alone of all now living have the right to give an answer  
 
 CAPTAIN NEMO AND MYSELF.
