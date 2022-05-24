@@ -159,7 +159,7 @@ export const charTest = char =>
 export function langTest(char, lang) {
   if (/[А-ЯЁ№]/i.test(char)) {
     return 'russian'
-  } else if (/[A-Z`~@#$^&{}|]/i.test(char)) {
+  } else if (/[A-Z`~@#$^&{}'|]/i.test(char)) {
     return 'english'
   } else {
     return 'neutral'

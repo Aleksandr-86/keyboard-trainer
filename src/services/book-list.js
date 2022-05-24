@@ -5,6 +5,11 @@ const arrOfRusBooks = [
     name: 'aelita_1923'
   },
   {
+    title: 'Капитанская дочка',
+    author: 'Александра Сергеевича Пушкина',
+    name: 'captains_daughter_1836'
+  },
+  {
     title: 'В прекрасном и яростном мире',
     author: 'Андрея Платоновича Платонова',
     name: 'the_fierce_and_beautiful_world_1941'
@@ -25,31 +30,25 @@ const arrOfRusBooks = [
     name: 'outside_the_earth_1920'
   },
   {
-    title: 'Броненосец «Анюта»',
-    author: 'Лазаря Иосифовича Гинзбурга',
-    name: 'battleship_anyuta_1941'
+    title: 'Волоколамское шоссе',
+    author: 'Александра Альфредовича Бека',
+    name: 'volokolamsk_highway_1944'
   },
   {
-    title: 'Косморама',
-    author: 'Владимира Фёдоровича Одоевского',
-    name: 'cosmorama_1840'
+    title: 'Обломов',
+    author: 'Ивана Александровича Гончарова',
+    name: 'oblomov_1859'
+  },
+  {
+    title: 'Аннушка',
+    author: 'Константина Георгиевича Паустовского',
+    name: 'annushka_1946'
+  },
+  {
+    title: 'Кладовая солнца',
+    author: 'Михаила Михайлович Пришвина',
+    name: 'the_storeroom_of_the_sun_1945'
   }
-  // {
-  //   title: 'Поединок',
-  //   author: 'Александра Ивановича Куприна',
-  //   name: ''
-  // },
-  // {
-  //   title: 'Тайна двух океанов',
-  //   author: 'Григория Борисовича Адамова',
-  //   name: 'the_secret_of_two_oceans'
-  // },
-
-  // {
-  //   title: 'Бегущая по волнам',
-  //   author: 'Александра Степановича Гриневского',
-  //   name: ''
-  // },
 ]
 
 const arrOfEngBooks = [
@@ -82,27 +81,32 @@ const arrOfEngBooks = [
     title: 'Война миров',
     author: 'Герберта Джорджа Уэллса',
     name: 'the_war_of_the_worlds_1898'
+  },
+  {
+    title: 'Тарзан — приёмыш обезьян',
+    author: 'Эдгара Райса Берроуза',
+    name: 'tarzan_of_the_apes_1912'
+  },
+  {
+    title: 'Казан',
+    author: 'Джеймса Оливера Кервуда',
+    name: 'kazan_1913'
+  },
+  {
+    title: 'Белый клык',
+    author: 'Джека Лондона',
+    name: 'white_fang_1906'
+  },
+  {
+    title: 'Морской волк',
+    author: 'Джека Лондона',
+    name: 'the_sea_wolf_1904'
+  },
+  {
+    title: 'Копи царя Соломона',
+    author: 'Генри Райдера Хаггарда',
+    name: 'king_solomons_mines_1885'
   }
-  // {
-  //   title: 'Урочный час',
-  //   author: 'Рэя Дугласа Брэдбери',
-  //   name: 'zero_hour'
-  // },
-  // {
-  //   title: 'Звёздная мышь',
-  //   author: 'Фредерика Брауна',
-  //   name: 'the_star_mouse'
-  // },
-  // {
-  //   title: 'Очи Тхара',
-  //   author: 'Генриа Каттнера',
-  //   name: 'the_eyes_of_thar'
-  // },
-  // {
-  //   title: 'Небо падает',
-  //   author: 'Лестера Дель Рея',
-  //   name: 'the_sky_is_falling'
-  // }
 ]
 
 export default {

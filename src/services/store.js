@@ -157,20 +157,21 @@ const loadFragment = function (str, amount = 0) {
     console.warn(str.length)
     let correct = 0
     let inCorrect = 0
+    let eng = 0
     for (let i = 0; i < str.length; i++) {
       if (charTest(str[i])) {
         inCorrect++
         console.warn(`_${str[i]}_`, i)
-      } else if (/[A-Z`~@#$^&{}|]/i.test(str[i])) {
+      } else if (/[A-Z`~@#$^&{}'|]/i.test(str[i])) {
         eng++
-        console.warn(`eng: ${str[i]}`)
+        console.warn(`eng: _${str[i]}_`)
       } else {
         correct++
       }
     }
     console.error(
-      `correct: ${correct}, inCorrect: ${inCorrect}, sum: ${
-        correct + inCorrect
+      `correct: ${correct}, inCorrect: ${inCorrect}, eng: ${eng}, sum: ${
+        correct + inCorrect + eng
       }`
     )
 
@@ -276,7 +277,7 @@ const randomSnippet = function (lang, amount) {
 
   // console.warn(arrOfBooks.length - 1)
   // const obj = arrOfBooks[randomNum(0, arrOfBooks.length - 1)] // choosing a random book
-  const obj = arrOfBooks[0] // choosing a random book
+  const obj = arrOfBooks[6] // choosing a random book
 
   data.currentBook = obj
   const filePath = `/src/books/${lang}/${obj.name}.txt`
