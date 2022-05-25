@@ -45,6 +45,7 @@ const storage = reactive({
   main: {
     background: 0,
     langOfSnippets: 'russian',
+    minSnippetLength: 160,
     letterCase: true,
     speaker: false,
     volume: 0.2
@@ -132,48 +133,29 @@ const loadFragment = function (str, amount = 0) {
   if (amount === 0) {
     // case: buffer
     data.fragmentArr = arrPreparer(strPrepWithNewLines(str))
-
-    console.warn(str.length)
-    let correct = 0
-    let inCorrect = 0
-    let eng = 0
-    for (let i = 0; i < str.length; i++) {
-      if (charTest(str[i])) {
-        inCorrect++
-        console.warn(`_${str[i]}_`, i)
-      } else {
-        correct++
-      }
-    }
-    console.error(
-      `correct: ${correct}, inCorrect: ${inCorrect}, sum: ${
-        correct + inCorrect
-      }`
-    )
   } else {
     // case: snippets from the books
     str = strPrepWithoutNewLines(str)
-
-    console.warn(str.length)
-    let correct = 0
-    let inCorrect = 0
-    let eng = 0
-    for (let i = 0; i < str.length; i++) {
-      if (charTest(str[i])) {
-        inCorrect++
-        console.warn(`_${str[i]}_`, i)
-      } else if (/[A-Z`~@#$^&{}'|]/i.test(str[i])) {
-        eng++
-        console.warn(`eng: _${str[i]}_`)
-      } else {
-        correct++
-      }
-    }
-    console.error(
-      `correct: ${correct}, inCorrect: ${inCorrect}, eng: ${eng}, sum: ${
-        correct + inCorrect + eng
-      }`
-    )
+    // console.warn(str.length)
+    // let correct = 0
+    // let inCorrect = 0
+    // // let eng = 0
+    // for (let i = 0; i < str.length; i++) {
+    //   if (charTest(str[i])) {
+    //     inCorrect++
+    //     console.warn(`_${str[i]}_`, i)
+    //     } else if (/[A-Z`~@#$^&{}'|]/i.test(str[i])) {
+    //       eng++
+    //       console.warn(`eng: _${str[i]}_`)
+    //   } else {
+    //     correct++
+    //   }
+    // }
+    // console.error(
+    //   `correct: ${correct}, inCorrect: ${inCorrect}, sum: ${
+    //     correct + inCorrect
+    //   }`
+    // )
 
     data.fragmentArr = arrPreparer(getSomeSentences(str, amount))
   }
@@ -207,7 +189,7 @@ const loadNextChars = function () {
 
 /* moving caret (visually), moving over the inappropriate chars,
    stopping timer, changing work state, enable statistics menu */
-const moveCaret = function () {
+const moveCaret = function (code) {
   data.indexArr++
 
   // checking inappropriate chars and skipping those
@@ -228,7 +210,8 @@ const moveCaret = function () {
 
   if (
     data.indexArr >= data.fragmentArr.length ||
-    data.fragmentArr[data.indexArr] === 'end'
+    data.fragmentArr[data.indexArr] === 'end' ||
+    code === 'Enter'
   ) {
     // shutting down the field
     data.timerStop = performance.now()
@@ -264,6 +247,18 @@ const clearStat = function () {
 }
 
 const randomSnippet = function (lang, amount) {
+  console.log('random snippet')
+  if (state.overallStatistics) {
+    state.overallStatistics = false
+    return
+  }
+
+  // if (!state.overallStatistics) {
+  //   data.timerStop = performance.now()
+  //   state.work = false
+  //   state.overallStatistics = true
+  // }
+
   let arrOfBooks = []
 
   if (lang === 'russian') {
@@ -275,9 +270,7 @@ const randomSnippet = function (lang, amount) {
   }
   localStorage.main = JSON.stringify(storage.main)
 
-  // console.warn(arrOfBooks.length - 1)
-  // const obj = arrOfBooks[randomNum(0, arrOfBooks.length - 1)] // choosing a random book
-  const obj = arrOfBooks[6] // choosing a random book
+  const obj = arrOfBooks[randomNum(0, arrOfBooks.length - 1)] // choosing a random book
 
   data.currentBook = obj
   const filePath = `/src/books/${lang}/${obj.name}.txt`

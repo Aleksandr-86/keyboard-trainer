@@ -20,9 +20,9 @@ function toggleSpeaker() {
     <svg width="44" height="44">
       <path
         stroke-width="2"
-        d="M1,14 L13,14 L25,2 L25,42 L13,30 L1,30 Z1,14"
+        d="M 1 14 L 13 14 L 25 2 L 25 42 L 13 30 L 1 30 Z"
         fill="none" />
-      <path stroke-width="2" d="M13,14 L13,30" />
+      <path stroke-width="2" d="M 13 14 L 13 30" />
       <circle
         r="23"
         cx="18"

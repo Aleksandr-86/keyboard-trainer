@@ -56,7 +56,7 @@ Fifteen days later, two thousand miles farther off, the Helvetia, of
 the Compagnie-Nationale, and the Shannon, of the Royal Mail Steamship
 Company, sailing to windward in that portion of the Atlantic lying
 between the United States and Europe, respectively signalled the
-monster to each other in 42° 15' N. lat. and 60° 35' W. long.
+monster to each other in 42Â° 15' N. lat. and 60Â° 35' W. long.
 In these simultaneous observations they thought themselves justified in
 estimating the minimum length of the mammal at more than three hundred
 and fifty feet, as the Shannon and Helvetia were of smaller dimensions
@@ -90,7 +90,7 @@ monster became a small island, a rock, a reef, but a reef of indefinite
 and shifting proportions.
 
 On the 5th of March, 1867, the Moravian, of the Montreal Ocean Company,
-finding herself during the night in 27° 30' lat. and 72° 15'
+finding herself during the night in 27Â° 30' lat. and 72Â° 15'
 long., struck on her starboard quarter a rock, marked in no chart for
 that part of the sea.  Under the combined efforts of the wind and its
 four hundred horse power, it was going at the rate of thirteen knots.
@@ -116,7 +116,7 @@ belonged, the circumstance became extensively circulated.
 
 The 13th of April, 1867, the sea being beautiful, the breeze
 favourable, the Scotia, of the Cunard Company's line, found herself in
-15° 12' long. and 45° 37' lat.  She was going at the speed of
+15Â° 12' long. and 45Â° 37' lat.  She was going at the speed of
 thirteen knots and a half.
 
 At seventeen minutes past four in the afternoon, whilst the passengers
@@ -839,7 +839,7 @@ speaking) expire; after that time, Commander Farragut, faithful to his
 promise, was to turn the course to the south-east and abandon for ever
 the northern regions of the Pacific.
 
-The frigate was then in 31° 15' N. lat. and 136° 42' E. long.
+The frigate was then in 31Â° 15' N. lat. and 136Â° 42' E. long.
 The coast of Japan still remained less than two hundred miles to
 leeward.  Night was approaching.  They had just struck eight bells;
 large clouds veiled the face of the moon, then in its first quarter.
@@ -3157,7 +3157,7 @@ to hunt in a forest, I contented myself with replying:
 
 "Let us first see where the Island of Crespo is."
 
-I consulted the planisphere, and in 32° 40' N. lat. and 157°
+I consulted the planisphere, and in 32Â° 40' N. lat. and 157Â°
 50' W. long., I found a small island, recognised in 1801 by Captain
 Crespo, and marked in the ancient Spanish maps as Rocca de la Plata,
 the meaning of which is The Silver Rock.  We were then about eighteen
@@ -3835,7 +3835,7 @@ the bed of the sea.  The thermometer indicated a temperature of 4.25
 latitudes.
 
 At three o'clock in the morning of the 26th of November the Nautilus
-crossed the tropic of Cancer at 172° long.  On 27th instant it
+crossed the tropic of Cancer at 172Â° long.  On 27th instant it
 sighted the Sandwich Islands, where Cook died, February 14, 1779.  We
 had then gone 4,860 leagues from our starting-point. In the morning,
 when I went on the platform, I saw two miles to windward, Hawaii, the
@@ -3845,7 +3845,7 @@ with the side, and the volcanoes that overtop Mouna-Rea, which rise
 5,000 yards above the level of the sea.  Besides other things the nets
 brought up, were several flabellariae and graceful polypi, that are
 peculiar to that part of the ocean.  The direction of the Nautilus was
-still to the south-east. It crossed the equator December 1, in 142°
+still to the south-east. It crossed the equator December 1, in 142Â°
 long.; and on the 4th of the same month, after crossing rapidly and
 without anything in particular occurring, we sighted the Marquesas
 group.  I saw, three miles off, Martin's peak in Nouka-Hiva, the
@@ -3980,7 +3980,7 @@ of an inch in a hundred years.
 
 Towards evening Clermont-Tonnerre was lost in the distance, and the
 route of the Nautilus was sensibly changed. After having crossed the
-tropic of Capricorn in 135° longitude, it sailed W.N.W., making
+tropic of Capricorn in 135Â° longitude, it sailed W.N.W., making
 again for the tropical zone. Although the summer sun was very strong,
 we did not suffer from heat, for at fifteen or twenty fathoms below the
 surface, the temperature did not rise above from ten to twelve degrees.
@@ -3995,8 +3995,8 @@ On the 25th of December the Nautilus sailed into the midst of the New
 Hebrides, discovered by Quiros in 1606, and that Bougainville explored
 in 1768, and to which Cook gave its present name in 1773.  This group
 is composed principally of nine large islands, that form a band of 120
-leagues N.N.S. to S.S.W., between 15° and 2° S. lat., and 164
-deg. and 168° long.  We passed tolerably near to the Island of
+leagues N.N.S. to S.S.W., between 15Â° and 2Â° S. lat., and 164
+deg. and 168Â° long.  We passed tolerably near to the Island of
 Aurou, that at noon looked like a mass of green woods, surmounted by a
 peak of great height.
 
@@ -4034,7 +4034,7 @@ To the N.E. two volcanic islands emerged of unequal size, surrounded by
 a coral reef that measured forty miles in circumference.  We were close
 to Vanikoro, really the one to which Dumont d'Urville gave the name of
 Isle de la Recherche, and exactly facing the little harbour of Vanou,
-situated in 16° 4' S. lat., and 164° 32' E. long.  The earth
+situated in 16Â° 4' S. lat., and 164Â° 32' E. long.  The earth
 seemed covered with verdure from the shore to the summits in the
 interior, that were crowned by Mount Kapogo, 476 feet high.  The
 Nautilus, having passed the outer belt of rocks by a narrow strait,
@@ -4119,7 +4119,7 @@ Dumont d'Urville, commander of the Astrolabe, had then sailed, and two
 months after Dillon had left Vanikoro he put into Hobart Town.  There
 he learned the results of Dillon's inquiries, and found that a certain
 James Hobbs, second lieutenant of the Union of Calcutta, after landing
-on an island situated 8° 18' S. lat., and 156° 30' E. long.,
+on an island situated 8Â° 18' S. lat., and 156Â° 30' E. long.,
 had seen some iron bars and red stuffs used by the natives of these
 parts.  Dumont d'Urville, much perplexed, and not knowing how to credit
 the reports of low-class journals, decided to follow Dillon's track.
@@ -5235,15 +5235,15 @@ my admiration was unbounded, and from the structure it extended to the
 engineer who had called it into existence.
 
 Our course was directed to the west, and on the 11th of January we
-doubled Cape Wessel, situation in 135° long. and 10° S. lat.,
+doubled Cape Wessel, situation in 135Â° long. and 10Â° S. lat.,
 which forms the east point of the Gulf of Carpentaria.  The reefs were
 still numerous, but more equalised, and marked on the chart with
 extreme precision.  The Nautilus easily avoided the breakers of Money
-to port and the Victoria reefs to starboard, placed at 130° long.
+to port and the Victoria reefs to starboard, placed at 130Â° long.
 and on the 10th parallel, which we strictly followed.
 
 On the 13th of January, Captain Nemo arrived in the Sea of Timor, and
-recognised the island of that name in 122° long.
+recognised the island of that name in 122Â° long.
 
 From this point the direction of the Nautilus inclined towards the
 south-west. Her head was set for the Indian Ocean.  Where would the
@@ -5339,7 +5339,7 @@ Thus this life seemed easy and natural, and we thought no longer of the
 life we led on land; but something happened to recall us to the
 strangeness of our situation.
 
-On the 18th of January, the Nautilus was in 105° long. and 15°
+On the 18th of January, the Nautilus was in 105Â° long. and 15Â°
 S. lat.  The weather was threatening, the sea rough and rolling.  There
 was a strong east wind.  The barometer, which had been going down for
 some days, foreboded a coming storm.  I went up on to the platform just
@@ -5892,8 +5892,8 @@ and forty miles, or twenty-two miles an hour.  If we recognised so many
 different varieties of fish, it was because, attracted by the electric
 light, they tried to follow us; the greater part, however, were soon
 distanced by our speed, though some kept their place in the waters of
-the Nautilus for a time.  The morning of the 24th, in 12° 5' S.
-lat., and 94° 33' long., we observed Keeling Island, a coral
+the Nautilus for a time.  The morning of the 24th, in 12Â° 5' S.
+lat., and 94Â° 33' long., we observed Keeling Island, a coral
 formation, planted with magnificent cocos, and which had been visited
 by Mr. Darwin and Captain Fitzroy.  The Nautilus skirted the shores of
 this desert island for a little distance.  Its nets brought up numerous
@@ -5911,7 +5911,7 @@ inclined planes, which certain internal levers placed obliquely to the
 waterline.  In that way we went about two miles, but without ever
 obtaining the greatest depths of the Indian Sea, which soundings of
 seven thousand fathoms have never reached.  As to the temperature of
-the lower strata, the thermometer invariably indicated 4° above
+the lower strata, the thermometer invariably indicated 4Â° above
 zero.  I only observed that in the upper regions the water was always
 colder in the high levels than at the surface of the sea.
 
@@ -6017,7 +6017,7 @@ CHAPTER II
 A NOVEL PROPOSAL OF CAPTAIN NEMO'S
 
 On the 28th of February, when at noon the Nautilus came to the surface
-of the sea, in 9° 4' N. lat., there was land in sight about eight
+of the sea, in 9Â° 4' N. lat., there was land in sight about eight
 miles to westward.  The first thing I noticed was a range of mountains
 about two thousand feet high, the shapes of which were most capricious.
 On taking the bearings, I knew that we were nearing the island of
@@ -6605,7 +6605,7 @@ miles an hour, slid into the labyrinth of canals which separate the
 Maldives from the Laccadives.  It coasted even the Island of Kiltan, a
 land originally coraline, discovered by Vasco da Gama in 1499, and one
 of the nineteen principal islands of the Laccadive Archipelago,
-situated between 10° and 14° 30' N. lat., and 69° 50' 72"
+situated between 10Â° and 14Â° 30' N. lat., and 69Â° 50' 72"
 E. long.
 
 We had made 16,220 miles, or 7,500 (French) leagues from our
@@ -6979,7 +6979,7 @@ CHAPTER V
 
 THE ARABIAN TUNNEL
 
-That same evening, in 21° 30' N. lat., the Nautilus floated on the
+That same evening, in 21Â° 30' N. lat., the Nautilus floated on the
 surface of the sea, approaching the Arabian coast.  I saw Djeddah, the
 most important counting-house of Egypt, Syria, Turkey, and India.  I
 distinguished clearly enough its buildings, the vessels anchored at the
@@ -8194,7 +8194,7 @@ this brightness to take its height.  Then, the sea becoming more
 billowy, we descended, and the panel closed.
 
 An hour after, upon consulting the chart, I saw the position of the
-Nautilus was marked at 16° 17' long., and 33° 22' lat., at 150
+Nautilus was marked at 16Â° 17' long., and 33Â° 22' lat., at 150
 leagues from the nearest coast.  There was no means of flight, and I
 leave you to imagine the rage of the Canadian when I informed him of
 our situation.
@@ -8747,7 +8747,7 @@ That day the Nautilus crossed a singular part of the Atlantic Ocean.
 No one can be ignorant of the existence of a current of warm water
 known by the name of the Gulf Stream.  After leaving the Gulf of
 Florida, we went in the direction of Spitzbergen.  But before entering
-the Gulf of Mexico, about 45° of N. lat., this current divides into
+the Gulf of Mexico, about 45Â° of N. lat., this current divides into
 two arms, the principal one going towards the coast of Ireland and
 Norway, whilst the second bends to the south about the height of the
 Azores; then, touching the African shore, and describing a lengthened
@@ -8834,13 +8834,13 @@ ended the chase by plunging under the water.  Our navigation continued
 until the 13th of March; that day the Nautilus was employed in taking
 soundings, which greatly interested me.  We had then made about 13,000
 leagues since our departure from the high seas of the Pacific.  The
-bearings gave us 45° 37' S. lat., and 37° 53' W. long.  It was
+bearings gave us 45Â° 37' S. lat., and 37Â° 53' W. long.  It was
 the same water in which Captain Denham of the Herald sounded 7,000
 fathoms without finding the bottom.  There, too, Lieutenant Parker, of
 the American frigate Congress, could not touch the bottom with 15,140
 fathoms.  Captain Nemo intended seeking the bottom of the ocean by a
 diagonal sufficiently lengthened by means of lateral planes placed at
-an angle of 45° with the water-line of the Nautilus.  Then the
+an angle of 45Â° with the water-line of the Nautilus.  Then the
 screw set to work at its maximum speed, its four blades beating the
 waves with in describable force.  Under this powerful pressure, the
 hull of the Nautilus quivered like a sonorous chord and sank regularly
@@ -9250,7 +9250,7 @@ pole?  I did not think so, for every attempt to reach that point had
 hitherto failed.  Again, the season was far advanced, for in the
 Antarctic regions the 13th of March corresponds with the 13th of
 September of northern regions, which begin at the equinoctial season.
-On the 14th of March I saw floating ice in latitude 55°, merely
+On the 14th of March I saw floating ice in latitude 55Â°, merely
 pale bits of debris from twenty to twenty-five feet long, forming banks
 over which the sea curled.  The Nautilus remained on the surface of the
 ocean.  Ned Land, who had fished in the Arctic Seas, was familiar with
@@ -9268,7 +9268,7 @@ calcareous reflections resembled a perfect town of marble.  The more we
 neared the south the more these floating islands increased both in
 number and importance.
 
-At 60° lat. every pass had disappeared.  But, seeking carefully,
+At 60Â° lat. every pass had disappeared.  But, seeking carefully,
 Captain Nemo soon found a narrow opening, through which he boldly
 slipped, knowing, however, that it would close behind him.  Thus,
 guided by this clever hand, the Nautilus passed through all the ice
@@ -9277,7 +9277,7 @@ ice-fields or smooth plains, seeming to have no limits, drift-ice or
 floating ice-packs, plains broken up, called palchs when they are
 circular, and streams when they are made up of long strips.  The
 temperature was very low; the thermometer exposed to the air marked 2
-deg. or 3° below zero, but we were warmly clad with fur, at the
+deg. or 3Â° below zero, but we were warmly clad with fur, at the
 expense of the sea-bear and seal.  The interior of the Nautilus, warmed
 regularly by its electric apparatus, defied the most intense cold.
 Besides, it would only have been necessary to go some yards beneath the
@@ -9337,7 +9337,7 @@ mountains soldered together.
 I knew that to Ned Land, as well as to all other navigators who had
 preceded us, this was an inevitable obstacle.  The sun appearing for an
 instant at noon, Captain Nemo took an observation as near as possible,
-which gave our situation at 51° 30' long. and 67° 39' of S.
+which gave our situation at 51Â° 30' long. and 67Â° 39' of S.
 lat.  We had advanced one degree more in this Antarctic region.  Of the
 liquid surface of the sea there was no longer a glimpse.  Under the
 spur of the Nautilus lay stretched a vast plain, entangled with
@@ -9474,7 +9474,7 @@ pumps of the Nautilus were working air into the reservoirs and storing
 it at high pressure.  About four o'clock, Captain Nemo announced the
 closing of the panels on the platform.  I threw one last look at the
 massive iceberg which we were going to cross.  The weather was clear,
-the atmosphere pure enough, the cold very great, being 12° below
+the atmosphere pure enough, the cold very great, being 12Â° below
 zero; but, the wind having gone down, this temperature was not so
 unbearable.  About ten men mounted the sides of the Nautilus, armed
 with pickaxes to break the ice around the vessel, which was soon free.
@@ -9497,7 +9497,7 @@ accomplished with wonderful precision.
 "I believe we shall," I said, in a tone of firm conviction.
 
 In this open sea, the Nautilus had taken its course direct to the pole,
-without leaving the fifty-second meridian.  From 67° 30' to 90
+without leaving the fifty-second meridian.  From 67Â° 30' to 90
 deg., twenty-two degrees and a half of latitude remained to travel;
 that is, about five hundred leagues.  The Nautilus kept up a mean speed
 of twenty-six miles an hour the speed of an express train.  If that
@@ -9558,7 +9558,7 @@ I rushed on to the platform.  Yes! the open sea, with but a few
 scattered pieces of ice and moving icebergs a long stretch of sea; a
 world of birds in the air, and myriads of fishes under those waters,
 which varied from intense blue to olive green, according to the bottom.
-The thermometer marked 3° C. above zero.  It was comparatively
+The thermometer marked 3Â° C. above zero.  It was comparatively
 spring, shut up as we were behind this iceberg, whose lengthened mass
 was dimly seen on our northern horizon.
 
@@ -9618,7 +9618,7 @@ nothing of their expansive powers, though, having climbed a high
 acclivity, I could see no volcano for a radius of several miles.  We
 know that in those Antarctic countries, James Ross found two craters,
 the Erebus and Terror, in full activity, on the 167th meridian,
-latitude 77° 32'. The vegetation of this desolate continent seemed
+latitude 77Â° 32'. The vegetation of this desolate continent seemed
 to me much restricted.  Some lichens lay upon the black rocks; some
 microscopic plants, rudimentary diatomas, a kind of cells placed
 between two quartz shells; long purple and scarlet weed, supported on
@@ -9679,7 +9679,7 @@ of this violent storm.  The Nautilus did not remain motionless, but
 skirted the coast, advancing ten miles more to the south in the
 half-light left by the sun as it skirted the edge of the horizon.  The
 next day, the 20th of March, the snow had ceased.  The cold was a
-little greater, the thermometer showing 2° below zero.  The fog
+little greater, the thermometer showing 2Â° below zero.  The fog
 was rising, and I hoped that that day our observations might be taken.
 Captain Nemo not having yet appeared, the boat took Conseil and myself
 to land.  The soil was still of the same volcanic nature; everywhere
@@ -10361,7 +10361,7 @@ The Captain looked in my face.  "After to-morrow they will be empty!"
 
 A cold sweat came over me.  However, ought I to have been astonished at
 the answer?  On March 22, the Nautilus was in the open polar seas.  We
-were at 26°. For five days we had lived on the reserve on board.
+were at 26Â°. For five days we had lived on the reserve on board.
 And what was left of the respirable air must be kept for the workers.
 Even now, as I write, my recollection is still so vivid that an
 involuntary terror seizes me and my lungs seem to be without air.
@@ -10381,18 +10381,18 @@ raise the temperature in this part and stay the congelation?"
 
 "Let us try it, Professor."
 
-The thermometer then stood at 7° outside.  Captain Nemo took me to
+The thermometer then stood at 7Â° outside.  Captain Nemo took me to
 the galleys, where the vast distillatory machines stood that furnished
 the drinkable water by evaporation.  They filled these with water, and
 all the electric heat from the piles was thrown through the worms
-bathed in the liquid.  In a few minutes this water reached 100°. It
+bathed in the liquid.  In a few minutes this water reached 100Â°. It
 was directed towards the pumps, while fresh water replaced it in
 proportion.  The heat developed by the troughs was such that cold
 water, drawn up from the sea after only having gone through the
 machines, came boiling into the body of the pump.  The injection was
-begun, and three hours after the thermometer marked 6° below zero
+begun, and three hours after the thermometer marked 6Â° below zero
 outside.  One degree was gained.  Two hours later the thermometer only
-marked 4°.
+marked 4Â°.
 
 "We shall succeed," I said to the Captain, after having anxiously
 watched the result of the operation.
@@ -10400,9 +10400,9 @@ watched the result of the operation.
 "I think," he answered, "that we shall not be crushed.  We have no more
 suffocation to fear."
 
-During the night the temperature of the water rose to 1° below
+During the night the temperature of the water rose to 1Â° below
 zero.  The injections could not carry it to a higher point.  But, as
-the congelation of the sea-water produces at least 2°, I was at
+the congelation of the sea-water produces at least 2Â°, I was at
 least reassured against the dangers of solidification.
 
 The next day, March 27th, six yards of ice had been cleared, twelve
@@ -11305,7 +11305,7 @@ the surface of that ocean?
 
 CHAPTER XX
 
-FROM LATITUDE 47° 24' TO LONGITUDE 17° 28'
+FROM LATITUDE 47Â° 24' TO LONGITUDE 17Â° 28'
 
 In consequence of the storm, we had been thrown eastward once more.
 All hope of escape on the shores of New York or St. Lawrence had faded
@@ -11475,7 +11475,7 @@ America, under the command of Admiral Van Stebel.  On the 11th and 12th
 Prairal of the second year, this squadron fell in with an English
 vessel.  Sir, to-day is the 13th Prairal, the first of June, 1868.  It
 is now seventy-four years ago, day for day on this very spot, in
-latitude 47° 24', longitude 17° 28', that this vessel, after
+latitude 47Â° 24', longitude 17Â° 28', that this vessel, after
 fighting heroically, losing its three masts, with the water in its
 hold, and the third of its crew disabled, preferred sinking with its
 356 sailors to surrendering; and, nailing its colours to the poop,

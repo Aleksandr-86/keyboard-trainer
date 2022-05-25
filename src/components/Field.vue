@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, computed, onUnmounted, onMounted } from 'vue'
+import { onMounted, onUnmounted, reactive, computed } from 'vue'
 import store from '/src/services/store.js'
 import { charTest, msToMinutes, isAuxiliaryKeys } from '../services/helpers.js'
 import CurrentStatistics from './CurrentStatistics.vue'
@@ -69,6 +69,14 @@ const eListener = function (e) {
   events.keyValue = e.key
   if (isAuxiliaryKeys(code)) return
 
+  if (store.data.indexArr !== 0 && code === 'Enter') {
+    // if (!store.state.overallStatistics) {
+    store.data.timerStop = performance.now()
+    store.state.work = false
+    store.state.overallStatistics = true
+    // }
+  }
+
   // audio.pause()
   // audio.currentTime = 0
 
@@ -103,7 +111,8 @@ const eListener = function (e) {
   }
 
   store.recordingStatistics(e)
-  store.moveCaret('')
+  // console.warn(code)
+  store.moveCaret(code)
 }
 
 onMounted(() => {

@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from '@vue/reactivity'
 import store from '/src/services/store.js'
 import { getBrowser } from '/src/services/helpers.js'
 import SpeakerSVG from './SpeakerSVG.vue'
@@ -10,8 +11,7 @@ async function fillFieldFromBuffer() {
   const br = getBrowser().browser
   if (br === 'chrome' || br === 'yabrowser') {
     let str = await navigator.clipboard.readText()
-    // str = remEmoji(str) // removing emoji
-    if (str === ' ' || str === '') return // buffer is empty
+    if (str === ' ' || str === '' || str === '\r\n') return // buffer is empty
     store.loadFragment(str)
   } else if (br === 'firefox') {
     // let str = document.querySelector('#input').value
@@ -25,6 +25,10 @@ const toggleSettings = function () {
     store.storage.main.background = store.data.backgroundPreview
   }
 }
+
+const minSnippetLength = computed(() =>
+  Number(store.storage.main.minSnippetLength)
+)
 </script>
 
 <template>
@@ -38,7 +42,12 @@ const toggleSettings = function () {
       </li>
       <li>
         <a
-          @click="store.randomSnippet(store.storage.main.langOfSnippets, 160)"
+          @click="
+            store.randomSnippet(
+              store.storage.main.langOfSnippets,
+              minSnippetLength
+            )
+          "
           id="nav-snippet"
           href="#!">
           Отрывок
@@ -49,7 +58,7 @@ const toggleSettings = function () {
         <ul>
           <li>
             <a
-              @click="store.randomSnippet('russian', 160)"
+              @click="store.randomSnippet('russian', minSnippetLength)"
               :class="{
                 'nav-underscore-none':
                   store.storage.main.langOfSnippets !== 'russian'
@@ -60,7 +69,7 @@ const toggleSettings = function () {
           </li>
           <li>
             <a
-              @click="store.randomSnippet('english', 160)"
+              @click="store.randomSnippet('english', minSnippetLength)"
               :class="{
                 'nav-underscore-none':
                   store.storage.main.langOfSnippets !== 'english'
@@ -105,6 +114,14 @@ const toggleSettings = function () {
 #nav-drop-down,
 #nav-settings {
   margin-left: 20px;
+}
+
+#nav-snippet:focus,
+#nav-drop-down:focus,
+#nav-settings:focus,
+#nav-info:focus {
+  outline: none;
+  background: hsla(120, 100%, 20%, 1);
 }
 
 #nav-info {

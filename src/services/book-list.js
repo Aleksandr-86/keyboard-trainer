@@ -35,9 +35,9 @@ const arrOfRusBooks = [
     name: 'volokolamsk_highway_1944'
   },
   {
-    title: 'Обломов',
-    author: 'Ивана Александровича Гончарова',
-    name: 'oblomov_1859'
+    title: 'Аленький цветочек',
+    author: 'Сергея Тимофеевича Аксакова',
+    name: 'the_scarlet_flower_1858'
   },
   {
     title: 'Аннушка',
@@ -101,11 +101,6 @@ const arrOfEngBooks = [
     title: 'Морской волк',
     author: 'Джека Лондона',
     name: 'the_sea_wolf_1904'
-  },
-  {
-    title: 'Копи царя Соломона',
-    author: 'Генри Райдера Хаггарда',
-    name: 'king_solomons_mines_1885'
   }
 ]
 

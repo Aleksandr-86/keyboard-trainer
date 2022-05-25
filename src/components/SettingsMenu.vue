@@ -5,6 +5,7 @@ import { arrBackgrounds } from '/src/services/background-list.js'
 import HslaSlider from '../components/HslaSlider.vue'
 import SingleSlider from '../components/SingleSlider.vue'
 import Checkbox from '../components/Checkbox.vue'
+import Input from '../components/Input.vue'
 
 const page = ref(0)
 const direction = ref('slide-next')
@@ -108,6 +109,7 @@ const defaultValues = {
   main: {
     background: 0,
     langOfSnippets: 'russian',
+    minSnippetLength: 160,
     letterCase: true,
     speaker: false,
     volume: 0.2
@@ -163,6 +165,7 @@ function clearSettings() {
           obj="visibility"
           prop="keyboard" />
         <Checkbox title="Отображать засечки" obj="keyboard" prop="underline" />
+        <Input />
         <div class="settings-category-margin">Звук:</div>
         <Checkbox title="Озвучивать печать" obj="main" prop="speaker" />
         <SingleSlider
@@ -191,7 +194,6 @@ function clearSettings() {
           </div>
         </div>
         <div>
-          <div>{{}}</div>
           <p class="settings-image-description">
             Местоположение:
             {{ arrBackgrounds[store.data.backgroundPreview].location }}
