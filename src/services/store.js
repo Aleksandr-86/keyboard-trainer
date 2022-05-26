@@ -136,27 +136,6 @@ const loadFragment = function (str, amount = 0) {
   } else {
     // case: snippets from the books
     str = strPrepWithoutNewLines(str)
-    // console.warn(str.length)
-    // let correct = 0
-    // let inCorrect = 0
-    // // let eng = 0
-    // for (let i = 0; i < str.length; i++) {
-    //   if (charTest(str[i])) {
-    //     inCorrect++
-    //     console.warn(`_${str[i]}_`, i)
-    //     } else if (/[A-Z`~@#$^&{}'|]/i.test(str[i])) {
-    //       eng++
-    //       console.warn(`eng: _${str[i]}_`)
-    //   } else {
-    //     correct++
-    //   }
-    // }
-    // console.error(
-    //   `correct: ${correct}, inCorrect: ${inCorrect}, sum: ${
-    //     correct + inCorrect
-    //   }`
-    // )
-
     data.fragmentArr = arrPreparer(getSomeSentences(str, amount))
   }
 
@@ -271,7 +250,6 @@ const randomSnippet = function (lang, amount) {
   localStorage.main = JSON.stringify(storage.main)
 
   const obj = arrOfBooks[randomNum(0, arrOfBooks.length - 1)] // choosing a random book
-
   data.currentBook = obj
   const filePath = `/src/books/${lang}/${obj.name}.txt`
 

@@ -46,7 +46,7 @@ const arrOfRusBooks = [
   },
   {
     title: 'Кладовая солнца',
-    author: 'Михаила Михайлович Пришвина',
+    author: 'Михаила Михайловича Пришвина',
     name: 'the_storeroom_of_the_sun_1945'
   }
 ]
@@ -58,14 +58,14 @@ const arrOfEngBooks = [
     name: 'around_the_world_in_eighty_days_1873'
   },
   {
+    title: 'Двадцать тысяч лье под водой',
+    author: 'Жюля Габриэля Верна',
+    name: 'twenty_thousand_leagues_under_the_sea_1872'
+  },
+  {
     title: 'Приключения Шерлока Холмса',
     author: 'Артура Конан Дойла',
     name: 'the_adventures_of_sherlock_holmes_1892'
-  },
-  {
-    title: 'Великий Гэтсби',
-    author: 'Френсиса Скотта Фицджеральда',
-    name: 'the_great_gatsby_1925'
   },
   {
     title: 'Затерянный мир',
@@ -73,9 +73,9 @@ const arrOfEngBooks = [
     name: 'the_lost_world_1912'
   },
   {
-    title: 'Двадцать тысяч лье под водой',
-    author: 'Жюля Габриэля Верна',
-    name: 'twenty_thousand_leagues_under_the_sea_1872'
+    title: 'Великий Гэтсби',
+    author: 'Френсиса Скотта Фицджеральда',
+    name: 'the_great_gatsby_1925'
   },
   {
     title: 'Война миров',
