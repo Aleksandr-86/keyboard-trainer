@@ -403,6 +403,7 @@ function clearSettings() {
 .settings-category-margin {
   text-align: left;
   text-decoration: underline;
+  padding-left: 2px;
   margin-bottom: 14px;
 }
 

@@ -1,27 +1,50 @@
 <script setup>
+import { ref } from 'vue'
 import store from '/src/services/store.js'
-function eHandler(e) {
-  if (!'0123456789'.includes(e.key) && e.key !== 'Backspace') e.preventDefault()
-  if (e.path[0].value.length >= 6 && e.key !== 'Backspace') e.preventDefault()
 
-  if (e.key === '1') {
-    let range = new Range()
-    range.setStart(e.path[0].value, 0)
-    range.setEnd(e.path[0].value, 0)
+const flag = ref(false)
+
+function keyDown(e) {
+  if (!'0123456789'.includes(e.key) && e.key !== 'Backspace') {
+    e.preventDefault()
+    return
+  }
+
+  if (input.selectionEnd - input.selectionStart) return
+  if (input.value.length >= 6 && e.key !== 'Backspace' && flag) {
+    e.preventDefault()
   }
 }
 </script>
 <template>
-  <div class="input-description">Минимальное количество символов:</div>
-  <input
-    type="text"
-    id="input-min-length"
-    @keydown="eHandler"
-    v-model="store.storage.main.minSnippetLength" />
+  <div class="input-container">
+    <div class="input-description">
+      Минимальное количество символов отрывка:
+    </div>
+    <input
+      type="text"
+      id="input"
+      @keydown="keyDown"
+      v-model="store.storage.main.minSnippetLength" />
+  </div>
 </template>
 
 <style scoped>
-#input-min-length {
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1px 0 2px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-description {
+  display: inline-block;
+  width: 358px;
+  text-align: left;
+}
+
+#input {
   width: 90px;
   height: 50px;
   font-size: 25px;
@@ -29,9 +52,5 @@ function eHandler(e) {
   /* padding: 0 10px 0 10px; */
   /* text-indent: 5px; */
   text-align: center;
-}
-
-.input-description {
-  text-align: left;
 }
 </style>
