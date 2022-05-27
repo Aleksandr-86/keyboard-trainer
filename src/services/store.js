@@ -105,14 +105,14 @@ const recordingStatistics = function (e) {
     if (data.withoutMistake < data.tempWithoutMistake) {
       data.withoutMistake = data.tempWithoutMistake
     }
-    data.numCorrect++
+    // data.numCorrect++
   } else if (key !== char) {
     data.statArr[data.indexArr] = '2' // if the char is wrong
     // counting the number of letters without mistake
     if (data.withoutMistake < data.tempWithoutMistake) {
       data.withoutMistake = data.tempWithoutMistake
     }
-    data.numWrong++
+    // data.numWrong++
     data.tempWithoutMistake = 0
   }
 }
@@ -227,17 +227,10 @@ const clearStat = function () {
 
 const randomSnippet = function (lang, amount) {
   console.log('random snippet')
-  if (state.overallStatistics) {
-    state.overallStatistics = false
-    return
-  }
-
-  // if (!state.overallStatistics) {
-  //   data.timerStop = performance.now()
-  //   state.work = false
-  //   state.overallStatistics = true
-  // }
-
+  // this.preventDefault()
+  // document.body.querySelector('nav-snippet').preventDefault()
+  if (data.elapsedTime !== 0) return
+  console.warn('sn')
   let arrOfBooks = []
 
   if (lang === 'russian') {

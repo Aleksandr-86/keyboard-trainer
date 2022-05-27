@@ -64,13 +64,19 @@ const charsArr = computed(() =>
 
 // event listener
 const eListener = function (e) {
+  console.warn('eList')
   events.keyDn = e
   const code = e.code
   events.keyValue = e.key
-  if (isAuxiliaryKeys(code)) return
 
-  if (store.data.indexArr !== 0 && code === 'Enter') {
+  if (isAuxiliaryKeys(code)) {
+    e.preventDefault()
+    return
+  }
+
+  if (store.data.elapsedTime !== 0 && code === 'Enter') {
     // if (!store.state.overallStatistics) {
+    console.warn('inside')
     store.data.timerStop = performance.now()
     store.state.work = false
     store.state.overallStatistics = true
@@ -111,7 +117,6 @@ const eListener = function (e) {
   }
 
   store.recordingStatistics(e)
-  // console.warn(code)
   store.moveCaret(code)
 }
 

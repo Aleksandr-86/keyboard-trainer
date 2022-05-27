@@ -116,13 +116,13 @@ const minSnippetLength = computed(() =>
   margin-left: 20px;
 }
 
-#nav-snippet:focus,
+/* #nav-snippet:focus,
 #nav-drop-down:focus,
 #nav-settings:focus,
 #nav-info:focus {
   outline: none;
   background: hsla(120, 100%, 20%, 1);
-}
+} */
 
 #nav-info {
   margin-left: 15px;

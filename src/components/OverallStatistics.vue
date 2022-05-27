@@ -1,5 +1,5 @@
 <script setup>
-import { onUnmounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import store from '../services/store.js'
 import { rnd } from '../services/helpers.js'
 import { computed } from '@vue/reactivity'
@@ -32,6 +32,34 @@ const msColor = computed(() => store.storage.overallStatistics.ms)
 const correctColor = computed(() => store.storage.overallStatistics.correct)
 const wrongColor = computed(() => store.storage.overallStatistics.wrong)
 
+function keyDown(e) {
+  if (e.key === 'Tab') {
+    e.preventDefault()
+  } else if (e.key === 'Enter') {
+    store.state.overallStatistics = false
+    document.body.querySelector('#nav-snippet').focus()
+  }
+}
+
+onMounted(() => {
+  console.warn(store.data.statArr)
+  const statArr = store.data.statArr
+
+  for (let i = 0; i < statArr.length; i++) {
+    const element = statArr[i]
+    console.warn(element)
+    if (element === '1') {
+      store.data.numCorrect++
+    } else if (element === '2') {
+      store.data.numWrong++
+    }
+  }
+
+  console.warn(store.data.numCorrect, store.data.numWrong)
+
+  statistics.focus()
+})
+
 onUnmounted(() => {
   store.state.bTimer = false
   store.data.tempWithoutMistake = 0
@@ -50,7 +78,7 @@ const withoutMistake = store.data.numWrong === 0
 </script>
 
 <template>
-  <div class="stat-container">
+  <div class="stat-container" id="statistics" tabindex="1" @keydown="keyDown">
     <h4 v-if="isSnippet">Результат набора отрывка из книги:</h4>
     <h4 v-else>Результат набора текста из буфера обмена</h4>
 
@@ -133,6 +161,7 @@ const withoutMistake = store.data.numWrong === 0
   z-index: 10;
   user-select: none;
   overflow: hidden;
+  outline: none;
   /* transition: visibility 300ms, opacity 300ms; */
 }
 
