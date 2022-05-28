@@ -5,7 +5,8 @@ import { getBrowser } from '/src/services/helpers.js'
 import SpeakerSVG from './SpeakerSVG.vue'
 
 async function fillFieldFromBuffer() {
-  document.body.querySelector('#nav-buffer').blur() // removing focus from an element
+  // document.body.querySelector('#nav-buffer').blur() // removing focus from an element
+  store.data.focusElement = '#nav-buffer'
   store.data.currentBook = 0 // for sake of overall statistics menu
 
   const br = getBrowser().browser

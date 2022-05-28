@@ -64,23 +64,23 @@ const charsArr = computed(() =>
 
 // event listener
 const eListener = function (e) {
-  console.warn('eList')
   events.keyDn = e
   const code = e.code
   events.keyValue = e.key
 
-  if (isAuxiliaryKeys(code)) {
-    e.preventDefault()
+  if (store.data.indexArr === 0 && code === 'Enter') {
     return
-  }
-
-  if (store.data.elapsedTime !== 0 && code === 'Enter') {
-    // if (!store.state.overallStatistics) {
-    console.warn('inside')
+  } else if (store.data.indexArr !== 0 && code === 'Enter') {
+    store.data.statArr[store.data.indexArr] = '0'
     store.data.timerStop = performance.now()
     store.state.work = false
     store.state.overallStatistics = true
-    // }
+    return
+  }
+
+  if (isAuxiliaryKeys(code)) {
+    e.preventDefault()
+    return
   }
 
   // audio.pause()

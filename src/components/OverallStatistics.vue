@@ -4,25 +4,46 @@ import store from '../services/store.js'
 import { rnd } from '../services/helpers.js'
 import { computed } from '@vue/reactivity'
 
-const numCorrect = store.data.numCorrect
-const numWrong = store.data.numWrong
-const numTotal = numCorrect + numWrong
-
 // forming the temp string
-let tempStr = ''
-if (numTotal >= 11 && numTotal <= 14) {
-  tempStr = `Всего набрано <b>${numTotal}</b> знаков, из них:`
-} else if (numTotal % 10 === 1) {
-  tempStr = `Всего набран <b>${numTotal}</b> знак, из них:`
-} else if (numTotal % 10 >= 2 && numTotal % 10 <= 4) {
-  tempStr = `Всего набрано <b>${numTotal}</b> знака, из них:`
-} else if (numTotal % 10 === 0 || (numTotal % 10 >= 5 && numTotal % 10 <= 9)) {
-  tempStr = `Всего набрано <b>${numTotal}</b> знаков, из них:`
-}
+const tempStr = computed(() => {
+  const numTotal = store.data.numCorrect + store.data.numWrong
 
-const strCorrectPercent = `(${rnd((numCorrect * 100) / numTotal, 2)}%)`
-const strWrongPercent = `(${rnd((numWrong * 100) / numTotal, 2)}%)`
-const charPerSecond = rnd((numTotal * 60) / (store.data.elapsedTime / 1000))
+  if (numTotal >= 11 && numTotal <= 14) {
+    return `Всего набрано <b>${numTotal}</b> знаков, из них:`
+  } else if (numTotal % 10 === 1) {
+    return `Всего набран <b>${numTotal}</b> знак, из них:`
+  } else if (numTotal % 10 >= 2 && numTotal % 10 <= 4) {
+    return `Всего набрано <b>${numTotal}</b> знака, из них:`
+  } else if (
+    numTotal % 10 === 0 ||
+    (numTotal % 10 >= 5 && numTotal % 10 <= 9)
+  ) {
+    return `Всего набрано <b>${numTotal}</b> знаков, из них:`
+  }
+})
+
+const strCorrectPercent = computed(
+  () =>
+    `(${rnd(
+      (store.data.numCorrect * 100) /
+        (store.data.numCorrect + store.data.numWrong),
+      2
+    )}%)`
+)
+const strWrongPercent = computed(
+  () =>
+    `(${rnd(
+      (store.data.numWrong * 100) /
+        (store.data.numCorrect + store.data.numWrong),
+      2
+    )}%)`
+)
+const charPerSecond = computed(() =>
+  rnd(
+    ((store.data.numCorrect + store.data.numWrong) * 60) /
+      (store.data.elapsedTime / 1000)
+  )
+)
 
 const isSnippet = typeof store.data.currentBook === 'object'
 const book = store.data.currentBook
@@ -37,25 +58,21 @@ function keyDown(e) {
     e.preventDefault()
   } else if (e.key === 'Enter') {
     store.state.overallStatistics = false
-    document.body.querySelector('#nav-snippet').focus()
+    document.body.querySelector(store.data.focusElement).focus()
   }
 }
 
 onMounted(() => {
-  console.warn(store.data.statArr)
   const statArr = store.data.statArr
 
   for (let i = 0; i < statArr.length; i++) {
     const element = statArr[i]
-    console.warn(element)
     if (element === '1') {
       store.data.numCorrect++
     } else if (element === '2') {
       store.data.numWrong++
     }
   }
-
-  console.warn(store.data.numCorrect, store.data.numWrong)
 
   statistics.focus()
 })
@@ -74,7 +91,7 @@ onUnmounted(() => {
   store.data.currentBook = 0
 })
 
-const withoutMistake = store.data.numWrong === 0
+// const withoutMistake = store.data.numWrong === 0
 </script>
 
 <template>
@@ -95,7 +112,7 @@ const withoutMistake = store.data.numWrong === 0
     <div class="stat-second-column">{{ charPerSecond }}</div>
 
     <div
-      v-if="withoutMistake"
+      v-if="store.data.numWrong === 0"
       class="stat-line"
       v-html="tempStr.split(',')[0] + ' без единой ошибки.'"></div>
     <div v-else>
@@ -105,13 +122,13 @@ const withoutMistake = store.data.numWrong === 0
 
       <div class="stat-first-column">- правильных</div>
       <div class="stat-second-column">
-        <div>{{ numCorrect }}</div>
+        <div>{{ store.data.numCorrect }}</div>
         <div class="stat-green">{{ strCorrectPercent }}</div>
       </div>
 
       <div class="stat-first-column">- ошибочных</div>
       <div class="stat-second-column">
-        <div>{{ numWrong }}</div>
+        <div>{{ store.data.numWrong }}</div>
         <div class="stat-red">{{ strWrongPercent }}</div>
       </div>
 

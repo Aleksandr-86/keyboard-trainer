@@ -1,4 +1,4 @@
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
 import {
   charTest,
   keyboardLayoutTest,
@@ -85,6 +85,7 @@ const data = reactive({
   remainingChars: 0,
 
   currentBook: 0,
+  focusElement: String,
   keyboardLayout: 'russian',
   backgroundPreview: 0
 })
@@ -168,7 +169,7 @@ const loadNextChars = function () {
 
 /* moving caret (visually), moving over the inappropriate chars,
    stopping timer, changing work state, enable statistics menu */
-const moveCaret = function (code) {
+const moveCaret = function () {
   data.indexArr++
 
   // checking inappropriate chars and skipping those
@@ -189,8 +190,7 @@ const moveCaret = function (code) {
 
   if (
     data.indexArr >= data.fragmentArr.length ||
-    data.fragmentArr[data.indexArr] === 'end' ||
-    code === 'Enter'
+    data.fragmentArr[data.indexArr] === 'end'
   ) {
     // shutting down the field
     data.timerStop = performance.now()
@@ -226,11 +226,8 @@ const clearStat = function () {
 }
 
 const randomSnippet = function (lang, amount) {
-  console.log('random snippet')
-  // this.preventDefault()
-  // document.body.querySelector('nav-snippet').preventDefault()
   if (data.elapsedTime !== 0) return
-  console.warn('sn')
+  data.focusElement = '#nav-snippet'
   let arrOfBooks = []
 
   if (lang === 'russian') {
