@@ -74,7 +74,6 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
           </li>
         </ul>
       </li>
-      <li><a id="nav-info" href="#!">Справка</a></li>
       <li>
         <a @click="toggleSettings" id="nav-settings" href="#!">Настройки</a>
       </li>
@@ -110,14 +109,6 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
   margin-left: 20px;
 }
 
-/* #nav-snippet:focus,
-#nav-drop-down:focus,
-#nav-settings:focus,
-#nav-info:focus {
-  outline: none;
-  background: hsla(120, 100%, 20%, 1);
-} */
-
 #nav-info {
   margin-left: 15px;
 }
@@ -141,6 +132,7 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
 .nav li {
   margin: 0;
   white-space: nowrap;
+  background-color: red;
 }
 
 .nav li.nav-children {

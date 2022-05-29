@@ -4,13 +4,14 @@ import { data } from '../services/data'
 import { isUpCase } from '../services/helpers.js'
 import { storage } from '/src/services/storage.js'
 
+
 const props = defineProps({
   eventKeydown: {},
   targetChar: String,
   lang: String
 })
 
-const keyboardArr = [
+const keyboardLayout = [
   {
     side: 'left',
     chars: ['ёйфяцычувскамепи', 'qazwsxedcrfvtgb'],
@@ -97,8 +98,8 @@ const langIndex = computed(() => {
 })
 
 const lShift = computed(() => {
-  const rChars = keyboardArr[1].chars[langIndex.value]
-  const rSigns = keyboardArr[1].signs[langIndex.value]
+  const rChars = keyboardLayout[1].chars[langIndex.value]
+  const rSigns = keyboardLayout[1].signs[langIndex.value]
   let targetChar = data.fragmentArr[data.indexArr]
 
   if (
@@ -112,8 +113,8 @@ const lShift = computed(() => {
 })
 
 const rShift = computed(() => {
-  const lChars = keyboardArr[0].chars[langIndex.value]
-  const lSigns = keyboardArr[0].signs[langIndex.value]
+  const lChars = keyboardLayout[0].chars[langIndex.value]
+  const lSigns = keyboardLayout[0].signs[langIndex.value]
   let targetChar = data.fragmentArr[data.indexArr]
 
   if (
@@ -183,7 +184,7 @@ const boardColor = computed(() => {
 <template>
   <div class="keyboard">
     <div
-      v-for="(obj, index) in keyboardArr.slice(2)"
+      v-for="(obj, index) in keyboardLayout.slice(2)"
       :key="index"
       :id="obj.code.toLowerCase()"
       :class="[
