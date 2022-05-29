@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, reactive, computed, watch } from 'vue'
-import store from '../services/store'
+import { storage } from '/src/services/storage.js'
 
 const props = defineProps({
   title: String,
@@ -29,7 +29,7 @@ const color = computed(
 const thumbBackground = computed(() => `hsl(${hsla.hue}, 100%, 50%)`)
 
 watch(color, newValue => {
-  store.storage[props.obj][props.prop] = newValue
+  storage[props.obj][props.prop] = newValue
 })
 
 const getNumbersFromString = function (str) {
@@ -47,11 +47,11 @@ const border = computed(() => {
 })
 
 const saveToStorage = function () {
-  localStorage[props.obj] = JSON.stringify(store.storage[props.obj])
+  localStorage[props.obj] = JSON.stringify(storage[props.obj])
 }
 
 onMounted(() => {
-  const colorsArr = getNumbersFromString(store.storage[props.obj][props.prop])
+  const colorsArr = getNumbersFromString(storage[props.obj][props.prop])
   hsla.hue = colorsArr[0]
   hsla.saturation = colorsArr[1]
   hsla.lightness = colorsArr[2]

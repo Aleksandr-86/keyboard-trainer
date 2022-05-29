@@ -1,11 +1,14 @@
 <script setup>
 import { computed, ref } from 'vue'
-import store from '/src/services/store.js'
+import { data } from '/src/services/data.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
 import HslaSlider from '../components/HslaSlider.vue'
 import SingleSlider from '../components/SingleSlider.vue'
 import Checkbox from '../components/Checkbox.vue'
 import Input from '../components/Input.vue'
+// import storage from '/src/services/storage.js'
+import { storage } from '/src/services/storage.js'
+import { state } from '../services/state.js'
 
 const page = ref(0)
 const direction = ref('slide-next')
@@ -43,43 +46,43 @@ const turnThePage = function (dir) {
 const backgroundPreviewPath = computed(
   () =>
     `/src/images/backgrounds/small/${
-      arrBackgrounds[store.data.backgroundPreview].name
+      arrBackgrounds[data.backgroundPreview].name
     }.jpg`
 )
 
 const changeBackground = function (direction) {
-  const backgroundPreview = store.data.backgroundPreview
+  const backgroundPreview = data.backgroundPreview
   function saveBackgroundInStorage() {
-    const tempObj = { ...store.storage.main }
-    tempObj.background = store.data.backgroundPreview
+    const tempObj = { ...storage.main }
+    tempObj.background = data.backgroundPreview
     localStorage.main = JSON.stringify(tempObj)
   }
 
   if (direction === 'next') {
     if (backgroundPreview >= arrBackgrounds.length - 1) {
-      store.data.backgroundPreview = 0
+      data.backgroundPreview = 0
       saveBackgroundInStorage()
       return
     }
-    store.data.backgroundPreview++
+    data.backgroundPreview++
   } else if (direction === 'prev') {
     if (backgroundPreview <= 0) {
-      store.data.backgroundPreview = arrBackgrounds.length - 1
+      data.backgroundPreview = arrBackgrounds.length - 1
       saveBackgroundInStorage()
       return
     }
-    store.data.backgroundPreview--
+    data.backgroundPreview--
   }
 
   saveBackgroundInStorage()
 }
 
 const closeSettingMenu = function () {
-  store.storage.main.background = store.data.backgroundPreview
-  for (const key in store.storage) {
-    localStorage[key] = JSON.stringify(store.storage[key])
+  storage.main.background = data.backgroundPreview
+  for (const key in storage) {
+    localStorage[key] = JSON.stringify(storage[key])
   }
-  store.setFalse('settings')
+  state.settings = false
 }
 
 const defaultValues = {
@@ -130,11 +133,11 @@ const defaultValues = {
 
 function clearSettings() {
   for (const key in defaultValues) {
-    store.storage[key] = defaultValues[key]
+    storage[key] = defaultValues[key]
   }
-  store.data.backgroundPreview = 0
+  data.backgroundPreview = 0
   localStorage.clear()
-  store.setFalse('settings')
+  state.settings = false
 }
 </script>
 
@@ -173,13 +176,13 @@ function clearSettings() {
           prop="volume"
           max="1"
           step="0.01"
-          :disabled="!store.storage.main.speaker" />
+          :disabled="!storage.main.speaker" />
 
         <div class="settings-image">
           <img
             id="settings-preview"
             :src="backgroundPreviewPath"
-            :alt="arrBackgrounds[store.data.backgroundPreview].location" />
+            :alt="arrBackgrounds[data.backgroundPreview].location" />
           <div class="settings-btn-preview-container">
             <button
               @click="changeBackground('prev')"
@@ -196,12 +199,12 @@ function clearSettings() {
         <div>
           <p class="settings-image-description">
             Местоположение:
-            {{ arrBackgrounds[store.data.backgroundPreview].location }}
+            {{ arrBackgrounds[data.backgroundPreview].location }}
           </p>
           <p class="settings-image-link">
             Автор снимка:
-            <a :href="arrBackgrounds[store.data.backgroundPreview].link">{{
-              arrBackgrounds[store.data.backgroundPreview].author
+            <a :href="arrBackgrounds[data.backgroundPreview].link">{{
+              arrBackgrounds[data.backgroundPreview].author
             }}</a>
           </p>
         </div>

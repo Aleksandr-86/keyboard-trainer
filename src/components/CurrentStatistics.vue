@@ -1,12 +1,12 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import store from '../services/store'
+import { data } from '../services/data.js'
 
-const tempWithoutMistake = computed(() => store.data.tempWithoutMistake)
-const withoutMistake = computed(() => store.data.withoutMistake)
-const remainingChars = computed(() => store.data.remainingChars)
+const tempWithoutMistake = computed(() => data.tempWithoutMistake)
+const withoutMistake = computed(() => data.withoutMistake)
+const remainingChars = computed(() => data.remainingChars)
 
-const elapsedTime = computed(() => store.data.elapsedTime === 0)
+const elapsedTime = computed(() => data.elapsedTime === 0)
 </script>
 
 <template>
@@ -36,13 +36,13 @@ const elapsedTime = computed(() => store.data.elapsedTime === 0)
           Знаков в минуту:
         </span>
       </transition>
-      {{ store.data.charPerMin }}
+      {{ data.charPerMin }}
     </div>
     <div class="elapsed-time">
       <transition name="hide">
         <span v-if="elapsedTime" class="current-stat-description">Время:</span>
       </transition>
-      {{ store.data.elapsedTimeStr }}
+      {{ data.elapsedTimeStr }}
     </div>
   </div>
 </template>

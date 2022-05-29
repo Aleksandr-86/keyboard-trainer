@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import store from '../services/store'
+// import storage from '/src/services/storage.js'
+import { storage } from '/src/services/storage.js'
 
 const props = defineProps({
   obj: String,
@@ -31,7 +32,7 @@ const cursor = computed(() => {
   <div class="slider-container">
     <div class="slider">
       <input
-        v-model="store.storage[props.obj][props.prop]"
+        v-model="storage[props.obj][props.prop]"
         type="range"
         class="slider-input"
         min="0"
@@ -39,9 +40,7 @@ const cursor = computed(() => {
         :step="props.step"
         :disabled="props.disabled" />
 
-      <label class="slider-label">{{
-        store.storage[props.obj][props.prop]
-      }}</label>
+      <label class="slider-label">{{ storage[props.obj][props.prop] }}</label>
     </div>
   </div>
 </template>

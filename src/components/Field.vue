@@ -1,9 +1,12 @@
 <script setup>
 import { onMounted, onUnmounted, reactive, computed } from 'vue'
-import store from '/src/services/store.js'
+import { data, recordingStatistics, moveCaret } from '/src/services/data.js'
 import { charTest, msToMinutes, isAuxiliaryKeys } from '../services/helpers.js'
 import CurrentStatistics from './CurrentStatistics.vue'
 import Keyboard from './Keyboard.vue'
+import { state } from '../services/state.js'
+// import storage from '/src/services/storage.js'
+import { storage } from '/src/services/storage.js'
 
 const events = reactive({
   keyDn: Object,
@@ -13,22 +16,22 @@ const events = reactive({
 })
 
 //  stats
-const statArr = computed(() => store.data.statArr)
-const indexArr = computed(() => store.data.indexArr)
-const firstIndex = computed(() => store.data.firstIndex)
+const statArr = computed(() => data.statArr)
+const indexArr = computed(() => data.indexArr)
+const firstIndex = computed(() => data.firstIndex)
 
 // colors
-const fieldBackground = computed(() => store.storage.field.background)
-const charBackground = computed(() => store.storage.field.charBackground)
-const charColor = computed(() => store.storage.field.charColor)
-const charCorrectColor = computed(() => store.storage.field.charCorrectColor)
-const charWrongColor = computed(() => store.storage.field.charWrongColor)
-const charSpecialColor = computed(() => store.storage.field.charSpecialColor)
-const caretBackground = computed(() => store.storage.field.caretBackground)
+const fieldBackground = computed(() => storage.field.background)
+const charBackground = computed(() => storage.field.charBackground)
+const charColor = computed(() => storage.field.charColor)
+const charCorrectColor = computed(() => storage.field.charCorrectColor)
+const charWrongColor = computed(() => storage.field.charWrongColor)
+const charSpecialColor = computed(() => storage.field.charSpecialColor)
+const caretBackground = computed(() => storage.field.caretBackground)
 
 // shadows
 const charCorrectShadow = computed(() => {
-  if (store.storage.shadow.charCorrect) {
+  if (storage.shadow.charCorrect) {
     return 'drop-shadow(3px 2px 2px)'
   } else {
     return 'none'
@@ -36,10 +39,10 @@ const charCorrectShadow = computed(() => {
 })
 
 // blur
-const fieldBlur = computed(() => `blur(${store.storage.blur.field}px)`)
+const fieldBlur = computed(() => `blur(${storage.blur.field}px)`)
 
 const charWrongShadow = computed(() => {
-  if (store.storage.shadow.charWrong) {
+  if (storage.shadow.charWrong) {
     return 'drop-shadow(3px 2px 2px)'
   } else {
     return 'none'
@@ -47,7 +50,7 @@ const charWrongShadow = computed(() => {
 })
 
 const charSpecialShadow = computed(() => {
-  if (store.storage.shadow.charSpecial) {
+  if (storage.shadow.charSpecial) {
     return 'drop-shadow(3px 2px 2px)'
   } else {
     return 'none'
@@ -56,25 +59,23 @@ const charSpecialShadow = computed(() => {
 
 // chars for field
 const charsArr = computed(() =>
-  store.data.fragmentArr.slice(
-    store.data.firstIndex,
-    store.data.firstIndex + 200
-  )
+  data.fragmentArr.slice(data.firstIndex, data.firstIndex + 200)
 )
 
 // event listener
 const eListener = function (e) {
+  if (state.settings) return
+
   events.keyDn = e
   const code = e.code
   events.keyValue = e.key
 
-  if (store.data.indexArr === 0 && code === 'Enter') {
+  if (data.indexArr === 0 && code === 'Enter') {
     return
-  } else if (store.data.indexArr !== 0 && code === 'Enter') {
-    store.data.statArr[store.data.indexArr] = '0'
-    store.data.timerStop = performance.now()
-    store.state.work = false
-    store.state.overallStatistics = true
+  } else if (data.indexArr !== 0 && code === 'Enter') {
+    data.timerStop = performance.now()
+    state.work = false
+    state.overallStatistics = true
     return
   }
 
@@ -86,38 +87,35 @@ const eListener = function (e) {
   // audio.pause()
   // audio.currentTime = 0
 
-  if (store.storage.main.speaker) {
+  if (storage.main.speaker) {
     const audio = new Audio()
     audio.src = '/src/sounds/type.mp3'
-    audio.volume = store.storage.main.volume
+    audio.volume = storage.main.volume
     audio.play()
   }
 
-  events.capsLock = e.getModifierState && e.getModifierState('CapsLock')
-  // console.log(events.capsLock)
-
   // timer on
-  if (!store.state.bTimer) {
-    store.state.bTimer = true
-    store.data.timerStart = performance.now()
+  if (!state.bTimer) {
+    state.bTimer = true
+    data.timerStart = performance.now()
 
     // creating and updating reactive elapsed time variables
-    store.data.stopwatch = setInterval(() => {
-      store.data.elapsedTime = performance.now() - store.data.timerStart
-      store.data.elapsedTimeStr = msToMinutes(store.data.elapsedTime)
+    data.stopwatch = setInterval(() => {
+      data.elapsedTime = performance.now() - data.timerStart
+      data.elapsedTimeStr = msToMinutes(data.elapsedTime)
       let charPerMin = Math.floor(
-        ((store.data.numCorrect + store.data.numWrong) * 60) /
-          (Math.floor(store.data.elapsedTime) / 1000)
+        ((data.numCorrect + data.numWrong) * 60) /
+          (Math.floor(data.elapsedTime) / 1000)
       )
         .toString()
         .padStart(3, '0')
       if (charPerMin > 999) charPerMin = 999
-      store.data.charPerMin = charPerMin
+      data.charPerMin = charPerMin
     }, 10)
   }
 
-  store.recordingStatistics(e)
-  store.moveCaret(code)
+  recordingStatistics(e)
+  moveCaret(code)
 }
 
 onMounted(() => {
@@ -126,13 +124,13 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.body.removeEventListener('keydown', eListener)
-  clearInterval(store.data.stopwatch)
-  store.data.charPerMin = 0
+  clearInterval(data.stopwatch)
+  data.charPerMin = 0
 })
 </script>
 
 <template>
-  <CurrentStatistics v-if="store.storage.visibility.currentStatistics" />
+  <CurrentStatistics v-if="storage.visibility.currentStatistics" />
   <div class="field">
     <div
       v-for="(char, index) in charsArr"
@@ -161,10 +159,10 @@ onUnmounted(() => {
   </div>
 
   <Keyboard
-    v-if="store.storage.visibility.keyboard"
+    v-if="storage.visibility.keyboard"
     :event-keydown="events.keyDn"
-    :target-char="store.data.fragmentArr[store.data.indexArr]"
-    :lang="store.data.keyboardLayout" />
+    :target-char="data.fragmentArr[data.indexArr]"
+    :lang="data.keyboardLayout" />
 </template>
 
 <style scoped>

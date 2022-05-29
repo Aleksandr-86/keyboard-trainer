@@ -1,6 +1,6 @@
 <script setup>
 import { watch } from 'vue'
-import store from '../services/store'
+import { storage } from '/src/services/storage.js'
 
 const props = defineProps({
   title: String,
@@ -8,7 +8,7 @@ const props = defineProps({
   prop: String
 })
 
-watch(store.storage[props.obj], newValue => {
+watch(storage[props.obj], newValue => {
   localStorage[props.obj] = JSON.stringify(newValue)
 })
 </script>
@@ -16,7 +16,7 @@ watch(store.storage[props.obj], newValue => {
 <template>
   <label class="checkbox">
     <div class="checkbox-title">{{ props.title }}</div>
-    <input type="checkbox" v-model="store.storage[props.obj][props.prop]" />
+    <input type="checkbox" v-model="storage[props.obj][props.prop]" />
     <span class="check-mark"></span>
   </label>
 </template>

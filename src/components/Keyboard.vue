@@ -1,7 +1,8 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import store from '../services/store'
+import { data } from '../services/data'
 import { isUpCase } from '../services/helpers.js'
+import { storage } from '/src/services/storage.js'
 
 const props = defineProps({
   eventKeydown: {},
@@ -98,7 +99,7 @@ const langIndex = computed(() => {
 const lShift = computed(() => {
   const rChars = keyboardArr[1].chars[langIndex.value]
   const rSigns = keyboardArr[1].signs[langIndex.value]
-  let targetChar = store.data.fragmentArr[store.data.indexArr]
+  let targetChar = data.fragmentArr[data.indexArr]
 
   if (
     (rChars.includes(targetChar.toLowerCase()) && isUpCase(targetChar)) ||
@@ -113,7 +114,7 @@ const lShift = computed(() => {
 const rShift = computed(() => {
   const lChars = keyboardArr[0].chars[langIndex.value]
   const lSigns = keyboardArr[0].signs[langIndex.value]
-  let targetChar = store.data.fragmentArr[store.data.indexArr]
+  let targetChar = data.fragmentArr[data.indexArr]
 
   if (
     (lChars.includes(targetChar.toLowerCase()) && isUpCase(targetChar)) ||
@@ -125,20 +126,20 @@ const rShift = computed(() => {
   }
 })
 
-const keyboardBackground = computed(() => store.storage.keyboard.background)
-const keyBackground = computed(() => store.storage.keyboard.keyBackground)
-const keyColor = computed(() => store.storage.keyboard.keyColor)
+const keyboardBackground = computed(() => storage.keyboard.background)
+const keyBackground = computed(() => storage.keyboard.keyBackground)
+const keyColor = computed(() => storage.keyboard.keyColor)
 
-const shiftColor = computed(() => store.storage.keyboard.shift)
-const pinkyFingers = computed(() => store.storage.keyboard.pinky)
-const ringFingers = computed(() => store.storage.keyboard.ring)
-const middleFingers = computed(() => store.storage.keyboard.middle)
-const lIndexFinger = computed(() => store.storage.keyboard.lIndex)
-const thumbs = computed(() => store.storage.keyboard.thumbs)
-const rIndexFinger = computed(() => store.storage.keyboard.rIndex)
+const shiftColor = computed(() => storage.keyboard.shift)
+const pinkyFingers = computed(() => storage.keyboard.pinky)
+const ringFingers = computed(() => storage.keyboard.ring)
+const middleFingers = computed(() => storage.keyboard.middle)
+const lIndexFinger = computed(() => storage.keyboard.lIndex)
+const thumbs = computed(() => storage.keyboard.thumbs)
+const rIndexFinger = computed(() => storage.keyboard.rIndex)
 
 const keyUnderline = computed(() => {
-  if (store.storage.keyboard.underline) {
+  if (storage.keyboard.underline) {
     return 'underline'
   } else {
     return 'none'
@@ -146,7 +147,7 @@ const keyUnderline = computed(() => {
 })
 
 const boardColor = computed(() => {
-  let targetChar = store.data.fragmentArr[store.data.indexArr]
+  let targetChar = data.fragmentArr[data.indexArr]
 
   targetChar = targetChar.toLowerCase()
   if (props.lang === 'russian') {

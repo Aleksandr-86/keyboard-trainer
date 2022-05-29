@@ -1,19 +1,21 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import store from '/src/services/store.js'
 import { getBrowser } from '/src/services/helpers.js'
 import SpeakerSVG from './SpeakerSVG.vue'
+import { state } from '../services/state.js'
+import { data, randomSnippet, loadFragment } from '/src/services/data.js'
+import { storage } from '/src/services/storage.js'
 
 async function fillFieldFromBuffer() {
   // document.body.querySelector('#nav-buffer').blur() // removing focus from an element
-  store.data.focusElement = '#nav-buffer'
-  store.data.currentBook = 0 // for sake of overall statistics menu
+  data.focusElement = '#nav-buffer'
+  data.currentBook = 0 // for sake of overall statistics menu
 
   const br = getBrowser().browser
   if (br === 'chrome' || br === 'yabrowser') {
     let str = await navigator.clipboard.readText()
     if (str === ' ' || str === '' || str === '\r\n') return // buffer is empty
-    store.loadFragment(str)
+    loadFragment(str)
   } else if (br === 'firefox') {
     // let str = document.querySelector('#input').value
     // charInserter(strPreparer(str), 0)
@@ -21,15 +23,13 @@ async function fillFieldFromBuffer() {
 }
 
 const toggleSettings = function () {
-  store.toggleState('settings')
-  if (store.state.settings === false) {
-    store.storage.main.background = store.data.backgroundPreview
+  state.settings = !state.settings
+  if (!state.settings) {
+    storage.main.background = data.backgroundPreview
   }
 }
 
-const minSnippetLength = computed(() =>
-  Number(store.storage.main.minSnippetLength)
-)
+const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
 </script>
 
 <template>
@@ -43,12 +43,7 @@ const minSnippetLength = computed(() =>
       </li>
       <li>
         <a
-          @click="
-            store.randomSnippet(
-              store.storage.main.langOfSnippets,
-              minSnippetLength
-            )
-          "
+          @click="randomSnippet(storage.main.langOfSnippets, minSnippetLength)"
           id="nav-snippet"
           href="#!">
           Отрывок
@@ -59,10 +54,9 @@ const minSnippetLength = computed(() =>
         <ul>
           <li>
             <a
-              @click="store.randomSnippet('russian', minSnippetLength)"
+              @click="randomSnippet('russian', minSnippetLength)"
               :class="{
-                'nav-underscore-none':
-                  store.storage.main.langOfSnippets !== 'russian'
+                'nav-underscore-none': storage.main.langOfSnippets !== 'russian'
               }"
               href="#!">
               На русском языке
@@ -70,10 +64,9 @@ const minSnippetLength = computed(() =>
           </li>
           <li>
             <a
-              @click="store.randomSnippet('english', minSnippetLength)"
+              @click="randomSnippet('english', minSnippetLength)"
               :class="{
-                'nav-underscore-none':
-                  store.storage.main.langOfSnippets !== 'english'
+                'nav-underscore-none': storage.main.langOfSnippets !== 'english'
               }"
               href="#!">
               На английском языке

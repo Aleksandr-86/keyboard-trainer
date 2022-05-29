@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import store from '/src/services/store.js'
-
+import { storage } from '/src/services/storage.js'
 const flag = ref(false)
 
 function keyDown(e) {
@@ -25,7 +24,7 @@ function keyDown(e) {
       type="text"
       id="input"
       @keydown="keyDown"
-      v-model="store.storage.main.minSnippetLength" />
+      v-model="storage.main.minSnippetLength" />
   </div>
 </template>
 

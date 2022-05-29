@@ -1,26 +1,24 @@
 <script setup>
 import { onMounted, computed } from 'vue'
-import store from '/src/services/store.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
 import NavigationMenu from './components/NavigationMenu.vue'
 import SettingsMenu from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
 import OverallStatistics from './components/OverallStatistics.vue'
-
-import SpeakerSVG from './components/SpeakerSVG.vue'
+import { data } from '/src/services/data.js'
+import { state } from '/src/services/state.js'
+import { storage } from '/src/services/storage.js'
 
 onMounted(() => {
   if (localStorage.main) {
     const obj = JSON.parse(localStorage.main)
-    store.data.backgroundPreview = obj.background
+    data.backgroundPreview = obj.background
   }
-
-  for (const key in store.storage) {
+  for (const key in storage) {
     if (localStorage[key]) {
       const obj = JSON.parse(localStorage[key])
-
       for (const property in obj) {
-        store.storage[key][property] = obj[property]
+        storage[key][property] = obj[property]
       }
     }
   }
@@ -29,22 +27,17 @@ onMounted(() => {
 const background = computed(
   () =>
     `url('/src/images/backgrounds/normal/${
-      arrBackgrounds[store.storage.main.background].name
+      arrBackgrounds[storage.main.background].name
     }.jpg')`
 )
-
-// const fn = function (e) {
-//   console.log(e.target)
-// }
 </script>
 
 <template>
   <div id="background">
     <NavigationMenu />
-    <!-- <SpeakerSVG /> -->
-    <SettingsMenu v-if="store.state.settings" />
-    <Field v-if="store.state.work" />
-    <OverallStatistics v-if="store.state.overallStatistics" />
+    <SettingsMenu v-if="state.settings" />
+    <Field v-if="state.work" />
+    <OverallStatistics v-if="state.overallStatistics" />
   </div>
 </template>
 

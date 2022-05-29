@@ -1,12 +1,14 @@
 <script setup>
 import { onMounted, onUnmounted } from 'vue'
-import store from '../services/store.js'
+import { data } from '../services/data.js'
 import { rnd } from '../services/helpers.js'
 import { computed } from '@vue/reactivity'
+import { state } from '../services/state.js'
+import { storage } from '/src/services/storage.js'
 
 // forming the temp string
 const tempStr = computed(() => {
-  const numTotal = store.data.numCorrect + store.data.numWrong
+  const numTotal = data.numCorrect + data.numWrong
 
   if (numTotal >= 11 && numTotal <= 14) {
     return `Всего набрано <b>${numTotal}</b> знаков, из них:`
@@ -24,74 +26,61 @@ const tempStr = computed(() => {
 
 const strCorrectPercent = computed(
   () =>
-    `(${rnd(
-      (store.data.numCorrect * 100) /
-        (store.data.numCorrect + store.data.numWrong),
-      2
-    )}%)`
+    `(${rnd((data.numCorrect * 100) / (data.numCorrect + data.numWrong), 2)}%)`
 )
 const strWrongPercent = computed(
   () =>
-    `(${rnd(
-      (store.data.numWrong * 100) /
-        (store.data.numCorrect + store.data.numWrong),
-      2
-    )}%)`
+    `(${rnd((data.numWrong * 100) / (data.numCorrect + data.numWrong), 2)}%)`
 )
 const charPerSecond = computed(() =>
-  rnd(
-    ((store.data.numCorrect + store.data.numWrong) * 60) /
-      (store.data.elapsedTime / 1000)
-  )
+  rnd(((data.numCorrect + data.numWrong) * 60) / (data.elapsedTime / 1000))
 )
 
-const isSnippet = typeof store.data.currentBook === 'object'
-const book = store.data.currentBook
+const isSnippet = typeof data.currentBook === 'object'
+const book = data.currentBook
 
-const titleColor = computed(() => store.storage.overallStatistics.title)
-const msColor = computed(() => store.storage.overallStatistics.ms)
-const correctColor = computed(() => store.storage.overallStatistics.correct)
-const wrongColor = computed(() => store.storage.overallStatistics.wrong)
+const titleColor = computed(() => storage.overallStatistics.title)
+const msColor = computed(() => storage.overallStatistics.ms)
+const correctColor = computed(() => storage.overallStatistics.correct)
+const wrongColor = computed(() => storage.overallStatistics.wrong)
 
 function keyDown(e) {
   if (e.key === 'Tab') {
     e.preventDefault()
   } else if (e.key === 'Enter') {
-    store.state.overallStatistics = false
-    document.body.querySelector(store.data.focusElement).focus()
+    state.overallStatistics = false
+    document.body.querySelector(data.focusElement).focus()
   }
 }
 
 onMounted(() => {
-  const statArr = store.data.statArr
+  // const statArr = data.statArr
 
-  for (let i = 0; i < statArr.length; i++) {
-    const element = statArr[i]
-    if (element === '1') {
-      store.data.numCorrect++
-    } else if (element === '2') {
-      store.data.numWrong++
-    }
-  }
+  // for (let i = 0; i < statArr.length; i++) {
+  //   const element = statArr[i]
+  //   if (element === '1') {
+  //     data.numCorrect++
+  //   } else if (element === '2') {
+  //     data.numWrong++
+  //   }
+  // }
 
   statistics.focus()
 })
 
 onUnmounted(() => {
-  store.state.bTimer = false
-  store.data.tempWithoutMistake = 0
-  store.data.withoutMistake = 0
+  state.bTimer = false
+  data.tempWithoutMistake = 0
+  data.withoutMistake = 0
 
-  store.data.elapsedTime = 0
-  store.data.elapsedTimeStr = '00:00.00'
+  data.elapsedTime = 0
+  data.elapsedTimeStr = '00:00.00'
 
-  store.data.numCorrect = 0
-  store.data.numWrong = 0
+  data.numCorrect = 0
+  data.numWrong = 0
 
-  store.data.currentBook = 0
+  data.currentBook = 0
 })
-
-// const withoutMistake = store.data.numWrong === 0
 </script>
 
 <template>
@@ -103,16 +92,16 @@ onUnmounted(() => {
     <h4 v-if="isSnippet" class="stat-violet">{{ book.author }}</h4>
 
     <div class="stat-first-column">Время набора:</div>
-    <div class="stat-time">
-      {{ store.data.elapsedTimeStr.split('.')[0] }}
+    <div class="stat-second-column">
+      <div>{{ data.elapsedTimeStr.split('.')[0] }}</div>
+      <div class="stat-ms">.{{ data.elapsedTimeStr.split('.')[1] }}</div>
     </div>
-    <span class="stat-ms">.{{ store.data.elapsedTimeStr.split('.')[1] }}</span>
 
     <div class="stat-first-column">Cкорость набора, зн/мин:</div>
     <div class="stat-second-column">{{ charPerSecond }}</div>
 
     <div
-      v-if="store.data.numWrong === 0"
+      v-if="data.numWrong === 0"
       class="stat-line"
       v-html="tempStr.split(',')[0] + ' без единой ошибки.'"></div>
     <div v-else>
@@ -122,13 +111,13 @@ onUnmounted(() => {
 
       <div class="stat-first-column">- правильных</div>
       <div class="stat-second-column">
-        <div>{{ store.data.numCorrect }}</div>
+        <div>{{ data.numCorrect }}</div>
         <div class="stat-green">{{ strCorrectPercent }}</div>
       </div>
 
       <div class="stat-first-column">- ошибочных</div>
       <div class="stat-second-column">
-        <div>{{ store.data.numWrong }}</div>
+        <div>{{ data.numWrong }}</div>
         <div class="stat-red">{{ strWrongPercent }}</div>
       </div>
 
@@ -136,13 +125,13 @@ onUnmounted(() => {
         <div class="stat-first-column">
           Максимальное количество знаков подряд без ошибки:
         </div>
-        <div class="stat-second-column">{{ store.data.withoutMistake }}</div>
+        <div class="stat-second-column">{{ data.withoutMistake }}</div>
       </div>
     </div>
   </div>
   <div
-    @click.left="store.setFalse('overallStatistics')"
-    v-if="store.state.overallStatistics"
+    @click.left="state.overallStatistics = false"
+    v-if="state.overallStatistics"
     class="stat-overlay"></div>
 </template>
 
@@ -225,7 +214,6 @@ h4 {
 }
 
 .stat-ms {
-  position: fixed;
   color: v-bind(msColor);
   font-weight: bold;
 }

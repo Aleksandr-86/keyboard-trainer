@@ -1,9 +1,10 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import store from '/src/services/store.js'
+// import storage from '/src/services/storage.js'
+import { storage } from '/src/services/storage.js'
 
 const strokeColor = computed(() => {
-  if (store.storage.main.speaker) {
+  if (storage.main.speaker) {
     return 'green'
   } else {
     return 'black'
@@ -11,8 +12,8 @@ const strokeColor = computed(() => {
 })
 
 function toggleSpeaker() {
-  store.storage.main.speaker = !store.storage.main.speaker
-  localStorage.main = JSON.stringify(store.storage.main)
+  storage.main.speaker = !storage.main.speaker
+  localStorage.main = JSON.stringify(storage.main)
 }
 </script>
 <template>

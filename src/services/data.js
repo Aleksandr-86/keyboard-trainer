@@ -1,4 +1,4 @@
-import { computed, reactive } from 'vue'
+import { reactive } from 'vue'
 import {
   charTest,
   keyboardLayoutTest,
@@ -9,62 +9,10 @@ import {
   getSomeSentences
 } from '/src/services/helpers.js'
 import bookList from '/src/services/book-list.js'
+import { state } from './state.js'
+import { storage } from '/src/services/storage.js'
 
-const state = reactive({
-  work: false,
-  settings: false,
-  bTimer: false,
-  overallStatistics: false,
-  checkbox: false
-})
-
-const storage = reactive({
-  blur: { field: 200 },
-  field: {
-    background: 'hsla(0, 0%, 0%, 0)',
-    charBackground: 'hsla(0, 0%, 20%, 0.75)',
-    caretBackground: 'hsla(280, 85%, 70%, 0.65)',
-    charColor: 'hsla(0, 0%, 65%, 1)',
-    charCorrectColor: 'hsla(144, 65%, 45%, 1)',
-    charWrongColor: 'hsla(0, 100%, 60%, 1)',
-    charSpecialColor: 'hsl(180, 100%, 45%, 0.75)'
-  },
-  keyboard: {
-    background: 'hsla(0, 0%, 15%, 1)',
-    keyBackground: 'hsla(0, 0%, 0%, 1)',
-    keyColor: 'hsla(0, 0%, 70%, 1)',
-    shift: 'hsla(300, 80%, 40%, 1)',
-    pinky: 'hsla(300, 60%, 40%, 1)',
-    ring: 'hsla(60, 80%, 35%, 1)',
-    middle: 'hsla(120, 80%, 33%, 1)',
-    lIndex: 'hsla(180, 100%, 35%, 1)',
-    thumbs: 'hsla(0, 0%, 70%, 1)',
-    rIndex: 'hsla(0, 75%, 50%, 1)',
-    underline: true
-  },
-  main: {
-    background: 0,
-    langOfSnippets: 'russian',
-    minSnippetLength: 160,
-    letterCase: true,
-    speaker: false,
-    volume: 0.2
-  },
-  overallStatistics: {
-    title: 'hsla(282, 100%, 25%, 1)',
-    ms: 'hsla(240, 100%, 30%, 1)',
-    correct: 'hsla(135, 100%, 25%, 1)',
-    wrong: 'hsla(0, 100%, 30%, 1)'
-  },
-  shadow: {
-    charCorrect: true,
-    charWrong: true,
-    charSpecial: true
-  },
-  visibility: { currentStatistics: true, keyboard: true }
-})
-
-const data = reactive({
+export const data = reactive({
   fragmentArr: Object,
   indexArr: Number,
   firstIndex: Number,
@@ -90,7 +38,7 @@ const data = reactive({
   backgroundPreview: 0
 })
 
-const recordingStatistics = function (e) {
+export const recordingStatistics = function (e) {
   let key = e.key
   let char = data.fragmentArr[data.indexArr]
 
@@ -106,31 +54,19 @@ const recordingStatistics = function (e) {
     if (data.withoutMistake < data.tempWithoutMistake) {
       data.withoutMistake = data.tempWithoutMistake
     }
-    // data.numCorrect++
+    data.numCorrect++
   } else if (key !== char) {
     data.statArr[data.indexArr] = '2' // if the char is wrong
     // counting the number of letters without mistake
     if (data.withoutMistake < data.tempWithoutMistake) {
       data.withoutMistake = data.tempWithoutMistake
     }
-    // data.numWrong++
+    data.numWrong++
     data.tempWithoutMistake = 0
   }
 }
 
-const toggleState = function (propertyName) {
-  state[propertyName] = !state[propertyName]
-}
-
-const setTrue = function (propertyName) {
-  state[propertyName] = true
-}
-
-const setFalse = function (propertyName) {
-  state[propertyName] = false
-}
-
-const loadFragment = function (str, amount = 0) {
+export const loadFragment = function (str, amount = 0) {
   if (amount === 0) {
     // case: buffer
     data.fragmentArr = arrPreparer(strPrepWithNewLines(str))
@@ -157,19 +93,19 @@ const loadFragment = function (str, amount = 0) {
   data.indexArr = -1
 
   clearStat()
-  setTrue('work')
+  state.work = true
   moveCaret()
 }
 
 // loading next set of chars
-const loadNextChars = function () {
+export const loadNextChars = function () {
   if (data.firstIndex + 200 >= data.fragmentArr.length) return
   data.firstIndex += 200
 }
 
 /* moving caret (visually), moving over the inappropriate chars,
    stopping timer, changing work state, enable statistics menu */
-const moveCaret = function () {
+export const moveCaret = function () {
   data.indexArr++
 
   // checking inappropriate chars and skipping those
@@ -207,11 +143,7 @@ const moveCaret = function () {
   )
 }
 
-const changeStorage = function (property) {
-  localStorage[property] = JSON.stringify(storage[property])
-}
-
-const clearStat = function () {
+export const clearStat = function () {
   state.bTimer = false
   clearInterval(data.stopwatch)
   data.elapsedTime = 0
@@ -225,8 +157,9 @@ const clearStat = function () {
   data.withoutMistake = 0
 }
 
-const randomSnippet = function (lang, amount) {
-  if (data.elapsedTime !== 0) return
+export const randomSnippet = function (lang, amount) {
+  // if (data.elapsedTime !== 0) return
+
   data.focusElement = '#nav-snippet'
   let arrOfBooks = []
 
@@ -250,20 +183,4 @@ const randomSnippet = function (lang, amount) {
   }
   httpRequest.open('GET', filePath)
   httpRequest.send()
-}
-
-export default {
-  state,
-  data,
-  storage,
-  recordingStatistics,
-  toggleState,
-  setTrue,
-  setFalse,
-  loadFragment,
-  loadNextChars,
-  moveCaret,
-  changeStorage,
-  clearStat,
-  randomSnippet
 }
