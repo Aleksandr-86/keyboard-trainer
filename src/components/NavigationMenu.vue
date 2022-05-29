@@ -7,7 +7,6 @@ import { data, randomSnippet, loadFragment } from '/src/services/data.js'
 import { storage } from '/src/services/storage.js'
 
 async function fillFieldFromBuffer() {
-  // document.body.querySelector('#nav-buffer').blur() // removing focus from an element
   data.focusElement = '#nav-buffer'
   data.currentBook = 0 // for sake of overall statistics menu
 
@@ -99,21 +98,17 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
   user-select: none;
 }
 
-.nav > li {
-  display: inline-flex;
-}
-
 #nav-snippet,
 #nav-drop-down,
 #nav-settings {
+  display: inline-flex;
   margin-left: 20px;
 }
 
-#nav-info {
-  margin-left: 15px;
-}
-
-.nav > li > a {
+#nav-buffer,
+#nav-snippet,
+#nav-drop-down,
+#nav-settings {
   padding: 20px 0 20px 0;
   position: relative;
   text-transform: uppercase;
@@ -124,7 +119,10 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
   text-decoration: none;
 }
 
-.nav > li > a:hover {
+#nav-buffer:hover,
+#nav-snippet:hover,
+#nav-drop-down:hover,
+#nav-settings:hover {
   text-decoration: none;
   color: rgb(22, 198, 93);
 }
@@ -132,7 +130,6 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
 .nav li {
   margin: 0;
   white-space: nowrap;
-  background-color: red;
 }
 
 .nav li.nav-children {
@@ -197,11 +194,6 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
   font-size: 25px;
   font-weight: bold;
 }
-
-/* .nav-children > ul > li > a {
-  background-color: red;
-  text-align: right;
-} */
 
 .nav-underscore-none {
   text-decoration: none;

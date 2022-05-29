@@ -181,8 +181,9 @@ onUnmounted(() => {
   height: 380px;
   margin: 5px auto 50px;
   outline: none;
-  backdrop-filter: v-bind(fieldBlur);
+  /* backdrop-filter: v-bind(fieldBlur); */
   background-color: v-bind(fieldBackground);
+  filter: blur(0px);
   user-select: none;
 }
 
