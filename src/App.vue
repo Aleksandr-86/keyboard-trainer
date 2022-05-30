@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, computed } from 'vue'
 import { arrBackgrounds } from '/src/services/background-list.js'
-import NavigationMenu from './components/NavigationMenu.vue'
+import NavigationBar from './components/NavigationBar.vue'
 import SettingsMenu from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
 import OverallStatistics from './components/OverallStatistics.vue'
@@ -34,7 +34,7 @@ const background = computed(
 
 <template>
   <div id="background">
-    <NavigationMenu />
+    <NavigationBar />
     <SettingsMenu v-if="state.settings" />
     <Field v-if="state.work" />
     <OverallStatistics v-if="state.overallStatistics" />
