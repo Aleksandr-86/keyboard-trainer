@@ -49,7 +49,7 @@ function toggleSpeaker() {
   position: fixed;
   width: 44px;
   height: 44px;
-  /* background-color: aqua; */
+  cursor: pointer;
 }
 
 svg {

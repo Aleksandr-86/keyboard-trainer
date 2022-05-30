@@ -330,10 +330,9 @@ onMounted(() => {
 }
 
 .slider-input::-moz-range-thumb {
-  width: 25px;
+  width: 15px;
   height: 25px;
-  border-radius: 50%;
-  /* background: hsl(122, 39%, 49%); */
+  border-radius: 5px;
   filter: invert(1);
   background-color: v-bind(thumbBackground);
   cursor: pointer;

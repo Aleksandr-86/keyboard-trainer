@@ -86,9 +86,8 @@ const closeSettingMenu = function () {
 }
 
 const defaultValues = {
-  blur: { field: 200 },
   field: {
-    background: 'hsla(0, 0%, 0%, 0)',
+    background: 'hsla(0, 0%, 50%, 1)',
     charBackground: 'hsla(0, 0%, 20%, 0.75)',
     caretBackground: 'hsla(280, 85%, 70%, 0.65)',
     charColor: 'hsla(0, 0%, 65%, 1)',
@@ -145,11 +144,11 @@ function clearSettings() {
   <div v-click-outside="closeSettingMenu" class="settings-container">
     <div class="settings-title-container">
       <button @click="turnThePage('prev')" class="settings-btn-page">
-        &lt;
+        <div class="arrow arrow-left"></div>
       </button>
       <div class="settings-title">{{ title }}</div>
       <button @click="turnThePage('next')" class="settings-btn-page">
-        &gt;
+        <div class="arrow arrow-right"></div>
       </button>
     </div>
 
@@ -245,8 +244,6 @@ function clearSettings() {
             obj="shadow"
             prop="charSpecial" />
         </div>
-        <div class="settings-category-margin">Размытие поля:</div>
-        <SingleSlider obj="blur" prop="field" max="300" step="1" />
       </div>
     </transition>
 
@@ -287,7 +284,6 @@ function clearSettings() {
 
 <style scoped>
 .slide-next-enter-active,
-.slide-next-leave-active5,
 .slide-prev-enter-active,
 .slide-prev-leave-active {
   transition: all 0.1s linear;
@@ -353,14 +349,41 @@ function clearSettings() {
 }
 
 .settings-btn-page {
+  --btn-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: hsl(0, 0%, 50%);
   width: 29px;
   height: 29px;
-  background-color: hsl(0, 0%, 50%);
   border-radius: 7px;
   border: none;
+}
+
+.settings-btn-page:hover {
+  --btn-color: hsl(120, 73%, 75%);
+}
+
+.settings-btn-page:active {
+  transform: scale(0.9);
+}
+
+.arrow {
+  color: inherit;
+  width: 10px;
+  height: 10px;
+  border-top: 3px solid var(--btn-color);
+  border-right: 3px solid var(--btn-color);
+}
+
+.arrow-right {
+  transform: rotate(45deg);
+  margin-right: 5px;
+}
+
+.arrow-left {
+  transform: rotate(-135deg);
+  margin-left: 5px;
 }
 
 .settings-btn-page:hover {
@@ -447,7 +470,7 @@ function clearSettings() {
 .settings-btn-preview-container {
   position: absolute;
   width: 455px;
-  margin-top: 100px;
+  margin-top: 120px;
   display: flex;
   justify-content: space-between;
 }
@@ -456,18 +479,21 @@ function clearSettings() {
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  font-size: 40px;
+  font-size: 30px;
   background-color: transparent;
   backdrop-filter: blur(5px);
   border-color: hsla(0, 0%, 0%, 0.4);
   color: hsla(0, 0%, 0%, 0.4);
-  /* filter: drop-shadow(0 0 3px yellowgreen) brightness(230%); */
   border-style: double;
 }
 
 .settings-btn-preview:hover {
   border-color: hsla(120, 100%, 45%, 0.65);
   color: hsla(120, 100%, 45%, 0.65);
+}
+
+.settings-btn-preview:active {
+  transform: scale(0.9);
 }
 
 .settings-btn-preview:first-child {

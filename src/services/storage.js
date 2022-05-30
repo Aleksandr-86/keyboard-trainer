@@ -1,7 +1,6 @@
 import { reactive } from 'vue'
 
 export const storage = reactive({
-  blur: { field: 200 },
   field: {
     background: 'hsla(0, 0%, 0%, 0)',
     charBackground: 'hsla(0, 0%, 20%, 0.75)',

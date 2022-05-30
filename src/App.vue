@@ -42,44 +42,9 @@ const background = computed(
 </template>
 
 <style>
-/* .button,
-.button-double {
-  display: inline-block;
-  width: 60px;
-  height: 60px;
-  margin-top: 3px;
-  margin-right: 3px;
-  font-size: 23px;
-  font-family: 'Consolas', monospace;
-  text-align: center;
-  color: black;
-  background: hsl(0, 0%, 80%);
-  border-radius: 15px;
-}
-
-.button > div {
-  position: relative;
-  background-color: greenyellow;
-  top: 16px;
-  height: 28px;
-}
-
-.button-double > div {
-  background-color: aqua;
-  margin-top: 2px;
-  height: 27px;
-} */
-
 * {
   margin: 0;
   padding: 0;
-}
-
-button {
-  margin: 0;
-  width: 100px;
-  height: 40px;
-  font-size: 30px;
 }
 
 html {
@@ -112,6 +77,9 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  transition: background-image 500ms linear;
+  -webkit-transition: background-image 0.5s linear;
+  -moz-transition: background-image 0.5s linear;
+  -o-transition: background-image 0.5s linear;
+  transition: background-image 0.5s linear;
 }
 </style>

@@ -38,9 +38,6 @@ const charCorrectShadow = computed(() => {
   }
 })
 
-// blur
-const fieldBlur = computed(() => `blur(${storage.blur.field}px)`)
-
 const charWrongShadow = computed(() => {
   if (storage.shadow.charWrong) {
     return 'drop-shadow(3px 2px 2px)'
@@ -181,7 +178,6 @@ onUnmounted(() => {
   height: 380px;
   margin: 5px auto 50px;
   outline: none;
-  /* backdrop-filter: v-bind(fieldBlur); */
   background-color: v-bind(fieldBackground);
   filter: blur(0px);
   user-select: none;
