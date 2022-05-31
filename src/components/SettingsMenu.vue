@@ -5,6 +5,7 @@ import { arrBackgrounds } from '/src/services/background-list.js'
 import HslaSlider from '../components/HslaSlider.vue'
 import Checkbox from '../components/Checkbox.vue'
 import Input from '../components/Input.vue'
+import SingleSlider from '../components/SingleSlider.vue'
 import { storage } from '/src/services/storage.js'
 import { state } from '../services/state.js'
 
@@ -19,7 +20,7 @@ const title = computed(() => {
   } else if (page.value === 2) {
     return 'Цвета клавиатуры'
   } else if (page.value === 3) {
-    return 'Цвета общей статистики'
+    return 'Статистика'
   }
 })
 
@@ -84,8 +85,11 @@ const closeSettingMenu = function () {
 }
 
 const defaultValues = {
+  currentStatistics: {
+    colors: 'hsl(160, 80%, 45%, 1)'
+  },
   field: {
-    background: 'hsla(0, 0%, 50%, 1)',
+    background: 'hsla(80, 10%, 40%, 1)',
     charBackground: 'hsla(0, 0%, 20%, 0.75)',
     caretBackground: 'hsla(280, 85%, 70%, 0.65)',
     charColor: 'hsla(0, 0%, 65%, 1)',
@@ -121,7 +125,7 @@ const defaultValues = {
     wrong: 'hsla(0, 100%, 30%, 1)'
   },
   shadow: {
-    charCorrect: true,
+    charCorrect: false,
     charWrong: true,
     charSpecial: true
   },
@@ -210,6 +214,7 @@ function clearSettings() {
 
     <transition :name="direction">
       <div v-if="page === 1" class="settings-page-container">
+        <div class="settings-category-margin">Цвет:</div>
         <HslaSlider title="фон поля" obj="field" prop="background" />
         <HslaSlider title="фон символа" obj="field" prop="charBackground" />
         <HslaSlider title="фон каретки" obj="field" prop="caretBackground" />
@@ -262,6 +267,11 @@ function clearSettings() {
 
     <transition :name="direction">
       <div v-if="page === 3" class="settings-page-container">
+        <HslaSlider
+          title="цвет текущей статистики"
+          obj="currentStatistics"
+          prop="colors" />
+        <div class="settings-category-margin">Цвета общей статистики:</div>
         <HslaSlider
           title="название книги и автор"
           obj="overallStatistics"

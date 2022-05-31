@@ -1,12 +1,22 @@
 <script setup>
 import { computed } from '@vue/reactivity'
 import { data } from '../services/data.js'
+import { storage } from '../services/storage.js'
 
 const tempWithoutMistake = computed(() => data.tempWithoutMistake)
 const withoutMistake = computed(() => data.withoutMistake)
 const remainingChars = computed(() => data.remainingChars)
-
 const elapsedTime = computed(() => data.elapsedTime === 0)
+
+const color = computed(() => storage.currentStatistics.colors)
+const background = computed(() => {
+  const colorsArr = storage.currentStatistics.colors.match(/[0-9.]+/g)
+  const h = colorsArr[0]
+  const s = colorsArr[1]
+  const l = colorsArr[2] - 35
+  const a = colorsArr[3]
+  return `hsla(${h}, ${s}%, ${l}%, ${a})`
+})
 </script>
 
 <template>
@@ -68,11 +78,10 @@ const elapsedTime = computed(() => data.elapsedTime === 0)
   justify-content: center;
   margin: 5px auto;
   width: fit-content;
-  background: hsla(160, 20%, 20%);
+  background: v-bind(background);
   font-size: 35px;
-  color: hsl(160, 80%, 45%);
-  /* border: 2px solid hsl(282, 100%, 41%); */
-  border: 2px solid hsl(160, 80%, 45%);
+  color: v-bind(color);
+  border: 2px solid v-bind(color);
   border-radius: 10px;
   user-select: none;
 }
@@ -88,7 +97,7 @@ const elapsedTime = computed(() => data.elapsedTime === 0)
   align-content: stretch;
   padding: 5px 10px 5px 10px;
   min-width: 129px;
-  border-right: 2px solid hsl(160, 80%, 45%);
+  border-right: 2px solid v-bind(color);
   overflow: hidden;
   white-space: nowrap;
   transition: min-width 3s 1s;
@@ -97,13 +106,13 @@ const elapsedTime = computed(() => data.elapsedTime === 0)
 .remaining-chars {
   padding: 5px 10px 5px 10px;
   min-width: 59px;
-  border-right: 2px solid hsl(160, 80%, 45%);
+  border-right: 2px solid v-bind(color);
 }
 
 .char-per-minute {
   padding: 5px 10px 5px 10px;
   min-width: 59px;
-  border-right: 2px solid hsl(160, 80%, 45%);
+  border-right: 2px solid v-bind(color);
 }
 
 .elapsed-time {

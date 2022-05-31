@@ -1,8 +1,11 @@
 import { reactive } from 'vue'
 
 export const storage = reactive({
+  currentStatistics: {
+    colors: 'hsl(160, 80%, 45%, 1)'
+  },
   field: {
-    background: 'hsla(0, 0%, 0%, 0)',
+    background: 'hsla(80, 10%, 40%, 1)',
     charBackground: 'hsla(0, 0%, 20%, 0.75)',
     caretBackground: 'hsla(280, 85%, 70%, 0.65)',
     charColor: 'hsla(0, 0%, 65%, 1)',
@@ -38,7 +41,7 @@ export const storage = reactive({
     wrong: 'hsla(0, 100%, 30%, 1)'
   },
   shadow: {
-    charCorrect: true,
+    charCorrect: false,
     charWrong: true,
     charSpecial: true
   },
