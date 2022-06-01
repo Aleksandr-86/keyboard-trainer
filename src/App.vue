@@ -9,18 +9,21 @@ import { data } from '/src/services/data.js'
 import { state } from '/src/services/state.js'
 import { storage } from '/src/services/storage.js'
 
-// function getImageUrl(name) {
-//   return new URL(
-//     `/src/assets/images/backgrounds/normal/${name}.jpg`,
-//     import.meta.url
-//   ).href
-// }
+function getImageUrl(name) {
+  console.warn(
+    new URL(
+      `/src/assets/images/backgrounds/normal/${name}.jpg`,
+      import.meta.url
+    ).href
+  )
+  return new URL(
+    `/src/assets/images/backgrounds/normal/${name}.jpg`,
+    import.meta.url
+  ).href
+}
 
-const imgPath = computed(
-  () =>
-    `/images/backgrounds/normal/${
-      arrBackgrounds[storage.main.background].name
-    }.jpg`
+const imgPath = computed(() =>
+  getImageUrl(arrBackgrounds[storage.main.background].name)
 )
 
 onMounted(() => {
@@ -43,7 +46,7 @@ onMounted(() => {
   <div
     id="background"
     :style="{
-      'background-image': `url(${imgPath})`
+      'background-image': `url(${getImageUrl('kamchatka')})`
     }">
     <NavigationBar />
     <SettingsMenu v-if="state.settings" />
