@@ -9,18 +9,19 @@ import { data } from '/src/services/data.js'
 import { state } from '/src/services/state.js'
 import { storage } from '/src/services/storage.js'
 
-function getImageUrl(name) {
-  console.warn(
-    new URL(
-      `/src/assets/images/backgrounds/normal/${name}.jpg`,
-      import.meta.url
-    ).href
-  )
-  return new URL(
-    `/src/assets/images/backgrounds/normal/${name}.jpg`,
-    import.meta.url
-  ).href
-}
+// function getImageUrl(name) {
+//   return new URL(
+//     `/src/assets/images/backgrounds/normal/${name}.jpg`,
+//     import.meta.url
+//   ).href
+// }
+
+const imgPath = computed(
+  () =>
+    `/images/backgrounds/normal/${
+      arrBackgrounds[storage.main.background].name
+    }.jpg`
+)
 
 onMounted(() => {
   if (localStorage.main) {
@@ -36,18 +37,6 @@ onMounted(() => {
     }
   }
 })
-
-const imgPath = computed(() => {
-  console.warn(getImageUrl(arrBackgrounds[storage.main.background].name))
-  return getImageUrl(arrBackgrounds[storage.main.background].name)
-})
-
-// const background = computed(
-//   () =>
-//     `url('/src/assets/images/backgrounds/normal/${
-//       arrBackgrounds[storage.main.background].name
-//     }.jpg')`
-// )
 </script>
 
 <template>
@@ -94,8 +83,6 @@ html {
   width: 100vw;
   height: 100vh;
   background: no-repeat center center fixed;
-  /* background-image: v-bind(background); */
-  /* background-image: url('http://localhost:3000/src/assets/images/kamchatka.jpg'); */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
