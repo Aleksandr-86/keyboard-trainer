@@ -86,7 +86,7 @@ const eListener = function (e) {
 
   if (storage.main.speaker) {
     const audio = new Audio()
-    audio.src = '/src/sounds/type.mp3'
+    audio.src = '/src/assets/sounds/type.mp3'
     audio.volume = storage.main.volume
     audio.play()
   }

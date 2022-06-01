@@ -9,6 +9,10 @@ import { data } from '/src/services/data.js'
 import { state } from '/src/services/state.js'
 import { storage } from '/src/services/storage.js'
 
+function getImageUrl(name) {
+  return new URL(`/src/assets/image/${name}.jpg`, import.meta.url).href
+}
+
 onMounted(() => {
   if (localStorage.main) {
     const obj = JSON.parse(localStorage.main)
@@ -24,16 +28,16 @@ onMounted(() => {
   }
 })
 
-const background = computed(
-  () =>
-    `url('/src/assets/images/backgrounds/normal/${
-      arrBackgrounds[storage.main.background].name
-    }.jpg')`
-)
+// const background = computed(
+//   () =>
+//     `url('/src/assets/images/backgrounds/normal/${
+//       arrBackgrounds[storage.main.background].name
+//     }.jpg')`
+// )
 </script>
 
 <template>
-  <div id="background">
+  <div id="background" src="getImageUrl('kamchatka')">
     <NavigationBar />
     <SettingsMenu v-if="state.settings" />
     <Field v-if="state.work" />
@@ -72,7 +76,7 @@ html {
   width: 100vw;
   height: 100vh;
   background: no-repeat center center fixed;
-  background-image: v-bind(background);
+  /* background-image: v-bind(background); */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
