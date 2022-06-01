@@ -26,7 +26,7 @@ onMounted(() => {
 
 const background = computed(
   () =>
-    `url('/src/images/backgrounds/normal/${
+    `url('/src/assets/images/backgrounds/normal/${
       arrBackgrounds[storage.main.background].name
     }.jpg')`
 )

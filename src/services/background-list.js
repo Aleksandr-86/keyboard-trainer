@@ -1,10 +1,10 @@
 export const arrBackgrounds = [
   {
     num: 1,
-    name: 'mountain',
-    author: 'Игорь Дудковский',
-    location: 'гора',
-    link: 'https://developer.mozilla.org/ru/docs/Web/SVG/Tutorial/Fills_and_Strokes'
+    name: 'kamchatka',
+    author: 'Александр Максин',
+    location: 'Камчатка',
+    link: 'https://www.pexels.com/ru-ru/@alexmaksin55/'
   },
   {
     num: 2,
