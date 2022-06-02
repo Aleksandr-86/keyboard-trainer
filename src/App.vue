@@ -11,15 +11,10 @@ import { storage } from '/src/services/storage.js'
 
 function getImageUrl(name) {
   console.warn(
-    new URL(
-      `/src/assets/images/backgrounds/normal/${name}.jpg`,
-      import.meta.url
-    ).href
+    new URL(`/src/images/backgrounds/normal/${name}.jpg`, import.meta.url).href
   )
-  return new URL(
-    `/src/assets/images/backgrounds/normal/${name}.jpg`,
-    import.meta.url
-  ).href
+  return new URL(`/src/images/backgrounds/normal/${name}.jpg`, import.meta.url)
+    .href
 }
 
 const imgPath = computed(() =>

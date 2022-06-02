@@ -44,7 +44,7 @@ const turnThePage = function (dir) {
 
 const backgroundPreviewPath = computed(
   () =>
-    `/src/assets/images/backgrounds/small/${
+    `/src/images/backgrounds/small/${
       arrBackgrounds[data.backgroundPreview].name
     }.jpg`
 )
