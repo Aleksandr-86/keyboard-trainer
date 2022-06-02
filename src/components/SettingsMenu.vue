@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import { data } from '/src/services/data.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
+import { getUrl } from '/src/services/helpers.js'
 import HslaSlider from '../components/HslaSlider.vue'
 import Checkbox from '../components/Checkbox.vue'
 import Input from '../components/Input.vue'
@@ -42,13 +43,12 @@ const turnThePage = function (dir) {
   }
 }
 
-function getImageUrl(name) {
-  return new URL(`/src/images/backgrounds/small/${name}.jpg`, import.meta.url)
-    .href
-}
-
 const backgroundPreviewPath = computed(() =>
-  getImageUrl(arrBackgrounds[data.backgroundPreview].name)
+  getUrl(
+    `/src/images/backgrounds/small/${
+      arrBackgrounds[data.backgroundPreview].name
+    }.jpg`
+  )
 )
 
 const changeBackground = function (direction) {
@@ -88,7 +88,7 @@ const closeSettingMenu = function () {
 
 const defaultValues = {
   currentStatistics: {
-    colors: 'hsl(160, 80%, 45%, 1)'
+    colors: 'hsl(60, 80%, 45%, 1)'
   },
   field: {
     background: 'hsla(80, 10%, 40%, 1)',

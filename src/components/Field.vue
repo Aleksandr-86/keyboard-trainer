@@ -1,7 +1,12 @@
 <script setup>
 import { onMounted, onUnmounted, reactive, computed } from 'vue'
 import { data, recordingStatistics, moveCaret } from '/src/services/data.js'
-import { charTest, msToMinutes, isAuxiliaryKeys } from '../services/helpers.js'
+import {
+  charTest,
+  msToMinutes,
+  isAuxiliaryKeys,
+  getUrl
+} from '../services/helpers.js'
 import CurrentStatistics from './CurrentStatistics.vue'
 import Keyboard from './Keyboard.vue'
 import { state } from '../services/state.js'
@@ -86,7 +91,8 @@ const eListener = function (e) {
 
   if (storage.main.speaker) {
     const audio = new Audio()
-    audio.src = '/src/assets/sounds/type.mp3'
+    // audio.src = '/src/assets/sounds/type.mp3'
+    audio.src = getUrl('/src/sounds/type.mp3')
     audio.volume = storage.main.volume
     audio.play()
   }

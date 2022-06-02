@@ -2,7 +2,7 @@ import { reactive } from 'vue'
 
 export const storage = reactive({
   currentStatistics: {
-    colors: 'hsl(160, 80%, 45%, 1)'
+    colors: 'hsl(60, 80%, 45%, 1)'
   },
   field: {
     background: 'hsla(80, 10%, 40%, 1)',
