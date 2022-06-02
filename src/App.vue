@@ -18,12 +18,19 @@ import { storage } from '/src/services/storage.js'
 //   getImageUrl(arrBackgrounds[storage.main.background].name)
 // )
 
-function getImageUrl(name) {
-  return new URL(`/images/backgrounds/normal/${name}.jpg`, import.meta.url).href
-}
+// function getImageUrl(name) {
+//   return new URL(`/images/backgrounds/normal/${name}.jpg`, import.meta.url).href
+// }
+
+// const backgroundPath = computed(
+//   () => `url(${getImageUrl(arrBackgrounds[storage.main.background].name)})`
+// )
 
 const backgroundPath = computed(
-  () => `url(${getImageUrl(arrBackgrounds[storage.main.background].name)})`
+  () =>
+    `url('/images/backgrounds/normal/${
+      arrBackgrounds[storage.main.background].name
+    }.jpg')`
 )
 
 onMounted(() => {
@@ -86,8 +93,7 @@ html {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background: no-repeat url('/images/backgrounds/normal/kamchatka.jpg') center
-    center fixed;
+  background: no-repeat v-bind(backgroundPath) center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
