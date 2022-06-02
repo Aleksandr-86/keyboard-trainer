@@ -26,12 +26,20 @@ import { storage } from '/src/services/storage.js'
 //   () => `url(${getImageUrl(arrBackgrounds[storage.main.background].name)})`
 // )
 
-const backgroundPath = computed(
-  () =>
-    `url('/images/backgrounds/normal/${
-      arrBackgrounds[storage.main.background].name
-    }.jpg')`
-)
+// const backgroundPath = computed(
+//   () =>
+//     `url('/images/backgrounds/normal/${
+//       arrBackgrounds[storage.main.background].name
+//     }.jpg')`
+// )
+
+// const backgroundPath = `url('/images/backgrounds/normal/${
+//   arrBackgrounds[storage.main.background].name
+// }.jpg)`
+
+const backgroundPath = `url('/images/backgrounds/normal/${
+  arrBackgrounds[storage.main.background].name
+}.jpg')`
 
 onMounted(() => {
   if (localStorage.main) {
