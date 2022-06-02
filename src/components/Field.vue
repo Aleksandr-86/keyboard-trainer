@@ -59,6 +59,10 @@ const charsArr = computed(() =>
   data.fragmentArr.slice(data.firstIndex, data.firstIndex + 200)
 )
 
+function soundPath() {
+  return new URL('/src/sounds/type.mp3', import.meta.url).href
+}
+
 // event listener
 const eListener = function (e) {
   if (state.settings) return
@@ -83,11 +87,14 @@ const eListener = function (e) {
 
   // audio.pause()
   // audio.currentTime = 0
+  // console.warn(new URL('/src/sounds/type.mp3', import.meta.url).href)
 
   if (storage.main.speaker) {
     const audio = new Audio()
     // audio.src = '/src/sounds/type.mp3'
-    audio.src = new URL('/src/sounds/type.mp3', import.meta.url).href
+    // audio.src = 'http://localhost:3000/src/sounds/type.mp3'
+    // audio.src = new URL('/src/sounds/type.mp3', import.meta.url).href
+    audio.src = soundPath()
     audio.volume = storage.main.volume
     audio.play()
   }
