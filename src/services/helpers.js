@@ -75,10 +75,6 @@ export function getBrowser() {
   return browsrObj
 }
 
-export function getUrl(path) {
-  return new URL(path, import.meta.url).href
-}
-
 // trim, remove \r and excess spaces => array
 export const arrPreparer = function (str) {
   // number of characters per line
