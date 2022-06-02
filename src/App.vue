@@ -8,6 +8,7 @@ import OverallStatistics from './components/OverallStatistics.vue'
 import { data } from '/src/services/data.js'
 import { state } from '/src/services/state.js'
 import { storage } from '/src/services/storage.js'
+import img from '/images/backgrounds/normal/kamchatka.jpg'
 
 // function getImageUrl(name) {
 //   return new URL(`/src/images/backgrounds/normal/${name}.jpg`, import.meta.url)
@@ -41,7 +42,7 @@ import { storage } from '/src/services/storage.js'
 //   arrBackgrounds[storage.main.background].name
 // }.jpg')`
 
-const backgroundPath = `url('/images/backgrounds/normal/kamchatka.jpg')`
+// const backgroundPath = `url('/images/backgrounds/normal/kamchatka.jpg')`
 
 onMounted(() => {
   if (localStorage.main) {
@@ -103,7 +104,8 @@ html {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background: no-repeat v-bind(backgroundPath) center center fixed;
+  background: no-repeat url('/images/backgrounds/normal/kamchatka.jpg') center
+    center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
