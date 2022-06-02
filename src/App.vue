@@ -8,41 +8,15 @@ import OverallStatistics from './components/OverallStatistics.vue'
 import { data } from '/src/services/data.js'
 import { state } from '/src/services/state.js'
 import { storage } from '/src/services/storage.js'
-import img from '/images/backgrounds/normal/kamchatka.jpg'
 
-// function getImageUrl(name) {
-//   return new URL(`/src/images/backgrounds/normal/${name}.jpg`, import.meta.url)
-//     .href
-// }
+function getImageUrl(name) {
+  return new URL(`/src/images/backgrounds/normal/${name}.jpg`, import.meta.url)
+    .href
+}
 
-// const backgroundPath = computed(() =>
-//   getImageUrl(arrBackgrounds[storage.main.background].name)
-// )
-
-// function getImageUrl(name) {
-//   return new URL(`/images/backgrounds/normal/${name}.jpg`, import.meta.url).href
-// }
-
-// const backgroundPath = computed(
-//   () => `url(${getImageUrl(arrBackgrounds[storage.main.background].name)})`
-// )
-
-// const backgroundPath = computed(
-//   () =>
-//     `url('/images/backgrounds/normal/${
-//       arrBackgrounds[storage.main.background].name
-//     }.jpg')`
-// )
-
-// const backgroundPath = `url('/images/backgrounds/normal/${
-//   arrBackgrounds[storage.main.background].name
-// }.jpg)`
-
-// const backgroundPath = `url('/images/backgrounds/normal/${
-//   arrBackgrounds[storage.main.background].name
-// }.jpg')`
-
-// const backgroundPath = `url('/images/backgrounds/normal/kamchatka.jpg')`
+const backgroundPath = computed(() => {
+  return getImageUrl(arrBackgrounds[storage.main.background].name)
+})
 
 onMounted(() => {
   if (localStorage.main) {
@@ -104,8 +78,7 @@ html {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background: no-repeat url('/images/backgrounds/normal/kamchatka.jpg') center
-    center fixed;
+  background: no-repeat v-bind(backgroundPath) center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
