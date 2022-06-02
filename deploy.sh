@@ -4,7 +4,7 @@
 set -e
 
 # build
-npm run build:prod
+npm run build
 
 # navigate into the build output directory
 cd dist
@@ -16,8 +16,6 @@ git init
 git checkout -b main
 git add -A
 git commit -m 'deployment'
-
-aleks-kar.github.io/keyboard-trainer/
 
 # if you are deploying to https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
