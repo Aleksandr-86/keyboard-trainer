@@ -55,7 +55,6 @@ const saveToStorage = function () {
 }
 
 onMounted(() => {
-  console.warn(chessBoard)
   const colorsArr = getNumbersFromString(storage[props.obj][props.prop])
   hsla.hue = colorsArr[0]
   hsla.saturation = colorsArr[1]
@@ -103,7 +102,7 @@ onMounted(() => {
               @mouseup="saveToStorage" />
             <div
               class="slider-chess-background"
-              :style="{ background: `no-repeat url(${svgPath})` }"></div>
+              :style="{ background: `no-repeat url(${chessBoard})` }"></div>
           </div>
           <label class="slider-label" for="saturation">{{
             hsla.saturation
@@ -123,7 +122,7 @@ onMounted(() => {
               @mouseup="saveToStorage" />
             <div
               class="slider-chess-background"
-              :style="{ background: `no-repeat url(${svgPath})` }"></div>
+              :style="{ background: `no-repeat url(${chessBoard})` }"></div>
           </div>
           <label class="slider-label" for="lightness">{{
             hsla.lightness
@@ -144,7 +143,7 @@ onMounted(() => {
               @mouseup="saveToStorage" />
             <div
               class="slider-chess-background"
-              :style="{ background: `no-repeat url(${svgPath})` }"></div>
+              :style="{ background: `no-repeat url(${chessBoard})` }"></div>
           </div>
           <label class="slider-label" for="alpha">{{ hsla.alpha }}</label>
         </div>
@@ -253,7 +252,6 @@ onMounted(() => {
 .slider-chess-background {
   width: 384px;
   height: 18px;
-  /* background: no-repeat v-bind(svgPath); */
   /* background: no-repeat; */
   border-radius: 5px;
   z-index: -1;
