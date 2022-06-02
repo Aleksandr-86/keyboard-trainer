@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted, computed } from 'vue'
 import { arrBackgrounds } from '/src/services/background-list.js'
-import { getUrl } from '/src/services/helpers.js'
 import NavigationBar from './components/NavigationBar.vue'
 import SettingsMenu from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
@@ -10,12 +9,13 @@ import { data } from '/src/services/data.js'
 import { state } from '/src/services/state.js'
 import { storage } from '/src/services/storage.js'
 
+function getImageUrl(name) {
+  return new URL(`/src/images/backgrounds/normal/${name}.jpg`, import.meta.url)
+    .href
+}
+
 const backgroundPath = computed(() =>
-  getUrl(
-    `/src/images/backgrounds/normal/${
-      arrBackgrounds[storage.main.background].name
-    }.jpg`
-  )
+  getImageUrl(arrBackgrounds[storage.main.background].name)
 )
 
 onMounted(() => {

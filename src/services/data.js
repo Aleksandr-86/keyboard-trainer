@@ -1,6 +1,5 @@
 import { reactive } from 'vue'
 import {
-  getUrl,
   charTest,
   keyboardLayoutTest,
   arrPreparer,
@@ -175,7 +174,14 @@ export const randomSnippet = function (lang, amount) {
 
   const obj = arrOfBooks[randomNum(0, arrOfBooks.length - 1)] // choosing a random book
   data.currentBook = obj
-  const filePath = getUrl(`/src/books/${lang}/${obj.name}.txt`)
+
+  function getTextUrl(name) {
+    return new URL(`/src/books/${lang}/${name}.txt`, import.meta.url).href
+  }
+
+  const filePath = getTextUrl(obj.name)
+
+  // const filePath = `/books/${lang}/${obj.name}.txt`
 
   const httpRequest = new XMLHttpRequest()
   httpRequest.onload = function () {

@@ -2,7 +2,6 @@
 import { computed, ref } from 'vue'
 import { data } from '/src/services/data.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
-import { getUrl } from '/src/services/helpers.js'
 import HslaSlider from '../components/HslaSlider.vue'
 import Checkbox from '../components/Checkbox.vue'
 import Input from '../components/Input.vue'
@@ -43,12 +42,13 @@ const turnThePage = function (dir) {
   }
 }
 
+function getImageUrl(name) {
+  return new URL(`/src/images/backgrounds/small/${name}.jpg`, import.meta.url)
+    .href
+}
+
 const backgroundPreviewPath = computed(() =>
-  getUrl(
-    `/src/images/backgrounds/small/${
-      arrBackgrounds[data.backgroundPreview].name
-    }.jpg`
-  )
+  getImageUrl(arrBackgrounds[data.backgroundPreview].name)
 )
 
 const changeBackground = function (direction) {
