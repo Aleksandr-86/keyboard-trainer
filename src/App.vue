@@ -37,9 +37,11 @@ import { storage } from '/src/services/storage.js'
 //   arrBackgrounds[storage.main.background].name
 // }.jpg)`
 
-const backgroundPath = `url('/images/backgrounds/normal/${
-  arrBackgrounds[storage.main.background].name
-}.jpg')`
+// const backgroundPath = `url('/images/backgrounds/normal/${
+//   arrBackgrounds[storage.main.background].name
+// }.jpg')`
+
+const backgroundPath = `url('/images/backgrounds/normal/kamchatka.jpg')`
 
 onMounted(() => {
   if (localStorage.main) {
