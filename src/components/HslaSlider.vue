@@ -28,6 +28,10 @@ const color = computed(
 
 const thumbBackground = computed(() => `hsl(${hsla.hue}, 100%, 50%)`)
 
+const svgPath = `url(${
+  new URL('/src/images/icons/chess-board.svg', import.meta.url).href
+})`
+
 watch(color, newValue => {
   storage[props.obj][props.prop] = newValue
 })
@@ -242,7 +246,7 @@ onMounted(() => {
 .slider-chess-background {
   width: 384px;
   height: 18px;
-  background: no-repeat url('/src/assets/images/icons/chess-board.svg');
+  background: no-repeat v-bind(svgPath);
   border-radius: 5px;
   z-index: -1;
 }
