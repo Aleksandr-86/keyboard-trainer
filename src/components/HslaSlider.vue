@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, reactive, computed, watch } from 'vue'
 import { storage } from '/src/services/storage.js'
+import chessBoard from '/src/images/icons/chess-board.svg'
 
 const props = defineProps({
   title: String,
@@ -28,9 +29,8 @@ const color = computed(
 
 const thumbBackground = computed(() => `hsl(${hsla.hue}, 100%, 50%)`)
 
-const svgPath = `url(${
-  new URL('/src/images/icons/chess-board.svg', import.meta.url).href
-})`
+const svgPath = new URL('/src/images/icons/chess-board.svg', import.meta.url)
+  .href
 
 watch(color, newValue => {
   storage[props.obj][props.prop] = newValue
@@ -55,6 +55,7 @@ const saveToStorage = function () {
 }
 
 onMounted(() => {
+  console.warn(chessBoard)
   const colorsArr = getNumbersFromString(storage[props.obj][props.prop])
   hsla.hue = colorsArr[0]
   hsla.saturation = colorsArr[1]
@@ -100,7 +101,9 @@ onMounted(() => {
               min="0"
               max="100"
               @mouseup="saveToStorage" />
-            <div class="slider-chess-background"></div>
+            <div
+              class="slider-chess-background"
+              :style="{ background: `no-repeat url(${svgPath})` }"></div>
           </div>
           <label class="slider-label" for="saturation">{{
             hsla.saturation
@@ -118,7 +121,9 @@ onMounted(() => {
               min="0"
               max="100"
               @mouseup="saveToStorage" />
-            <div class="slider-chess-background"></div>
+            <div
+              class="slider-chess-background"
+              :style="{ background: `no-repeat url(${svgPath})` }"></div>
           </div>
           <label class="slider-label" for="lightness">{{
             hsla.lightness
@@ -137,7 +142,9 @@ onMounted(() => {
               max="1"
               step="0.01"
               @mouseup="saveToStorage" />
-            <div class="slider-chess-background"></div>
+            <div
+              class="slider-chess-background"
+              :style="{ background: `no-repeat url(${svgPath})` }"></div>
           </div>
           <label class="slider-label" for="alpha">{{ hsla.alpha }}</label>
         </div>
@@ -246,7 +253,8 @@ onMounted(() => {
 .slider-chess-background {
   width: 384px;
   height: 18px;
-  background: no-repeat v-bind(svgPath);
+  /* background: no-repeat v-bind(svgPath); */
+  /* background: no-repeat; */
   border-radius: 5px;
   z-index: -1;
 }
