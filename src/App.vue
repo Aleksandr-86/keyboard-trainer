@@ -86,7 +86,8 @@ html {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background: no-repeat v-bind(backgroundPath) center center fixed;
+  background: no-repeat url('/images/backgrounds/normal/kamchatka.jpg') center
+    center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
