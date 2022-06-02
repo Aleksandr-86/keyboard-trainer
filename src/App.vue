@@ -17,7 +17,7 @@ function getImageUrl(name) {
     .href
 }
 
-const imgPath = computed(() =>
+const backgroundPath = computed(() =>
   getImageUrl(arrBackgrounds[storage.main.background].name)
 )
 
@@ -41,7 +41,7 @@ onMounted(() => {
   <div
     id="background"
     :style="{
-      'background-image': `url(${getImageUrl('kamchatka')})`
+      'background-image': `url(${backgroundPath})`
     }">
     <NavigationBar />
     <SettingsMenu v-if="state.settings" />

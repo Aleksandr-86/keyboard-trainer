@@ -42,11 +42,16 @@ const turnThePage = function (dir) {
   }
 }
 
-const backgroundPreviewPath = computed(
-  () =>
-    `/src/images/backgrounds/small/${
-      arrBackgrounds[data.backgroundPreview].name
-    }.jpg`
+function getImageUrl(name) {
+  console.warn(
+    new URL(`/src/images/backgrounds/small/${name}.jpg`, import.meta.url).href
+  )
+  return new URL(`/src/images/backgrounds/small/${name}.jpg`, import.meta.url)
+    .href
+}
+
+const backgroundPreviewPath = computed(() =>
+  getImageUrl(arrBackgrounds[data.backgroundPreview].name)
 )
 
 const changeBackground = function (direction) {
