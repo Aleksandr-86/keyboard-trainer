@@ -18,11 +18,12 @@ import { storage } from '/src/services/storage.js'
 //   getImageUrl(arrBackgrounds[storage.main.background].name)
 // )
 
+function getImageUrl(name) {
+  return new URL(`/images/backgrounds/normal/${name}.jpg`, import.meta.url).href
+}
+
 const backgroundPath = computed(
-  () =>
-    `url(/images/backgrounds/normal/${
-      arrBackgrounds[storage.main.background].name
-    }.jpg)`
+  () => `url(${getImageUrl(arrBackgrounds[storage.main.background].name)})`
 )
 
 onMounted(() => {
