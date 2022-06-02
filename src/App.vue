@@ -9,13 +9,20 @@ import { data } from '/src/services/data.js'
 import { state } from '/src/services/state.js'
 import { storage } from '/src/services/storage.js'
 
-function getImageUrl(name) {
-  return new URL(`/src/images/backgrounds/normal/${name}.jpg`, import.meta.url)
-    .href
-}
+// function getImageUrl(name) {
+//   return new URL(`/src/images/backgrounds/normal/${name}.jpg`, import.meta.url)
+//     .href
+// }
 
-const backgroundPath = computed(() =>
-  getImageUrl(arrBackgrounds[storage.main.background].name)
+// const backgroundPath = computed(() =>
+//   getImageUrl(arrBackgrounds[storage.main.background].name)
+// )
+
+const backgroundPath = computed(
+  () =>
+    `url(/images/backgrounds/normal/${
+      arrBackgrounds[storage.main.background].name
+    }.jpg)`
 )
 
 onMounted(() => {
@@ -35,11 +42,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
+  <!-- <div
     id="background"
     :style="{
       'background-image': `url(${backgroundPath})`
-    }">
+    }"> -->
+  <div id="background">
     <NavigationBar />
     <SettingsMenu v-if="state.settings" />
     <Field v-if="state.work" />
@@ -77,7 +85,7 @@ html {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background: no-repeat center center fixed;
+  background: no-repeat v-bind(backgroundPath) center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
