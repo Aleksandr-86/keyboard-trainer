@@ -94,7 +94,7 @@ const eListener = function (e) {
     // audio.src = '/src/sounds/type.mp3'
     // audio.src = 'http://localhost:3000/src/sounds/type.mp3'
     // audio.src = new URL('/src/sounds/type.mp3', import.meta.url).href
-    audio.src = soundPath()
+    audio.src = `${soundPath()}`
     audio.volume = storage.main.volume
     audio.play()
   }
