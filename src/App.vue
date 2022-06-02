@@ -10,7 +10,8 @@ import { state } from '/src/services/state.js'
 import { storage } from '/src/services/storage.js'
 
 function getImageUrl(name) {
-  return new URL(`/images/backgrounds/normal/${name}.jpg`, import.meta.url).href
+  return new URL(`/src/images/backgrounds/normal/${name}.jpg`, import.meta.url)
+    .href
 }
 
 const backgroundPath = computed(() =>

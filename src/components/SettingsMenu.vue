@@ -43,7 +43,8 @@ const turnThePage = function (dir) {
 }
 
 function getImageUrl(name) {
-  return new URL(`/images/backgrounds/small/${name}.jpg`, import.meta.url).href
+  return new URL(`/src/images/backgrounds/small/${name}.jpg`, import.meta.url)
+    .href
 }
 
 const backgroundPreviewPath = computed(() =>
