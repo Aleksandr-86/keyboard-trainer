@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, reactive, computed, watch } from 'vue'
 import { storage } from '/src/services/storage.js'
-import chessBoard from '../images/icons/chess-board.svg'
+// import chessBoard from '../images/icons/chess-board.svg'
 
 const props = defineProps({
   title: String,
@@ -28,9 +28,6 @@ const color = computed(
 )
 
 const thumbBackground = computed(() => `hsl(${hsla.hue}, 100%, 50%)`)
-
-const svgPath = new URL('/src/images/icons/chess-board.svg', import.meta.url)
-  .href
 
 watch(color, newValue => {
   storage[props.obj][props.prop] = newValue
@@ -100,9 +97,7 @@ onMounted(() => {
               min="0"
               max="100"
               @mouseup="saveToStorage" />
-            <div
-              class="slider-chess-background"
-              :style="{ background: `no-repeat url(${chessBoard})` }"></div>
+            <div class="slider-chess-background"></div>
           </div>
           <label class="slider-label" for="saturation">{{
             hsla.saturation
@@ -120,9 +115,7 @@ onMounted(() => {
               min="0"
               max="100"
               @mouseup="saveToStorage" />
-            <div
-              class="slider-chess-background"
-              :style="{ background: `no-repeat url(${chessBoard})` }"></div>
+            <div class="slider-chess-background"></div>
           </div>
           <label class="slider-label" for="lightness">{{
             hsla.lightness
@@ -141,9 +134,7 @@ onMounted(() => {
               max="1"
               step="0.01"
               @mouseup="saveToStorage" />
-            <div
-              class="slider-chess-background"
-              :style="{ background: `no-repeat url(${chessBoard})` }"></div>
+            <div class="slider-chess-background"></div>
           </div>
           <label class="slider-label" for="alpha">{{ hsla.alpha }}</label>
         </div>
@@ -252,7 +243,7 @@ onMounted(() => {
 .slider-chess-background {
   width: 384px;
   height: 18px;
-  /* background: no-repeat; */
+  background: no-repeat url('/chess-board.svg');
   border-radius: 5px;
   z-index: -1;
 }
