@@ -6,7 +6,7 @@ export default defineConfig({
   base: "/keyboard-trainer/",
   plugins: [vue()],
   build: {
-    outDir: "dist",
+    outDir: "docs",
     emptyOutDir: true,
     sourcemap: true,
   },
