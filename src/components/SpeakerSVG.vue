@@ -1,5 +1,7 @@
 <script setup>
 import { computed } from '@vue/reactivity'
+import { playAudio } from '../services/helpers.js'
+import clickSound from '/src/assets/sounds/click-sound.mp3'
 import { storage } from '../store/storage.js'
 
 const strokeColor = computed(() => {
@@ -12,6 +14,7 @@ const strokeColor = computed(() => {
 
 function toggleSpeaker() {
   storage.main.speaker = !storage.main.speaker
+  if (storage.main.speaker) playAudio(clickSound, storage.main.volume)
   localStorage.main = JSON.stringify(storage.main)
 }
 </script>
