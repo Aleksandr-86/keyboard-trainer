@@ -242,7 +242,7 @@ onMounted(() => {
 .slider-chess-background {
   width: 384px;
   height: 18px;
-  background: no-repeat url('/images/icons/chess-board.svg');
+  background: no-repeat url('/src/assets/backgrounds/chess-board.svg');
   border-radius: 5px;
   z-index: -1;
 }
