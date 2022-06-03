@@ -6,9 +6,11 @@ import {
   randomNum,
   strPrepWithNewLines,
   strPrepWithoutNewLines,
-  getSomeSentences
+  getSomeSentences,
+  playAudio
 } from '/src/services/helpers.js'
 import bookList from '/src/services/book-list.js'
+import ringSound from '/src/assets/sounds/ring.mp3'
 import { state } from './state.js'
 import { storage } from './storage.js'
 
@@ -129,6 +131,7 @@ export const moveCaret = function () {
     data.fragmentArr[data.indexArr] === 'end'
   ) {
     // shutting down the field
+    if (storage.main.speaker) playAudio(ringSound, storage.main.volume)
     data.timerStop = performance.now()
     state.work = false
     state.overallStatistics = true

@@ -1,9 +1,14 @@
 <script setup>
 import { onMounted, onUnmounted, reactive, computed } from 'vue'
-import { charTest, msToMinutes, isAuxiliaryKeys } from '../services/helpers.js'
+import {
+  charTest,
+  msToMinutes,
+  isAuxiliaryKeys,
+  playAudio
+} from '../services/helpers.js'
 import CurrentStatistics from './CurrentStatistics.vue'
 import Keyboard from './Keyboard.vue'
-import clickSound from '/src/assets/sounds/type.mp3'
+import clickSound from '/src/assets/sounds/click-sound.mp3'
 import { data, recordingStatistics, moveCaret } from '../store/data.js'
 import { state } from '../store/state.js'
 import { storage } from '../store/storage.js'
@@ -81,15 +86,10 @@ const eListener = function (e) {
     return
   }
 
-  if (storage.main.speaker) {
-    const audio = new Audio()
-    audio.src = clickSound
-    audio.volume = storage.main.volume
-    audio.play()
-  }
+  if (storage.main.speaker) playAudio(clickSound, storage.main.volume)
 
-  // timer on
   if (!state.bTimer) {
+    // timer on
     state.bTimer = true
     data.timerStart = performance.now()
 

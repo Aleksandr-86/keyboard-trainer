@@ -199,6 +199,14 @@ export const isAuxiliaryKeys = function (code) {
   }
 }
 
+// playing audio
+export const playAudio = function (path, volume) {
+  const audio = new Audio()
+  audio.src = path
+  audio.volume = volume
+  audio.play()
+}
+
 // rounding
 export const rnd = function (num, digit = 0) {
   return Number(Math.round(Number(num + 'e' + digit)) + 'e-' + digit)
