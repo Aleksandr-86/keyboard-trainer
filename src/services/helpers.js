@@ -326,12 +326,3 @@ export const getSomeSentences = function (str, minSnippetLength) {
 
   return str.substring(lowBound, highBound)
 }
-
-// checking letter case
-// export const charCase = (char) => /[А-ЯЁA-Z.-=\\]/i.test(char) && char === char.toUpperCase();
-// export const charCase = (char) => /[А-ЯЁA-Z!"]/i.test(char) && char === char.toUpperCase();
-
-// checking if CapsLock key is active
-// const capsLockState = event.getModifierState && event.getModifierState('CapsLock');
-// console.log(capsLockState);
-// skipping special keys

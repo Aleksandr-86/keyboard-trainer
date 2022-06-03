@@ -200,15 +200,19 @@ function clearSettings() {
           </div>
         </div>
         <div>
-          <p class="settings-image-description">
+          <p
+            v-if="arrBackgrounds[data.backgroundPreview].location"
+            class="settings-image-description">
             Местоположение:
             {{ arrBackgrounds[data.backgroundPreview].location }}
           </p>
-          <p class="settings-image-link">
+          <p class="settings-image-link-description">
             Автор снимка:
-            <a :href="arrBackgrounds[data.backgroundPreview].link">{{
-              arrBackgrounds[data.backgroundPreview].author
-            }}</a>
+            <a
+              class="settings-image-link"
+              :href="arrBackgrounds[data.backgroundPreview].link"
+              >{{ arrBackgrounds[data.backgroundPreview].author }}</a
+            >
           </p>
         </div>
       </div>
@@ -460,15 +464,25 @@ function clearSettings() {
   margin-bottom: 10px;
 }
 
-.settings-image-description,
-.settings-image-link {
+.settings-image-description {
   text-align: left;
+  width: 455px;
   margin: 10px 0 10px 0;
 }
 
-.settings-image-link {
+.settings-image-link-description {
+  text-align: left;
+  margin: 10px 0 10px 0;
   display: block;
+}
+
+.settings-image-link {
   text-decoration: none;
+  color: hsl(240, 90%, 45%);
+}
+
+.settings-image-link:visited {
+  color: hsl(270, 90%, 70%);
 }
 
 #settings-preview {
