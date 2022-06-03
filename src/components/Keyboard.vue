@@ -1,9 +1,8 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import { data } from '../services/data'
 import { isUpCase } from '../services/helpers.js'
-import { storage } from '/src/services/storage.js'
-
+import { data } from '../store/data'
+import { storage } from '../store/storage.js'
 
 const props = defineProps({
   eventKeydown: {},

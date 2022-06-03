@@ -1,12 +1,12 @@
 <script setup>
 import { onMounted, onUnmounted, reactive, computed } from 'vue'
-import { data, recordingStatistics, moveCaret } from '/src/services/data.js'
 import { charTest, msToMinutes, isAuxiliaryKeys } from '../services/helpers.js'
 import CurrentStatistics from './CurrentStatistics.vue'
 import Keyboard from './Keyboard.vue'
-import { state } from '../services/state.js'
-// import storage from '/src/services/storage.js'
-import { storage } from '/src/services/storage.js'
+import clickSound from '/src/assets/sounds/type.mp3'
+import { data, recordingStatistics, moveCaret } from '../store/data.js'
+import { state } from '../store/state.js'
+import { storage } from '../store/storage.js'
 
 const events = reactive({
   keyDn: Object,
@@ -81,16 +81,12 @@ const eListener = function (e) {
     return
   }
 
-  // audio.pause()
-  // audio.currentTime = 0
-  // console.warn(new URL('/src/sounds/type.mp3', import.meta.url).href)
-
-  // if (storage.main.speaker) {
-  //   const audio = new Audio()
-  //   audio.src = '/src/sounds/type.mp3'
-  //   audio.volume = storage.main.volume
-  //   audio.play()
-  // }
+  if (storage.main.speaker) {
+    const audio = new Audio()
+    audio.src = clickSound
+    audio.volume = storage.main.volume
+    audio.play()
+  }
 
   // timer on
   if (!state.bTimer) {

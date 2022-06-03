@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import { data } from '../services/data.js'
-import { storage } from '../services/storage.js'
+import { data } from '../store/data.js'
+import { storage } from '../store/storage.js'
 
 const tempWithoutMistake = computed(() => data.tempWithoutMistake)
 const withoutMistake = computed(() => data.withoutMistake)

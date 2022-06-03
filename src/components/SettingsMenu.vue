@@ -1,13 +1,13 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { data } from '/src/services/data.js'
 import { arrBackgrounds } from '/src/services/background-list.js'
 import HslaSlider from '../components/HslaSlider.vue'
 import Checkbox from '../components/Checkbox.vue'
 import Input from '../components/Input.vue'
 import SingleSlider from '../components/SingleSlider.vue'
-import { storage } from '/src/services/storage.js'
-import { state } from '../services/state.js'
+import { data } from '../store/data.js'
+import { state } from '../store/state.js'
+import { storage } from '../store/storage.js'
 
 const page = ref(0)
 const direction = ref('slide-next')
@@ -42,13 +42,13 @@ const turnThePage = function (dir) {
   }
 }
 
-function getImageUrl(name) {
-  return new URL(`/src/images/backgrounds/small/${name}.jpg`, import.meta.url)
+function getUrl(name) {
+  return new URL(`/src/assets/backgrounds/small/${name}.jpg`, import.meta.url)
     .href
 }
 
 const backgroundPreviewPath = computed(() =>
-  getImageUrl(arrBackgrounds[data.backgroundPreview].name)
+  getUrl(arrBackgrounds[data.backgroundPreview].name)
 )
 
 const changeBackground = function (direction) {

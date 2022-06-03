@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import { storage } from '/src/services/storage.js'
+import { storage } from '../store/storage.js'
+
 const flag = ref(false)
 
 function keyDown(e) {

@@ -10,7 +10,7 @@ import {
 } from '/src/services/helpers.js'
 import bookList from '/src/services/book-list.js'
 import { state } from './state.js'
-import { storage } from '/src/services/storage.js'
+import { storage } from './storage.js'
 
 export const data = reactive({
   fragmentArr: Object,
@@ -175,13 +175,12 @@ export const randomSnippet = function (lang, amount) {
   const obj = arrOfBooks[randomNum(0, arrOfBooks.length - 1)] // choosing a random book
   data.currentBook = obj
 
-  function getTextUrl(name) {
-    return new URL(`/src/books/${lang}/${name}.txt`, import.meta.url).href
+  function getUrl(name) {
+    return new URL(`/src/assets/books/${lang}/${name}.txt`, import.meta.url)
+      .href
   }
 
-  const filePath = getTextUrl(obj.name)
-
-  // const filePath = `/books/${lang}/${obj.name}.txt`
+  const filePath = getUrl(obj.name)
 
   const httpRequest = new XMLHttpRequest()
   httpRequest.onload = function () {

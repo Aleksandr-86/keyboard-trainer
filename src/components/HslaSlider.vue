@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted, reactive, computed, watch } from 'vue'
-import { storage } from '/src/services/storage.js'
-// import chessBoard from '../images/icons/chess-board.svg'
+import { storage } from '../store/storage.js'
 
 const props = defineProps({
   title: String,

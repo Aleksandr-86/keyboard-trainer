@@ -5,24 +5,26 @@ import NavigationBar from './components/NavigationBar.vue'
 import SettingsMenu from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
 import OverallStatistics from './components/OverallStatistics.vue'
-import { data } from '/src/services/data.js'
-import { state } from '/src/services/state.js'
-import { storage } from '/src/services/storage.js'
+import { data } from '/src/store/data.js'
+import { state } from '/src/store/state.js'
+import { storage } from '/src/store/storage.js'
 
-function getImageUrl(name) {
-  return new URL(`/src/images/backgrounds/normal/${name}.jpg`, import.meta.url)
+function getUrl(name) {
+  return new URL(`/src/assets/backgrounds/normal/${name}.jpg`, import.meta.url)
     .href
 }
 
-const backgroundPath = computed(() => {
-  return getImageUrl(arrBackgrounds[storage.main.background].name)
-})
+const backgroundPath = computed(
+  () => `url(${getUrl(arrBackgrounds[storage.main.background].name)})`
+)
 
 onMounted(() => {
   if (localStorage.main) {
     const obj = JSON.parse(localStorage.main)
     data.backgroundPreview = obj.background
   }
+
+  // loading values from  local storage to the reactive object
   for (const key in storage) {
     if (localStorage[key]) {
       const obj = JSON.parse(localStorage[key])
@@ -35,12 +37,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- <div
-    id="background"
-    :style="{
-      'background-image': `url(${backgroundPath})`
-    }"> -->
-  <div id="background">
+  <div id="background" :style="{ 'background-image': backgroundPath }">
     <NavigationBar />
     <SettingsMenu v-if="state.settings" />
     <Field v-if="state.work" />
@@ -62,23 +59,18 @@ html {
 #app {
   width: 100vw;
   height: 100vh;
-  /* background: pink no-repeat fixed center center; */
-  /* background-size: cover; */
 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* transition: background 1000ms linear; */
   text-align: center;
-  /* color: hsl(300, 100%, 20%); */
-  /* margin-top: 60px; */
 }
 
 #background {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background: no-repeat v-bind(backgroundPath) center center fixed;
+  background: no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

@@ -5,7 +5,13 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   base: "/keyboard-trainer/",
   plugins: [vue()],
+  optimizeDeps: {
+    esbuildOptions: {
+      target: "es2020",
+    },
+  },
   build: {
+    target: "es2020",
     outDir: "docs",
     emptyOutDir: true,
     sourcemap: true,

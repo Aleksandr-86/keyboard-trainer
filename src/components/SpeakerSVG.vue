@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-// import storage from '/src/services/storage.js'
-import { storage } from '/src/services/storage.js'
+import { storage } from '../store/storage.js'
 
 const strokeColor = computed(() => {
   if (storage.main.speaker) {

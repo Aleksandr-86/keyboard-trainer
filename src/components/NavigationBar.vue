@@ -2,9 +2,9 @@
 import { computed } from '@vue/reactivity'
 import { getBrowser } from '/src/services/helpers.js'
 import SpeakerSVG from './SpeakerSVG.vue'
-import { state } from '../services/state.js'
-import { data, randomSnippet, loadFragment } from '/src/services/data.js'
-import { storage } from '/src/services/storage.js'
+import { data, randomSnippet, loadFragment } from '../store/data.js'
+import { state } from '../store/state.js'
+import { storage } from '../store/storage.js'
 
 async function fillFieldFromBuffer() {
   data.focusElement = '#nav-buffer'

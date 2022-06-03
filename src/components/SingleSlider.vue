@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import { storage } from '/src/services/storage.js'
+import { storage } from '../store/storage.js'
 
 const props = defineProps({
   obj: String,

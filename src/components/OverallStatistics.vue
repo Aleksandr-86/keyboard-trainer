@@ -1,10 +1,10 @@
 <script setup>
 import { onMounted, onUnmounted } from 'vue'
-import { data } from '../services/data.js'
 import { rnd } from '../services/helpers.js'
 import { computed } from '@vue/reactivity'
-import { state } from '../services/state.js'
-import { storage } from '/src/services/storage.js'
+import { data } from '../store/data.js'
+import { state } from '../store/state.js'
+import { storage } from '../store/storage.js'
 
 // forming the temp string
 const tempStr = computed(() => {
