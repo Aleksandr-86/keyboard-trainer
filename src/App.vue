@@ -37,7 +37,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="background" :style="{ 'background-image': backgroundPath }">
+  <div
+    id="background"
+    :style="{ 'background-image': backgroundPath }"
+    rel="preload">
     <NavigationBar />
     <SettingsMenu v-if="state.settings" />
     <Field v-if="state.work" />
