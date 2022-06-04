@@ -14,9 +14,15 @@ function getUrl(name) {
     .href
 }
 
-const backgroundPath = computed(
-  () => `url(${getUrl(arrBackgrounds[storage.main.background].name)})`
-)
+const backgroundPath = computed(() => {
+  console.warn('!')
+  const img = new Image()
+  img.src = getUrl(arrBackgrounds[storage.main.background].name)
+  img.onload = () => {
+    console.warn('sdf')
+  }
+  return `url(${getUrl(arrBackgrounds[storage.main.background].name)})`
+})
 
 onMounted(() => {
   if (localStorage.main) {
