@@ -34,18 +34,18 @@ onMounted(() => {
     }
   }
 })
+
+function fn() {
+  console.warn('!')
+}
 </script>
 
 <template>
-  <div
-    id="background"
-    :style="{ 'background-image': backgroundPath }"
-    rel="preload">
-    <NavigationBar />
-    <SettingsMenu v-if="state.settings" />
-    <Field v-if="state.work" />
-    <OverallStatistics v-if="state.overallStatistics" />
-  </div>
+  <div id="background" @load="fn"></div>
+  <NavigationBar />
+  <SettingsMenu v-if="state.settings" />
+  <Field v-if="state.work" />
+  <OverallStatistics v-if="state.overallStatistics" />
 </template>
 
 <style>
@@ -78,6 +78,8 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  z-index: -1;
+  background-image: v-bind(backgroundPath);
   -webkit-transition: background-image 0.5s linear;
   -moz-transition: background-image 0.5s linear;
   -o-transition: background-image 0.5s linear;
