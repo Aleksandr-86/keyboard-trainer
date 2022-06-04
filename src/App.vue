@@ -15,12 +15,6 @@ function getUrl(name) {
 }
 
 const backgroundPath = computed(() => {
-  console.warn('!')
-  // const img = new Image()
-  // img.src = getUrl(arrBackgrounds[storage.main.background].name)
-  // img.onload = () => {
-  //   console.warn('image loaded')
-  // }
   return `url(${getUrl(arrBackgrounds[storage.main.background].name)})`
 })
 
@@ -40,14 +34,10 @@ onMounted(() => {
     }
   }
 })
-
-function fn() {
-  console.warn('!')
-}
 </script>
 
 <template>
-  <div id="background" @load="fn"></div>
+  <div id="background"></div>
   <NavigationBar />
   <SettingsMenu v-if="state.settings" />
   <Field v-if="state.work" />

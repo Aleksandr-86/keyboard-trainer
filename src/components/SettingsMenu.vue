@@ -58,18 +58,18 @@ const changeBackground = function (direction) {
     tempObj.background = data.backgroundPreview
     localStorage.main = JSON.stringify(tempObj)
 
-    function getUrl(name) {
-      return new URL(
-        `/src/assets/backgrounds/normal/${name}.jpg`,
-        import.meta.url
-      ).href
-    }
+    // function getUrl(name) {
+    //   return new URL(
+    //     `/src/assets/backgrounds/normal/${name}.jpg`,
+    //     import.meta.url
+    //   ).href
+    // }
 
-    const img = new Image()
-    img.src = getUrl(arrBackgrounds[data.backgroundPreview].name)
-    img.onload = () => {
-      console.warn('image loaded')
-    }
+    // const img = new Image()
+    // img.src = getUrl(arrBackgrounds[data.backgroundPreview].name)
+    // img.onload = () => {
+    //   console.warn('!')
+    // }
   }
 
   if (direction === 'next') {
@@ -91,8 +91,22 @@ const changeBackground = function (direction) {
   saveBackgroundInStorage()
 }
 
-const closeSettingMenu = function () {
-  storage.main.background = data.backgroundPreview
+const closeSettingsMenu = function () {
+  console.warn('closing setting')
+  function getUrl(name) {
+    return new URL(
+      `/src/assets/backgrounds/normal/${name}.jpg`,
+      import.meta.url
+    ).href
+  }
+
+  const img = new Image()
+  img.src = getUrl(arrBackgrounds[data.backgroundPreview].name)
+  img.onload = () => {
+    storage.main.background = data.backgroundPreview
+  }
+
+  // storage.main.background = data.backgroundPreview
   for (const key in storage) {
     localStorage[key] = JSON.stringify(storage[key])
   }
@@ -158,7 +172,7 @@ function clearSettings() {
 </script>
 
 <template>
-  <div v-click-outside="closeSettingMenu" class="settings-container">
+  <div v-click-outside="closeSettingsMenu" class="settings-container">
     <div class="settings-title-container">
       <button @click="turnThePage('prev')" class="settings-btn-page">
         <div class="arrow arrow-left"></div>
