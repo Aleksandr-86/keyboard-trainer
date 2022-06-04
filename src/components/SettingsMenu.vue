@@ -57,19 +57,6 @@ const changeBackground = function (direction) {
     const tempObj = { ...storage.main }
     tempObj.background = data.backgroundPreview
     localStorage.main = JSON.stringify(tempObj)
-
-    // function getUrl(name) {
-    //   return new URL(
-    //     `/src/assets/backgrounds/normal/${name}.jpg`,
-    //     import.meta.url
-    //   ).href
-    // }
-
-    // const img = new Image()
-    // img.src = getUrl(arrBackgrounds[data.backgroundPreview].name)
-    // img.onload = () => {
-    //   console.warn('!')
-    // }
   }
 
   if (direction === 'next') {
@@ -92,7 +79,6 @@ const changeBackground = function (direction) {
 }
 
 const closeSettingsMenu = function () {
-  console.warn('closing setting')
   function getUrl(name) {
     return new URL(
       `/src/assets/backgrounds/normal/${name}.jpg`,
@@ -104,12 +90,11 @@ const closeSettingsMenu = function () {
   img.src = getUrl(arrBackgrounds[data.backgroundPreview].name)
   img.onload = () => {
     storage.main.background = data.backgroundPreview
+    for (const key in storage) {
+      localStorage[key] = JSON.stringify(storage[key])
+    }
   }
 
-  // storage.main.background = data.backgroundPreview
-  for (const key in storage) {
-    localStorage[key] = JSON.stringify(storage[key])
-  }
   state.settings = false
 }
 
