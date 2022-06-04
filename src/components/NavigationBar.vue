@@ -36,11 +36,6 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
     <SpeakerSVG class="nav-speaker" />
     <ul class="nav">
       <li>
-        <a @click="fillFieldFromBuffer" href="#!" id="nav-buffer">
-          Буфер обмена
-        </a>
-      </li>
-      <li>
         <a
           @click="randomSnippet(storage.main.langOfSnippets, minSnippetLength)"
           id="nav-snippet"
@@ -73,6 +68,13 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
           </li>
         </ul>
       </li>
+
+      <li>
+        <a @click="fillFieldFromBuffer" href="#!" id="nav-buffer">
+          Буфер обмена
+        </a>
+      </li>
+
       <li>
         <a @click="toggleSettings" id="nav-settings" href="#!">Настройки</a>
       </li>
@@ -98,7 +100,7 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
   user-select: none;
 }
 
-#nav-snippet,
+#nav-buffer,
 #nav-drop-down,
 #nav-settings {
   display: inline-flex;
