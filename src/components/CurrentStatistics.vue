@@ -13,7 +13,7 @@ const background = computed(() => {
   const colorsArr = storage.currentStatistics.colors.match(/[0-9.]+/g)
   const h = colorsArr[0]
   const s = colorsArr[1]
-  const l = colorsArr[2] - 35
+  const l = colorsArr[2] - 30
   const a = colorsArr[3]
   return `hsla(${h}, ${s}%, ${l}%, ${a})`
 })

@@ -100,7 +100,7 @@ const closeSettingsMenu = function () {
 
 const defaultValues = {
   currentStatistics: {
-    colors: 'hsl(60, 80%, 45%, 1)'
+    colors: 'hsl(60, 65%, 50%, 1)'
   },
   field: {
     background: 'hsla(80, 10%, 40%, 1)',
