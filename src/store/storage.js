@@ -5,10 +5,10 @@ export const storage = reactive({
     colors: 'hsl(60, 65%, 50%, 1)'
   },
   field: {
-    background: 'hsla(0, 0%, 45%, 1)',
-    charBackground: 'hsla(0, 0%, 0%, 0.55)',
+    background: 'hsla(0, 0%, 60%, 1)',
+    charBackground: 'hsla(0, 0%, 0%, 0.65)',
     caretBackground: 'hsla(280, 85%, 70%, 0.65)',
-    charColor: 'hsla(0, 0%, 65%, 1)',
+    charColor: 'hsla(0, 0%, 67%, 1)',
     charCorrectColor: 'hsla(144, 65%, 45%, 1)',
     charWrongColor: 'hsla(0, 100%, 60%, 1)',
     charSpecialColor: 'hsl(180, 100%, 45%, 0.75)'
