@@ -207,7 +207,7 @@ function clearSettings() {
             {{ arrBackgrounds[data.backgroundPreview].location }}
           </p>
           <p class="settings-image-link-description">
-            Автор снимка:
+            Автор фотографии:
             <a
               class="settings-image-link"
               :href="arrBackgrounds[data.backgroundPreview].link"
