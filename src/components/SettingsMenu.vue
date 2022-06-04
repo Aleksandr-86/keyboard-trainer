@@ -57,6 +57,19 @@ const changeBackground = function (direction) {
     const tempObj = { ...storage.main }
     tempObj.background = data.backgroundPreview
     localStorage.main = JSON.stringify(tempObj)
+
+    function getUrl(name) {
+      return new URL(
+        `/src/assets/backgrounds/normal/${name}.jpg`,
+        import.meta.url
+      ).href
+    }
+
+    const img = new Image()
+    img.src = getUrl(arrBackgrounds[data.backgroundPreview].name)
+    img.onload = () => {
+      console.warn('image loaded')
+    }
   }
 
   if (direction === 'next') {
