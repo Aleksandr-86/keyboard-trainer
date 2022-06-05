@@ -110,7 +110,7 @@ const eListener = function (e) {
       data.elapsedTime = performance.now() - data.timerStart
       data.elapsedTimeStr = msToMinutes(data.elapsedTime)
       let charPerMin = Math.floor(
-        ((data.numCorrect + data.numWrong) * 60) /
+        ((data.numCorrect + data.numWrong + data.numRevised) * 60) /
           (Math.floor(data.elapsedTime) / 1000)
       )
         .toString()

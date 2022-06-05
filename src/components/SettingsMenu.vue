@@ -100,7 +100,7 @@ const closeSettingsMenu = function () {
 
 const defaultValues = {
   currentStatistics: {
-    colors: 'hsl(165, 75%, 45%, 1)'
+    colors: 'hsla(144, 65%, 47%, 1)'
   },
   field: {
     background: 'hsla(0, 0%, 60%, 1)',
@@ -109,7 +109,7 @@ const defaultValues = {
     charColor: 'hsla(0, 0%, 67%, 1)',
     charCorrectColor: 'hsla(144, 65%, 47%, 1)',
     charWrongColor: 'hsla(0, 100%, 60%, 1)',
-    charRevisedColor: 'hsla(85, 65%, 50%, 1)',
+    charRevisedColor: 'hsla(90, 65%, 50%, 1)',
     charSpecialColor: 'hsl(180, 100%, 50%, 0.75)'
   },
   keyboard: {

@@ -42,9 +42,9 @@ const strWrongPercent = computed(
     )}%)`
 )
 
-const charPerSecond = computed(() =>
+const finalCharPerMin = computed(() =>
   rnd(
-    ((data.numCorrect + data.numWrong - data.numRevised) * 60) /
+    ((data.numCorrect + data.numWrong + data.numRevised) * 60) /
       (data.elapsedTime / 1000)
   )
 )
@@ -102,6 +102,7 @@ onUnmounted(() => {
 
   data.numCorrect = 0
   data.numWrong = 0
+  data.numRevised = 0
 
   data.currentBook = 0
 })
@@ -124,7 +125,7 @@ onUnmounted(() => {
     </div>
 
     <div class="stat-first-column">Cкорость набора, зн/мин:</div>
-    <div class="stat-second-column">{{ charPerSecond }}</div>
+    <div class="stat-second-column">{{ finalCharPerMin }}</div>
 
     <div class="stat-line"></div>
 
