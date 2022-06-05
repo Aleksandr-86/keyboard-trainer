@@ -1,22 +1,42 @@
 <script setup>
-import { watch } from 'vue'
+import { watch, computed } from 'vue'
 import { storage } from '../store/storage.js'
 
 const props = defineProps({
   title: String,
   obj: String,
-  prop: String
+  prop: String,
+  disabled: Boolean
 })
 
 watch(storage[props.obj], newValue => {
   localStorage[props.obj] = JSON.stringify(newValue)
+})
+
+const opacity = computed(() => {
+  if (props.disabled) {
+    return 0.5
+  } else {
+    return 1
+  }
+})
+
+const cursor = computed(() => {
+  if (props.disabled) {
+    return 'not-allowed'
+  } else {
+    return 'pointer'
+  }
 })
 </script>
 
 <template>
   <label class="checkbox">
     <div class="checkbox-title">{{ props.title }}</div>
-    <input type="checkbox" v-model="storage[props.obj][props.prop]" />
+    <input
+      type="checkbox"
+      v-model="storage[props.obj][props.prop]"
+      :disabled="props.disabled" />
     <span class="check-mark"></span>
   </label>
 </template>
@@ -33,9 +53,10 @@ watch(storage[props.obj], newValue => {
 
   padding: 0 1px 0 2px;
   margin-bottom: 12px;
-  cursor: pointer;
   font-size: 25px;
   user-select: none;
+  opacity: v-bind(opacity);
+  cursor: v-bind(cursor);
 }
 
 .checkbox:hover {

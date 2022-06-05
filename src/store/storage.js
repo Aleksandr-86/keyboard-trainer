@@ -32,6 +32,7 @@ export const storage = reactive({
     minSnippetLength: 160,
     letterCase: true,
     speaker: false,
+    ring: true,
     volume: 0.2
   },
   overallStatistics: {

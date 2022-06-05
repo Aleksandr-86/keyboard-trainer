@@ -131,7 +131,8 @@ export const moveCaret = function () {
     data.fragmentArr[data.indexArr] === 'end'
   ) {
     // shutting down the field
-    if (storage.main.speaker) playAudio(ringSound, storage.main.volume)
+    if (storage.main.speaker && storage.main.ring)
+      playAudio(ringSound, storage.main.volume)
     data.timerStop = performance.now()
     state.work = false
     state.overallStatistics = true

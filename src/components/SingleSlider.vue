@@ -45,6 +45,10 @@ const cursor = computed(() => {
 </template>
 
 <style scoped>
+.slider-container {
+  opacity: v-bind(opacity);
+}
+
 .slider {
   display: flex;
   justify-content: flex-start;
@@ -63,7 +67,6 @@ const cursor = computed(() => {
   border-radius: 5px;
   background: hsl(0, 0%, 83%);
   outline: none;
-  opacity: v-bind(opacity);
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
   cursor: v-bind(cursor);
@@ -91,7 +94,6 @@ const cursor = computed(() => {
   margin-left: 5px;
   color: hsl(0, 0%, 83%);
   width: 45px;
-  opacity: v-bind(opacity);
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
 }

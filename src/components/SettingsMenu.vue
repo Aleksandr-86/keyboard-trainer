@@ -20,7 +20,7 @@ const title = computed(() => {
   } else if (page.value === 2) {
     return 'Цвета клавиатуры'
   } else if (page.value === 3) {
-    return 'Статистика'
+    return 'Статистика и звук'
   }
 })
 
@@ -130,6 +130,7 @@ const defaultValues = {
     minSnippetLength: 160,
     letterCase: true,
     speaker: false,
+    ring: true,
     volume: 0.2
   },
   overallStatistics: {
@@ -184,14 +185,6 @@ function clearSettings() {
           prop="keyboard" />
         <Checkbox title="Отображать засечки" obj="keyboard" prop="underline" />
         <Input />
-        <div class="settings-category-margin">Звук:</div>
-        <Checkbox title="Озвучивать печать" obj="main" prop="speaker" />
-        <SingleSlider
-          obj="main"
-          prop="volume"
-          max="1"
-          step="0.01"
-          :disabled="!storage.main.speaker" />
 
         <div class="settings-image">
           <img
@@ -303,6 +296,22 @@ function clearSettings() {
           title="процент ошибочных символов"
           obj="overallStatistics"
           prop="wrong" />
+
+        <div class="settings-category-margin">Звук:</div>
+        <div class="settings-shadow-checkbox">
+          <Checkbox title="Озвучивать печать" obj="main" prop="speaker" />
+          <Checkbox
+            title="Сигнал по окончании набора"
+            obj="main"
+            prop="ring"
+            :disabled="!storage.main.speaker" />
+        </div>
+        <SingleSlider
+          obj="main"
+          prop="volume"
+          max="1"
+          step="0.01"
+          :disabled="!storage.main.speaker" />
       </div>
     </transition>
   </div>
