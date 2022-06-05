@@ -29,6 +29,7 @@ export const data = reactive({
 
   numCorrect: 0,
   numWrong: 0,
+  numRevised: 0,
 
   tempWithoutMistake: 0,
   withoutMistake: 0,
@@ -49,16 +50,26 @@ export const recordingStatistics = function (e) {
     char = char.toLowerCase()
   }
 
-  data.remainingChars--
-  if (key === char) {
-    data.statArr[data.indexArr] = '1' // if the char is correct
+  if (key === 'Backspace' && data.indexArr !== 0) {
+    // e.preventDefault()
+    return
+  } else if (key === char) {
+    // the input char is correct
+    if (data.statArr[data.indexArr] === '0') {
+      data.statArr[data.indexArr] = '1' // the char is correct
+      data.numCorrect++
+    } else if (data.statArr[data.indexArr] === '3') {
+      data.statArr[data.indexArr] = '4' // the revised char is correct
+      data.numRevised++
+    }
     data.tempWithoutMistake++
     if (data.withoutMistake < data.tempWithoutMistake) {
       data.withoutMistake = data.tempWithoutMistake
     }
-    data.numCorrect++
+    // data.numCorrect++
   } else if (key !== char) {
-    data.statArr[data.indexArr] = '2' // if the char is wrong
+    // the input char is wrong
+    data.statArr[data.indexArr] = '2' // the char is wrong
     // counting the number of letters without mistake
     if (data.withoutMistake < data.tempWithoutMistake) {
       data.withoutMistake = data.tempWithoutMistake
@@ -107,8 +118,12 @@ export const loadNextChars = function () {
 
 /* moving caret (visually), moving over the inappropriate chars,
    stopping timer, changing work state, enable statistics menu */
-export const moveCaret = function () {
-  data.indexArr++
+export const moveCaret = function (direction = 'forward') {
+  if (direction === 'forward') {
+    data.indexArr++
+  } else if (direction === 'back') {
+    data.indexArr--
+  }
 
   // checking inappropriate chars and skipping those
   let currentChar = data.fragmentArr[data.indexArr]
@@ -119,10 +134,18 @@ export const moveCaret = function () {
       data.fragmentArr[data.indexArr + 1] === ' ' &&
       data.fragmentArr[data.indexArr - 1] === ' '
     ) {
-      data.indexArr++
+      if (direction === 'forward') {
+        data.indexArr++
+      } else if (direction === 'back') {
+        data.indexArr--
+      }
     }
 
-    data.indexArr++
+    if (direction === 'forward') {
+      data.indexArr++
+    } else if (direction === 'back') {
+      data.indexArr--
+    }
     currentChar = data.fragmentArr[data.indexArr]
   }
 
@@ -156,6 +179,7 @@ export const clearStat = function () {
 
   data.numCorrect = 0
   data.numWrong = 0
+  data.numRevised = 0
 
   data.tempWithoutMistake = 0
   data.withoutMistake = 0

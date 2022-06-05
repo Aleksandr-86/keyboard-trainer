@@ -8,7 +8,7 @@ import { storage } from '../store/storage.js'
 
 // forming the temp string
 const tempStr = computed(() => {
-  const numTotal = data.numCorrect + data.numWrong
+  const numTotal = data.numCorrect + data.numWrong + data.numRevised
 
   if (numTotal >= 11 && numTotal <= 14) {
     return `Всего набрано <b>${numTotal}</b> знаков, из них:`
@@ -26,14 +26,27 @@ const tempStr = computed(() => {
 
 const strCorrectPercent = computed(
   () =>
-    `(${rnd((data.numCorrect * 100) / (data.numCorrect + data.numWrong), 2)}%)`
+    `(${rnd(
+      ((data.numCorrect + data.numRevised) * 100) /
+        (data.numCorrect + data.numWrong + data.numRevised),
+      2
+    )}%)`
 )
+
 const strWrongPercent = computed(
   () =>
-    `(${rnd((data.numWrong * 100) / (data.numCorrect + data.numWrong), 2)}%)`
+    `(${rnd(
+      (data.numWrong * 100) /
+        (data.numCorrect + data.numWrong + data.numRevised),
+      2
+    )}%)`
 )
+
 const charPerSecond = computed(() =>
-  rnd(((data.numCorrect + data.numWrong) * 60) / (data.elapsedTime / 1000))
+  rnd(
+    ((data.numCorrect + data.numWrong - data.numRevised) * 60) /
+      (data.elapsedTime / 1000)
+  )
 )
 
 const isSnippet = typeof data.currentBook === 'object'
@@ -52,6 +65,17 @@ function keyDown(e) {
     document.body.querySelector(data.focusElement).focus()
   }
 }
+
+const textSize = computed(() => {
+  let size = 0
+  for (let i = 0; i < data.fragmentArr.length; i++) {
+    const char = data.fragmentArr[i]
+    if (char === 'end') break
+    if (char === 'skip') continue
+    size++
+  }
+  return size
+})
 
 onMounted(() => {
   // const statArr = data.statArr
@@ -91,6 +115,8 @@ onUnmounted(() => {
     <h4 v-if="isSnippet" class="stat-violet">«{{ book.title }}»</h4>
     <h4 v-if="isSnippet" class="stat-violet">{{ book.author }}</h4>
 
+    <div class="stat-line"></div>
+
     <div class="stat-first-column">Время набора:</div>
     <div class="stat-second-column">
       <div>{{ data.elapsedTimeStr.split('.')[0] }}</div>
@@ -100,18 +126,33 @@ onUnmounted(() => {
     <div class="stat-first-column">Cкорость набора, зн/мин:</div>
     <div class="stat-second-column">{{ charPerSecond }}</div>
 
+    <div class="stat-line"></div>
+
     <div
       v-if="data.numWrong === 0"
-      class="stat-line"
+      class="stat-float-left"
       v-html="tempStr.split(',')[0] + ' без единой ошибки.'"></div>
     <div v-else>
+      <div class="stat-first-column">Объём текста, зн:</div>
+      <div class="stat-second-column">{{ textSize }}</div>
+
       <div class="stat-row-last">
         <div class="stat-first-column" v-html="tempStr"></div>
       </div>
 
-      <div class="stat-first-column">- правильных</div>
+      <div
+        v-if="data.numCorrect !== 0 && data.numRevised !== 0"
+        class="stat-first-column">
+        - правильных и исправленных
+      </div>
+      <div
+        v-else-if="data.numCorrect !== 0 && data.numRevised === 0"
+        class="stat-first-column">
+        - правильных
+      </div>
+      <div v-else class="stat-first-column">- исправленных</div>
       <div class="stat-second-column">
-        <div>{{ data.numCorrect }}</div>
+        <div>{{ data.numCorrect + data.numRevised }}</div>
         <div class="stat-green">{{ strCorrectPercent }}</div>
       </div>
 
@@ -120,6 +161,8 @@ onUnmounted(() => {
         <div>{{ data.numWrong }}</div>
         <div class="stat-red">{{ strWrongPercent }}</div>
       </div>
+
+      <div class="stat-line"></div>
 
       <div class="stat-row-last">
         <div class="stat-first-column">
@@ -178,13 +221,17 @@ h4 {
   overflow-wrap: break-word;
 }
 
+.stat-line {
+  border-bottom: 0.1vh solid black;
+  margin-top: 0.5vh;
+  width: 100%;
+}
+
 .stat-violet {
-  /* color: hsl(282, 100%, 23%); */
   color: v-bind(titleColor);
 }
 
 .stat-green {
-  /* color: hsl(135, 100%, 30%); */
   color: v-bind(correctColor);
   margin-left: 1vh;
 }
@@ -218,13 +265,13 @@ h4 {
   font-weight: bold;
 }
 
-.stat-line {
+.stat-float-left {
   float: left;
 }
 
 .stat-row-last {
   display: flex;
-  justify-content: space-between;
   align-items: flex-end;
+  width: 100%;
 }
 </style>

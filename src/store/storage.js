@@ -2,16 +2,17 @@ import { reactive } from 'vue'
 
 export const storage = reactive({
   currentStatistics: {
-    colors: 'hsl(60, 65%, 50%, 1)'
+    colors: 'hsl(165, 75%, 45%, 1)'
   },
   field: {
     background: 'hsla(0, 0%, 60%, 1)',
     charBackground: 'hsla(0, 0%, 0%, 0.65)',
     caretBackground: 'hsla(280, 85%, 70%, 0.65)',
     charColor: 'hsla(0, 0%, 67%, 1)',
-    charCorrectColor: 'hsla(144, 65%, 45%, 1)',
+    charCorrectColor: 'hsla(144, 65%, 47%, 1)',
     charWrongColor: 'hsla(0, 100%, 60%, 1)',
-    charSpecialColor: 'hsl(180, 100%, 45%, 0.75)'
+    charRevisedColor: 'hsla(85, 65%, 50%, 1)',
+    charSpecialColor: 'hsl(180, 100%, 50%, 0.75)'
   },
   keyboard: {
     background: 'hsla(0, 0%, 15%, 1)',
@@ -38,12 +39,13 @@ export const storage = reactive({
   overallStatistics: {
     title: 'hsla(282, 100%, 25%, 1)',
     ms: 'hsla(240, 100%, 30%, 1)',
-    correct: 'hsla(135, 100%, 25%, 1)',
+    correct: 'hsla(135, 100%, 33%, 1)',
     wrong: 'hsla(0, 100%, 30%, 1)'
   },
   shadow: {
     charCorrect: false,
     charWrong: true,
+    charRevised: false,
     charSpecial: true
   },
   visibility: { currentStatistics: true, keyboard: true }

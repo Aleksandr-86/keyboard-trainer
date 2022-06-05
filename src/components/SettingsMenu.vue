@@ -100,16 +100,17 @@ const closeSettingsMenu = function () {
 
 const defaultValues = {
   currentStatistics: {
-    colors: 'hsl(60, 65%, 50%, 1)'
+    colors: 'hsl(165, 75%, 45%, 1)'
   },
   field: {
     background: 'hsla(0, 0%, 60%, 1)',
     charBackground: 'hsla(0, 0%, 0%, 0.65)',
     caretBackground: 'hsla(280, 85%, 70%, 0.65)',
     charColor: 'hsla(0, 0%, 67%, 1)',
-    charCorrectColor: 'hsla(144, 65%, 45%, 1)',
+    charCorrectColor: 'hsla(144, 65%, 47%, 1)',
     charWrongColor: 'hsla(0, 100%, 60%, 1)',
-    charSpecialColor: 'hsl(180, 100%, 45%, 0.75)'
+    charRevisedColor: 'hsla(85, 65%, 50%, 1)',
+    charSpecialColor: 'hsl(180, 100%, 50%, 0.75)'
   },
   keyboard: {
     background: 'hsla(0, 0%, 15%, 1)',
@@ -136,12 +137,13 @@ const defaultValues = {
   overallStatistics: {
     title: 'hsla(282, 100%, 25%, 1)',
     ms: 'hsla(240, 100%, 30%, 1)',
-    correct: 'hsla(135, 100%, 25%, 1)',
+    correct: 'hsla(135, 100%, 33%, 1)',
     wrong: 'hsla(0, 100%, 30%, 1)'
   },
   shadow: {
     charCorrect: false,
     charWrong: true,
+    charRevised: false,
     charSpecial: true
   },
   visibility: { currentStatistics: true, keyboard: true }
@@ -154,6 +156,11 @@ function clearSettings() {
   data.backgroundPreview = 0
   localStorage.clear()
   state.settings = false
+}
+
+const keyDown = function (e) {
+  const code = e.code
+  if (code === 'Enter' || code === 'Escape') closeSettingsMenu()
 }
 </script>
 
@@ -184,7 +191,7 @@ function clearSettings() {
           obj="visibility"
           prop="keyboard" />
         <Checkbox title="Отображать засечки" obj="keyboard" prop="underline" />
-        <Input />
+        <Input @keydown="keyDown" />
 
         <div class="settings-image">
           <img
@@ -239,6 +246,10 @@ function clearSettings() {
           obj="field"
           prop="charWrongColor" />
         <HslaSlider
+          title="исправленный символ"
+          obj="field"
+          prop="charRevisedColor" />
+        <HslaSlider
           title="ненабираемый символ"
           obj="field"
           prop="charSpecialColor" />
@@ -253,6 +264,10 @@ function clearSettings() {
             title="неверно введённый символ"
             obj="shadow"
             prop="charWrong" />
+          <Checkbox
+            title="исправленный символ"
+            obj="shadow"
+            prop="charRevised" />
           <Checkbox
             title="ненабираемый символ"
             obj="shadow"

@@ -190,8 +190,7 @@ export const isAuxiliaryKeys = function (code) {
     code == 'ContexMenu' ||
     code == 'MetaRight' ||
     code === 'ControlRight' ||
-    code === 'ShiftRight' ||
-    code === 'Backspace'
+    code === 'ShiftRight'
   ) {
     return true
   } else {

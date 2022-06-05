@@ -1,5 +1,7 @@
 <script setup>
 import { computed } from '@vue/reactivity'
+import { playAudio } from '../services/helpers.js'
+import clickSound from '/src/assets/sounds/click-sound.mp3'
 import { storage } from '../store/storage.js'
 
 const props = defineProps({
@@ -25,6 +27,10 @@ const cursor = computed(() => {
     return 'pointer'
   }
 })
+
+function mouseUp() {
+  if (storage.main.speaker) playAudio(clickSound, storage.main.volume)
+}
 </script>
 
 <template>
@@ -32,6 +38,7 @@ const cursor = computed(() => {
     <div class="slider">
       <input
         v-model="storage[props.obj][props.prop]"
+        @mouseup="mouseUp"
         type="range"
         class="slider-input"
         min="0"

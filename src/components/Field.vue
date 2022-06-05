@@ -31,6 +31,7 @@ const charBackground = computed(() => storage.field.charBackground)
 const charColor = computed(() => storage.field.charColor)
 const charCorrectColor = computed(() => storage.field.charCorrectColor)
 const charWrongColor = computed(() => storage.field.charWrongColor)
+const charRevisedColor = computed(() => storage.field.charRevisedColor)
 const charSpecialColor = computed(() => storage.field.charSpecialColor)
 const caretBackground = computed(() => storage.field.caretBackground)
 
@@ -45,6 +46,14 @@ const charCorrectShadow = computed(() => {
 
 const charWrongShadow = computed(() => {
   if (storage.shadow.charWrong) {
+    return 'drop-shadow(3px 2px 2px)'
+  } else {
+    return 'none'
+  }
+})
+
+const charRevisedShadow = computed(() => {
+  if (storage.shadow.charRevised) {
     return 'drop-shadow(3px 2px 2px)'
   } else {
     return 'none'
@@ -69,10 +78,13 @@ const eListener = function (e) {
   if (state.settings) return
 
   events.keyDn = e
-  const code = e.code
   events.keyValue = e.key
+  const code = e.code
 
-  if (data.indexArr === 0 && code === 'Enter') {
+  if (
+    (data.indexArr === 0 && code === 'Enter') ||
+    (data.indexArr === 0 && code === 'Backspace')
+  ) {
     return
   } else if (data.indexArr !== 0 && code === 'Enter') {
     data.timerStop = performance.now()
@@ -109,7 +121,20 @@ const eListener = function (e) {
   }
 
   recordingStatistics(e)
-  moveCaret(code)
+  if (code === 'Backspace' && data.indexArr > 0) {
+    data.remainingChars++
+    data.tempWithoutMistake = 0
+    moveCaret('back')
+
+    if (data.statArr[data.indexArr] === '2') {
+      data.statArr[data.indexArr] = '3'
+    } else if (data.statArr[data.indexArr] === '1') {
+      data.statArr[data.indexArr] = '0'
+    }
+  } else {
+    data.remainingChars--
+    moveCaret()
+  }
 }
 
 onMounted(() => {
@@ -133,18 +158,21 @@ onUnmounted(() => {
       :class="[
         { 'char-caret': index === indexArr % 200 },
         {
+          'char-correct': statArr[index + firstIndex] === '1' && char !== ' '
+        },
+        {
+          'char-wrong': statArr[index + firstIndex] === '2'
+        },
+        {
+          'char-revised': statArr[index + firstIndex] === '4'
+        },
+        {
           'char-special-active':
             char !== 'skip' &&
             statArr[index + firstIndex] === '0' &&
             index < indexArr % 200
         },
-        { 'char-special-inactive': charTest(char) },
-        {
-          'char-correct': statArr[index + firstIndex] === '1' && char !== ' '
-        },
-        {
-          'char-wrong': statArr[index + firstIndex] === '2'
-        }
+        { 'char-special-inactive': charTest(char) }
       ]">
       <div v-if="char === 'skip'">&nbsp;</div>
       <div v-else-if="char === 'end'">&nbsp;</div>
@@ -218,6 +246,11 @@ onUnmounted(() => {
 .char-wrong {
   color: v-bind(charWrongColor);
   filter: v-bind(charWrongShadow);
+}
+
+.char-revised {
+  color: v-bind(charRevisedColor);
+  filter: v-bind(charRevisedShadow);
 }
 
 .char-special-inactive {
