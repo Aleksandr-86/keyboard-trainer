@@ -136,8 +136,8 @@ const defaultValues = {
   },
   overallStatistics: {
     title: 'hsla(282, 100%, 25%, 1)',
-    ms: 'hsla(240, 100%, 30%, 1)',
-    correct: 'hsla(135, 100%, 33%, 1)',
+    ms: 'hsla(240, 60%, 40%, 1)',
+    correct: 'hsla(135, 100%, 27%, 1)',
     wrong: 'hsla(0, 100%, 30%, 1)'
   },
   shadow: {
