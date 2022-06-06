@@ -27,9 +27,9 @@ export const data = reactive({
   elapsedTimeStr: '00:00.00',
   charPerMin: '000',
 
+  numDialed: 0,
   numCorrect: 0,
-  numWrong: 0,
-  numRevised: 0,
+  numErrors: 0,
 
   tempWithoutMistake: 0,
   withoutMistake: 0,
@@ -50,31 +50,32 @@ export const recordingStatistics = function (e) {
     char = char.toLowerCase()
   }
 
-  if (key === 'Backspace' && data.indexArr !== 0) {
-    // e.preventDefault()
+  if (e.code === 'Backspace' && data.indexArr !== 0) {
     return
   } else if (key === char) {
-    // the input char is correct
     if (data.statArr[data.indexArr] === '0') {
-      data.statArr[data.indexArr] = '1' // the char is correct
-      data.numCorrect++
-    } else if (data.statArr[data.indexArr] === '3') {
-      data.statArr[data.indexArr] = '4' // the revised char is correct
-      data.numRevised++
+      data.statArr[data.indexArr] = '2' // the char is correct
+      data.numDialed++
+    } else if (data.statArr[data.indexArr] === '4') {
+      data.statArr[data.indexArr] = '3' // the revised char is correct
     }
+
+    data.numCorrect++
     data.tempWithoutMistake++
+
     if (data.withoutMistake < data.tempWithoutMistake) {
       data.withoutMistake = data.tempWithoutMistake
     }
-    // data.numCorrect++
   } else if (key !== char) {
-    // the input char is wrong
-    data.statArr[data.indexArr] = '2' // the char is wrong
+    if (data.statArr[data.indexArr] === '0') data.numDialed++
+    data.statArr[data.indexArr] = '4' // the char is wrong
+
     // counting the number of letters without mistake
     if (data.withoutMistake < data.tempWithoutMistake) {
       data.withoutMistake = data.tempWithoutMistake
     }
-    data.numWrong++
+
+    data.numErrors++
     data.tempWithoutMistake = 0
   }
 }
@@ -177,9 +178,9 @@ export const clearStat = function () {
   data.elapsedTimeStr = '00:00.00'
   data.charPerMin = '000'
 
+  data.numDialed = 0
   data.numCorrect = 0
-  data.numWrong = 0
-  data.numRevised = 0
+  data.numErrors = 0
 
   data.tempWithoutMistake = 0
   data.withoutMistake = 0

@@ -110,8 +110,7 @@ const eListener = function (e) {
       data.elapsedTime = performance.now() - data.timerStart
       data.elapsedTimeStr = msToMinutes(data.elapsedTime)
       let charPerMin = Math.floor(
-        ((data.numCorrect + data.numWrong + data.numRevised) * 60) /
-          (Math.floor(data.elapsedTime) / 1000)
+        (data.numDialed * 60) / (Math.floor(data.elapsedTime) / 1000)
       )
         .toString()
         .padStart(3, '0')
@@ -121,16 +120,17 @@ const eListener = function (e) {
   }
 
   recordingStatistics(e)
+
   if (code === 'Backspace' && data.indexArr > 0) {
     data.remainingChars++
     data.tempWithoutMistake = 0
     moveCaret('back')
 
-    if (data.statArr[data.indexArr] === '2') {
-      data.statArr[data.indexArr] = '3'
-    } else if (data.statArr[data.indexArr] === '1') {
-      data.statArr[data.indexArr] = '0'
-    }
+    // if (data.statArr[data.indexArr] === '4') {
+    //   data.statArr[data.indexArr] = '2'
+    // } else if (data.statArr[data.indexArr] === '2') {
+    //   data.statArr[data.indexArr] = '1'
+    // }
   } else {
     data.remainingChars--
     moveCaret()
@@ -158,18 +158,23 @@ onUnmounted(() => {
       :class="[
         { 'char-caret': index === indexArr % 200 },
         {
-          'char-correct': statArr[index + firstIndex] === '1' && char !== ' '
+          'char-correct':
+            statArr[index + firstIndex] === '2' &&
+            char !== ' ' &&
+            index < indexArr % 200
         },
         {
-          'char-wrong': statArr[index + firstIndex] === '2'
+          'char-revised':
+            statArr[index + firstIndex] === '3' && index < indexArr % 200
         },
         {
-          'char-revised': statArr[index + firstIndex] === '4'
+          'char-wrong':
+            statArr[index + firstIndex] === '4' && index < indexArr % 200
         },
         {
           'char-special-active':
             char !== 'skip' &&
-            statArr[index + firstIndex] === '0' &&
+            statArr[index + firstIndex] === '1' &&
             index < indexArr % 200
         },
         { 'char-special-inactive': charTest(char) }

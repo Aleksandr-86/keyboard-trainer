@@ -6,47 +6,18 @@ import { data } from '../store/data.js'
 import { state } from '../store/state.js'
 import { storage } from '../store/storage.js'
 
-// forming the temp string
-const tempStr = computed(() => {
-  const numTotal = data.numCorrect + data.numWrong + data.numRevised
-
-  if (numTotal >= 11 && numTotal <= 14) {
-    return `Всего набрано <b>${numTotal}</b> знаков, из них:`
-  } else if (numTotal % 10 === 1) {
-    return `Всего набран <b>${numTotal}</b> знак, из них:`
-  } else if (numTotal % 10 >= 2 && numTotal % 10 <= 4) {
-    return `Всего набрано <b>${numTotal}</b> знака, из них:`
-  } else if (
-    numTotal % 10 === 0 ||
-    (numTotal % 10 >= 5 && numTotal % 10 <= 9)
-  ) {
-    return `Всего набрано <b>${numTotal}</b> знаков, из них:`
-  }
-})
-
 const strCorrectPercent = computed(
   () =>
-    `(${rnd(
-      ((data.numCorrect + data.numRevised) * 100) /
-        (data.numCorrect + data.numWrong + data.numRevised),
-      2
-    )}%)`
+    `(${rnd((data.numCorrect * 100) / (data.numCorrect + data.numErrors), 2)}%)`
 )
 
-const strWrongPercent = computed(
+const strErrorsPercent = computed(
   () =>
-    `(${rnd(
-      (data.numWrong * 100) /
-        (data.numCorrect + data.numWrong + data.numRevised),
-      2
-    )}%)`
+    `(${rnd((data.numErrors * 100) / (data.numCorrect + data.numErrors), 2)}%)`
 )
 
 const finalCharPerMin = computed(() =>
-  rnd(
-    ((data.numCorrect + data.numWrong + data.numRevised) * 60) /
-      (data.elapsedTime / 1000)
-  )
+  rnd((data.numDialed * 60) / (data.elapsedTime / 1000))
 )
 
 const isSnippet = typeof data.currentBook === 'object'
@@ -66,31 +37,7 @@ function keyDown(e) {
   }
 }
 
-const textSize = computed(() => {
-  let size = 0
-  for (let i = 0; i < data.fragmentArr.length; i++) {
-    const char = data.fragmentArr[i]
-    if (char === 'end') break
-    if (char === 'skip') continue
-    size++
-  }
-  return size
-})
-
-onMounted(() => {
-  // const statArr = data.statArr
-
-  // for (let i = 0; i < statArr.length; i++) {
-  //   const element = statArr[i]
-  //   if (element === '1') {
-  //     data.numCorrect++
-  //   } else if (element === '2') {
-  //     data.numWrong++
-  //   }
-  // }
-
-  statistics.focus()
-})
+onMounted(() => statistics.focus())
 
 onUnmounted(() => {
   state.bTimer = false
@@ -100,9 +47,9 @@ onUnmounted(() => {
   data.elapsedTime = 0
   data.elapsedTimeStr = '00:00.00'
 
+  data.numDialed = 0
   data.numCorrect = 0
-  data.numWrong = 0
-  data.numRevised = 0
+  data.numErrors = 0
 
   data.currentBook = 0
 })
@@ -124,43 +71,38 @@ onUnmounted(() => {
       <div class="stat-ms">.{{ data.elapsedTimeStr.split('.')[1] }}</div>
     </div>
 
+    <div class="stat-first-column">Количество знаков отрывка:</div>
+    <div class="stat-second-column">{{ data.numDialed }}</div>
+
     <div class="stat-first-column">Cкорость набора, зн/мин:</div>
     <div class="stat-second-column">{{ finalCharPerMin }}</div>
 
-    <div class="stat-line"></div>
+    <div v-if="data.numErrors !== 0" class="stat-line"></div>
 
     <div
-      v-if="data.numWrong === 0"
-      class="stat-float-left"
-      v-html="tempStr.split(',')[0] + ' без единой ошибки.'"></div>
-    <div v-else>
-      <div class="stat-first-column">Объём текста, зн:</div>
-      <div class="stat-second-column">{{ textSize }}</div>
-
+      v-if="
+        (data.numCorrect !== 0 && data.numCorrect !== data.numDialed) ||
+        data.numErrors !== 0
+      ">
       <div class="stat-row-last">
-        <div class="stat-first-column" v-html="tempStr"></div>
+        <div class="stat-first-column">Количество:</div>
+        <div class="stat-second-column"></div>
       </div>
 
-      <div
-        v-if="data.numCorrect !== 0 && data.numRevised !== 0"
-        class="stat-first-column">
-        - правильных и исправленных
-      </div>
-      <div
-        v-else-if="data.numCorrect !== 0 && data.numRevised === 0"
-        class="stat-first-column">
-        - правильных
-      </div>
-      <div v-else class="stat-first-column">- исправленных</div>
-      <div class="stat-second-column">
-        <div>{{ data.numCorrect + data.numRevised }}</div>
-        <div class="stat-green">{{ strCorrectPercent }}</div>
+      <div v-if="data.numCorrect !== 0">
+        <div class="stat-first-column">- правильно введённых знаков:</div>
+        <div class="stat-second-column">
+          <div>{{ data.numCorrect }}</div>
+          <div class="stat-green">{{ strCorrectPercent }}</div>
+        </div>
       </div>
 
-      <div class="stat-first-column">- ошибочных</div>
-      <div class="stat-second-column">
-        <div>{{ data.numWrong }}</div>
-        <div class="stat-red">{{ strWrongPercent }}</div>
+      <div v-if="data.numErrors !== 0">
+        <div class="stat-first-column">- ошибок:</div>
+        <div class="stat-second-column">
+          <div>{{ data.numErrors }}</div>
+          <div class="stat-red">{{ strErrorsPercent }}</div>
+        </div>
       </div>
 
       <div class="stat-line"></div>
@@ -173,6 +115,7 @@ onUnmounted(() => {
       </div>
     </div>
   </div>
+
   <div
     @click.left="state.overallStatistics = false"
     v-if="state.overallStatistics"
