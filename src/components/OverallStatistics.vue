@@ -114,6 +114,10 @@ onUnmounted(() => {
         <div class="stat-second-column">{{ data.withoutMistake }}</div>
       </div>
     </div>
+    <div v-else>
+      <div class="stat-line"></div>
+      <div class="stat-row-last">Отрывок набран без единой ошибки 🎉</div>
+    </div>
   </div>
 
   <div

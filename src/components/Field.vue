@@ -123,7 +123,7 @@ const eListener = function (e) {
 
   if (code === 'Backspace' && data.indexArr > 0) {
     data.remainingChars++
-    data.tempWithoutMistake = 0
+    data.tempWithoutMistake--
     moveCaret('back')
 
     // if (data.statArr[data.indexArr] === '4') {
