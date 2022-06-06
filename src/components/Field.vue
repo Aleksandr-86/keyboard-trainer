@@ -123,14 +123,10 @@ const eListener = function (e) {
 
   if (code === 'Backspace' && data.indexArr > 0) {
     data.remainingChars++
-    data.tempWithoutMistake--
     moveCaret('back')
-
-    // if (data.statArr[data.indexArr] === '4') {
-    //   data.statArr[data.indexArr] = '2'
-    // } else if (data.statArr[data.indexArr] === '2') {
-    //   data.statArr[data.indexArr] = '1'
-    // }
+    if (data.statArr[data.indexArr] === '2' && data.tempWithoutMistake > 0) {
+      data.tempWithoutMistake--
+    }
   } else {
     data.remainingChars--
     moveCaret()
