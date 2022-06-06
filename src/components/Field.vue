@@ -98,8 +98,6 @@ const eListener = function (e) {
     return
   }
 
-  if (storage.main.speaker) playAudio(clickSound, storage.main.volume)
-
   if (!state.bTimer) {
     // timer on
     state.bTimer = true
@@ -124,10 +122,15 @@ const eListener = function (e) {
   if (code === 'Backspace' && data.indexArr > 0) {
     data.remainingChars++
     moveCaret('back')
-    if (data.statArr[data.indexArr] === '2' && data.tempWithoutMistake > 0) {
+    if (
+      '23'.includes(data.statArr[data.indexArr]) &&
+      data.tempWithoutMistake > 0
+    ) {
       data.tempWithoutMistake--
     }
   } else {
+    if (storage.main.speaker) playAudio(clickSound, storage.main.volume)
+
     data.remainingChars--
     moveCaret()
   }
