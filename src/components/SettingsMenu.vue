@@ -130,7 +130,7 @@ const defaultValues = {
     langOfSnippets: 'russian',
     minSnippetLength: 160,
     letterCase: true,
-    speaker: false,
+    speaker: true,
     ring: true,
     volume: 0.2
   },
