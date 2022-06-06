@@ -51,14 +51,12 @@ onMounted(() => {
 }
 
 html {
-  /*box-sizing: border-box;*/
   overflow: hidden;
 }
 
 #app {
   width: 100vw;
   height: 100vh;
-
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -67,6 +65,7 @@ html {
 
 #background {
   position: absolute;
+  z-index: -1;
   width: 100vw;
   height: 100vh;
   background: no-repeat center center fixed;
@@ -74,7 +73,6 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  z-index: -1;
   background-image: v-bind(backgroundPath);
   -webkit-transition: background-image 0.5s linear;
   -moz-transition: background-image 0.5s linear;

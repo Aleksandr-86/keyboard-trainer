@@ -33,9 +33,9 @@ function keyDown(e) {
 .input-container {
   display: flex;
   justify-content: space-between;
-  padding: 0 1px 0 2px;
   align-items: center;
   margin-bottom: 10px;
+  padding: 0 1px 0 2px;
 }
 
 .input-description {
@@ -49,8 +49,6 @@ function keyDown(e) {
   height: 50px;
   font-size: 25px;
   font-weight: bold;
-  /* padding: 0 10px 0 10px; */
-  /* text-indent: 5px; */
   text-align: center;
 }
 </style>

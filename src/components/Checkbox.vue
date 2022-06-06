@@ -43,19 +43,17 @@ const cursor = computed(() => {
 
 <style scoped>
 .checkbox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: relative;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 37px;
-  border-radius: 7px;
-
-  padding: 0 1px 0 2px;
   margin-bottom: 12px;
+  padding: 0 1px 0 2px;
   font-size: 25px;
-  user-select: none;
+  border-radius: 7px;
   opacity: v-bind(opacity);
+  user-select: none;
   cursor: v-bind(cursor);
 }
 
@@ -65,26 +63,22 @@ const cursor = computed(() => {
 
 .checkbox input {
   position: absolute;
+  width: 0;
+  height: 0;
   opacity: 0;
   cursor: pointer;
-  height: 0;
-  width: 0;
 }
 
 .checkbox-title {
-  text-align: left;
   margin-bottom: 2px;
+  text-align: left;
 }
 
 .check-mark {
-  /* position: absolute; */
   position: relative;
-  /* top: 3px; */
   right: 0;
-  /* height: 25px;
-  width: 25px; */
-  height: 35px;
   width: 35px;
+  height: 35px;
   background-color: hsl(0, 0%, 93%);
   border-radius: 7px;
 }
@@ -98,9 +92,9 @@ const cursor = computed(() => {
 }
 
 .check-mark:after {
-  content: '';
   position: absolute;
   display: none;
+  content: '';
 }
 
 .checkbox input:checked ~ .check-mark:after {
@@ -108,8 +102,8 @@ const cursor = computed(() => {
 }
 
 .checkbox .check-mark:after {
-  left: 12px;
   top: 5px;
+  left: 12px;
   width: 8px;
   height: 17px;
   border: solid white;

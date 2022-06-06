@@ -255,9 +255,9 @@ const boardColor = computed(() => {
   width: 971px;
   height: 328px;
   margin: 0 auto;
-  user-select: none;
   background: v-bind(keyboardBackground);
   border-radius: 15px;
+  user-select: none;
 }
 
 .keyboard:hover {
@@ -275,12 +275,11 @@ const boardColor = computed(() => {
   margin-right: 3px;
   font-size: 23px;
   font-family: 'Consolas', monospace;
+  color: v-bind(keyColor);
+  background: v-bind(keyBackground);
+  border-radius: 15px;
   text-align: center;
   text-transform: capitalize;
-  background: v-bind(keyBackground);
-  color: v-bind(keyColor);
-  /* border: none; */
-  border-radius: 15px;
 }
 
 .button > div {
@@ -310,8 +309,8 @@ const boardColor = computed(() => {
 }
 
 .button-marked-shift {
-  box-shadow: inset 0 0 0 3px v-bind(shiftColor);
   color: v-bind(shiftColor);
+  box-shadow: inset 0 0 0 3px v-bind(shiftColor);
 }
 
 #keyf,

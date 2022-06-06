@@ -16,8 +16,6 @@ async function fillFieldFromBuffer() {
     if (str === ' ' || str === '' || str === '\r\n') return // buffer is empty
     loadFragment(str)
   } else if (br === 'firefox') {
-    // let str = document.querySelector('#input').value
-    // charInserter(strPreparer(str), 0)
   }
 }
 
@@ -84,19 +82,19 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
 
 <style scoped>
 .nav-speaker {
-  margin-top: 13px;
   left: 10px;
+  margin-top: 13px;
 }
 .nav {
-  background: hsla(0, 0%, 8%, 0.8);
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
-  list-style: none;
+  flex-wrap: wrap;
   height: 70px;
   font-family: 'Montserrat', sans-serif;
-  flex-wrap: wrap;
-  z-index: 10;
+  list-style: none;
+  background: hsla(0, 0%, 8%, 0.8);
   user-select: none;
 }
 
@@ -111,22 +109,22 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
 #nav-snippet,
 #nav-drop-down,
 #nav-settings {
-  padding: 20px 0 20px 0;
   position: relative;
-  text-transform: uppercase;
+  padding: 20px 0 20px 0;
   color: hsl(210, 13%, 50%);
-  font-weight: bold;
-  letter-spacing: 0;
   font-size: 25px;
+  font-weight: bold;
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0;
 }
 
 #nav-buffer:hover,
 #nav-snippet:hover,
 #nav-drop-down:hover,
 #nav-settings:hover {
-  text-decoration: none;
   color: rgb(22, 198, 93);
+  text-decoration: none;
 }
 
 .nav li {
@@ -147,23 +145,23 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
 }
 
 .nav li.nav-children:hover > ul {
-  opacity: 1;
+  position: absolute;
   visibility: visible;
   background: rgba(20, 20, 20, 0.8);
-  position: absolute;
+  opacity: 1;
 }
 
 .nav ul {
-  padding: 10px 0;
-  margin: 0;
-  list-style: none;
   position: absolute;
-  z-index: 20;
-  min-width: 220px;
-  text-align: left;
   top: 100%;
-  opacity: 0;
+  z-index: 20;
   visibility: hidden;
+  min-width: 220px;
+  margin: 0;
+  padding: 10px 0;
+  text-align: left;
+  list-style: none;
+  opacity: 0;
   transition: all 350ms;
 }
 
@@ -171,7 +169,6 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
   display: block;
   padding: 0 5px;
   line-height: 1.1;
-  /* text-align: left; */
 }
 
 .nav ul li:last-child {
@@ -180,16 +177,14 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
 
 .nav ul li a {
   display: block;
-  color: rgb(112, 128, 144);
   padding: 10px;
+  color: rgb(112, 128, 144);
   transition: all 300ms;
-  /* text-decoration: none; */
 }
 
 .nav ul li a:hover {
   color: rgb(0, 0, 0);
   background: darkseagreen;
-  /* text-decoration: none; */
 }
 
 .nav > li > ul > li > a {

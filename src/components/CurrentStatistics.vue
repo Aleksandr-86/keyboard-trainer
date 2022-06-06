@@ -76,11 +76,11 @@ const background = computed(() => {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 5px auto;
   width: fit-content;
-  background: v-bind(background);
+  margin: 5px auto;
   font-size: 35px;
   color: v-bind(color);
+  background: v-bind(background);
   border: 2px solid v-bind(color);
   border-radius: 10px;
   user-select: none;
@@ -95,8 +95,8 @@ const background = computed(() => {
   display: flex;
   justify-content: center;
   align-content: stretch;
-  padding: 5px 10px 5px 10px;
   min-width: 129px;
+  padding: 5px 10px 5px 10px;
   border-right: 2px solid v-bind(color);
   overflow: hidden;
   white-space: nowrap;
@@ -104,20 +104,20 @@ const background = computed(() => {
 }
 
 .remaining-chars {
-  padding: 5px 10px 5px 10px;
   min-width: 59px;
+  padding: 5px 10px 5px 10px;
   border-right: 2px solid v-bind(color);
 }
 
 .char-per-minute {
-  padding: 5px 10px 5px 10px;
   min-width: 59px;
+  padding: 5px 10px 5px 10px;
   border-right: 2px solid v-bind(color);
 }
 
 .elapsed-time {
-  padding: 5px 10px 5px 10px;
   min-width: 129px;
+  padding: 5px 10px 5px 10px;
   text-align: center;
 }
 </style>

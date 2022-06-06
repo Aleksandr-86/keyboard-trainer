@@ -370,28 +370,27 @@ const keyDown = function (e) {
   position: absolute;
   top: 0;
   left: 0;
-  background: hsl(120, 2%, 22%);
-  color: hsl(0, 0%, 78%);
+  z-index: 2;
   width: 455px;
   height: 100vh;
-  box-shadow: none;
   padding: 20px 20px;
-  font-size: 25px;
   font-family: 'Montserrat', sans-serif;
-  user-select: none;
+  font-size: 25px;
+  color: hsl(0, 0%, 78%);
+  background: hsl(120, 2%, 22%);
+  box-shadow: none;
   overflow: auto;
-  z-index: 2;
+  user-select: none;
 }
 
 .settings-title-container {
   display: flex;
-  height: 29px;
   justify-content: space-between;
-  /* align-items: center; */
-  border-bottom: 2px solid hsl(0, 0%, 78%);
+  z-index: 20;
+  height: 29px;
   margin-bottom: 10px;
   padding-bottom: 19px;
-  z-index: 20;
+  border-bottom: 2px solid hsl(0, 0%, 78%);
 }
 
 .settings-title {
@@ -403,11 +402,11 @@ const keyDown = function (e) {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: hsl(0, 0%, 50%);
   width: 29px;
   height: 29px;
-  border-radius: 7px;
+  background-color: hsl(0, 0%, 50%);
   border: none;
+  border-radius: 7px;
 }
 
 .settings-btn-page:hover {
@@ -419,9 +418,9 @@ const keyDown = function (e) {
 }
 
 .arrow {
-  color: inherit;
   width: 10px;
   height: 10px;
+  color: inherit;
   border-top: 3px solid var(--btn-color);
   border-right: 3px solid var(--btn-color);
 }
@@ -449,13 +448,12 @@ const keyDown = function (e) {
   justify-content: center;
   align-items: center;
   width: 455px;
-  /* height: 37px; */
+  margin-bottom: 10px;
   font: inherit;
   font-weight: bold;
+  background-color: hsl(33, 100%, 88%);
   border: none;
   border-radius: 7px;
-  margin-bottom: 10px;
-  background-color: hsl(33, 100%, 88%);
 }
 
 .settings-btn-default:hover {
@@ -471,16 +469,16 @@ const keyDown = function (e) {
 }
 
 .settings-category {
+  margin-bottom: 7px;
   text-align: left;
   text-decoration: underline;
-  margin-bottom: 7px;
 }
 
 .settings-category-margin {
+  margin-bottom: 14px;
+  padding-left: 2px;
   text-align: left;
   text-decoration: underline;
-  padding-left: 2px;
-  margin-bottom: 14px;
 }
 
 .settings-shadow-checkbox {
@@ -488,28 +486,25 @@ const keyDown = function (e) {
 }
 
 .settings-description {
-  /* border: 1px solid green; */
-  text-align: left;
-  /* height: 29px; */
   margin-bottom: 2px;
+  text-align: left;
 }
 
-/* checkbox */
 .settings-image {
-  display: flex;
   margin-bottom: 10px;
+  display: flex;
 }
 
 .settings-image-description {
-  text-align: left;
   width: 455px;
   margin: 10px 0 10px 0;
+  text-align: left;
 }
 
 .settings-image-link-description {
-  text-align: left;
-  margin: 10px 0 10px 0;
   display: block;
+  margin: 10px 0 10px 0;
+  text-align: left;
 }
 
 .settings-image-link {
@@ -522,34 +517,34 @@ const keyDown = function (e) {
 }
 
 #settings-preview {
-  margin-top: 10px;
   width: 455px;
   height: 281px;
+  margin-top: 10px;
 }
 
 .settings-btn-preview-container {
   position: absolute;
-  width: 455px;
-  margin-top: 120px;
   display: flex;
   justify-content: space-between;
+  width: 455px;
+  margin-top: 120px;
 }
 
 .settings-btn-preview {
   width: 55px;
   height: 55px;
-  border-radius: 50%;
   font-size: 30px;
+  color: hsla(0, 0%, 0%, 0.4);
   background-color: transparent;
   backdrop-filter: blur(5px);
-  border-color: hsla(0, 0%, 0%, 0.4);
-  color: hsla(0, 0%, 0%, 0.4);
   border-style: double;
+  border-radius: 50%;
+  border-color: hsla(0, 0%, 0%, 0.4);
 }
 
 .settings-btn-preview:hover {
-  border-color: hsla(120, 100%, 45%, 0.65);
   color: hsla(120, 100%, 45%, 0.65);
+  border-color: hsla(120, 100%, 45%, 0.65);
 }
 
 .settings-btn-preview:active {

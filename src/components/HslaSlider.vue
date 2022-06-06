@@ -162,21 +162,17 @@ onMounted(() => {
 
 .slider-container {
   width: 438px;
+  padding: 5px 5px 5px 6px;
   border: v-bind(border);
   border-radius: 7px;
-  padding: 5px 5px 5px 6px;
   overflow: hidden;
 }
 
 .slider-title-container {
   display: flex;
-  /* height: 24px; */
-  height: 100%;
   justify-content: space-between;
   align-items: center;
-  /* margin-bottom: 5px; */
-  /* border-bottom: v-bind(border);
-  padding-bottom: 5px; */
+  height: 100%;
   padding: 1px 1px 1px 2px;
   cursor: pointer;
 }
@@ -187,12 +183,10 @@ onMounted(() => {
 }
 
 .slider-title {
-  /* text-align: left; */
   height: 29px;
 }
 
 .slider-sample {
-  /* margin-left: 20px; */
   width: 33px;
   height: 33px;
   border: 1px solid hsl(0, 0%, 83%);
@@ -202,16 +196,15 @@ onMounted(() => {
 
 .slider-line {
   width: 433px;
-  margin-left: 4px;
   margin-top: 5px;
-  /* border-bottom: 1px solid hsl(0, 0%, 78%); */
+  margin-left: 4px;
   border-bottom: v-bind(border);
 }
 
 .slider-description {
   height: 29px;
-  text-align: left;
   margin-left: 4px;
+  text-align: left;
 }
 
 .slider {
@@ -233,22 +226,21 @@ onMounted(() => {
   -webkit-appearance: none;
   width: 384px;
   height: 18px;
-  border-radius: 5px;
   background: hsl(0, 0%, 83%);
+  border-radius: 5px;
   outline: none;
   cursor: pointer;
 }
 
 .slider-chess-background {
+  z-index: -1;
   width: 384px;
   height: 18px;
   background: no-repeat url('/src/assets/backgrounds/chess-board.svg');
   border-radius: 5px;
-  z-index: -1;
 }
 
 #hue {
-  /* background-color: hsla(0, v-bind(saturation), 50%); */
   background: linear-gradient(
     to right,
     hsla(0, 100%, 50%, 1),
@@ -323,24 +315,24 @@ onMounted(() => {
   appearance: none;
   width: 15px;
   height: 25px;
+  background-color: v-bind(thumbBackground);
   border-radius: 5px;
   filter: invert(1);
-  background-color: v-bind(thumbBackground);
   cursor: pointer;
 }
 
 .slider-input::-moz-range-thumb {
   width: 15px;
   height: 25px;
+  background-color: v-bind(thumbBackground);
   border-radius: 5px;
   filter: invert(1);
-  background-color: v-bind(thumbBackground);
   cursor: pointer;
 }
 
 .slider-label {
+  width: 45px;
   margin-left: 5px;
   color: hsl(0, 0%, 83%);
-  width: 45px;
 }
 </style>

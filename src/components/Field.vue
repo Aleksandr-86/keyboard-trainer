@@ -206,9 +206,9 @@ onUnmounted(() => {
   width: 1440px;
   height: 380px;
   margin: 5px auto 50px;
-  outline: none;
   background-color: v-bind(fieldBackground);
   filter: blur(0px);
+  outline: none;
   user-select: none;
 }
 
@@ -223,8 +223,8 @@ onUnmounted(() => {
   height: 76px;
   font-family: 'Consolas', monospace;
   font-size: 65px;
-  background: v-bind(charBackground);
   color: v-bind(charColor);
+  background: v-bind(charBackground);
 }
 
 .char-caret {
@@ -233,10 +233,10 @@ onUnmounted(() => {
 }
 
 .char-caret:after {
-  content: '';
   position: absolute;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  content: '';
   width: 36px;
   height: 5px;
   background: v-bind(caretBackground);

@@ -131,35 +131,29 @@ onUnmounted(() => {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 5;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(0.2vh);
-  z-index: 5;
-
-  /* transition: visibility 300ms, opacity 300ms; */
 }
 
 .stat-container {
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 10;
   transform: translate(-50%, -50%);
   width: 72vh;
   height: auto;
-
-  font-size: 3vh;
-
-  background-color: rgb(215, 215, 215);
   padding: 2vh;
+  font-size: 3vh;
+  background-color: rgb(215, 215, 215);
   border-radius: 1vh;
-  /* box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.3); */
   box-shadow: 0 0 10vh 1vh rgba(0, 0, 0, 0.5);
-  z-index: 10;
-  user-select: none;
   overflow: hidden;
   outline: none;
-  /* transition: visibility 300ms, opacity 300ms; */
+  user-select: none;
 }
 
 h4 {
@@ -170,9 +164,9 @@ h4 {
 }
 
 .stat-line {
-  border-bottom: 0.1vh solid black;
-  margin-top: 0.5vh;
   width: 100%;
+  margin-top: 0.5vh;
+  border-bottom: 0.1vh solid black;
 }
 
 .stat-violet {
@@ -180,20 +174,20 @@ h4 {
 }
 
 .stat-green {
-  color: v-bind(correctColor);
   margin-left: 1vh;
+  color: v-bind(correctColor);
 }
 
 .stat-red {
-  color: v-bind(wrongColor);
   margin-left: 1vh;
+  color: v-bind(wrongColor);
 }
 
 .stat-first-column {
   float: left;
   width: 67%;
-  text-align: left;
   margin-right: 1%;
+  text-align: left;
 }
 
 .stat-second-column {
@@ -209,8 +203,8 @@ h4 {
 }
 
 .stat-ms {
-  color: v-bind(msColor);
   font-weight: bold;
+  color: v-bind(msColor);
 }
 
 .stat-float-left {
