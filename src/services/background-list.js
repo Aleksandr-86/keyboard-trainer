@@ -1,31 +1,31 @@
 export const arrBackgrounds = [
   {
     num: 1,
+    name: 'krasnaya-polyana',
+    author: 'Илья Бунин',
+    location: 'Красная Поляна, Краснодарский край',
+    link: 'https://www.pexels.com/photo/snow-wood-light-dawn-8915196/'
+  },
+  {
+    num: 2,
     name: 'kamchatka',
     author: 'Александр Максин',
     location: 'Камчатский край',
     link: 'https://www.pexels.com/ru-ru/photo/9330671/'
   },
   {
-    num: 2,
+    num: 3,
     name: 'winter-beach',
     author: 'Ярослав Шураев',
     location: 'Камчатский край',
     link: 'https://www.pexels.com/ru-ru/photo/1553960/'
   },
   {
-    num: 3,
+    num: 4,
     name: 'altai-mountains',
     author: 'Денис Лобанов',
     location: 'Республика Алтай',
     link: 'https://www.pexels.com/photo/landscape-scenery-of-mountains-under-cloudy-sky-11075503/'
-  },
-  {
-    num: 4,
-    name: 'krasnaya-polyana',
-    author: 'Илья Бунин',
-    location: 'Красная Поляна, Краснодарский край',
-    link: 'https://www.pexels.com/photo/snow-wood-light-dawn-8915196/'
   },
   {
     num: 5,
