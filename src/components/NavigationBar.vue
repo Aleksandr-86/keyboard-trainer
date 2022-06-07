@@ -11,11 +11,10 @@ async function fillFieldFromBuffer() {
   data.currentBook = 0 // for sake of overall statistics menu
 
   const br = getBrowser().browser
-  if (br === 'chrome' || br === 'yabrowser') {
+  if (br === 'yabrowser' || br === 'chrome' || br === 'opera') {
     let str = await navigator.clipboard.readText()
     if (str === ' ' || str === '' || str === '\r\n') return // buffer is empty
     loadFragment(str)
-  } else if (br === 'firefox') {
   }
 }
 
