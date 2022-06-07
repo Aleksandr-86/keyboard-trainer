@@ -236,7 +236,7 @@ const boardColor = computed(() => {
   </div>
 </template>
 
-<style scoped>
+<style>
 @keyframes hideCursor {
   0%,
   99% {

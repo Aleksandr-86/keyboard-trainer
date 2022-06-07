@@ -57,7 +57,7 @@ const background = computed(() => {
   </div>
 </template>
 
-<style scoped>
+<style>
 .hide-leave-active {
   transition: all 1.4s linear;
 }

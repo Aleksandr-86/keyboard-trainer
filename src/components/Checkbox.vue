@@ -41,7 +41,7 @@ const cursor = computed(() => {
   </label>
 </template>
 
-<style scoped>
+<style>
 .checkbox {
   position: relative;
   display: flex;

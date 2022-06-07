@@ -29,7 +29,7 @@ function keyDown(e) {
   </div>
 </template>
 
-<style scoped>
+<style>
 .input-container {
   display: flex;
   justify-content: space-between;

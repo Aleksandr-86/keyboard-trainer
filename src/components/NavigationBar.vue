@@ -79,7 +79,7 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
   </div>
 </template>
 
-<style scoped>
+<style>
 .nav-speaker {
   left: 10px;
   margin-top: 13px;

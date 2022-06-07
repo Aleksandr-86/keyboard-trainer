@@ -46,7 +46,7 @@ function toggleSpeaker() {
   </div>
 </template>
 
-<style scoped>
+<style>
 .speaker-container {
   position: fixed;
   width: 44px;

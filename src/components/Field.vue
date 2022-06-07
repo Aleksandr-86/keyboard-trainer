@@ -191,7 +191,7 @@ onUnmounted(() => {
     :lang="data.keyboardLayout" />
 </template>
 
-<style scoped>
+<style>
 @keyframes hideCursor {
   0%,
   99% {

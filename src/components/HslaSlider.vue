@@ -142,7 +142,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
+<style>
 .hide-slider-enter-active,
 .hide-slider-leave-active {
   transition: all 0.25s linear;

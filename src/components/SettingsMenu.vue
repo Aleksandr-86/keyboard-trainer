@@ -332,7 +332,7 @@ const keyDown = function (e) {
   </div>
 </template>
 
-<style scoped>
+<style>
 .slide-next-enter-active,
 .slide-prev-enter-active,
 .slide-prev-leave-active {

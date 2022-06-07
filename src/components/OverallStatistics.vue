@@ -126,7 +126,7 @@ onUnmounted(() => {
     class="stat-overlay"></div>
 </template>
 
-<style scoped>
+<style>
 .stat-overlay {
   position: absolute;
   top: 0;

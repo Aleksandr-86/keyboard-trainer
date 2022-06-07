@@ -51,7 +51,7 @@ function mouseUp() {
   </div>
 </template>
 
-<style scoped>
+<style>
 .slider-container {
   opacity: v-bind(opacity);
 }
