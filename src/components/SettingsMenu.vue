@@ -178,7 +178,7 @@ const keyDown = function (e) {
 
     <transition :name="direction">
       <div v-if="page === 0" class="settings__page-container">
-        <button @click="clearSettings" class="settings-btn-default">
+        <button @click="clearSettings" class="settings__default-button">
           Сброс
         </button>
         <Checkbox title="Учитывать регистр букв" obj="main" prop="letterCase" />
@@ -193,20 +193,19 @@ const keyDown = function (e) {
         <Checkbox title="Отображать засечки" obj="keyboard" prop="underline" />
         <Input @keydown="keyDown" />
 
-        <div class="settings-image">
+        <div class="settings__image">
           <img
-            id="settings-preview"
             :src="backgroundPreviewPath"
             :alt="arrBackgrounds[data.backgroundPreview].location" />
-          <div class="settings-btn-preview-container">
+          <div class="settings__preview-button-container">
             <button
               @click="changeBackground('prev')"
-              class="settings-btn-preview">
+              class="settings__preview-button">
               &#9668;
             </button>
             <button
               @click="changeBackground('next')"
-              class="settings-btn-preview">
+              class="settings__preview-button">
               &#9658;
             </button>
           </div>
@@ -214,14 +213,14 @@ const keyDown = function (e) {
         <div>
           <p
             v-if="arrBackgrounds[data.backgroundPreview].location"
-            class="settings-image-description">
+            class="settings__image-description">
             Местоположение:
             {{ arrBackgrounds[data.backgroundPreview].location }}
           </p>
-          <p class="settings-image-link-description">
+          <p class="settings__image-link-description">
             Автор фотографии:
             <a
-              class="settings-image-link"
+              class="settings__image-link"
               :href="arrBackgrounds[data.backgroundPreview].link"
               >{{ arrBackgrounds[data.backgroundPreview].author }}</a
             >
@@ -232,7 +231,7 @@ const keyDown = function (e) {
 
     <transition :name="direction">
       <div v-if="page === 1" class="settings__page-container">
-        <div class="settings-category">Цвет:</div>
+        <div class="settings__category">Цвет:</div>
         <HslaSlider title="фон поля" obj="field" prop="background" />
         <HslaSlider title="фон символа" obj="field" prop="charBackground" />
         <HslaSlider title="фон каретки" obj="field" prop="caretBackground" />
@@ -254,8 +253,8 @@ const keyDown = function (e) {
           obj="field"
           prop="charSpecialColor" />
 
-        <div class="settings-category">Тень:</div>
-        <div class="settings-shadow-checkbox">
+        <div class="settings__category">Тень:</div>
+        <div class="settings__shadow-checkbox">
           <Checkbox
             title="верно введённый символ"
             obj="shadow"
@@ -297,7 +296,7 @@ const keyDown = function (e) {
           title="цвет текущей статистики"
           obj="currentStatistics"
           prop="colors" />
-        <div class="settings-category">Цвета общей статистики:</div>
+        <div class="settings__category">Цвета общей статистики:</div>
         <HslaSlider
           title="название книги и автор"
           obj="overallStats"
@@ -312,8 +311,8 @@ const keyDown = function (e) {
           obj="overallStats"
           prop="wrong" />
 
-        <div class="settings-category">Звук:</div>
-        <div class="settings-shadow-checkbox">
+        <div class="settings__category">Звук:</div>
+        <div class="settings__shadow-checkbox">
           <Checkbox title="Озвучивать печать" obj="main" prop="speaker" />
           <Checkbox
             title="Сигнал по окончании набора"
@@ -445,7 +444,7 @@ const keyDown = function (e) {
   font-size: 24px;
 }
 
-.settings-btn-default {
+.settings__default-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -458,11 +457,11 @@ const keyDown = function (e) {
   border-radius: 7px;
 }
 
-.settings-btn-default:hover {
+.settings__default-button:hover {
   background-color: hsl(0, 100%, 50%);
 }
 
-.settings-btn-default:active {
+.settings__default-button:active {
   background-color: hsl(120, 50%, 50%);
 }
 
@@ -470,14 +469,14 @@ const keyDown = function (e) {
   position: absolute;
 }
 
-.settings-category {
+.settings__category {
   margin-bottom: 14px;
   padding-left: 2px;
   text-align: left;
   text-decoration: underline;
 }
 
-.settings-shadow-checkbox {
+.settings__shadow-checkbox {
   margin-right: 6px;
 }
 
@@ -486,47 +485,41 @@ const keyDown = function (e) {
   text-align: left;
 }
 
-.settings-image {
+.settings__image {
   margin-bottom: 10px;
   display: flex;
 }
 
-.settings-image-description {
+.settings__image-description {
   width: 455px;
   margin: 10px 0 10px 0;
   text-align: left;
 }
 
-.settings-image-link-description {
+.settings__image-link-description {
   display: block;
   margin: 10px 0 10px 0;
   text-align: left;
 }
 
-.settings-image-link {
+.settings__image-link {
   text-decoration: none;
   color: hsl(240, 90%, 45%);
 }
 
-.settings-image-link:visited {
+.settings__image-link:visited {
   color: hsl(270, 90%, 70%);
 }
 
-#settings-preview {
-  width: 455px;
-  height: 281px;
-  margin-top: 10px;
-}
-
-.settings-btn-preview-container {
+.settings__preview-button-container {
   position: absolute;
   display: flex;
   justify-content: space-between;
   width: 455px;
-  margin-top: 120px;
+  margin-top: 113px;
 }
 
-.settings-btn-preview {
+.settings__preview-button {
   width: 55px;
   height: 55px;
   font-size: 30px;
@@ -538,20 +531,20 @@ const keyDown = function (e) {
   border-color: hsla(0, 0%, 0%, 0.4);
 }
 
-.settings-btn-preview:hover {
+.settings__preview-button:hover {
   color: hsla(120, 100%, 45%, 0.65);
   border-color: hsla(120, 100%, 45%, 0.65);
 }
 
-.settings-btn-preview:active {
+.settings__preview-button:active {
   transform: scale(0.9);
 }
 
-.settings-btn-preview:first-child {
+.settings__preview-button:first-child {
   margin-left: 10px;
   padding-right: 7px;
 }
-.settings-btn-preview:last-child {
+.settings__preview-button:last-child {
   margin-right: 10px;
   padding-left: 7px;
 }
