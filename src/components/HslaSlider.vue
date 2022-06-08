@@ -16,35 +16,32 @@ const hsla = reactive({
   flag: false
 })
 
-const hue = computed(() => hsla.hue)
-const saturation = computed(() => `${hsla.saturation}%`)
-const lightness = computed(() => `${hsla.lightness}%`)
-const alpha = computed(() => hsla.alpha)
-
-const color = computed(
+const hueValue = computed(() => hsla.hue)
+const saturationValue = computed(() => `${hsla.saturation}%`)
+const lightnessValue = computed(() => `${hsla.lightness}%`)
+const alphaValue = computed(() => hsla.alpha)
+const backColor = computed(
   () =>
     `hsla(${hsla.hue}, ${hsla.saturation}%, ${hsla.lightness}%, ${hsla.alpha})`
 )
 
-const thumbBackground = computed(() => `hsl(${hsla.hue}, 100%, 50%)`)
-
-watch(color, newValue => {
+watch(backColor, newValue => {
   storage[props.obj][props.prop] = newValue
 })
 
-const getNumbersFromString = function (str) {
-  return str.match(/[0-9.]+/g)
-}
+const thumbBackColor = computed(() => `hsl(${hsla.hue}, 100%, 50%)`)
 
-const toggleSlider = () => (hsla.flag = !hsla.flag)
-
-const border = computed(() => {
+const borderColor = computed(() => {
   if (hsla.flag) {
     return '1px solid hsl(0, 0%, 78%)'
   } else {
     return '1px solid transparent'
   }
 })
+
+const getNumbersFromString = str => str.match(/[0-9.]+/g)
+
+const toggleSlider = () => (hsla.flag = !hsla.flag)
 
 const saveToStorage = function () {
   localStorage[props.obj] = JSON.stringify(storage[props.obj])
@@ -67,7 +64,7 @@ onMounted(() => {
     </div>
     <div class="slider-line"></div>
 
-    <transition-group name="hide-slider">
+    <transition-group>
       <div v-if="hsla.flag">
         <div class="slider-description">тон</div>
         <div class="slider">
@@ -143,27 +140,29 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.hide-slider-enter-active,
-.hide-slider-leave-active {
+/* transition group */
+.v-enter-active,
+.v-leave-active {
   transition: all 0.25s linear;
 }
 
-.hide-slider-enter-to,
-.hide-slider-leave-from {
+.v-enter-to,
+.v-leave-from {
   max-height: 290px;
   opacity: 1;
 }
 
-.hide-slider-enter-from,
-.hide-slider-leave-to {
+.v-enter-from,
+.v-leave-to {
   max-height: 29px;
   opacity: 0;
 }
 
+/* component */
 .slider-container {
   width: 438px;
   padding: 5px 5px 5px 6px;
-  border: v-bind(border);
+  border: v-bind(borderColor);
   border-radius: 7px;
   overflow: hidden;
 }
@@ -191,14 +190,14 @@ onMounted(() => {
   height: 33px;
   border: 1px solid hsl(0, 0%, 83%);
   border-radius: 7px;
-  background-color: v-bind(color);
+  background-color: v-bind(backColor);
 }
 
 .slider-line {
   width: 433px;
   margin-top: 5px;
   margin-left: 4px;
-  border-bottom: v-bind(border);
+  border-bottom: v-bind(borderColor);
 }
 
 .slider-description {
@@ -262,51 +261,101 @@ onMounted(() => {
 #saturation {
   background: linear-gradient(
     to right,
-    hsla(v-bind(hue), 0%, v-bind(lightness), v-bind(alpha)),
-    hsla(v-bind(hue), 10%, v-bind(lightness), v-bind(alpha)),
-    hsla(v-bind(hue), 20%, v-bind(lightness), v-bind(alpha)),
-    hsla(v-bind(hue), 30%, v-bind(lightness), v-bind(alpha)),
-    hsla(v-bind(hue), 40%, v-bind(lightness), v-bind(alpha)),
-    hsla(v-bind(hue), 50%, v-bind(lightness), v-bind(alpha)),
-    hsla(v-bind(hue), 60%, v-bind(lightness), v-bind(alpha)),
-    hsla(v-bind(hue), 70%, v-bind(lightness), v-bind(alpha)),
-    hsla(v-bind(hue), 80%, v-bind(lightness), v-bind(alpha)),
-    hsla(v-bind(hue), 90%, v-bind(lightness), v-bind(alpha)),
-    hsla(v-bind(hue), 100%, v-bind(lightness), v-bind(alpha))
+    hsla(v-bind(hueValue), 0%, v-bind(lightnessValue), v-bind(alphaValue)),
+    hsla(v-bind(hueValue), 10%, v-bind(lightnessValue), v-bind(alphaValue)),
+    hsla(v-bind(hueValue), 20%, v-bind(lightnessValue), v-bind(alphaValue)),
+    hsla(v-bind(hueValue), 30%, v-bind(lightnessValue), v-bind(alphaValue)),
+    hsla(v-bind(hueValue), 40%, v-bind(lightnessValue), v-bind(alphaValue)),
+    hsla(v-bind(hueValue), 50%, v-bind(lightnessValue), v-bind(alphaValue)),
+    hsla(v-bind(hueValue), 60%, v-bind(lightnessValue), v-bind(alphaValue)),
+    hsla(v-bind(hueValue), 70%, v-bind(lightnessValue), v-bind(alphaValue)),
+    hsla(v-bind(hueValue), 80%, v-bind(lightnessValue), v-bind(alphaValue)),
+    hsla(v-bind(hueValue), 90%, v-bind(lightnessValue), v-bind(alphaValue)),
+    hsla(v-bind(hueValue), 100%, v-bind(lightnessValue), v-bind(alphaValue))
   );
 }
 
 #lightness {
   background: linear-gradient(
     to right,
-    hsla(v-bind(hue), v-bind(saturation), 0%, v-bind(alpha)),
-    hsla(v-bind(hue), v-bind(saturation), 10%, v-bind(alpha)),
-    hsla(v-bind(hue), v-bind(saturation), 20%, v-bind(alpha)),
-    hsla(v-bind(hue), v-bind(saturation), 30%, v-bind(alpha)),
-    hsla(v-bind(hue), v-bind(saturation), 40%, v-bind(alpha)),
-    hsla(v-bind(hue), v-bind(saturation), 50%, v-bind(alpha)),
-    hsla(v-bind(hue), v-bind(saturation), 60%, v-bind(alpha)),
-    hsla(v-bind(hue), v-bind(saturation), 70%, v-bind(alpha)),
-    hsla(v-bind(hue), v-bind(saturation), 80%, v-bind(alpha)),
-    hsla(v-bind(hue), v-bind(saturation), 90%, v-bind(alpha)),
-    hsla(v-bind(hue), v-bind(saturation), 100%, v-bind(alpha))
+    hsla(v-bind(hueValue), v-bind(saturationValue), 0%, v-bind(alphaValue)),
+    hsla(v-bind(hueValue), v-bind(saturationValue), 10%, v-bind(alphaValue)),
+    hsla(v-bind(hueValue), v-bind(saturationValue), 20%, v-bind(alphaValue)),
+    hsla(v-bind(hueValue), v-bind(saturationValue), 30%, v-bind(alphaValue)),
+    hsla(v-bind(hueValue), v-bind(saturationValue), 40%, v-bind(alphaValue)),
+    hsla(v-bind(hueValue), v-bind(saturationValue), 50%, v-bind(alphaValue)),
+    hsla(v-bind(hueValue), v-bind(saturationValue), 60%, v-bind(alphaValue)),
+    hsla(v-bind(hueValue), v-bind(saturationValue), 70%, v-bind(alphaValue)),
+    hsla(v-bind(hueValue), v-bind(saturationValue), 80%, v-bind(alphaValue)),
+    hsla(v-bind(hueValue), v-bind(saturationValue), 90%, v-bind(alphaValue)),
+    hsla(v-bind(hueValue), v-bind(saturationValue), 100%, v-bind(alphaValue))
   );
 }
 
 #alpha {
   background: linear-gradient(
     to right,
-    hsla(v-bind(hue), v-bind(saturation), v-bind(lightness), 0%),
-    hsla(v-bind(hue), v-bind(saturation), v-bind(lightness), 10%),
-    hsla(v-bind(hue), v-bind(saturation), v-bind(lightness), 20%),
-    hsla(v-bind(hue), v-bind(saturation), v-bind(lightness), 30%),
-    hsla(v-bind(hue), v-bind(saturation), v-bind(lightness), 40%),
-    hsla(v-bind(hue), v-bind(saturation), v-bind(lightness), 50%),
-    hsla(v-bind(hue), v-bind(saturation), v-bind(lightness), 60%),
-    hsla(v-bind(hue), v-bind(saturation), v-bind(lightness), 70%),
-    hsla(v-bind(hue), v-bind(saturation), v-bind(lightness), 80%),
-    hsla(v-bind(hue), v-bind(saturation), v-bind(lightness), 90%),
-    hsla(v-bind(hue), v-bind(saturation), v-bind(lightness), 100%)
+    hsla(v-bind(hueValue), v-bind(saturationValue), v-bind(lightnessValue), 0%),
+    hsla(
+      v-bind(hueValue),
+      v-bind(saturationValue),
+      v-bind(lightnessValue),
+      10%
+    ),
+    hsla(
+      v-bind(hueValue),
+      v-bind(saturationValue),
+      v-bind(lightnessValue),
+      20%
+    ),
+    hsla(
+      v-bind(hueValue),
+      v-bind(saturationValue),
+      v-bind(lightnessValue),
+      30%
+    ),
+    hsla(
+      v-bind(hueValue),
+      v-bind(saturationValue),
+      v-bind(lightnessValue),
+      40%
+    ),
+    hsla(
+      v-bind(hueValue),
+      v-bind(saturationValue),
+      v-bind(lightnessValue),
+      50%
+    ),
+    hsla(
+      v-bind(hueValue),
+      v-bind(saturationValue),
+      v-bind(lightnessValue),
+      60%
+    ),
+    hsla(
+      v-bind(hueValue),
+      v-bind(saturationValue),
+      v-bind(lightnessValue),
+      70%
+    ),
+    hsla(
+      v-bind(hueValue),
+      v-bind(saturationValue),
+      v-bind(lightnessValue),
+      80%
+    ),
+    hsla(
+      v-bind(hueValue),
+      v-bind(saturationValue),
+      v-bind(lightnessValue),
+      90%
+    ),
+    hsla(
+      v-bind(hueValue),
+      v-bind(saturationValue),
+      v-bind(lightnessValue),
+      100%
+    )
   );
 }
 
@@ -315,7 +364,7 @@ onMounted(() => {
   appearance: none;
   width: 15px;
   height: 25px;
-  background-color: v-bind(thumbBackground);
+  background-color: v-bind(thumbBackColor);
   border-radius: 5px;
   filter: invert(1);
   cursor: pointer;
@@ -324,7 +373,7 @@ onMounted(() => {
 .slider-input::-moz-range-thumb {
   width: 15px;
   height: 25px;
-  background-color: v-bind(thumbBackground);
+  background-color: v-bind(thumbBackColor);
   border-radius: 5px;
   filter: invert(1);
   cursor: pointer;
