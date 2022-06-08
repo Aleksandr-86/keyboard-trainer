@@ -37,7 +37,9 @@ function keyDown(e) {
   }
 }
 
-onMounted(() => statistics.focus())
+onMounted(() =>
+  document.body.querySelector('.overall-stats__container').focus()
+)
 
 onUnmounted(() => {
   state.bTimer = false
@@ -56,82 +58,86 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div
-    class="overall-stats__container"
-    id="statistics"
-    tabindex="1"
-    @keydown="keyDown">
+  <div class="overall-stats__container" tabindex="1" @keydown="keyDown">
     <h4 v-if="isSnippet">Результат набора отрывка из книги:</h4>
     <h4 v-else>Результат набора текста из буфера обмена</h4>
 
-    <h4 v-if="isSnippet" class="stat-violet">«{{ book.title }}»</h4>
-    <h4 v-if="isSnippet" class="stat-violet">{{ book.author }}</h4>
+    <h4 v-if="isSnippet" class="overall-stats__title">«{{ book.title }}»</h4>
+    <h4 v-if="isSnippet" class="overall-stats__title">{{ book.author }}</h4>
 
-    <div class="stat-line"></div>
+    <div class="overall-stats__line"></div>
 
-    <div class="stat-first-column">Время набора:</div>
-    <div class="stat-second-column">
+    <div class="overall-stats__first-column">Время набора:</div>
+    <div class="overall-stats__second-column">
       <div>{{ data.elapsedTimeStr.split('.')[0] }}</div>
-      <div class="stat-ms">.{{ data.elapsedTimeStr.split('.')[1] }}</div>
+      <div class="overall-stats__milliseconds">
+        .{{ data.elapsedTimeStr.split('.')[1] }}
+      </div>
     </div>
 
-    <div class="stat-first-column">Количество знаков отрывка:</div>
-    <div class="stat-second-column">{{ data.numDialed }}</div>
+    <div class="overall-stats__first-column">Количество знаков отрывка:</div>
+    <div class="overall-stats__second-column">{{ data.numDialed }}</div>
 
-    <div class="stat-first-column">Cкорость набора, зн/мин:</div>
-    <div class="stat-second-column">{{ finalCharPerMin }}</div>
+    <div class="overall-stats__first-column">Cкорость набора, зн/мин:</div>
+    <div class="overall-stats__second-column">{{ finalCharPerMin }}</div>
 
-    <div v-if="data.numErrors !== 0" class="stat-line"></div>
+    <div v-if="data.numErrors !== 0" class="overall-stats__line"></div>
 
     <div
       v-if="
         (data.numCorrect !== 0 && data.numCorrect !== data.numDialed) ||
         data.numErrors !== 0
       ">
-      <div class="stat-row-last">
-        <div class="stat-first-column">Количество:</div>
-        <div class="stat-second-column"></div>
+      <div class="overall-stats__last-row">
+        <div class="overall-stats__first-column">Количество:</div>
+        <div class="overall-stats__second-column"></div>
       </div>
 
       <div v-if="data.numCorrect !== 0">
-        <div class="stat-first-column">- правильно введённых знаков:</div>
-        <div class="stat-second-column">
+        <div class="overall-stats__first-column">
+          - правильно введённых знаков:
+        </div>
+        <div class="overall-stats__second-column">
           <div>{{ data.numCorrect }}</div>
-          <div class="stat-green">{{ strCorrectPercent }}</div>
+          <div class="overall-stats__correct-percent">
+            {{ strCorrectPercent }}
+          </div>
         </div>
       </div>
 
       <div v-if="data.numErrors !== 0">
-        <div class="stat-first-column">- ошибок:</div>
-        <div class="stat-second-column">
+        <div class="overall-stats__first-column">- ошибок:</div>
+        <div class="overall-stats__second-column">
           <div>{{ data.numErrors }}</div>
-          <div class="stat-red">{{ strErrorsPercent }}</div>
+          <div class="overall-stats__wrong-percent">{{ strErrorsPercent }}</div>
         </div>
       </div>
 
-      <div class="stat-line"></div>
+      <div class="overall-stats__line"></div>
 
-      <div class="stat-row-last">
-        <div class="stat-first-column">
+      <div class="overall-stats__last-row">
+        <div class="overall-stats__first-column">
           Максимальное количество знаков подряд без ошибки:
         </div>
-        <div class="stat-second-column">{{ data.ErrorFree }}</div>
+        <div class="overall-stats__second-column">{{ data.ErrorFree }}</div>
       </div>
     </div>
     <div v-else>
-      <div class="stat-line"></div>
-      <div class="stat-row-last">Отрывок набран без единой ошибки 🎉</div>
+      <div class="overall-stats__line"></div>
+      <div class="overall-stats__last-row">
+        Отрывок набран без единой ошибки 🎉
+      </div>
     </div>
   </div>
 
   <div
     @click.left="state.overallStats = false"
     v-if="state.overallStats"
-    class="stat-overlay"></div>
+    class="overall-stats__overlay"></div>
 </template>
 
 <style>
-.stat-overlay {
+.overall-stats__overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -167,34 +173,34 @@ h4 {
   overflow-wrap: break-word;
 }
 
-.stat-line {
+.overall-stats__line {
   width: 100%;
   margin-top: 0.5vh;
   border-bottom: 0.1vh solid black;
 }
 
-.stat-violet {
+.overall-stats__title {
   color: v-bind(titleColor);
 }
 
-.stat-green {
+.overall-stats__correct-percent {
   margin-left: 1vh;
   color: v-bind(correctColor);
 }
 
-.stat-red {
+.overall-stats__wrong-percent {
   margin-left: 1vh;
   color: v-bind(wrongColor);
 }
 
-.stat-first-column {
+.overall-stats__first-column {
   float: left;
   width: 67%;
   margin-right: 1%;
   text-align: left;
 }
 
-.stat-second-column {
+.overall-stats__second-column {
   display: flex;
   justify-content: center;
   width: 32%;
@@ -206,7 +212,7 @@ h4 {
   font-weight: bold;
 }
 
-.stat-ms {
+.overall-stats__milliseconds {
   font-weight: bold;
   color: v-bind(msColor);
 }
@@ -215,7 +221,7 @@ h4 {
   float: left;
 }
 
-.stat-row-last {
+.overall-stats__last-row {
   display: flex;
   align-items: flex-end;
   width: 100%;
