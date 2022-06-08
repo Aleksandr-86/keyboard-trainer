@@ -89,7 +89,7 @@ const eListener = function (e) {
   } else if (data.indexArr !== 0 && code === 'Enter') {
     data.timerStop = performance.now()
     state.work = false
-    state.overallStatistics = true
+    state.overallStats = true
     return
   }
 

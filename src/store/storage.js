@@ -36,7 +36,7 @@ export const storage = reactive({
     ring: true,
     volume: 0.2
   },
-  overallStatistics: {
+  overallStats: {
     title: 'hsla(282, 100%, 25%, 1)',
     ms: 'hsla(240, 60%, 40%, 1)',
     correct: 'hsla(135, 100%, 27%, 1)',

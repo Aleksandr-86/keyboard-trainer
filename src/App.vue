@@ -4,7 +4,7 @@ import { arrBackgrounds } from '/src/services/background-list.js'
 import NavigationBar from './components/NavigationBar.vue'
 import SettingsMenu from './components/SettingsMenu.vue'
 import Field from './components/Field.vue'
-import OverallStatistics from './components/OverallStatistics.vue'
+import OverallStats from './components/OverallStats.vue'
 import { data } from '/src/store/data.js'
 import { state } from '/src/store/state.js'
 import { storage } from '/src/store/storage.js'
@@ -41,7 +41,7 @@ onMounted(() => {
   <NavigationBar />
   <SettingsMenu v-if="state.settings" />
   <Field v-if="state.work" />
-  <OverallStatistics v-if="state.overallStatistics" />
+  <OverallStats v-if="state.overallStats" />
 </template>
 
 <style>

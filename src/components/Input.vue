@@ -17,8 +17,8 @@ function keyDown(e) {
 }
 </script>
 <template>
-  <div class="input-container">
-    <div class="input-description">
+  <div class="input__container">
+    <div class="input__description">
       Минимальное количество символов отрывка:
     </div>
     <input
@@ -30,7 +30,7 @@ function keyDown(e) {
 </template>
 
 <style>
-.input-container {
+.input__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,7 +38,7 @@ function keyDown(e) {
   padding: 0 1px 0 2px;
 }
 
-.input-description {
+.input__description {
   display: inline-block;
   width: 358px;
   text-align: left;

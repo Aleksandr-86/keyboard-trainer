@@ -4,7 +4,7 @@ export const state = reactive({
   work: false,
   settings: false,
   bTimer: false,
-  overallStatistics: false
+  overallStats: false
 })
 
 // const toggle = function (prop) {

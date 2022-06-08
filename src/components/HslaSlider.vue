@@ -57,109 +57,113 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-click-outside="() => (hsla.flag = false)" class="slider-container">
-    <div @click="toggleSlider" class="slider-title-container">
-      <div class="slider-title">{{ props.title }}</div>
-      <div class="slider-sample"></div>
+  <div v-click-outside="() => (hsla.flag = false)" class="hsla-slider">
+    <div @click="toggleSlider" class="hsla-slider__title-container">
+      <div class="hsla-slider__title">{{ props.title }}</div>
+      <div class="hsla-slider__sample"></div>
     </div>
-    <div class="slider-line"></div>
+    <div class="hsla-slider__line"></div>
 
-    <transition-group>
+    <transition-group name="hsla-slider">
       <div v-if="hsla.flag">
-        <div class="slider-description">тон</div>
-        <div class="slider">
-          <div class="slider-input-container">
+        <div class="hsla-slider__value-description">тон</div>
+        <div class="hsla-slider__container">
+          <div class="hsla-slider__input-container">
             <input
               v-model="hsla.hue"
               type="range"
-              class="slider-input"
               id="hue"
+              class="hsla-slider__input"
               min="0"
               max="360"
               @mouseup="saveToStorage" />
-            <div class="slider-chess-background"></div>
+            <div class="hsla-slider__chess-background"></div>
           </div>
-          <label class="slider-label" for="hue">{{ hsla.hue }}</label>
+          <label class="hsla-slider__slider-label" for="hue">{{
+            hsla.hue
+          }}</label>
         </div>
 
-        <div class="slider-description">насыщенность</div>
-        <div class="slider">
-          <div class="slider-input-container">
+        <div class="hsla-slider__value-description">насыщенность</div>
+        <div class="hsla-slider__container">
+          <div class="hsla-slider__input-container">
             <input
               v-model="hsla.saturation"
               type="range"
-              class="slider-input"
               id="saturation"
+              class="hsla-slider__input"
               min="0"
               max="100"
               @mouseup="saveToStorage" />
-            <div class="slider-chess-background"></div>
+            <div class="hsla-slider__chess-background"></div>
           </div>
-          <label class="slider-label" for="saturation">{{
+          <label class="hsla-slider__slider-label" for="saturation">{{
             hsla.saturation
           }}</label>
         </div>
 
-        <div class="slider-description">светлота</div>
-        <div class="slider">
-          <div class="slider-input-container">
+        <div class="hsla-slider__value-description">светлота</div>
+        <div class="hsla-slider__container">
+          <div class="hsla-slider__input-container">
             <input
               v-model="hsla.lightness"
               type="range"
-              class="slider-input"
               id="lightness"
+              class="hsla-slider__input"
               min="0"
               max="100"
               @mouseup="saveToStorage" />
-            <div class="slider-chess-background"></div>
+            <div class="hsla-slider__chess-background"></div>
           </div>
-          <label class="slider-label" for="lightness">{{
+          <label class="hsla-slider__slider-label" for="lightness">{{
             hsla.lightness
           }}</label>
         </div>
 
-        <div class="slider-description">прозрачность</div>
-        <div class="slider">
-          <div class="slider-input-container">
+        <div class="hsla-slider__value-description">прозрачность</div>
+        <div class="hsla-slider__container">
+          <div class="hsla-slider__input-container">
             <input
               v-model="hsla.alpha"
               type="range"
-              class="slider-input"
               id="alpha"
+              class="hsla-slider__input"
               min="0"
               max="1"
               step="0.01"
               @mouseup="saveToStorage" />
-            <div class="slider-chess-background"></div>
+            <div class="hsla-slider__chess-background"></div>
           </div>
-          <label class="slider-label" for="alpha">{{ hsla.alpha }}</label>
+          <label class="hsla-slider__slider-label" for="alpha">{{
+            hsla.alpha
+          }}</label>
         </div>
       </div>
     </transition-group>
   </div>
 </template>
 
-<style scoped>
+<style>
 /* transition group */
-.v-enter-active,
-.v-leave-active {
+.hsla-slider-enter-active,
+.hsla-slider-leave-active {
   transition: all 0.25s linear;
 }
 
-.v-enter-to,
-.v-leave-from {
+.hsla-slider-enter-to,
+.hsla-slider-leave-from {
   max-height: 290px;
   opacity: 1;
 }
 
-.v-enter-from,
-.v-leave-to {
+.hsla-slider-enter-from,
+.hsla-slider-leave-to {
   max-height: 29px;
   opacity: 0;
 }
 
 /* component */
-.slider-container {
+.hsla-slider {
   width: 438px;
   padding: 5px 5px 5px 6px;
   border: v-bind(borderColor);
@@ -167,7 +171,7 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.slider-title-container {
+.hsla-slider__title-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -176,16 +180,16 @@ onMounted(() => {
   cursor: pointer;
 }
 
-.slider-title-container:hover {
+.hsla-slider__title-container:hover {
   background: hsl(120, 20%, 25%);
   border-radius: 7px;
 }
 
-.slider-title {
+.hsla-slider__title {
   height: 29px;
 }
 
-.slider-sample {
+.hsla-slider__sample {
   width: 33px;
   height: 33px;
   border: 1px solid hsl(0, 0%, 83%);
@@ -193,20 +197,20 @@ onMounted(() => {
   background-color: v-bind(backColor);
 }
 
-.slider-line {
+.hsla-slider__line {
   width: 433px;
   margin-top: 5px;
   margin-left: 4px;
   border-bottom: v-bind(borderColor);
 }
 
-.slider-description {
+.hsla-slider__value-description {
   height: 29px;
   margin-left: 4px;
   text-align: left;
 }
 
-.slider {
+.hsla-slider__container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -214,11 +218,11 @@ onMounted(() => {
   margin-left: 4px;
 }
 
-.slider-input-container {
+.hsla-slider__input-container {
   position: relative;
 }
 
-.slider-input {
+.hsla-slider__input {
   position: absolute;
   top: 0;
   left: 0;
@@ -231,7 +235,7 @@ onMounted(() => {
   cursor: pointer;
 }
 
-.slider-chess-background {
+.hsla-slider__chess-background {
   z-index: -1;
   width: 384px;
   height: 18px;
@@ -359,7 +363,7 @@ onMounted(() => {
   );
 }
 
-.slider-input::-webkit-slider-thumb {
+.hsla-slider__input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 15px;
@@ -370,7 +374,7 @@ onMounted(() => {
   cursor: pointer;
 }
 
-.slider-input::-moz-range-thumb {
+.hsla-slider__input::-moz-range-thumb {
   width: 15px;
   height: 25px;
   background-color: v-bind(thumbBackColor);
@@ -379,7 +383,7 @@ onMounted(() => {
   cursor: pointer;
 }
 
-.slider-label {
+.hsla-slider__slider-label {
   width: 45px;
   margin-left: 5px;
   color: hsl(0, 0%, 83%);

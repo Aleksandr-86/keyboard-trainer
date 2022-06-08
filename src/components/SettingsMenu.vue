@@ -134,7 +134,7 @@ const defaultValues = {
     ring: true,
     volume: 0.2
   },
-  overallStatistics: {
+  overallStats: {
     title: 'hsla(282, 100%, 25%, 1)',
     ms: 'hsla(240, 60%, 40%, 1)',
     correct: 'hsla(135, 100%, 27%, 1)',
@@ -300,16 +300,16 @@ const keyDown = function (e) {
         <div class="settings-category-margin">Цвета общей статистики:</div>
         <HslaSlider
           title="название книги и автор"
-          obj="overallStatistics"
+          obj="overallStats"
           prop="title" />
-        <HslaSlider title="миллисекунды" obj="overallStatistics" prop="ms" />
+        <HslaSlider title="миллисекунды" obj="overallStats" prop="ms" />
         <HslaSlider
           title="процент правильных символов"
-          obj="overallStatistics"
+          obj="overallStats"
           prop="correct" />
         <HslaSlider
           title="процент ошибочных символов"
-          obj="overallStatistics"
+          obj="overallStats"
           prop="wrong" />
 
         <div class="settings-category-margin">Звук:</div>

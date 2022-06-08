@@ -23,17 +23,17 @@ const finalCharPerMin = computed(() =>
 const isSnippet = typeof data.currentBook === 'object'
 const book = data.currentBook
 
-const titleColor = computed(() => storage.overallStatistics.title)
-const msColor = computed(() => storage.overallStatistics.ms)
-const correctColor = computed(() => storage.overallStatistics.correct)
-const wrongColor = computed(() => storage.overallStatistics.wrong)
+const titleColor = computed(() => storage.overallStats.title)
+const msColor = computed(() => storage.overallStats.ms)
+const correctColor = computed(() => storage.overallStats.correct)
+const wrongColor = computed(() => storage.overallStats.wrong)
 
 function keyDown(e) {
   if (e.key === 'Tab') {
     e.preventDefault()
   } else if (e.key === 'Enter') {
-    state.overallStatistics = false
-    document.body.querySelector(data.focusElement).focus()
+    state.overallStats = false
+    document.body.querySelector(data.classSelector).focus()
   }
 }
 
@@ -56,7 +56,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="stat-container" id="statistics" tabindex="1" @keydown="keyDown">
+  <div
+    class="overall-stats__container"
+    id="statistics"
+    tabindex="1"
+    @keydown="keyDown">
     <h4 v-if="isSnippet">Результат набора отрывка из книги:</h4>
     <h4 v-else>Результат набора текста из буфера обмена</h4>
 
@@ -121,8 +125,8 @@ onUnmounted(() => {
   </div>
 
   <div
-    @click.left="state.overallStatistics = false"
-    v-if="state.overallStatistics"
+    @click.left="state.overallStats = false"
+    v-if="state.overallStats"
     class="stat-overlay"></div>
 </template>
 
@@ -138,7 +142,7 @@ onUnmounted(() => {
   backdrop-filter: blur(0.2vh);
 }
 
-.stat-container {
+.overall-stats__container {
   position: absolute;
   top: 50%;
   left: 50%;

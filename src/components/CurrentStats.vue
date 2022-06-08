@@ -18,7 +18,7 @@ const backColor = computed(() => {
 <template>
   <div class="current-stats">
     <div class="current-stats__error-free">
-      <transition>
+      <transition name="current-stats">
         <span v-if="isStarted" class="current-stats__description">
           Без ошибок:&nbsp;
         </span>
@@ -30,7 +30,7 @@ const backColor = computed(() => {
     </div>
 
     <div class="current-stats__remaining-chars">
-      <transition>
+      <transition name="current-stats">
         <span v-if="isStarted" class="current-stats__description">
           Осталось знаков:
         </span>
@@ -39,7 +39,7 @@ const backColor = computed(() => {
     </div>
 
     <div class="current-stats__char-per-minute">
-      <transition>
+      <transition name="current-stats">
         <span v-if="isStarted" class="current-stats__description">
           Знаков в минуту:
         </span>
@@ -48,7 +48,7 @@ const backColor = computed(() => {
     </div>
 
     <div class="current-stats__elapsed-time">
-      <transition>
+      <transition name="current-stats">
         <span v-if="isStarted" class="current-stats__description">Время:</span>
       </transition>
       {{ data.elapsedTimeStr }}
@@ -58,16 +58,16 @@ const backColor = computed(() => {
 
 <style>
 /* transition */
-.v-leave-active {
+.current-stats-leave-active {
   transition: all 1.4s linear;
 }
 
-.v-leave-from {
+.current-stats-leave-from {
   max-width: 297px;
   opacity: 1;
 }
 
-.v-leave-to {
+.current-stats-leave-to {
   max-width: 0;
   opacity: 0;
 }

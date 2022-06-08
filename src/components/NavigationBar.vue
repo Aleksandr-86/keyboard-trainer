@@ -7,7 +7,7 @@ import { state } from '../store/state.js'
 import { storage } from '../store/storage.js'
 
 async function fillFieldFromBuffer() {
-  data.focusElement = '#nav-buffer'
+  data.classSelector = '.navigation-bar__buffer'
   data.currentBook = 0 // for sake of overall statistics menu
 
   const br = getBrowser().browser
@@ -30,18 +30,19 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
 
 <template>
   <div>
-    <SpeakerSVG class="nav-speaker" />
-    <ul class="nav">
+    <SpeakerSVG class="navigation-bar__speaker" />
+
+    <ul class="navigation-bar__list">
       <li>
         <a
           @click="randomSnippet(storage.main.langOfSnippets, minSnippetLength)"
-          id="nav-snippet"
+          class="navigation-bar__snippet-link"
           href="#!">
           Отрывок
         </a>
       </li>
       <li class="nav-children">
-        <a id="nav-drop-down" href="#!">▼</a>
+        <a class="navigation-bar__drop-down-list" href="#!">▼</a>
         <ul>
           <li>
             <a
@@ -67,24 +68,30 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
       </li>
 
       <li>
-        <a @click="fillFieldFromBuffer" href="#!" id="nav-buffer">
+        <a
+          @click="fillFieldFromBuffer"
+          class="navigation-bar__buffer"
+          href="#!">
           Буфер обмена
         </a>
       </li>
 
       <li>
-        <a @click="toggleSettings" id="nav-settings" href="#!">Настройки</a>
+        <a @click="toggleSettings" class="navigation-bar__settings" href="#!">
+          Настройки
+        </a>
       </li>
     </ul>
   </div>
 </template>
 
 <style>
-.nav-speaker {
+.navigation-bar__speaker {
   left: 10px;
   margin-top: 13px;
 }
-.nav {
+
+.navigation-bar__list {
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -97,17 +104,17 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
   user-select: none;
 }
 
-#nav-buffer,
-#nav-drop-down,
-#nav-settings {
+.navigation-bar__buffer,
+.navigation-bar__drop-down-list,
+.navigation-bar__settings {
   display: inline-flex;
   margin-left: 20px;
 }
 
-#nav-buffer,
-#nav-snippet,
-#nav-drop-down,
-#nav-settings {
+.navigation-bar__buffer,
+.navigation-bar__snippet-link,
+.navigation-bar__drop-down-list,
+.navigation-bar__settings {
   position: relative;
   padding: 20px 0 20px 0;
   color: hsl(210, 13%, 50%);
@@ -118,39 +125,38 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
   letter-spacing: 0;
 }
 
-#nav-buffer:hover,
-#nav-snippet:hover,
-#nav-drop-down:hover,
-#nav-settings:hover {
+.navigation-bar__buffer:hover,
+.navigation-bar__snippet-link:hover,
+.navigation-bar__drop-down-list:hover,
+.navigation-bar__settings:hover {
   color: rgb(22, 198, 93);
-  text-decoration: none;
 }
 
-.nav li {
+.navigation-bar__list li {
   margin: 0;
   white-space: nowrap;
 }
 
-.nav li.nav-children {
+.navigation-bar__list li.nav-children {
   position: relative;
 }
 
-#nav-drop-down {
+.navigation-bar__drop-down-list {
   margin-left: 5px;
 }
 
-.nav li.nav-children > ul {
+.navigation-bar__list li.nav-children > ul {
   left: -128px;
 }
 
-.nav li.nav-children:hover > ul {
+.navigation-bar__list li.nav-children:hover > ul {
   position: absolute;
   visibility: visible;
   background: rgba(20, 20, 20, 0.8);
   opacity: 1;
 }
 
-.nav ul {
+.navigation-bar__list ul {
   position: absolute;
   top: 100%;
   z-index: 20;
@@ -164,29 +170,29 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
   transition: all 350ms;
 }
 
-.nav ul li {
+.navigation-bar__list ul li {
   display: block;
   padding: 0 5px;
   line-height: 1.1;
 }
 
-.nav ul li:last-child {
+.navigation-bar__list ul li:last-child {
   margin-bottom: 0;
 }
 
-.nav ul li a {
+.navigation-bar__list ul li a {
   display: block;
   padding: 10px;
   color: rgb(112, 128, 144);
   transition: all 300ms;
 }
 
-.nav ul li a:hover {
+.navigation-bar__list ul li a:hover {
   color: rgb(0, 0, 0);
   background: darkseagreen;
 }
 
-.nav > li > ul > li > a {
+.navigation-bar__list > li > ul > li > a {
   font-size: 25px;
   font-weight: bold;
 }

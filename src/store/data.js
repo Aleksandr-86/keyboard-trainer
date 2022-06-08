@@ -36,7 +36,7 @@ export const data = reactive({
   remainingChars: 0,
 
   currentBook: 0,
-  focusElement: String,
+  classSelector: String,
   keyboardLayout: 'russian',
   backgroundPreview: 0
 })
@@ -159,7 +159,7 @@ export const moveCaret = function (direction = 'forward') {
       playAudio(ringSound, storage.main.volume)
     data.timerStop = performance.now()
     state.work = false
-    state.overallStatistics = true
+    state.overallStats = true
     return
   } else if (data.indexArr >= 200 + data.firstIndex) {
     loadNextChars()
@@ -189,7 +189,7 @@ export const clearStat = function () {
 export const randomSnippet = function (lang, amount) {
   // if (data.elapsedTime !== 0) return
 
-  data.focusElement = '#nav-snippet'
+  data.classSelector = '.navigation-bar__snippet-link'
   let arrOfBooks = []
 
   if (lang === 'russian') {

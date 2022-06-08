@@ -185,24 +185,24 @@ const boardColor = computed(() => {
     <div
       v-for="(obj, index) in keyboardLayout.slice(2)"
       :key="index"
-      :id="obj.code.toLowerCase()"
       :class="[
         {
-          button:
+          button_type_single:
             obj.value[langIndex].length === 1 || obj.value[langIndex].length > 2
         },
+        { button_type_double: obj.value[langIndex].length === 2 },
+        { [`button_code_${obj.code.toLocaleLowerCase()}`]: true },
         {
-          'button-marked-shift':
+          button_marked_shift:
             (obj.code === 'ShiftLeft' && lShift) ||
             (obj.code === 'ShiftRight' && rShift)
         },
         {
-          'button-marked-border':
+          button_marked_border:
             obj.value[langIndex] === targetChar.toLowerCase() ||
             (obj.value[langIndex].length === 2 &&
               obj.value[langIndex].includes(targetChar.toLowerCase()))
-        },
-        { 'button-double': obj.value[langIndex].length === 2 }
+        }
       ]">
       <div
         v-if="
@@ -210,7 +210,7 @@ const boardColor = computed(() => {
         "
         :class="[
           {
-            'button-marked-color':
+            button_marked_color:
               obj.value[langIndex] === targetChar.toLowerCase()
           }
         ]">
@@ -220,7 +220,7 @@ const boardColor = computed(() => {
       <div
         v-if="obj.value[langIndex].length === 2"
         :class="[
-          { 'button-marked-color': obj.value[langIndex][0] === targetChar }
+          { button_marked_color: obj.value[langIndex][0] === targetChar }
         ]">
         {{ obj.value[langIndex][0] }}
       </div>
@@ -228,7 +228,7 @@ const boardColor = computed(() => {
       <div
         v-if="obj.value[langIndex].length === 2"
         :class="[
-          { 'button-marked-color': obj.value[langIndex][1] === targetChar }
+          { button_marked_color: obj.value[langIndex][1] === targetChar }
         ]">
         {{ obj.value[langIndex][1] }}
       </div>
@@ -237,20 +237,6 @@ const boardColor = computed(() => {
 </template>
 
 <style>
-@keyframes hideCursor {
-  0%,
-  99% {
-    cursor: default;
-  }
-  100% {
-    cursor: none;
-  }
-}
-
-.btn {
-  width: 900px;
-}
-
 .keyboard {
   width: 971px;
   height: 328px;
@@ -260,14 +246,8 @@ const boardColor = computed(() => {
   user-select: none;
 }
 
-.keyboard:hover {
-  cursor: none;
-  animation: hideCursor 2500ms;
-}
-
-.button,
-.button-double,
-.button-marked {
+.button_type_single,
+.button_type_double {
   float: left;
   width: 62px;
   height: 62px;
@@ -282,89 +262,89 @@ const boardColor = computed(() => {
   text-transform: capitalize;
 }
 
-.button > div {
+.button_type_single > div {
   position: relative;
   top: 16px;
   height: 28px;
 }
 
-.button-double > div {
+.button_type_double > div {
   height: 30px;
 }
 
-.button-double > div:first-child {
+.button_type_double > div:first-child {
   margin-top: 1px;
 }
 
-.button-double > div:last-child {
+.button_type_double > div:last-child {
   margin-bottom: 1px;
 }
 
-.button-marked-color {
+.button_marked_color {
   color: v-bind(boardColor);
 }
 
-.button-marked-border {
+.button_marked_border {
   box-shadow: inset 0 0 0 3px v-bind(boardColor);
 }
 
-.button-marked-shift {
+.button_marked_shift {
   color: v-bind(shiftColor);
   box-shadow: inset 0 0 0 3px v-bind(shiftColor);
 }
 
-#keyf,
-#keyj {
+.button_code_keyf,
+.button_code_keyj {
   text-decoration: v-bind(keyUnderline);
 }
 
-#backquote,
-#tab,
-#capslock,
-#shiftleft,
-#controlleft {
+.button_code_backquote,
+.button_code_tab,
+.button_code_capslock,
+.button_code_shiftleft,
+.button_code_controlleft {
   margin-left: 3px;
 }
 
-#backspace {
+.button_code_backspace {
   width: 120px;
 }
 
-#tab {
+.button_code_tab {
   width: 91px;
 }
 
-#backslash {
+.button_code_backslash {
   width: 91px;
 }
 
-#capslock {
+.button_code_capslock {
   width: 109px;
 }
 
-#enter {
+.button_code_enter {
   width: 138px;
 }
 
-#shiftleft {
+.button_code_shiftleft {
   width: 141px;
 }
 
-#shiftright {
+.button_code_shiftright {
   width: 171px;
 }
 
-#controlleft,
-#controlright,
-#metaleft,
-#altleft,
-#altright,
-#metaright,
-#contextmenu {
+.button_code_controlleft,
+.button_code_controlright,
+.button_code_metaleft,
+.button_code_altleft,
+.button_code_altright,
+.button_code_metaright,
+.button_code_contextmenu {
   width: 77px;
 }
 
-#space {
+.button_code_space {
   width: 405px;
 }
 </style>
