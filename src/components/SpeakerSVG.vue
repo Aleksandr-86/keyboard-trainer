@@ -19,7 +19,7 @@ function toggleSpeaker() {
 }
 </script>
 <template>
-  <div @click="toggleSpeaker" class="speaker-container">
+  <div @click="toggleSpeaker" class="speaker__container">
     <svg width="44" height="44">
       <path
         stroke-width="2"
@@ -47,7 +47,7 @@ function toggleSpeaker() {
 </template>
 
 <style>
-.speaker-container {
+.speaker__container {
   position: fixed;
   width: 44px;
   height: 44px;

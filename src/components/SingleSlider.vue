@@ -34,36 +34,38 @@ function mouseUp() {
 </script>
 
 <template>
-  <div class="slider-container">
-    <div class="slider">
+  <div class="single-slider__container">
+    <div class="single-slider">
       <input
         v-model="storage[props.obj][props.prop]"
         @mouseup="mouseUp"
         type="range"
-        class="slider-input"
+        class="single-slider__input"
         min="0"
         :max="props.max"
         :step="props.step"
         :disabled="props.disabled" />
 
-      <label class="slider-label">{{ storage[props.obj][props.prop] }}</label>
+      <label class="single-slider__label">{{
+        storage[props.obj][props.prop]
+      }}</label>
     </div>
   </div>
 </template>
 
 <style>
-.slider-container {
+.single-slider__container {
   opacity: v-bind(opacity);
 }
 
-.slider {
+.single-slider {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   height: 29px;
 }
 
-.slider-input {
+.single-slider__input {
   -webkit-appearance: none;
   top: 0;
   left: 0;
@@ -77,25 +79,25 @@ function mouseUp() {
   transition: opacity 0.2s;
 }
 
-.slider-input::-webkit-slider-thumb {
+.single-slider__input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 15px;
   height: 25px;
-  background: hsl(0, 0%, 83%);
+  background: hsl(120, 100%, 35%);
   border-radius: 5px;
   cursor: v-bind(cursor);
 }
 
-.slider-input::-moz-range-thumb {
+.single-slider__input::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: hsl(122, 39%, 49%);
+  background: hsl(120, 100%, 35%);
   border-radius: 50%;
   cursor: v-bind(cursor);
 }
 
-.slider-label {
+.single-slider__label {
   width: 45px;
   margin-left: 5px;
   color: hsl(0, 0%, 83%);
