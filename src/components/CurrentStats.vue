@@ -17,9 +17,9 @@ const backColor = computed(() => {
 
 <template>
   <div class="current-stats">
-    <div class="error-free">
+    <div class="current-stats__error-free">
       <transition>
-        <span v-if="isStarted" class="current-stat-description">
+        <span v-if="isStarted" class="current-stats__description">
           Без ошибок:&nbsp;
         </span>
       </transition>
@@ -31,25 +31,25 @@ const backColor = computed(() => {
 
     <div class="current-stats__remaining-chars">
       <transition>
-        <span v-if="isStarted" class="current-stat-description">
+        <span v-if="isStarted" class="current-stats__description">
           Осталось знаков:
         </span>
       </transition>
       {{ data.remainingChars }}
     </div>
 
-    <div class="char-per-minute">
+    <div class="current-stats__char-per-minute">
       <transition>
-        <span v-if="isStarted" class="current-stat-description">
+        <span v-if="isStarted" class="current-stats__description">
           Знаков в минуту:
         </span>
       </transition>
       {{ data.charPerMin }}
     </div>
 
-    <div class="elapsed-time">
+    <div class="current-stats__elapsed-time">
       <transition>
-        <span v-if="isStarted" class="current-stat-description">Время:</span>
+        <span v-if="isStarted" class="current-stats__description">Время:</span>
       </transition>
       {{ data.elapsedTimeStr }}
     </div>
@@ -86,13 +86,14 @@ const backColor = computed(() => {
   border-radius: 10px;
   user-select: none;
 }
-.current-stat-description {
+
+.current-stats__description {
   display: inline-flex;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.error-free {
+.current-stats__error-free {
   display: flex;
   justify-content: center;
   align-content: stretch;
@@ -110,13 +111,13 @@ const backColor = computed(() => {
   border-right: 2px solid v-bind(color);
 }
 
-.char-per-minute {
+.current-stats__char-per-minute {
   min-width: 59px;
   padding: 5px 10px 5px 10px;
   border-right: 2px solid v-bind(color);
 }
 
-.elapsed-time {
+.current-stats__elapsed-time {
   min-width: 129px;
   padding: 5px 10px 5px 10px;
   text-align: center;

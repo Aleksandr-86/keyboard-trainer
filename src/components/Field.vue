@@ -152,28 +152,28 @@ onUnmounted(() => {
       :key="index"
       class="char"
       :class="[
-        { 'char-caret': index === indexArr % 200 },
+        { char_display_caret: index === indexArr % 200 },
         {
-          'char-correct':
+          char_display_correct:
             statArr[index + firstIndex] === '2' &&
             char !== ' ' &&
             index < indexArr % 200
         },
         {
-          'char-revised':
+          char_display_revised:
             statArr[index + firstIndex] === '3' && index < indexArr % 200
         },
         {
-          'char-wrong':
+          char_display_wrong:
             statArr[index + firstIndex] === '4' && index < indexArr % 200
         },
+        { 'char_display_special-inactive': charTest(char) },
         {
-          'char-special-active':
+          'char_display_special-active':
             char !== 'skip' &&
-            statArr[index + firstIndex] === '1' &&
+            statArr[index + firstIndex] === '0' &&
             index < indexArr % 200
-        },
-        { 'char-special-inactive': charTest(char) }
+        }
       ]">
       <div v-if="char === 'skip'">&nbsp;</div>
       <div v-else-if="char === 'end'">&nbsp;</div>
@@ -189,16 +189,6 @@ onUnmounted(() => {
 </template>
 
 <style>
-@keyframes hideCursor {
-  0%,
-  99% {
-    cursor: default;
-  }
-  100% {
-    cursor: none;
-  }
-}
-
 .field {
   width: 1440px;
   height: 380px;
@@ -207,11 +197,6 @@ onUnmounted(() => {
   filter: blur(0px);
   outline: none;
   user-select: none;
-}
-
-.field:hover {
-  cursor: none;
-  animation: hideCursor 2500ms;
 }
 
 .char {
@@ -224,12 +209,12 @@ onUnmounted(() => {
   background: v-bind(charBackground);
 }
 
-.char-caret {
+.char_display_caret {
   position: relative;
   z-index: -1;
 }
 
-.char-caret:after {
+.char_display_caret:after {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -239,26 +224,26 @@ onUnmounted(() => {
   background: v-bind(caretBackground);
 }
 
-.char-correct {
+.char_display_correct {
   color: v-bind(charCorrectColor);
   filter: v-bind(charCorrectShadow);
 }
 
-.char-wrong {
-  color: v-bind(charWrongColor);
-  filter: v-bind(charWrongShadow);
-}
-
-.char-revised {
+.char_display_revised {
   color: v-bind(charRevisedColor);
   filter: v-bind(charRevisedShadow);
 }
 
-.char-special-inactive {
+.char_display_wrong {
+  color: v-bind(charWrongColor);
+  filter: v-bind(charWrongShadow);
+}
+
+.char_display_special-inactive {
   color: v-bind(charSpecialColor);
 }
 
-.char-special-active {
+.char_display_special-active {
   color: v-bind(charSpecialColor);
   filter: v-bind(charSpecialShadow);
 }
