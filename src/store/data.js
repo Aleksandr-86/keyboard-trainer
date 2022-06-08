@@ -31,8 +31,8 @@ export const data = reactive({
   numCorrect: 0,
   numErrors: 0,
 
-  tempWithoutMistake: 0,
-  withoutMistake: 0,
+  tempErrorFree: 0,
+  ErrorFree: 0,
   remainingChars: 0,
 
   currentBook: 0,
@@ -61,22 +61,22 @@ export const recordingStatistics = function (e) {
     }
 
     data.numCorrect++
-    data.tempWithoutMistake++
+    data.tempErrorFree++
 
-    if (data.withoutMistake < data.tempWithoutMistake) {
-      data.withoutMistake = data.tempWithoutMistake
+    if (data.ErrorFree < data.tempErrorFree) {
+      data.ErrorFree = data.tempErrorFree
     }
   } else if (key !== char) {
     if (data.statArr[data.indexArr] === '0') data.numDialed++
     data.statArr[data.indexArr] = '4' // the char is wrong
 
     // counting the number of letters without mistake
-    if (data.withoutMistake < data.tempWithoutMistake) {
-      data.withoutMistake = data.tempWithoutMistake
+    if (data.ErrorFree < data.tempErrorFree) {
+      data.ErrorFree = data.tempErrorFree
     }
 
     data.numErrors++
-    data.tempWithoutMistake = 0
+    data.tempErrorFree = 0
   }
 }
 
@@ -182,8 +182,8 @@ export const clearStat = function () {
   data.numCorrect = 0
   data.numErrors = 0
 
-  data.tempWithoutMistake = 0
-  data.withoutMistake = 0
+  data.tempErrorFree = 0
+  data.ErrorFree = 0
 }
 
 export const randomSnippet = function (lang, amount) {

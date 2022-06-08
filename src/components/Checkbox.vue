@@ -32,12 +32,13 @@ const cursor = computed(() => {
 
 <template>
   <label class="checkbox">
-    <div class="checkbox-title">{{ props.title }}</div>
+    <div class="checkbox__title">{{ props.title }}</div>
     <input
+      class="checkbox__input"
       type="checkbox"
       v-model="storage[props.obj][props.prop]"
       :disabled="props.disabled" />
-    <span class="check-mark"></span>
+    <span class="checkbox__box"></span>
   </label>
 </template>
 
@@ -61,7 +62,7 @@ const cursor = computed(() => {
   background: hsl(120, 20%, 25%);
 }
 
-.checkbox input {
+.checkbox__input {
   position: absolute;
   width: 0;
   height: 0;
@@ -69,12 +70,12 @@ const cursor = computed(() => {
   cursor: pointer;
 }
 
-.checkbox-title {
+.checkbox__title {
   margin-bottom: 2px;
   text-align: left;
 }
 
-.check-mark {
+.checkbox__box {
   position: relative;
   right: 0;
   width: 35px;
@@ -83,25 +84,25 @@ const cursor = computed(() => {
   border-radius: 7px;
 }
 
-.checkbox:hover input ~ .check-mark {
-  background-color: hsl(120, 73%, 90%);
+.checkbox:hover .checkbox__input ~ .checkbox__box {
+  background-color: hsl(120, 73%, 85%);
 }
 
-.checkbox input:checked ~ .check-mark {
+.checkbox .checkbox__input:checked ~ .checkbox__box {
   background-color: limegreen;
 }
 
-.check-mark:after {
+.checkbox__box:after {
   position: absolute;
   display: none;
   content: '';
 }
 
-.checkbox input:checked ~ .check-mark:after {
+.checkbox .checkbox__input:checked ~ .checkbox__box:after {
   display: block;
 }
 
-.checkbox .check-mark:after {
+.checkbox .checkbox__box:after {
   top: 5px;
   left: 12px;
   width: 8px;

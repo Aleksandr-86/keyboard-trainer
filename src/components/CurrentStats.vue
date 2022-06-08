@@ -3,13 +3,9 @@ import { computed } from '@vue/reactivity'
 import { data } from '../store/data.js'
 import { storage } from '../store/storage.js'
 
-const tempWithoutMistake = computed(() => data.tempWithoutMistake)
-const withoutMistake = computed(() => data.withoutMistake)
-const remainingChars = computed(() => data.remainingChars)
-const elapsedTime = computed(() => data.elapsedTime === 0)
-
+const isStarted = computed(() => data.elapsedTime === 0)
 const color = computed(() => storage.currentStatistics.colors)
-const background = computed(() => {
+const backColor = computed(() => {
   const colorsArr = storage.currentStatistics.colors.match(/[0-9.]+/g)
   const h = colorsArr[0]
   const s = colorsArr[1]
@@ -20,37 +16,40 @@ const background = computed(() => {
 </script>
 
 <template>
-  <div class="current-stat-container">
-    <div class="without-mistake">
-      <transition name="hide">
-        <span v-if="elapsedTime" class="current-stat-description">
+  <div class="current-stats">
+    <div class="error-free">
+      <transition>
+        <span v-if="isStarted" class="current-stat-description">
           Без ошибок:&nbsp;
         </span>
       </transition>
-      <span v-if="tempWithoutMistake === withoutMistake">
-        {{ withoutMistake }}
+      <span v-if="data.tempErrorFree === data.ErrorFree">
+        {{ data.ErrorFree }}
       </span>
-      <span v-else>{{ tempWithoutMistake }}/{{ withoutMistake }}</span>
+      <span v-else>{{ data.tempErrorFree }}/{{ data.ErrorFree }}</span>
     </div>
-    <div class="remaining-chars">
-      <transition name="hide">
-        <span v-if="elapsedTime" class="current-stat-description">
+
+    <div class="current-stats__remaining-chars">
+      <transition>
+        <span v-if="isStarted" class="current-stat-description">
           Осталось знаков:
         </span>
       </transition>
-      {{ remainingChars }}
+      {{ data.remainingChars }}
     </div>
+
     <div class="char-per-minute">
-      <transition name="hide">
-        <span v-if="elapsedTime" class="current-stat-description">
+      <transition>
+        <span v-if="isStarted" class="current-stat-description">
           Знаков в минуту:
         </span>
       </transition>
       {{ data.charPerMin }}
     </div>
+
     <div class="elapsed-time">
-      <transition name="hide">
-        <span v-if="elapsedTime" class="current-stat-description">Время:</span>
+      <transition>
+        <span v-if="isStarted" class="current-stat-description">Время:</span>
       </transition>
       {{ data.elapsedTimeStr }}
     </div>
@@ -58,21 +57,23 @@ const background = computed(() => {
 </template>
 
 <style>
-.hide-leave-active {
+/* transition */
+.v-leave-active {
   transition: all 1.4s linear;
 }
 
-.hide-leave-from {
+.v-leave-from {
   max-width: 297px;
   opacity: 1;
 }
 
-.hide-leave-to {
+.v-leave-to {
   max-width: 0;
   opacity: 0;
 }
 
-.current-stat-container {
+/* component */
+.current-stats {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -80,7 +81,7 @@ const background = computed(() => {
   margin: 5px auto;
   font-size: 35px;
   color: v-bind(color);
-  background: v-bind(background);
+  background: v-bind(backColor);
   border: 2px solid v-bind(color);
   border-radius: 10px;
   user-select: none;
@@ -91,7 +92,7 @@ const background = computed(() => {
   white-space: nowrap;
 }
 
-.without-mistake {
+.error-free {
   display: flex;
   justify-content: center;
   align-content: stretch;
@@ -103,7 +104,7 @@ const background = computed(() => {
   transition: min-width 3s 1s;
 }
 
-.remaining-chars {
+.current-stats__remaining-chars {
   min-width: 59px;
   padding: 5px 10px 5px 10px;
   border-right: 2px solid v-bind(color);

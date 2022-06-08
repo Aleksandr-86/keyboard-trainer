@@ -6,7 +6,7 @@ import {
   isAuxiliaryKeys,
   playAudio
 } from '../services/helpers.js'
-import CurrentStatistics from './CurrentStatistics.vue'
+import CurrentStats from './CurrentStats.vue'
 import Keyboard from './Keyboard.vue'
 import clickSound from '/src/assets/sounds/click-sound.mp3'
 import { data, recordingStatistics, moveCaret } from '../store/data.js'
@@ -122,11 +122,8 @@ const eListener = function (e) {
   if (code === 'Backspace' && data.indexArr > 0) {
     data.remainingChars++
     moveCaret('back')
-    if (
-      '23'.includes(data.statArr[data.indexArr]) &&
-      data.tempWithoutMistake > 0
-    ) {
-      data.tempWithoutMistake--
+    if ('23'.includes(data.statArr[data.indexArr]) && data.tempErrorFree > 0) {
+      data.tempErrorFree--
     }
   } else {
     if (storage.main.speaker) playAudio(clickSound, storage.main.volume)
@@ -148,7 +145,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <CurrentStatistics v-if="storage.visibility.currentStatistics" />
+  <CurrentStats v-if="storage.visibility.currentStatistics" />
   <div class="field">
     <div
       v-for="(char, index) in charsArr"

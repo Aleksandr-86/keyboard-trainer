@@ -41,8 +41,8 @@ onMounted(() => statistics.focus())
 
 onUnmounted(() => {
   state.bTimer = false
-  data.tempWithoutMistake = 0
-  data.withoutMistake = 0
+  data.tempErrorFree = 0
+  data.ErrorFree = 0
 
   data.elapsedTime = 0
   data.elapsedTimeStr = '00:00.00'
@@ -111,7 +111,7 @@ onUnmounted(() => {
         <div class="stat-first-column">
           Максимальное количество знаков подряд без ошибки:
         </div>
-        <div class="stat-second-column">{{ data.withoutMistake }}</div>
+        <div class="stat-second-column">{{ data.ErrorFree }}</div>
       </div>
     </div>
     <div v-else>
