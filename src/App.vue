@@ -37,7 +37,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="background"></div>
+  <div class="app-background"></div>
   <NavigationBar />
   <SettingsMenu v-if="state.settings" />
   <Field v-if="state.work" />
@@ -63,7 +63,7 @@ html {
   text-align: center;
 }
 
-#background {
+.app-background {
   position: absolute;
   z-index: -1;
   width: 100vw;

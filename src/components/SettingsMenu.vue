@@ -26,14 +26,14 @@ const title = computed(() => {
 
 const turnThePage = function (dir) {
   if (dir === 'next') {
-    direction.value = 'slide-next'
+    direction.value = 'settings-next'
     if (page.value >= 3) {
       page.value = 0
       return
     }
     page.value++
   } else if (dir === 'prev') {
-    direction.value = 'slide-prev'
+    direction.value = 'settings-prev'
     if (page.value <= 0) {
       page.value = 3
       return
@@ -165,19 +165,19 @@ const keyDown = function (e) {
 </script>
 
 <template>
-  <div v-click-outside="closeSettingsMenu" class="settings-container">
-    <div class="settings-title-container">
-      <button @click="turnThePage('prev')" class="settings-btn-page">
-        <div class="arrow arrow-left"></div>
+  <div v-click-outside="closeSettingsMenu" class="settings__container">
+    <div class="settings__title-container">
+      <button @click="turnThePage('prev')" class="settings__page-button">
+        <div class="arrow arrow_left"></div>
       </button>
-      <div class="settings-title">{{ title }}</div>
-      <button @click="turnThePage('next')" class="settings-btn-page">
-        <div class="arrow arrow-right"></div>
+      <div class="settings__title">{{ title }}</div>
+      <button @click="turnThePage('next')" class="settings__page-button">
+        <div class="arrow arrow_right"></div>
       </button>
     </div>
 
     <transition :name="direction">
-      <div v-if="page === 0" class="settings-page-container">
+      <div v-if="page === 0" class="settings__page-container">
         <button @click="clearSettings" class="settings-btn-default">
           Сброс
         </button>
@@ -231,8 +231,8 @@ const keyDown = function (e) {
     </transition>
 
     <transition :name="direction">
-      <div v-if="page === 1" class="settings-page-container">
-        <div class="settings-category-margin">Цвет:</div>
+      <div v-if="page === 1" class="settings__page-container">
+        <div class="settings-category">Цвет:</div>
         <HslaSlider title="фон поля" obj="field" prop="background" />
         <HslaSlider title="фон символа" obj="field" prop="charBackground" />
         <HslaSlider title="фон каретки" obj="field" prop="caretBackground" />
@@ -254,7 +254,7 @@ const keyDown = function (e) {
           obj="field"
           prop="charSpecialColor" />
 
-        <div class="settings-category-margin">Тень:</div>
+        <div class="settings-category">Тень:</div>
         <div class="settings-shadow-checkbox">
           <Checkbox
             title="верно введённый символ"
@@ -277,7 +277,7 @@ const keyDown = function (e) {
     </transition>
 
     <transition :name="direction">
-      <div v-if="page === 2" class="settings-page-container">
+      <div v-if="page === 2" class="settings__page-container">
         <HslaSlider title="фон клавиатуры" obj="keyboard" prop="background" />
         <HslaSlider title="фон клавиш" obj="keyboard" prop="keyBackground" />
         <HslaSlider title="текст клавиш" obj="keyboard" prop="keyColor" />
@@ -292,12 +292,12 @@ const keyDown = function (e) {
     </transition>
 
     <transition :name="direction">
-      <div v-if="page === 3" class="settings-page-container">
+      <div v-if="page === 3" class="settings__page-container">
         <HslaSlider
           title="цвет текущей статистики"
           obj="currentStatistics"
           prop="colors" />
-        <div class="settings-category-margin">Цвета общей статистики:</div>
+        <div class="settings-category">Цвета общей статистики:</div>
         <HslaSlider
           title="название книги и автор"
           obj="overallStats"
@@ -312,7 +312,7 @@ const keyDown = function (e) {
           obj="overallStats"
           prop="wrong" />
 
-        <div class="settings-category-margin">Звук:</div>
+        <div class="settings-category">Звук:</div>
         <div class="settings-shadow-checkbox">
           <Checkbox title="Озвучивать печать" obj="main" prop="speaker" />
           <Checkbox
@@ -333,40 +333,42 @@ const keyDown = function (e) {
 </template>
 
 <style>
-.slide-next-enter-active,
-.slide-prev-enter-active,
-.slide-prev-leave-active {
+/* transition */
+.settings-next-enter-active,
+.settings-prev-enter-active,
+.settings-prev-leave-active {
   transition: all 0.1s linear;
 }
 
-.slide-next-enter-from {
+.settings-next-enter-from {
   transform: translateX(100%);
 }
-.slide-prev-enter-from {
+.settings-prev-enter-from {
   transform: translateX(-100%);
 }
 
-.slide-next-leave-from,
-.slide-prev-leave-from {
+.settings-next-leave-from,
+.settings-prev-leave-from {
   transform: none;
   opacity: 1;
 }
 
-.slide-next-enter-to,
-.slide-prev-enter-to {
+.settings-next-enter-to,
+.settings-prev-enter-to {
   transform: none;
 }
 
-.slide-next-leave-to {
+.settings-next-leave-to {
   transform: translateX(-100%);
   opacity: 0;
 }
-.slide-prev-leave-to {
+.settings-prev-leave-to {
   transform: translateX(100%);
   opacity: 0;
 }
 
-.settings-container {
+/* component */
+.settings__container {
   position: absolute;
   top: 0;
   left: 0;
@@ -383,7 +385,7 @@ const keyDown = function (e) {
   user-select: none;
 }
 
-.settings-title-container {
+.settings__title-container {
   display: flex;
   justify-content: space-between;
   z-index: 20;
@@ -393,11 +395,11 @@ const keyDown = function (e) {
   border-bottom: 2px solid hsl(0, 0%, 78%);
 }
 
-.settings-title {
+.settings__title {
   width: 350px;
 }
 
-.settings-btn-page {
+.settings__page-button {
   --btn-color: black;
   display: flex;
   justify-content: center;
@@ -409,11 +411,11 @@ const keyDown = function (e) {
   border-radius: 7px;
 }
 
-.settings-btn-page:hover {
+.settings__page-button:hover {
   --btn-color: hsl(120, 73%, 75%);
 }
 
-.settings-btn-page:active {
+.settings__page-button:active {
   transform: scale(0.9);
 }
 
@@ -425,21 +427,21 @@ const keyDown = function (e) {
   border-right: 3px solid var(--btn-color);
 }
 
-.arrow-right {
+.arrow_right {
   transform: rotate(45deg);
   margin-right: 5px;
 }
 
-.arrow-left {
+.arrow_left {
   transform: rotate(-135deg);
   margin-left: 5px;
 }
 
-.settings-btn-page:hover {
+.settings__page-button:hover {
   color: hsl(120, 73%, 75%);
 }
 
-.settings-btn-page:active {
+.settings__page-button:active {
   font-size: 24px;
 }
 
@@ -464,17 +466,11 @@ const keyDown = function (e) {
   background-color: hsl(120, 50%, 50%);
 }
 
-.settings-page-container {
+.settings__page-container {
   position: absolute;
 }
 
 .settings-category {
-  margin-bottom: 7px;
-  text-align: left;
-  text-decoration: underline;
-}
-
-.settings-category-margin {
   margin-bottom: 14px;
   padding-left: 2px;
   text-align: left;
