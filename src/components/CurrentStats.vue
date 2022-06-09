@@ -18,11 +18,11 @@ const backColor = computed(() => {
 <template>
   <div class="current-stats">
     <div class="current-stats__error-free">
-      <transition name="current-stats">
+      <Transition name="collapse">
         <span v-if="isStarted" class="current-stats__description">
           Без ошибок:&nbsp;
         </span>
-      </transition>
+      </Transition>
       <span v-if="data.tempErrorFree === data.ErrorFree">
         {{ data.ErrorFree }}
       </span>
@@ -30,27 +30,27 @@ const backColor = computed(() => {
     </div>
 
     <div class="current-stats__remaining-chars">
-      <transition name="current-stats">
+      <Transition name="collapse">
         <span v-if="isStarted" class="current-stats__description">
           Осталось знаков:
         </span>
-      </transition>
+      </Transition>
       {{ data.remainingChars }}
     </div>
 
     <div class="current-stats__char-per-minute">
-      <transition name="current-stats">
+      <Transition name="collapse">
         <span v-if="isStarted" class="current-stats__description">
           Знаков в минуту:
         </span>
-      </transition>
+      </Transition>
       {{ data.charPerMin }}
     </div>
 
     <div class="current-stats__elapsed-time">
-      <transition name="current-stats">
+      <Transition name="collapse">
         <span v-if="isStarted" class="current-stats__description">Время:</span>
-      </transition>
+      </Transition>
       {{ data.elapsedTimeStr }}
     </div>
   </div>
@@ -58,16 +58,16 @@ const backColor = computed(() => {
 
 <style>
 /* transition */
-.current-stats-leave-active {
+.collapse-leave-active {
   transition: all 1.4s linear;
 }
 
-.current-stats-leave-from {
+.collapse-leave-from {
   max-width: 297px;
   opacity: 1;
 }
 
-.current-stats-leave-to {
+.collapse-leave-to {
   max-width: 0;
   opacity: 0;
 }

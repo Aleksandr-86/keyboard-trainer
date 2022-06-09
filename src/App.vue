@@ -39,12 +39,30 @@ onMounted(() => {
 <template>
   <div class="app-background"></div>
   <NavigationBar />
-  <SettingsMenu v-if="state.settings" />
-  <Field v-if="state.work" />
-  <OverallStats v-if="state.overallStats" />
+  <Transition name="opacity">
+    <SettingsMenu v-if="state.settings" />
+  </Transition>
+  <Transition name="opacity">
+    <Field v-if="state.work" />
+  </Transition>
+  <Transition name="opacity">
+    <OverallStats v-if="state.overallStats" />
+  </Transition>
 </template>
 
 <style>
+/* transition */
+.opacity-enter-active,
+.opacity-leave-active {
+  transition: opacity 0.2s linear;
+}
+
+.opacity-enter-from,
+.opacity-leave-to {
+  opacity: 0;
+}
+
+/* application */
 * {
   margin: 0;
   padding: 0;

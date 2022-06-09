@@ -64,7 +64,7 @@ onMounted(() => {
     </div>
     <div class="hsla-slider__line"></div>
 
-    <transition-group name="hsla-slider">
+    <TransitionGroup name="hsla-slider">
       <div v-if="hsla.flag">
         <div class="hsla-slider__value-description">тон</div>
         <div class="hsla-slider__container">
@@ -139,7 +139,7 @@ onMounted(() => {
           }}</label>
         </div>
       </div>
-    </transition-group>
+    </TransitionGroup>
   </div>
 </template>
 

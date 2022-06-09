@@ -10,7 +10,7 @@ import { state } from '../store/state.js'
 import { storage } from '../store/storage.js'
 
 const page = ref(0)
-const direction = ref('slide-next')
+const direction = ref()
 
 const title = computed(() => {
   if (page.value === 0) {
@@ -176,7 +176,7 @@ const keyDown = function (e) {
       </button>
     </div>
 
-    <transition :name="direction">
+    <Transition :name="direction">
       <div v-if="page === 0" class="settings__page-container">
         <button @click="clearSettings" class="settings__default-button">
           Сброс
@@ -227,9 +227,9 @@ const keyDown = function (e) {
           </p>
         </div>
       </div>
-    </transition>
+    </Transition>
 
-    <transition :name="direction">
+    <Transition :name="direction">
       <div v-if="page === 1" class="settings__page-container">
         <div class="settings__category">Цвет:</div>
         <HslaSlider title="фон поля" obj="field" prop="background" />
@@ -273,9 +273,9 @@ const keyDown = function (e) {
             prop="charSpecial" />
         </div>
       </div>
-    </transition>
+    </Transition>
 
-    <transition :name="direction">
+    <Transition :name="direction">
       <div v-if="page === 2" class="settings__page-container">
         <HslaSlider title="фон клавиатуры" obj="keyboard" prop="background" />
         <HslaSlider title="фон клавиш" obj="keyboard" prop="keyBackground" />
@@ -288,9 +288,9 @@ const keyDown = function (e) {
         <HslaSlider title="большие пальцы" obj="keyboard" prop="thumbs" />
         <HslaSlider title="правый указательный" obj="keyboard" prop="rIndex" />
       </div>
-    </transition>
+    </Transition>
 
-    <transition :name="direction">
+    <Transition :name="direction">
       <div v-if="page === 3" class="settings__page-container">
         <HslaSlider
           title="цвет текущей статистики"
@@ -327,7 +327,7 @@ const keyDown = function (e) {
           step="0.01"
           :disabled="!storage.main.speaker" />
       </div>
-    </transition>
+    </Transition>
   </div>
 </template>
 

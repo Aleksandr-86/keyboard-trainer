@@ -145,47 +145,54 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <CurrentStats v-if="storage.visibility.currentStatistics" />
-  <div class="field">
-    <div
-      v-for="(char, index) in charsArr"
-      :key="index"
-      class="char"
-      :class="[
-        { char_display_caret: index === indexArr % 200 },
-        {
-          char_display_correct:
-            statArr[index + firstIndex] === '2' &&
-            char !== ' ' &&
-            index < indexArr % 200
-        },
-        {
-          char_display_revised:
-            statArr[index + firstIndex] === '3' && index < indexArr % 200
-        },
-        {
-          char_display_wrong:
-            statArr[index + firstIndex] === '4' && index < indexArr % 200
-        },
-        { 'char_display_special-inactive': charTest(char) },
-        {
-          'char_display_special-active':
-            char !== 'skip' &&
-            statArr[index + firstIndex] === '0' &&
-            index < indexArr % 200
-        }
-      ]">
-      <div v-if="char === 'skip'">&nbsp;</div>
-      <div v-else-if="char === 'end'">&nbsp;</div>
-      <div v-else>{{ char }}</div>
-    </div>
-  </div>
+  <div>
+    <Transition name="opacity">
+      <CurrentStats v-if="storage.visibility.currentStatistics" />
+    </Transition>
 
-  <Keyboard
-    v-if="storage.visibility.keyboard"
-    :event-keydown="events.keyDn"
-    :target-char="data.fragmentArr[data.indexArr]"
-    :lang="data.keyboardLayout" />
+    <div class="field">
+      <div
+        v-for="(char, index) in charsArr"
+        :key="index"
+        class="char"
+        :class="[
+          { char_display_caret: index === indexArr % 200 },
+          {
+            char_display_correct:
+              statArr[index + firstIndex] === '2' &&
+              char !== ' ' &&
+              index < indexArr % 200
+          },
+          {
+            char_display_revised:
+              statArr[index + firstIndex] === '3' && index < indexArr % 200
+          },
+          {
+            char_display_wrong:
+              statArr[index + firstIndex] === '4' && index < indexArr % 200
+          },
+          { 'char_display_special-inactive': charTest(char) },
+          {
+            'char_display_special-active':
+              char !== 'skip' &&
+              statArr[index + firstIndex] === '0' &&
+              index < indexArr % 200
+          }
+        ]">
+        <div v-if="char === 'skip'">&nbsp;</div>
+        <div v-else-if="char === 'end'">&nbsp;</div>
+        <div v-else>{{ char }}</div>
+      </div>
+    </div>
+
+    <Transition name="opacity">
+      <Keyboard
+        v-if="storage.visibility.keyboard"
+        :event-keydown="events.keyDn"
+        :target-char="data.fragmentArr[data.indexArr]"
+        :lang="data.keyboardLayout" />
+    </Transition>
+  </div>
 </template>
 
 <style>

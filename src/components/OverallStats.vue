@@ -58,82 +58,87 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="overall-stats__container" tabindex="1" @keydown="keyDown">
-    <h4 v-if="isSnippet">Результат набора отрывка из книги:</h4>
-    <h4 v-else>Результат набора текста из буфера обмена</h4>
+  <div>
+    <div class="overall-stats__container" tabindex="1" @keydown="keyDown">
+      <h4 v-if="isSnippet">Результат набора отрывка из книги:</h4>
+      <h4 v-else>Результат набора текста из буфера обмена</h4>
 
-    <h4 v-if="isSnippet" class="overall-stats__title">«{{ book.title }}»</h4>
-    <h4 v-if="isSnippet" class="overall-stats__title">{{ book.author }}</h4>
+      <h4 v-if="isSnippet" class="overall-stats__title">«{{ book.title }}»</h4>
+      <h4 v-if="isSnippet" class="overall-stats__title">{{ book.author }}</h4>
 
-    <div class="overall-stats__line"></div>
+      <div class="overall-stats__line"></div>
 
-    <div class="overall-stats__first-column">Время набора:</div>
-    <div class="overall-stats__second-column">
-      <div>{{ data.elapsedTimeStr.split('.')[0] }}</div>
-      <div class="overall-stats__milliseconds">
-        .{{ data.elapsedTimeStr.split('.')[1] }}
+      <div class="overall-stats__first-column">Время набора:</div>
+      <div class="overall-stats__second-column">
+        <div>{{ data.elapsedTimeStr.split('.')[0] }}</div>
+        <div class="overall-stats__milliseconds">
+          .{{ data.elapsedTimeStr.split('.')[1] }}
+        </div>
+      </div>
+
+      <div class="overall-stats__first-column">Количество знаков отрывка:</div>
+      <div class="overall-stats__second-column">{{ data.numDialed }}</div>
+
+      <div class="overall-stats__first-column">Cкорость набора, зн/мин:</div>
+      <div class="overall-stats__second-column">{{ finalCharPerMin }}</div>
+
+      <div v-if="data.numErrors !== 0" class="overall-stats__line"></div>
+
+      <template
+        v-if="
+          (data.numCorrect !== 0 && data.numCorrect !== data.numDialed) ||
+          data.numErrors !== 0
+        ">
+        <div class="overall-stats__last-row">
+          <div class="overall-stats__first-column">Количество:</div>
+          <div class="overall-stats__second-column"></div>
+        </div>
+
+        <template v-if="data.numCorrect !== 0">
+          <div class="overall-stats__first-column">
+            - правильно введённых знаков:
+          </div>
+          <div class="overall-stats__second-column">
+            <div>{{ data.numCorrect }}</div>
+            <div class="overall-stats__correct-percent">
+              {{ strCorrectPercent }}
+            </div>
+          </div>
+        </template>
+
+        <template v-if="data.numErrors !== 0">
+          <div class="overall-stats__first-column">- ошибок:</div>
+          <div class="overall-stats__second-column">
+            <div>{{ data.numErrors }}</div>
+            <div class="overall-stats__wrong-percent">
+              {{ strErrorsPercent }}
+            </div>
+          </div>
+        </template>
+
+        <div class="overall-stats__line"></div>
+
+        <div class="overall-stats__last-row">
+          <div class="overall-stats__first-column">
+            Максимальное количество знаков подряд без ошибки:
+          </div>
+          <div class="overall-stats__second-column">{{ data.ErrorFree }}</div>
+        </div>
+      </template>
+
+      <div v-else>
+        <div class="overall-stats__line"></div>
+        <div class="overall-stats__last-row">
+          Отрывок набран без единой ошибки 🎉
+        </div>
       </div>
     </div>
-
-    <div class="overall-stats__first-column">Количество знаков отрывка:</div>
-    <div class="overall-stats__second-column">{{ data.numDialed }}</div>
-
-    <div class="overall-stats__first-column">Cкорость набора, зн/мин:</div>
-    <div class="overall-stats__second-column">{{ finalCharPerMin }}</div>
-
-    <div v-if="data.numErrors !== 0" class="overall-stats__line"></div>
 
     <div
-      v-if="
-        (data.numCorrect !== 0 && data.numCorrect !== data.numDialed) ||
-        data.numErrors !== 0
-      ">
-      <div class="overall-stats__last-row">
-        <div class="overall-stats__first-column">Количество:</div>
-        <div class="overall-stats__second-column"></div>
-      </div>
-
-      <div v-if="data.numCorrect !== 0">
-        <div class="overall-stats__first-column">
-          - правильно введённых знаков:
-        </div>
-        <div class="overall-stats__second-column">
-          <div>{{ data.numCorrect }}</div>
-          <div class="overall-stats__correct-percent">
-            {{ strCorrectPercent }}
-          </div>
-        </div>
-      </div>
-
-      <div v-if="data.numErrors !== 0">
-        <div class="overall-stats__first-column">- ошибок:</div>
-        <div class="overall-stats__second-column">
-          <div>{{ data.numErrors }}</div>
-          <div class="overall-stats__wrong-percent">{{ strErrorsPercent }}</div>
-        </div>
-      </div>
-
-      <div class="overall-stats__line"></div>
-
-      <div class="overall-stats__last-row">
-        <div class="overall-stats__first-column">
-          Максимальное количество знаков подряд без ошибки:
-        </div>
-        <div class="overall-stats__second-column">{{ data.ErrorFree }}</div>
-      </div>
-    </div>
-    <div v-else>
-      <div class="overall-stats__line"></div>
-      <div class="overall-stats__last-row">
-        Отрывок набран без единой ошибки 🎉
-      </div>
-    </div>
+      @click.left="state.overallStats = false"
+      v-if="state.overallStats"
+      class="overall-stats__overlay"></div>
   </div>
-
-  <div
-    @click.left="state.overallStats = false"
-    v-if="state.overallStats"
-    class="overall-stats__overlay"></div>
 </template>
 
 <style>
