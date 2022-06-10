@@ -130,22 +130,6 @@ const eListener = function (e) {
   }
 }
 
-// const clickAudio = new Audio()
-// clickAudio.path = click
-// clickAudio.volume = 1
-// clickAudio.onload = () => {
-//   console.warn('clickAudio is loaded')
-// }
-// clickAudio.play()
-
-// const ringAudio = new Audio()
-// ringAudio.path = ringSound
-// ringAudio.volume = 1
-// ringAudio.onload = () => {
-//   console.warn('ringAudio is loaded')
-// }
-// ringAudio.play()
-
 onMounted(() => {
   document.body.addEventListener('keydown', eListener)
 })
