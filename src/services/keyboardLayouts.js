@@ -12,7 +12,7 @@ export const jcuken = [
 
   // finger pointers
   { pinky: '[ё1!йфя0)зж.,-_хэ=+ъ\\/]' },
-  { ring: '[2цыч9(щдю]' },
+  { ring: '[2"цыч9(щдю]' },
   { middle: '[3№увс8*шлб]' },
   { lIndex: '[4;кам5%епи6:]' },
   { rIndex: '[7?нртгоь]' },
@@ -97,11 +97,11 @@ export const qwerty = [
   },
 
   // finger pointers
-  { pinky: '`~1!qaz0)p;:/?-_[{\'"=+]}\\|' },
-  { ring: '2@wsx9(ol.>' },
-  { middle: '3#edc8*ik,<' },
-  { lIndex: '4$rfv5%tgb6^' },
-  { rIndex: '4$rfv5%tgb6^' },
+  { pinky: '[`~1!qaz0)p;:/?-_[{\'"=+]}\\|]' },
+  { ring: '[2@wsx9(ol.>]' },
+  { middle: '[3#edc8*ik,<]' },
+  { lIndex: '[4$rfv5%tgb6^]' },
+  { rIndex: '[4$rfv5%tgb6^]' },
 
   { code: 'Backquote', value: '~`' },
   { code: 'Digit1', value: '!1' },
