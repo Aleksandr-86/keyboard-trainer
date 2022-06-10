@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from '@vue/reactivity'
 import { playAudio } from '../services/helpers.js'
-import clickSound from '/src/assets/sounds/click-sound.mp3'
+import click from '/src/assets/sounds/click.mp3'
 import { storage } from '../store/storage.js'
 
 const props = defineProps({
@@ -29,7 +29,7 @@ const cursor = computed(() => {
 })
 
 function mouseUp() {
-  if (storage.main.speaker) playAudio(clickSound, storage.main.volume)
+  if (storage.main.speaker) playAudio(click, storage.main.volume)
 }
 </script>
 

@@ -8,7 +8,7 @@ import {
 } from '../services/helpers.js'
 import CurrentStats from './CurrentStats.vue'
 import Keyboard from './Keyboard.vue'
-import clickSound from '/src/assets/sounds/click-sound.mp3'
+import click from '/src/assets/sounds/click.mp3'
 import { data, recordingStatistics, moveCaret } from '../store/data.js'
 import { state } from '../store/state.js'
 import { storage } from '../store/storage.js'
@@ -123,12 +123,28 @@ const eListener = function (e) {
       data.tempErrorFree--
     }
   } else {
-    if (storage.main.speaker) playAudio(clickSound, storage.main.volume)
+    if (storage.main.speaker) playAudio(click, storage.main.volume)
 
     data.remainingChars--
     moveCaret()
   }
 }
+
+// const clickAudio = new Audio()
+// clickAudio.path = click
+// clickAudio.volume = 1
+// clickAudio.onload = () => {
+//   console.warn('clickAudio is loaded')
+// }
+// clickAudio.play()
+
+// const ringAudio = new Audio()
+// ringAudio.path = ringSound
+// ringAudio.volume = 1
+// ringAudio.onload = () => {
+//   console.warn('ringAudio is loaded')
+// }
+// ringAudio.play()
 
 onMounted(() => {
   document.body.addEventListener('keydown', eListener)

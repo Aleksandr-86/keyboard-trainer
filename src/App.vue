@@ -8,6 +8,8 @@ import OverallStats from './components/OverallStats.vue'
 import { data } from '/src/store/data.js'
 import { state } from '/src/store/state.js'
 import { storage } from '/src/store/storage.js'
+import click from '/src/assets/sounds/click.mp3'
+import ring from '/src/assets/sounds/ring.mp3'
 
 function getUrl(name) {
   return new URL(`/src/assets/backgrounds/normal/${name}.jpg`, import.meta.url)
@@ -38,6 +40,9 @@ onMounted(() => {
 
 <template>
   <div class="app-background"></div>
+  <audio :src="click" preload="auto"></audio>
+  <audio :src="ring" preload="auto"></audio>
+``
   <NavigationBar />
   <Transition name="opacity">
     <SettingsMenu v-if="state.settings" />
