@@ -1,5 +1,7 @@
 <script setup>
 import { computed } from '@vue/reactivity'
+import { jcuken } from '../services/keyboardLayouts.js'
+import { qwerty } from '../services/keyboardLayouts.js'
 import { isUpCase } from '../services/helpers.js'
 import { data } from '../store/data'
 import { storage } from '../store/storage.js'
@@ -9,7 +11,7 @@ const props = defineProps({
     type: [Function, Object],
     required: true
   },
-  targetChar: {
+  char: {
     type: String,
     required: true
   },
@@ -20,100 +22,22 @@ const props = defineProps({
   }
 })
 
-const keyboardLayout = [
-  {
-    side: 'left',
-    chars: ['ёйфяцычувскамепи', 'qazwsxedcrfvtgb'],
-    signs: ['!"№;%:', '~!@#$%^']
-  },
-  {
-    side: 'right',
-    chars: ['нртгоьшлбщдюзжхэъ', 'yhnujmikolp'],
-    signs: ['?*()_+,/', '&*()_+{}|:"<>?']
-  },
-  { code: 'Backquote', value: ['ё', '~`'] },
-  { code: 'Digit1', value: ['!1', '!1'] },
-  { code: 'Digit2', value: ['"2', '@2'] },
-  { code: 'Digit3', value: ['№3', '#3'] },
-  { code: 'Digit4', value: [';4', '$4'] },
-  { code: 'Digit5', value: ['%5', '%5'] },
-  { code: 'Digit6', value: [':6', '^6'] },
-  { code: 'Digit7', value: ['?7', '&7'] },
-  { code: 'Digit8', value: ['*8', '*8'] },
-  { code: 'Digit9', value: ['(9', '(9'] },
-  { code: 'Digit', value: [')0', ')0'] },
-  { code: 'Minus', value: ['_-', '_-'] },
-  { code: 'Equal', value: ['+=', '+='] },
-  { code: 'Backspace', value: ['backspace', 'backspace'] },
-
-  { code: 'Tab', value: ['tab', 'tab'] },
-  { code: 'KeyQ', value: ['й', 'q'] },
-  { code: 'KeyW', value: ['ц', 'w'] },
-  { code: 'KeyE', value: ['у', 'e'] },
-  { code: 'KeyR', value: ['к', 'r'] },
-  { code: 'KeyT', value: ['е', 't'] },
-  { code: 'KeyY', value: ['н', 'y'] },
-  { code: 'KeyU', value: ['г', 'u'] },
-  { code: 'KeyI', value: ['ш', 'i'] },
-  { code: 'KeyO', value: ['щ', 'o'] },
-  { code: 'KeyP', value: ['з', 'p'] },
-  { code: 'BracketLeft', value: ['х', '{['] },
-  { code: 'BracketRight', value: ['ъ', '}]'] },
-  { code: 'Backslash', value: ['/\\', '|\\'] },
-
-  { code: 'CapsLock', value: ['caps', 'caps'] },
-  { code: 'KeyA', value: ['ф', 'a'] },
-  { code: 'KeyS', value: ['ы', 's'] },
-  { code: 'KeyD', value: ['в', 'd'] },
-  { code: 'KeyF', value: ['а', 'f'] },
-  { code: 'KeyG', value: ['п', 'g'] },
-  { code: 'KeyH', value: ['р', 'h'] },
-  { code: 'KeyJ', value: ['о', 'j'] },
-  { code: 'KeyK', value: ['л', 'k'] },
-  { code: 'KeyL', value: ['д', 'l'] },
-  { code: 'Semicolon', value: ['ж', ':;'] },
-  { code: 'Quote', value: ['э', `"'`] },
-  { code: 'Enter', value: ['enter', 'enter'] },
-
-  { code: 'ShiftLeft', value: ['shift', 'shift'] },
-  { code: 'KeyZ', value: ['я', 'z'] },
-  { code: 'KeyX', value: ['ч', 'x'] },
-  { code: 'KeyC', value: ['с', 'c'] },
-  { code: 'KeyV', value: ['м', 'v'] },
-  { code: 'KeyB', value: ['и', 'b'] },
-  { code: 'KeyN', value: ['т', 'n'] },
-  { code: 'KeyM', value: ['ь', 'm'] },
-  { code: 'Comma', value: ['б', '<,'] },
-  { code: 'Period', value: ['ю', '>.'] },
-  { code: 'Slash', value: [',.', '?/'] },
-  { code: 'ShiftRight', value: ['shift', 'shift'] },
-
-  { code: 'ControlLeft', value: ['ctrl', 'ctrl'] },
-  { code: 'MetaLeft', value: ['win', 'win'] },
-  { code: 'AltLeft', value: ['alt', 'alt'] },
-  { code: 'Space', value: [' ', ' '] },
-  { code: 'AltRight', value: ['alt', 'alt'] },
-  { code: 'MetaRight', value: ['win', 'win'] },
-  { code: 'ContextMenu', value: ['menu', 'menu'] },
-  { code: 'ControlRight', value: ['ctrl', 'ctrl'] }
-]
-
-const langIndex = computed(() => {
+const keyboardLayout = computed(() => {
   if (props.lang === 'russian') {
-    return 0
+    return jcuken
   } else if (props.lang === 'english') {
-    return 1
+    return qwerty
   }
 })
 
 const lShift = computed(() => {
-  const rChars = keyboardLayout[1].chars[langIndex.value]
-  const rSigns = keyboardLayout[1].signs[langIndex.value]
-  let targetChar = data.fragmentArr[data.indexArr]
+  const rChars = keyboardLayout.value[1].chars
+  const rSigns = keyboardLayout.value[1].signs
+  const char = data.fragmentArr[data.indexArr]
 
   if (
-    (rChars.includes(targetChar.toLowerCase()) && isUpCase(targetChar)) ||
-    rSigns.includes(targetChar)
+    (rChars.includes(char.toLowerCase()) && isUpCase(char)) ||
+    rSigns.includes(char)
   ) {
     return true
   } else {
@@ -122,13 +46,13 @@ const lShift = computed(() => {
 })
 
 const rShift = computed(() => {
-  const lChars = keyboardLayout[0].chars[langIndex.value]
-  const lSigns = keyboardLayout[0].signs[langIndex.value]
-  let targetChar = data.fragmentArr[data.indexArr]
+  const lChars = keyboardLayout.value[0].chars
+  const lSigns = keyboardLayout.value[0].signs
+  let char = data.fragmentArr[data.indexArr]
 
   if (
-    (lChars.includes(targetChar.toLowerCase()) && isUpCase(targetChar)) ||
-    lSigns.includes(targetChar)
+    (lChars.includes(char.toLowerCase()) && isUpCase(char)) ||
+    lSigns.includes(char)
   ) {
     return true
   } else {
@@ -157,50 +81,34 @@ const keyUnderline = computed(() => {
 })
 
 const boardColor = computed(() => {
-  let targetChar = data.fragmentArr[data.indexArr]
+  let char = data.fragmentArr[data.indexArr]
+  char = char.toLowerCase()
 
-  targetChar = targetChar.toLowerCase()
-  if (props.lang === 'russian') {
-    if (/[ё1!йфя0)зж.,\-_хэ=+ъ\\/]/.test(targetChar)) {
-      return pinkyFingers.value
-    } else if (/[2"цыч9(щдю]/.test(targetChar)) {
-      return ringFingers.value
-    } else if (/[3№увс8*шлб]/.test(targetChar)) {
-      return middleFingers.value
-    } else if (/[4;кам5%епи6:]/.test(targetChar)) {
-      return lIndexFinger.value
-    } else if (/[7?нртгоь]/.test(targetChar)) {
-      return rIndexFinger.value
-    }
-  } else if (props.lang === 'english') {
-    if (/[`~1!qaz0)p;:/?\-_\[{'"=+\]}\\|]/.test(targetChar)) {
-      return pinkyFingers.value
-    } else if (/[2@wsx9(ol.>]/.test(targetChar)) {
-      return ringFingers.value
-    } else if (/[3#edc8*ik,<]/.test(targetChar)) {
-      return middleFingers.value
-    } else if (/[4$rfv5%tgb6^]/.test(targetChar)) {
-      return lIndexFinger.value
-    } else if (/[7&yhnujm]/.test(targetChar)) {
-      return rIndexFinger.value
-    }
-  }
+  const pinkyRegex = new RegExp(keyboardLayout.value[2].pinky)
+  if (pinkyRegex.test(char)) return pinkyFingers.value
+  const ringRegex = new RegExp(keyboardLayout.value[3].ring)
+  if (ringRegex.test(char)) return ringFingers.value
+  const middleRegex = new RegExp(keyboardLayout.value[4].middle)
+  if (middleRegex.test(char)) return middleFingers.value
+  const lIndexRegex = new RegExp(keyboardLayout.value[5].lIndex)
+  if (lIndexRegex.test(char)) return lIndexFinger.value
+  const rIndexRegex = new RegExp(keyboardLayout.value[6].rIndex)
+  if (rIndexRegex.test(char)) return rIndexFinger.value
 
-  if (/ /.test(targetChar)) return thumbs.value
+  if (/ /.test(char)) return thumbs.value
 })
 </script>
 
 <template>
   <div class="keyboard">
     <div
-      v-for="(obj, index) in keyboardLayout.slice(2)"
+      v-for="(obj, index) in keyboardLayout.slice(7)"
       :key="index"
       :class="[
         {
-          button_type_single:
-            obj.value[langIndex].length === 1 || obj.value[langIndex].length > 2
+          button_type_single: obj.value.length === 1 || obj.value.length > 2
         },
-        { button_type_double: obj.value[langIndex].length === 2 },
+        { button_type_double: obj.value.length === 2 },
         { [`button_code_${obj.code.toLocaleLowerCase()}`]: true },
         {
           button_marked_shift:
@@ -209,38 +117,30 @@ const boardColor = computed(() => {
         },
         {
           button_marked_border:
-            obj.value[langIndex] === targetChar.toLowerCase() ||
-            (obj.value[langIndex].length === 2 &&
-              obj.value[langIndex].includes(targetChar.toLowerCase()))
+            obj.value === char.toLowerCase() ||
+            (obj.value.length === 2 && obj.value.includes(char.toLowerCase()))
         }
       ]">
       <div
-        v-if="
-          obj.value[langIndex].length === 1 || obj.value[langIndex].length > 2
-        "
+        v-if="obj.value.length === 1 || obj.value.length > 2"
         :class="[
           {
-            button_marked_color:
-              obj.value[langIndex] === targetChar.toLowerCase()
+            button_marked_color: obj.value === char.toLowerCase()
           }
         ]">
-        {{ obj.value[langIndex] }}
+        {{ obj.value }}
       </div>
 
       <div
-        v-if="obj.value[langIndex].length === 2"
-        :class="[
-          { button_marked_color: obj.value[langIndex][0] === targetChar }
-        ]">
-        {{ obj.value[langIndex][0] }}
+        v-if="obj.value.length === 2"
+        :class="[{ button_marked_color: obj.value[0] === char }]">
+        {{ obj.value[0] }}
       </div>
 
       <div
-        v-if="obj.value[langIndex].length === 2"
-        :class="[
-          { button_marked_color: obj.value[langIndex][1] === targetChar }
-        ]">
-        {{ obj.value[langIndex][1] }}
+        v-if="obj.value.length === 2"
+        :class="[{ button_marked_color: obj.value[1] === char }]">
+        {{ obj.value[1] }}
       </div>
     </div>
   </div>

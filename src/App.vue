@@ -54,7 +54,7 @@ onMounted(() => {
 /* transition */
 .opacity-enter-active,
 .opacity-leave-active {
-  transition: opacity 0.2s linear;
+  transition: opacity 0.1s linear;
 }
 
 .opacity-enter-from,

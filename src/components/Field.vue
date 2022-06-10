@@ -186,7 +186,7 @@ onUnmounted(() => {
       <Keyboard
         v-if="storage.visibility.keyboard"
         :event-keydown="events.keyDn"
-        :target-char="data.fragmentArr[data.indexArr]"
+        :char="data.fragmentArr[data.indexArr]"
         :lang="data.keyboardLayout" />
     </Transition>
   </div>
