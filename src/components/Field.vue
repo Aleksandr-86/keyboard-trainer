@@ -15,7 +15,6 @@ import { storage } from '../store/storage.js'
 
 const events = reactive({
   keyDn: Object,
-  keyUp: Object,
   keyValue: {},
   capsLock: false
 })
@@ -75,8 +74,6 @@ const charsArr = computed(() =>
 
 // event listener
 const eListener = function (e) {
-  if (state.settings) return
-
   events.keyDn = e
   events.keyValue = e.key
   const code = e.code
@@ -103,7 +100,7 @@ const eListener = function (e) {
     state.bTimer = true
     data.timerStart = performance.now()
 
-    // creating and updating reactive elapsed time variables
+    // assign and updating reactive elapsed time variables
     data.stopwatch = setInterval(() => {
       data.elapsedTime = performance.now() - data.timerStart
       data.elapsedTimeStr = msToMinutes(data.elapsedTime)

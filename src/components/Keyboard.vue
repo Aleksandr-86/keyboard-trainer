@@ -5,9 +5,19 @@ import { data } from '../store/data'
 import { storage } from '../store/storage.js'
 
 const props = defineProps({
-  eventKeydown: {},
-  targetChar: String,
-  lang: String
+  eventKeydown: {
+    type: [Function, Object],
+    required: true
+  },
+  targetChar: {
+    type: String,
+    required: true
+  },
+  lang: {
+    type: String,
+    required: true,
+    default: 'russian'
+  }
 })
 
 const keyboardLayout = [

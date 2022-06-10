@@ -24,7 +24,7 @@ function keyDown(e) {
     <input
       type="text"
       id="input"
-      @keydown="keyDown"
+      @keydown.stop="keyDown"
       v-model="storage.main.minSnippetLength" />
   </div>
 </template>
