@@ -3,9 +3,18 @@ import { watch, computed } from 'vue'
 import { storage } from '../store/storage.js'
 
 const props = defineProps({
-  title: String,
-  obj: String,
-  prop: String,
+  title: {
+    type: String,
+    required: true
+  },
+  obj: {
+    type: String,
+    required: true
+  },
+  prop: {
+    type: String,
+    required: true
+  },
   disabled: Boolean
 })
 

@@ -5,10 +5,22 @@ import click from '/src/assets/sounds/click.mp3'
 import { storage } from '../store/storage.js'
 
 const props = defineProps({
-  obj: String,
-  prop: String,
-  max: String,
-  step: String,
+  obj: {
+    type: String,
+    required: true
+  },
+  prop: {
+    type: String,
+    required: true
+  },
+  max: {
+    type: String,
+    required: true
+  },
+  step: {
+    type: String,
+    required: true
+  },
   disabled: Boolean
 })
 

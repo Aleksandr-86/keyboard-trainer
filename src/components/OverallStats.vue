@@ -21,6 +21,7 @@ const finalCharPerMin = computed(() =>
 )
 
 const isSnippet = typeof data.currentBook === 'object'
+
 const book = data.currentBook
 
 const titleColor = computed(() => storage.overallStats.title)
