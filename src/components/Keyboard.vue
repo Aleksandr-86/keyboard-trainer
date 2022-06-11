@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import { jcuken } from '../services/keyboardLayouts.js'
-import { qwerty } from '../services/keyboardLayouts.js'
+import { jcuken } from '../services/keyboard-layouts.js'
+import { qwerty } from '../services/keyboard-layouts.js'
 import { isUpCase } from '../services/helpers.js'
 import { data } from '../store/data'
 import { storage } from '../store/storage.js'
@@ -17,7 +17,6 @@ const props = defineProps({
   },
   lang: {
     type: String,
-    required: true,
     default: 'russian'
   }
 })
@@ -83,68 +82,12 @@ const keyUnderline = computed(() => {
 const boardColor = computed(() => {
   let char = data.fragmentArr[data.indexArr]
   char = char.toLowerCase()
-
-  // const pinkyRegex = new RegExp(keyboardLayout.value[2].pinky)
-  // const ringRegex = new RegExp(keyboardLayout.value[3].ring)
-  // const middleRegex = new RegExp(keyboardLayout.value[4].middle)
-  // const lIndexRegex = new RegExp(keyboardLayout.value[5].lIndex)
-  // const rIndexRegex = new RegExp(keyboardLayout.value[6].rIndex)
-
-  // if (pinkyRegex.test(char)) {
-  //   console.warn('pinky')
-  //   return pinkyFingers.value
-  // }
-
-  // if (ringRegex.test(char)) {
-  //   console.warn('ring')
-  //   return ringFingers.value
-  // }
-
-  // if (middleRegex.test(char)) {
-  //   console.warn('middle')
-  //   return middleFingers.value
-  // }
-
-  // if (lIndexRegex.test(char)) {
-  //   console.warn('lIndex')
-  //   return lIndexFinger.value
-  // }
-
-  // if (rIndexRegex.test(char)) {
-  //   console.warn('rIndex')
-  //   return rIndexFinger.value
-  // }
-
-  if (props.lang === 'russian') {
-    if (/[ё1!йфя0)зж.,\-_хэ=+ъ\\/]/.test(char)) {
-      return pinkyFingers.value
-    } else if (/[2"цыч9(щдю]/.test(char)) {
-      return ringFingers.value
-    } else if (/[3№увс8*шлб]/.test(char)) {
-      return middleFingers.value
-    } else if (/[4;кам5%епи6:]/.test(char)) {
-      return lIndexFinger.value
-    } else if (/[7?нртгоь]/.test(char)) {
-      return rIndexFinger.value
-    }
-  } else if (props.lang === 'english') {
-    if (/[`~1!qaz0)p;:/?\-_\[{'"=+\]}\\|]/.test(char)) {
-      return pinkyFingers.value
-    } else if (/[2@wsx9(ol.>]/.test(char)) {
-      return ringFingers.value
-    } else if (/[3#edc8*ik,<]/.test(char)) {
-      return middleFingers.value
-    } else if (/[4$rfv5%tgb6^]/.test(char)) {
-      return lIndexFinger.value
-    } else if (/[7&yhnujm]/.test(char)) {
-      return rIndexFinger.value
-    }
-  }
-
-  if (/ /.test(char)) {
-    // console.warn('thumbs')
-    return thumbs.value
-  }
+  if (keyboardLayout.value[2].pinky.includes(char)) return pinkyFingers.value
+  if (keyboardLayout.value[3].ring.includes(char)) return ringFingers.value
+  if (keyboardLayout.value[4].middle.includes(char)) return middleFingers.value
+  if (keyboardLayout.value[5].lIndex.includes(char)) return lIndexFinger.value
+  if (keyboardLayout.value[6].rIndex.includes(char)) return rIndexFinger.value
+  if (/ /.test(char)) return thumbs.value
 })
 </script>
 

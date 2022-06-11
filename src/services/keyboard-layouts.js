@@ -11,11 +11,11 @@ export const jcuken = [
   },
 
   // finger pointers
-  { pinky: '[ё1!йфя0)зж.,-_хэ=+ъ\\/]' },
-  { ring: '[2"цыч9(щдю]' },
-  { middle: '[3№увс8*шлб]' },
-  { lIndex: '[4;кам5%епи6:]' },
-  { rIndex: '[7?нртгоь]' },
+  { pinky: 'ё1!йфя0)зж.,-_хэ=+ъ\\/' },
+  { ring: '2"цыч9(щдю' },
+  { middle: '3№увс8*шлб' },
+  { lIndex: '4;кам5%епи6:' },
+  { rIndex: '7?нртгоь' },
 
   { code: 'Backquote', value: 'ё' },
   { code: 'Digit1', value: '!1' },
@@ -97,11 +97,11 @@ export const qwerty = [
   },
 
   // finger pointers
-  { pinky: '[`~1!qaz0)p;:/?-_[{\'"=+]}\\|]' },
-  { ring: '[2@wsx9(ol.>]' },
-  { middle: '[3#edc8*ik,<]' },
-  { lIndex: '[4$rfv5%tgb6^]' },
-  { rIndex: '[4$rfv5%tgb6^]' },
+  { pinky: '`~1!qaz0)p;:/?-_[{\'"=+]}\\|' },
+  { ring: '2@wsx9(ol.>' },
+  { middle: '3#edc8*ik,<' },
+  { lIndex: '4$rfv5%tgb6^' },
+  { rIndex: '7&yhnujm' },
 
   { code: 'Backquote', value: '~`' },
   { code: 'Digit1', value: '!1' },
@@ -129,8 +129,8 @@ export const qwerty = [
   { code: 'KeyI', value: 'i' },
   { code: 'KeyO', value: 'o' },
   { code: 'KeyP', value: 'p' },
-  { code: 'BracketLeft', value: '{' },
-  { code: 'BracketRight', value: '}' },
+  { code: 'BracketLeft', value: '{[' },
+  { code: 'BracketRight', value: '}]' },
   { code: 'Backslash', value: '|\\' },
 
   { code: 'CapsLock', value: 'caps' },
