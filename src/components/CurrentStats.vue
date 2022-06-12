@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import { data } from '../store/data.js'
-import { storage } from '../store/storage.js'
+import { data } from '@/store/data.js'
+import { storage } from '@/store/storage.js'
 
 const isStarted = computed(() => data.elapsedTime === 0)
 const color = computed(() => storage.currentStatistics.colors)

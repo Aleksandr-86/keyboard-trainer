@@ -8,11 +8,11 @@ import {
   strPrepWithoutNewLines,
   getSomeSentences,
   playAudio
-} from '/src/services/helpers.js'
-import bookList from '/src/services/book-list.js'
-import ringSound from '/src/assets/sounds/ring.mp3'
-import { state } from './state.js'
-import { storage } from './storage.js'
+} from '@/services/helpers.js'
+import bookList from '@/services/book-list.js'
+import ringSound from '@/assets/sounds/ring.mp3'
+import { state } from '@/store/state.js'
+import { storage } from '@/store/storage.js'
 
 export const data = reactive({
   fragmentArr: Object,

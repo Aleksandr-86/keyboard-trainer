@@ -1,13 +1,13 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { arrBackgrounds } from '/src/services/background-list.js'
-import HslaSlider from '../components/HslaSlider.vue'
-import Checkbox from '../components/Checkbox.vue'
-import Input from '../components/Input.vue'
-import SingleSlider from '../components/SingleSlider.vue'
-import { data } from '../store/data.js'
-import { state } from '../store/state.js'
-import { storage } from '../store/storage.js'
+import { arrBackgrounds } from '@/services/background-list.js'
+import HslaSlider from '@/components/HslaSlider.vue'
+import Checkbox from '@/components/Checkbox.vue'
+import Input from '@/components/Input.vue'
+import SingleSlider from '@/components/SingleSlider.vue'
+import { data } from '@/store/data.js'
+import { state } from '@/store/state.js'
+import { storage } from '@/store/storage.js'
 
 const page = ref(0)
 const direction = ref()

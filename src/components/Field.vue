@@ -5,13 +5,13 @@ import {
   msToMinutes,
   isAuxiliaryKeys,
   playAudio
-} from '../services/helpers.js'
-import CurrentStats from './CurrentStats.vue'
-import Keyboard from './Keyboard.vue'
-import click from '/src/assets/sounds/click.mp3'
-import { data, recordingStatistics, moveCaret } from '../store/data.js'
-import { state } from '../store/state.js'
-import { storage } from '../store/storage.js'
+} from '@/services/helpers.js'
+import CurrentStats from '@/components/CurrentStats.vue'
+import Keyboard from '@/components/Keyboard.vue'
+import click from '@/assets/sounds/click.mp3'
+import { data, recordingStatistics, moveCaret } from '@/store/data.js'
+import { state } from '@/store/state.js'
+import { storage } from '@/store/storage.js'
 
 const events = reactive({
   keyDn: Object,

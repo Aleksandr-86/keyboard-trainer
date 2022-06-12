@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { storage } from '../store/storage.js'
+import { storage } from '@/store/storage.js'
 
 const flag = ref(false)
 

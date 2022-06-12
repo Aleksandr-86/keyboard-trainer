@@ -1,15 +1,15 @@
 <script setup>
 import { onMounted, computed } from 'vue'
-import { arrBackgrounds } from '/src/services/background-list.js'
-import NavigationBar from './components/NavigationBar.vue'
-import SettingsMenu from './components/SettingsMenu.vue'
-import Field from './components/Field.vue'
-import OverallStats from './components/OverallStats.vue'
-import click from '/src/assets/sounds/click.mp3'
-import ring from '/src/assets/sounds/ring.mp3'
-import { data } from '/src/store/data.js'
-import { state } from '/src/store/state.js'
-import { storage } from '/src/store/storage.js'
+import { arrBackgrounds } from '@/services/background-list.js'
+import NavigationBar from '@/components/NavigationBar.vue'
+import SettingsMenu from '@/components/SettingsMenu.vue'
+import Field from '@/components/Field.vue'
+import OverallStats from '@/components/OverallStats.vue'
+import click from '@/assets/sounds/click.mp3'
+import ring from '@/assets/sounds/ring.mp3'
+import { data } from '@/store/data.js'
+import { state } from '@/store/state.js'
+import { storage } from '@/store/storage.js'
 
 function getUrl(name) {
   return new URL(`/src/assets/backgrounds/normal/${name}.jpg`, import.meta.url)

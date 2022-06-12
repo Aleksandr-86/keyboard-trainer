@@ -1,10 +1,10 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import { getBrowser } from '/src/services/helpers.js'
-import SpeakerSVG from './SpeakerSVG.vue'
-import { data, randomSnippet, loadFragment } from '../store/data.js'
-import { state } from '../store/state.js'
-import { storage } from '../store/storage.js'
+import { getBrowser } from '@/services/helpers.js'
+import SpeakerSVG from '@/components/SpeakerSVG.vue'
+import { data, randomSnippet, loadFragment } from '@/store/data.js'
+import { state } from '@/store/state.js'
+import { storage } from '@/store/storage.js'
 
 async function fillFieldFromBuffer() {
   data.classSelector = '.navigation-bar__buffer'

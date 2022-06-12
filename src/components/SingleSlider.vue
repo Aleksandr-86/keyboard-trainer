@@ -1,8 +1,8 @@
 <script setup>
 import { computed } from '@vue/reactivity'
-import { playAudio } from '../services/helpers.js'
-import click from '/src/assets/sounds/click.mp3'
-import { storage } from '../store/storage.js'
+import { playAudio } from '@/services/helpers.js'
+import click from '@/assets/sounds/click.mp3'
+import { storage } from '@/store/storage.js'
 
 const props = defineProps({
   obj: {
