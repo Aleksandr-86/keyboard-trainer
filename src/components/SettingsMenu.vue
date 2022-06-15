@@ -26,14 +26,14 @@ const title = computed(() => {
 
 const turnThePage = function (dir) {
   if (dir === 'next') {
-    direction.value = 'settings-next'
+    direction.value = 'move-next'
     if (page.value >= 3) {
       page.value = 0
       return
     }
     page.value++
   } else if (dir === 'prev') {
-    direction.value = 'settings-prev'
+    direction.value = 'move-prev'
     if (page.value <= 0) {
       page.value = 3
       return
@@ -333,35 +333,35 @@ const keyDown = function (e) {
 
 <style>
 /* transition */
-.settings-next-enter-active,
-.settings-prev-enter-active,
-.settings-prev-leave-active {
+.move-next-enter-active,
+.move-prev-enter-active,
+.move-prev-leave-active {
   transition: all 0.1s linear;
 }
 
-.settings-next-enter-from {
+.move-next-enter-from {
   transform: translateX(100%);
 }
-.settings-prev-enter-from {
+.move-prev-enter-from {
   transform: translateX(-100%);
 }
 
-.settings-next-leave-from,
-.settings-prev-leave-from {
+.move-next-leave-from,
+.move-prev-leave-from {
   transform: none;
   opacity: 1;
 }
 
-.settings-next-enter-to,
-.settings-prev-enter-to {
+.move-next-enter-to,
+.move-prev-enter-to {
   transform: none;
 }
 
-.settings-next-leave-to {
+.move-next-leave-to {
   transform: translateX(-100%);
   opacity: 0;
 }
-.settings-prev-leave-to {
+.move-prev-leave-to {
   transform: translateX(100%);
   opacity: 0;
 }

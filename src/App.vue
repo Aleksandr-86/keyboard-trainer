@@ -44,7 +44,7 @@ onMounted(() => {
   <audio :src="ring" preload="auto"></audio>
 
   <NavigationBar />
-  <Transition name="opacity">
+  <Transition name="move-x">
     <SettingsMenu v-if="state.settings" />
   </Transition>
   <Transition name="opacity">
@@ -65,6 +65,24 @@ onMounted(() => {
 .opacity-enter-from,
 .opacity-leave-to {
   opacity: 0;
+}
+
+/* transition move-x */
+.move-x-enter-active,
+.move-x-leave-active {
+  transition: transform 0.2s linear, opacity 0.2s linear;
+}
+
+.move-x-enter-from,
+.move-x-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.move-x-enter-to,
+.move-x-leave-from {
+  transform: translateX(0%);
+  opacity: 1;
 }
 
 /* application */
