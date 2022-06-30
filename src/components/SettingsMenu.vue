@@ -504,11 +504,11 @@ const keyDown = function (e) {
 
 .settings__image-link {
   text-decoration: none;
-  color: hsl(240, 90%, 45%);
+  color: hsl(270, 90%, 70%);
 }
 
 .settings__image-link:visited {
-  color: hsl(270, 90%, 70%);
+  color: hsl(94, 90%, 60%);
 }
 
 .settings__preview-button-container {
