@@ -18,7 +18,7 @@ export const arrBackgrounds = [
     name: 'altai-mountains',
     author: 'Денис Лобанов',
     location: 'Республика Алтай',
-    link: '#!'
+    link: ''
   },
   {
     num: 4,

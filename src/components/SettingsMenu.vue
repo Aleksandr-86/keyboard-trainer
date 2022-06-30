@@ -220,10 +220,16 @@ const keyDown = function (e) {
           <p class="settings__image-link-description">
             Автор фотографии:
             <a
+              v-if="arrBackgrounds[data.backgroundPreview].link === ''"
+              class="settings__image-link">
+              {{ arrBackgrounds[data.backgroundPreview].author }}
+            </a>
+            <a
+              v-else
               class="settings__image-link"
-              :href="arrBackgrounds[data.backgroundPreview].link"
-              >{{ arrBackgrounds[data.backgroundPreview].author }}</a
-            >
+              :href="arrBackgrounds[data.backgroundPreview].link">
+              {{ arrBackgrounds[data.backgroundPreview].author }}
+            </a>
           </p>
         </div>
       </div>
