@@ -44,12 +44,19 @@ onMounted(() => {
   <audio :src="ring" preload="auto"></audio>
 
   <NavigationBar />
+
+  <div v-if="state.loader && !state.work" class="loader">
+    <img src="/src/assets/backgrounds/loader.svg" />
+  </div>
+
   <Transition name="move-x">
     <SettingsMenu v-if="state.settings" />
   </Transition>
+
   <Transition name="opacity">
     <Field v-if="state.work" />
   </Transition>
+
   <Transition name="opacity">
     <OverallStats v-if="state.overallStats" />
   </Transition>
@@ -120,5 +127,17 @@ html {
   -moz-transition: background-image 0.5s linear;
   -o-transition: background-image 0.5s linear;
   transition: background-image 0.5s linear;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 80vh;
+}
+
+.loader > img {
+  width: 120px;
 }
 </style>

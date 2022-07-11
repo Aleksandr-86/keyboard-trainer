@@ -135,6 +135,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  state.loader = false
   document.body.removeEventListener('keydown', eListener)
   clearInterval(data.stopwatch)
   data.charPerMin = 0

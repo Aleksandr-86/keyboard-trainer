@@ -187,6 +187,7 @@ export const clearStat = function () {
 }
 
 export const randomSnippet = function (lang, amount) {
+  state.loader = true
   data.classSelector = '.navigation-bar__snippet-link'
   let arrOfBooks = []
 
