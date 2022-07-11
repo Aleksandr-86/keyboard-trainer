@@ -529,17 +529,17 @@ const keyDown = function (e) {
   width: 55px;
   height: 55px;
   font-size: 30px;
-  color: hsla(0, 0%, 0%, 0.4);
+  color: hsl(120, 0%, 60%);
   background-color: transparent;
   backdrop-filter: blur(5px);
   border-style: double;
   border-radius: 50%;
-  border-color: hsla(0, 0%, 0%, 0.4);
+  border-color: hsl(120, 0%, 60%);
 }
 
 .settings__preview-button:hover {
-  color: hsla(120, 100%, 45%, 0.65);
-  border-color: hsla(120, 100%, 45%, 0.65);
+  color: hsl(120, 100%, 45%);
+  border-color: hsl(120, 100%, 45%);
 }
 
 .settings__preview-button:active {
