@@ -156,16 +156,6 @@ export const strPrepWithoutNewLines = str =>
 export const charTest = char =>
   !/[0-9 А-ЯЁA-Z.,<>/\\'"\[\]{}|`~!@№#;$%:^?&*()\-_+=\n]/i.test(char)
 
-export function langTest(char, lang) {
-  if (/[А-ЯЁ№]/i.test(char)) {
-    return 'russian'
-  } else if (/[A-Z`~@#$^&{}'|]/i.test(char)) {
-    return 'english'
-  } else {
-    return 'neutral'
-  }
-}
-
 export function keyboardLayoutTest(char, keyboardLayout) {
   if (/[ЁА-Я№]/i.test(char)) {
     return 'russian'

@@ -187,16 +187,16 @@ export const clearStat = function () {
 }
 
 export const randomSnippet = function (lang, amount) {
-  // if (data.elapsedTime !== 0) return
-
   data.classSelector = '.navigation-bar__snippet-link'
   let arrOfBooks = []
 
   if (lang === 'russian') {
     arrOfBooks = bookList.arrOfRusBooks
+    data.keyboardLayout = 'russian'
     storage.main.langOfSnippets = 'russian' // underline the corresponding link in the nav menu
   } else {
     arrOfBooks = bookList.arrOfEngBooks
+    data.keyboardLayout = 'english'
     storage.main.langOfSnippets = 'english' // underline the corresponding link in the nav menu
   }
   localStorage.main = JSON.stringify(storage.main)
