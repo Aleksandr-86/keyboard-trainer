@@ -6,8 +6,8 @@ import {
   isAuxiliaryKeys,
   playAudio
 } from '@/services/helpers.js'
-import CurrentStats from '@/components/CurrentStats.vue'
-import Keyboard from '@/components/Keyboard.vue'
+import TheCurrentStats from '@/components/TheCurrentStats.vue'
+import TheKeyboard from '@/components/TheKeyboard.vue'
 import click from '@/assets/sounds/click.mp3'
 import { data, recordingStatistics, moveCaret } from '@/store/data.js'
 import { state } from '@/store/state.js'
@@ -145,7 +145,7 @@ onUnmounted(() => {
 <template>
   <div>
     <Transition name="opacity">
-      <CurrentStats v-if="storage.visibility.currentStatistics" />
+      <TheCurrentStats v-if="storage.visibility.currentStatistics" />
     </Transition>
 
     <div class="field">
@@ -184,7 +184,7 @@ onUnmounted(() => {
     </div>
 
     <Transition name="opacity">
-      <Keyboard
+      <TheKeyboard
         v-if="storage.visibility.keyboard"
         :event-keydown="events.keyDn"
         :char="data.fragmentArr[data.indexArr]"
