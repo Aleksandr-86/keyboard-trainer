@@ -29,8 +29,10 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
 </script>
 
 <template>
-  <div>
+  <div navigation-bar__container>
     <BaseSpeakerIcon class="navigation-bar__speaker" />
+
+    <div>sdf</div>
 
     <ul class="navigation-bar__list">
       <li>
@@ -82,16 +84,15 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
         </a>
       </li>
     </ul>
+
+    <img
+      class="navigation-bar__github-link"
+      src="/src/assets/icons/github.svg" />
   </div>
 </template>
 
 <style>
-.navigation-bar__speaker {
-  left: 10px;
-  margin-top: 13px;
-}
-
-.navigation-bar__list {
+.navigation-bar__container {
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -102,6 +103,35 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
   list-style: none;
   background: hsla(0, 0%, 8%, 0.8);
   user-select: none;
+}
+
+.navigation-bar__github-link {
+  height: 32px;
+  /* position: absolute;
+  top: 0;
+  right: 10px;
+  margin-top: 19px;
+  margin-left: 40px; */
+}
+
+.navigation-bar__speaker {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  margin-top: 13px;
+}
+
+.navigation-bar__list {
+  /* z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 70px;
+  font-family: 'Montserrat', sans-serif;
+  list-style: none;
+  background: hsla(0, 0%, 8%, 0.8);
+  user-select: none; */
 }
 
 .navigation-bar__buffer,

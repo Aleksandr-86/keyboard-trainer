@@ -46,7 +46,7 @@ onMounted(() => {
   <TheNavigationBar />
 
   <div v-if="state.loader && !state.work" class="loader">
-    <img src="/src/assets/backgrounds/loader.svg" />
+    <img src="/src/assets/icons/loader.svg" />
   </div>
 
   <Transition name="move-x">
