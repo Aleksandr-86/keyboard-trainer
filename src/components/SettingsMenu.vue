@@ -4,7 +4,7 @@ import { arrBackgrounds } from '@/services/background-list.js'
 import BaseHslaSlider from '@/components/ui/BaseHslaSlider.vue'
 import BaseCheckbox from '@/components/ui/BaseCheckbox.vue'
 import BaseInput from '@/components/ui/BaseInput.vue'
-import SingleSlider from '@/components/ui/SingleSlider.vue'
+import BaseSingleSlider from '@/components/ui/BaseSingleSlider.vue'
 import { data } from '@/store/data.js'
 import { state } from '@/store/state.js'
 import { storage } from '@/store/storage.js'
@@ -332,7 +332,7 @@ const keyDown = function (e) {
             prop="ring"
             :disabled="!storage.main.speaker" />
         </div>
-        <SingleSlider
+        <BaseSingleSlider
           obj="main"
           prop="volume"
           max="1"
