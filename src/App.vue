@@ -142,7 +142,6 @@ html {
   font-size: 5vh;
   background-color: pink;
   border: 1px solid black;
-  border-radius: 7px;
 }
 
 .loader {
