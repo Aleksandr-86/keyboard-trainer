@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onMounted } from 'vue'
 import { arrBackgrounds } from '@/services/background-list.js'
+import { detectDevice } from '@/services/helpers.js'
 import TheNavigationBar from '@/components/TheNavigationBar.vue'
 import TheSettingsMenu from '@/components/TheSettingsMenu.vue'
 import TheField from '@/components/TheField.vue'
@@ -19,6 +20,8 @@ function getUrl(name) {
 const backgroundPath = computed(() => {
   return `url(${getUrl(arrBackgrounds[storage.main.background].name)})`
 })
+
+const device = detectDevice()
 
 onMounted(() => {
   if (localStorage.main) {
@@ -39,31 +42,40 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="app-background"></div>
-  <audio :src="click" preload="auto"></audio>
-  <audio :src="ring" preload="auto"></audio>
+  <div class="app__background"></div>
+  <div v-if="device === 'screen'">
+    <audio :src="click" preload="auto"></audio>
+    <audio :src="ring" preload="auto"></audio>
 
-  <TheNavigationBar />
+    <TheNavigationBar />
 
-  <div v-if="state.loader && !state.work" class="loader">
-    <img src="/src/assets/icons/loader.svg" />
+    <div v-if="state.loader && !state.work" class="loader">
+      <img src="/src/assets/icons/loader.svg" />
+    </div>
+
+    <Transition name="move-x">
+      <TheSettingsMenu v-if="state.settings" />
+    </Transition>
+
+    <Transition name="opacity">
+      <TheField v-if="state.work" />
+    </Transition>
+
+    <Transition name="opacity">
+      <TheOverallStats v-if="state.overallStats" />
+    </Transition>
   </div>
 
-  <Transition name="move-x">
-    <TheSettingsMenu v-if="state.settings" />
-  </Transition>
-
-  <Transition name="opacity">
-    <TheField v-if="state.work" />
-  </Transition>
-
-  <Transition name="opacity">
-    <TheOverallStats v-if="state.overallStats" />
-  </Transition>
+  <div v-else>
+    <div class="app__info">
+      Здравствуйте! Данный сайт не предназначен для работы с мобильных
+      устройств.
+    </div>
+  </div>
 </template>
 
 <style>
-/* transition */
+/* transition opacity */
 .opacity-enter-active,
 .opacity-leave-active {
   transition: opacity 0.1s linear;
@@ -96,7 +108,6 @@ onMounted(() => {
 * {
   margin: 0;
   padding: 0;
-  /* box-sizing: border-box; */
 }
 
 html {
@@ -112,7 +123,7 @@ html {
   text-align: center;
 }
 
-.app-background {
+.app__background {
   position: absolute;
   z-index: -1;
   width: 100vw;
@@ -127,6 +138,13 @@ html {
   -moz-transition: background-image 0.5s linear;
   -o-transition: background-image 0.5s linear;
   transition: background-image 0.5s linear;
+}
+
+.app__info {
+  font-size: 5vh;
+  background-color: pink;
+  border: 1px solid black;
+  border-radius: 7px;
 }
 
 .loader {

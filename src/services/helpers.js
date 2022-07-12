@@ -75,7 +75,19 @@ export function getBrowser() {
   return browsrObj
 }
 
-// trim, remove \r and excess spaces => array
+export const detectDevice = function () {
+  if (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+      navigator.userAgent
+    )
+  ) {
+    return 'handheld'
+  } else {
+    return 'screen'
+  }
+}
+
+// trims, removes \r and excess spaces => array
 export const arrPreparer = function (str) {
   // number of characters per line
   const lineLen = 40
@@ -145,7 +157,7 @@ export const strPrepWithNewLines = str =>
     .replace(/(\n)|(\r\n)/g, ' \n ')
     .replace(/ +/g, ' ')
 
-// removing excess spaces
+// removes excess spaces
 export const strPrepWithoutNewLines = str =>
   str
     .trim()
@@ -188,7 +200,7 @@ export const isAuxiliaryKeys = function (code) {
   }
 }
 
-// playing audio
+// plays audio
 export const playAudio = function (path, volume) {
   const audio = new Audio()
   audio.src = path
@@ -196,18 +208,18 @@ export const playAudio = function (path, volume) {
   audio.play()
 }
 
-// rounding
+// rounds
 export const rnd = function (num, digit = 0) {
   return Number(Math.round(Number(num + 'e' + digit)) + 'e-' + digit)
 }
 
-// random number
+// gets random number
 export const randomNum = function (min, max) {
   const difference = Math.floor(Math.random() * (max - min + 1))
   return min + difference
 }
 
-// converting ms to the format: minutes:seconds.milliseconds
+// converts ms to the format: minutes:seconds.milliseconds
 export function msToMinutes(ms) {
   const centiseconds = Math.trunc(ms / 10)
     .toString()
@@ -230,12 +242,12 @@ export const getSomeSentences = function (str, minSnippetLength) {
   let lowBound = 0
   let highBound = strLength
 
-  // searching for the index of the end of the previous sentence
+  // searches for the index of the end of the previous sentence
   function findPreviousSignIndex(str, point) {
     let char = str[point]
     let bSign = char === '.' || char === '?' || char === '!' || char === '…'
 
-    // skipping some signs, moving point -->
+    // skipped some signs, moving point -->
     while (bSign) {
       point++
       if (point >= strLength - 1) return strLength - 1
@@ -252,7 +264,7 @@ export const getSomeSentences = function (str, minSnippetLength) {
     )
   }
 
-  // searching for the index of the end of the current sentence
+  // searches for the index of the end of the current sentence
   function findNextSignIndex(str, point) {
     let char = str[point]
     let bSign = char === '.' || char === '?' || char === '!' || char === '…'
@@ -306,7 +318,7 @@ export const getSomeSentences = function (str, minSnippetLength) {
       charTest(lastChar)
   }
 
-  // choosing random char index
+  // chooses random char index
   let randomIndex = randomNum(0, lastIndex - minSnippetLength)
 
   lowBound = findPreviousSignIndex(str, randomIndex)
