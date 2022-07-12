@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { arrBackgrounds } from '@/services/background-list.js'
 import TheNavigationBar from '@/components/TheNavigationBar.vue'
 import TheSettingsMenu from '@/components/TheSettingsMenu.vue'

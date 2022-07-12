@@ -1,17 +1,17 @@
 <script setup>
-import { onMounted, onUnmounted, reactive, computed } from 'vue'
+import { computed, onMounted, onUnmounted, reactive } from 'vue'
+import { data, moveCaret, recordingStatistics } from '@/store/data.js'
+import { state } from '@/store/state.js'
+import { storage } from '@/store/storage.js'
+import click from '@/assets/sounds/click.mp3'
 import {
   charTest,
-  msToMinutes,
   isAuxiliaryKeys,
+  msToMinutes,
   playAudio
 } from '@/services/helpers.js'
 import TheCurrentStats from '@/components/TheCurrentStats.vue'
 import TheKeyboard from '@/components/TheKeyboard.vue'
-import click from '@/assets/sounds/click.mp3'
-import { data, recordingStatistics, moveCaret } from '@/store/data.js'
-import { state } from '@/store/state.js'
-import { storage } from '@/store/storage.js'
 
 const events = reactive({
   keyDn: Object,

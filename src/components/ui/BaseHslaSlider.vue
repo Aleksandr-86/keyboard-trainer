@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive, computed, watch } from 'vue'
+import { computed, onMounted, reactive, watch } from 'vue'
 import { storage } from '@/store/storage.js'
 
 const props = defineProps({

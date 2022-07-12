@@ -1,10 +1,10 @@
 <script setup>
 import { onMounted, onUnmounted } from 'vue'
 import { computed } from '@vue/reactivity'
-import { rnd } from '@/services/helpers.js'
 import { data } from '@/store/data.js'
 import { state } from '@/store/state.js'
 import { storage } from '@/store/storage.js'
+import { rnd } from '@/services/helpers.js'
 
 const strCorrectPercent = computed(
   () =>
