@@ -1,10 +1,10 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { arrBackgrounds } from '@/services/background-list.js'
-import HslaSlider from '@/components/HslaSlider.vue'
-import Checkbox from '@/components/Checkbox.vue'
-import Input from '@/components/Input.vue'
-import SingleSlider from '@/components/SingleSlider.vue'
+import BaseHslaSlider from '@/components/ui/BaseHslaSlider.vue'
+import BaseCheckbox from '@/components/ui/BaseCheckbox.vue'
+import BaseInput from '@/components/ui/BaseInput.vue'
+import SingleSlider from '@/components/ui/SingleSlider.vue'
 import { data } from '@/store/data.js'
 import { state } from '@/store/state.js'
 import { storage } from '@/store/storage.js'
@@ -181,17 +181,23 @@ const keyDown = function (e) {
         <button @click="clearSettings" class="settings__default-button">
           Сброс
         </button>
-        <Checkbox title="Учитывать регистр букв" obj="main" prop="letterCase" />
-        <Checkbox
+        <BaseCheckbox
+          title="Учитывать регистр букв"
+          obj="main"
+          prop="letterCase" />
+        <BaseCheckbox
           title="Отображать текущую статистику"
           obj="visibility"
           prop="currentStatistics" />
-        <Checkbox
+        <BaseCheckbox
           title="Отображать клавиатуру"
           obj="visibility"
           prop="keyboard" />
-        <Checkbox title="Отображать засечки" obj="keyboard" prop="underline" />
-        <Input @keydown="keyDown" />
+        <BaseCheckbox
+          title="Отображать засечки"
+          obj="keyboard"
+          prop="underline" />
+        <BaseInput @keydown="keyDown" />
 
         <div class="settings__image">
           <img
@@ -238,42 +244,42 @@ const keyDown = function (e) {
     <Transition :name="direction">
       <div v-if="page === 1" class="settings__page-container">
         <div class="settings__category">Цвет:</div>
-        <HslaSlider title="фон поля" obj="field" prop="background" />
-        <HslaSlider title="фон символа" obj="field" prop="charBackground" />
-        <HslaSlider title="фон каретки" obj="field" prop="caretBackground" />
-        <HslaSlider title="нейтральный символ" obj="field" prop="charColor" />
-        <HslaSlider
+        <BaseHslaSlider title="фон поля" obj="field" prop="background" />
+        <BaseHslaSlider title="фон символа" obj="field" prop="charBackground" />
+        <BaseHslaSlider title="фон каретки" obj="field" prop="caretBackground" />
+        <BaseHslaSlider title="нейтральный символ" obj="field" prop="charColor" />
+        <BaseHslaSlider
           title="верно введённый символ"
           obj="field"
           prop="charCorrectColor" />
-        <HslaSlider
+        <BaseHslaSlider
           title="неверно введённый символ"
           obj="field"
           prop="charWrongColor" />
-        <HslaSlider
+        <BaseHslaSlider
           title="исправленный символ"
           obj="field"
           prop="charRevisedColor" />
-        <HslaSlider
+        <BaseHslaSlider
           title="ненабираемый символ"
           obj="field"
           prop="charSpecialColor" />
 
         <div class="settings__category">Тень:</div>
         <div class="settings__shadow-checkbox">
-          <Checkbox
+          <BaseCheckbox
             title="верно введённый символ"
             obj="shadow"
             prop="charCorrect" />
-          <Checkbox
+          <BaseCheckbox
             title="неверно введённый символ"
             obj="shadow"
             prop="charWrong" />
-          <Checkbox
+          <BaseCheckbox
             title="исправленный символ"
             obj="shadow"
             prop="charRevised" />
-          <Checkbox
+          <BaseCheckbox
             title="ненабираемый символ"
             obj="shadow"
             prop="charSpecial" />
@@ -283,44 +289,44 @@ const keyDown = function (e) {
 
     <Transition :name="direction">
       <div v-if="page === 2" class="settings__page-container">
-        <HslaSlider title="фон клавиатуры" obj="keyboard" prop="background" />
-        <HslaSlider title="фон клавиш" obj="keyboard" prop="keyBackground" />
-        <HslaSlider title="текст клавиш" obj="keyboard" prop="keyColor" />
-        <HslaSlider title="модификатор (Shift)" obj="keyboard" prop="shift" />
-        <HslaSlider title="мизинцы" obj="keyboard" prop="pinky" />
-        <HslaSlider title="безымянные пальцы" obj="keyboard" prop="ring" />
-        <HslaSlider title="средние пальцы" obj="keyboard" prop="middle" />
-        <HslaSlider title="левый указательный" obj="keyboard" prop="lIndex" />
-        <HslaSlider title="большие пальцы" obj="keyboard" prop="thumbs" />
-        <HslaSlider title="правый указательный" obj="keyboard" prop="rIndex" />
+        <BaseHslaSlider title="фон клавиатуры" obj="keyboard" prop="background" />
+        <BaseHslaSlider title="фон клавиш" obj="keyboard" prop="keyBackground" />
+        <BaseHslaSlider title="текст клавиш" obj="keyboard" prop="keyColor" />
+        <BaseHslaSlider title="модификатор (Shift)" obj="keyboard" prop="shift" />
+        <BaseHslaSlider title="мизинцы" obj="keyboard" prop="pinky" />
+        <BaseHslaSlider title="безымянные пальцы" obj="keyboard" prop="ring" />
+        <BaseHslaSlider title="средние пальцы" obj="keyboard" prop="middle" />
+        <BaseHslaSlider title="левый указательный" obj="keyboard" prop="lIndex" />
+        <BaseHslaSlider title="большие пальцы" obj="keyboard" prop="thumbs" />
+        <BaseHslaSlider title="правый указательный" obj="keyboard" prop="rIndex" />
       </div>
     </Transition>
 
     <Transition :name="direction">
       <div v-if="page === 3" class="settings__page-container">
-        <HslaSlider
+        <BaseHslaSlider
           title="цвет текущей статистики"
           obj="currentStatistics"
           prop="colors" />
         <div class="settings__category">Цвета общей статистики:</div>
-        <HslaSlider
+        <BaseHslaSlider
           title="название книги и автор"
           obj="overallStats"
           prop="title" />
-        <HslaSlider title="миллисекунды" obj="overallStats" prop="ms" />
-        <HslaSlider
+        <BaseHslaSlider title="миллисекунды" obj="overallStats" prop="ms" />
+        <BaseHslaSlider
           title="процент правильных символов"
           obj="overallStats"
           prop="correct" />
-        <HslaSlider
+        <BaseHslaSlider
           title="процент ошибочных символов"
           obj="overallStats"
           prop="wrong" />
 
         <div class="settings__category">Звук:</div>
         <div class="settings__shadow-checkbox">
-          <Checkbox title="Озвучивать печать" obj="main" prop="speaker" />
-          <Checkbox
+          <BaseCheckbox title="Озвучивать печать" obj="main" prop="speaker" />
+          <BaseCheckbox
             title="Сигнал по окончании набора"
             obj="main"
             prop="ring"
