@@ -21,8 +21,6 @@ const backgroundPath = computed(() => {
   return `url(${getUrl(arrBackgrounds[storage.main.background].name)})`
 })
 
-const device = detectDevice()
-
 onMounted(() => {
   if (localStorage.main) {
     const obj = JSON.parse(localStorage.main)
@@ -43,7 +41,7 @@ onMounted(() => {
 
 <template>
   <div class="app__background"></div>
-  <div v-if="device === 'screen'">
+  <div v-if="detectDevice() === 'screen'">
     <audio :src="click" preload="auto"></audio>
     <audio :src="ring" preload="auto"></audio>
 
