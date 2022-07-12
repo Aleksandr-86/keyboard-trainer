@@ -29,71 +29,66 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
 </script>
 
 <template>
-  <div navigation-bar__container>
+  <ul class="navigation-bar__list">
+    <li>
+      <a
+        @click="randomSnippet(storage.main.langOfSnippets, minSnippetLength)"
+        class="navigation-bar__snippet-link"
+        href="#!">
+        Отрывок
+      </a>
+    </li>
+    <li class="nav-children">
+      <a class="navigation-bar__drop-down-list" href="#!">▼</a>
+      <ul>
+        <li>
+          <a
+            @click="randomSnippet('russian', minSnippetLength)"
+            :class="{
+              'nav-underscore-none': storage.main.langOfSnippets !== 'russian'
+            }"
+            href="#!">
+            На русском языке
+          </a>
+        </li>
+        <li>
+          <a
+            @click="randomSnippet('english', minSnippetLength)"
+            :class="{
+              'nav-underscore-none': storage.main.langOfSnippets !== 'english'
+            }"
+            href="#!">
+            На английском языке
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <a @click="fillFieldFromBuffer" class="navigation-bar__buffer" href="#!">
+        Буфер обмена
+      </a>
+    </li>
+
+    <li>
+      <a @click="toggleSettings" class="navigation-bar__settings" href="#!">
+        Настройки
+      </a>
+    </li>
+
     <BaseSpeakerIcon class="navigation-bar__speaker" />
 
-    <div>sdf</div>
-
-    <ul class="navigation-bar__list">
-      <li>
-        <a
-          @click="randomSnippet(storage.main.langOfSnippets, minSnippetLength)"
-          class="navigation-bar__snippet-link"
-          href="#!">
-          Отрывок
-        </a>
-      </li>
-      <li class="nav-children">
-        <a class="navigation-bar__drop-down-list" href="#!">▼</a>
-        <ul>
-          <li>
-            <a
-              @click="randomSnippet('russian', minSnippetLength)"
-              :class="{
-                'nav-underscore-none': storage.main.langOfSnippets !== 'russian'
-              }"
-              href="#!">
-              На русском языке
-            </a>
-          </li>
-          <li>
-            <a
-              @click="randomSnippet('english', minSnippetLength)"
-              :class="{
-                'nav-underscore-none': storage.main.langOfSnippets !== 'english'
-              }"
-              href="#!">
-              На английском языке
-            </a>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <a
-          @click="fillFieldFromBuffer"
-          class="navigation-bar__buffer"
-          href="#!">
-          Буфер обмена
-        </a>
-      </li>
-
-      <li>
-        <a @click="toggleSettings" class="navigation-bar__settings" href="#!">
-          Настройки
-        </a>
-      </li>
-    </ul>
-
-    <img
+    <a
       class="navigation-bar__github-link"
-      src="/src/assets/icons/github.svg" />
-  </div>
+      href="https://github.com/Aleks-Kar/keyboard-trainer">
+      <img src="/src/assets/icons/github.svg" />
+    </a>
+  </ul>
 </template>
 
 <style>
-.navigation-bar__container {
-  z-index: 10;
+.navigation-bar__list {
+  background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,35 +98,6 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
   list-style: none;
   background: hsla(0, 0%, 8%, 0.8);
   user-select: none;
-}
-
-.navigation-bar__github-link {
-  height: 32px;
-  /* position: absolute;
-  top: 0;
-  right: 10px;
-  margin-top: 19px;
-  margin-left: 40px; */
-}
-
-.navigation-bar__speaker {
-  position: absolute;
-  top: 0;
-  left: 10px;
-  margin-top: 13px;
-}
-
-.navigation-bar__list {
-  /* z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  height: 70px;
-  font-family: 'Montserrat', sans-serif;
-  list-style: none;
-  background: hsla(0, 0%, 8%, 0.8);
-  user-select: none; */
 }
 
 .navigation-bar__buffer,
@@ -229,5 +195,16 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
 
 .nav-underscore-none {
   text-decoration: none;
+}
+
+.navigation-bar__speaker {
+  margin-left: 20px;
+}
+
+.navigation-bar__github-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
 }
 </style>

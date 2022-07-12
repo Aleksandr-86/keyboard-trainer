@@ -48,7 +48,6 @@ function toggleSpeaker() {
 
 <style>
 .speaker__container {
-  position: fixed;
   width: 44px;
   height: 44px;
   cursor: pointer;
