@@ -5,6 +5,7 @@ import { state } from '@/store/state.js'
 import { storage } from '@/store/storage.js'
 import { getBrowser } from '@/services/helpers.js'
 import BaseSpeakerIcon from '@/components/ui/BaseSpeakerIcon.vue'
+import TheGitHubLink from '@/components/ui/TheGitHubLink.vue'
 
 async function fillFieldFromBuffer() {
   data.classSelector = '.navigation-bar__buffer'
@@ -78,11 +79,7 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
 
     <BaseSpeakerIcon class="navigation-bar__speaker" />
 
-    <a
-      class="navigation-bar__github-link"
-      href="https://github.com/Aleks-Kar/keyboard-trainer">
-      <img src="/src/assets/icons/github.svg" />
-    </a>
+    <TheGitHubLink class="navigation-bar__github-link" />
   </ul>
 </template>
 
