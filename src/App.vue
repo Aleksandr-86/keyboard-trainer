@@ -157,9 +157,10 @@ html {
 
 .preloader {
   width: 0;
-  height: 3px;
-  background-color: hsla(180, 100%, 50%, 0.4);
+  height: 2px;
+  background-color: hsl(120, 100%, 50%);
   animation: linear-preloader 5s linear infinite;
+  border-radius: 50%;
 }
 
 .info {
