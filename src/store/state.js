@@ -5,9 +5,5 @@ export const state = reactive({
   settings: false,
   bTimer: false,
   overallStats: false,
-  loader: false
+  preloader: false
 })
-
-// const toggle = function (prop) {
-//   state[prop] = !state[prop]
-// }

@@ -27,7 +27,7 @@ onMounted(() => {
     data.backgroundPreview = obj.background
   }
 
-  // loading values from  local storage to the reactive object
+  // loading values from local storage to the reactive object
   for (const key in storage) {
     if (localStorage[key]) {
       const obj = JSON.parse(localStorage[key])
@@ -40,16 +40,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="app__background"></div>
+  <div class="background"></div>
   <div v-if="detectDevice() === 'screen'">
     <audio :src="click" preload="auto"></audio>
     <audio :src="ring" preload="auto"></audio>
 
     <TheNavigationBar />
 
-    <div v-if="state.loader && !state.work" class="loader">
-      <img src="/src/assets/icons/loader.svg" />
-    </div>
+    <div v-if="state.preloader && !state.work" class="preloader"></div>
 
     <Transition name="move-x">
       <TheSettingsMenu v-if="state.settings" />
@@ -65,7 +63,7 @@ onMounted(() => {
   </div>
 
   <div v-else>
-    <div class="app__info">
+    <div class="info">
       Здравствуйте! Данный сайт не предназначен для работы с мобильных
       устройств.
     </div>
@@ -121,7 +119,7 @@ html {
   text-align: center;
 }
 
-.app__background {
+.background {
   position: absolute;
   z-index: -1;
   width: 100vw;
@@ -138,21 +136,35 @@ html {
   transition: background-image 0.5s linear;
 }
 
-.app__info {
+@keyframes linear-preloader {
+  0% {
+    float: left;
+    width: 0%;
+  }
+  49% {
+    float: left;
+    width: 100%;
+  }
+  51% {
+    float: right;
+    width: 100%;
+  }
+  100% {
+    float: right;
+    width: 0%;
+  }
+}
+
+.preloader {
+  width: 0;
+  height: 3px;
+  background-color: hsla(180, 100%, 50%, 0.4);
+  animation: linear-preloader 5s linear infinite;
+}
+
+.info {
   font-size: 5vh;
   background-color: pink;
   border: 1px solid black;
-}
-
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 80vh;
-}
-
-.loader > img {
-  width: 120px;
 }
 </style>
