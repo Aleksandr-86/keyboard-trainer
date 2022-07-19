@@ -2,16 +2,8 @@
 import { ref } from 'vue'
 
 const color = ref('#708090')
-
-const mouseEnter = function () {
-  color.value = 'hsl(144, 80%, 43%)'
-  console.warn('mouseenter')
-}
-
-const mouseLeave = function () {
-  color.value = 'hsl(210, 13%, 50%)'
-  console.warn('mouseenter')
-}
+const mouseEnter = () => (color.value = 'hsl(144, 80%, 43%)')
+const mouseLeave = () => (color.value = 'hsl(210, 13%, 50%)')
 </script>
 
 <template>
