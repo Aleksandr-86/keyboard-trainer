@@ -246,8 +246,14 @@ const keyDown = function (e) {
         <div class="settings__category">Цвет:</div>
         <BaseHslaSlider title="фон поля" obj="field" prop="background" />
         <BaseHslaSlider title="фон символа" obj="field" prop="charBackground" />
-        <BaseHslaSlider title="фон каретки" obj="field" prop="caretBackground" />
-        <BaseHslaSlider title="нейтральный символ" obj="field" prop="charColor" />
+        <BaseHslaSlider
+          title="фон каретки"
+          obj="field"
+          prop="caretBackground" />
+        <BaseHslaSlider
+          title="нейтральный символ"
+          obj="field"
+          prop="charColor" />
         <BaseHslaSlider
           title="верно введённый символ"
           obj="field"
@@ -289,16 +295,31 @@ const keyDown = function (e) {
 
     <Transition :name="direction">
       <div v-if="page === 2" class="settings__page-container">
-        <BaseHslaSlider title="фон клавиатуры" obj="keyboard" prop="background" />
-        <BaseHslaSlider title="фон клавиш" obj="keyboard" prop="keyBackground" />
+        <BaseHslaSlider
+          title="фон клавиатуры"
+          obj="keyboard"
+          prop="background" />
+        <BaseHslaSlider
+          title="фон клавиш"
+          obj="keyboard"
+          prop="keyBackground" />
         <BaseHslaSlider title="текст клавиш" obj="keyboard" prop="keyColor" />
-        <BaseHslaSlider title="модификатор (Shift)" obj="keyboard" prop="shift" />
+        <BaseHslaSlider
+          title="модификатор (Shift)"
+          obj="keyboard"
+          prop="shift" />
         <BaseHslaSlider title="мизинцы" obj="keyboard" prop="pinky" />
         <BaseHslaSlider title="безымянные пальцы" obj="keyboard" prop="ring" />
         <BaseHslaSlider title="средние пальцы" obj="keyboard" prop="middle" />
-        <BaseHslaSlider title="левый указательный" obj="keyboard" prop="lIndex" />
+        <BaseHslaSlider
+          title="левый указательный"
+          obj="keyboard"
+          prop="lIndex" />
         <BaseHslaSlider title="большие пальцы" obj="keyboard" prop="thumbs" />
-        <BaseHslaSlider title="правый указательный" obj="keyboard" prop="rIndex" />
+        <BaseHslaSlider
+          title="правый указательный"
+          obj="keyboard"
+          prop="rIndex" />
       </div>
     </Transition>
 

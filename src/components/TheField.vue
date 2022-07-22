@@ -19,7 +19,7 @@ const events = reactive({
   capsLock: false
 })
 
-//  stats
+// stats
 const statArr = computed(() => data.statArr)
 const indexArr = computed(() => data.indexArr)
 const firstIndex = computed(() => data.firstIndex)
@@ -117,6 +117,12 @@ const eListener = function (e) {
   recordingStatistics(e)
 
   if (code === 'Backspace' && data.indexArr > 0) {
+    /* returns the previous set of characters when
+    backspace is pressed at the beginning of the field */
+    if (data.indexArr % 200 === 0 && data.firstIndex !== 0) {
+      data.firstIndex -= 200
+    }
+
     data.remainingChars++
     moveCaret('back')
     if ('23'.includes(data.statArr[data.indexArr]) && data.tempErrorFree > 0) {
@@ -124,7 +130,6 @@ const eListener = function (e) {
     }
   } else {
     if (storage.main.speaker) playAudio(click, storage.main.volume)
-
     data.remainingChars--
     moveCaret()
   }
