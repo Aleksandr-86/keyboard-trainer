@@ -10,6 +10,7 @@ const mouseLeave = () => (color.value = 'hsl(210, 13%, 50%)')
   <a
     class="github-link"
     href="https://github.com/Aleks-Kar/keyboard-trainer"
+    aria-label="github-link"
     @mouseenter="mouseEnter"
     @mouseleave="mouseLeave">
     <svg
