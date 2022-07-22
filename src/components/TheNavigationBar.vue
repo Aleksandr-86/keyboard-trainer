@@ -5,7 +5,7 @@ import { state } from '@/store/state.js'
 import { storage } from '@/store/storage.js'
 import { getBrowser } from '@/services/helpers.js'
 import BaseSpeakerIcon from '@/components/ui/BaseSpeakerIcon.vue'
-import TheGitHubLink from '@/components/ui/TheGitHubLink.vue'
+import BaseGitHubLink from '@/components/ui/BaseGitHubLink.vue'
 
 async function fillFieldFromBuffer() {
   data.classSelector = '.navigation-bar__buffer'
@@ -30,71 +30,79 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
 </script>
 
 <template>
-  <ul class="navigation-bar__list">
-    <li>
-      <a
-        @click="randomSnippet(storage.main.langOfSnippets, minSnippetLength)"
-        class="navigation-bar__snippet-link"
-        href="#!">
-        Отрывок
-      </a>
-    </li>
-    <li class="nav-children">
-      <a class="navigation-bar__drop-down-list" href="#!">▼</a>
-      <ul>
-        <li>
-          <a
-            @click="randomSnippet('russian', minSnippetLength)"
-            :class="{
-              'nav-underscore-none': storage.main.langOfSnippets !== 'russian'
-            }"
-            href="#!">
-            На русском языке
-          </a>
-        </li>
-        <li>
-          <a
-            @click="randomSnippet('english', minSnippetLength)"
-            :class="{
-              'nav-underscore-none': storage.main.langOfSnippets !== 'english'
-            }"
-            href="#!">
-            На английском языке
-          </a>
-        </li>
-      </ul>
-    </li>
+  <div class="navigation-bar__container">
+    <ul class="navigation-bar__list">
+      <li>
+        <a
+          @click="randomSnippet(storage.main.langOfSnippets, minSnippetLength)"
+          class="navigation-bar__snippet-link"
+          href="#!">
+          Отрывок
+        </a>
+      </li>
+      <li class="nav-children">
+        <a class="navigation-bar__drop-down-list" href="#!">▼</a>
+        <ul>
+          <li>
+            <a
+              @click="randomSnippet('russian', minSnippetLength)"
+              :class="{
+                'nav-underscore-none': storage.main.langOfSnippets !== 'russian'
+              }"
+              href="#!">
+              На русском языке
+            </a>
+          </li>
+          <li>
+            <a
+              @click="randomSnippet('english', minSnippetLength)"
+              :class="{
+                'nav-underscore-none': storage.main.langOfSnippets !== 'english'
+              }"
+              href="#!">
+              На английском языке
+            </a>
+          </li>
+        </ul>
+      </li>
 
-    <li>
-      <a @click="fillFieldFromBuffer" class="navigation-bar__buffer" href="#!">
-        Буфер обмена
-      </a>
-    </li>
+      <li>
+        <a
+          @click="fillFieldFromBuffer"
+          class="navigation-bar__buffer"
+          href="#!">
+          Буфер обмена
+        </a>
+      </li>
 
-    <li>
-      <a @click="toggleSettings" class="navigation-bar__settings" href="#!">
-        Настройки
-      </a>
-    </li>
+      <li>
+        <a @click="toggleSettings" class="navigation-bar__settings" href="#!">
+          Настройки
+        </a>
+      </li>
+    </ul>
 
     <BaseSpeakerIcon class="navigation-bar__speaker" />
-
-    <TheGitHubLink class="navigation-bar__github-link" />
-  </ul>
+    <BaseGitHubLink class="navigation-bar__github-link" />
+  </div>
 </template>
 
 <style>
-.navigation-bar__list {
-  background-color: red;
+.navigation-bar__container {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   height: 70px;
   font-family: 'Montserrat', sans-serif;
-  list-style: none;
   background: hsla(0, 0%, 8%, 0.8);
   user-select: none;
+}
+
+.navigation-bar__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
 }
 
 .navigation-bar__buffer,
