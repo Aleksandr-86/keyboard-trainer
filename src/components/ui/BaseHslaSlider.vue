@@ -153,7 +153,7 @@ onMounted(() => {
 </template>
 
 <style>
-/* transition group */
+/* групповое правило перехода hsla-slider */
 .hsla-slider-enter-active,
 .hsla-slider-leave-active {
   transition: all 0.25s linear;
@@ -171,7 +171,7 @@ onMounted(() => {
   opacity: 0;
 }
 
-/* component */
+/* прочие правила */
 .hsla-slider {
   width: 438px;
   padding: 5px 5px 5px 6px;

@@ -57,7 +57,7 @@ const backColor = computed(() => {
 </template>
 
 <style>
-/* transition */
+/* правило перехода collapse */
 .collapse-leave-active {
   transition: all 1.4s linear;
 }
@@ -72,7 +72,7 @@ const backColor = computed(() => {
   opacity: 0;
 }
 
-/* component */
+/* прочие правила */
 .current-stats {
   display: flex;
   flex-direction: row;

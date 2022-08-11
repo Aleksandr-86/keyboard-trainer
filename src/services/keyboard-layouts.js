@@ -1,16 +1,16 @@
 export const jcuken = [
   {
-    // left side of the keyboard
+    // левая сторона клавиатуры
     chars: 'ёйфяцычувскамепи',
     signs: '!"№;%:'
   },
   {
-    // right side of the keyboard
+    // правая сторона клавиатуры
     chars: 'нртгоьшлбщдюзжхэъ',
     signs: '?*()_+,/'
   },
 
-  // finger pointers
+  // указатели пальцев
   { pinky: 'ё1!йфя0)зж.,-_хэ=+ъ\\/' },
   { ring: '2"цыч9(щдю' },
   { middle: '3№увс8*шлб' },
@@ -86,17 +86,17 @@ export const jcuken = [
 
 export const qwerty = [
   {
-    // left side of the keyboard
+    // левая сторона клавиатуры
     chars: 'qazwsxedcrfvtgb',
     signs: '~!@#$%^'
   },
   {
-    // right side of the keyboard
+    // правая сторона клавиатуры
     chars: 'yhnujmikolp',
     signs: '&*()_+{}|:"<>?'
   },
 
-  // finger pointers
+  // указатели пальцев
   { pinky: '`~1!qaz0)p;:/?-_[{\'"=+]}\\|' },
   { ring: '2@wsx9(ol.>' },
   { middle: '3#edc8*ik,<' },

@@ -27,7 +27,8 @@ onMounted(() => {
     data.backgroundPreview = obj.background
   }
 
-  // loading values from local storage to the reactive object
+  /* присваивает значения реактивным переменным на основании значений
+  из локального хранилища браузера */
   for (const key in storage) {
     if (localStorage[key]) {
       const obj = JSON.parse(localStorage[key])
@@ -71,7 +72,7 @@ onMounted(() => {
 </template>
 
 <style>
-/* transition opacity */
+/* переходное правило opacity */
 .opacity-enter-active,
 .opacity-leave-active {
   transition: opacity 0.1s linear;
@@ -82,7 +83,7 @@ onMounted(() => {
   opacity: 0;
 }
 
-/* transition move-x */
+/* переходное правило move-x */
 .move-x-enter-active,
 .move-x-leave-active {
   transition: transform 0.2s linear, opacity 0.2s linear;
@@ -100,7 +101,7 @@ onMounted(() => {
   opacity: 1;
 }
 
-/* application */
+/* прочие правила */
 * {
   margin: 0;
   padding: 0;

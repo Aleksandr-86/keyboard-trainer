@@ -365,7 +365,7 @@ const keyDown = function (e) {
 </template>
 
 <style>
-/* transition */
+/* правила перехода move-prev и move-next */
 .move-next-enter-active,
 .move-prev-enter-active,
 .move-prev-leave-active {
@@ -399,7 +399,7 @@ const keyDown = function (e) {
   opacity: 0;
 }
 
-/* component */
+/* прочие правила */
 .settings__container {
   position: absolute;
   top: 0;

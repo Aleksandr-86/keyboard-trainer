@@ -54,10 +54,10 @@ export const recordingStatistics = function (e) {
     return
   } else if (key === char) {
     if (data.statArr[data.indexArr] === '0') {
-      data.statArr[data.indexArr] = '2' // the char is correct
+      data.statArr[data.indexArr] = '2' // символ введён верно
       data.numDialed++
     } else if (data.statArr[data.indexArr] === '4') {
-      data.statArr[data.indexArr] = '3' // the revised char is correct
+      data.statArr[data.indexArr] = '3' // повторно введённый символ введён верно
     }
 
     data.numCorrect++
@@ -68,9 +68,9 @@ export const recordingStatistics = function (e) {
     }
   } else if (key !== char) {
     if (data.statArr[data.indexArr] === '0') data.numDialed++
-    data.statArr[data.indexArr] = '4' // the char is wrong
+    data.statArr[data.indexArr] = '4' // символ введён неверно
 
-    // counting the number of letters without mistake
+    // подсчитывает количество символов введённых без единой ошибки
     if (data.ErrorFree < data.tempErrorFree) {
       data.ErrorFree = data.tempErrorFree
     }
@@ -82,10 +82,10 @@ export const recordingStatistics = function (e) {
 
 export const loadFragment = function (str, amount = 0) {
   if (amount === 0) {
-    // case: buffer
+    // вариант "буфер обмена"
     data.fragmentArr = arrPreparer(strPrepWithNewLines(str))
   } else {
-    // case: snippets from the books
+    // вариант "отрывок из книги"
     str = strPrepWithoutNewLines(str)
     data.fragmentArr = arrPreparer(getSomeSentences(str, amount))
   }
@@ -100,7 +100,7 @@ export const loadFragment = function (str, amount = 0) {
   }
   data.remainingChars = tempLength - tempIncorrect - 1
 
-  // creating and filling the empty statistic array
+  // создаёт и заполняет массив статистики значениями '0'
   data.statArr = new Array(data.fragmentArr.length).fill('0')
 
   data.firstIndex = 0
@@ -111,14 +111,15 @@ export const loadFragment = function (str, amount = 0) {
   moveCaret()
 }
 
-// loading next set of chars
+// загружает следующий набор символов
 export const loadNextChars = function () {
   if (data.firstIndex + 200 >= data.fragmentArr.length) return
   data.firstIndex += 200
 }
 
-/* moving caret (visually), moving over the inappropriate chars,
-   stopping timer, changing work state, enable statistics menu */
+/* визуально перемещает каретку, пропускает неподходящий для набора
+символы, останавливает секундомер, изменяет состояние "работа",
+активирует отображение меню общей статистики */
 export const moveCaret = function (direction = 'forward') {
   if (direction === 'forward') {
     data.indexArr++
@@ -126,10 +127,9 @@ export const moveCaret = function (direction = 'forward') {
     data.indexArr--
   }
 
-  // checking inappropriate chars and skipping those
   let currentChar = data.fragmentArr[data.indexArr]
 
-  // checking inappropriate sign
+  // проверяет является ли символ набираемым
   while (charTest(currentChar) || currentChar === 'skip') {
     if (
       data.fragmentArr[data.indexArr + 1] === ' ' &&
@@ -154,7 +154,7 @@ export const moveCaret = function (direction = 'forward') {
     data.indexArr >= data.fragmentArr.length ||
     data.fragmentArr[data.indexArr] === 'end'
   ) {
-    // shutting down the field
+    // скрывает поле символов
     if (storage.main.speaker && storage.main.ring)
       playAudio(ringSound, storage.main.volume)
     data.timerStop = performance.now()
@@ -171,6 +171,7 @@ export const moveCaret = function (direction = 'forward') {
   )
 }
 
+// очищает переменные статистики
 export const clearStat = function () {
   state.bTimer = false
   clearInterval(data.stopwatch)
@@ -186,6 +187,7 @@ export const clearStat = function () {
   data.ErrorFree = 0
 }
 
+// возвращает случайный отрывок из книги
 export const randomSnippet = function (lang, amount) {
   state.preloader = true
   data.classSelector = '.navigation-bar__snippet-link'
@@ -194,15 +196,16 @@ export const randomSnippet = function (lang, amount) {
   if (lang === 'russian') {
     arrOfBooks = bookList.arrOfRusBooks
     data.keyboardLayout = 'russian'
-    storage.main.langOfSnippets = 'russian' // underline the corresponding link in the nav menu
+    storage.main.langOfSnippets = 'russian'
   } else {
     arrOfBooks = bookList.arrOfEngBooks
     data.keyboardLayout = 'english'
-    storage.main.langOfSnippets = 'english' // underline the corresponding link in the nav menu
+    storage.main.langOfSnippets = 'english'
   }
   localStorage.main = JSON.stringify(storage.main)
 
-  const obj = arrOfBooks[randomNum(0, arrOfBooks.length - 1)] // choosing a random book
+  // выбирает случайный объект с книгой
+  const obj = arrOfBooks[randomNum(0, arrOfBooks.length - 1)]
   data.currentBook = obj
 
   function getUrl(name) {
@@ -214,8 +217,8 @@ export const randomSnippet = function (lang, amount) {
 
   const httpRequest = new XMLHttpRequest()
   httpRequest.onload = function () {
-    // When the request is loaded
-    loadFragment(httpRequest.responseText, amount) // We're calling our method
+    // вызывает метод после окончательной загрузки объекта
+    loadFragment(httpRequest.responseText, amount)
   }
   httpRequest.open('GET', filePath)
   httpRequest.send()

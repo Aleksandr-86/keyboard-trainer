@@ -1,4 +1,4 @@
-// defining the browser and returning object with information about it
+// определяет браузер и возвращает объект с информации о нём
 export function getBrowser() {
   const ua = navigator.userAgent
 
@@ -87,11 +87,11 @@ export const detectDevice = function () {
   }
 }
 
-// trims, removes \r and excess spaces => array
+// удаляет пробелы и возвращает массив из строки
 export const arrPreparer = function (str) {
-  // number of characters per line
+  // количество символов в строке
   const lineLen = 40
-  // the maximum length of a word that will not be carried over to the next line
+  // максимальная длина слова, которое не будет переносится на следующую линию
   let maxWordLen = 15
 
   const tempArr = str.split(' ')
@@ -105,10 +105,11 @@ export const arrPreparer = function (str) {
     if (word === '' || word === ' ') {
       continue
     } else if (word === '\n' && counter === 0) {
-      // skipping empty line
+      // пропускает пустую линию
       continue
     } else if (word === '\n' && counter > 0) {
-      // adding 'skip' signs till the end of the line
+      /* добавляет строку 'skip' в массив, до тех пор пока индекс массива
+      не будет соответствовать div элементу в конце линии поля */
       for (let j = 0; j < lineLen - counter; j++) {
         arr.push('skip')
       }
@@ -157,14 +158,15 @@ export const strPrepWithNewLines = str =>
     .replace(/(\n)|(\r\n)/g, ' \n ')
     .replace(/ +/g, ' ')
 
-// removes excess spaces
+// возвращает строку с удалёнными лишним пробелами
 export const strPrepWithoutNewLines = str =>
   str
     .trim()
     .replace(/(\n)|(\r\n)/g, ' ')
     .replace(/ +/g, ' ')
 
-// returns false if a char is inappropriate for being typed
+/* возвращает логическое значение ЛОЖЬ, если набираемый символ
+не подходит для набора */
 export const charTest = char =>
   !/[0-9 А-ЯЁA-Z.,<>/\\'"\[\]{}|`~!@№#;$%:^?&*()\-_+=\n]/i.test(char)
 
@@ -200,7 +202,7 @@ export const isAuxiliaryKeys = function (code) {
   }
 }
 
-// plays audio
+// проигрывает аудио файл
 export const playAudio = function (path, volume) {
   const audio = new Audio()
   audio.src = path
@@ -208,18 +210,18 @@ export const playAudio = function (path, volume) {
   audio.play()
 }
 
-// rounds
+// возвращает округлённое значение с заданным количество разрядов до запятой
 export const rnd = function (num, digit = 0) {
   return Number(Math.round(Number(num + 'e' + digit)) + 'e-' + digit)
 }
 
-// gets random number
+// возвращает случайное число в заданном диапазоне
 export const randomNum = function (min, max) {
   const difference = Math.floor(Math.random() * (max - min + 1))
   return min + difference
 }
 
-// converts ms to the format: minutes:seconds.milliseconds
+// возвращает строку с конвертированным из миллисекунд временем
 export function msToMinutes(ms) {
   const centiseconds = Math.trunc(ms / 10)
     .toString()
@@ -242,12 +244,12 @@ export const getSomeSentences = function (str, minSnippetLength) {
   let lowBound = 0
   let highBound = strLength
 
-  // searches for the index of the end of the previous sentence
+  // возвращает индекс символа оканчивающего предыдущее предложение
   function findPreviousSignIndex(str, point) {
     let char = str[point]
     let bSign = char === '.' || char === '?' || char === '!' || char === '…'
 
-    // skipped some signs, moving point -->
+    // пропускает знаки .?! и ...
     while (bSign) {
       point++
       if (point >= strLength - 1) return strLength - 1
@@ -264,7 +266,7 @@ export const getSomeSentences = function (str, minSnippetLength) {
     )
   }
 
-  // searches for the index of the end of the current sentence
+  // возвращает индекс символа оканчивающего текущее предложение
   function findNextSignIndex(str, point) {
     let char = str[point]
     let bSign = char === '.' || char === '?' || char === '!' || char === '…'
@@ -318,7 +320,7 @@ export const getSomeSentences = function (str, minSnippetLength) {
       charTest(lastChar)
   }
 
-  // chooses random char index
+  // выбирает случайный индекс символа
   let randomIndex = randomNum(0, lastIndex - minSnippetLength)
 
   lowBound = findPreviousSignIndex(str, randomIndex)

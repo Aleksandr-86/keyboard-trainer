@@ -19,12 +19,11 @@ const events = reactive({
   capsLock: false
 })
 
-// stats
 const statArr = computed(() => data.statArr)
 const indexArr = computed(() => data.indexArr)
 const firstIndex = computed(() => data.firstIndex)
 
-// colors
+// переменные цвета
 const fieldBackground = computed(() => storage.field.background)
 const charBackground = computed(() => storage.field.charBackground)
 const charColor = computed(() => storage.field.charColor)
@@ -34,7 +33,7 @@ const charRevisedColor = computed(() => storage.field.charRevisedColor)
 const charSpecialColor = computed(() => storage.field.charSpecialColor)
 const caretBackground = computed(() => storage.field.caretBackground)
 
-// shadows
+// переменные эффекта отбрасываемой тени
 const charCorrectShadow = computed(() => {
   if (storage.shadow.charCorrect) {
     return 'drop-shadow(3px 2px 2px)'
@@ -67,12 +66,12 @@ const charSpecialShadow = computed(() => {
   }
 })
 
-// chars for field
+// возвращает символы поля для набора
 const charsArr = computed(() =>
   data.fragmentArr.slice(data.firstIndex, data.firstIndex + 200)
 )
 
-// event listener
+// обработка события ввода символа с клавиатуры
 const eListener = function (e) {
   events.keyDn = e
   events.keyValue = e.key
@@ -96,11 +95,12 @@ const eListener = function (e) {
   }
 
   if (!state.bTimer) {
-    // timer on
+    // активация секундомера
     state.bTimer = true
     data.timerStart = performance.now()
 
-    // assign and updating reactive elapsed time variables
+    /* присвоение и обновление реактивной переменной
+    отражающей истёкшее время */
     data.stopwatch = setInterval(() => {
       data.elapsedTime = performance.now() - data.timerStart
       data.elapsedTimeStr = msToMinutes(data.elapsedTime)
@@ -117,8 +117,8 @@ const eListener = function (e) {
   recordingStatistics(e)
 
   if (code === 'Backspace' && data.indexArr > 0) {
-    /* returns the previous set of characters when
-    backspace is pressed at the beginning of the field */
+    /* возвращает предыдущий набор символов при условии нажатия
+    клавиши backspace в нулевом положении курсора */
     if (data.indexArr % 200 === 0 && data.firstIndex !== 0) {
       data.firstIndex -= 200
     }

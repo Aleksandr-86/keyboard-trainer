@@ -9,7 +9,8 @@ import BaseGitHubLink from '@/components/ui/BaseGitHubLink.vue'
 
 async function fillFieldFromBuffer() {
   data.classSelector = '.navigation-bar__buffer'
-  data.currentBook = 0 // for sake of overall statistics menu
+  // требуется для условного отображения некоторых строк в общей статистки
+  data.currentBook = 0
 
   const br = getBrowser().browser
   if (br === 'yabrowser' || br === 'chrome' || br === 'opera') {
