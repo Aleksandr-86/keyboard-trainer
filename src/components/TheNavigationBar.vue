@@ -18,9 +18,12 @@ async function fillFieldFromBuffer() {
   const br = getBrowser().browser
   if (br === 'yabrowser' || br === 'chrome' || br === 'opera') {
     let str = await navigator.clipboard.readText()
-    if (str === ' ' || str === '' || str === '\r\n') return // buffer is empty
+    // буфер обмена пуст
+    if (str === ' ' || str === '' || str === '\r\n') {
+      router.push({ name: 'home' })
+      return
+    }
     loadFragment(str)
-    router.push({ name: 'typing' })
   }
 }
 
