@@ -12,7 +12,7 @@ import {
   playAudio
 } from '@/services/helpers.js'
 import TheKeyboard from '@/components/TheKeyboard.vue'
-import { randomSnippet } from '../store/data'
+import TheCurrentStats from './TheCurrentStats.vue'
 
 const events = reactive({
   keyDn: Object,
@@ -73,9 +73,6 @@ const charSpecialShadow = computed(() => {
 const charsArr = computed(() =>
   data.fragmentArr.slice(data.firstIndex, data.firstIndex + 200)
 )
-
-// const charsArr =
-//   'Redirect to a different location by passing a route location as if you were calling'
 
 // обработка события ввода символа с клавиатуры
 const eListener = function (e) {
@@ -160,52 +157,54 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div v-if="data.fragmentArr[0]">
-    <Transition name="opacity">
-      <div class="field">
-        <div
-          v-for="(char, index) in charsArr"
-          :key="index"
-          class="char"
-          :class="[
-            { char_display_caret: index === indexArr % 200 },
-            {
-              char_display_correct:
-                statArr[index + firstIndex] === '2' &&
-                char !== ' ' &&
-                index < indexArr % 200
-            },
-            {
-              char_display_revised:
-                statArr[index + firstIndex] === '3' && index < indexArr % 200
-            },
-            {
-              char_display_wrong:
-                statArr[index + firstIndex] === '4' && index < indexArr % 200
-            },
-            { 'char_display_special-inactive': charTest(char) },
-            {
-              'char_display_special-active':
-                char !== 'skip' &&
-                statArr[index + firstIndex] === '0' &&
-                index < indexArr % 200
-            }
-          ]">
-          <div v-if="char === 'skip'">&nbsp;</div>
-          <div v-else-if="char === 'end'">&nbsp;</div>
-          <div v-else>{{ char }}</div>
-        </div>
-      </div>
-    </Transition>
+  <Transition name="opacity">
+    <TheCurrentStats v-if="storage.visibility.currentStatistics" />
+  </Transition>
 
-    <Transition name="opacity">
-      <TheKeyboard
-        v-if="storage.visibility.keyboard"
-        :event-keydown="events.keyDn"
-        :char="data.fragmentArr[data.indexArr]"
-        :lang="data.keyboardLayout" />
-    </Transition>
-  </div>
+  <Transition name="opacity">
+    <div class="field">
+      <div
+        v-for="(char, index) in charsArr"
+        :key="index"
+        class="char"
+        :class="[
+          { char_display_caret: index === indexArr % 200 },
+          {
+            char_display_correct:
+              statArr[index + firstIndex] === '2' &&
+              char !== ' ' &&
+              index < indexArr % 200
+          },
+          {
+            char_display_revised:
+              statArr[index + firstIndex] === '3' && index < indexArr % 200
+          },
+          {
+            char_display_wrong:
+              statArr[index + firstIndex] === '4' && index < indexArr % 200
+          },
+          { 'char_display_special-inactive': charTest(char) },
+          {
+            'char_display_special-active':
+              char !== 'skip' &&
+              statArr[index + firstIndex] === '0' &&
+              index < indexArr % 200
+          }
+        ]">
+        <div v-if="char === 'skip'">&nbsp;</div>
+        <div v-else-if="char === 'end'">&nbsp;</div>
+        <div v-else>{{ char }}</div>
+      </div>
+    </div>
+  </Transition>
+
+  <Transition name="opacity">
+    <TheKeyboard
+      v-if="storage.visibility.keyboard"
+      :event-keydown="events.keyDn"
+      :char="data.fragmentArr[data.indexArr]"
+      :lang="data.keyboardLayout" />
+  </Transition>
 </template>
 
 <style>
