@@ -1,11 +1,10 @@
 <script setup>
 import { computed, onMounted } from 'vue'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
 import { arrBackgrounds } from '@/services/background-list.js'
 import { detectDevice } from '@/services/helpers.js'
 import TheNavigationBar from '@/components/TheNavigationBar.vue'
 import TheSettingsMenu from '@/components/TheSettingsMenu.vue'
-import TheField from '@/components/TheField.vue'
-import TheOverallStats from '@/components/TheOverallStats.vue'
 import click from '@/assets/sounds/click.mp3'
 import ring from '@/assets/sounds/ring.mp3'
 import { data } from '@/store/data.js'
@@ -20,6 +19,8 @@ function getUrl(name) {
 const backgroundPath = computed(() => {
   return `url(${getUrl(arrBackgrounds[storage.main.background].name)})`
 })
+
+const router = useRouter()
 
 onMounted(() => {
   if (localStorage.main) {
@@ -37,6 +38,8 @@ onMounted(() => {
       }
     }
   }
+
+  if (!router.path) router.push({ name: 'home' })
 })
 </script>
 
@@ -48,19 +51,11 @@ onMounted(() => {
 
     <TheNavigationBar />
 
-    <div v-if="state.preloader && !state.work" class="preloader"></div>
-
     <Transition name="move-x">
       <TheSettingsMenu v-if="state.settings" />
     </Transition>
 
-    <Transition name="opacity">
-      <TheField v-if="state.work" />
-    </Transition>
-
-    <Transition name="opacity">
-      <TheOverallStats v-if="state.overallStats" />
-    </Transition>
+    <RouterView></RouterView>
   </div>
 
   <div v-else>
@@ -154,14 +149,6 @@ html {
     float: right;
     width: 0%;
   }
-}
-
-.preloader {
-  width: 0;
-  height: 2px;
-  background-color: hsl(120, 100%, 50%);
-  animation: linear-preloader 5s linear infinite;
-  border-radius: 50%;
 }
 
 .info {

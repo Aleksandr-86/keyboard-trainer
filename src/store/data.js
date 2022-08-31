@@ -107,7 +107,6 @@ export const loadFragment = function (str, amount = 0) {
   data.indexArr = -1
 
   clearStat()
-  state.work = true
   moveCaret()
 }
 
@@ -158,8 +157,6 @@ export const moveCaret = function (direction = 'forward') {
     if (storage.main.speaker && storage.main.ring)
       playAudio(ringSound, storage.main.volume)
     data.timerStop = performance.now()
-    state.work = false
-    state.overallStats = true
     return
   } else if (data.indexArr >= 200 + data.firstIndex) {
     loadNextChars()
@@ -189,7 +186,6 @@ export const clearStat = function () {
 
 // возвращает случайный отрывок из книги
 export const randomSnippet = function (lang, amount) {
-  state.preloader = true
   data.classSelector = '.navigation-bar__snippet-link'
   let arrOfBooks = []
 

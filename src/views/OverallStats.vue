@@ -1,10 +1,13 @@
 <script setup>
 import { onMounted, onUnmounted } from 'vue'
 import { computed } from '@vue/reactivity'
+import { useRouter } from 'vue-router'
 import { data } from '@/store/data.js'
 import { state } from '@/store/state.js'
 import { storage } from '@/store/storage.js'
 import { rnd } from '@/services/helpers.js'
+
+const router = useRouter()
 
 const strCorrectPercent = computed(
   () =>
@@ -33,7 +36,7 @@ function keyDown(e) {
   if (e.key === 'Tab') {
     e.preventDefault()
   } else if (e.key === 'Enter') {
-    state.overallStats = false
+    router.push({ name: 'home' })
     document.body.querySelector(data.classSelector).focus()
   }
 }
@@ -55,6 +58,7 @@ onUnmounted(() => {
   data.numErrors = 0
 
   data.currentBook = 0
+  data.fragmentArr = []
 })
 </script>
 
@@ -135,9 +139,9 @@ onUnmounted(() => {
       </div>
     </div>
 
+    <!-- наложение -->
     <div
-      @click.left="state.overallStats = false"
-      v-if="state.overallStats"
+      @click.left="router.push({ name: 'home' })"
       class="overall-stats__overlay"></div>
   </div>
 </template>

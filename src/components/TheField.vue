@@ -1,5 +1,6 @@
 <script setup>
 import { computed, onMounted, onUnmounted, reactive } from 'vue'
+import { useRouter } from 'vue-router'
 import { data, moveCaret, recordingStatistics } from '@/store/data.js'
 import { state } from '@/store/state.js'
 import { storage } from '@/store/storage.js'
@@ -10,14 +11,16 @@ import {
   msToMinutes,
   playAudio
 } from '@/services/helpers.js'
-import TheCurrentStats from '@/components/TheCurrentStats.vue'
 import TheKeyboard from '@/components/TheKeyboard.vue'
+import { randomSnippet } from '../store/data'
 
 const events = reactive({
   keyDn: Object,
   keyValue: {},
   capsLock: false
 })
+
+const router = useRouter()
 
 const statArr = computed(() => data.statArr)
 const indexArr = computed(() => data.indexArr)
@@ -71,6 +74,9 @@ const charsArr = computed(() =>
   data.fragmentArr.slice(data.firstIndex, data.firstIndex + 200)
 )
 
+// const charsArr =
+//   'Redirect to a different location by passing a route location as if you were calling'
+
 // обработка события ввода символа с клавиатуры
 const eListener = function (e) {
   events.keyDn = e
@@ -84,8 +90,7 @@ const eListener = function (e) {
     return
   } else if (data.indexArr !== 0 && code === 'Enter') {
     data.timerStop = performance.now()
-    state.work = false
-    state.overallStats = true
+    router.push({ name: 'stats' })
     return
   }
 
@@ -133,6 +138,14 @@ const eListener = function (e) {
     data.remainingChars--
     moveCaret()
   }
+
+  // срабатывает после того как был набран последний символ фрагмента
+  if (
+    data.indexArr >= data.fragmentArr.length ||
+    data.fragmentArr[data.indexArr] === 'end'
+  ) {
+    router.push({ name: 'stats' })
+  }
 }
 
 onMounted(() => {
@@ -140,7 +153,6 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  state.preloader = false
   document.body.removeEventListener('keydown', eListener)
   clearInterval(data.stopwatch)
   data.charPerMin = 0
@@ -148,45 +160,43 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div>
+  <div v-if="data.fragmentArr[0]">
     <Transition name="opacity">
-      <TheCurrentStats v-if="storage.visibility.currentStatistics" />
-    </Transition>
-
-    <div class="field">
-      <div
-        v-for="(char, index) in charsArr"
-        :key="index"
-        class="char"
-        :class="[
-          { char_display_caret: index === indexArr % 200 },
-          {
-            char_display_correct:
-              statArr[index + firstIndex] === '2' &&
-              char !== ' ' &&
-              index < indexArr % 200
-          },
-          {
-            char_display_revised:
-              statArr[index + firstIndex] === '3' && index < indexArr % 200
-          },
-          {
-            char_display_wrong:
-              statArr[index + firstIndex] === '4' && index < indexArr % 200
-          },
-          { 'char_display_special-inactive': charTest(char) },
-          {
-            'char_display_special-active':
-              char !== 'skip' &&
-              statArr[index + firstIndex] === '0' &&
-              index < indexArr % 200
-          }
-        ]">
-        <div v-if="char === 'skip'">&nbsp;</div>
-        <div v-else-if="char === 'end'">&nbsp;</div>
-        <div v-else>{{ char }}</div>
+      <div class="field">
+        <div
+          v-for="(char, index) in charsArr"
+          :key="index"
+          class="char"
+          :class="[
+            { char_display_caret: index === indexArr % 200 },
+            {
+              char_display_correct:
+                statArr[index + firstIndex] === '2' &&
+                char !== ' ' &&
+                index < indexArr % 200
+            },
+            {
+              char_display_revised:
+                statArr[index + firstIndex] === '3' && index < indexArr % 200
+            },
+            {
+              char_display_wrong:
+                statArr[index + firstIndex] === '4' && index < indexArr % 200
+            },
+            { 'char_display_special-inactive': charTest(char) },
+            {
+              'char_display_special-active':
+                char !== 'skip' &&
+                statArr[index + firstIndex] === '0' &&
+                index < indexArr % 200
+            }
+          ]">
+          <div v-if="char === 'skip'">&nbsp;</div>
+          <div v-else-if="char === 'end'">&nbsp;</div>
+          <div v-else>{{ char }}</div>
+        </div>
       </div>
-    </div>
+    </Transition>
 
     <Transition name="opacity">
       <TheKeyboard

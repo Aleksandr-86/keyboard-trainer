@@ -1,11 +1,14 @@
 <script setup>
 import { computed } from '@vue/reactivity'
+import { useRouter } from 'vue-router'
 import { data, loadFragment, randomSnippet } from '@/store/data.js'
 import { state } from '@/store/state.js'
 import { storage } from '@/store/storage.js'
 import { getBrowser } from '@/services/helpers.js'
 import BaseSpeakerIcon from '@/components/ui/BaseSpeakerIcon.vue'
 import BaseGitHubLink from '@/components/ui/BaseGitHubLink.vue'
+
+const router = useRouter()
 
 async function fillFieldFromBuffer() {
   data.classSelector = '.navigation-bar__buffer'
@@ -17,6 +20,7 @@ async function fillFieldFromBuffer() {
     let str = await navigator.clipboard.readText()
     if (str === ' ' || str === '' || str === '\r\n') return // buffer is empty
     loadFragment(str)
+    router.push({ name: 'typing' })
   }
 }
 
@@ -28,56 +32,61 @@ const toggleSettings = function () {
 }
 
 const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
+const langOfSnippets = computed(() => storage.main.langOfSnippets)
 </script>
 
 <template>
   <div class="navigation-bar__container">
     <ul class="navigation-bar__list">
       <li>
-        <a
-          @click="randomSnippet(storage.main.langOfSnippets, minSnippetLength)"
-          class="navigation-bar__snippet-link"
-          href="#!">
+        <RouterLink
+          :to="{ path: 'typing' }"
+          @click="randomSnippet(langOfSnippets, minSnippetLength)"
+          class="navigation-bar__snippet-link">
           Отрывок
-        </a>
+        </RouterLink>
       </li>
+
       <li class="nav-children">
-        <a class="navigation-bar__drop-down-list" href="#!">▼</a>
+        <a class="navigation-bar__drop-down-list">▼</a>
         <ul>
           <li>
-            <a
+            <RouterLink
+              :to="{ path: 'typing' }"
               @click="randomSnippet('russian', minSnippetLength)"
+              class="navigation-bar__link"
               :class="{
-                'nav-underscore-none': storage.main.langOfSnippets !== 'russian'
-              }"
-              href="#!">
+                'navigation-bar__link_underscore': langOfSnippets === 'russian'
+              }">
               На русском языке
-            </a>
+            </RouterLink>
           </li>
+
           <li>
-            <a
+            <RouterLink
+              :to="{ path: 'typing' }"
               @click="randomSnippet('english', minSnippetLength)"
+              class="navigation-bar__link"
               :class="{
-                'nav-underscore-none': storage.main.langOfSnippets !== 'english'
-              }"
-              href="#!">
+                'navigation-bar__link_underscore': langOfSnippets === 'english'
+              }">
               На английском языке
-            </a>
+            </RouterLink>
           </li>
         </ul>
       </li>
 
       <li>
-        <a
+        <RouterLink
+          :to="{ path: 'typing' }"
           @click="fillFieldFromBuffer"
-          class="navigation-bar__buffer"
-          href="#!">
+          class="navigation-bar__buffer">
           Буфер обмена
-        </a>
+        </RouterLink>
       </li>
 
       <li>
-        <a @click="toggleSettings" class="navigation-bar__settings" href="#!">
+        <a @click="toggleSettings" class="navigation-bar__settings">
           Настройки
         </a>
       </li>
@@ -189,18 +198,19 @@ const minSnippetLength = computed(() => Number(storage.main.minSnippetLength))
   transition: all 300ms;
 }
 
-.navigation-bar__list ul li a:hover {
+.navigation-bar__link {
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navigation-bar__link:hover {
   color: rgb(0, 0, 0);
   background: darkseagreen;
 }
 
-.navigation-bar__list > li > ul > li > a {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.nav-underscore-none {
-  text-decoration: none;
+.navigation-bar__link_underscore {
+  text-decoration: underline;
 }
 
 .navigation-bar__speaker {
