@@ -56,20 +56,22 @@ const backColor = computed(() => {
   </div>
 </template>
 
-<style>
+<style lang="scss">
 /* правило перехода collapse */
-.collapse-leave-active {
-  transition: all 1.4s linear;
-}
+.collapse-leave {
+  &-active {
+    transition: all 1.4s linear;
+  }
 
-.collapse-leave-from {
-  max-width: 297px;
-  opacity: 1;
-}
+  &-from {
+    max-width: 297px;
+    opacity: 1;
+  }
 
-.collapse-leave-to {
-  max-width: 0;
-  opacity: 0;
+  &-to {
+    max-width: 0;
+    opacity: 0;
+  }
 }
 
 /* прочие правила */
@@ -85,41 +87,41 @@ const backColor = computed(() => {
   border: 2px solid v-bind(color);
   border-radius: 10px;
   user-select: none;
-}
 
-.current-stats__description {
-  display: inline-flex;
-  overflow: hidden;
-  white-space: nowrap;
-}
+  &__description {
+    display: inline-flex;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 
-.current-stats__error-free {
-  display: flex;
-  justify-content: center;
-  align-content: stretch;
-  min-width: 129px;
-  padding: 5px 10px 5px 10px;
-  border-right: 2px solid v-bind(color);
-  overflow: hidden;
-  white-space: nowrap;
-  transition: min-width 3s 1s;
-}
+  &__error-free {
+    display: flex;
+    justify-content: center;
+    align-content: stretch;
+    min-width: 129px;
+    padding: 5px 10px 5px 10px;
+    border-right: 2px solid v-bind(color);
+    overflow: hidden;
+    white-space: nowrap;
+    transition: min-width 3s 1s;
+  }
 
-.current-stats__remaining-chars {
-  min-width: 59px;
-  padding: 5px 10px 5px 10px;
-  border-right: 2px solid v-bind(color);
-}
+  &__remaining-chars {
+    min-width: 59px;
+    padding: 5px 10px 5px 10px;
+    border-right: 2px solid v-bind(color);
+  }
 
-.current-stats__char-per-minute {
-  min-width: 59px;
-  padding: 5px 10px 5px 10px;
-  border-right: 2px solid v-bind(color);
-}
+  &__char-per-minute {
+    min-width: 59px;
+    padding: 5px 10px 5px 10px;
+    border-right: 2px solid v-bind(color);
+  }
 
-.current-stats__elapsed-time {
-  min-width: 129px;
-  padding: 5px 10px 5px 10px;
-  text-align: center;
+  &__elapsed-time {
+    min-width: 129px;
+    padding: 5px 10px 5px 10px;
+    text-align: center;
+  }
 }
 </style>

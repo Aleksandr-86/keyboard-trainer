@@ -138,7 +138,7 @@ const boardColor = computed(() => {
   </div>
 </template>
 
-<style>
+<style lang="scss">
 .keyboard {
   width: 971px;
   height: 328px;
@@ -148,105 +148,111 @@ const boardColor = computed(() => {
   user-select: none;
 }
 
-.button_type_single,
-.button_type_double {
-  float: left;
-  width: 62px;
-  height: 62px;
-  margin-top: 3px;
-  margin-right: 3px;
-  font-size: 23px;
-  font-family: 'Consolas', monospace;
-  color: v-bind(keyColor);
-  background: v-bind(keyBackground);
-  border-radius: 15px;
-  text-align: center;
-  text-transform: capitalize;
+.button_type {
+  &_single,
+  &_double {
+    float: left;
+    width: 62px;
+    height: 62px;
+    margin-top: 3px;
+    margin-right: 3px;
+    font-size: 23px;
+    font-family: 'Consolas', monospace;
+    color: v-bind(keyColor);
+    background: v-bind(keyBackground);
+    border-radius: 15px;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  &_single > div {
+    position: relative;
+    top: 16px;
+    height: 28px;
+  }
+
+  &_double > div {
+    height: 30px;
+  }
+
+  &_double > div:first-child {
+    margin-top: 1px;
+  }
+
+  &_double > div:last-child {
+    margin-bottom: 1px;
+  }
 }
 
-.button_type_single > div {
-  position: relative;
-  top: 16px;
-  height: 28px;
+.button_marked {
+  &_color {
+    color: v-bind(boardColor);
+  }
+
+  &_border {
+    box-shadow: inset 0 0 0 3px v-bind(boardColor);
+  }
+
+  &_shift {
+    color: v-bind(shiftColor);
+    box-shadow: inset 0 0 0 3px v-bind(shiftColor);
+  }
 }
 
-.button_type_double > div {
-  height: 30px;
-}
+.button_code {
+  &_keyf,
+  &_keyj {
+    text-decoration: v-bind(keyUnderline);
+  }
 
-.button_type_double > div:first-child {
-  margin-top: 1px;
-}
+  &_backquote,
+  &_tab,
+  &_capslock,
+  &_shiftleft,
+  &_controlleft {
+    margin-left: 3px;
+  }
 
-.button_type_double > div:last-child {
-  margin-bottom: 1px;
-}
+  &_backspace {
+    width: 120px;
+  }
 
-.button_marked_color {
-  color: v-bind(boardColor);
-}
+  &_tab {
+    width: 91px;
+  }
 
-.button_marked_border {
-  box-shadow: inset 0 0 0 3px v-bind(boardColor);
-}
+  &_backslash {
+    width: 91px;
+  }
 
-.button_marked_shift {
-  color: v-bind(shiftColor);
-  box-shadow: inset 0 0 0 3px v-bind(shiftColor);
-}
+  &_capslock {
+    width: 109px;
+  }
 
-.button_code_keyf,
-.button_code_keyj {
-  text-decoration: v-bind(keyUnderline);
-}
+  &_enter {
+    width: 138px;
+  }
 
-.button_code_backquote,
-.button_code_tab,
-.button_code_capslock,
-.button_code_shiftleft,
-.button_code_controlleft {
-  margin-left: 3px;
-}
+  &_shiftleft {
+    width: 141px;
+  }
 
-.button_code_backspace {
-  width: 120px;
-}
+  &_shiftright {
+    width: 171px;
+  }
 
-.button_code_tab {
-  width: 91px;
-}
+  &_controlleft,
+  &_controlright,
+  &_metaleft,
+  &_altleft,
+  &_altright,
+  &_metaright,
+  &_contextmenu {
+    width: 77px;
+  }
 
-.button_code_backslash {
-  width: 91px;
-}
-
-.button_code_capslock {
-  width: 109px;
-}
-
-.button_code_enter {
-  width: 138px;
-}
-
-.button_code_shiftleft {
-  width: 141px;
-}
-
-.button_code_shiftright {
-  width: 171px;
-}
-
-.button_code_controlleft,
-.button_code_controlright,
-.button_code_metaleft,
-.button_code_altleft,
-.button_code_altright,
-.button_code_metaright,
-.button_code_contextmenu {
-  width: 77px;
-}
-
-.button_code_space {
-  width: 405px;
+  &_space {
+    width: 405px;
+  }
 }
 </style>

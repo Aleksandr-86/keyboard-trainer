@@ -65,55 +65,57 @@ function mouseUp() {
   </div>
 </template>
 
-<style>
-.single-slider__container {
-  opacity: v-bind(opacity);
-}
-
+<style lang="scss">
 .single-slider {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 29px;
-}
+  &__container {
+    opacity: v-bind(opacity);
+  }
 
-.single-slider__input {
-  -webkit-appearance: none;
-  top: 0;
-  left: 0;
-  width: 397px;
-  height: 18px;
-  background: hsl(0, 0%, 83%);
-  border-radius: 5px;
-  outline: none;
-  cursor: v-bind(cursor);
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-}
+  & {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 29px;
+  }
 
-.single-slider__input::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 15px;
-  height: 25px;
-  background: hsl(120, 100%, 35%);
-  border-radius: 5px;
-  cursor: v-bind(cursor);
-}
+  &__input {
+    -webkit-appearance: none;
+    top: 0;
+    left: 0;
+    width: 397px;
+    height: 18px;
+    background: hsl(0, 0%, 83%);
+    border-radius: 5px;
+    outline: none;
+    cursor: v-bind(cursor);
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+  }
 
-.single-slider__input::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  background: hsl(120, 100%, 35%);
-  border-radius: 50%;
-  cursor: v-bind(cursor);
-}
+  &__input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 25px;
+    background: hsl(120, 100%, 35%);
+    border-radius: 5px;
+    cursor: v-bind(cursor);
+  }
 
-.single-slider__label {
-  width: 45px;
-  margin-left: 5px;
-  color: hsl(0, 0%, 83%);
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
+  &__input::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: hsl(120, 100%, 35%);
+    border-radius: 50%;
+    cursor: v-bind(cursor);
+  }
+
+  &__label {
+    width: 45px;
+    margin-left: 5px;
+    color: hsl(0, 0%, 83%);
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+  }
 }
 </style>
