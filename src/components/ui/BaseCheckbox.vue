@@ -51,7 +51,7 @@ const cursor = computed(() => {
   </label>
 </template>
 
-<style>
+<style lang="scss">
 .checkbox {
   position: relative;
   display: flex;
@@ -65,61 +65,61 @@ const cursor = computed(() => {
   opacity: v-bind(opacity);
   user-select: none;
   cursor: v-bind(cursor);
-}
 
-.checkbox:hover {
-  background: hsl(120, 20%, 25%);
-}
+  &:hover {
+    background: hsl(120, 20%, 25%);
+  }
 
-.checkbox__input {
-  position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
-  cursor: pointer;
-}
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
 
-.checkbox__title {
-  margin-bottom: 2px;
-  text-align: left;
-}
+  &__title {
+    margin-bottom: 2px;
+    text-align: left;
+  }
 
-.checkbox__box {
-  position: relative;
-  right: 0;
-  width: 35px;
-  height: 35px;
-  background-color: hsl(0, 0%, 93%);
-  border-radius: 7px;
-}
+  &__box {
+    position: relative;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    background-color: hsl(0, 0%, 93%);
+    border-radius: 7px;
+  }
 
-.checkbox:hover .checkbox__input ~ .checkbox__box {
-  background-color: hsl(120, 73%, 85%);
-}
+  &:hover &__input ~ &__box {
+    background-color: hsl(120, 73%, 85%);
+  }
 
-.checkbox .checkbox__input:checked ~ .checkbox__box {
-  background-color: limegreen;
-}
+  & &__input:checked ~ &__box {
+    background-color: limegreen;
+  }
 
-.checkbox__box:after {
-  position: absolute;
-  display: none;
-  content: '';
-}
+  &__box:after {
+    position: absolute;
+    display: none;
+    content: '';
+  }
 
-.checkbox .checkbox__input:checked ~ .checkbox__box:after {
-  display: block;
-}
+  & &__input:checked ~ &__box:after {
+    display: block;
+  }
 
-.checkbox .checkbox__box:after {
-  top: 5px;
-  left: 12px;
-  width: 8px;
-  height: 17px;
-  border: solid white;
-  border-width: 0 4px 4px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+  & &__box:after {
+    top: 5px;
+    left: 12px;
+    width: 8px;
+    height: 17px;
+    border: solid white;
+    border-width: 0 4px 4px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
 }
 </style>

@@ -25,10 +25,33 @@ const hsla = reactive({
   flag: false
 })
 
-const hueValue = computed(() => hsla.hue)
-const saturationValue = computed(() => `${hsla.saturation}%`)
-const lightnessValue = computed(() => `${hsla.lightness}%`)
-const alphaValue = computed(() => hsla.alpha)
+const saturationBackground = computed(() => {
+  let outcome = 'linear-gradient(to right'
+  for (let i = 0; i < 110; i += 10) {
+    outcome += `, hsla(${hsla.hue}, ${i}%, ${hsla.lightness}%, ${hsla.alpha})`
+  }
+
+  return outcome
+})
+
+const lightnessBackground = computed(() => {
+  let outcome = 'linear-gradient(to right'
+  for (let i = 0; i < 110; i += 10) {
+    outcome += `, hsla(${hsla.hue}, ${hsla.saturation}%, ${i}%, ${hsla.alpha})`
+  }
+
+  return outcome
+})
+
+const alphaBackground = computed(() => {
+  let outcome = 'linear-gradient(to right'
+  for (let i = 0; i < 110; i += 10) {
+    outcome += `, hsla(${hsla.hue}, ${hsla.saturation}%, ${hsla.lightness}%, ${i}%)`
+  }
+
+  return outcome
+})
+
 const backColor = computed(
   () =>
     `hsla(${hsla.hue}, ${hsla.saturation}%, ${hsla.lightness}%, ${hsla.alpha})`
@@ -152,23 +175,25 @@ onMounted(() => {
   </div>
 </template>
 
-<style>
+<style lang="scss">
 /* групповое правило перехода hsla-slider */
-.hsla-slider-enter-active,
-.hsla-slider-leave-active {
-  transition: all 0.25s linear;
-}
+.hsla-slider {
+  &-enter-active,
+  &-leave-active {
+    transition: all 0.25s linear;
+  }
 
-.hsla-slider-enter-to,
-.hsla-slider-leave-from {
-  max-height: 290px;
-  opacity: 1;
-}
+  &-enter-to,
+  &-leave-from {
+    max-height: 290px;
+    opacity: 1;
+  }
 
-.hsla-slider-enter-from,
-.hsla-slider-leave-to {
-  max-height: 29px;
-  opacity: 0;
+  &-enter-from,
+  &-leave-to {
+    max-height: 29px;
+    opacity: 0;
+  }
 }
 
 /* прочие правила */
@@ -178,78 +203,104 @@ onMounted(() => {
   border: v-bind(borderColor);
   border-radius: 7px;
   overflow: hidden;
-}
 
-.hsla-slider__title-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  padding: 1px 1px 1px 2px;
-  cursor: pointer;
-}
+  &__title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 1px 1px 1px 2px;
+    cursor: pointer;
+  }
 
-.hsla-slider__title-container:hover {
-  background: hsl(120, 20%, 25%);
-  border-radius: 7px;
-}
+  &__title-container:hover {
+    background: hsl(120, 20%, 25%);
+    border-radius: 7px;
+  }
 
-.hsla-slider__title {
-  height: 29px;
-}
+  &__title {
+    height: 29px;
+  }
 
-.hsla-slider__sample {
-  width: 33px;
-  height: 33px;
-  border: 1px solid hsl(0, 0%, 83%);
-  border-radius: 7px;
-  background-color: v-bind(backColor);
-}
+  &__sample {
+    width: 33px;
+    height: 33px;
+    border: 1px solid hsl(0, 0%, 83%);
+    border-radius: 7px;
+    background-color: v-bind(backColor);
+  }
 
-.hsla-slider__line {
-  width: 433px;
-  margin-top: 5px;
-  margin-left: 4px;
-  border-bottom: v-bind(borderColor);
-}
+  &__line {
+    width: 433px;
+    margin-top: 5px;
+    margin-left: 4px;
+    border-bottom: v-bind(borderColor);
+  }
 
-.hsla-slider__value-description {
-  height: 29px;
-  margin-left: 4px;
-  text-align: left;
-}
+  &__value-description {
+    height: 29px;
+    margin-left: 4px;
+    text-align: left;
+  }
 
-.hsla-slider__container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 29px;
-  margin-left: 4px;
-}
+  &__container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 29px;
+    margin-left: 4px;
+  }
 
-.hsla-slider__input-container {
-  position: relative;
-}
+  &__input-container {
+    position: relative;
+  }
 
-.hsla-slider__input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-appearance: none;
-  width: 384px;
-  height: 18px;
-  background: hsl(0, 0%, 83%);
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
-}
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-appearance: none;
+    width: 384px;
+    height: 18px;
+    background: hsl(0, 0%, 83%);
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+  }
 
-.hsla-slider__chess-background {
-  z-index: -1;
-  width: 384px;
-  height: 18px;
-  background: no-repeat url('/src/assets/backgrounds/chess-board.svg');
-  border-radius: 5px;
+  &__chess-background {
+    z-index: -1;
+    width: 384px;
+    height: 18px;
+    background: no-repeat url('/src/assets/backgrounds/chess-board.svg');
+    border-radius: 5px;
+  }
+
+  &__input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 25px;
+    background-color: v-bind(thumbBackColor);
+    border-radius: 5px;
+    filter: invert(1);
+    cursor: pointer;
+  }
+
+  &__input::-moz-range-thumb {
+    width: 15px;
+    height: 25px;
+    background-color: v-bind(thumbBackColor);
+    border-radius: 5px;
+    filter: invert(1);
+    cursor: pointer;
+  }
+
+  &__slider-label {
+    width: 45px;
+    margin-left: 5px;
+    color: hsl(0, 0%, 83%);
+  }
 }
 
 #hue {
@@ -272,129 +323,14 @@ onMounted(() => {
 }
 
 #saturation {
-  background: linear-gradient(
-    to right,
-    hsla(v-bind(hueValue), 0%, v-bind(lightnessValue), v-bind(alphaValue)),
-    hsla(v-bind(hueValue), 10%, v-bind(lightnessValue), v-bind(alphaValue)),
-    hsla(v-bind(hueValue), 20%, v-bind(lightnessValue), v-bind(alphaValue)),
-    hsla(v-bind(hueValue), 30%, v-bind(lightnessValue), v-bind(alphaValue)),
-    hsla(v-bind(hueValue), 40%, v-bind(lightnessValue), v-bind(alphaValue)),
-    hsla(v-bind(hueValue), 50%, v-bind(lightnessValue), v-bind(alphaValue)),
-    hsla(v-bind(hueValue), 60%, v-bind(lightnessValue), v-bind(alphaValue)),
-    hsla(v-bind(hueValue), 70%, v-bind(lightnessValue), v-bind(alphaValue)),
-    hsla(v-bind(hueValue), 80%, v-bind(lightnessValue), v-bind(alphaValue)),
-    hsla(v-bind(hueValue), 90%, v-bind(lightnessValue), v-bind(alphaValue)),
-    hsla(v-bind(hueValue), 100%, v-bind(lightnessValue), v-bind(alphaValue))
-  );
+  background: v-bind(saturationBackground);
 }
 
 #lightness {
-  background: linear-gradient(
-    to right,
-    hsla(v-bind(hueValue), v-bind(saturationValue), 0%, v-bind(alphaValue)),
-    hsla(v-bind(hueValue), v-bind(saturationValue), 10%, v-bind(alphaValue)),
-    hsla(v-bind(hueValue), v-bind(saturationValue), 20%, v-bind(alphaValue)),
-    hsla(v-bind(hueValue), v-bind(saturationValue), 30%, v-bind(alphaValue)),
-    hsla(v-bind(hueValue), v-bind(saturationValue), 40%, v-bind(alphaValue)),
-    hsla(v-bind(hueValue), v-bind(saturationValue), 50%, v-bind(alphaValue)),
-    hsla(v-bind(hueValue), v-bind(saturationValue), 60%, v-bind(alphaValue)),
-    hsla(v-bind(hueValue), v-bind(saturationValue), 70%, v-bind(alphaValue)),
-    hsla(v-bind(hueValue), v-bind(saturationValue), 80%, v-bind(alphaValue)),
-    hsla(v-bind(hueValue), v-bind(saturationValue), 90%, v-bind(alphaValue)),
-    hsla(v-bind(hueValue), v-bind(saturationValue), 100%, v-bind(alphaValue))
-  );
+  background: v-bind(lightnessBackground);
 }
 
 #alpha {
-  background: linear-gradient(
-    to right,
-    hsla(v-bind(hueValue), v-bind(saturationValue), v-bind(lightnessValue), 0%),
-    hsla(
-      v-bind(hueValue),
-      v-bind(saturationValue),
-      v-bind(lightnessValue),
-      10%
-    ),
-    hsla(
-      v-bind(hueValue),
-      v-bind(saturationValue),
-      v-bind(lightnessValue),
-      20%
-    ),
-    hsla(
-      v-bind(hueValue),
-      v-bind(saturationValue),
-      v-bind(lightnessValue),
-      30%
-    ),
-    hsla(
-      v-bind(hueValue),
-      v-bind(saturationValue),
-      v-bind(lightnessValue),
-      40%
-    ),
-    hsla(
-      v-bind(hueValue),
-      v-bind(saturationValue),
-      v-bind(lightnessValue),
-      50%
-    ),
-    hsla(
-      v-bind(hueValue),
-      v-bind(saturationValue),
-      v-bind(lightnessValue),
-      60%
-    ),
-    hsla(
-      v-bind(hueValue),
-      v-bind(saturationValue),
-      v-bind(lightnessValue),
-      70%
-    ),
-    hsla(
-      v-bind(hueValue),
-      v-bind(saturationValue),
-      v-bind(lightnessValue),
-      80%
-    ),
-    hsla(
-      v-bind(hueValue),
-      v-bind(saturationValue),
-      v-bind(lightnessValue),
-      90%
-    ),
-    hsla(
-      v-bind(hueValue),
-      v-bind(saturationValue),
-      v-bind(lightnessValue),
-      100%
-    )
-  );
-}
-
-.hsla-slider__input::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 15px;
-  height: 25px;
-  background-color: v-bind(thumbBackColor);
-  border-radius: 5px;
-  filter: invert(1);
-  cursor: pointer;
-}
-
-.hsla-slider__input::-moz-range-thumb {
-  width: 15px;
-  height: 25px;
-  background-color: v-bind(thumbBackColor);
-  border-radius: 5px;
-  filter: invert(1);
-  cursor: pointer;
-}
-
-.hsla-slider__slider-label {
-  width: 45px;
-  margin-left: 5px;
-  color: hsl(0, 0%, 83%);
+  background: v-bind(alphaBackground);
 }
 </style>

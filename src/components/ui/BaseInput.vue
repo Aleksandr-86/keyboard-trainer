@@ -29,19 +29,21 @@ function keyDown(e) {
   </div>
 </template>
 
-<style>
-.input__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  padding: 0 1px 0 2px;
-}
+<style lang="scss">
+.input {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 1px 0 2px;
+  }
 
-.input__description {
-  display: inline-block;
-  width: 358px;
-  text-align: left;
+  &__description {
+    display: inline-block;
+    width: 358px;
+    text-align: left;
+  }
 }
 
 #input {

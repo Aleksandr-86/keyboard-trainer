@@ -207,7 +207,7 @@ onUnmounted(() => {
   </Transition>
 </template>
 
-<style>
+<style lang="scss">
 .field {
   width: 1440px;
   height: 380px;
@@ -226,44 +226,44 @@ onUnmounted(() => {
   font-size: 65px;
   color: v-bind(charColor);
   background: v-bind(charBackground);
-}
 
-.char_display_caret {
-  position: relative;
-  z-index: -1;
-}
+  &_display_caret {
+    position: relative;
+    z-index: -1;
+  }
 
-.char_display_caret:after {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  content: '';
-  width: 36px;
-  height: 5px;
-  background: v-bind(caretBackground);
-}
+  &_display_caret:after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    content: '';
+    width: 36px;
+    height: 5px;
+    background: v-bind(caretBackground);
+  }
 
-.char_display_correct {
-  color: v-bind(charCorrectColor);
-  filter: v-bind(charCorrectShadow);
-}
+  &_display_correct {
+    color: v-bind(charCorrectColor);
+    filter: v-bind(charCorrectShadow);
+  }
 
-.char_display_revised {
-  color: v-bind(charRevisedColor);
-  filter: v-bind(charRevisedShadow);
-}
+  &_display_revised {
+    color: v-bind(charRevisedColor);
+    filter: v-bind(charRevisedShadow);
+  }
 
-.char_display_wrong {
-  color: v-bind(charWrongColor);
-  filter: v-bind(charWrongShadow);
-}
+  &_display_wrong {
+    color: v-bind(charWrongColor);
+    filter: v-bind(charWrongShadow);
+  }
 
-.char_display_special-inactive {
-  color: v-bind(charSpecialColor);
-}
+  &_display_special-inactive {
+    color: v-bind(charSpecialColor);
+  }
 
-.char_display_special-active {
-  color: v-bind(charSpecialColor);
-  filter: v-bind(charSpecialShadow);
+  &_display_special-active {
+    color: v-bind(charSpecialColor);
+    filter: v-bind(charSpecialShadow);
+  }
 }
 </style>
