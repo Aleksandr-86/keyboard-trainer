@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onMounted } from 'vue'
-import { RouterLink, RouterView, useRouter } from 'vue-router'
+import { RouterView, useRouter } from 'vue-router'
 import { arrBackgrounds } from '@/services/background-list.js'
 import { detectDevice } from '@/services/helpers.js'
 import TheNavigationBar from '@/components/TheNavigationBar.vue'
