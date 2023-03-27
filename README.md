@@ -18,7 +18,7 @@
 </p>
 
 <div align="center">
-  <a href="aleksandr-86.github.io/keyboard-trainer/">
+  <a href="https://aleksandr-86.github.io/keyboard-trainer/">
     <img src="https://user-images.githubusercontent.com/96790009/227899478-5f3bd741-d642-4431-af73-d15dc4657346.png"/>
   </a>
 </div>
