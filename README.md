@@ -18,7 +18,9 @@
 </p>
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/96790009/227899478-5f3bd741-d642-4431-af73-d15dc4657346.png"/>
+  <a href="aleksandr-86.github.io/keyboard-trainer/">
+    <img src="https://user-images.githubusercontent.com/96790009/227899478-5f3bd741-d642-4431-af73-d15dc4657346.png"/>
+  </a>
 </div>
 
 Небольшое приложение для тренировки набора текста с выводом статистики по набору. Управление состоянием осуществляется без библиотек вроде `Pinia` или `Vuex` за счёт реактивных переменных хранимых в отдельных файлах папки `store`
