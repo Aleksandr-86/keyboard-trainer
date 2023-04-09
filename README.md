@@ -1,5 +1,7 @@
 <h3 align="center">
-⌨️ Клавиатурный тренажёр
+  <a href="https://aleksandr-86.github.io/keyboard-trainer/">
+    ⌨️ Клавиатурный тренажёр
+  </a>
 </h3>
 
 <p align="center">
